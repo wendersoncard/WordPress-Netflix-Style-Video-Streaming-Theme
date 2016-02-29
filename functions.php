@@ -22,7 +22,7 @@ if (!function_exists('streamium_theme_setup')) {
         add_theme_support( 'automatic-feed-links' );
         add_image_size( 'streamium-video-poster', 208, 117, true ); // (cropped)
         add_image_size( 'streamium-video-category', 292, 164, true );
-        add_image_size( 'streamium-home-slider', 9999, 550, false ); 
+        add_image_size( 'streamium-home-slider', 1600, 900, true ); 
         add_image_size( 'streamium-site-logo', 0, 56, true ); 
         add_theme_support( 'title-tag' );
     } 
@@ -142,17 +142,19 @@ class Streamium_Customize {
       <!--Customizer CSS--> 
       <style type="text/css">
            <?php self::generate_css('a', 'color', 'link_textcolor'); ?>
+           <?php self::generate_css('a:focus', 'color', 'link_textcolor'); ?>
+           <?php self::generate_css('a:hover', 'color', 'link_textcolor'); ?>
+           <?php self::generate_css('.slick-dots li.slick-active button', 'background-color', 'link_textcolor'); ?>
+           <?php self::generate_css('.progress-bar', 'background-color', 'link_textcolor'); ?>
            <?php self::generate_css('.button', 'background', 'link_textcolor'); ?>
            <?php self::generate_css('.label.heart', 'color', 'link_textcolor'); ?>
            <?php self::generate_css('.progress-bar .progress', 'background', 'link_textcolor'); ?>
            <?php self::generate_css('.cd-main-header .cd-logo', 'color', 'link_textcolor'); ?>
            <?php self::generate_css('.cd-primary-nav .cd-secondary-nav a:hover', 'color', 'link_textcolor'); ?>
-           <?php self::generate_css('.cd-primary-nav .cd-secondary-nav>li>a', 'color', 'link_textcolor'); ?>
            <?php self::generate_css('.cd-overlay', 'background-color', 'link_textcolor'); ?>
            <?php self::generate_css('.cd-primary-nav>li>a:hover', 'color', 'link_textcolor'); ?>
            <?php self::generate_css('.cd-primary-nav>li>a.selected', 'color', 'link_textcolor'); ?>
            <?php self::generate_css('.cd-primary-nav>li>a.selected', 'box-shadow', 'link_textcolor', 'inset 0 -2px 0 '); ?>
-           <?php self::generate_css('.cd-primary-nav .see-all a', 'color', 'link_textcolor'); ?>
            <?php self::generate_css('.cd-primary-nav .cd-nav-gallery .cd-nav-item h3', 'color', 'link_textcolor'); ?>
            <?php self::generate_css('.cd-primary-nav .cd-nav-icons .cd-nav-item h3', 'color', 'link_textcolor'); ?>
            <?php self::generate_css('.has-children > a:hover::before, .has-children > a:hover::after, .go-back a:hover::before, .go-back a:hover::after', 'background', 'link_textcolor'); ?>

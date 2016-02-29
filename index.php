@@ -25,8 +25,11 @@
 						    $image   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-home-slider' ); 
 							$title   = wp_trim_words( get_the_title(), $num_words = 10, $more = '... ' );
 							$excerpt = wp_trim_words( get_the_excerpt(), $num_words = 50, $more = '... ' );
+							$percentage = get_post_meta( get_the_ID(), 'percentage', true );
+
 					?>
-					<div style="background:url(<?php echo $image[0]; ?>);" class="slider-block">
+					<div class="slider-block">
+						<img src="<?php echo esc_url($image[0]); ?>" />
 						<article class="content-overlay">
 							<div class="container-fluid rel">
 								<div class="row rel">
@@ -34,6 +37,10 @@
 										<div class="centerme">
 											<h2><?php echo (isset($title) ? $title : __( 'No Title', 'streamium' )); ?></h2>
 											<p><?php echo (isset($excerpt) ? $excerpt : __( 'No Text', 'streamium' )); ?></p>
+											<div class="progress">
+											  <div class="progress-bar" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: <?php echo $percentage; ?>%;">
+											  </div>
+											</div>
 										</div>
 									</div>
 									<div class="col-sm-6 rel">
@@ -83,8 +90,10 @@
 									while ( $loop->have_posts() ) : $loop->the_post();
 										if ( has_post_thumbnail() ) : // thumbnail check 
 										$image   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-poster' ); 
+										$trimmed_content = wp_trim_words( get_the_excerpt(), 11 );
 							?>
-								<div style="background:url(<?php echo esc_url($image[0]); ?>);background-size: cover;">
+								<div>
+									<img src="<?php echo esc_url($image[0]); ?>" />
 									<div class="block-overlay">
 										<small><a href="#0" class="cd-see-all" data-pid="<?php echo $post->ID; ?>"><?php comments_number( 'no reviews', 'one review', '% reviews' ); ?></a></small>
 										<div class="block-overlay-info">
@@ -131,7 +140,8 @@
 							$image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-poster' ); 
 							$trimmed_content = wp_trim_words( get_the_excerpt(), 11 );
 						?>
-							<div style="background:url(<?php echo esc_url($image[0]); ?>);background-size: cover;">
+							<div>
+								<img src="<?php echo esc_url($image[0]); ?>" />
 								<div class="block-overlay">
 									<small><a href="#0" class="cd-see-all" data-pid="<?php echo $post->ID; ?>"><?php comments_number( 'no reviews', 'one review', '% reviews' ); ?></a></small>
 									<div class="block-overlay-info">

@@ -106,10 +106,6 @@
     border-radius: 7px;
     text-indent: -9999px;
 }
-.slick-dots li.slick-active button
-{
-    background: red;
-}
 .slick-dots li button:hover,
 .slick-dots li button:focus
 {
@@ -166,7 +162,18 @@
     background-size: cover !important;
     position: relative;
 }
+
+.hero-slider .slick-slide img {
+    width: 100%;
+    float: left;
+}
+
 .carousels .slick-slide:hover {
     overflow: visible;
     transform: scale(1.8,1.8);
+}
+
+.carousels .slick-slide img {
+    width: 100%;
+    float: left;
 }

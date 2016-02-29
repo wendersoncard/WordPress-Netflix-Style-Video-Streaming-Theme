@@ -2,28 +2,26 @@
 	<main class="cd-main-content">
 		<section class="categories no-header-push">
 			<?php if ( have_posts() ) : ?>
-			<div class="container-fluid">
+			<div class="container">
 				<div class="row">
 					<div class="col-sm-12">
 						<h3><?php printf( __( 'Viewing: %s', 'streamium' ), single_cat_title( '', false ) ); ?></h3>
 					</div><!--/.col-sm-12-->
 				</div><!--/.row-->
 				<div class="row">
-					<?php while ( have_posts() ) : the_post(); if ( has_post_thumbnail() ) { ?>
-						<div class="col-sm-3  <?php post_class(); ?>">
-							<div class="category-block">
-								<div class="category-block-header">
-									<h4><?php the_time('F jS, Y'); ?> by <?php the_author_posts_link(); ?></h4>
+					<?php while ( have_posts() ) : the_post(); if ( has_post_thumbnail() ) { 
+						$image   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-poster' );
+						$trimmed_content = wp_trim_words( get_the_excerpt(), 11 ); 
+						?>
+						<div class="col-sm-3 category-block <?php post_class(); ?>">
+							<img src="<?php echo esc_url($image[0]); ?>" />
+							<div class="block-overlay">
+								<small><a href="#0" class="cd-see-all" data-pid="<?php echo $post->ID; ?>"><?php comments_number( 'no reviews', 'one review', '% reviews' ); ?></a></small>
+								<div class="block-overlay-info">
+									<h3><?php the_title(); ?></h3>
+									<p><?php echo $trimmed_content; ?></p>
 								</div>
-								<a class="icon-play" href="<?php the_permalink(); ?>"></a>
-								<h4 class="video-title"><?php the_title(); ?></h4>
-								<?php
-									the_post_thumbnail('streamium-video-category', array('class' => 'img-responsive'));
-								?><!--/.category-block-->
-								<div class="category-block-footer">
-									<?php _e( 'Posted in' ); ?> <?php the_category( ', ' ); ?><br>
-									<?php the_tags(); ?>
-								</div>
+								<a class="icon-play glyphicon glyphicon-play" href="<?php the_permalink(); ?>"></a>
 							</div>
 						</div>
 					<?php } endwhile; ?>

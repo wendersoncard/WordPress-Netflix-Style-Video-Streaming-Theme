@@ -3,8 +3,6 @@
 /*--------------------------------------------------------*/
 jQuery(document).ready(function($) {
 
-	console.log("loaded...");
-
 	// Initialise Slider
 	$('.hero-slider').slick({
 		prevArrow: $('.streamium-prev'),
@@ -92,6 +90,20 @@ jQuery(document).ready(function($) {
 	});
 
 	$('.slick-slide').mouseenter(function() {
+
+        $(this).parent().parent().parent().addClass("liftIt");
+	    $(this).find('.block-overlay').show();
+		$(this).find('.block-overlay').animate({ opacity: 1 }, 500);
+
+	}).mouseleave(function() {
+
+		$(this).parent().parent().parent().removeClass("liftIt");
+		$(this).find('.block-overlay').hide();
+    	$(this).find('.block-overlay').animate({ opacity: 0 }, 250);
+
+	});
+
+	$('.category-block').mouseenter(function() {
 
         $(this).parent().parent().parent().addClass("liftIt");
 	    $(this).find('.block-overlay').show();
