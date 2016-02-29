@@ -1,5 +1,95 @@
+@font-face {
+    font-family: 'ProximaNovaLight';
+    src: url(../fonts/proximanovalight.eot);
+    src: url(../fonts/proximanovalight.eot?#iefix) format("embedded-opentype"), url(../fonts/proximanovalight.woff) format("woff"), url(../fonts/proximanovalight.ttf) format("truetype"), url(../fonts/proximanovalight.svg#ProximaNovaLight) format("svg");
+    font-weight: 400;
+    font-style: normal
+}
+@font-face {
+    font-family: 'ProximaNovaRegular';
+    src: url(../fonts/proximanova-regular.eot);
+    src: url(../fonts/proximanova-regular.eot?#iefix) format("embedded-opentype"), url(../fonts/proximanova-regular.woff) format("woff"), url(../fonts/proximanova-regular.ttf) format("truetype"), url(../fonts/proximanova-regular.svg#ProximaNovaRegular) format("svg");
+    font-weight: 400;
+    font-style: normal
+}
+@font-face {
+    font-family: 'ProximaNovaSemiBold';
+    src: url(../fonts/proximanovasemibold.eot);
+    src: url(../fonts/proximanovasemibold.eot?#iefix) format("embedded-opentype"), url(../fonts/proximanovasemibold.woff) format("woff"), url(../fonts/proximanovasemibold.ttf) format("truetype"), url(../fonts/proximanovasemibold.svg#ProximaNovaSemiBold) format("svg");
+    font-weight: 400;
+    font-style: normal
+}
+@font-face {
+    font-family: 'ProximaNovaBold';
+    src: url(../fonts/proximanovaalt-bold.eot);
+    src: url(../fonts/proximanovaalt-bold.eot?#iefix) format("embedded-opentype"), url(../fonts/proximanovaalt-bold.woff) format("woff"), url(../fonts/proximanovaalt-bold.ttf) format("truetype"), url(../fonts/proximanovaalt-bold.svg#ProximaNovaBold) format("svg");
+    font-weight: 400;
+    font-style: normal
+}
+@font-face {
+    font-family: 'icomoon';
+    src: url("../fonts/icomoon.eot?-efrcmz");
+    src: url("../fonts/icomoon.eot?#iefix-efrcmz") format("embedded-opentype"), url("../fonts/icomoon.woff?-efrcmz") format("woff"), url("../fonts/icomoon.ttf?-efrcmz") format("truetype"), url("../fonts/icomoon.svg?-efrcmz#icomoon") format("svg");
+    font-weight: normal;
+    font-style: normal
+}
+[class^="icon-"],
+[class*=" icon-"] {
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+.icon-arrow-left:before {
+    content: "\e600"
+}
+.icon-arrow-right:before {
+    content: "\e601"
+}
+.icon-play:before {
+    content: "\e602"
+}
+.icon-caret:before {
+    content: "\e603"
+}
+.icon-heart:before {
+    content: "\e604"
+}
+.icon-heart-o:before {
+    content: "\e605"
+}
+@-webkit-keyframes pulse {
+    from {
+        transform: scale(1, 1)
+    }
+    50% {
+        transform: scale(1.2, 1.2)
+    }
+    to {
+        transform: scale(1, 1)
+    }
+}
+@-moz-keyframes pulse {
+    from {
+        transform: scale(1, 1)
+    }
+    50% {
+        transform: scale(1.2, 1.2)
+    }
+    to {
+        transform: scale(1, 1)
+    }
+}
 body {
     background: #141414;
+}
+.cd-logo {
+    font-family: ProximaNovaBold,sans-serif;
 }
 .cd-main-content {
     overflow: hidden;
@@ -31,8 +121,9 @@ body {
     margin-left: 60px;
 }
 .content-overlay h2 {
+    font-family: ProximaNovaBold,sans-serif;
     color: #fff;
-    font-size: 28px;
+    font-size: 40px;
     margin: 0;
 }
 .content-overlay p {
@@ -69,6 +160,7 @@ body {
     opacity: 1;
 }
 .video-header h3 {
+    font-family: ProximaNovaRegular,sans-serif;
     float: left;
     font-size: 1.4vw;
     color: #999;

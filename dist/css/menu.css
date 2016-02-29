@@ -47,8 +47,9 @@ Main components
     width: 100%;
 }
 
-.cd-primary-nav {
-  margin: 0;
+.cd-primary-nav, .cd-secondary-nav {
+    margin: 0;
+    padding: 0;
 }
 
 .nav-is-fixed .cd-main-header {
@@ -86,9 +87,9 @@ Main components
 }
 @media only screen and (min-width: 1170px) {
   .cd-logo {
-        top: 18px;
-    left: 5%;
-    font-size: 30px;
+     top: 10px;
+    left: 5%;    
+    font-size: 40px;
   }
 }
 
