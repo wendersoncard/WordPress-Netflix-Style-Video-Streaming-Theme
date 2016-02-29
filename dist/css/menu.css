@@ -385,10 +385,6 @@ Main components
     left: 0;
   }
 }
-.cd-primary-nav .see-all a {
-  /* different style for the See all button on mobile and tablet */
-  color: #69aa6f;
-}
 .cd-primary-nav .cd-nav-gallery .cd-nav-item, .cd-primary-nav .cd-nav-icons .cd-nav-item {
   /* items with picture (or icon) and title */
   height: 80px;
@@ -540,13 +536,6 @@ Main components
     font-size: 16px;
     color: #fff;
   }
-  .cd-primary-nav > li > a:hover {
-    color: #69aa6f;
-  }
-  .cd-primary-nav > li > a.selected {
-    color: #69aa6f;
-    box-shadow: inset 0 -2px 0 #69aa6f;
-  }
   .cd-primary-nav .go-back, .cd-primary-nav .see-all {
     display: none;
   }
@@ -635,8 +624,6 @@ Main components
     border-right: none;
   }
   .cd-primary-nav .cd-secondary-nav > li > a {
-    /* secondary nav title */
-    color: #69aa6f;
     font-weight: bold;
     font-size: 1.6rem;
     margin-bottom: .6em;
@@ -648,9 +635,6 @@ Main components
     color: #2e3233;
     border-bottom: none;
     font-size: 1.4rem;
-  }
-  .cd-primary-nav .cd-secondary-nav a:hover {
-    color: #69aa6f;
   }
   .cd-primary-nav .cd-secondary-nav ul {
     /* Force Hardware Acceleration in WebKit */
@@ -716,7 +700,6 @@ Main components
     margin-bottom: .6em;
   }
   .cd-primary-nav .cd-nav-gallery .cd-nav-item h3 {
-    color: #69aa6f;
     font-weight: bold;
     padding: 0 .4em;
   }
@@ -741,7 +724,6 @@ Main components
     background: #f6f6f5;
   }
   .cd-primary-nav .cd-nav-icons .cd-nav-item h3 {
-    color: #69aa6f;
     font-weight: bold;
   }
   .cd-primary-nav .cd-nav-icons .cd-nav-item p {
@@ -784,9 +766,6 @@ Main components
 @media only screen and (min-width: 1170px) {
   .has-children > a::before, .has-children > a::after, .go-back a::before, .go-back a::after {
     background: #c9cbc4;
-  }
-  .has-children > a:hover::before, .has-children > a:hover::after, .go-back a:hover::before, .go-back a:hover::after {
-    background: #69aa6f;
   }
 }
 
@@ -952,7 +931,7 @@ Main components
   top: 0;
   left: 0;
   cursor: pointer;
-  background-color: rgba(105, 170, 111, 0.8);
+  background-color: rgba(1, 1, 1, 0.8);
   visibility: hidden;
   opacity: 0;
   -webkit-backface-visibility: hidden;
