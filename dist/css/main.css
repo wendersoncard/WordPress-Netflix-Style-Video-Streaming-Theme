@@ -217,6 +217,7 @@ button:focus {outline:0;}
     opacity: 1;
 }
 .block-overlay small {
+    font-family: ProximaNovaRegular,sans-serif;
     font-size: 9px;
     color: #fff;
     position: absolute;
@@ -229,6 +230,7 @@ button:focus {outline:0;}
     left: 0px;
 }
 .block-overlay .block-overlay-info h3 {
+    font-family: ProximaNovaBold,sans-serif;
     font-size: 10px;
     color: #fff;
     padding: 0px;
@@ -238,6 +240,7 @@ button:focus {outline:0;}
     text-overflow: ellipsis;
 }
 .block-overlay .block-overlay-info p {
+    font-family: ProximaNovaRegular,sans-serif;
     line-height: 1;
     font-size: 7px;
     color: #fff;
@@ -297,6 +300,7 @@ button:focus {outline:0;}
     opacity: 1;
 }
 .category-block-overlay small {
+    font-family: ProximaNovaRegular,sans-serif;
     font-size: 9px;
     color: #fff;
     position: absolute;
@@ -309,6 +313,7 @@ button:focus {outline:0;}
     left: 0px;
 }
 .category-block-overlay .category-block-overlay-info h3 {
+    font-family: ProximaNovaBold,sans-serif;
     font-size: 10px;
     color: #fff;
     padding: 0px;
@@ -318,6 +323,7 @@ button:focus {outline:0;}
     text-overflow: ellipsis;
 }
 .category-block-overlay .category-block-overlay-info p {
+    font-family: ProximaNovaRegular,sans-serif;
     line-height: 1;
     font-size: 7px;
     color: #fff;
