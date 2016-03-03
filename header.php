@@ -23,3 +23,9 @@
 		</ul> <!-- cd-header-buttons -->
 		<?php get_search_form(); ?>
 	</header>
+
+	<div class="cd-testimonials-all">
+		<div class="cd-testimonials-all-wrapper">
+		</div>	<!-- cd-testimonials-all-wrapper -->
+		<a href="#0" class="close-btn">Close</a>
+	</div> <!-- cd-testimonials-all -->

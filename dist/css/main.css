@@ -252,12 +252,79 @@ button:focus {outline:0;}
 .category-block {
     position: relative;
     display: block;
-}
-.category-block:hover {
-    overflow: visible;
-    transform: scale(1.8,1.8);
+    float: left;
+    width: 100%;
+    margin-bottom: 20px;
 }
 .category-block img {
     width: 100%;
     float: left;
+}
+.category-block-overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,.7) 10%;
+    background-image: -webkit-gradient(linear,left bottom,left top,color-stop(10%,rgba(0,0,0,.7)),to(rgba(0,0,0,0)));
+    background-image: -webkit-linear-gradient(bottom,rgba(0,0,0,.7) 10%,rgba(0,0,0,0));
+    background-image: -moz-linear-gradient(bottom,rgba(0,0,0,.7) 10%,rgba(0,0,0,0));
+    background-image: -o-linear-gradient(bottom,rgba(0,0,0,.7) 10%,rgba(0,0,0,0));
+    background-image: linear-gradient(to top,rgba(0,0,0,.7) 10%,rgba(0,0,0,0));
+}
+.category-block-overlay .icon-play {
+    text-decoration: none;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    font-size: 22px;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    width: 40px;
+    height: 40px;
+    padding-left: 9px;
+    line-height: 37px;
+    margin-left: -20px;
+    margin-top: -20px;
+    opacity: 0.8;
+    -webkit-transition: -webkit-transform 0.3s ease;
+    -moz-transition: -moz-transform 0.3s ease;
+    transition: transform 0.3s ease;
+}
+.category-block-overlay .icon-play:hover {
+    background: #010101;
+    transform: scale(1.1,1.1);
+    opacity: 1;
+}
+.category-block-overlay small {
+    font-size: 9px;
+    color: #fff;
+    position: absolute;
+    top: 0px;
+    right: 5px;
+}
+.category-block-overlay .category-block-overlay-info {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+.category-block-overlay .category-block-overlay-info h3 {
+    font-size: 10px;
+    color: #fff;
+    padding: 0px;
+    margin: 0 0 0 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.category-block-overlay .category-block-overlay-info p {
+    line-height: 1;
+    font-size: 7px;
+    color: #fff;
+    padding: 1px;
+    margin: 0 0 0 4px;
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis;
 }

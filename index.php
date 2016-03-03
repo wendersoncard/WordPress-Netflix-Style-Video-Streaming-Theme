@@ -1,11 +1,5 @@
 <?php get_header(); ?>
 
-	<div class="cd-testimonials-all">
-		<div class="cd-testimonials-all-wrapper">
-		</div>	<!-- cd-testimonials-all-wrapper -->
-		<a href="#0" class="close-btn">Close</a>
-	</div> <!-- cd-testimonials-all -->
-
 	<main class="cd-main-content">
 		<section class="hero">
 			<button class="streamium-prev glyphicon glyphicon-menu-left" aria-hidden="true"></button>
@@ -95,7 +89,9 @@
 								<div>
 									<img src="<?php echo esc_url($image[0]); ?>" />
 									<div class="block-overlay">
-										<small><a href="#0" class="cd-see-all" data-pid="<?php echo $post->ID; ?>"><?php comments_number( 'no reviews', 'one review', '% reviews' ); ?></a></small>
+										<?php if(get_comments_number()) : ?>
+											<small><a href="#" class="cd-see-all" data-pid="<?php echo $post->ID; ?>"><?php comments_number( 'no reviews', 'one review', '% reviews' ); ?></a></small>
+										<?php endif; ?>
 										<div class="block-overlay-info">
 											<h3><?php the_title(); ?></h3>
 											<p><?php echo $trimmed_content; ?></p>
@@ -143,7 +139,9 @@
 							<div>
 								<img src="<?php echo esc_url($image[0]); ?>" />
 								<div class="block-overlay">
-									<small><a href="#0" class="cd-see-all" data-pid="<?php echo $post->ID; ?>"><?php comments_number( 'no reviews', 'one review', '% reviews' ); ?></a></small>
+									<?php if(get_comments_number()) : ?>
+										<small><a href="#" class="cd-see-all" data-pid="<?php echo $post->ID; ?>"><?php comments_number( 'no reviews', 'one review', '% reviews' ); ?></a></small>
+									<?php endif; ?>
 									<div class="block-overlay-info">
 										<h3><?php the_title(); ?></h3>
 										<p><?php echo $trimmed_content; ?></p>
