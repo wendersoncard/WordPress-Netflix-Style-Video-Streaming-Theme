@@ -214,7 +214,6 @@ button:focus {outline:0;}
 }
 .block-overlay .icon-play:hover {
     background: #010101;
-    transform: scale(1.1,1.1);
     opacity: 1;
 }
 .block-overlay small {

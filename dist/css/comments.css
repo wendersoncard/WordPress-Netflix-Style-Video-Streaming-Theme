@@ -99,6 +99,7 @@ Main components
 .cd-author .cd-author-info {
   text-align: left;
   line-height: 1.2;
+  padding: 0;
 }
 .cd-author .cd-author-info li:first-child {
   font-size: 14px;

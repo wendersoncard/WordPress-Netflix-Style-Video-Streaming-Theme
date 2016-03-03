@@ -250,7 +250,8 @@ add_filter( 'wp_nav_menu', 'streamium_remove_ul' );
 function streamium_user_reviews_callback(){
 
     global $withcomments;
-    $comments = get_comments(array( 'post_id' =>  $_POST['pid'] ));
+    $post_id = $_POST['pid'];
+    $comments = get_comments(array( 'post_id' =>  $post_id ));
     if ( $comments )
     {
         $comms = "<ul>";
@@ -259,10 +260,10 @@ function streamium_user_reviews_callback(){
              $comms .= '<li class="cd-testimonials-item">
                 <p>' . $comment->comment_content . '</p>
                 <div class="cd-author">
-                  <img src="' . get_template_directory_uri() . '/dist/img/avatar-1.jpg" alt="Author image">
+                  ' . get_avatar( $comment, 32 ) . '
                   <ul class="cd-author-info">
                     <li>' . $comment->comment_author . '</li>
-                    <li>CEO, CompanyName</li>
+                    <li>' . get_post_field('post_title', $post_id) . '</li>
                   </ul>
                 </div>
               </li>';
