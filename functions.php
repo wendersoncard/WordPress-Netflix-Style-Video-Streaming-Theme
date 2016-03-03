@@ -153,8 +153,6 @@ class Streamium_Customize {
            <?php self::generate_css('.cd-primary-nav .cd-secondary-nav a:hover', 'color', 'link_textcolor'); ?>
            <?php self::generate_css('.cd-overlay', 'background-color', 'link_textcolor'); ?>
            <?php self::generate_css('.cd-primary-nav>li>a:hover', 'color', 'link_textcolor'); ?>
-           <?php self::generate_css('.cd-primary-nav>li>a.selected', 'color', 'link_textcolor'); ?>
-           <?php self::generate_css('.cd-primary-nav>li>a.selected', 'box-shadow', 'link_textcolor', 'inset 0 -2px 0 '); ?>
            <?php self::generate_css('.cd-primary-nav .cd-nav-gallery .cd-nav-item h3', 'color', 'link_textcolor'); ?>
            <?php self::generate_css('.cd-primary-nav .cd-nav-icons .cd-nav-item h3', 'color', 'link_textcolor'); ?>
            <?php self::generate_css('.has-children > a:hover::before, .has-children > a:hover::after, .go-back a:hover::before, .go-back a:hover::after', 'background', 'link_textcolor'); ?>

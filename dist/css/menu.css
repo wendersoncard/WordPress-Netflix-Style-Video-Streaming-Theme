@@ -378,8 +378,11 @@ Main components
   -o-transform: translateX(-100%);
   transform: translateX(-100%);
   opacity: 0;
+  color: #fff;
 }
-
+.cd-primary-nav.moves-out > li > a:hover, .cd-primary-nav ul.moves-out > li > a:hover {
+  color: #fff;
+}
 @media only screen and (max-width: 1169px) {
   .nav-on-left .cd-primary-nav, .nav-on-left .cd-primary-nav ul {
     right: auto;
