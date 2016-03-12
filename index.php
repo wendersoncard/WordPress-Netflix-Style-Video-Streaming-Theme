@@ -69,6 +69,8 @@
 					<div class="col-sm-12 video-header">
 						<h3>Recently Watched</h3>
 					</div><!--/.col-sm-12-->
+				</div>
+				<div class="row">
 					<div class="col-sm-12">
 						<div class="prev_next"></div>
 						<div class="carousels">
@@ -121,6 +123,8 @@
 						<h3><?php echo ucfirst($category->cat_name); ?></h3>
 						<a class="see-all" href="<?php echo esc_url( home_url() ); ?>/category/<?php echo $category->slug; ?>">See all</a>
 					</div><!--/.col-sm-12-->
+				</div>
+				<div class="row">
 					<div class="col-sm-12">
 						<div class="prev_next"></div>
 						<div class="carousels">

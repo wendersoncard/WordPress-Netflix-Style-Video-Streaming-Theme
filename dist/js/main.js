@@ -48,29 +48,30 @@ jQuery(document).ready(function($) {
 	    	appendArrows: $(this).prev(),
 			prevArrow: '<button class="streamium-carousel-prev glyphicon glyphicon-menu-left" aria-hidden="true"></button>',
 			nextArrow: '<button class="streamium-carousel-next glyphicon glyphicon-menu-right" aria-hidden="true"></button>',
-			slidesToShow: 7,
-			slidesToScroll: 7,
-			mobileFirst: true,
+			slidesToShow: 5,
+			slidesToScroll: 5,
+			//mobileFirst: true,
 			responsive: [
 			    {
 			      breakpoint: 1024,
-			      settings: {
-			        slidesToShow: 7,
-			        slidesToScroll: 7
-			      }
-			    },
-			    {
-			      breakpoint: 600,
 			      settings: {
 			        slidesToShow: 5,
 			        slidesToScroll: 5
 			      }
 			    },
 			    {
-			      breakpoint: 480,
+			      breakpoint: 600,
 			      settings: {
 			        slidesToShow: 3,
 			        slidesToScroll: 3
+			      }
+			    },
+			    {
+			      breakpoint: 480,
+			      settings: {
+			      	appendArrows: false,
+			        slidesToShow: 2,
+			        slidesToScroll: 2
 			      }
 			    }
 			]
@@ -78,26 +79,25 @@ jQuery(document).ready(function($) {
         
         var breakit = 7;
 		var iwid = $(this).innerWidth();
+
 		if(iwid < 991){
 			breakit = 5;
 		}else if(iwid < 481){
-			breakit = 5;
+			breakit = 3;
 		}
 
-		$('.carousels .slick-slide').css({'height' : Math.round((iwid/breakit)/16*9)});
-		$('.carousels .slick-slider').css({'height' : Math.round((iwid/breakit)/16*9)});
+		//$('.carousels .slick-slide').css({'height' : Math.round((iwid/breakit)/16*9)});
+		//$('.carousels .slick-slider').css({'height' : Math.round((iwid/breakit)/16*9)});
  
 	});
 
 	$('.slick-slide').mouseenter(function() {
 
-        $(this).parent().parent().parent().addClass("liftIt");
 	    $(this).find('.block-overlay').show();
 		$(this).find('.block-overlay').animate({ opacity: 1 }, 500);
 
 	}).mouseleave(function() {
 
-		$(this).parent().parent().parent().removeClass("liftIt");
 		$(this).find('.block-overlay').hide();
     	$(this).find('.block-overlay').animate({ opacity: 0 }, 250);
 
@@ -105,13 +105,11 @@ jQuery(document).ready(function($) {
 
 	$('.category-block').mouseenter(function() {
 
-        $(this).parent().parent().parent().addClass("liftIt");
 	    $(this).find('.block-overlay').show();
 		$(this).find('.block-overlay').animate({ opacity: 1 }, 500);
 
 	}).mouseleave(function() {
 
-		$(this).parent().parent().parent().removeClass("liftIt");
 		$(this).find('.block-overlay').hide();
     	$(this).find('.block-overlay').animate({ opacity: 0 }, 250);
 

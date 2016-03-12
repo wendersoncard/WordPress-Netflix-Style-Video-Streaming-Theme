@@ -49,7 +49,6 @@
 .streamium-carousel-prev {
     left: 0px;
     position: absolute;
-    width: 70px;
     height: 100%;
     top: 0;
     z-index: 1;
@@ -61,7 +60,6 @@
 .streamium-carousel-next {
     right: 0px;
     position: absolute;
-    width: 70px;
     height: 100%;
     top: 0;
     z-index: 1;
@@ -74,12 +72,13 @@
 .slick-dots
 {
     position: absolute;
-    bottom: 5px;
+    bottom: 0px;
     display: block;
     width: 100%;
     padding: 0;
     list-style: none;
     text-align: center;
+    height: 20px;
 }
 .slick-dots li
 {
@@ -151,7 +150,6 @@
     -webkit-transition: -webkit-transform 0.3s ease;
     -moz-transition: -moz-transform 0.3s ease;
     transition: transform 0.3s ease;
-    background-size: cover !important;
 }
 .hero-slider .slick-slide {
     margin: 0px;
@@ -170,7 +168,7 @@
 
 .carousels .slick-slide:hover {
     overflow: visible;
-    transform: scale(1.8,1.8);
+    /*transform: scale(1.8,1.8);*/
 }
 
 .carousels .slick-slide img {

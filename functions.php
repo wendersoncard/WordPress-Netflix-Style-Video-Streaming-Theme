@@ -20,7 +20,7 @@ if (!function_exists('streamium_theme_setup')) {
     	/* Configure WP 2.9+ Thumbnails ---------------------------------------------*/
     	add_theme_support('post-thumbnails');
         add_theme_support( 'automatic-feed-links' );
-        add_image_size( 'streamium-video-poster', 208, 117, true ); // (cropped)
+        add_image_size( 'streamium-video-poster', 600, 338, true ); // (cropped)
         add_image_size( 'streamium-video-category', 292, 164, true );
         add_image_size( 'streamium-home-slider', 1600, 900, true ); 
         add_image_size( 'streamium-site-logo', 0, 56, true ); 
