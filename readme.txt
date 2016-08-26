@@ -1,5 +1,7 @@
 = Streamium =
-* by S3Bubble, https://s3bubble.com/
+* by S3Bubble, https://s3bubble.com
+
+You can download the latest release of Streamium WordPress Theme Here: https://github.com/s3bubble/Streamium-Netflix-Theme/releases
 
 == ABOUT Streamium ==
 S3Bubble is excited to introduce Streamium. This Theme is ideal for any budding directors and filmographer's who are looking to showcase and sell their work. Streamium, like Netflix, is a subscription service making it perfect for anyone with an abundance of video content just waiting to be shared with your following of adoring fans.. If you need support with this theme, please go to https://s3bubble.com/forums/forum/wordpress-themes/
