@@ -1,0 +1,368 @@
+@font-face {
+    font-family: 'ProximaNovaLight';
+    src: url(../fonts/proximanovalight.eot);
+    src: url(../fonts/proximanovalight.eot?#iefix) format("embedded-opentype"), url(../fonts/proximanovalight.woff) format("woff"), url(../fonts/proximanovalight.ttf) format("truetype"), url(../fonts/proximanovalight.svg#ProximaNovaLight) format("svg");
+    font-weight: 400;
+    font-style: normal
+}
+@font-face {
+    font-family: 'ProximaNovaRegular';
+    src: url(../fonts/proximanova-regular.eot);
+    src: url(../fonts/proximanova-regular.eot?#iefix) format("embedded-opentype"), url(../fonts/proximanova-regular.woff) format("woff"), url(../fonts/proximanova-regular.ttf) format("truetype"), url(../fonts/proximanova-regular.svg#ProximaNovaRegular) format("svg");
+    font-weight: 400;
+    font-style: normal
+}
+@font-face {
+    font-family: 'ProximaNovaSemiBold';
+    src: url(../fonts/proximanovasemibold.eot);
+    src: url(../fonts/proximanovasemibold.eot?#iefix) format("embedded-opentype"), url(../fonts/proximanovasemibold.woff) format("woff"), url(../fonts/proximanovasemibold.ttf) format("truetype"), url(../fonts/proximanovasemibold.svg#ProximaNovaSemiBold) format("svg");
+    font-weight: 400;
+    font-style: normal
+}
+@font-face {
+    font-family: 'ProximaNovaBold';
+    src: url(../fonts/proximanovaalt-bold.eot);
+    src: url(../fonts/proximanovaalt-bold.eot?#iefix) format("embedded-opentype"), url(../fonts/proximanovaalt-bold.woff) format("woff"), url(../fonts/proximanovaalt-bold.ttf) format("truetype"), url(../fonts/proximanovaalt-bold.svg#ProximaNovaBold) format("svg");
+    font-weight: 400;
+    font-style: normal
+}
+@font-face {
+    font-family: 'icomoon';
+    src: url("../fonts/icomoon.eot?-efrcmz");
+    src: url("../fonts/icomoon.eot?#iefix-efrcmz") format("embedded-opentype"), url("../fonts/icomoon.woff?-efrcmz") format("woff"), url("../fonts/icomoon.ttf?-efrcmz") format("truetype"), url("../fonts/icomoon.svg?-efrcmz#icomoon") format("svg");
+    font-weight: normal;
+    font-style: normal
+}
+[class^="icon-"],
+[class*=" icon-"] {
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+.icon-arrow-left:before {
+    content: "\e600"
+}
+.icon-arrow-right:before {
+    content: "\e601"
+}
+.icon-play:before {
+    content: "\e602"
+}
+.icon-caret:before {
+    content: "\e603"
+}
+.icon-heart:before {
+    content: "\e604"
+}
+.icon-heart-o:before {
+    content: "\e605"
+}
+@-webkit-keyframes pulse {
+    from {
+        transform: scale(1, 1)
+    }
+    50% {
+        transform: scale(1.2, 1.2)
+    }
+    to {
+        transform: scale(1, 1)
+    }
+}
+@-moz-keyframes pulse {
+    from {
+        transform: scale(1, 1)
+    }
+    50% {
+        transform: scale(1.2, 1.2)
+    }
+    to {
+        transform: scale(1, 1)
+    }
+}
+html, body {
+    height: 100%;
+}
+body {
+    background: #141414;
+}
+*:focus {outline:none !important}
+.cd-logo {
+    font-family: ProximaNovaBold,sans-serif;
+}
+.cd-main-content {
+    overflow: hidden;
+}
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+.content-overlay {
+    width: 100%;
+    height: 101%;
+    position: absolute;
+    top: 0px;
+    background-color: rgba(0,0,0,.9) 40%;
+    background-image: -webkit-gradient(linear,right top,right bottom,color-stop(40%,rgba(0,0,0,.9)),to(rgba(0,0,0,0)));
+    background-image: -webkit-linear-gradient(left,rgba(0,0,0,.9) 40%,rgba(0,0,0,0));
+    background-image: -moz-linear-gradient(left,rgba(0,0,0,.9) 40%,rgba(0,0,0,0));
+    background-image: -o-linear-gradient(left,rgba(0,0,0,.9) 40%,rgba(0,0,0,0));
+    background-image: linear-gradient(to right,rgba(0,0,0,.9) 40%,rgba(0,0,0,0));
+}
+.content-overlay .rel {
+    position: relative;
+    height: 100%;
+}
+.content-overlay .centerme {
+    margin: 80px 0px 0px 60px;
+}
+.content-overlay h2 {
+    font-family: ProximaNovaBold,sans-serif;
+    color: #fff;
+    font-size: 40px;
+    margin: 0;
+}
+.content-overlay p {
+    color: #999;
+    font-weight: 400;
+    line-height: 1.35;
+    width: 100%;
+    font-size: 16px;
+}
+.content-overlay .icon-play {
+    text-decoration: none;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    font-size: 48px;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    width: 90px;
+    height: 90px;
+    line-height: 90px;
+    margin-left: -45px;
+    margin-top: -45px;
+    text-align: center;
+    opacity: 0.8;
+    -webkit-transition: -webkit-transform 0.3s ease;
+    -moz-transition: -moz-transform 0.3s ease;
+    transition: transform 0.3s ease;
+    background: #000;
+}
+.icon-play:before {
+    left: 25px;
+    position: absolute;
+    top: -1px;
+}
+.content-overlay .icon-play:hover {
+    background: #010101;
+    transform: scale(1.05,1.05);
+    opacity: 1;
+}
+.progress {
+    height: 10px;
+    border-radius: 5px;
+}
+.video-header h3 {
+    font-family: ProximaNovaRegular,sans-serif;
+    float: left;
+    font-size: 16px;
+    color: #fff;
+    margin: 20px 0px 0px 0px;
+}
+.video-header .see-all {
+    float: right;
+    margin-top: 22px;
+    font-size: 12px;
+    color: #fafafa;
+    font-weight: 300;
+}
+.video-main {
+    height: 100%;
+    width: 100%;
+    display: table;
+}
+.video-wrapper {
+    display: table-cell;
+    height: 100%;
+    vertical-align: middle;
+}
+.slick-slide {
+    position: relative;
+}
+.block-overlay {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.7) 10%;
+    background-image: -webkit-gradient(linear,left bottom,left top,color-stop(10%,rgba(0,0,0,.7)),to(rgba(0,0,0,0)));
+    background-image: -webkit-linear-gradient(bottom,rgba(0,0,0,.7) 10%,rgba(0,0,0,0));
+    background-image: -moz-linear-gradient(bottom,rgba(0,0,0,.7) 10%,rgba(0,0,0,0));
+    background-image: -o-linear-gradient(bottom,rgba(0,0,0,.7) 10%,rgba(0,0,0,0));
+    background-image: linear-gradient(to top,rgba(0,0,0,.7) 10%,rgba(0,0,0,0));
+}
+.block-overlay .icon-play {
+    text-decoration: none;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    font-size: 26px;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    margin-left: -25px;
+    margin-top: -25px;
+    text-align: center;
+    opacity: 0.8;
+    -webkit-transition: -webkit-transform 0.3s ease;
+    -moz-transition: -moz-transform 0.3s ease;
+    transition: transform 0.3s ease;
+    background: #000;
+}
+.block-overlay .icon-play:before {
+    left: 50%;
+    position: absolute;
+    top: 0px;
+    margin-left: -10px;
+    text-align: center;
+}
+.block-overlay .icon-play:hover {
+    background: #010101;
+    opacity: 1;
+}
+.block-overlay small {
+    font-family: ProximaNovaRegular,sans-serif;
+    font-size: 14px;
+    color: #fff;
+    position: absolute;
+    top: 0px;
+    right: 5px;
+}
+.block-overlay .block-overlay-info {
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+}
+.block-overlay .block-overlay-info h3 {
+    font-family: ProximaNovaBold,sans-serif;
+    font-size: 14px;
+    color: #fff;
+    padding: 0px;
+    margin: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.block-overlay .block-overlay-info p {
+    font-family: ProximaNovaRegular,sans-serif;
+    line-height: 1;
+    font-size: 12px;
+    color: #fff;
+    padding: 1px;
+    margin: 0 0 0 4px;
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis;
+}
+/* Category page */
+.category-block {
+    position: relative;
+    display: block;
+    float: left;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.category-block img {
+    width: 100%;
+    float: left;
+}
+.category-block-overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,.7) 10%;
+    background-image: -webkit-gradient(linear,left bottom,left top,color-stop(10%,rgba(0,0,0,.7)),to(rgba(0,0,0,0)));
+    background-image: -webkit-linear-gradient(bottom,rgba(0,0,0,.7) 10%,rgba(0,0,0,0));
+    background-image: -moz-linear-gradient(bottom,rgba(0,0,0,.7) 10%,rgba(0,0,0,0));
+    background-image: -o-linear-gradient(bottom,rgba(0,0,0,.7) 10%,rgba(0,0,0,0));
+    background-image: linear-gradient(to top,rgba(0,0,0,.7) 10%,rgba(0,0,0,0));
+}
+.category-block-overlay .icon-play {
+    text-decoration: none;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    font-size: 26px;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    margin-left: -25px;
+    margin-top: -25px;
+    text-align: center;
+    opacity: 0.8;
+    -webkit-transition: -webkit-transform 0.3s ease;
+    -moz-transition: -moz-transform 0.3s ease;
+    transition: transform 0.3s ease;
+    background: #000;
+}
+.category-block-overlay .icon-play:before {
+    left: 50%;
+    position: absolute;
+    top: 0px;
+    margin-left: -10px;
+    text-align: center;
+}
+.category-block-overlay .icon-play:hover {
+    background: #010101;
+    transform: scale(1.1,1.1);
+    opacity: 1;
+}
+.category-block-overlay small {
+    font-family: ProximaNovaRegular,sans-serif;
+    font-size: 14px;
+    color: #fff;
+    position: absolute;
+    top: 0px;
+    right: 5px;
+}
+.category-block-overlay .category-block-overlay-info {
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+}
+.category-block-overlay .category-block-overlay-info h3 {
+    font-family: ProximaNovaBold,sans-serif;
+    font-size: 14px;
+    color: #fff;
+    padding: 0px;
+    margin: 0 0 0 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.category-block-overlay .category-block-overlay-info p {
+    font-family: ProximaNovaRegular,sans-serif;
+    line-height: 1;
+    font-size: 12px;
+    color: #fff;
+    padding: 1px;
+    margin: 0 0 0 4px;
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis;
+}
