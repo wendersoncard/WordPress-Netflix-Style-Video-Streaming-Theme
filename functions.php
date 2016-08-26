@@ -11,12 +11,9 @@
 
 if ( ! isset( $content_width ) ) $content_width = 900;
 
-<<<<<<< HEAD
 // Remove paragraph tags from around the content
 remove_filter('the_content', 'wpautop');
 
-=======
->>>>>>> 17c526e13156d8c684e652449df69bee146e2646
 /*-----------------------------------------------------------------------------------*/
 /*	Theme set up
 /*-----------------------------------------------------------------------------------*/

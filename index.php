@@ -31,13 +31,6 @@
 										<div class="centerme">
 											<h2><?php echo (isset($title) ? $title : __( 'No Title', 'streamium' )); ?></h2>
 											<p><?php echo (isset($excerpt) ? $excerpt : __( 'No Text', 'streamium' )); ?></p>
-<<<<<<< HEAD
-=======
-											<div class="progress">
-											  <div class="progress-bar" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: <?php echo $percentage; ?>%;">
-											  </div>
-											</div>
->>>>>>> 17c526e13156d8c684e652449df69bee146e2646
 										</div>
 									</div>
 									<div class="col-sm-6 rel">
@@ -99,10 +92,6 @@
 										<?php endif; ?>
 										<div class="block-overlay-info">
 											<h3><?php the_title(); ?></h3>
-<<<<<<< HEAD
-=======
-											<p><?php echo $trimmed_content; ?></p>
->>>>>>> 17c526e13156d8c684e652449df69bee146e2646
 										</div>
 										<a class="icon-play glyphicon glyphicon-play" href="<?php the_permalink(); ?>"></a>
 									</div>
@@ -154,10 +143,6 @@
 									<?php endif; ?>
 									<div class="block-overlay-info">
 										<h3><?php the_title(); ?></h3>
-<<<<<<< HEAD
-=======
-										<p><?php echo $trimmed_content; ?></p>
->>>>>>> 17c526e13156d8c684e652449df69bee146e2646
 									</div>
 									<a class="icon-play glyphicon glyphicon-play" href="<?php the_permalink(); ?>"></a>
 								</div>

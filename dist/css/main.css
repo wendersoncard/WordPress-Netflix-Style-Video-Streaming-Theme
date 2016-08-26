@@ -85,7 +85,6 @@
         transform: scale(1, 1)
     }
 }
-<<<<<<< HEAD
 html, body {
     height: 100%;
 }
@@ -93,12 +92,6 @@ body {
     background: #141414;
 }
 *:focus {outline:none !important}
-=======
-body {
-    background: #141414;
-}
-button:focus {outline:0;}
->>>>>>> 17c526e13156d8c684e652449df69bee146e2646
 .cd-logo {
     font-family: ProximaNovaBold,sans-serif;
 }
@@ -126,14 +119,7 @@ button:focus {outline:0;}
     height: 100%;
 }
 .content-overlay .centerme {
-<<<<<<< HEAD
     margin: 80px 0px 0px 60px;
-=======
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    margin-left: 60px;
->>>>>>> 17c526e13156d8c684e652449df69bee146e2646
 }
 .content-overlay h2 {
     font-family: ProximaNovaBold,sans-serif;
@@ -150,18 +136,10 @@ button:focus {outline:0;}
 }
 .content-overlay .icon-play {
     text-decoration: none;
-<<<<<<< HEAD
     border-radius: 50%;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     font-size: 48px;
-=======
-    border: 2px solid #fff;
-    border-radius: 50%;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    font-size: 45px;
->>>>>>> 17c526e13156d8c684e652449df69bee146e2646
     left: 50%;
     position: absolute;
     top: 50%;
@@ -175,10 +153,7 @@ button:focus {outline:0;}
     -webkit-transition: -webkit-transform 0.3s ease;
     -moz-transition: -moz-transform 0.3s ease;
     transition: transform 0.3s ease;
-<<<<<<< HEAD
     background: #000;
-=======
->>>>>>> 17c526e13156d8c684e652449df69bee146e2646
 }
 .icon-play:before {
     left: 25px;
@@ -208,7 +183,6 @@ button:focus {outline:0;}
     color: #fafafa;
     font-weight: 300;
 }
-<<<<<<< HEAD
 .video-main {
     height: 100%;
     width: 100%;
@@ -219,24 +193,14 @@ button:focus {outline:0;}
     height: 100%;
     vertical-align: middle;
 }
-=======
->>>>>>> 17c526e13156d8c684e652449df69bee146e2646
 .slick-slide {
     position: relative;
 }
 .block-overlay {
-<<<<<<< HEAD
     display: block;
     position: absolute;
     width: 100%;
     height: 100%;
-=======
-    opacity: 0;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: none;
->>>>>>> 17c526e13156d8c684e652449df69bee146e2646
     background-color: rgba(0,0,0,.7) 10%;
     background-image: -webkit-gradient(linear,left bottom,left top,color-stop(10%,rgba(0,0,0,.7)),to(rgba(0,0,0,0)));
     background-image: -webkit-linear-gradient(bottom,rgba(0,0,0,.7) 10%,rgba(0,0,0,0));
@@ -246,7 +210,6 @@ button:focus {outline:0;}
 }
 .block-overlay .icon-play {
     text-decoration: none;
-<<<<<<< HEAD
     border-radius: 50%;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
@@ -259,27 +222,11 @@ button:focus {outline:0;}
     line-height: 50px;
     margin-left: -25px;
     margin-top: -25px;
-=======
-    border: 2px solid #fff;
-    border-radius: 50%;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    font-size: 22px;
-    left: 50%;
-    position: absolute;
-    top: 50%;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    margin-left: -20px;
-    margin-top: -20px;
->>>>>>> 17c526e13156d8c684e652449df69bee146e2646
     text-align: center;
     opacity: 0.8;
     -webkit-transition: -webkit-transform 0.3s ease;
     -moz-transition: -moz-transform 0.3s ease;
     transition: transform 0.3s ease;
-<<<<<<< HEAD
     background: #000;
 }
 .block-overlay .icon-play:before {
@@ -288,13 +235,6 @@ button:focus {outline:0;}
     top: 0px;
     margin-left: -10px;
     text-align: center;
-=======
-}
-.block-overlay .icon-play:before {
-    left: 10px;
-    position: absolute;
-    top: -2px;
->>>>>>> 17c526e13156d8c684e652449df69bee146e2646
 }
 .block-overlay .icon-play:hover {
     background: #010101;
@@ -311,25 +251,17 @@ button:focus {outline:0;}
 .block-overlay .block-overlay-info {
     position: absolute;
     bottom: 0px;
-<<<<<<< HEAD
     left: 0;
     right: 0;
-=======
-    left: 0px;
->>>>>>> 17c526e13156d8c684e652449df69bee146e2646
 }
 .block-overlay .block-overlay-info h3 {
     font-family: ProximaNovaBold,sans-serif;
     font-size: 14px;
     color: #fff;
     padding: 0px;
-<<<<<<< HEAD
     margin: 5px;
     overflow: hidden;
     white-space: nowrap;
-=======
-    margin: 0 0 0 5px;
->>>>>>> 17c526e13156d8c684e652449df69bee146e2646
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -369,7 +301,6 @@ button:focus {outline:0;}
 }
 .category-block-overlay .icon-play {
     text-decoration: none;
-<<<<<<< HEAD
     border-radius: 50%;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
@@ -382,27 +313,11 @@ button:focus {outline:0;}
     line-height: 50px;
     margin-left: -25px;
     margin-top: -25px;
-=======
-    border: 2px solid #fff;
-    border-radius: 50%;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    font-size: 22px;
-    left: 50%;
-    position: absolute;
-    top: 50%;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    margin-left: -20px;
-    margin-top: -20px;
->>>>>>> 17c526e13156d8c684e652449df69bee146e2646
     text-align: center;
     opacity: 0.8;
     -webkit-transition: -webkit-transform 0.3s ease;
     -moz-transition: -moz-transform 0.3s ease;
     transition: transform 0.3s ease;
-<<<<<<< HEAD
     background: #000;
 }
 .category-block-overlay .icon-play:before {
@@ -411,13 +326,6 @@ button:focus {outline:0;}
     top: 0px;
     margin-left: -10px;
     text-align: center;
-=======
-}
-.category-block-overlay .icon-play:before {
-    left: 10px;
-    position: absolute;
-    top: -2px;
->>>>>>> 17c526e13156d8c684e652449df69bee146e2646
 }
 .category-block-overlay .icon-play:hover {
     background: #010101;
@@ -435,12 +343,8 @@ button:focus {outline:0;}
 .category-block-overlay .category-block-overlay-info {
     position: absolute;
     bottom: 0px;
-<<<<<<< HEAD
     left: 0;
     right: 0;
-=======
-    left: 0px;
->>>>>>> 17c526e13156d8c684e652449df69bee146e2646
 }
 .category-block-overlay .category-block-overlay-info h3 {
     font-family: ProximaNovaBold,sans-serif;
