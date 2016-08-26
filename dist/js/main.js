@@ -91,4 +91,31 @@ jQuery(document).ready(function($) {
  
 	});
 
+<<<<<<< HEAD
+=======
+	$('.slick-slide').mouseenter(function() {
+
+	    $(this).find('.block-overlay').show();
+		$(this).find('.block-overlay').animate({ opacity: 1 }, 500);
+
+	}).mouseleave(function() {
+
+		$(this).find('.block-overlay').hide();
+    	$(this).find('.block-overlay').animate({ opacity: 0 }, 250);
+
+	});
+
+	$('.category-block').mouseenter(function() {
+
+	    $(this).find('.block-overlay').show();
+		$(this).find('.block-overlay').animate({ opacity: 1 }, 500);
+
+	}).mouseleave(function() {
+
+		$(this).find('.block-overlay').hide();
+    	$(this).find('.block-overlay').animate({ opacity: 0 }, 250);
+
+	}); 
+
+>>>>>>> 17c526e13156d8c684e652449df69bee146e2646
 });

@@ -22,6 +22,10 @@
 									<?php endif; ?>
 									<div class="category-block-overlay-info">
 										<h3><?php the_title(); ?></h3>
+<<<<<<< HEAD
+=======
+										<p><?php echo $trimmed_content; ?></p>
+>>>>>>> 17c526e13156d8c684e652449df69bee146e2646
 									</div>
 									<a class="icon-play glyphicon glyphicon-play" href="<?php the_permalink(); ?>"></a>
 								</div>

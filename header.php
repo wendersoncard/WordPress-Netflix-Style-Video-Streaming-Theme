@@ -3,7 +3,10 @@
 <head>
 	<!-- Meta Data -->
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
+<<<<<<< HEAD
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+=======
+>>>>>>> 17c526e13156d8c684e652449df69bee146e2646
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	
 	<!-- Trackback -->
@@ -23,7 +26,10 @@
 			<li><a class="cd-nav-trigger" href="#cd-primary-nav"><?php _e( 'Menu', 'streamium' ); ?><span></span></a></li>
 		</ul> <!-- cd-header-buttons -->
 		<?php get_search_form(); ?>
+<<<<<<< HEAD
 		
+=======
+>>>>>>> 17c526e13156d8c684e652449df69bee146e2646
 	</header>
 
 	<div class="cd-testimonials-all">
