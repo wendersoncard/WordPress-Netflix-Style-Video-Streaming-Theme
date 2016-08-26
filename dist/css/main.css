@@ -485,3 +485,17 @@ body {
     transform: rotate(360deg);
   }
 }
+
+.footer {
+    margin-top: 30px;
+    background: #000;
+    height: 40px;
+    line-height: 40px;
+}
+
+.copyright {
+    margin: 0;
+    padding: 0;
+    color: #777;
+    font-size: 13px;
+}

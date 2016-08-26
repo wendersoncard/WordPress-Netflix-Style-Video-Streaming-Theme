@@ -3,7 +3,7 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-sm-12">
-						<p class="copyright"><?php bloginfo( 'description' ); ?></p>
+						<p class="copyright"><?php bloginfo( 'description' ); ?> - Powered by <a href="https://s3bubble.com">S3Bubble.com</a></p>
 					</div><!--/.col-sm-12-->
 				</div><!--/.row-->
 			</div><!--/.container-->
