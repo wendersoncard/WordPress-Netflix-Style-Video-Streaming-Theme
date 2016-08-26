@@ -14,6 +14,7 @@
 
 </head>
 <body <?php body_class(); ?>>
+	<div class="streamium-loading">Loading&#8230;</div>
 	<header class="cd-main-header">
 
 		<a class="cd-logo" href="<?php echo esc_url( home_url('/') ); ?>"><?php bloginfo( 'name' ); ?></a>
