@@ -170,11 +170,15 @@ body {
     border-radius: 5px;
 }
 .video-header h3 {
-    font-family: ProximaNovaRegular,sans-serif;
+    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     float: left;
-    font-size: 16px;
-    color: #fff;
-    margin: 20px 0px 0px 0px;
+    margin: 30px 0px 0.5em;
+    font-size: 1.4vw;
+    color: #999;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
+    min-width: 6em;
 }
 .video-header .see-all {
     float: right;
@@ -255,7 +259,7 @@ body {
     right: 0;
 }
 .block-overlay .block-overlay-info h3 {
-    font-family: ProximaNovaBold,sans-serif;
+    font-family: ProximaNova,sans-serif;
     font-size: 14px;
     color: #fff;
     padding: 0px;
