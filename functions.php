@@ -71,7 +71,8 @@ if (!function_exists('streamium_enqueue_scripts')) {
         wp_enqueue_style('streamium-slick-theme', get_template_directory_uri() . '/dist/plugins/slick/slick-theme.css');
         wp_enqueue_style('streamium-main', get_template_directory_uri() . '/dist/css/main.css');       
         wp_enqueue_style( 'streamium-main_font', 'https://fonts.googleapis.com/css?family=Open+Sans:400,700,300,600,800', false );
-
+        wp_enqueue_style('streamium-woocommerce', get_template_directory_uri() . '/dist/css/woocommerce.css');  
+        wp_enqueue_style('streamium-fontawesome', get_template_directory_uri() . '/dist/css/font-awesome.css');  
         // player one hls
         //wp_enqueue_style('streamium-player1-video', get_template_directory_uri() . '/dist/plugins/player1/video-js.css');
 
@@ -79,7 +80,10 @@ if (!function_exists('streamium_enqueue_scripts')) {
 }
 
 add_action('wp_enqueue_scripts', 'streamium_enqueue_scripts');
-
+function so_27023433_disable_checkout_script(){
+    wp_dequeue_script( 'wc-checkout' );
+}
+add_action( 'wp_enqueue_scripts', 'so_27023433_disable_checkout_script' );
 /*-----------------------------------------------------------------------------------*/
 /*  New theme customizer options
 /*-----------------------------------------------------------------------------------*/

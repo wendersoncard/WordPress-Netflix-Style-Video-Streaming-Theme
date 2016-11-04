@@ -48,6 +48,7 @@
 						<?php } } ?>
 					</ul>				
 				</li>
+				<li><a href="<?php echo wp_logout_url(); ?>">Logout</a></li>
 			</ul> <!-- primary-nav -->
 		</nav> <!-- cd-nav -->
 	<?php wp_footer(); ?>
