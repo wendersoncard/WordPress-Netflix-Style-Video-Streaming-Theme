@@ -1,40 +1,18 @@
-<?php get_header(); ?>
-<main class="cd-main-content">
-		<section class="videos">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-12">
-						<h3><p></p></h3>
-					</div><!--/.col-sm-12-->
-					<div class="col-sm-12">
-						<!-- Start the Loop. -->
-						 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+<?php get_template_part( 'header', 'video'); ?>
 
-						 	<div class="post">
+<div class="video-main">
+	
+	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-						 	<h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
+    	<div class="video-wrapper">
+		 	<?php the_content(); ?>
+		</div>
 
-						 	<div class="entry">
-						 		<?php the_content(); ?>
-						 	</div>
+	 <?php endwhile; else : ?>
 
-						 	<?php paginate_comments_links(); ?> 
+	 	<p><?php _e( 'Sorry, no posts matched your criteria.', 'streamium' ); ?></p>
 
-						    <?php comments_template(); ?> 
+	 <?php endif; ?>
 
-						 	<p>
-								<?php previous_posts_link( __('Prev Entries', 'streamium' ) ) ?>
-								<?php next_posts_link( __('Next Entries', 'streamium' ) ) ?>
-						 	</p>
-						 	</div> 
-
-						 <?php endwhile; else : ?>
-
-						 	<p><?php _e( 'Sorry, no posts matched your criteria.', 'streamium' ); ?></p>
-
-						 <?php endif; ?>
-					</div><!--/.col-sm-12-->
-				</div><!--/.row-->
-			</div><!--/.container-->
-		</section><!--/.videos-->
- <?php get_footer(); ?>
+</div>
+<?php get_template_part( 'footer', 'video' ); ?>
