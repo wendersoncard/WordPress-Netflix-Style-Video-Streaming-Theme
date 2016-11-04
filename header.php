@@ -1,3 +1,9 @@
+<?php
+	$all_meta_for_user = get_user_meta( get_current_user_id() );
+    if(!empty($all_meta_for_user['paying_customer'][0])){
+		echo "allow";
+    }
+?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
