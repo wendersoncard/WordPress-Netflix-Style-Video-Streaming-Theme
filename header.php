@@ -1,9 +1,3 @@
-<?php
-	$all_meta_for_user = get_user_meta( get_current_user_id() );
-    if(!empty($all_meta_for_user['paying_customer'][0])){
-		echo "allow";
-    }
-?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -38,7 +32,15 @@
 	<div class="streamium-loading">Loading&#8230;</div>
 	<header class="cd-main-header">
 
-		<a class="cd-logo" href="<?php echo esc_url( home_url('/') ); ?>"><?php bloginfo( 'name' ); ?></a>
+		<?php if ( get_theme_mod( 'streamium_logo' ) ) : ?>
+
+		    <a class="cd-logo" href="<?php echo esc_url( home_url('/') ); ?>"><img src='<?php echo esc_url( get_theme_mod( 'streamium_logo' ) ); ?>' alt='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>'></a>
+
+		<?php else : ?>
+
+		    <a class="cd-logo" href="<?php echo esc_url( home_url('/') ); ?>"><?php bloginfo( 'name' ); ?></a>
+
+		<?php endif; ?>
 
 		<ul class="cd-header-buttons">
 			<li><a class="cd-search-trigger" href="#cd-search"><?php _e( 'Search', 'streamium' ); ?><span></span></a></li>

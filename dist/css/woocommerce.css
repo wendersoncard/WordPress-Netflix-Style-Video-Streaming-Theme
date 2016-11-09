@@ -2,10 +2,24 @@
 .post-type-archive, .woocommerce-cart {
     background: #f3f3f3;
     color: #333;
+    background: url(https://assets.nflxext.com/ffe/siteui/acquisition/login/login-daredevil-1500x1000.2.jpg);
+    background-size: cover;
 }
 
 .streamium-plans {
+    background: #f3f3f3;
+    padding: 20px;
+    border: 1px solid #d5d5d5;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
+    -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
+}
 
+.streamium-plans img {
+    display: none;
 }
 
 .streamium-plans h3 {
@@ -15,30 +29,38 @@
 .streamium-plans .price {
     padding: 15px !important;
     text-align: center;
-    font-size: 20px;
-    float: left;
+    font-size: 12px;
+    color: #333333;
+    margin: auto;
+    width: 100%;
+    display: block;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;   
 }
 
+.woocommerce-Price-amount {
+    color: #d95246;
+    font-size: 26px;
+}
 
 .streamium-plans ul {
     float: left;
 }
 
 .streamium-plans ul li {
-    padding: 12px 15px;
-    color: #333;
-    font-size: 16px;
+    padding: 10px 15px;
+    color: #555;
+    font-size: 14px;
     direction: ltr;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #e5e5e5;
+    font-weight: 400;
 }
 
 .streamium-plans ul li i {
     width: 30px;
-    height: 44px;
-    float: left;
-    line-height: 44px;
     text-align: left;
     color: #999;
+    vertical-align: middle;
 }
 
 .add_to_cart_button, .checkout-button {
@@ -54,6 +76,56 @@
     text-align: center;
 }
 
+/* account page */
+.woocommerce-MyAccount-navigation {
+    background: #f3f3f3;
+    color: #333;
+    border: 1px solid #d5d5d5;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
+    -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
+}
+
+.woocommerce-MyAccount-content {
+    background: #f3f3f3;
+    padding: 20px;
+    border: 1px solid #d5d5d5;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
+    -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
+}
+
+/* account page */
+.woocommerce-checkout .checkout {
+    background: #f3f3f3;
+    color: #333;
+    padding: 20px;
+}
+
+.woocommerce-checkout .input-text, .woocommerce-checkout select {
+    line-height: normal;
+    line-height: 18px;
+    padding: 10px 11px;
+    height: 44px;
+    background: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+.woocommerce-error, .woocommerce-info, .woocommerce-message {
+    border-top: 3px solid #dd3333 !important;
+}
+
+.woocommerce-info:before {
+    color: #dd3333;
+}
+
 /* login signup */
 .woocommerce-account {
 	background: url(https://assets.nflxext.com/ffe/siteui/acquisition/login/login-daredevil-1500x1000.2.jpg);
@@ -61,6 +133,11 @@
 }
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+.woocommerce form.checkout_coupon, .woocommerce form.login, .woocommerce form.register {
+    border: none !important;
+    border-top: 1px solid #e5e5e5 !important;
+    border-radius: 0px;
 }
 
 .woocommerce-Input--text {
@@ -75,8 +152,15 @@ input:-webkit-autofill {
 
 .customer_login-box {
 	background-color: #f3f3f3;
+    border: 1px solid #d5d5d5;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
+    -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
 }
-.customer_login-box h2 {
+.customer_login-box h3 {
 	font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     padding: 0px 20px;
 }

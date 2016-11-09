@@ -27,8 +27,9 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
 ?>
-<div class="col-sm-4 streamium-plans">
 
+<div class="col-sm-4">
+   <div class="streamium-plans">
 	<?php
 
 	/**
@@ -73,4 +74,5 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 */
 	do_action( 'woocommerce_after_shop_loop_item' );
 	?>
+	</div>
 </div>

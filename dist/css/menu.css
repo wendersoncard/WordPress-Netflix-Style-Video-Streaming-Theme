@@ -71,25 +71,33 @@ Main components
 }
 
 .cd-logo {
-  position: absolute;
-    top: 4px;
-    left: 5%;
     font-size: 28px;
+    line-height: 50px;
+    margin-left: 15px;
+    float: left;
 }
 .cd-logo img {
-  display: block;
+    display: block;
+    float: left;
+    height: 30px;
+    margin: 10px 0px 0px 0px;
 }
 @media only screen and (max-width: 1169px) {
   .nav-on-left .cd-logo {
     left: auto;
     right: 5%;
   }
+
 }
 @media only screen and (min-width: 1170px) {
-  .cd-logo {
-     top: 10px;
-    left: 5%;    
+  .cd-logo { 
     font-size: 40px;
+    line-height: 80px;
+    margin-left: 70px;
+  }
+  .cd-logo img {
+    height: 50px;
+    margin: 15px 0px 0px;
   }
 }
 

@@ -14,6 +14,11 @@ if ( ! isset( $content_width ) ) $content_width = 900;
 // Remove paragraph tags from around the content
 remove_filter('the_content', 'wpautop');
 
+// woocommerce fixes
+remove_action( 'woocommerce_before_shop_loop_item', 'woocommerce_template_loop_product_link_open', 10 );
+remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close', 5 );
+
+
 /*-----------------------------------------------------------------------------------*/
 /*	Theme set up
 /*-----------------------------------------------------------------------------------*/
@@ -80,10 +85,13 @@ if (!function_exists('streamium_enqueue_scripts')) {
 }
 
 add_action('wp_enqueue_scripts', 'streamium_enqueue_scripts');
+
+ 
 function so_27023433_disable_checkout_script(){
     wp_dequeue_script( 'wc-checkout' );
 }
-add_action( 'wp_enqueue_scripts', 'so_27023433_disable_checkout_script' );
+//add_action( 'wp_enqueue_scripts', 'so_27023433_disable_checkout_script' );
+
 /*-----------------------------------------------------------------------------------*/
 /*  New theme customizer options
 /*-----------------------------------------------------------------------------------*/
@@ -113,6 +121,20 @@ class Streamium_Customize {
          ) 
       );
 
+      $wp_customize->add_section( 'streamium_logo_section' , array(
+          'title'       => __( 'Logo', 'streamium' ),
+          'priority'    => 30,
+          'description' => 'Upload a logo to replace the default site name and description in the header',
+      ) );
+
+      $wp_customize->add_setting( 'streamium_logo' );
+
+      $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'streamium_logo', array(
+          'label'    => __( 'Logo', 'streamium' ),
+          'section'  => 'streamium_logo_section',
+          'settings' => 'streamium_logo',
+      ) ) );
+
       $wp_customize->add_setting( 'link_textcolor', 
          array(
             'default' => '#2BA6CB', 
@@ -133,6 +155,28 @@ class Streamium_Customize {
             'priority' => 10, 
          ) 
       ) );
+
+      $wp_customize->add_section('streamium_payment_section' , array(
+          'title'     => __('Payment Settings', 'streamium'),
+          'priority'  => 1020
+      ));
+
+      $wp_customize->add_setting('redirect_too_signup', array(
+          'default'    => '0'
+      ));
+
+      $wp_customize->add_control(
+          new WP_Customize_Control(
+              $wp_customize,
+              'redirect_too_signup',
+              array(
+                  'label'     => __('Redirect to signup', 'streamium'),
+                  'section'   => 'streamium_payment_section',
+                  'settings'  => 'redirect_too_signup',
+                  'type'      => 'checkbox',
+              )
+          )
+      );
   
    }
 

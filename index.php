@@ -1,3 +1,12 @@
+<?php 
+if ( get_theme_mod( 'redirect_too_signup' ) ) : 
+
+	if ( wp_redirect( '/my-account/' ) ) {
+	    exit;
+	}
+
+endif; 
+?>
 <?php get_header(); ?>
 
 	<main class="cd-main-content">
