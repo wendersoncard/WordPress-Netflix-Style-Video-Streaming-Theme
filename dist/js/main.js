@@ -3,6 +3,15 @@
 /*--------------------------------------------------------*/
 jQuery(document).ready(function($) {
 
+	$(window).scroll(function (event) {
+	    var scroll = $(window).scrollTop();
+	    if(scroll > 100){
+	    	$(".cd-main-header").css("background","rgba(0,0,0,0.6)");
+	    }else{
+	    	$(".cd-main-header").css("background","rgba(0,0,0,0)");
+	    }
+	});
+
 	// Initialise Slider
 	$('.hero-slider').slick({
 		prevArrow: $('.streamium-prev'),

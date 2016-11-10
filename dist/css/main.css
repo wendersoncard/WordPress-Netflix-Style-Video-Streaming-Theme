@@ -94,6 +94,7 @@ body {
 *:focus {outline:none !important}
 .cd-logo {
     font-family: ProximaNovaBold,sans-serif;
+    text-decoration: none !important;
 }
 .cd-main-content {
     overflow: hidden;
@@ -101,6 +102,7 @@ body {
 .hero {
     position: relative;
     overflow: hidden;
+    margin-bottom: 20px
 }
 .content-overlay {
     width: 100%;
@@ -118,21 +120,35 @@ body {
     position: relative;
     height: 100%;
 }
-.content-overlay .centerme {
-    margin: 80px 0px 0px 60px;
+.content-overlay .synopis-outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
 }
-.content-overlay h2 {
+
+.content-overlay .synopis-middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.content-overlay .synopis-inner {
+    margin-left: 60px;
+    margin-right: auto; 
+    width: 70%;
+}
+.content-overlay .synopis-inner h2 {
     font-family: ProximaNovaBold,sans-serif;
     color: #fff;
-    font-size: 5vw;
+    font-size: 3vw;
     margin: 0;
 }
-.content-overlay p {
+.content-overlay .synopis-inner p {
     color: #999;
-    font-weight: 400;
+    font-weight: 300;
     line-height: 1.35;
     width: 100%;
-    font-size: 1.5vw;
+    font-size: 1.2vw;
 }
 .content-overlay .icon-play {
     text-decoration: none;
@@ -169,10 +185,12 @@ body {
     height: 10px;
     border-radius: 5px;
 }
+.videos {
+    margin: 0px 0px 20px 0px;
+}
 .video-header h3 {
     font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     float: left;
-    margin: 30px 0px 0.5em;
     font-size: 1.4vw;
     color: #999;
     font-weight: 500;
@@ -234,11 +252,10 @@ body {
     background: #000;
 }
 .block-overlay .icon-play:before {
-    left: 50%;
-    position: absolute;
-    top: 0px;
-    margin-left: -10px;
     text-align: center;
+    width: 50px;
+    left: 2px;
+    top: 0px;
 }
 .block-overlay .icon-play:hover {
     background: #010101;
@@ -260,7 +277,7 @@ body {
 }
 .block-overlay .block-overlay-info h3 {
     font-family: ProximaNova,sans-serif;
-    font-size: 14px;
+    font-size: 12px;
     color: #fff;
     padding: 0px;
     margin: 5px;
@@ -268,6 +285,7 @@ body {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-weight: 400;
 }
 .block-overlay .block-overlay-info p {
     font-family: ProximaNovaRegular,sans-serif;
@@ -352,12 +370,13 @@ body {
 }
 .category-block-overlay .category-block-overlay-info h3 {
     font-family: ProximaNovaBold,sans-serif;
-    font-size: 14px;
+    font-size: 12px;
     color: #fff;
     padding: 0px;
     margin: 0 0 0 5px;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-weight: 400;
 }
 .category-block-overlay .category-block-overlay-info p {
     font-family: ProximaNovaRegular,sans-serif;
@@ -370,6 +389,7 @@ body {
     white-space: normal;
     text-overflow: ellipsis;
 }
+
 /* Absolute Center Spinner */
 .streamium-loading {
   position: fixed;
@@ -409,9 +429,9 @@ body {
 .streamium-loading:not(:required):after {
   content: '';
   display: block;
-  font-size: 18px;
-  width: 1em;
-  height: 1em;
+  font-size: 22px;
+  width: 0.4em;
+  height: 0.4em;
   margin-top: -0.5em;
   -webkit-animation: spinner 1500ms infinite linear;
   -moz-animation: spinner 1500ms infinite linear;
@@ -491,7 +511,6 @@ body {
 }
 
 .footer {
-    margin-top: 30px;
     background: #000;
     height: 40px;
     line-height: 40px;

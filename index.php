@@ -37,9 +37,13 @@ endif;
 							<div class="container-fluid rel">
 								<div class="row rel">
 									<div class="col-sm-6 rel hidden-xs">
-										<div class="centerme">
-											<h2><?php echo (isset($title) ? $title : __( 'No Title', 'streamium' )); ?></h2>
-											<p><?php echo (isset($excerpt) ? $excerpt : __( 'No Text', 'streamium' )); ?></p>
+										<div class="synopis-outer">
+											<div class="synopis-middle">
+												<div class="synopis-inner">
+													<h2><?php echo (isset($title) ? $title : __( 'No Title', 'streamium' )); ?></h2>
+													<p><?php echo (isset($excerpt) ? $excerpt : __( 'No Text', 'streamium' )); ?></p>
+												</div>
+											</div>
 										</div>
 									</div>
 									<div class="col-sm-6 rel">

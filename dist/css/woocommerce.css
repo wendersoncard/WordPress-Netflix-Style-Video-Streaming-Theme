@@ -2,8 +2,12 @@
 .post-type-archive, .woocommerce-cart {
     background: #f3f3f3;
     color: #333;
-    background: url(https://assets.nflxext.com/ffe/siteui/acquisition/login/login-daredevil-1500x1000.2.jpg);
+    background: url(../img/daredevil.jpg);
     background-size: cover;
+}
+
+.s3bubble-woocommerce {
+    margin-top: 80px; 
 }
 
 .streamium-plans {
@@ -111,8 +115,7 @@
 .woocommerce-checkout .input-text, .woocommerce-checkout select {
     line-height: normal;
     line-height: 18px;
-    padding: 10px 11px;
-    height: 44px;
+    padding: 10px;
     background: #fff;
     border: none;
     border-radius: 5px;
@@ -122,13 +125,13 @@
     border-top: 3px solid #dd3333 !important;
 }
 
-.woocommerce-info:before {
+.woocommerce-info:before, .woocommerce-message:before  {
     color: #dd3333;
 }
 
 /* login signup */
 .woocommerce-account {
-	background: url(https://assets.nflxext.com/ffe/siteui/acquisition/login/login-daredevil-1500x1000.2.jpg);
+	background: url(../img/tiled-posters.jpg);
     background-size: cover;
 }
 input:-webkit-autofill {
@@ -143,8 +146,7 @@ input:-webkit-autofill {
 .woocommerce-Input--text {
     line-height: normal;
     line-height: 18px;
-    padding: 10px 11px;
-    height: 44px;
+    padding: 10px;
     background: #fff;
     border: none;
     border-radius: 5px;
@@ -179,4 +181,22 @@ input:-webkit-autofill {
     color: #ffffff !important;
     font-size: 16px !important;
     font-weight: 400 !important;
+}
+
+/* checkout */
+.woocommerce form.checkout_coupon, .woocommerce form.login, .woocommerce form.register {
+    background-color: #f3f3f3;
+}
+.shop_table_responsive, .cart_totals {
+    background-color: #f3f3f3;
+    border: 1px solid #d5d5d5;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
+    -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
+}
+.cart_totals {
+    padding: 10px;
 }

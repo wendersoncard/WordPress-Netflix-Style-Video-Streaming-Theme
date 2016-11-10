@@ -15,6 +15,10 @@ if ( ! isset( $content_width ) ) $content_width = 900;
 remove_filter('the_content', 'wpautop');
 
 // woocommerce fixes
+add_action( 'after_setup_theme', 'woocommerce_support' );
+function woocommerce_support() {
+    add_theme_support( 'woocommerce' );
+}
 remove_action( 'woocommerce_before_shop_loop_item', 'woocommerce_template_loop_product_link_open', 10 );
 remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close', 5 );
 

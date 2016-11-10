@@ -60,6 +60,9 @@ Main components
   width: 100%;
 }
 @media only screen and (min-width: 1170px) {
+  .home .cd-main-header {
+    position: fixed;
+  }
   .cd-main-header {
     height: 80px;
   }
@@ -547,6 +550,8 @@ Main components
     border-bottom: none;
     font-size: 16px;
     color: #fff;
+    text-decoration: none;
+    cursor: pointer;
   }
   .cd-primary-nav .go-back, .cd-primary-nav .see-all {
     display: none;

@@ -42,6 +42,6 @@ switch( $template ) {
 		echo '<div id="primary" class="content-area twentysixteen"><main id="main" class="site-main" role="main">';
 		break;
 	default :
-		echo '<div id="container" class="container"><div class="row">';
+		echo '<main class="cd-main-content"><section class="s3bubble-woocommerce"><div class="container"><div class="row">';
 		break;
 }
