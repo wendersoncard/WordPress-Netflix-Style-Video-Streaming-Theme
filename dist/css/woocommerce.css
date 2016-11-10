@@ -1,11 +1,10 @@
 /* globals */
 .post-type-archive, .woocommerce-cart, .woocommerce-account, .woocommerce-checkout, .woocommerce-page {
-    background: #f3f3f3;
     color: #333;
     background: url(../img/daredevil.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    background-color: #000;
+    background-color: #141414;
 }
 
 .woocommerce-MyAccount-content, .woocommerce-ResetPassword, .woocommerce-MyAccount-navigation {
