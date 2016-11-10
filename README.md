@@ -1,31 +1,17 @@
-## Synopsis
+## Streamium
 
-At the top of the file there should be a short introduction and/ or overview that explains **what** the project is. This description should match descriptions added for package managers (Gemspec, package.json, etc.)
+S3Bubble is excited to introduce Streamium. This Theme is ideal for any budding directors and filmographer's who are looking to showcase and sell their work. Streamium, like Netflix, is a subscription service making it perfect for anyone with an abundance of video content just waiting to be shared with your following of adoring fans.. If you need support with this theme, please go to https://s3bubble.com
 
-## Code Example
+## Theme Demo
 
-Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
+[Theme Demo](http://streamium.s3bubble.com/)
 
-## Motivation
+## Installation & Setup
 
-A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
+[![Alt text for your video](http://img.youtube.com/vi/T-D1KVIuvjA/0.jpg)](http://www.youtube.com/watch?v=T-D1KVIuvjA)
 
-## Installation
-
-Provide code examples and explanations of how to get the project.
-
-## API Reference
-
-Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.
-
-## Tests
-
-Describe and show how to run the tests with code examples.
-
-## Contributors
-
-Let people know how they can dive into the project, include important links to things like issue trackers, irc, twitter accounts if applicable.
+[Docs](https://s3bubble.com/wp_themes/streamium-netflix-style-wordpress-theme/)
 
 ## License
 
-A short snippet describing the license (MIT, Apache, etc.)
+Copyright (c) S3Bubble Ltd licensed under General Public License (GPL)
