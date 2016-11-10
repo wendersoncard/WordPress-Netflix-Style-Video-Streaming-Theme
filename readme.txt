@@ -6,6 +6,10 @@ You can download the latest release of Streamium WordPress Theme Below.
 
 [Theme Demo](http://streamium.s3bubble.com/)
 
+
+== Installation & Setup ==
+[![Alt text for your video](http://img.youtube.com/vi/T-D1KVIuvjA/0.jpg)](http://www.youtube.com/watch?v=T-D1KVIuvjA)
+
 == ABOUT Streamium ==
 S3Bubble is excited to introduce Streamium. This Theme is ideal for any budding directors and filmographer's who are looking to showcase and sell their work. Streamium, like Netflix, is a subscription service making it perfect for anyone with an abundance of video content just waiting to be shared with your following of adoring fans.. If you need support with this theme, please go to https://s3bubble.com/forums/forum/wordpress-themes/
 
