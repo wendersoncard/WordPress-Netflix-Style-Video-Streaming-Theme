@@ -8,7 +8,7 @@ S3Bubble is excited to introduce Streamium. This Theme is ideal for any budding 
 
 ## Installation & Setup
 
-[![Alt text for your video](http://img.youtube.com/vi/T-D1KVIuvjA/0.jpg)](http://www.youtube.com/watch?v=T-D1KVIuvjA)
+[![Video walkthrough](https://s3bubble.com/wp-content/themes/s3admin/dist/frontend/img/item-01.png)](https://s3bubble.com/wp_themes/streamium-netflix-style-wordpress-theme/)
 
 [Docs](https://s3bubble.com/wp_themes/streamium-netflix-style-wordpress-theme/)
 
