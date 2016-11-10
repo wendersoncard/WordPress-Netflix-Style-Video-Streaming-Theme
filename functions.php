@@ -220,8 +220,8 @@ class Streamium_Customize {
            <?php self::generate_css('.cd-primary-nav .cd-nav-gallery .cd-nav-item h3', 'color', 'link_textcolor'); ?>
            <?php self::generate_css('.cd-primary-nav .cd-nav-icons .cd-nav-item h3', 'color', 'link_textcolor'); ?>
            <?php self::generate_css('.has-children > a:hover::before, .has-children > a:hover::after, .go-back a:hover::before, .go-back a:hover::after', 'background', 'link_textcolor'); ?>
-           <?php self::generate_css('#submit', 'background', 'link_textcolor'); ?>
-           <?php self::generate_css('.post-type-archive, .woocommerce-cart, .woocommerce-account', 'background-image', 'streamium_plans_bg', 'url(', ')'); ?>
+           <?php self::generate_css('#submit, #place_order', 'background', 'link_textcolor'); ?>
+           <?php self::generate_css('.post-type-archive, .woocommerce-cart, .woocommerce-account, .woocommerce-checkout, .woocommerce-page', 'background-image', 'streamium_plans_bg', 'url(', ')'); ?>
 
       </style> 
       <!--/Customizer CSS-->
