@@ -85,7 +85,7 @@ endif;
 						<div class="carousels">
 							<?php
 								$args = array(
-								    'posts_per_page' => 20,
+								    'posts_per_page' => 60,
 								    'meta_key' => '_last_viewed',
 								    'orderby' => 'meta_value',
 								    'order' => 'DESC'
@@ -129,7 +129,7 @@ endif;
 				<div class="row">
 					<div class="col-sm-12 video-header">
 						<h3><?php echo ucfirst($category->cat_name); ?></h3>
-						<a class="see-all" href="<?php echo esc_url( home_url() ); ?>/category/<?php echo $category->slug; ?>">See all</a>
+						<a class="see-all" href="<?php echo esc_url( home_url() ); ?>/category/<?php echo $category->slug; ?>">View all</a>
 					</div><!--/.col-sm-12-->
 				</div>
 				<div class="row">
@@ -138,7 +138,7 @@ endif;
 						<div class="carousels">
 					  	<?php
 							$args = array(
-								    'posts_per_page' => 20,
+								    'posts_per_page' => 60,
 								    'cat' => $category->cat_ID
 								);
 								$loop = new WP_Query( $args ); 

@@ -126,7 +126,7 @@ class Streamium_Customize {
       );
 
       $wp_customize->add_section( 'streamium_logo_section' , array(
-          'title'       => __( 'Logo', 'streamium' ),
+          'title'       => __( 'Streamium Styles', 'streamium' ),
           'priority'    => 30,
           'description' => 'Upload a logo to replace the default site name and description in the header',
       ) );
@@ -137,6 +137,15 @@ class Streamium_Customize {
           'label'    => __( 'Logo', 'streamium' ),
           'section'  => 'streamium_logo_section',
           'settings' => 'streamium_logo',
+      ) ) );
+      
+      // plans background image
+      $wp_customize->add_setting( 'streamium_plans_bg' );
+
+      $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'streamium_plans_bg', array(
+          'label'    => __( 'Background', 'streamium' ),
+          'section'  => 'streamium_logo_section',
+          'settings' => 'streamium_plans_bg',
       ) ) );
 
       $wp_customize->add_setting( 'link_textcolor', 
@@ -212,6 +221,8 @@ class Streamium_Customize {
            <?php self::generate_css('.cd-primary-nav .cd-nav-icons .cd-nav-item h3', 'color', 'link_textcolor'); ?>
            <?php self::generate_css('.has-children > a:hover::before, .has-children > a:hover::after, .go-back a:hover::before, .go-back a:hover::after', 'background', 'link_textcolor'); ?>
            <?php self::generate_css('#submit', 'background', 'link_textcolor'); ?>
+           <?php self::generate_css('.post-type-archive, .woocommerce-cart, .woocommerce-account', 'background-image', 'streamium_plans_bg', 'url(', ')'); ?>
+
       </style> 
       <!--/Customizer CSS-->
       <?php

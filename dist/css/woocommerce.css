@@ -1,11 +1,27 @@
-/* payment */
-.post-type-archive, .woocommerce-cart {
+/* globals */
+.post-type-archive, .woocommerce-cart, .woocommerce-account {
     background: #f3f3f3;
     color: #333;
     background: url(../img/daredevil.jpg);
     background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #000;
 }
 
+.woocommerce-MyAccount-content, .woocommerce-ResetPassword, .woocommerce-MyAccount-navigation {
+    background: #f3f3f3;
+    padding: 20px;
+    border: 1px solid #d5d5d5;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
+    -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+}
+
+/* payment */
 .s3bubble-woocommerce {
     margin-top: 80px; 
 }
@@ -20,6 +36,7 @@
     -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
     -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
 }
 
 .streamium-plans img {
@@ -81,29 +98,6 @@
 }
 
 /* account page */
-.woocommerce-MyAccount-navigation {
-    background: #f3f3f3;
-    color: #333;
-    border: 1px solid #d5d5d5;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
-    -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
-}
-
-.woocommerce-MyAccount-content {
-    background: #f3f3f3;
-    padding: 20px;
-    border: 1px solid #d5d5d5;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
-    -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
-}
 
 /* account page */
 .woocommerce-checkout .checkout {
@@ -130,10 +124,6 @@
 }
 
 /* login signup */
-.woocommerce-account {
-	background: url(../img/tiled-posters.jpg);
-    background-size: cover;
-}
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px white inset;
 }
@@ -161,7 +151,9 @@ input:-webkit-autofill {
     -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
     -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
 }
+
 .customer_login-box h3 {
 	font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     padding: 0px 20px;
@@ -199,4 +191,13 @@ input:-webkit-autofill {
 }
 .cart_totals {
     padding: 10px;
+}
+
+input {
+    line-height: normal;
+    line-height: 18px;
+    padding: 10px;
+    background: #fff;
+    border: none;
+    border-radius: 5px;
 }
