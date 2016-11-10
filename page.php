@@ -10,22 +10,7 @@
 						<!-- Start the Loop. -->
 						 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-						 	<div class="post">
-
-						 	
-						 	<div class="entry">
-						 		<?php the_content(); ?>
-						 	</div>
-
-						 	<?php paginate_comments_links(); ?> 
-
-						    <?php comments_template(); ?> 
-
-						 	<p>
-								<?php previous_posts_link( __('Prev Entries', 'streamium' ) ) ?>
-								<?php next_posts_link( __('Next Entries', 'streamium' ) ) ?>
-						 	</p>
-						 	</div> 
+						 	<?php the_content(); ?>
 
 						 <?php endwhile; else : ?>
 
