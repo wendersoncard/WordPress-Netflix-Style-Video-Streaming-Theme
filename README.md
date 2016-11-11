@@ -18,11 +18,11 @@ S3Bubble is excited to introduce Streamium. This Theme is ideal for any budding 
 
 ## Change Log
 
-Woocommerce integration 
-Subscritption and Membership intergration
-Login Register all powered by Woocommerce
-Logo update 
-Background updates
+* Woocommerce integration 
+* Subscritption and Membership intergration
+* Login Register all powered by Woocommerce
+* Logo update 
+* Background updates
 
 ## License
 
