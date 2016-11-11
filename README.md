@@ -23,6 +23,7 @@ S3Bubble is excited to introduce Streamium. This Theme is ideal for any budding 
 * Login Register all powered by Woocommerce
 * Logo update 
 * Background updates
+* get_option( 'posts_per_page' ) added to loop to allow max posts to be set on carousels
 
 ## License
 

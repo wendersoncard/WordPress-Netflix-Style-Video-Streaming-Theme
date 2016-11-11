@@ -85,7 +85,7 @@ endif;
 						<div class="carousels">
 							<?php
 								$args = array(
-								    'posts_per_page' => 60,
+								    'posts_per_page' => get_option( 'posts_per_page' ),
 								    'meta_key' => '_last_viewed',
 								    'orderby' => 'meta_value',
 								    'order' => 'DESC'
@@ -138,7 +138,7 @@ endif;
 						<div class="carousels">
 					  	<?php
 							$args = array(
-								    'posts_per_page' => 60,
+								    'posts_per_page' => get_option( 'posts_per_page' ),
 								    'cat' => $category->cat_ID
 								);
 								$loop = new WP_Query( $args ); 
