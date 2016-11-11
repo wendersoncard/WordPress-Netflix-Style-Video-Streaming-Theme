@@ -16,6 +16,14 @@ S3Bubble is excited to introduce Streamium. This Theme is ideal for any budding 
 
 [Docs](https://s3bubble.com/wp_themes/streamium-netflix-style-wordpress-theme/)
 
+## Change Log
+
+Woocommerce integration 
+Subscritption and Membership intergration
+Login Register all powered by Woocommerce
+Logo update 
+Background updates
+
 ## License
 
 Copyright (c) S3Bubble Ltd licensed under General Public License (GPL)
