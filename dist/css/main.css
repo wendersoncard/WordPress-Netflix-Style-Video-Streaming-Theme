@@ -545,3 +545,35 @@ body {
     color: #777;
     font-size: 13px;
 }
+
+/* insatllation help */
+.streamium-install-instructions {
+    background: #dd3333;
+    padding: 10px;
+}
+
+.streamium-install-instructions h2 {
+    padding: 0;
+    margin: 10px 0 0 0;
+    float: left;
+    color: #fff;
+    font-size: 18px;
+    width: 100%;
+    text-align: center;
+}
+
+.streamium-install-instructions a {
+    color: #fff;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.streamium-install-instructions a:hover {
+    color: #fff;
+}
+
+.streamium-install-instructions p {
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+}
