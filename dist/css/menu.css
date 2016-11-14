@@ -96,7 +96,7 @@ Main components
   .cd-logo { 
     font-size: 40px;
     line-height: 80px;
-    margin-left: 70px;
+    margin-left: 40px;
   }
   .cd-logo img {
     height: 50px;
@@ -125,7 +125,7 @@ Main components
 @media only screen and (min-width: 1170px) {
   .cd-header-buttons {
     top: 18px;
-    right: 4em;
+    right: 40px;
   }
 }
 
@@ -487,7 +487,7 @@ Main components
 @media only screen and (min-width: 1170px) {
   .cd-primary-nav {
     position: static;
-    padding: 0 150px 0 0;
+    padding: 0 100px 0 0;
     height: auto;
     width: auto;
     float: right;

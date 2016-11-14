@@ -21,64 +21,77 @@
 .streamium-prev {
     left: 0px;
     position: absolute;
-    width: 70px;
+    width: 30px;
     height: 100px;
     top: 50%;
     margin-top: -50px;
     z-index: 1;
-    font-size: 34px;
+    font-size: 28px;
     color: #fff;
     background: none;
     border: 0;
     z-index: 2;
+    padding: 0;
+    text-align: center;
 }
 .streamium-next {
     right: 0px;
     position: absolute;
-    width: 70px;
+    width: 30px;
     height: 100px;
     top: 50%;
     margin-top: -50px;
     z-index: 1;
-    font-size: 34px;
+    font-size: 28px;
     color: #fff;
     background: none;
     border: 0;
     z-index: 2;
+    padding: 0;
+    text-align: center;
 }
 .streamium-carousel-prev {
-    left: 0px;
+    left: -25px;
     position: absolute;
     height: 100%;
     top: 0;
     z-index: 1;
-    font-size: 34px;
+    font-size: 28px;
     color: #fff;
     background-color: rgba(0,0,0,.7);
     border: 0;
+    padding: 0;
+    margin: 0;
+    width: 40px;
 }
 .streamium-carousel-next {
-    right: 0px;
+    right: -25px;
     position: absolute;
     height: 100%;
     top: 0;
     z-index: 1;
-    font-size: 34px;
+    font-size: 28px;
     color: #fff;
     background-color: rgba(0,0,0,.7);
     border: 0;
+    padding: 0;
+    margin: 0;
+    width: 40px;
 }
+
 /* Dots */
 .slick-dots
 {
     position: absolute;
-    bottom: 0px;
+    top: -30px;
     display: block;
-    width: 100%;
+    width: 30%;
     padding: 0;
     list-style: none;
     text-align: center;
     height: 20px;
+    right: 0;
+    text-align: right;
 }
 .slick-dots li
 {

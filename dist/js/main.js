@@ -60,11 +60,13 @@ jQuery(document).ready(function($) {
 
 	    $(this).slick({
 	    	appendArrows: $(this).prev(),
+	    	arrows: true,
 			prevArrow: '<button class="streamium-carousel-prev glyphicon glyphicon-menu-left" aria-hidden="true"></button>',
 			nextArrow: '<button class="streamium-carousel-next glyphicon glyphicon-menu-right" aria-hidden="true"></button>',
 			slidesToShow: 5,
 			slidesToScroll: 5,
-			//mobileFirst: true,
+			dots: true,
+  			infinite: false,
 			responsive: [
 			    {
 			      breakpoint: 1024,
@@ -76,6 +78,7 @@ jQuery(document).ready(function($) {
 			    {
 			      breakpoint: 600,
 			      settings: {
+			      	dots: false,
 			        slidesToShow: 3,
 			        slidesToScroll: 3
 			      }
@@ -83,6 +86,7 @@ jQuery(document).ready(function($) {
 			    {
 			      breakpoint: 480,
 			      settings: {
+			      	dots: false,
 			      	appendArrows: false,
 			        slidesToShow: 2,
 			        slidesToScroll: 2

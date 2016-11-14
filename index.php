@@ -128,8 +128,7 @@ endif;
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-sm-12 video-header">
-						<h3><?php echo ucfirst($category->cat_name); ?></h3>
-						<a class="see-all" href="<?php echo esc_url( home_url() ); ?>/category/<?php echo $category->slug; ?>">View all</a>
+						<h3><a class="see-all" href="<?php echo esc_url( home_url() ); ?>/category/<?php echo $category->slug; ?>"><?php echo ucfirst($category->cat_name); ?> <i class="fa fa-chevron-right" aria-hidden="true"></i></a></h3>
 					</div><!--/.col-sm-12-->
 				</div>
 				<div class="row">

@@ -133,8 +133,7 @@ body {
 }
 
 .content-overlay .synopis-inner {
-    margin-left: 60px;
-    margin-right: auto; 
+    margin: 0; 
     width: 70%;
 }
 .content-overlay .synopis-inner h2 {
@@ -198,10 +197,10 @@ body {
     font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     float: left;
     color: #999;
-    font-weight: 500;
+    font-weight: 400;
     text-decoration: none;
     display: inline-block;
-    max-width: 75%;
+    max-width: 70%;
     margin: 0;
     padding: 0;
     line-height: 30px;
@@ -212,6 +211,22 @@ body {
     font-size: 5vw;
 }
 
+.video-header h3 a {
+    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    color: #999;
+    text-decoration: none;
+}
+
+.video-header h3 a:hover {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.video-header h3 a i {
+    font-size: 18px;
+}
+
 @media (min-width:961px)  { 
     .video-header h3 {
         font-size: 24px;
@@ -219,15 +234,16 @@ body {
     .videos {
         margin: 0px 0px 40px 0px;
     }
+    .container-fluid {
+        padding-right: 40px;
+        padding-left: 40px;
+    }
+    .archive .video-header, .category .video-header{
+        padding: 40px 20px 80px 20px;
+        margin: 0;
+    }
 }
 
-.video-header .see-all {
-    float: right;
-    font-size: 12px;
-    color: #fafafa;
-    font-weight: 300;
-    line-height: 30px;
-}
 .video-main {
     height: 100%;
     width: 100%;
