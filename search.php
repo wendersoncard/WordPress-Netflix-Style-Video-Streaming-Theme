@@ -2,7 +2,7 @@
 	<main class="cd-main-content">
 		<section class="categories no-header-push">
 			<?php if ( have_posts() ) : ?>
-			<div class="container">
+			<div class="container-fluid">
 				<div class="row">
 					<div class="col-sm-12 video-header">
 						<h3 class="pull-left"><?php printf( __( 'Search Results for: %s', 'streamium' ), get_search_query() ); ?></h3>
