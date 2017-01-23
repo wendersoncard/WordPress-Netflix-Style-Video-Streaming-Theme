@@ -3,7 +3,15 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-sm-12">
-						<p class="copyright">Powered by <a href="https://s3bubble.com">S3Bubble.com</a></p>
+						<?php if ( get_theme_mod( 'streamium_remove_powered_by_s3bubble' ) ) : ?>
+
+						    <p class="copyright"><?php echo get_theme_mod( 'streamium_remove_powered_by_s3bubble' ); ?></p>
+
+						<?php else : ?>
+
+						    <p class="copyright">Powered by <a href="https://s3bubble.com">S3Bubble.com</a></p>
+
+						<?php endif; ?>
 					</div><!--/.col-sm-12-->
 				</div><!--/.row-->
 			</div><!--/.container-->

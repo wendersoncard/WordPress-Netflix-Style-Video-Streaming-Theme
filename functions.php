@@ -114,6 +114,17 @@ class Streamium_Customize {
     */
    public static function register ( $wp_customize ) {
 
+      // allow the user to remove the powered by link
+      $wp_customize->add_setting('streamium_remove_powered_by_s3bubble');
+      
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_remove_powered_by_s3bubble',
+        array(
+          'label' => 'Replace Powered By S3Bubble Text',
+          'section' => 'title_tagline',
+          'settings' => 'streamium_remove_powered_by_s3bubble',
+        )) 
+      );
+
       $wp_customize->remove_control('display_header_text');
 
       $wp_customize->add_section( 'streamium_options', 
