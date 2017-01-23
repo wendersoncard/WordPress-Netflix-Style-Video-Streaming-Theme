@@ -18,6 +18,7 @@ S3Bubble is excited to introduce Streamium. This Theme is ideal for any budding 
 
 ## Change Log
 
+* S3Bubble footer branding removed
 * Woocommerce integration 
 * Subscritption and Membership intergration
 * Login Register all powered by Woocommerce
