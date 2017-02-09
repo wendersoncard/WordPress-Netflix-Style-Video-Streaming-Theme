@@ -47,26 +47,28 @@
     z-index: 2;
 }
 .streamium-carousel-prev {
-    left: 0px;
+    left: -30px;
     position: absolute;
     height: 100%;
     top: 0;
     z-index: 1;
-    font-size: 34px;
+    font-size: 20px;
     color: #fff;
     background-color: rgba(0,0,0,.7);
     border: 0;
+    width: 31px;
 }
 .streamium-carousel-next {
-    right: 0px;
+    right: -30px;
     position: absolute;
     height: 100%;
     top: 0;
     z-index: 1;
-    font-size: 34px;
+    font-size: 20px;
     color: #fff;
     background-color: rgba(0,0,0,.7);
     border: 0;
+    width: 31px;
 }
 /* Dots */
 .slick-dots

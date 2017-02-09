@@ -97,18 +97,24 @@ endif;
 										$image   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-poster' ); 
 										$trimmed_content = wp_trim_words( get_the_excerpt(), 11 );
 							?>
-								<div>
-									<img src="<?php echo esc_url($image[0]); ?>" />
-									<div class="block-overlay">
-										<?php if(get_comments_number()) : ?>
-											<small><a href="#" class="cd-see-all" data-pid="<?php echo $post->ID; ?>"><?php comments_number( 'no reviews', 'one review', '% reviews' ); ?></a></small>
-										<?php endif; ?>
-										<div class="block-overlay-info">
-											<h3><?php the_title(); ?></h3>
-										</div>
-										<a class="icon-play glyphicon glyphicon-play" href="<?php the_permalink(); ?>"></a>
-									</div>
-								</div>
+								<div class="tile">
+									<?php if(get_comments_number()) : ?>
+										<a href="#" class="tile_reviews" data-pid="<?php echo $post->ID; ?>"><?php comments_number( '0 reviews', '1 review', '% reviews' ); ?></a>
+									<?php endif; ?>
+							        <div class="tile_media">
+							        	<img class="tile_img" src="<?php echo esc_url($image[0]); ?>" alt=""  />
+							        </div>
+							        <a class="tile_play" href="<?php the_permalink(); ?>">
+						        		<span class="tile_play_white"></span>
+						        		<i class="fa fa-play-circle" aria-hidden="true"></i>
+						        	</a>
+							        <div class="tile_details">
+							          	<div class="tile_meta">
+							            	<h4><?php the_title(); ?></h4>						            	
+							            	<p><?php echo $trimmed_content; ?></p>
+							          	</div>
+							        </div>
+							    </div>
 							<?php
 										endif;  
 									endwhile;
@@ -148,18 +154,24 @@ endif;
 							$image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-poster' ); 
 							$trimmed_content = wp_trim_words( get_the_excerpt(), 11 );
 						?>
-							<div>
-								<img src="<?php echo esc_url($image[0]); ?>" />
-								<div class="block-overlay">
-									<?php if(get_comments_number()) : ?>
-										<small><a href="#" class="cd-see-all" data-pid="<?php echo $post->ID; ?>"><?php comments_number( 'no reviews', 'one review', '% reviews' ); ?></a></small>
-									<?php endif; ?>
-									<div class="block-overlay-info">
-										<h3><?php the_title(); ?></h3>
-									</div>
-									<a class="icon-play glyphicon glyphicon-play" href="<?php the_permalink(); ?>"></a>
-								</div>
-							</div>
+							<div class="tile">
+								<?php if(get_comments_number()) : ?>
+									<a href="#" class="tile_reviews" data-pid="<?php echo $post->ID; ?>"><?php comments_number( '0 reviews', '1 review', '% reviews' ); ?></a>
+								<?php endif; ?>
+						        <div class="tile_media">
+						        	<img class="tile_img" src="<?php echo esc_url($image[0]); ?>" alt=""  />
+						        </div>
+						        <a class="tile_play" href="<?php the_permalink(); ?>">
+					        		<span class="tile_play_white"></span>
+					        		<i class="fa fa-play-circle" aria-hidden="true"></i>
+					        	</a>
+						        <div class="tile_details">
+						          	<div class="tile_meta">
+						            	<h4><?php the_title(); ?></h4>						            	
+						            	<p><?php echo $trimmed_content; ?></p>
+						          	</div>
+						        </div>
+						    </div>
 						<?php
 								
 							endif; 

@@ -73,6 +73,7 @@ if (!function_exists('streamium_enqueue_scripts')) {
         /* Register styles -----------------------------------------------------*/
         wp_enqueue_style( 'streamium-styles', get_stylesheet_uri() );
         wp_enqueue_style('streamium-reset', get_template_directory_uri() . '/dist/css/bootstrap.min.css');
+        wp_enqueue_style('streamium-fontawesome', get_template_directory_uri() . '/dist/css/font-awesome.css');  
         wp_enqueue_style('streamium-menu', get_template_directory_uri() . '/dist/css/menu.css');
         wp_enqueue_style('streamium-modal', get_template_directory_uri() . '/dist/css/comments.css');
         wp_enqueue_style('streamium-info', get_template_directory_uri() . '/dist/css/info.css');
@@ -81,7 +82,7 @@ if (!function_exists('streamium_enqueue_scripts')) {
         wp_enqueue_style('streamium-main', get_template_directory_uri() . '/dist/css/main.css');       
         wp_enqueue_style( 'streamium-main_font', 'https://fonts.googleapis.com/css?family=Open+Sans:400,700,300,600,800', false );
         wp_enqueue_style('streamium-woocommerce', get_template_directory_uri() . '/dist/css/woocommerce.css');  
-        wp_enqueue_style('streamium-fontawesome', get_template_directory_uri() . '/dist/css/font-awesome.css');  
+        
         // player one hls
         //wp_enqueue_style('streamium-player1-video', get_template_directory_uri() . '/dist/plugins/player1/video-js.css');
 
@@ -225,6 +226,7 @@ class Streamium_Customize {
            <?php self::generate_css('.label.heart', 'color', 'link_textcolor'); ?>
            <?php self::generate_css('.progress-bar .progress', 'background', 'link_textcolor'); ?>
            <?php self::generate_css('.cd-main-header .cd-logo', 'color', 'link_textcolor'); ?>
+           <?php self::generate_css('.tile_play', 'color', 'link_textcolor'); ?>
            <?php self::generate_css('.cd-primary-nav .cd-secondary-nav a:hover', 'color', 'link_textcolor'); ?>
            <?php self::generate_css('.cd-overlay', 'background-color', 'link_textcolor'); ?>
            <?php self::generate_css('.cd-primary-nav>li>a:hover', 'color', 'link_textcolor'); ?>

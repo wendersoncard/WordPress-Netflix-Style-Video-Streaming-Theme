@@ -93,11 +93,15 @@ body {
 }
 *:focus {outline:none !important}
 .cd-logo {
-    font-family: ProximaNovaBold,sans-serif;
+    font-family: 'ProximaNova',sans-serif;
+    font-weight: bold;
     text-decoration: none !important;
 }
 .cd-main-content {
     overflow: hidden;
+}
+.container-fluid {
+    margin: 0 30px;
 }
 .hero {
     position: relative;
@@ -531,6 +535,213 @@ body {
     -o-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+
+/* moving netflix tiles */
+.carousels .tile {
+  position: relative;
+  display: inline-block;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 450ms all;
+  transform-origin: center left;
+}
+
+.carousels .tile_reviews {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #ffffff;
+    font-size: 0.8vw;
+    line-height: 1.2;
+    padding: 5px;
+    margin: 0;
+    display: block;
+}
+
+.carousels .tile_img {
+    object-fit: cover;
+    width: 100%;
+}
+
+.carousels .tile_details {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  font-size: 10px;
+  opacity: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+  transition: 450ms opacity;
+}
+
+.carousels .tile_play {
+    font-size: 2.5em;
+    position: absolute;
+    left: 50%;
+    margin-left: -25px;
+    top: 50%;
+    margin-top: -35px;
+    height: 50px;
+    width: 50px;
+    display: block;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    z-index: 999;
+    opacity: 0;
+    cursor: pointer;
+    transition: 450ms opacity;
+}
+
+.carousels .tile_play i {
+    z-index: 4;
+    position: relative;
+}
+
+.carousels .tile_play_white {
+    background: white;
+    height: 40px;
+    width: 40px;
+    display: block;
+    position: absolute;
+    z-index: 0;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 50%;
+}
+
+.carousels .tile_meta {
+  position: absolute;
+  bottom: 0;
+  padding: 10px;
+  color: #ffffff;
+}
+
+.carousels .tile_meta h4 {
+    margin: 0 0 1px 0;
+    color: #ffffff;
+    font-size: 1em;
+    font-weight: bold;
+    font-family: 'ProximaNova',sans-serif;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 90%;
+    overflow: hidden;
+}
+
+.carousels .tile_meta p {
+    margin: 0;
+    color: #ffffff;
+    font-size: 0.8em;
+    line-height: 1.2;
+    font-family: 'ProximaNova',sans-serif;
+    letter-spacing: 0.2px;
+}
+
+/* moving netflix static tiles */
+.static-row .tile {
+  position: relative;
+  display: inline-block;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 450ms all;
+  transform-origin: center left;
+  margin-bottom: 5px;
+}
+
+.static-row .tile_reviews {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #ffffff;
+    font-size: 0.8vw;
+    line-height: 1.2;
+    padding: 5px;
+    margin: 0;
+    display: block;
+}
+
+.static-row .tile_img {
+    object-fit: cover;
+    width: 100%;
+}
+
+.static-row .tile_details {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  font-size: 10px;
+  opacity: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+  transition: 450ms opacity;
+}
+
+.static-row .tile_play {
+    font-size: 2.5em;
+    position: absolute;
+    left: 50%;
+    margin-left: -25px;
+    top: 50%;
+    margin-top: -35px;
+    height: 50px;
+    width: 50px;
+    display: block;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    z-index: 999;
+    opacity: 0;
+    cursor: pointer;
+    transition: 450ms opacity;
+}
+
+.static-row .tile_play i {
+    z-index: 4;
+    position: relative;
+}
+
+.static-row .tile_play_white {
+    background: white;
+    height: 40px;
+    width: 40px;
+    display: block;
+    position: absolute;
+    z-index: 0;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 50%;
+}
+
+.static-row .tile_meta {
+  position: absolute;
+  bottom: 0;
+  padding: 10px;
+  color: #ffffff;
+}
+
+.static-row .tile_meta h4 {
+    margin: 0 0 1px 0;
+    color: #ffffff;
+    font-size: 1em;
+    font-weight: bold;
+    font-family: 'ProximaNova',sans-serif;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 90%;
+    overflow: hidden;
+}
+
+.static-row .tile_meta p {
+    margin: 0;
+    color: #ffffff;
+    font-size: 0.8em;
+    line-height: 1.2;
+    font-family: 'ProximaNova',sans-serif;
+    letter-spacing: 0.2px;
 }
 
 .footer {

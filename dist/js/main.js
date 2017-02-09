@@ -57,8 +57,8 @@ jQuery(document).ready(function($) {
 	    	appendArrows: $(this).prev(),
 			prevArrow: '<button class="streamium-carousel-prev glyphicon glyphicon-menu-left" aria-hidden="true"></button>',
 			nextArrow: '<button class="streamium-carousel-next glyphicon glyphicon-menu-right" aria-hidden="true"></button>',
-			slidesToShow: 5,
-			slidesToScroll: 5,
+			slidesToShow: 6,
+			slidesToScroll: 6,
 			//mobileFirst: true,
 			responsive: [
 			    {
@@ -85,20 +85,42 @@ jQuery(document).ready(function($) {
 			    }
 			]
 		});
-        
-        var breakit = 7;
-		var iwid = $(this).innerWidth();
-
-		if(iwid < 991){
-			breakit = 5;
-		}else if(iwid < 481){
-			breakit = 3;
-		}
-
-		//$('.carousels .slick-slide').css({'height' : Math.round((iwid/breakit)/16*9)});
-		//$('.carousels .slick-slider').css({'height' : Math.round((iwid/breakit)/16*9)});
  
 	});
+
+	if(wh > 481){
+
+		var tileWidth = Math.floor($(window).innerWidth()/6);
+		var growFactor = 1.5; 
+		var moveLeft = -(tileWidth * (growFactor - 1) / 2);
+	    var moveRight = (tileWidth-10) * (growFactor - 1);
+
+	    $('.tile').hover(function() {
+
+	    	$(this).parent().parent().find('.tile').css('opacity', '0.3');
+	    	$(this).css('opacity', '1');
+		    $(this).find('.tile_details').css('opacity', '1');
+		    $(this).find('.tile_play').delay( 800 ).css('opacity', '0.8');
+
+		}, function() {
+
+			$('.tile').css('opacity', '1');
+		    $(this).find('.tile_details').css('opacity', '0');
+		    $(this).find('.tile_play').delay( 800 ).css('opacity', '0');
+
+		});
+		
+		$('head').append('<style type="text/css">' +
+			'.carousels:hover {transform: translate3d(0px, 0, 0);}' +
+			'.carousels:hover .tile:hover {transform: scale(' + growFactor + ');opacity: 1;}' +
+			'.carousels .tile:hover ~ .tile {transform: translate3d(' + moveRight +'px, 0, 0);}' +
+		'</style>');
+
+	}else{
+
+		$('.tile_details').css('opacity', '1');
+
+	}	
 
 	setTimeout(function(){
 		$(".streamium-loading").fadeOut();
