@@ -29,6 +29,9 @@
 
 </head>
 <body <?php body_class(); ?>>
+	<?php if ( !get_theme_mod( 'tutorial_btn' ) ) : ?>
+		<div class="streamium-install-instructions"><h2>Please follow this guide for help with installation <a href="https://www.youtube.com/watch?v=YKf0cmQBYmg" target="_blank">Video Series</a></h2><p>You can remove this alert in Appearance -> Customizer -> Streamium</p></div>
+	<?php endif; ?>
 	<div class="streamium-loading">Loading&#8230;</div>
 	<header class="cd-main-header">
 

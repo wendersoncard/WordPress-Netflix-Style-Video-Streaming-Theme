@@ -143,6 +143,22 @@ class Streamium_Customize {
           'description' => 'Upload a logo to replace the default site name and description in the header',
       ) );
 
+       $wp_customize->add_setting('tutorial_btn', array(
+          'default' => false
+      ));
+      $wp_customize->add_control(
+          new WP_Customize_Control(
+              $wp_customize,
+              'tutorial_btn',
+              array(
+                  'label'     => __('Remove tutorial header', 'streamium'),
+                  'section'   => 'streamium_logo_section',
+                  'settings'  => 'tutorial_btn',
+                  'type'      => 'checkbox',
+              )
+          )
+      );
+
       $wp_customize->add_setting( 'streamium_logo' );
 
       $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'streamium_logo', array(
