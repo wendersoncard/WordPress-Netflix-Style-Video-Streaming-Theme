@@ -238,6 +238,7 @@ body {
     height: 100%;
     width: 100%;
     display: table;
+    background: black;
 }
 .video-wrapper {
     display: table-cell;
