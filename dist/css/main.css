@@ -90,6 +90,8 @@ html, body {
 }
 body {
     background: #141414;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 *:focus {outline:none !important}
 .cd-logo {
