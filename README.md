@@ -18,7 +18,10 @@ S3Bubble is excited to introduce Streamium. This Theme is ideal for any budding 
 
 ## Change Log
 
-* S3Bubble footer branding removed
+* Set a maxiumum value for the homepage carousels in WordPress customizer
+* Added page navigation for view all category pages (this is set in the Reading setting option in WP admin)
+* Only show recently watched for logged in users
+* Meta data added to track recently watched based on user id
 * Woocommerce integration 
 * Subscritption and Membership intergration
 * Login Register all powered by Woocommerce
