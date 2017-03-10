@@ -259,6 +259,7 @@ class Streamium_Customize {
            <?php self::generate_css('a', 'color', 'link_textcolor'); ?>
            <?php self::generate_css('a:focus', 'color', 'link_textcolor'); ?>
            <?php self::generate_css('a:hover', 'color', 'link_textcolor'); ?>
+           <?php self::generate_css('#place_order', 'background-color', 'link_textcolor'); ?>
            <?php self::generate_css('.pagination a:hover', 'background-color', 'link_textcolor'); ?>
            <?php self::generate_css('.pagination .current', 'background-color', 'link_textcolor'); ?>
            <?php self::generate_css('.slick-dots li.slick-active button', 'background-color', 'link_textcolor'); ?>
