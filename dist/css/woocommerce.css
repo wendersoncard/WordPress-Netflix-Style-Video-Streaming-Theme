@@ -200,3 +200,8 @@ input {
     border: none;
     border-radius: 5px;
 }
+
+/* hide unnessasary stuff */
+.woocommerce-MyAccount-navigation-link--downloads {
+    display: none;
+}
