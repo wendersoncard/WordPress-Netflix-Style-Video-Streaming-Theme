@@ -8,12 +8,12 @@ if ( get_theme_mod( 'redirect_too_signup' ) ) :
 endif; 
 ?>
 <?php get_header(); ?>
-
 	<main class="cd-main-content">
 		<section class="hero">
 			<button class="streamium-prev glyphicon glyphicon-menu-left" aria-hidden="true"></button>
 			<div class="hero-slider">
-				<?php 	
+				<?php
+
 					$args = array(
 						'posts_per_page'      => -1,
 						'post__in'            => get_option( 'sticky_posts' ),
@@ -71,61 +71,73 @@ endif;
 			</div><!--/.hero-slider-->
 			<button class="streamium-next glyphicon glyphicon-menu-right" aria-hidden="true"></button>
 		</section><!--/.hero-->
-
-		<section class="videos">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-sm-12 video-header">
-						<h3>Recently Watched</h3>
-					</div><!--/.col-sm-12-->
-				</div>
-				<div class="row">
-					<div class="col-sm-12">
-						<div class="prev_next"></div>
-						<div class="carousels">
-							<?php
-								$args = array(
-								    'posts_per_page' => get_option( 'posts_per_page' ),
-								    'meta_key' => '_last_viewed',
-								    'orderby' => 'meta_value',
-								    'order' => 'DESC'
-								);
-								$loop = new WP_Query( $args ); 
-								if($loop->have_posts()):
-									while ( $loop->have_posts() ) : $loop->the_post();
-										if ( has_post_thumbnail() ) : // thumbnail check 
-										$image   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-poster' ); 
-										$trimmed_content = wp_trim_words( get_the_excerpt(), 11 );
-							?>
-								<div class="tile">
-									<?php if(get_comments_number()) : ?>
-										<a href="#" class="tile_reviews" data-pid="<?php echo $post->ID; ?>"><?php comments_number( '0 reviews', '1 review', '% reviews' ); ?></a>
-									<?php endif; ?>
-							        <div class="tile_media">
-							        	<img class="tile_img" src="<?php echo esc_url($image[0]); ?>" alt=""  />
-							        </div>
-							        <a class="tile_play" href="<?php the_permalink(); ?>">
-						        		<span class="tile_play_white"></span>
-						        		<i class="fa fa-play-circle" aria-hidden="true"></i>
-						        	</a>
-							        <div class="tile_details">
-							          	<div class="tile_meta">
-							            	<h4><?php the_title(); ?></h4>						            	
-							            	<p><?php echo $trimmed_content; ?></p>
-							          	</div>
-							        </div>
-							    </div>
-							<?php
-										endif;  
-									endwhile;
-									endif;
-								wp_reset_query();
-							?>
-						</div><!--/.carousel-->
-					</div><!--/.col-sm-12-->
-				</div><!--/.row-->
-			</div><!--/.container-->
-		</section><!--/.videos-->
+		
+		<?php 
+			$args = array(
+			    'posts_per_page' => (int)get_theme_mod( 'streamium_global_options_homepage_desktop' ),
+			    'ignore_sticky_posts' => 1,
+			    'meta_query' => array(
+					array(
+						'key' => 'recently_watched_user_id',
+						'value' => get_current_user_id()
+					)
+				),
+			    /*'meta_key' => 'recently_watched',
+			    'orderby' => 'meta_value',
+			    'order' => 'DESC'*/
+			);
+			$loop = new WP_Query( $args ); 
+			if(is_user_logged_in() && $loop->post_count > 0) : 
+		?>
+			<section class="videos">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-sm-12 video-header">
+							<h3>Recently Watched</h3>
+						</div><!--/.col-sm-12-->
+					</div>
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="prev_next"></div>
+							<div class="carousels">
+								<?php
+									if($loop->have_posts()):
+										while ( $loop->have_posts() ) : $loop->the_post();
+											if ( has_post_thumbnail() ) : // thumbnail check 
+											$image   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-poster' ); 
+											$trimmed_content = wp_trim_words( get_the_excerpt(), 11 );
+								
+								?>
+									<div class="tile">
+										<?php if(get_comments_number()) : ?>
+											<a href="#" class="tile_reviews" data-pid="<?php echo $post->ID; ?>"><?php comments_number( '0 reviews', '1 review', '% reviews' ); ?></a>
+										<?php endif; ?>
+								        <div class="tile_media">
+								        	<img class="tile_img" src="<?php echo esc_url($image[0]); ?>" alt=""  />
+								        </div>
+								        <a class="tile_play" href="<?php the_permalink(); ?>">
+							        		<span class="tile_play_white"></span>
+							        		<i class="fa fa-play-circle" aria-hidden="true"></i>
+							        	</a>
+								        <div class="tile_details">
+								          	<div class="tile_meta">
+								            	<h4><?php the_title(); ?></h4>						            	
+								            	<p><?php echo $trimmed_content; ?></p>
+								          	</div>
+								        </div>
+								    </div>
+								<?php
+											endif;  
+										endwhile;
+										endif;
+									wp_reset_query();
+								?>
+							</div><!--/.carousel-->
+						</div><!--/.col-sm-12-->
+					</div><!--/.row-->
+				</div><!--/.container-->
+			</section><!--/.videos-->
+		<?php endif; ?>
 
 		<?php 
 		  	$categories = get_categories(); 
@@ -144,7 +156,7 @@ endif;
 						<div class="carousels">
 					  	<?php
 							$args = array(
-								    'posts_per_page' => get_option( 'posts_per_page' ),
+								    'posts_per_page' => (int)get_theme_mod( 'streamium_global_options_homepage_desktop' ),
 								    'cat' => $category->cat_ID
 								);
 								$loop = new WP_Query( $args ); 

@@ -5,6 +5,11 @@ jQuery(document).ready(function($) {
 
 	$(window).scroll(function (event) {
 	    var scroll = $(window).scrollTop();
+	    if(scroll > 50){
+	    	$(".streamium-install-instructions").hide();
+	    }else{
+	    	$(".streamium-install-instructions").show();
+	    }
 	    if(scroll > 100){
 	    	$(".cd-main-header").css("background","rgba(0,0,0,0.6)");
 	    }else{

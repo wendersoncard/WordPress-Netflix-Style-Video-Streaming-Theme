@@ -33,6 +33,13 @@
 						</div>
 					<?php } endwhile; ?>
 				</div><!--/.row-->
+				<div class="row">
+					<div class="col-sm-12">
+						<?php if (function_exists("streamium_pagination")) {
+						    pagination($additional_loop->max_num_pages);
+						} ?>
+					</div>
+				</div><!--/.row-->
 			</div><!--/.container-->
 			<?php else : ?>
 				<?php get_template_part( 'content', 'none' ); ?>

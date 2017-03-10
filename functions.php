@@ -218,6 +218,37 @@ class Streamium_Customize {
               )
           )
       );
+
+      // Add site options
+      $wp_customize->add_section('streamium_global_options' , array(
+          'title'     => __('Global Options', 'streamium'),
+          'priority'  => 1
+      ));
+
+      $wp_customize->add_setting('streamium_global_options_homepage_desktop', array(
+          'default'  => '-1'
+      ));
+
+      $wp_customize->add_control(
+          new WP_Customize_Control(
+              $wp_customize,
+              'streamium_global_options_homepage_desktop',
+              array(
+                  'label'     => __('Maximum carousel videos - Desktop', 'streamium'),
+                  'section'   => 'streamium_global_options',
+                  'settings'  => 'streamium_global_options_homepage_desktop',
+                  'type'      => 'select',
+                  'choices' => array(
+                      '-1'  => __( '-1' ),
+                      '6'   => __( '6' ),
+                      '12'  => __( '12' ),
+                      '18'  => __( '18' ),
+                      '24'  => __( '24' ),
+                      '30'  => __( '30' )
+                  )
+              )
+          )
+      );
   
    }
 
@@ -236,6 +267,8 @@ class Streamium_Customize {
            <?php self::generate_css('a', 'color', 'link_textcolor'); ?>
            <?php self::generate_css('a:focus', 'color', 'link_textcolor'); ?>
            <?php self::generate_css('a:hover', 'color', 'link_textcolor'); ?>
+           <?php self::generate_css('.pagination a:hover', 'background-color', 'link_textcolor'); ?>
+           <?php self::generate_css('.pagination .current', 'background-color', 'link_textcolor'); ?>
            <?php self::generate_css('.slick-dots li.slick-active button', 'background-color', 'link_textcolor'); ?>
            <?php self::generate_css('.progress-bar', 'background-color', 'link_textcolor'); ?>
            <?php self::generate_css('.button', 'background', 'link_textcolor'); ?>
@@ -332,6 +365,66 @@ function streamium_remove_ul( $menu ){
     return preg_replace( array( '#^<ul[^>]*>#', '#</ul>$#' ), '', $menu );
 }
 add_filter( 'wp_nav_menu', 'streamium_remove_ul' );
+
+/**
+ * Adds a pagination plugin for multiple videos
+ *
+ * @return bool
+ * @author  @sameast
+ */
+function streamium_pagination($pages = '', $range = 4){
+
+     $showitems = ($range * 2)+1;  
+ 
+     global $paged;
+     if(empty($paged)) $paged = 1;
+ 
+     if($pages == '')
+     {
+         global $wp_query;
+         $pages = $wp_query->max_num_pages;
+         if(!$pages)
+         {
+             $pages = 1;
+         }
+     }   
+ 
+     if(1 != $pages)
+     {
+         echo "<div class=\"pagination\"><span>Page ".$paged." of ".$pages."</span>";
+         if($paged > 2 && $paged > $range+1 && $showitems < $pages) echo "<a href='".get_pagenum_link(1)."'>&laquo; First</a>";
+         if($paged > 1 && $showitems < $pages) echo "<a href='".get_pagenum_link($paged - 1)."'>&lsaquo; Previous</a>";
+ 
+         for ($i=1; $i <= $pages; $i++)
+         {
+             if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems ))
+             {
+                 echo ($paged == $i)? "<span class=\"current\">".$i."</span>":"<a href='".get_pagenum_link($i)."' class=\"inactive\">".$i."</a>";
+             }
+         }
+ 
+         if ($paged < $pages && $showitems < $pages) echo "<a href=\"".get_pagenum_link($paged + 1)."\">Next &rsaquo;</a>";  
+         if ($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages) echo "<a href='".get_pagenum_link($pages)."'>Last &raquo;</a>";
+         echo "</div>\n";
+     }
+}
+
+/**
+ * Adds a pagination plugin for multiple videos
+ *
+ * @return bool
+ * @author  @sameast
+ */
+function streamium_remove_all_recently_watched(){
+
+    $allposts = get_posts( 'numberposts=-1&post_type=post&post_status=any' );
+    foreach( $allposts as $postinfo ) {
+      delete_post_meta( $postinfo->ID, 'recently_watched' );
+      delete_post_meta( $postinfo->ID, 'recently_watched_user_id' );
+      $inspiration = get_post_meta( $postinfo->ID, 'post_inspiration' );
+    }
+
+}
 
 
 /**
