@@ -11,7 +11,7 @@ jQuery(document).ready(function($) {
 	    	$(".streamium-install-instructions").show();
 	    }
 	    if(scroll > 100){
-	    	$(".cd-main-header").css("background","rgba(0,0,0,0.6)");
+	    	$(".cd-main-header").css("background","rgba(0,0,0,0.8)");
 	    }else{
 	    	$(".cd-main-header").css("background","rgba(0,0,0,0)");
 	    }
