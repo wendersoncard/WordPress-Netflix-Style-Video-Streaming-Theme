@@ -16,6 +16,7 @@ S3Bubble is excited to introduce Streamium. This Theme is ideal for any budding 
 
 ## Change Log
 
+* Gtmetrix A PageScore [https://gtmetrix.com/reports/streamiumtheme.com/FUwRTi2Y](https://gtmetrix.com/reports/streamiumtheme.com/FUwRTi2Y)
 * Image Optimisation
 * Set a maximum value for the homepage carousels in WordPress customizer
 * Added page navigation for view all category pages (this is set in the Reading setting option in WP admin)
