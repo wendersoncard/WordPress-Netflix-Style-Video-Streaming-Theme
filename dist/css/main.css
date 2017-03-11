@@ -763,8 +763,12 @@ body {
 
 /* insatllation help */
 .streamium-install-instructions {
-    background: #dd3333;
+    background: #d33;
     padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 999;
 }
 
 .streamium-install-instructions h2 {
