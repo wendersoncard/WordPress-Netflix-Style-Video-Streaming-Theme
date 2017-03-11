@@ -4,8 +4,8 @@
 	
 	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-    	<div id="s3bubble-aws" class="video-wrapper">
-		 	<?php //the_content(); ?>
+    	<div class="video-wrapper">
+		 	<?php the_content(); ?>
 		</div>
 
 	 <?php endwhile; else : ?>
@@ -22,11 +22,4 @@
 	   update_post_meta($post->ID,'recently_watched_user_id',get_current_user_id());
 	endif;
 ?>
-<script type='text/javascript'>
-	S3BubbleAWS.init({
-		id : "s3bubble-aws",
-		code : "Adke10651"
-	});
-	//$("#vids").S3BubbleAWSVideo({"code":"Adke10651"});
-</script>
 <?php get_template_part( 'footer', 'video' ); ?>
