@@ -553,6 +553,7 @@ body {
     color: #fff;
     border: 2px solid #fff;
     opacity: 0;
+    z-index: 999;
 }
 .carousels .tile_play i {
     line-height: inherit;
@@ -644,6 +645,7 @@ body {
     color: #fff;
     border: 2px solid #fff;
     opacity: 0;
+    z-index: 999;
 }
 .static-row .tile_play i {
     line-height: inherit;
