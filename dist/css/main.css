@@ -64,7 +64,7 @@ body {
     font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     font-weight: bold;
     color: #fff;
-    font-size: 4vw;
+    font-size: 3.5vw;
     margin: 0;
 }
 .content-overlay .synopis-inner p {
@@ -138,6 +138,7 @@ body {
     .videos {
         margin: 0px 0px 40px 0px;
     }
+    row static-row
 }
 
 .video-header .see-all {
@@ -357,7 +358,7 @@ body {
 .carousels .tile_meta h4 {
     margin: 0 0 1px 0;
     color: #ffffff;
-    font-size: 1em;
+    font-size: 1vw;
     font-weight: bold;
     font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     white-space: nowrap;
@@ -369,9 +370,9 @@ body {
 .carousels .tile_meta p {
     margin: 0;
     color: #ffffff;
-    font-size: 0.8em;
+    font-size: 0.6vw;
     line-height: 1.2;
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-family: 'Helvetica',Helvetica,Arial,sans-serif;
     letter-spacing: 0.2px;
 }
 
@@ -419,13 +420,13 @@ body {
     position: absolute;
     left: 50%;
     top: 50%;
-    margin-left: -20px;
+    margin-left: -25px;
     margin-top: -35px;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     background-color: rgba(51,51,51,.8);
     border-radius: 100%;
-    line-height: 40px;
+    line-height: 50px;
     text-align: center;
     vertical-align: middle;
     display: inline-block;
@@ -448,7 +449,7 @@ body {
 .static-row .tile_meta h4 {
     margin: 0 0 1px 0;
     color: #ffffff;
-    font-size: 1em;
+    font-size: 1.5vw;
     font-weight: bold;
     font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     white-space: nowrap;
@@ -460,7 +461,7 @@ body {
 .static-row .tile_meta p {
     margin: 0;
     color: #ffffff;
-    font-size: 0.8em;
+    font-size: 1vw;
     line-height: 1.2;
     font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     letter-spacing: 0.2px;
@@ -543,4 +544,17 @@ body {
     padding:6px 9px 5px 9px;
     background: #3279BB;
     color:#fff;
+}
+
+@media screen and (max-device-width: 480px) and (orientation: portrait){
+  /* some CSS here */
+  .synopis-inner h2 {
+    font-size: 5vw !important;
+  }
+  .static-row .tile_meta h4 {
+    font-size: 5vw !important;
+  }
+  .static-row .tile_meta p {
+      font-size: 3vw !important;
+  }
 }

@@ -13,7 +13,7 @@
 						$image   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-poster' );
 						$trimmed_content = wp_trim_words( get_the_excerpt(), 11 ); 
 						?>
-						<div <?php post_class("col-sm-2 tile"); ?>>
+						<div <?php post_class("col-sm-3 tile"); ?>>
 							<?php if(get_comments_number()) : ?>
 								<a href="#" class="tile_reviews" data-pid="<?php echo $post->ID; ?>"><?php comments_number( '0 reviews', '1 review', '% reviews' ); ?></a>
 							<?php endif; ?>
