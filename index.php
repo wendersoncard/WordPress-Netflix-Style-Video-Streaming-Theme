@@ -10,7 +10,7 @@ endif;
 <?php get_header(); ?>
 	<main class="cd-main-content">
 		<section class="hero">
-			<button class="streamium-prev glyphicon glyphicon-menu-left" aria-hidden="true"></button>
+			<button class="streamium-prev fa fa-angle-left" aria-hidden="true"></button>
 			<div class="hero-slider">
 				<?php
 
@@ -64,14 +64,13 @@ endif;
 							<h2><?php _e( 'S3Bubble Media Streaming', 'streamium' ); ?></h2>
 							<p><?php _e( 'Please replace this by making a post sticky, when you have do this you new sticky post will be displayed here.', 'streamium' ); ?></p>
 						</article><!--/.content-overlay-->
-						<a class="icon-play glyphicon glyphicon-play" aria-hidden="true" href="<?php the_permalink(); ?>"></a>
 					</div>
 					<?php
 					endif;
 					wp_reset_query(); 
 				?>
 			</div><!--/.hero-slider-->
-			<button class="streamium-next glyphicon glyphicon-menu-right" aria-hidden="true"></button>
+			<button class="streamium-next fa fa-angle-right" aria-hidden="true"></button>
 		</section><!--/.hero-->
 		
 		<?php 

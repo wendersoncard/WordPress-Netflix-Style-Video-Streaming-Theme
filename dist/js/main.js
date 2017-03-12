@@ -55,8 +55,8 @@ jQuery(document).ready(function($) {
 
 	    $(this).slick({
 	    	appendArrows: $(this).prev(),
-			prevArrow: '<button class="streamium-carousel-prev glyphicon glyphicon-menu-left" aria-hidden="true"></button>',
-			nextArrow: '<button class="streamium-carousel-next glyphicon glyphicon-menu-right" aria-hidden="true"></button>',
+			prevArrow: '<button class="streamium-carousel-prev fa fa-angle-left" aria-hidden="true"></button>',
+			nextArrow: '<button class="streamium-carousel-next fa fa-angle-right" aria-hidden="true"></button>',
 			slidesToShow: 6,
 			slidesToScroll: 6,
 			//mobileFirst: true,

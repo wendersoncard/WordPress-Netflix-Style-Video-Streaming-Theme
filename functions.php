@@ -44,7 +44,7 @@ add_action('after_setup_theme', 'streamium_theme_setup');
 function cloudfrontSwitch($url){
 
   return str_replace(get_site_url(),"http://dm5u4me0v9yrf.cloudfront.net",$url);
-  //return get_template_directory_uri();
+  //return $url;
 
 }
 
