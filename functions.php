@@ -43,9 +43,9 @@ add_action('after_setup_theme', 'streamium_theme_setup');
 
 function cloudfrontSwitch($url){
 
-  if ( get_theme_mod( 'enable_cloudfront' ) ){
+  if ( get_theme_mod( 'streamium_enable_cloudfront' ) ){
   
-    return str_replace(get_site_url(),"http://dm5u4me0v9yrf.cloudfront.net",$url);
+    return str_replace(get_site_url(),get_theme_mod( 'streamium_enable_cloudfront_url' ),$url);
 
   }else{
   
@@ -212,7 +212,7 @@ class Streamium_Customize {
       ));
 
       $wp_customize->add_setting('redirect_too_signup', array(
-          'default'    => '0'
+          'default'    => false
       ));
 
       $wp_customize->add_control(
@@ -264,21 +264,32 @@ class Streamium_Customize {
           'priority'  => 1020
       ));
 
-      $wp_customize->add_setting('enable_cloudfront', array(
-          'default'    => '0'
+      $wp_customize->add_setting('streamium_enable_cloudfront', array(
+          'default'    => false
       ));
 
       $wp_customize->add_control(
           new WP_Customize_Control(
               $wp_customize,
-              'enable_cloudfront',
+              'streamium_enable_cloudfront',
               array(
                   'label'     => __('Enable Cloudfront urls', 'streamium'),
                   'section'   => 'streamium_cdn_section',
-                  'settings'  => 'enable_cloudfront',
+                  'settings'  => 'streamium_enable_cloudfront',
                   'type'      => 'checkbox',
               )
           )
+      );
+
+      // allow the user to remove the powered by link
+      $wp_customize->add_setting('streamium_enable_cloudfront_url');
+      
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_remove_powered_by_s3bubble',
+        array(
+          'label' => 'Cloudfront/S3 url',
+          'section' => 'streamium_cdn_section',
+          'settings' => 'streamium_enable_cloudfront_url',
+        )) 
       );
   
    }
