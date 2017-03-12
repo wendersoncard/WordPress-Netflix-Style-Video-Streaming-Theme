@@ -32,7 +32,7 @@ endif;
 
 					?>
 					<div class="slider-block">
-						<img src="<?php echo esc_url($image[0]); ?>" />
+						<img src="<?php echo esc_url(cloudfrontSwitch($image[0])); ?>" />
 						<article class="content-overlay">
 							<div class="container-fluid rel">
 								<div class="row rel">
@@ -115,7 +115,7 @@ endif;
 											<a href="#" class="tile_reviews" data-pid="<?php echo $post->ID; ?>"><?php comments_number( '0 reviews', '1 review', '% reviews' ); ?></a>
 										<?php endif; ?>
 								        <div class="tile_media">
-								        	<img class="tile_img" src="<?php echo esc_url($image[0]); ?>" alt=""  />
+								        	<img class="tile_img" src="<?php echo esc_url(cloudfrontSwitch($image[0])); ?>" alt=""  />
 								        </div>
 								        <a class="tile_play" href="<?php the_permalink(); ?>">
 											<i class="fa fa-play fa-1x" aria-hidden="true"></i>
