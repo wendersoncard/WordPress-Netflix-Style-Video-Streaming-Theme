@@ -37,6 +37,8 @@ vim /etc/httpd/conf/httpd.conf
 aws s3 sync ./ s3://{aws-bucket}/wp-content/ --exclude "*.php*" --exclude "*.txt*" --exclude "*.md*" --exclude "*.git/*" --exclude "*plugins/*"
 ```
 
+* Add forward headers to the Cldoufront distribution you also need to set a invalidation of / to clear cache
+
 ## Change Log
 
 * Gtmetrix A PageScore [https://gtmetrix.com/reports/streamiumtheme.com/FUwRTi2Y](https://gtmetrix.com/reports/streamiumtheme.com/FUwRTi2Y)
