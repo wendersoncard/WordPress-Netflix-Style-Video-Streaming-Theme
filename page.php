@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <main class="cd-main-content">
 		<section class="videos">
-			<div class="container">
+			<div class="container-fluid">
 				<div class="row">
 					<div class="col-sm-12">
 						<h3><p></p></h3>
