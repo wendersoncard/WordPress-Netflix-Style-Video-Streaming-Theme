@@ -43,7 +43,8 @@ add_action('after_setup_theme', 'streamium_theme_setup');
 
 function cloudfrontSwitch(){
 
-  return str_replace(get_site_url(),"http://dm5u4me0v9yrf.cloudfront.net",get_template_directory_uri());
+  //return str_replace(get_site_url(),"http://dm5u4me0v9yrf.cloudfront.net",get_template_directory_uri());
+  return get_template_directory_uri();
 
 }
 
@@ -278,7 +279,7 @@ class Streamium_Customize {
            <?php self::generate_css('.label.heart', 'color', 'link_textcolor'); ?>
            <?php self::generate_css('.progress-bar .progress', 'background', 'link_textcolor'); ?>
            <?php self::generate_css('.cd-main-header .cd-logo', 'color', 'link_textcolor'); ?>
-           <?php self::generate_css('.tile_play', 'color', 'link_textcolor'); ?>
+           <?php self::generate_css('.carousels .tile_play i, .content-overlay .home-slider-play-icon i', 'color', 'link_textcolor'); ?>
            <?php self::generate_css('.cd-primary-nav .cd-secondary-nav a:hover', 'color', 'link_textcolor'); ?>
            <?php self::generate_css('.cd-overlay', 'background-color', 'link_textcolor'); ?>
            <?php self::generate_css('.cd-primary-nav>li>a:hover', 'color', 'link_textcolor'); ?>

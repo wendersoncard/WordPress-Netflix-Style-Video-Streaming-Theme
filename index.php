@@ -47,7 +47,9 @@ endif;
 										</div>
 									</div>
 									<div class="col-sm-6 rel">
-										<a class="icon-play glyphicon glyphicon-play" aria-hidden="true" href="<?php the_permalink(); ?>"></a>
+										<a class="tile_play home-slider-play-icon" href="<?php the_permalink(); ?>">
+											<i class="fa fa-play fa-3x" aria-hidden="true"></i>
+							        	</a>
 									</div>
 								</div>
 							</div>
@@ -174,8 +176,7 @@ endif;
 						        	<img class="tile_img" src="<?php echo esc_url($image[0]); ?>" alt=""  />
 						        </div>
 						        <a class="tile_play" href="<?php the_permalink(); ?>">
-					        		<span class="tile_play_white"></span>
-					        		<i class="fa fa-play-circle" aria-hidden="true"></i>
+									<i class="fa fa-play fa-1x" aria-hidden="true"></i>
 					        	</a>
 						        <div class="tile_details">
 						          	<div class="tile_meta">

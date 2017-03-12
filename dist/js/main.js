@@ -100,7 +100,7 @@ jQuery(document).ready(function($) {
 	    	$(this).parent().parent().find('.tile').css('opacity', '0.3');
 	    	$(this).css('opacity', '1');
 		    $(this).find('.tile_details').css('opacity', '1');
-		    $(this).find('.tile_play').delay( 800 ).css('opacity', '0.8');
+		    $(this).find('.tile_play').delay( 800 ).css('opacity', '1');
 
 		}, function() {
 
