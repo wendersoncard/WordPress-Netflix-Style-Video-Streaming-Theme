@@ -57,7 +57,6 @@ body {
 }
 
 .content-overlay .synopis-inner {
-    margin-left: 60px;
     margin-right: auto; 
     width: 70%;
 }
@@ -69,11 +68,11 @@ body {
     margin: 0;
 }
 .content-overlay .synopis-inner p {
-    color: #999;
+    color: #989898;
     font-weight: 300;
     line-height: 1.35;
     width: 100%;
-    font-size: 1.2vw;
+    font-size: 1.5vw;
 }
 .content-overlay .home-slider-play-icon {
     position: absolute;
@@ -115,9 +114,10 @@ body {
 
 .video-header h3 {
     font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
-    float: left;
-    color: #999;
     font-weight: 500;
+    letter-spacing: -0.8px;
+    float: left;
+    color: #989898;
     text-decoration: none;
     display: inline-block;
     max-width: 75%;
@@ -141,10 +141,12 @@ body {
 }
 
 .video-header .see-all {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    letter-spacing: -0.9px;
     float: right;
     font-size: 12px;
-    color: #fafafa;
-    font-weight: 300;
+    color: #d2d2d2;
+    font-weight: 500;
     line-height: 30px;
 }
 .video-main {

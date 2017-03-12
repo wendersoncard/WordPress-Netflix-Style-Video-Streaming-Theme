@@ -36,7 +36,7 @@ endif;
 						<article class="content-overlay">
 							<div class="container-fluid rel">
 								<div class="row rel">
-									<div class="col-sm-6 rel hidden-xs">
+									<div class="col-sm-6 col-xs-6 rel">
 										<div class="synopis-outer">
 											<div class="synopis-middle">
 												<div class="synopis-inner">
@@ -46,7 +46,7 @@ endif;
 											</div>
 										</div>
 									</div>
-									<div class="col-sm-6 rel">
+									<div class="col-sm-6 col-xs-6 rel">
 										<a class="tile_play home-slider-play-icon" href="<?php the_permalink(); ?>">
 											<i class="fa fa-play fa-3x" aria-hidden="true"></i>
 							        	</a>
