@@ -16,7 +16,7 @@ S3Bubble is excited to introduce Streamium. This Theme is ideal for any budding 
 
 ## Optimization & Setup
 
-# Installing varnish
+### Installing varnish
 yum install varnish
 chkconfig varnish on
 vim /etc/varnish/default.vcl
@@ -29,7 +29,7 @@ VARNISH_LISTEN_PORT=80
 vim /etc/httpd/conf/httpd.conf
 * Search for Listen 80 and replace it with Listen 8080
 
-# Uploading content to AWS and serving via Cloudfront
+### Uploading content to AWS and serving via Cloudfront
 aws s3 sync ./ s3://{aws-bucket}/wp-content/ --exclude "*.php*" --exclude "*.txt*" --exclude "*.md*" --exclude "*.git/*" --exclude "*plugins/*"
 
 ## Change Log
