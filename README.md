@@ -14,6 +14,24 @@ S3Bubble is excited to introduce Streamium. This Theme is ideal for any budding 
 
 [Full Video Overview Tutorial](https://s3bubble.com/wp_themes/streamium-netflix-style-wordpress-theme/)
 
+## Optimization & Setup
+
+# Installing varnish
+yum install varnish
+chkconfig varnish on
+vim /etc/varnish/default.vcl
+backend default {
+.host = "127.0.0.1";
+.port = "8080";
+}
+vim /etc/sysconfig/varnish
+VARNISH_LISTEN_PORT=80
+vim /etc/httpd/conf/httpd.conf
+* Search for Listen 80 and replace it with Listen 8080
+
+# Uploading content to AWS and serving via Cloudfront
+aws s3 sync ./ s3://{aws-bucket}/wp-content/ --exclude "*.php*" --exclude "*.txt*" --exclude "*.md*" --exclude "*.git/*" --exclude "*plugins/*"
+
 ## Change Log
 
 * Gtmetrix A PageScore [https://gtmetrix.com/reports/streamiumtheme.com/FUwRTi2Y](https://gtmetrix.com/reports/streamiumtheme.com/FUwRTi2Y)
@@ -30,7 +48,5 @@ S3Bubble is excited to introduce Streamium. This Theme is ideal for any budding 
 * get_option( 'posts_per_page' ) added to loop to allow max posts to be set on carousels
 
 ## License
-
-aws s3 sync ./ s3://streamium-theme-cdn/wp-content/ --exclude "*.php*" --exclude "*.txt*" --exclude "*.md*" --exclude ".git/*"
 
 Copyright (c) S3Bubble Ltd licensed under General Public License (GPL)
