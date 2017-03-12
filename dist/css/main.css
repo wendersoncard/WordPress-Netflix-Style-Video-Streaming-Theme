@@ -90,6 +90,11 @@ body {
     vertical-align: middle;
     display: inline-block;
     color: #fff;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+.content-overlay .home-slider-play-icon:hover {
+    transform: scale(1.1);
 }
 .content-overlay .home-slider-play-icon i {
     line-height: inherit;
