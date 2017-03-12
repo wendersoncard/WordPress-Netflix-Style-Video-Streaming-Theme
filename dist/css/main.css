@@ -1,60 +1,9 @@
-[class^="icon-"],
-[class*=" icon-"] {
-    font-family: 'icomoon';
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale
-}
-.icon-arrow-left:before {
-    content: "\e600"
-}
-.icon-arrow-right:before {
-    content: "\e601"
-}
-.icon-play:before {
-    content: "\e602"
-}
-.icon-caret:before {
-    content: "\e603"
-}
-.icon-heart:before {
-    content: "\e604"
-}
-.icon-heart-o:before {
-    content: "\e605"
-}
-@-webkit-keyframes pulse {
-    from {
-        transform: scale(1, 1)
-    }
-    50% {
-        transform: scale(1.2, 1.2)
-    }
-    to {
-        transform: scale(1, 1)
-    }
-}
-@-moz-keyframes pulse {
-    from {
-        transform: scale(1, 1)
-    }
-    50% {
-        transform: scale(1.2, 1.2)
-    }
-    to {
-        transform: scale(1, 1)
-    }
-}
 html, body {
     height: 100%;
 }
 body {
     background: #141414;
+    font-family: 'Helvetica',Helvetica,Arial,sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
