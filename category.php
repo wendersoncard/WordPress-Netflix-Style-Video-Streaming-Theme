@@ -30,7 +30,6 @@
 					          	</div>
 					        </div>
 						</div>
-
 					<?php } endwhile; ?>
 				</div><!--/.row-->
 				<div class="row">
