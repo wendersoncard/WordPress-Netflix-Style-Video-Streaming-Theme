@@ -31,4 +31,6 @@ S3Bubble is excited to introduce Streamium. This Theme is ideal for any budding 
 
 ## License
 
+aws s3 sync ./ s3://streamium-theme-cdn/wp-content/ --exclude "*.php*" --exclude "*.txt*" --exclude "*.md*" --exclude ".git/*"
+
 Copyright (c) S3Bubble Ltd licensed under General Public License (GPL)
