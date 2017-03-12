@@ -118,8 +118,7 @@ endif;
 								        	<img class="tile_img" src="<?php echo esc_url($image[0]); ?>" alt=""  />
 								        </div>
 								        <a class="tile_play" href="<?php the_permalink(); ?>">
-							        		<span class="tile_play_white"></span>
-							        		<i class="fa fa-play-circle" aria-hidden="true"></i>
+											<i class="fa fa-play fa-1x" aria-hidden="true"></i>
 							        	</a>
 								        <div class="tile_details">
 								          	<div class="tile_meta">
