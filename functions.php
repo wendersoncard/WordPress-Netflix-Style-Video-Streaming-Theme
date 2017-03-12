@@ -55,6 +55,7 @@ function cloudfrontSwitch($url){
 if (!function_exists('streamium_enqueue_scripts')) {
 	function streamium_enqueue_scripts() {
 
+        wp_enqueue_script( 'streamium-bootstrap', cloudfrontSwitch(get_template_directory_uri()) . '/dist/js/fontawesome.min.js', array( 'jquery') );
         wp_enqueue_script( 'streamium-bootstrap', cloudfrontSwitch(get_template_directory_uri()) . '/dist/js/bootstrap.min.js', array( 'jquery') );
 	      wp_enqueue_script( 'streamium-slick', cloudfrontSwitch(get_template_directory_uri()) . '/dist/plugins/slick/slick.min.js', array( 'jquery') );
         wp_enqueue_script( 'streamium-modernizr', cloudfrontSwitch(get_template_directory_uri()) . '/dist/js/modernizr.min.js', array( 'jquery') );
@@ -75,8 +76,7 @@ if (!function_exists('streamium_enqueue_scripts')) {
 
         /* Register styles -----------------------------------------------------*/
         wp_enqueue_style( 'streamium-styles', get_stylesheet_uri() );
-        wp_enqueue_style('streamium-reset', cloudfrontSwitch(get_template_directory_uri()) . '/dist/css/bootstrap.min.css');
-        wp_enqueue_style('streamium-fontawesome', cloudfrontSwitch(get_template_directory_uri()) . '/dist/css/font-awesome.min.css');  
+        wp_enqueue_style('streamium-reset', cloudfrontSwitch(get_template_directory_uri()) . '/dist/css/bootstrap.min.css');  
         wp_enqueue_style('streamium-menu', cloudfrontSwitch(get_template_directory_uri()) . '/dist/css/menu.min.css');
         wp_enqueue_style('streamium-modal', cloudfrontSwitch(get_template_directory_uri()) . '/dist/css/comments.min.css');
         wp_enqueue_style('streamium-info', cloudfrontSwitch(get_template_directory_uri()) . '/dist/css/info.min.css');

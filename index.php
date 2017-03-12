@@ -163,10 +163,10 @@ endif;
 								$loop = new WP_Query( $args ); 
 								if($loop->have_posts()):
 									while ( $loop->have_posts() ) : $loop->the_post();
-							if ( has_post_thumbnail() ) : // thumbnail check 
-							$image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-category' ); 
-							$trimmed_content = wp_trim_words( get_the_excerpt(), 11 );
-								echo cloudfrontSwitch($image[0]);
+									if ( has_post_thumbnail() ) : // thumbnail check 
+									$image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-category' ); 
+									$trimmed_content = wp_trim_words( get_the_excerpt(), 11 );
+							
 						?>
 							<div class="tile">
 								<?php if(get_comments_number()) : ?>
