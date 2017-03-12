@@ -166,14 +166,14 @@ endif;
 									if ( has_post_thumbnail() ) : // thumbnail check 
 									$image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-category' ); 
 									$trimmed_content = wp_trim_words( get_the_excerpt(), 11 );
-							
+
 						?>
 							<div class="tile">
 								<?php if(get_comments_number()) : ?>
 									<a href="#" class="tile_reviews" data-pid="<?php echo $post->ID; ?>"><?php comments_number( '0 reviews', '1 review', '% reviews' ); ?></a>
 								<?php endif; ?>
 						        <div class="tile_media">
-						        	<img class="tile_img" src="<?php echo esc_url($image[0]); ?>" alt=""  />
+						        	<img class="tile_img" src="<?php echo esc_url(cloudfrontSwitch($image[0])); ?>" alt=""  />
 						        </div>
 						        <a class="tile_play" href="<?php the_permalink(); ?>">
 									<i class="fa fa-play fa-1x" aria-hidden="true"></i>
