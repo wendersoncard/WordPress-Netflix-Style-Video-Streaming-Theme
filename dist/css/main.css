@@ -491,10 +491,10 @@ body {
 
 .streamium-install-instructions h2 {
     padding: 0;
-    margin: 10px 0 0 0;
+    margin: 5px 0 0;
     float: left;
     color: #fff;
-    font-size: 18px;
+    font-size: 12px;
     width: 100%;
     text-align: center;
 }
@@ -512,7 +512,8 @@ body {
 .streamium-install-instructions p {
     color: #fff;
     text-align: center;
-    font-size: 14px;
+    font-size: 12px;
+    margin: 0;
 }
 
 .pagination {
