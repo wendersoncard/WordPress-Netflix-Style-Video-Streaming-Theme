@@ -68,7 +68,7 @@ body {
     margin: 0;
 }
 .content-overlay .synopis-inner p {
-    color: #989898;
+    color: #f2f2f2;
     font-weight: 300;
     line-height: 1.35;
     width: 100%;
@@ -117,7 +117,7 @@ body {
     font-weight: 500;
     letter-spacing: -0.8px;
     float: left;
-    color: #989898;
+    color: #f2f2f2;
     text-decoration: none;
     display: inline-block;
     max-width: 75%;
@@ -138,7 +138,6 @@ body {
     .videos {
         margin: 0px 0px 40px 0px;
     }
-    row static-row
 }
 
 .video-header .see-all {
@@ -369,7 +368,7 @@ body {
 
 .carousels .tile_meta p {
     margin: 0;
-    color: #ffffff;
+    color: #f2f2f2;
     font-size: 0.6vw;
     line-height: 1.2;
     font-family: 'Helvetica',Helvetica,Arial,sans-serif;
@@ -460,7 +459,7 @@ body {
 
 .static-row .tile_meta p {
     margin: 0;
-    color: #ffffff;
+    color: #f2f2f2;
     font-size: 1vw;
     line-height: 1.2;
     font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
@@ -546,10 +545,26 @@ body {
     color:#fff;
 }
 
+.set-white-logo {
+  color: white !important;
+}
+
 @media screen and (max-device-width: 480px) and (orientation: portrait){
   /* some CSS here */
+  .container-fluid {
+    margin: 0px 10px;
+  }
   .synopis-inner h2 {
     font-size: 5vw !important;
+  }
+  .synopis-inner p {
+    font-size: 2.5vw !important;
+  }
+  .carousels .tile_meta h4 {
+    font-size: 3vw !important;
+  }
+  .carousels .tile_meta p {
+    font-size: 2vw !important;
   }
   .static-row .tile_meta h4 {
     font-size: 5vw !important;
