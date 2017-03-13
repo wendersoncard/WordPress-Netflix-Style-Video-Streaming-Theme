@@ -20,4 +20,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-echo '<main class="cd-main-content"><section class="s3bubble-woocommerce"><div class="container-fluid"><div class="row">';
+$template = get_option( 'template' );
+ 
+ switch( $template ) {
+ 	case 'twentysixteen' :
+ 		echo '<div id="primary" class="content-area twentysixteen"><main id="main" class="site-main" role="main">';
+ 		break;
+ 	default :
+ 		echo '<main class="cd-main-content"><section class="s3bubble-woocommerce"><div class="container-fluid"><div class="row">';
+		break;
+}
