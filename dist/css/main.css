@@ -348,6 +348,7 @@ body {
 }
 
 .carousels .tile_meta {
+  width: 100%;
   position: absolute;
   bottom: 0;
   padding: 10px;
@@ -439,6 +440,7 @@ body {
 }
 
 .static-row .tile_meta {
+  width: 100%;
   position: absolute;
   bottom: 0;
   padding: 10px;
