@@ -6,7 +6,7 @@
 .streamium-prev {
     left: 0px;
     position: absolute;
-    width: 70px;
+    width: 35px;
     height: 100px;
     top: 50%;
     margin-top: -50px;
@@ -20,7 +20,7 @@
 .streamium-next {
     right: 0px;
     position: absolute;
-    width: 70px;
+    width: 35px;
     height: 100px;
     top: 50%;
     margin-top: -50px;

@@ -16,18 +16,10 @@ S3Bubble is excited to introduce Streamium. This Theme is ideal for any budding 
 
 ## Optimization & Setup
 
-### Installing varnish
+### Installing updating with git
 ```
-yum install varnish
-chkconfig varnish on
-vim /etc/varnish/default.vcl
-backend default {
-.host = "127.0.0.1";
-.port = "8080";
-}
-vim /etc/sysconfig/varnish
-VARNISH_LISTEN_PORT=80
-vim /etc/httpd/conf/httpd.conf
+cd wp-content/themes/
+git clone https://github.com/s3bubble/Streamium-Netflix-Theme.git Streamium-Netflix-Theme/
 ```
 
 * Search for Listen 80 and replace it with Listen 8080
