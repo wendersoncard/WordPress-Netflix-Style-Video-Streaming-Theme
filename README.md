@@ -22,14 +22,12 @@ cd wp-content/themes/
 git clone https://github.com/s3bubble/Streamium-Netflix-Theme.git Streamium-Netflix-Theme/
 ```
 
-* Search for Listen 80 and replace it with Listen 8080
-
 ### Uploading content to AWS and serving via Cloudfront
 ```
 aws s3 sync ./ s3://{aws-bucket}/wp-content/ --exclude "*.php*" --exclude "*.txt*" --exclude "*.md*" --exclude "*.git/*" --exclude "*plugins/*"
 ```
 
-* Add forward headers to the Cldoufront distribution you also need to set a invalidation of / to clear cache
+* Cloudfront distribution you also need to set a invalidation / to clear cache
 
 ## Change Log
 
