@@ -40,6 +40,7 @@ jQuery(document).ready(function($) {
 		    {
 		      breakpoint: 480,
 		      settings: {
+		      	appendArrows: false,
 		        dots: false
 		      }
 		    }

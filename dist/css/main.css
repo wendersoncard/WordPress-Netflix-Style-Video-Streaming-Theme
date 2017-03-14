@@ -99,16 +99,17 @@ body {
     line-height: inherit;
     margin-left: 10px; 
 }
+
 .progress {
     height: 10px;
     border-radius: 5px;
 }
+
 .videos {
     margin: 0px 0px 20px 0px;
 }
 
 .video-header {
-    height: 30px;
     margin-bottom: 5px;
 }
 
@@ -123,21 +124,21 @@ body {
     max-width: 75%;
     margin: 0;
     padding: 0;
-    line-height: 30px;
-    height: 30px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: 5vw;
+    font-size: 2vw;
+    line-height: 30px;
 }
 
-@media (min-width:961px)  { 
-    .video-header h3 {
-        font-size: 24px;
-    }
-    .videos {
-        margin: 0px 0px 40px 0px;
-    }
+.video-header p {
+    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.8px;
+    width: 100%;
+    float: left;
+    color: #f2f2f2;
+    font-size: 1vw;
 }
 
 .video-header .see-all {
@@ -574,5 +575,11 @@ body {
   }
   .static-row .tile_meta p {
       font-size: 3vw !important;
+  }
+  .video-header h3 {
+      font-size: 5vw!important;
+  }
+  .videos {
+      margin: 0px 0px 40px 0px;
   }
 }

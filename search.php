@@ -1,8 +1,8 @@
 <?php get_header(); ?>
 	<main class="cd-main-content">
 		<section class="categories no-header-push">
-			<?php if ( have_posts() ) : ?>
 			<div class="container-fluid">
+			<?php if ( have_posts() ) : ?>
 				<div class="row">
 					<div class="col-sm-12 video-header">
 						<h3 class="pull-left"><?php printf( __( 'Search Results for: %s', 'streamium' ), get_search_query() ); ?></h3>
@@ -39,9 +39,14 @@
 						} ?>
 					</div>
 				</div><!--/.row-->
-			</div><!--/.container-->
 			<?php else : ?>
-				<?php get_template_part( 'content', 'none' ); ?>
+				<div class="row">
+					<div class="col-sm-12 video-header">
+						<h3 class="pull-left"><?php printf( __( 'Search Results for: %s', 'streamium' ), get_search_query() ); ?></h3>
+						<p><?php _e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'twentyseventeen' ); ?></p>
+					</div><!--/.col-sm-12-->
+				</div><!--/.row-->
 			<?php endif; ?>
+			</div><!--/.container-->
 		</section><!--/.videos-->
 <?php get_footer(); ?>

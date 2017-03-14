@@ -5,7 +5,7 @@
 	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
     	<div id="s3bubble-aws" class="video-wrapper">
-		 	<?php the_content(); ?>
+		 	<?php //the_content(); ?>
 		</div>
 
 	 <?php endwhile; else : ?>
@@ -23,9 +23,9 @@
 	endif;
 ?>
 <script type='text/javascript'>
-	/*S3BubbleAWS.init({
+	S3BubbleAWS.init({
 		id : "s3bubble-aws",
 		code : "Adke10651"
-	});*/
+	});
 </script>
 <?php get_template_part( 'footer', 'video' ); ?>
