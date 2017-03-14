@@ -14,6 +14,7 @@ jQuery(document).ready(function($) {
 
 	// Initialise Slider
 	$('.hero-slider').slick({
+		appendArrows: $(this).prev(),
 		prevArrow: $('.streamium-prev'),
 		nextArrow: $('.streamium-next'),
 		slidesToShow: 1,
@@ -22,7 +23,7 @@ jQuery(document).ready(function($) {
       	autoplay: true,
       	adaptiveHeight: true,
       	autoplaySpeed: 8000,
-      	mobileFirst: true,
+      	//mobileFirst: true,
 		pauseOnHover: false,
 		responsive: [
 		    {
@@ -34,6 +35,7 @@ jQuery(document).ready(function($) {
 		    {
 		      breakpoint: 600,
 		      settings: {
+		      	appendArrows: false,
 		        dots: false
 		      }
 		    },
@@ -41,7 +43,8 @@ jQuery(document).ready(function($) {
 		      breakpoint: 480,
 		      settings: {
 		      	appendArrows: false,
-		        dots: false
+		        slidesToShow: 1,
+		        slidesToScroll: 1
 		      }
 		    }
 		]

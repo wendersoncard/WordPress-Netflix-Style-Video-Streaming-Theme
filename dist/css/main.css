@@ -579,7 +579,13 @@ body {
   .video-header h3 {
       font-size: 5vw!important;
   }
+  .video-header p {
+      font-size: 3vw;
+  }
   .videos {
       margin: 0px 0px 40px 0px;
+  }
+  .streamium-next, .streamium-prev {
+    display: none !important;
   }
 }
