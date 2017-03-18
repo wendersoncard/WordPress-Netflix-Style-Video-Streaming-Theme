@@ -61,8 +61,8 @@ jQuery(document).ready(function($) {
 	    	appendArrows: $(this).prev(),
 			prevArrow: '<button class="streamium-carousel-prev fa fa-angle-left" aria-hidden="true"></button>',
 			nextArrow: '<button class="streamium-carousel-next fa fa-angle-right" aria-hidden="true"></button>',
-			slidesToShow: 7,
-			slidesToScroll: 7,
+			slidesToShow: 6,
+			slidesToScroll: 6,
 			//mobileFirst: true,
 			responsive: [
 			    {
@@ -95,9 +95,9 @@ jQuery(document).ready(function($) {
 	if(wh > 481){
 
 		var tileWidth = Math.floor($(window).innerWidth()/6);
-		var growFactor = 1.5; 
+		var growFactor = 1.4; 
 		var moveLeft = -(tileWidth * (growFactor - 1) / 2);
-	    var moveRight = (tileWidth-45) * (growFactor - 1);
+	    var moveRight = (tileWidth-15) * (growFactor - 1);
 	    var currentCat;
 
 	    $('.s3bubble-details-inner-close').on('click',function() {
@@ -117,9 +117,9 @@ jQuery(document).ready(function($) {
 	    });
 
 	    $('.tile_meta_more_info').on('click',function() {
+	    	
 	    	event.preventDefault();
 	    	
-
 	    	var title = $(this).data('title');
 	    	var desc = $(this).data('description');
 	    	var bgimage = $(this).data('bgimage');
@@ -127,8 +127,8 @@ jQuery(document).ready(function($) {
 	    	var href = $(this).attr('href');
 
 	    	currentCat = "." + cat;
-
-	    	console.log("tile_meta_more_info",currentCat);
+	    	$('.tile').css('border','none');
+	    	$(this).parent().parent().parent().css('border','1px solid #fff');
 
 	    	var twidth = $(currentCat).width();
 	    	var theight = twidth/21*8;
