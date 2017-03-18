@@ -61,8 +61,8 @@ jQuery(document).ready(function($) {
 	    	appendArrows: $(this).prev(),
 			prevArrow: '<button class="streamium-carousel-prev fa fa-angle-left" aria-hidden="true"></button>',
 			nextArrow: '<button class="streamium-carousel-next fa fa-angle-right" aria-hidden="true"></button>',
-			slidesToShow: 5,
-			slidesToScroll: 5,
+			slidesToShow: 7,
+			slidesToScroll: 7,
 			//mobileFirst: true,
 			responsive: [
 			    {
@@ -97,7 +97,7 @@ jQuery(document).ready(function($) {
 		var tileWidth = Math.floor($(window).innerWidth()/6);
 		var growFactor = 1.5; 
 		var moveLeft = -(tileWidth * (growFactor - 1) / 2);
-	    var moveRight = (tileWidth-10) * (growFactor - 1);
+	    var moveRight = (tileWidth-45) * (growFactor - 1);
 	    var currentCat;
 
 	    $('.s3bubble-details-inner-close').on('click',function() {
