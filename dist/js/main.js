@@ -61,8 +61,8 @@ jQuery(document).ready(function($) {
 	    	appendArrows: $(this).prev(),
 			prevArrow: '<button class="streamium-carousel-prev fa fa-angle-left" aria-hidden="true"></button>',
 			nextArrow: '<button class="streamium-carousel-next fa fa-angle-right" aria-hidden="true"></button>',
-			slidesToShow: 6,
-			slidesToScroll: 6,
+			slidesToShow: 5,
+			slidesToScroll: 5,
 			//mobileFirst: true,
 			responsive: [
 			    {
