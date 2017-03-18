@@ -41,7 +41,7 @@ endif;
 											<div class="synopis-middle">
 												<div class="synopis-inner">
 													<h2><?php echo (isset($title) ? $title : __( 'No Title', 'streamium' )); ?></h2>
-													<?php echo get_the_content(); ?>
+													<span class="hidden-xs"><?php echo get_the_content(); ?></span>
 												</div>
 											</div>
 										</div>
