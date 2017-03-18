@@ -34,7 +34,7 @@ if (!function_exists('streamium_theme_setup')) {
         add_theme_support( 'automatic-feed-links' );
         add_image_size( 'streamium-video-poster', 600, 338, true ); // (cropped)
         add_image_size( 'streamium-video-category', 292, 164, true );
-        add_image_size( 'streamium-home-slider', 1600, 900, true ); 
+        add_image_size( 'streamium-home-slider', 1600, 900 ); 
         add_image_size( 'streamium-site-logo', 0, 56, true ); 
         add_theme_support( 'title-tag' );
     } 
@@ -318,7 +318,7 @@ class Streamium_Customize {
            <?php self::generate_css('.label.heart', 'color', 'link_textcolor'); ?>
            <?php self::generate_css('.progress-bar .progress', 'background', 'link_textcolor'); ?>
            <?php self::generate_css('.cd-main-header .cd-logo', 'color', 'link_textcolor'); ?>
-           <?php self::generate_css('.carousels .tile_play i, .content-overlay .home-slider-play-icon i, .static-row .tile_play i', 'color', 'link_textcolor'); ?>
+           <?php self::generate_css('.carousels .tile_play i, .content-overlay .home-slider-play-icon i, .static-row .tile_play i, .s3bubble-details-full .home-slider-play-icon i', 'color', 'link_textcolor'); ?>
            <?php self::generate_css('.cd-primary-nav .cd-secondary-nav a:hover', 'color', 'link_textcolor'); ?>
            <?php self::generate_css('.cd-overlay', 'background-color', 'link_textcolor'); ?>
            <?php self::generate_css('.cd-primary-nav>li>a:hover', 'color', 'link_textcolor'); ?>
@@ -467,6 +467,61 @@ function streamium_remove_all_recently_watched(){
       $inspiration = get_post_meta( $postinfo->ID, 'post_inspiration' );
     }
 
+}
+
+/**
+ * Adds a new user bucket
+ *
+ * @return bool
+ * @author  @sameast
+ */
+add_action( 'add_meta_boxes', 's3bubble_video_code_meta_box_add' );
+function s3bubble_video_code_meta_box_add(){
+
+    add_meta_box( 's3bubble-meta-video-id', 'S3Bubble video code', 's3bubble_meta_video_id', 'post', 'side', 'high' );
+
+}
+
+function s3bubble_meta_video_id(){
+
+    // $post is already set, and contains an object: the WordPress post
+    global $post;
+    $values = get_post_custom( $post->ID );
+    $text = isset( $values['s3bubble_video_code_meta_box_text'] ) ? $values['s3bubble_video_code_meta_box_text'] : '';
+    // We'll use this nonce field later on when saving.
+    wp_nonce_field( 's3bubble_video_code_meta_box_nonce', 'meta_box_nonce' );
+    ?>
+    <p>
+        <label for="s3bubble_video_code_meta_box_text">S3Bubble video code</label>
+        <input type="text" name="s3bubble_video_code_meta_box_text" id="s3bubble_video_code_meta_box_text" value="<?php echo $text[0]; ?>" />
+    </p>
+
+    <?php    
+
+}
+
+add_action( 'save_post', 's3bubble_video_code_meta_box_save' );
+function s3bubble_video_code_meta_box_save( $post_id )
+{
+    // Bail if we're doing an auto save
+    if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+     
+    // if our nonce isn't there, or we can't verify it, bail
+    if( !isset( $_POST['meta_box_nonce'] ) || !wp_verify_nonce( $_POST['meta_box_nonce'], 's3bubble_video_code_meta_box_nonce' ) ) return;
+     
+    // if our current user can't edit this post, bail
+    if( !current_user_can( 'edit_post' ) ) return;
+     
+    // now we can actually save the data
+    $allowed = array( 
+        'a' => array( // on allow a tags
+            'href' => array() // and those anchors can only have href attribute
+        )
+    );
+     
+    // Make sure your data is set before trying to save it
+    if( isset( $_POST['s3bubble_video_code_meta_box_text'] ) )
+        update_post_meta( $post_id, 's3bubble_video_code_meta_box_text', wp_kses( $_POST['s3bubble_video_code_meta_box_text'], $allowed ) );
 }
 
 

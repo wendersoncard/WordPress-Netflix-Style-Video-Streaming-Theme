@@ -36,7 +36,7 @@
     position: absolute;
     height: 100%;
     top: 0;
-    z-index: 1;
+    z-index: 2;
     font-size: 20px !important;
     color: #fff;
     background-color: rgba(0,0,0,.7);
@@ -48,7 +48,7 @@
     position: absolute;
     height: 100%;
     top: 0;
-    z-index: 1;
+    z-index: 2;
     font-size: 20px !important;
     color: #fff;
     background-color: rgba(0,0,0,.7);
@@ -149,8 +149,8 @@
 }
 
 .hero-slider .slick-slide img {
-    width: 100%;
-    float: left;
+    height: 100%;
+    float: right;
 }
 
 .carousels .slick-slide:hover {
@@ -159,6 +159,5 @@
 }
 
 .carousels .slick-slide img {
-    width: 100%;
-    float: left;
+    height: 100%;
 }

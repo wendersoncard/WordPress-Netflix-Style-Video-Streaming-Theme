@@ -36,17 +36,17 @@ endif;
 						<article class="content-overlay">
 							<div class="container-fluid rel">
 								<div class="row rel">
-									<div class="col-sm-6 col-xs-6 rel">
+									<div class="col-sm-5 col-xs-5 rel">
 										<div class="synopis-outer">
 											<div class="synopis-middle">
 												<div class="synopis-inner">
 													<h2><?php echo (isset($title) ? $title : __( 'No Title', 'streamium' )); ?></h2>
-													<p><?php echo (isset($excerpt) ? $excerpt : __( 'No Text', 'streamium' )); ?></p>
+													<?php echo get_the_content(); ?>
 												</div>
 											</div>
 										</div>
 									</div>
-									<div class="col-sm-6 col-xs-6 rel">
+									<div class="col-sm-7 col-xs-7 rel">
 										<a class="tile_play home-slider-play-icon" href="<?php the_permalink(); ?>">
 											<i class="fa fa-play fa-3x" aria-hidden="true"></i>
 							        	</a>
@@ -105,7 +105,8 @@ endif;
 									if($loop->have_posts()):
 										while ( $loop->have_posts() ) : $loop->the_post();
 											if ( has_post_thumbnail() ) : // thumbnail check 
-											$image   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-category' ); 
+											$image   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-category' );
+											$fullImage  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-home-slider' );  
 											$trimmed_content = wp_trim_words( get_the_excerpt(), 11 );
 							
 								?>
@@ -122,7 +123,7 @@ endif;
 								        <div class="tile_details">
 								          	<div class="tile_meta">
 								            	<h4><?php the_title(); ?></h4>						            	
-								            	<p><?php echo $trimmed_content; ?></p>
+								            	<a href="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-description="<?php echo htmlentities(get_the_content()); ?>" data-bgimage="<?php echo $fullImage[0]; ?>" data-cat="recent" class="tile_meta_more_info"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
 								          	</div>
 								        </div>
 								    </div>
@@ -133,6 +134,29 @@ endif;
 									wp_reset_query();
 								?>
 							</div><!--/.carousel-->
+						</div><!--/.col-sm-12-->
+					</div><!--/.row-->
+				</div><!--/.container-->
+			</section><!--/.videos-->
+			<section class="s3bubble-details-full recent">
+				<div class="s3bubble-details-full-overlay"></div>
+				<div class="container-fluid s3bubble-details-inner-content">
+					<div class="row">
+						<div class="col-sm-5 col-xs-5 rel">
+							<div class="synopis-outer">
+								<div class="synopis-middle">
+									<div class="synopis-inner">
+										<h2></h2>
+										<span></span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-7 col-xs-7 rel">
+							<a class="tile_play home-slider-play-icon" href="<?php the_permalink(); ?>">
+								<i class="fa fa-play fa-3x" aria-hidden="true"></i>
+				        	</a>
+				        	<a href="#" class="s3bubble-details-inner-close"><i class="fa fa-times" aria-hidden="true"></i></a>
 						</div><!--/.col-sm-12-->
 					</div><!--/.row-->
 				</div><!--/.container-->
@@ -163,7 +187,8 @@ endif;
 								if($loop->have_posts()):
 									while ( $loop->have_posts() ) : $loop->the_post();
 									if ( has_post_thumbnail() ) : // thumbnail check 
-									$image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-category' ); 
+									$image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-category' );
+									$fullImage  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-home-slider' );  
 									$trimmed_content = wp_trim_words( get_the_excerpt(), 11 );
 
 						?>
@@ -180,7 +205,7 @@ endif;
 						        <div class="tile_details">
 						          	<div class="tile_meta">
 						            	<h4><?php the_title(); ?></h4>						            	
-						            	<p><?php echo $trimmed_content; ?></p>
+						            	<a href="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-description="<?php echo htmlentities(get_the_content()); ?>" data-bgimage="<?php echo $fullImage[0]; ?>" data-cat="<?php echo $category->slug; ?>" class="tile_meta_more_info"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
 						          	</div>
 						        </div>
 						    </div>
@@ -196,9 +221,42 @@ endif;
 				</div><!--/.row-->
 			</div><!--/.container-->
 		</section><!--/.videos-->
+		<section class="s3bubble-details-full <?php echo $category->slug; ?>">
+			<div class="s3bubble-details-full-overlay"></div>
+			<div class="container-fluid s3bubble-details-inner-content">
+				<div class="row">
+					<div class="col-sm-5 col-xs-5 rel">
+						<div class="synopis-outer">
+							<div class="synopis-middle">
+								<div class="synopis-inner">
+									<h2></h2>
+									<span></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-7 col-xs-7 rel">
+						<a class="tile_play home-slider-play-icon" href="<?php the_permalink(); ?>">
+							<i class="fa fa-play fa-3x" aria-hidden="true"></i>
+			        	</a>
+			        	<a href="#" class="s3bubble-details-inner-close"><i class="fa fa-times" aria-hidden="true"></i></a>
+					</div><!--/.col-sm-12-->
+				</div><!--/.row-->
+			</div><!--/.container-->
+		</section><!--/.videos-->
+			
 		<?php  	
 			endforeach; 
 		?>
 
+		<section class="videos">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-12 video-header">
+						<h3></h3>
+					</div><!--/.col-sm-12-->
+				</div>
+			</div>
+		</section><!--/.videos-->
 
 <?php get_footer(); ?>
