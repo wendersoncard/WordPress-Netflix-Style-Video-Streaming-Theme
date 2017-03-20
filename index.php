@@ -122,7 +122,7 @@ endif;
 								        <div class="tile_details">
 								          	<div class="tile_meta">
 								            	<h4><?php the_title(); ?></h4>						            	
-								            	<a href="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-description="<?php echo htmlentities(get_the_content()); ?>" data-bgimage="<?php echo $fullImage[0]; ?>" data-cat="recent" class="tile_meta_more_info"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+								            	<a data-link="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-description="<?php echo htmlentities(get_the_content()); ?>" data-bgimage="<?php echo $fullImage[0]; ?>" data-cat="recent" class="tile_meta_more_info"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
 								          	</div>
 								        </div>
 								    </div>
@@ -152,7 +152,7 @@ endif;
 							</div>
 						</div>
 						<div class="col-sm-7 col-xs-7 rel">
-							<a class="tile_play home-slider-play-icon" href="<?php the_permalink(); ?>">
+							<a class="tile_play home-slider-play-icon" href="#">
 								<i class="fa fa-play fa-3x" aria-hidden="true"></i>
 				        	</a>
 				        	<a href="#" class="s3bubble-details-inner-close"><i class="fa fa-times" aria-hidden="true"></i></a>
@@ -203,7 +203,7 @@ endif;
 						        <div class="tile_details">
 						          	<div class="tile_meta">
 						            	<h4><?php the_title(); ?></h4>						            	
-						            	<a href="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-description="<?php echo htmlentities(get_the_content()); ?>" data-bgimage="<?php echo $fullImage[0]; ?>" data-cat="<?php echo $category->slug; ?>" class="tile_meta_more_info"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+						            	<a data-link="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-description="<?php echo htmlentities(get_the_content()); ?>" data-bgimage="<?php echo $fullImage[0]; ?>" data-cat="<?php echo $category->slug; ?>" class="tile_meta_more_info"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
 						          	</div>
 						        </div>
 						    </div>
@@ -234,7 +234,7 @@ endif;
 						</div>
 					</div>
 					<div class="col-sm-7 col-xs-7 rel">
-						<a class="tile_play home-slider-play-icon" href="<?php the_permalink(); ?>">
+						<a class="tile_play home-slider-play-icon" href="#">
 							<i class="fa fa-play fa-3x" aria-hidden="true"></i>
 			        	</a>
 			        	<a href="#" class="s3bubble-details-inner-close"><i class="fa fa-times" aria-hidden="true"></i></a>

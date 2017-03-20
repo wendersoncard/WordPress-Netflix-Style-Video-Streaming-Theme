@@ -133,7 +133,7 @@ jQuery(document).ready(function($) {
 	    	var desc = $(this).data('description');
 	    	var bgimage = $(this).data('bgimage');
 	    	var cat = $(this).data('cat');
-	    	var href = $(this).attr('href');
+	    	var href = $(this).data('link');
 
 	    	currentCat = "." + cat;
 	    	$('.tile').css('border','none');
