@@ -4,9 +4,10 @@
 	
 	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-		<?php echo do_shortcode( '[woocommerce_members_only keys="premium"]<div id="s3bubble-aws" class="video-wrapper"></div>[/woocommerce_members_only]' ); ?>
-    	
-		<?php //the_content(); ?>
+    	<div id="s3bubble-aws" class="video-wrapper">
+		 	<?php //the_content(); ?>
+		</div>
+
 	 <?php endwhile; else : ?>
 
 	 	<p><?php _e( 'Sorry, no posts matched your criteria.', 'streamium' ); ?></p>
