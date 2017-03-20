@@ -114,9 +114,8 @@ endif;
 										<?php if(get_comments_number()) : ?>
 											<a href="#" class="tile_reviews" data-pid="<?php echo $post->ID; ?>"><?php comments_number( '0 reviews', '1 review', '% reviews' ); ?></a>
 										<?php endif; ?>
-								        <div class="tile_media">
-								        	<img class="tile_img" src="<?php echo esc_url(cloudfrontSwitch($image[0])); ?>" alt=""  />
-								        </div>
+								        <div class="tile_media" style="background-image: url(<?php echo esc_url(cloudfrontSwitch($image[0])); ?>);background-size: cover;">
+						       	 		</div>
 								        <a class="tile_play" href="<?php the_permalink(); ?>">
 											<i class="fa fa-play fa-1x" aria-hidden="true"></i>
 							        	</a>
@@ -196,8 +195,7 @@ endif;
 								<?php if(get_comments_number()) : ?>
 									<a href="#" class="tile_reviews" data-pid="<?php echo $post->ID; ?>"><?php comments_number( '0 reviews', '1 review', '% reviews' ); ?></a>
 								<?php endif; ?>
-						        <div class="tile_media">
-						        	<img class="tile_img" src="<?php echo esc_url(cloudfrontSwitch($image[0])); ?>" alt=""  />
+						        <div class="tile_media" style="background-image: url(<?php echo esc_url(cloudfrontSwitch($image[0])); ?>);background-size: cover;">
 						        </div>
 						        <a class="tile_play" href="<?php the_permalink(); ?>">
 									<i class="fa fa-play fa-1x" aria-hidden="true"></i>

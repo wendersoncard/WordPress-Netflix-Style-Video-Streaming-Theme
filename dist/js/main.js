@@ -53,10 +53,11 @@ jQuery(document).ready(function($) {
 	var vh = $(window).innerWidth()/21*9;
 	var wh = $(window).innerWidth();
 	$('.hero-slider .slider-block').css({'height' : vh,'width' : wh});
-
-
+	
 	$('.carousels').each(function(i, obj) {
 
+		var itemWidth = Math.floor($(this).width()/6);
+		$('.tile_media').height(Math.floor(itemWidth/16*9));
 	    $(this).slick({
 	    	appendArrows: $(this).prev(),
 			prevArrow: '<button class="streamium-carousel-prev fa fa-angle-left" aria-hidden="true"></button>',
