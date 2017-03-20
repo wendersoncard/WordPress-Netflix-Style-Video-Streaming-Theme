@@ -65,7 +65,7 @@ jQuery(document).ready(function($) {
 			numberItems = 2;
 		}
 		var itemWidth = Math.floor($(this).width()/numberItems);
-		$('.tile_media').height(Math.floor(itemWidth/16*9));
+		$('.tile_media').height((Math.floor(itemWidth/16*9)-2));
 	    $(this).slick({
 	    	appendArrows: $(this).prev(),
 			prevArrow: '<button class="streamium-carousel-prev fa fa-angle-left" aria-hidden="true"></button>',

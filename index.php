@@ -59,7 +59,7 @@ endif;
 						endwhile; 
 					else: 
 					?>
-					<div style="background:url(<?php echo esc_url(get_template_directory_uri()); ?>/dist/frontend/assets/tech-2-mobile.jpg);background-size: cover;" class="slider-block">
+					<div style="background:url(<?php echo esc_url(get_template_directory_uri()); ?>/dist/frontend/assets/tech-2-mobile.jpg);" class="slider-block">
 						<article class="content-overlay">
 							<h2><?php _e( 'S3Bubble Media Streaming', 'streamium' ); ?></h2>
 							<p><?php _e( 'Please replace this by making a post sticky, when you have do this you new sticky post will be displayed here.', 'streamium' ); ?></p>
@@ -114,7 +114,7 @@ endif;
 										<?php if(get_comments_number()) : ?>
 											<a href="#" class="tile_reviews" data-pid="<?php echo $post->ID; ?>"><?php comments_number( '0 reviews', '1 review', '% reviews' ); ?></a>
 										<?php endif; ?>
-								        <div class="tile_media" style="background-image: url(<?php echo esc_url(cloudfrontSwitch($image[0])); ?>);background-size: cover;">
+								        <div class="tile_media" style="background-image: url(<?php echo esc_url(cloudfrontSwitch($image[0])); ?>);">
 						       	 		</div>
 								        <a class="tile_play" href="<?php the_permalink(); ?>">
 											<i class="fa fa-play fa-1x" aria-hidden="true"></i>
@@ -195,7 +195,7 @@ endif;
 								<?php if(get_comments_number()) : ?>
 									<a href="#" class="tile_reviews" data-pid="<?php echo $post->ID; ?>"><?php comments_number( '0 reviews', '1 review', '% reviews' ); ?></a>
 								<?php endif; ?>
-						        <div class="tile_media" style="background-image: url(<?php echo esc_url(cloudfrontSwitch($image[0])); ?>);background-size: cover;">
+						        <div class="tile_media" style="background-image: url(<?php echo esc_url(cloudfrontSwitch($image[0])); ?>);">
 						        </div>
 						        <a class="tile_play" href="<?php the_permalink(); ?>">
 									<i class="fa fa-play fa-1x" aria-hidden="true"></i>

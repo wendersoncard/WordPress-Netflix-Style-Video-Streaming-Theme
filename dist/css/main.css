@@ -326,9 +326,11 @@ body {
     display: block;
 }
 
-.carousels .tile_img {
-    object-fit: cover;
-    width: 100%;
+.carousels .tile_media {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: black
 }
 
 .carousels .tile_details {
