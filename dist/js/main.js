@@ -56,7 +56,15 @@ jQuery(document).ready(function($) {
 	
 	$('.carousels').each(function(i, obj) {
 
-		var itemWidth = Math.floor($(this).width()/6);
+		var numberItems = 6;
+		if(wh < 1024){
+			numberItems = 5;
+		}else if(wh < 600){
+			numberItems = 3;
+		}else if(wh < 480){
+			numberItems = 2;
+		}
+		var itemWidth = Math.floor($(this).width()/numberItems);
 		$('.tile_media').height(Math.floor(itemWidth/16*9));
 	    $(this).slick({
 	    	appendArrows: $(this).prev(),
