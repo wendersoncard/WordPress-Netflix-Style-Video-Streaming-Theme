@@ -125,7 +125,7 @@ jQuery(document).ready(function($) {
 
 	    });
 
-	    $('.tile_meta_more_info').on('click',function() {
+	    $('.tile_meta_more_info').on('click',function(event) {
 	    	
 	    	event.preventDefault();
 	    	
@@ -173,7 +173,6 @@ jQuery(document).ready(function($) {
 
 		}, function() {
 
-			console.log("ddd",currentCat);
 			//$(currentCat).height(0);
 			$('.tile').css('opacity', '1');
 		    $(this).find('.tile_details').css('opacity', '0');
