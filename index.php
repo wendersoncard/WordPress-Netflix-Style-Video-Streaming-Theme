@@ -192,6 +192,11 @@ endif;
 
 						?>
 							<div class="tile">
+								<?php if($post->premium) : ?>
+									<div class="tile_payment_details">
+										<h2>Available on <?php echo str_replace(array("_"), " ", $post->plans[0]); ?></h2>
+									</div>
+								<?php endif; ?>
 								<?php if(get_comments_number()) : ?>
 									<a href="#" class="tile_reviews" data-pid="<?php echo $post->ID; ?>"><?php comments_number( '0 reviews', '1 review', '% reviews' ); ?></a>
 								<?php endif; ?>

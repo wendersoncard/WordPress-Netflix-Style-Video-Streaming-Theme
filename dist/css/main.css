@@ -333,6 +333,24 @@ body {
     background-color: black
 }
 
+
+.carousels .tile_payment_details {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(255, 53, 53, 0.7);
+  text-align: center;
+}
+
+.carousels .tile_payment_details h2 {
+  font-size: 12px;
+  padding: 5px;
+  margin: 0;
+  color: #fff;
+}
+
 .carousels .tile_details {
   position: absolute;
   bottom: 0;
