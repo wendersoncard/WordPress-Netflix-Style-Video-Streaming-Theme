@@ -208,8 +208,8 @@ jQuery(document).ready(function($) {
 	    	var href = $(this).data('link');
 
 	    	currentCat = "." + cat;
-	    	//$('.tile').css('border','none');
-	    	//$(this).css('border','1px solid #fff');
+	    	$('.tile').css('border','none');
+	    	$(this).css('border','1px solid #ea910b');
 
 	    	var twidth = $(currentCat).width();
 	    	var theight = twidth/21*8;
