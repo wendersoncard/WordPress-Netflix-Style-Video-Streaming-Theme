@@ -206,28 +206,6 @@ class Streamium_Customize {
          ) 
       ) );
 
-      $wp_customize->add_section('streamium_payment_section' , array(
-          'title'     => __('Payment Settings', 'streamium'),
-          'priority'  => 1020
-      ));
-
-      $wp_customize->add_setting('redirect_too_signup', array(
-          'default'    => false
-      ));
-
-      $wp_customize->add_control(
-          new WP_Customize_Control(
-              $wp_customize,
-              'redirect_too_signup',
-              array(
-                  'label'     => __('Redirect to signup', 'streamium'),
-                  'section'   => 'streamium_payment_section',
-                  'settings'  => 'redirect_too_signup',
-                  'type'      => 'checkbox',
-              )
-          )
-      );
-
       // Add site options
       $wp_customize->add_section('streamium_global_options' , array(
           'title'     => __('Global Options', 'streamium'),
@@ -259,7 +237,7 @@ class Streamium_Customize {
           )
       );
 
-      $wp_customize->add_section('streamium_cdn_section' , array(
+      /*$wp_customize->add_section('streamium_cdn_section' , array(
           'title'     => __('AWS CDN Options', 'streamium'),
           'priority'  => 1020
       ));
@@ -290,7 +268,7 @@ class Streamium_Customize {
           'section' => 'streamium_cdn_section',
           'settings' => 'streamium_enable_cloudfront_url',
         )) 
-      );
+      );*/
   
    }
 
@@ -479,7 +457,7 @@ function streamium_remove_all_recently_watched(){
 add_action( 'add_meta_boxes', 's3bubble_video_code_meta_box_add' );
 function s3bubble_video_code_meta_box_add(){
 
-    add_meta_box( 's3bubble-meta-video-id', 'S3Bubble video code', 's3bubble_meta_video_id', 'post', 'side', 'high' );
+    add_meta_box( 's3bubble-meta-video-id', 'S3Bubble Video', 's3bubble_meta_video_id', 'post', 'side', 'high' );
 
 }
 
@@ -493,8 +471,8 @@ function s3bubble_meta_video_id(){
     wp_nonce_field( 's3bubble_video_code_meta_box_nonce', 'meta_box_nonce' );
     ?>
     <p>
-        <label for="s3bubble_video_code_meta_box_text">S3Bubble video code</label>
-        <input type="text" name="s3bubble_video_code_meta_box_text" id="s3bubble_video_code_meta_box_text" value="<?php echo $text[0]; ?>" />
+        <label for="s3bubble_video_code_meta_box_text">Enter full video url</label>
+        <input type="text" name="s3bubble_video_code_meta_box_text" id="s3bubble_video_code_meta_box_text" class="large-text" value="<?php echo $text[0]; ?>" />
     </p>
 
     <?php    
