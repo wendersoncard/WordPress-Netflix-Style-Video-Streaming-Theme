@@ -116,7 +116,7 @@ endif;
 										<?php endif; ?>
 								        <div class="tile_media" style="background-image: url(<?php echo esc_url(cloudfrontSwitch($image[0])); ?>);">
 						       	 		</div>
-								        <a class="tile_play" href="<?php the_permalink(); ?>">
+								        <a class="tile_play hidden-xs" href="<?php the_permalink(); ?>">
 											<i class="fa fa-play fa-1x" aria-hidden="true"></i>
 							        	</a>
 								        <div class="tile_details">
@@ -202,7 +202,7 @@ endif;
 								<?php endif; ?>
 						        <div class="tile_media" style="background-image: url(<?php echo esc_url(cloudfrontSwitch($image[0])); ?>);">
 						        </div>
-						        <a class="tile_play" href="<?php the_permalink(); ?>">
+						        <a class="tile_play hidden-xs" href="<?php the_permalink(); ?>">
 							        <?php if($post->premium) : ?>
 										<i class="fa fa-credit-card fa-1x" aria-hidden="true"></i>
 									<?php else: ?>
