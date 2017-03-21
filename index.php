@@ -191,7 +191,7 @@ endif;
 									$trimmed_content = wp_trim_words( get_the_excerpt(), 11 );
 
 						?>
-							<div class="tile">
+							<div class="tile" data-link="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-description="<?php echo htmlentities(get_the_content()); ?>" data-bgimage="<?php echo $fullImage[0]; ?>" data-cat="<?php echo $category->slug; ?>">
 								<?php if($post->premium) : ?>
 									<div class="tile_payment_details">
 										<h2>Available on <?php echo str_replace(array("_"), " ", $post->plans[0]); ?></h2>

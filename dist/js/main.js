@@ -197,7 +197,7 @@ jQuery(document).ready(function($) {
 
 	}else{
 
-		$('.tile_meta_more_info').on("click",function(event) {
+		$('.tile').on("click",function(event) {
 
 	    	event.preventDefault();
 	    	
@@ -209,7 +209,7 @@ jQuery(document).ready(function($) {
 
 	    	currentCat = "." + cat;
 	    	$('.tile').css('border','none');
-	    	$(this).parent().parent().parent().css('border','1px solid #fff');
+	    	$(this).css('border','1px solid #fff');
 
 	    	var twidth = $(currentCat).width();
 	    	var theight = twidth/21*8;
@@ -221,8 +221,7 @@ jQuery(document).ready(function($) {
 
 	    	var vmiddle = Math.round($('.cd-main-header').height());
 			var voff = Math.round($(currentCat).offset().top);
-	    	$('html, body').animate({scrollTop: (voff-vmiddle)}, 500);
-
+	    	//$('html, body').animate({scrollTop: (voff-vmiddle)}, 500);
 	        $(currentCat).animate({
 			    height: theight
 			}, 250, function() {
