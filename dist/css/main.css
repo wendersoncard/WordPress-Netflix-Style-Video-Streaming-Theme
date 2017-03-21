@@ -340,7 +340,7 @@ body {
   right: 0;
   top: 0;
   bottom: 0;
-  background: rgba(255, 53, 53, 0.7);
+  background: rgba(93, 93, 93, 0.6);
   text-align: center;
 }
 
@@ -386,7 +386,12 @@ body {
 }
 .carousels .tile_play i {
     line-height: inherit;
+}
+.carousels .tile_play i.fa-play {
     margin-left: 5px; 
+} 
+.carousels .tile_play_premium i {
+    line-height: inherit;
 }
 
 .carousels .tile_meta {
