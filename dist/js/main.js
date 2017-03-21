@@ -58,9 +58,9 @@ jQuery(document).ready(function($) {
 
 		if(wh > 1024){
 			numberItems = 6;
-		}else if(wh < 1024){
+		}else if(wh < 1024 && wh > 600){
 			numberItems = 5;
-		}else if(wh < 600){
+		}else if(wh < 600 && wh > 480){
 			numberItems = 3;
 		}else if(wh < 480){
 			numberItems = 2;
