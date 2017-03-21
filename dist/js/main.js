@@ -56,12 +56,15 @@ jQuery(document).ready(function($) {
 	
 	$('.carousels').each(function(i, obj) {
 
-		var numberItems = 6;
-		if(wh < 1024){
+		if(wh > 1024){
+			numberItems = 6;
+		}else if(wh < 1024){
 			numberItems = 5;
 		}else if(wh < 600){
 			numberItems = 3;
 		}else if(wh < 480){
+			numberItems = 2;
+		}else{
 			numberItems = 2;
 		}
 		var itemWidth = Math.floor($(this).width()/numberItems);
