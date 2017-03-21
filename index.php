@@ -192,7 +192,10 @@ endif;
 
 						?>
 							<div class="tile">
-								<?php if($post->premium) : ?>
+								<?php if($post->premium) : 
+
+								print_r($post->plans);
+								?>
 									<div class="tile_payment_details">
 										<h2>Available on <?php echo str_replace(array("_"), " ", $post->plans[0]); ?></h2>
 									</div>
