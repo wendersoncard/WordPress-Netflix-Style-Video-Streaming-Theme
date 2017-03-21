@@ -145,8 +145,8 @@ endif;
 							<div class="synopis-outer">
 								<div class="synopis-middle">
 									<div class="synopis-inner">
-										<h2></h2>
-										<span class="hidden-xs"></span>
+										<h2 class="hidden-xs"></h2>
+										<span></span>
 									</div>
 								</div>
 							</div>
@@ -236,8 +236,8 @@ endif;
 						<div class="synopis-outer">
 							<div class="synopis-middle">
 								<div class="synopis-inner">
-									<h2></h2>
-									<span class="hidden-xs"></span>
+									<h2 class="hidden-xs"></h2>
+									<span></span>
 								</div>
 							</div>
 						</div>
