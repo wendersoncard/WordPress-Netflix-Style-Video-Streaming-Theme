@@ -59,7 +59,6 @@
 }
 
 .woocommerce-Price-amount {
-    color: #d95246;
     font-size: 26px;
 }
 
@@ -89,14 +88,34 @@
     min-width: 98px;
     min-height: 37px;
     width: 100%;
-    background: #dd3333 !important;
     color: #ffffff !important;
     font-size: 16px !important;
     font-weight: 400 !important;
     text-align: center;
 }
 
-/* account page */
+/* thankyou page */
+.s3bubble-checkout-thankyou h2{
+    color: #fff;
+}
+
+.woocommerce-thankyou-order-received {
+    display: inline-block;
+    padding: 12px 1em;
+    min-width: 98px;
+    min-height: 37px;
+    width: 100%;
+    color: #ffffff !important;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    text-align: center;
+}
+
+.woocommerce-thankyou-order-details, .shop_table {
+    background: #f3f3f3;
+    color: #333;
+    padding: 20px;
+}
 
 /* account page */
 .woocommerce-checkout .checkout {
@@ -112,14 +131,6 @@
     background: #fff;
     border: none;
     border-radius: 5px;
-}
-
-.woocommerce-error, .woocommerce-info, .woocommerce-message {
-    border-top: 3px solid #dd3333 !important;
-}
-
-.woocommerce-info:before, .woocommerce-message:before  {
-    color: #dd3333;
 }
 
 /* login signup */
@@ -168,7 +179,6 @@ input:-webkit-autofill {
     min-width: 98px;
     min-height: 37px;
     width: 100%;
-    background: #dd3333 !important;
     color: #ffffff !important;
     font-size: 16px !important;
     font-weight: 400 !important;

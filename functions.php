@@ -316,7 +316,7 @@ class Streamium_Customize {
            <?php self::generate_css('.progress-bar', 'background-color', 'link_textcolor'); ?>
            <?php self::generate_css('.button', 'background', 'link_textcolor'); ?>
            <?php self::generate_css('.label.heart', 'color', 'link_textcolor'); ?>
-           <?php self::generate_css('.progress-bar .progress', 'background', 'link_textcolor'); ?>
+           <?php self::generate_css('.progress-bar .progress', 'background', 'link_textcolor'); ?> 
            <?php self::generate_css('.cd-main-header .cd-logo', 'color', 'link_textcolor'); ?>
            <?php self::generate_css('.carousels .tile_play i, .content-overlay .home-slider-play-icon i, .static-row .tile_play i, .s3bubble-details-full .home-slider-play-icon i', 'color', 'link_textcolor'); ?>
            <?php self::generate_css('.cd-primary-nav .cd-secondary-nav a:hover', 'color', 'link_textcolor'); ?>
@@ -327,6 +327,7 @@ class Streamium_Customize {
            <?php self::generate_css('.has-children > a:hover::before, .has-children > a:hover::after, .go-back a:hover::before, .go-back a:hover::after', 'background', 'link_textcolor'); ?>
            <?php self::generate_css('#submit, #place_order', 'background', 'link_textcolor'); ?>
            <?php self::generate_css('.post-type-archive, .woocommerce-cart, .woocommerce-account, .woocommerce-checkout, .woocommerce-page', 'background-image', 'streamium_plans_bg', 'url(', ')'); ?>
+           <?php self::generate_css('.checkout-button, .woocommerce-thankyou-order-received, .add_to_cart_button', 'background', 'link_textcolor','',' !important'); ?>
 
       </style> 
       <!--/Customizer CSS-->

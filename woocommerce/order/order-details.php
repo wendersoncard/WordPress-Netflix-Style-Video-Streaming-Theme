@@ -56,7 +56,7 @@ $show_customer_details = is_user_logged_in() && $order->get_user_id() === get_cu
 				?>
 				<tr>
 					<th scope="row"><?php echo $total['label']; ?></th>
-					<td>vvv<?php echo $total['value']; ?></td>
+					<td><?php echo $total['value']; ?></td>
 				</tr>
 				<?php
 			}

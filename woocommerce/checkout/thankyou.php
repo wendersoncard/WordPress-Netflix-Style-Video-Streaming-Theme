@@ -22,6 +22,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( $order ) : ?>
 
+<div class="s3bubble-checkout-thankyou">
+
 	<?php if ( $order->has_status( 'failed' ) ) : ?>
 
 		<p class="woocommerce-thankyou-order-failed"><?php _e( 'Unfortunately your order cannot be processed as the originating bank/merchant has declined your transaction. Please attempt your purchase again.', 'woocommerce' ); ?></p>
@@ -69,3 +71,5 @@ if ( $order ) : ?>
 	<p class="woocommerce-thankyou-order-received"><?php echo apply_filters( 'woocommerce_thankyou_order_received_text', __( 'Thank you. Your order has been received.', 'woocommerce' ), null ); ?></p>
 
 <?php endif; ?>
+
+</div>

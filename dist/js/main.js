@@ -12,6 +12,12 @@ jQuery(document).ready(function($) {
 	    }
 	});
 
+	// Remove some elements on load
+	$(".subscriptio_list_product a").contents().unwrap();
+	$(".product-name a").contents().unwrap();
+	$(".subscriptio_frontend_items_list_item a").contents().unwrap();
+	$(".product-thumbnail").remove();
+
 	// Initialise Slider
 	$('.hero-slider').slick({
 		appendArrows: $(this).prev(),
