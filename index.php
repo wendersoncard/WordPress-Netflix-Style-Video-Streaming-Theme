@@ -146,7 +146,7 @@ endif;
 								<div class="synopis-middle">
 									<div class="synopis-inner">
 										<h2></h2>
-										<span></span>
+										<span class="hidden-xs"></span>
 									</div>
 								</div>
 							</div>
@@ -237,7 +237,7 @@ endif;
 							<div class="synopis-middle">
 								<div class="synopis-inner">
 									<h2></h2>
-									<span></span>
+									<span class="hidden-xs"></span>
 								</div>
 							</div>
 						</div>
