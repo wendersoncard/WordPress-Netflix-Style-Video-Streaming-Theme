@@ -209,7 +209,7 @@ jQuery(document).ready(function($) {
 
 	    	currentCat = "." + cat;
 	    	$('.tile').css('border','none');
-	    	$(this).css('border','1px solid #ea910b');
+	    	$(this).css('border-bottom','1px solid #ea910b');
 
 	    	var twidth = $(currentCat).width();
 	    	var theight = twidth/21*8;
