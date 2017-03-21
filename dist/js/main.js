@@ -197,7 +197,7 @@ jQuery(document).ready(function($) {
 
 	}else{
 
-		$('.tile').on("click",function(event) {
+		$('.carousels .tile').on("click",function(event) {
 
 	    	event.preventDefault();
 	    	

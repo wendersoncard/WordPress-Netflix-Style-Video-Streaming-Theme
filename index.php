@@ -110,7 +110,7 @@ endif;
 											$trimmed_content = wp_trim_words( get_the_excerpt(), 11 );
 							
 								?>
-									<div class="tile" data-link="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-description="<?php echo htmlentities(get_the_content()); ?>" data-bgimage="<?php echo $fullImage[0]; ?>" data-cat="<?php echo $category->slug; ?>">
+								<div class="tile" data-link="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-description="<?php echo htmlentities(get_the_content()); ?>" data-bgimage="<?php echo $fullImage[0]; ?>" data-cat="recent">
 										<?php if(get_comments_number()) : ?>
 											<a href="#" class="tile_reviews" data-pid="<?php echo $post->ID; ?>"><?php comments_number( '0 reviews', '1 review', '% reviews' ); ?></a>
 										<?php endif; ?>
