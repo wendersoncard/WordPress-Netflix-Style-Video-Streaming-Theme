@@ -146,7 +146,7 @@ jQuery(document).ready(function($) {
 
 	    	currentCat = "." + cat;
 	    	$('.tile').css('border','none');
-	    	$(this).parent().parent().parent().css('border','1px solid #fff');
+	    	$(this).parent().parent().parent().css('border-bottom','1px solid #ea910b');
 
 	    	var twidth = $(currentCat).width();
 	    	var theight = twidth/21*8;
