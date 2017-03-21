@@ -188,6 +188,22 @@ jQuery(document).ready(function($) {
 		    $(this).find('.tile_play').delay( 800 ).css('opacity', '0');
 
 		});
+
+		$('.tile').click(function() {
+
+	    	$(this).parent().parent().find('.tile').css('opacity', '0.3');
+	    	$(this).css('opacity', '1');
+		    $(this).find('.tile_details').css('opacity', '1');
+		    $(this).find('.tile_play').delay( 800 ).css('opacity', '1');
+
+		}, function() {
+
+			//$(currentCat).height(0);
+			$('.tile').css('opacity', '1');
+		    $(this).find('.tile_details').css('opacity', '0');
+		    $(this).find('.tile_play').delay( 800 ).css('opacity', '0');
+
+		});
 		
 		$('head').append('<style type="text/css">' +
 			'.carousels:hover {transform: translate3d(0px, 0, 0);}' +
