@@ -110,32 +110,30 @@ jQuery(document).ready(function($) {
  
 	});
 
-	if(wh > 481){
+	var tileWidth = Math.floor($(window).innerWidth()/6);
+	var growFactor = 1.4; 
+	var moveLeft = -(tileWidth * (growFactor - 1) / 2);
+    var moveRight = (tileWidth-15) * (growFactor - 1);
+    var currentCat;
 
-		var tileWidth = Math.floor($(window).innerWidth()/6);
-		var growFactor = 1.4; 
-		var moveLeft = -(tileWidth * (growFactor - 1) / 2);
-	    var moveRight = (tileWidth-15) * (growFactor - 1);
-	    var currentCat;
+    $('.s3bubble-details-inner-close').on('click',function(event) {
 
-	    $('.s3bubble-details-inner-close').on('click',function() {
-
-	    	event.preventDefault();
-	    	var div = $(this).parent().parent().parent();
-	    	div.animate({
-			    opacity: 0,
+    	event.preventDefault();
+    	var div = $(this).parent().parent().parent();
+    	div.animate({
+		    opacity: 0,
+		}, 250, function() {
+			div.parent().animate({
+			    height: 0
 			}, 250, function() {
-				div.parent().animate({
-				    height: 0
-				}, 250, function() {
 
-				});
 			});
+		});
 
-	    });
+    });
 
-	    $('.tile_meta_more_info').on('click',function(event) {
-	    	
+    $('.tile_meta_more_info').on("click",function(event) {
+
 	    	event.preventDefault();
 	    	
 	    	var title = $(this).data('title');
@@ -171,7 +169,9 @@ jQuery(document).ready(function($) {
 
 			});
 
-	    });
+		});
+
+	if(wh > 481){
 
 	    $('.tile').hover(function() {
 
@@ -189,22 +189,6 @@ jQuery(document).ready(function($) {
 
 		});
 
-		$('.tile').click(function() {
-
-	    	$(this).parent().parent().find('.tile').css('opacity', '0.3');
-	    	$(this).css('opacity', '1');
-		    $(this).find('.tile_details').css('opacity', '1');
-		    $(this).find('.tile_play').delay( 800 ).css('opacity', '1');
-
-		}, function() {
-
-			//$(currentCat).height(0);
-			$('.tile').css('opacity', '1');
-		    $(this).find('.tile_details').css('opacity', '0');
-		    $(this).find('.tile_play').delay( 800 ).css('opacity', '0');
-
-		});
-		
 		$('head').append('<style type="text/css">' +
 			'.carousels:hover {transform: translate3d(0px, 0, 0);}' +
 			'.carousels:hover .tile:hover {transform: scale(' + growFactor + ');opacity: 1;}' +
@@ -213,6 +197,7 @@ jQuery(document).ready(function($) {
 
 	}else{
 
+		// Run on mobile
 		$('.tile_details').css('opacity', '1');
 
 	}	
