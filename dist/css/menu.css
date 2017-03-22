@@ -64,7 +64,7 @@ Main components
     position: fixed;
   }
   .cd-main-header {
-    height: 80px;
+    height: 60px;
   }
   .cd-main-header::after {
     clear: both;
@@ -94,9 +94,9 @@ Main components
 }
 @media only screen and (min-width: 1170px) {
   .cd-logo { 
-    font-size: 40px;
-    line-height: 80px;
-    margin-left: 30px;
+    font-size: 30px;
+    line-height: 60px;
+    margin-left: 45px;
   }
   .cd-logo img {
     height: 50px;
@@ -124,7 +124,7 @@ Main components
 }
 @media only screen and (min-width: 1170px) {
   .cd-header-buttons {
-    top: 18px;
+    top: 8px;
     right: 30px;
   }
 }
@@ -402,8 +402,8 @@ Main components
 }
 .cd-primary-nav .cd-nav-gallery .cd-nav-item, .cd-primary-nav .cd-nav-icons .cd-nav-item {
   /* items with picture (or icon) and title */
-  height: 80px;
-  line-height: 80px;
+  height: 60px;
+  line-height: 60px;
 }
 .cd-primary-nav .cd-nav-gallery .cd-nav-item h3, .cd-primary-nav .cd-nav-icons .cd-nav-item h3 {
   overflow: hidden;
@@ -542,8 +542,8 @@ Main components
     /* main navigation buttons style */
     position: relative;
     display: inline-block;
-    height: 80px;
-    line-height: 80px;
+    height: 60px;
+    line-height: 60px;
     padding: 0 10px;
     color: #2e3233;
     overflow: visible;
@@ -559,10 +559,10 @@ Main components
   .cd-primary-nav .cd-secondary-nav, .cd-primary-nav .cd-nav-gallery, .cd-primary-nav .cd-nav-icons {
     /* dropdown menu style */
     position: absolute;
-    top: 80px;
+    top: 60px;
     width: 100vw;
     background: #ffffff;
-    padding: 48px 64px 130px;
+    padding: 30px 45px 90px;
     box-shadow: inset 0 1px 0 #e2e3df, 0 3px 6px rgba(0, 0, 0, 0.05);
     -webkit-transform: translateX(0);
     -moz-transform: translateX(0);
@@ -591,7 +591,7 @@ Main components
     position: absolute;
     left: 0;
     bottom: 0;
-    height: 80px;
+    height: 60px;
     width: 100%;
     overflow: hidden;
     /* reset some inherited style */
@@ -604,10 +604,10 @@ Main components
     height: 100%;
     top: 0;
     left: 0;
-    font-size: 2.2rem;
+    font-size: 18px;
     font-weight: bold;
     text-align: center;
-    line-height: 80px;
+    line-height: 60px;
     border-top: 1px solid #e2e3df;
     /* reset some inherited style */
     border-bottom: none;
@@ -649,7 +649,7 @@ Main components
     padding: 0 18% 0 0;
     color: #010101;
     border-bottom: none;
-    font-size: 1.4rem;
+    font-size: 14px;
   }
   .cd-primary-nav .cd-secondary-nav ul {
     /* Force Hardware Acceleration in WebKit */
@@ -730,7 +730,7 @@ Main components
   }
   .cd-primary-nav .cd-nav-icons .cd-nav-item {
     border-bottom: none;
-    height: 80px;
+    height: 60px;
     line-height: 1.2;
     padding: 24px 0 0 85px;
     position: relative;
@@ -927,12 +927,12 @@ Main components
 }
 @media only screen and (min-width: 1170px) {
   .cd-search {
-    height: 120px;
-    top: 80px;
+    height: 80px;
+    top: 60px;
   }
   .cd-search input {
-    padding: 0 2em;
-    font-size: 3.2rem;
+    padding: 0 45px;
+    font-size: 2.2rem;
     font-weight: 300;
   }
 }

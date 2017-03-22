@@ -28,13 +28,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <?php if ( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' ) : ?>
 
-<div class="u-columns col2-set" id="customer_login">
+<div class="row">
 
-	<div class="u-column1 col-1 customer_login-box">
+	<div class="col-md-2"></div>
+	<div class="col-md-8" id="customer_login">
 
+		    <h2 class="title text-center">Register / Login</h2>  
+                            <p class="intro text-center">It only takes 3 minutes!</p> 
+
+		<div class="row">
+
+			<div class="col-xs-12 col-md-6">
 <?php endif; ?>
-
-		<h3><?php _e( 'Login', 'woocommerce' ); ?></h3>
 
 		<form method="post" class="login">
 
@@ -66,13 +71,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		</form>
 
+		</div>
+
+		<div class="col-xs-12 col-md-6">
+
 <?php if ( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' ) : ?>
-
-	</div>
-
-	<div class="u-column2 col-2 customer_login-box">
-
-		<h3><?php _e( 'Register', 'woocommerce' ); ?></h3>
 
 		<form method="post" class="register">
 
@@ -115,8 +118,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php do_action( 'woocommerce_register_form_end' ); ?>
 
 		</form>
-
+		</div>
 	</div>
+	</div>
+
+	<div class="col-md-2"></div>
 
 </div>
 <?php endif; ?>

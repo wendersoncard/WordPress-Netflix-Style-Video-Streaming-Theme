@@ -1,29 +1,148 @@
 /* globals */
-.post-type-archive, .woocommerce-cart, .woocommerce-account, .woocommerce-checkout, .woocommerce-page {
+.woocommerce-page {
     color: #333;
-    background: url(../img/daredevil.jpg);
+    background: url(../img/netflix.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    background-color: #141414;
 }
 
-.woocommerce-MyAccount-content, .woocommerce-ResetPassword, .woocommerce-MyAccount-navigation {
-    background: #f3f3f3;
-    padding: 20px;
-    border: 1px solid #d5d5d5;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
-    -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
-    margin-bottom: 30px;
+.woocommerce-page.logged-in, .woocommerce-cart, .woocommerce-checkout {
+    color: #333;
+    background: none;
 }
 
-/* payment */
-.s3bubble-woocommerce {
-    margin-top: 80px; 
+.woocommerce-cart, .woocommerce-checkout {
+    margin-bottom: 80px;
+}
+
+#customer_login {
+    background: #fff;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    padding: 40px;
+}
+
+#customer_login  .title {
+  font-weight: 300;
+  margin-bottom: 60px;
+  margin-top: 0;
+}
+#customer_login  .title {
+  margin-bottom: 15px;
+}
+
+/* remove woo css */
+.woocommerce form.checkout_coupon, .woocommerce form.login, .woocommerce form.register {
+    border: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    border-radius: 0;
+}
+
+.woocommerce-password-strength {
+    text-align: center;
+    font-weight: 600;
+    padding: 3px .5em;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.woocommerce form .form-row label, .woocommerce-page form .form-row label, .woocommerce-password-hint {
+    display: block;
+    color: #999;
+    font-size: 13px;
+    margin: 0px;
+}
+
+.woocommerce-Input {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.woocommerce-Input--checkbox {
+    box-shadow: none !important;
+    float: left;
+    width: 18px;
+    margin-right: 5px;
+}
+
+.woocommerce form .form-row label.inline {
+    display: inline;
+    line-height: 34px;
+    width: 100%;
+    float: left;
+    margin-top: 10px;
+}
+
+.woocommerce-LostPassword {
+    font-size: 14px;
+    color: #999;
+    margin-top: 30px;
+}
+
+.woocommerce form .form-row.woocommerce-validated .select2-container, .woocommerce form .form-row.woocommerce-validated input.input-text, .woocommerce form .form-row.woocommerce-validated select {
+    border-color: #69bf29;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#add_payment_method #payment div.payment_box input.input-text, #add_payment_method #payment div.payment_box textarea, .woocommerce-cart #payment div.payment_box input.input-text, .woocommerce-cart #payment div.payment_box textarea, .woocommerce-checkout #payment div.payment_box input.input-text, .woocommerce-checkout #payment div.payment_box textarea {
+    border-color: #bbb3b9 #c7c1c6 #c7c1c6;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.woocommerce-thankyou-order-received {
+    text-align: center;
+    padding: 10px;
+    color: #fff;
+    font-size: 14px;
+}
+
+/* ======= Reset Password Page ======= */
+.resetpass-section .form-box .title {
+  margin-bottom: 30px;
+}
+.resetpass-section .intro {
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+.s3bubble-woocommerce-inner-wrap {
+
+}
+
+.s3bubble-woocommerce-inner-wrap h2 {
+    color: #14171a;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.s3bubble-woocommerce-inner-wrap p {
+    font-size: 14px;
+    line-height: 18px;
 }
 
 .streamium-plans {
@@ -47,6 +166,11 @@
     text-align: center;
 }
 
+input {
+    line-height: normal;
+    line-height: 18px;
+    padding: 10px;
+}
 .streamium-plans .price {
     padding: 15px !important;
     text-align: center;
@@ -95,124 +219,10 @@
     text-align: center;
 }
 
-/* thankyou page */
-.s3bubble-checkout-thankyou h2{
-    color: #fff;
-}
-
-.woocommerce-thankyou-order-received {
-    display: inline-block;
-    padding: 12px 1em;
-    min-width: 98px;
-    min-height: 37px;
-    width: 100%;
-    color: #ffffff !important;
-    font-size: 16px !important;
-    font-weight: 400 !important;
-    text-align: center;
-}
-
-.woocommerce-thankyou-order-details, .shop_table {
-    background: #f3f3f3;
-    color: #333;
-    padding: 20px;
-}
-
-/* account page */
-.woocommerce-checkout .checkout {
-    background: #f3f3f3;
-    color: #333;
-    padding: 20px;
-}
-
-.woocommerce-checkout .input-text, .woocommerce-checkout select {
-    line-height: normal;
-    line-height: 18px;
-    padding: 10px;
-    background: #fff;
-    border: none;
-    border-radius: 5px;
-}
-
-/* login signup */
-input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0px 1000px white inset;
-}
-.woocommerce form.checkout_coupon, .woocommerce form.login, .woocommerce form.register {
-    border: none !important;
-    border-top: 1px solid #e5e5e5 !important;
-    border-radius: 0px;
-}
-
-.woocommerce-Input--text {
-    line-height: normal;
-    line-height: 18px;
-    padding: 10px;
-    background: #fff;
-    border: none;
-    border-radius: 5px;
-}
-
-.customer_login-box {
-	background-color: #f3f3f3;
-    border: 1px solid #d5d5d5;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
-    -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
-    margin-bottom: 30px;
-}
-
-.customer_login-box h3 {
-	font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
-    padding: 0px 20px;
-}
-
-.woocommerce form.checkout_coupon, .woocommerce form.login, .woocommerce form.register {
-	margin: 0px;
-}
-
-.woocommerce-Button {
-	display: inline-block;
-    padding: 12px 1em;
-    min-width: 98px;
-    min-height: 37px;
-    width: 100%;
-    color: #ffffff !important;
-    font-size: 16px !important;
-    font-weight: 400 !important;
-}
-
-/* checkout */
-.woocommerce form.checkout_coupon, .woocommerce form.login, .woocommerce form.register {
-    background-color: #f3f3f3;
-}
-.shop_table_responsive, .cart_totals {
-    background-color: #f3f3f3;
-    border: 1px solid #d5d5d5;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
-    -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
-}
-.cart_totals {
-    padding: 10px;
-}
-
-input {
-    line-height: normal;
-    line-height: 18px;
-    padding: 10px;
-    background: #fff;
-    border: none;
-    border-radius: 5px;
-}
-
-/* hide unnessasary stuff */
+/* Remove some elements */
 .woocommerce-MyAccount-navigation-link--downloads {
+    display: none;
+}
+.order-actions.subscriptio_list_actions {
     display: none;
 }

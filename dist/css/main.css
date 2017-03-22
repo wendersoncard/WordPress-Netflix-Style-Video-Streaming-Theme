@@ -1,11 +1,21 @@
 html, body {
     height: 100%;
 }
+
 body {
     background: #141414;
     font-family: 'Helvetica',Helvetica,Arial,sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-size: 12px;
+}
+
+.page, .woocommerce-page {
+    background: #f3f3f3;
+}
+.page .cd-main-header, .woocommerce-page .cd-main-header, .archive .cd-main-header {
+    background: rgba(0, 0, 0, 0.8);
+    margin-bottom: 60px;
 }
 
 *:focus {
@@ -19,6 +29,7 @@ body {
 }
 .cd-main-content {
     overflow: hidden;
+    margin-bottom: 80px;
 }
 .container-fluid {
     margin: 0 30px;
@@ -26,7 +37,6 @@ body {
 .hero {
     position: relative;
     overflow: hidden;
-    margin-bottom: -45px;
 }
 .content-overlay {
     width: 100%;
@@ -122,10 +132,6 @@ body {
 
 .videos {
     margin: 0px;
-}
-
-.video-header {
-    margin-left: 5px;
 }
 
 .video-header h3 {
@@ -434,6 +440,18 @@ body {
 }
 
 /* moving netflix static tiles */
+.static-row {
+  margin-left: 0px;
+  margin-right: 0px;
+  z-index: 1;
+  position: relative;
+}
+
+.static-row .col-sm-2 {
+  padding-right: 1px;
+  padding-left: 1px;
+}
+
 .static-row .tile {
   position: relative;
   display: inline-block;
@@ -441,7 +459,6 @@ body {
   cursor: pointer;
   transition: 450ms all;
   transform-origin: center left;
-  margin-bottom: 5px;
 }
 
 .static-row .tile_reviews {
@@ -488,7 +505,6 @@ body {
     vertical-align: middle;
     display: inline-block;
     color: #fff;
-    opacity: 0;
     z-index: 999;
 }
 .static-row .tile_play i {
@@ -647,8 +663,8 @@ body {
 }
 
 .s3bubble-details-full .s3bubble-details-inner-close {
-      position: absolute;
-    right: 10px;
+    position: absolute;
+    right: 15px;
     top: 10px;
     font-size: 2vw;
     color: #fff;
@@ -657,7 +673,11 @@ body {
 .footer {
     background: #000;
     height: 40px;
+    width: 100%;
     line-height: 40px;
+    position: fixed;
+    bottom: 0;
+    z-index: 999;
 }
 
 .copyright {

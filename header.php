@@ -29,7 +29,7 @@
 
 </head>
 <body <?php body_class(); ?>>
-	<div class="streamium-loading">Loading&#8230;</div>
+	<!--<div class="streamium-loading">Loading&#8230;</div>-->
 	<header class="cd-main-header">
 
 		<?php if ( get_theme_mod( 'streamium_logo' ) ) : ?>
@@ -49,9 +49,3 @@
 		<?php get_search_form(); ?>
 		
 	</header>
-
-	<div class="cd-testimonials-all">
-		<div class="cd-testimonials-all-wrapper">
-		</div>	<!-- cd-testimonials-all-wrapper -->
-		<a href="#0" class="close-btn">Close</a>
-	</div> <!-- cd-testimonials-all -->

@@ -41,7 +41,7 @@ endif;
 											<div class="synopis-middle">
 												<div class="synopis-inner">
 													<h2><?php echo (isset($title) ? $title : __( 'No Title', 'streamium' )); ?></h2>
-													<span class="hidden-xs"><?php echo get_the_content(); ?></span>
+													<p class="hidden-xs"><?php echo get_the_content(); ?></p>
 												</div>
 											</div>
 										</div>
@@ -82,10 +82,7 @@ endif;
 						'key' => 'recently_watched_user_id',
 						'value' => get_current_user_id()
 					)
-				),
-			    /*'meta_key' => 'recently_watched',
-			    'orderby' => 'meta_value',
-			    'order' => 'DESC'*/
+				)
 			);
 			$loop = new WP_Query( $args ); 
 			if(is_user_logged_in() && $loop->post_count > 0) : 
@@ -145,14 +142,14 @@ endif;
 							<div class="synopis-outer">
 								<div class="synopis-middle">
 									<div class="synopis-inner">
-										<h2 class="hidden-xs"></h2>
-										<span></span>
+										<h2 class="synopis hidden-xs"></h2>
+										<p class="synopis"></p>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="col-sm-7 col-xs-7 rel">
-							<a class="tile_play home-slider-play-icon" href="#">
+							<a class="tile_play home-slider-play-icon synopis" href="#">
 								<i class="fa fa-play fa-3x" aria-hidden="true"></i>
 				        	</a>
 				        	<a href="#" class="s3bubble-details-inner-close"><i class="fa fa-times" aria-hidden="true"></i></a>
@@ -236,14 +233,14 @@ endif;
 						<div class="synopis-outer">
 							<div class="synopis-middle">
 								<div class="synopis-inner">
-									<h2 class="hidden-xs"></h2>
-									<span></span>
+									<h2 class="synopis hidden-xs"></h2>
+									<p class="synopis"></p>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="col-sm-7 col-xs-7 rel">
-						<a class="tile_play home-slider-play-icon" href="#">
+						<a class="tile_play home-slider-play-icon synopis" href="#">
 							<i class="fa fa-play fa-3x" aria-hidden="true"></i>
 			        	</a>
 			        	<a href="#" class="s3bubble-details-inner-close"><i class="fa fa-times" aria-hidden="true"></i></a>

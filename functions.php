@@ -22,6 +22,9 @@ function woocommerce_support() {
 remove_action( 'woocommerce_before_shop_loop_item', 'woocommerce_template_loop_product_link_open', 10 );
 remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close', 5 );
 
+function isMobile() {
+    return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
+}
 
 /*-----------------------------------------------------------------------------------*/
 /*	Theme set up
@@ -307,6 +310,7 @@ class Streamium_Customize {
            <?php self::generate_css('.post-type-archive, .woocommerce-cart, .woocommerce-account, .woocommerce-checkout, .woocommerce-page', 'background-image', 'streamium_plans_bg', 'url(', ')'); ?>
            <?php self::generate_css('.checkout-button, .woocommerce-thankyou-order-received, .add_to_cart_button', 'background', 'link_textcolor','',' !important'); ?>
            <?php self::generate_css('.carousels .tile', 'border-color', 'link_textcolor','',' !important'); ?>
+           <?php self::generate_css('.woocommerce-message', 'border-top-color', 'link_textcolor','',' !important'); ?>
 
            
 
@@ -540,5 +544,3 @@ add_action( 'wp_ajax_nopriv_streamium_user_reviews', 'streamium_user_reviews_cal
 
 
 add_filter('show_admin_bar', '__return_false');
-
-
