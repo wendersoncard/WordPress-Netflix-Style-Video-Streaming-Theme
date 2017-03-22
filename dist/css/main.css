@@ -448,8 +448,8 @@ body {
 }
 
 .static-row .col-sm-2 {
-  padding-right: 1px;
-  padding-left: 1px;
+  padding-right: 2px;
+  padding-left: 2px;
 }
 
 .static-row .tile {
@@ -506,6 +506,7 @@ body {
     display: inline-block;
     color: #fff;
     z-index: 999;
+    opacity: 0;
 }
 .static-row .tile_play i {
     line-height: inherit;
