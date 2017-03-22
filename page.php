@@ -2,7 +2,7 @@
 <main class="cd-main-content">
 		<section class="videos">
 			<div class="container-fluid">
-				<div class="row">
+				<div class="row well">
 					<!-- Start the Loop. -->
 					 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 

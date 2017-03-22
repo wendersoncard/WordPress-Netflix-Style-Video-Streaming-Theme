@@ -498,31 +498,41 @@ body {
 
 .static-row .tile_meta {
   width: 100%;
-  position: absolute;
-  bottom: 0;
-  padding: 10px;
-  color: #ffffff;
+    position: absolute;
+    bottom: 0;
+    padding: 5px;
+    color: #fff;
 }
 
 .static-row .tile_meta h4 {
-    margin: 0 0 1px 0;
-    color: #ffffff;
-    font-size: 1.5vw;
-    font-weight: bold;
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    margin: 0;
+    color: #fff;
+    font-size: 10px;
+    line-height: 1.2;
     white-space: nowrap;
     text-overflow: ellipsis;
-    width: 90%;
+    width: 100%;
     overflow: hidden;
+    text-align: center;
+    font-weight: bold;
 }
 
 .static-row .tile_meta p {
     margin: 0;
+    color: #999;
+    font-size: 0.6vw;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.static-row .tile_meta a.tile_meta_more_info {
+    margin: 0;
     color: #f2f2f2;
     font-size: 1vw;
-    line-height: 1.2;
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
-    letter-spacing: 0.2px;
+    width: 100%;
+    text-align: center;
+    display: block;
+    cursor: pointer;
 }
 
 /* S3Bubble details view */

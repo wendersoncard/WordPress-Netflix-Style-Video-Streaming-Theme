@@ -306,6 +306,9 @@ class Streamium_Customize {
            <?php self::generate_css('#submit, #place_order', 'background', 'link_textcolor'); ?>
            <?php self::generate_css('.post-type-archive, .woocommerce-cart, .woocommerce-account, .woocommerce-checkout, .woocommerce-page', 'background-image', 'streamium_plans_bg', 'url(', ')'); ?>
            <?php self::generate_css('.checkout-button, .woocommerce-thankyou-order-received, .add_to_cart_button', 'background', 'link_textcolor','',' !important'); ?>
+           <?php self::generate_css('.carousels .tile', 'border-color', 'link_textcolor','',' !important'); ?>
+
+           
 
       </style> 
       <!--/Customizer CSS-->
@@ -491,16 +494,9 @@ function s3bubble_video_code_meta_box_save( $post_id )
     // if our current user can't edit this post, bail
     if( !current_user_can( 'edit_post' ) ) return;
      
-    // now we can actually save the data
-    $allowed = array( 
-        'a' => array( // on allow a tags
-            'href' => array() // and those anchors can only have href attribute
-        )
-    );
-     
     // Make sure your data is set before trying to save it
     if( isset( $_POST['s3bubble_video_code_meta_box_text'] ) )
-        update_post_meta( $post_id, 's3bubble_video_code_meta_box_text', wp_kses( $_POST['s3bubble_video_code_meta_box_text'], $allowed ) );
+        update_post_meta( $post_id, 's3bubble_video_code_meta_box_text', $_POST['s3bubble_video_code_meta_box_text'] );
 }
 
 
