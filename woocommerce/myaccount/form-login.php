@@ -31,14 +31,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="row">
 
 	<div class="col-md-2"></div>
-	<div class="col-md-8" id="customer_login">
+		<div class="col-md-8" id="customer_login">
 
 		    <h2 class="title text-center">Register / Login</h2>  
-                            <p class="intro text-center">It only takes 3 minutes!</p> 
+            <p class="intro text-center">It only takes 3 minutes!</p> 
 
-		<div class="row">
-
-			<div class="col-xs-12 col-md-6">
+				<div class="row">
+			
+					<div class="col-xs-12 col-md-6">
 <?php endif; ?>
 
 		<form method="post" class="login">

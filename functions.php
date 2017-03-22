@@ -309,7 +309,7 @@ class Streamium_Customize {
            <?php self::generate_css('#submit, #place_order', 'background', 'link_textcolor'); ?>
            <?php self::generate_css('.post-type-archive, .woocommerce-cart, .woocommerce-account, .woocommerce-checkout, .woocommerce-page', 'background-image', 'streamium_plans_bg', 'url(', ')'); ?>
            <?php self::generate_css('.checkout-button, .woocommerce-thankyou-order-received, .add_to_cart_button', 'background', 'link_textcolor','',' !important'); ?>
-           <?php self::generate_css('.carousels .tile', 'border-color', 'link_textcolor','',' !important'); ?>
+           <?php self::generate_css('.tile', 'border-color', 'link_textcolor','',' !important'); ?>
            <?php self::generate_css('.woocommerce-message', 'border-top-color', 'link_textcolor','',' !important'); ?>
 
            
