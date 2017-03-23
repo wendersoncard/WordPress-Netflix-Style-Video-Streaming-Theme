@@ -13,7 +13,7 @@
 				</div><!--/.row-->
 			</div><!--/.container-->
 			<div class="container-fluid">
-				<div class="row static-row">
+				<div class="row static-row static-row-first">
 					<?php
 						$cat_count = 0; 
 						$count = 0;
@@ -83,5 +83,5 @@
 		</section><!--/.videos-->
 
 		<div class="main-spacer"></div>
-		
+
 <?php get_footer(); ?>

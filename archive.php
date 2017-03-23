@@ -13,7 +13,7 @@
 				</div><!--/.row-->
 			</div><!--/.container-->
 			<div class="container-fluid">
-				<div class="row static-row">
+				<div class="row static-row static-row-first">
 					<?php
 						$cat_count = 0; 
 						$count = 0;
