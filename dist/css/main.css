@@ -13,7 +13,7 @@ body {
 .page, .woocommerce-page {
     background: #f3f3f3;
 }
-.page .cd-main-header, .woocommerce-page .cd-main-header, .archive .cd-main-header {
+.page .cd-main-header, .woocommerce-page .cd-main-header, .archive .cd-main-header, .search .cd-main-header {
     background: rgba(0, 0, 0, 0.8);
     margin-bottom: 60px;
 }
@@ -445,6 +445,7 @@ body {
   margin-right: 0px;
   z-index: 1;
   position: relative;
+  margin-bottom: 25px;
 }
 
 .static-row .col-sm-2 {
