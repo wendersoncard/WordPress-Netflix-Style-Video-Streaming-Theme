@@ -54,8 +54,11 @@ p {
 }
 
 .cd-main-content-page {
-    max-width: 1170px;
-    margin: auto;
+  
+}
+
+.container-fluid {
+    margin: 0 30px;
 }
 
 .hero {
