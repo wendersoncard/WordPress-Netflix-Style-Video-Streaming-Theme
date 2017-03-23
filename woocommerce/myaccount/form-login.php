@@ -30,8 +30,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div class="row">
 
-	<div class="col-md-2"></div>
-		<div class="col-md-8" id="customer_login">
+	<div class="col-md-3"></div>
+		<div class="col-md-6" id="customer_login">
 
 		    <h2 class="title text-center">Register / Login</h2>  
             <p class="intro text-center">It only takes 3 minutes!</p> 
@@ -122,7 +122,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</div>
 	</div>
 
-	<div class="col-md-2"></div>
+	<div class="col-md-3"></div>
 
 </div>
 <?php endif; ?>

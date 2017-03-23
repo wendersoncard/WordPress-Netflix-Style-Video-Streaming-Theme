@@ -234,6 +234,6 @@ jQuery(document).ready(function($) {
 
 	setTimeout(function(){
 		$(".streamium-loading").fadeOut();
-	},2000);
+	},1000);
 
 });

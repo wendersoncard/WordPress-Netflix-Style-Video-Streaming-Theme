@@ -189,7 +189,7 @@ body {
 /* Absolute Center Spinner */
 .streamium-loading {
   position: fixed;
-  z-index: 999;
+  z-index: 99999;
   height: 2em;
   width: 2em;
   overflow: show;
@@ -555,7 +555,7 @@ body {
 
 /* S3Bubble details view */
 .s3bubble-details-full {
-      position: relative;
+    position: relative;
     background: right #000;
     background-size: contain;
     height: 0;
