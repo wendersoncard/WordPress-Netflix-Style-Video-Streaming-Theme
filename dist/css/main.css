@@ -31,13 +31,20 @@ body {
     overflow: hidden;
     margin-bottom: 80px;
 }
+
+.cd-main-content-page {
+  margin-bottom: 60px;
+}
+
 .container-fluid {
     margin: 0 30px;
 }
+
 .hero {
     position: relative;
     overflow: hidden;
 }
+
 .content-overlay {
     width: 100%;
     height: 101%;

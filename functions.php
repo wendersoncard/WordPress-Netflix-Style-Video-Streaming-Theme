@@ -11,9 +11,6 @@
 
 if ( ! isset( $content_width ) ) $content_width = 900;
 
-// Remove paragraph tags from around the content
-remove_filter('the_content', 'wpautop');
-
 // woocommerce fixes
 add_action( 'after_setup_theme', 'woocommerce_support' );
 function woocommerce_support() {

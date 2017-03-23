@@ -22,7 +22,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 ?>
 
-<?php wc_print_notices(); ?>
+<div class="row">
+
+	<div class="col-md-3"></div>
+	<div class="col-md-6">
+		<?php wc_print_notices(); ?>
+	</div>
+	<div class="col-md-3"></div>
+
+</div>
 
 <?php do_action( 'woocommerce_before_customer_login_form' ); ?>
 
