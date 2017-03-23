@@ -159,26 +159,19 @@ input:-webkit-autofill {
 }
 
 .s3bubble-woocommerce-inner-wrap h2 {
-    color: #14171a;
     font-size: 14px;
-    font-weight: bold;
 }
 
 .s3bubble-woocommerce-inner-wrap p {
-    font-size: 14px;
-    line-height: 18px;
+  
 }
 
 .streamium-plans {
-    background: #f3f3f3;
-    padding: 20px;
+    background: #ffffff;
     border: 1px solid #d5d5d5;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
-    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
-    -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.08);
     margin-bottom: 30px;
 }
 
@@ -212,7 +205,7 @@ input {
 }
 
 .streamium-plans ul {
-    float: left;
+   margin: 0px;
 }
 
 .streamium-plans ul li {
@@ -241,6 +234,8 @@ input {
     font-size: 16px !important;
     font-weight: 400 !important;
     text-align: center;
+    width: 98% !important;
+    margin: 1% !important;
 }
 
 /* Remove some elements */

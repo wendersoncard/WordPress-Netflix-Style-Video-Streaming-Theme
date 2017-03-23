@@ -1,6 +1,9 @@
 <?php get_header(); ?>
 	<main class="cd-main-content-page">
-		<section class="categories no-header-push">
+	
+		<div class="top-spacer"></div>
+
+		<section class="categories">
 			<?php if ( have_posts() ) : ?>
 			<div class="container-fluid">
 				<div class="row">
@@ -69,7 +72,7 @@
 				<div class="row">
 					<div class="col-sm-12">
 						<?php if (function_exists("streamium_pagination")) {
-						    streamium_pagination($additional_loop->max_num_pages);
+						    streamium_pagination();
 						} ?>
 					</div>
 				</div><!--/.row-->

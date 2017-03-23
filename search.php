@@ -1,6 +1,10 @@
 <?php get_header(); ?>
 	<main class="cd-main-content-page">
-		<section class="categories no-header-push">
+		
+		<div class="top-spacer"></div>
+
+		<section class="categories">
+
 			<?php 
 			$allsearch = new WP_Query("s=$s&showposts=-1"); 
 			if ( $allsearch->have_posts() ) : ?>
@@ -71,7 +75,7 @@
 				<div class="row">
 					<div class="col-sm-12">
 						<?php if (function_exists("streamium_pagination")) {
-						    streamium_pagination($additional_loop->max_num_pages);
+						    streamium_pagination();
 						} ?>
 					</div>
 				</div><!--/.row-->

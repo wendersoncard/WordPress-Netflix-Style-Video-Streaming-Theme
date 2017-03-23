@@ -1,6 +1,8 @@
 <?php get_header(); ?>
 <main class="cd-main-content-page">
 	
+	<div class="top-spacer"></div>
+	
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-12 col-xs-12">

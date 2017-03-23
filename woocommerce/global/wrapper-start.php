@@ -22,5 +22,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 ?>
 <main class="cd-main-content-page">
-	<div class="container-fluid">
-		<div class="row">
+	<div class="top-spacer"></div>
+		<div class="container-fluid">
+			<div class="row">
