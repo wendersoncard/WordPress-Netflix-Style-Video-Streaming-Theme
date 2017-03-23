@@ -495,8 +495,14 @@ function s3bubble_video_code_meta_box_save( $post_id )
     if( !current_user_can( 'edit_post' ) ) return;
      
     // Make sure your data is set before trying to save it
-    if( isset( $_POST['s3bubble_video_code_meta_box_text'] ) )
+    if( isset( $_POST['s3bubble_video_code_meta_box_text'] ) ){
+
+      if (strpos($_POST['s3bubble_video_code_meta_box_text'],'s3bubble') !== false) {
         update_post_meta( $post_id, 's3bubble_video_code_meta_box_text', $_POST['s3bubble_video_code_meta_box_text'] );
+      }
+
+    }
+        
 }
 
 
