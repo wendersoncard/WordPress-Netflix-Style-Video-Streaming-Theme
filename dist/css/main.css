@@ -876,4 +876,8 @@ p {
   .cd-overlay {
     top: 50px;
   }
+  #customer_login {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
 }
