@@ -1,10 +1,10 @@
 <?php get_header(); ?>
-	<main class="cd-main-content">
+	<main class="cd-main-content-page">
 		<section class="categories no-header-push">
 			<?php if ( have_posts() ) : ?>
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-sm-12 video-header">
+					<div class="col-sm-12 video-header-archive">
 						<h3><?php printf( __( 'Viewing: %s', 'streamium' ), single_cat_title( '', false ) ); ?></h3>
 					</div><!--/.col-sm-12-->
 				</div><!--/.row-->

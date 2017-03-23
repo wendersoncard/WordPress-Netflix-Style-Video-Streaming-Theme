@@ -1,13 +1,17 @@
 html, body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     height: 100%;
-}
-
-body {
     background: #141414;
-    font-family: 'Helvetica',Helvetica,Arial,sans-serif;
+    color: #fff;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 12px;
+    line-height: 1.2;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
 }
 
 .page, .woocommerce-page {
@@ -15,7 +19,6 @@ body {
 }
 .page .cd-main-header, .woocommerce-page .cd-main-header, .archive .cd-main-header, .search .cd-main-header {
     background: rgba(0, 0, 0, 0.8);
-    margin-bottom: 60px;
 }
 
 *:focus {
@@ -23,7 +26,6 @@ body {
 }
 
 .cd-logo {
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     font-weight: bold;
     text-decoration: none !important;
 }
@@ -33,7 +35,7 @@ body {
 }
 
 .cd-main-content-page {
-  margin-bottom: 60px;
+    margin: 120px 0px;
 }
 
 .container-fluid {
@@ -159,7 +161,6 @@ body {
 }
 
 .video-header p {
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     font-weight: 500;
     letter-spacing: -0.8px;
     width: 100%;
@@ -177,6 +178,30 @@ body {
     right: 0px;
     bottom: 3px;
 }
+
+.video-header-archive h3 {
+    text-decoration: none;
+    display: inline-block;
+    max-width: 75%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 2vw;
+    line-height: 36px;
+    text-decoration: none;
+    display: inline-block;
+    min-width: 6em;
+}
+
+.video-header-archive p {
+    font-weight: 500;
+    letter-spacing: -0.8px;
+    width: 100%;
+    float: left;
+    color: #f2f2f2;
+    font-size: 1vw;
+}
+
 .video-main {
     height: 100%;
     width: 100%;
@@ -452,7 +477,7 @@ body {
   margin-right: 0px;
   z-index: 1;
   position: relative;
-  margin-bottom: 25px;
+  margin: 48px 0 0 0;
 }
 
 .static-row .col-sm-2 {

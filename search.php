@@ -1,12 +1,12 @@
 <?php get_header(); ?>
-	<main class="cd-main-content">
+	<main class="cd-main-content-page">
 		<section class="categories no-header-push">
 			<?php 
 			$allsearch = new WP_Query("s=$s&showposts=-1"); 
 			if ( $allsearch->have_posts() ) : ?>
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-sm-12 video-header">
+					<div class="col-sm-12 video-header-archive">
 						<h3 class="pull-left"><?php printf( __( 'Search Results for: %s', 'streamium' ), get_search_query() ); ?></h3>
 					</div><!--/.col-sm-12-->
 				</div><!--/.row-->
@@ -79,7 +79,7 @@
 			<?php else : ?>
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-sm-12 video-header">
+					<div class="col-sm-12 video-header-archive">
 						<h3 class="pull-left"><?php printf( __( 'Search Results for: %s', 'streamium' ), get_search_query() ); ?></h3>
 						<p><?php _e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'twentyseventeen' ); ?></p>
 					</div><!--/.col-sm-12-->

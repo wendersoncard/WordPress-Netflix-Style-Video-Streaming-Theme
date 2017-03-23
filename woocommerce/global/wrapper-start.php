@@ -20,13 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-$template = get_option( 'template' );
- 
- switch( $template ) {
- 	case 'twentysixteen' :
- 		echo '<div id="primary" class="content-area twentysixteen"><main id="main" class="site-main" role="main">';
- 		break;
- 	default :
- 		echo '<div class="container-fluid"><div class="row">';
-		break;
-}
+?>
+<main class="cd-main-content-page">
+	<div class="container-fluid">
+		<div class="row">
