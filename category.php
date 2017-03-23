@@ -1,7 +1,7 @@
 <?php get_header(); ?>
-	<main class="cd-main-content-page">
+	<main class="cd-main-content">
 
-		<div class="top-spacer"></div>
+		<div class="main-spacer"></div>
 
 		<section class="categories">
 			<?php if ( have_posts() ) : ?>
@@ -81,4 +81,7 @@
 				<?php get_template_part( 'content', 'none' ); ?>
 			<?php endif; ?>
 		</section><!--/.videos-->
+
+		<div class="main-spacer"></div>
+		
 <?php get_footer(); ?>

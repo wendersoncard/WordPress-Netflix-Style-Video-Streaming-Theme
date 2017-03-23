@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 ?>
-<main class="cd-main-content-page">
-	<div class="top-spacer"></div>
+<main class="cd-main-content">
+	<div class="main-spacer"></div>
 		<div class="container">
 			<div class="row">
