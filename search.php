@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-	<main class="cd-main-content-page">
+	<main class="cd-main-content">
 		
 		<div class="main-spacer"></div>
 
@@ -27,12 +27,21 @@
 						$trimmed_content = wp_trim_words( get_the_excerpt(), 11 ); 
 						?>
 						<div class="col-sm-2 tile" data-link="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-description="<?php echo htmlentities(get_the_content()); ?>" data-bgimage="<?php echo $fullImage[0]; ?>" data-cat="static-<?php echo $cat_count; ?>">
+							<?php if($post->premium) : ?>
+								<div class="tile_payment_details">
+									<div class="tile_payment_details_inner">
+										<h2>Available on <?php echo str_replace(array("_"), " ", $post->plans[0]); ?></h2>
+									</div>
+								</div>
+							<?php endif; ?>
 					        <div class="tile_media">
 					        	<img class="tile_img" src="<?php echo esc_url($image[0]); ?>" alt=""  />
 					        </div>
-					        <a class="tile_play" href="<?php the_permalink(); ?>">
-								<i class="fa fa-play fa-1x" aria-hidden="true"></i>
-				        	</a>
+					        <?php if(!($post->premium)) : ?>
+						        <a class="tile_play hidden-xs" href="<?php the_permalink(); ?>">
+							        <i class="fa fa-play fa-1x" aria-hidden="true"></i>
+					        	</a>
+				        	<?php endif; ?>
 					        <div class="tile_details">
 					          	<div class="tile_meta">
 					            	<h4><?php the_title(); ?></h4>						            	

@@ -134,6 +134,18 @@ input:-webkit-autofill {
     border-width: 1px;
 }
 
+.woocommerce #payment #place_order, .woocommerce-page #payment #place_order {
+    float: none;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1em;
+    display: block;
+    text-align: center;
+    margin-bottom: 0 !important;
+    font-size: 1.25em;
+    padding: 1em;
+}
+
 .woocommerce-thankyou-order-received {
     text-align: center;
     padding: 10px;
@@ -143,15 +155,6 @@ input:-webkit-autofill {
 
 #order_comments {
     padding: 10px;
-}
-
-/* ======= Reset Password Page ======= */
-.resetpass-section .form-box .title {
-  margin-bottom: 30px;
-}
-.resetpass-section .intro {
-  font-size: 16px;
-  margin-bottom: 30px;
 }
 
 .s3bubble-woocommerce-inner-wrap {
@@ -224,7 +227,7 @@ input {
     vertical-align: middle;
 }
 
-.add_to_cart_button, .checkout-button {
+.streamium-plans .add_to_cart_button, .streamium-plans .checkout-button {
     display: inline-block;
     padding: 12px 1em;
     min-width: 98px;

@@ -3,6 +3,31 @@
 /*--------------------------------------------------------*/
 jQuery(document).ready(function($) {
 
+	/**
+     * Mobile checks throughout
+     * @public
+     */
+    var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+
 	$(window).scroll(function (event) {
 	    var scroll = $(window).scrollTop();
 	    if(scroll > 100){
@@ -17,7 +42,6 @@ jQuery(document).ready(function($) {
 	$(".product-name a").contents().unwrap();
 	$(".subscriptio_frontend_items_list_item a").contents().unwrap();
 	$(".subscriptio_list_id a").contents().unwrap();
-	
 	$(".product-thumbnail").remove();
 
 	// Initialise Slider
@@ -67,16 +91,16 @@ jQuery(document).ready(function($) {
 		if(wh > 1024){
 			numberItems = 6;
 		}else if(wh < 1024 && wh > 600){
-			numberItems = 5;
-		}else if(wh < 600 && wh > 480){
-			numberItems = 3;
-		}else if(wh < 480){
+			numberItems = 4;
+		}else if(wh <= 480){
 			numberItems = 2;
 		}else{
 			numberItems = 2;
 		}
 		var itemWidth = Math.floor($(this).width()/numberItems);
 		$('.tile_media').height((Math.floor(itemWidth/16*9)-2));
+		$('.tile_payment_details').height((Math.floor(itemWidth/16*9)-2));
+
 	    $(this).slick({
 	    	appendArrows: $(this).prev(),
 			prevArrow: '<button class="streamium-carousel-prev fa fa-angle-left" aria-hidden="true"></button>',
@@ -84,7 +108,14 @@ jQuery(document).ready(function($) {
 			slidesToShow: 6,
 			slidesToScroll: 6,
 			//mobileFirst: true,
-			responsive: [
+				responsive: [{
+			      breakpoint: 1024,
+			      settings: {
+			      	appendArrows: false,
+			        slidesToShow: 4,
+			        slidesToScroll: 4
+			      }
+			    },
 			    {
 			      breakpoint: 480,
 			      settings: {
@@ -104,6 +135,9 @@ jQuery(document).ready(function($) {
     var moveRight = (tileWidth-15) * (growFactor - 1);
     var currentCat;
 
+    // adjust the height for payment checks
+    $('.static-row .tile_payment_details').height($('.static-row .tile').height());
+
     $('.s3bubble-details-inner-close').on('click',function(event) {
 
     	event.preventDefault();
@@ -120,7 +154,7 @@ jQuery(document).ready(function($) {
 
     });
 
-	if(wh > 481){
+	if(!(isMobile.any())){
 
 		$('.tile_meta_more_info').on("click",function(event) {
 

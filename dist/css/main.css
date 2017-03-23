@@ -4,7 +4,7 @@ html, body {
     color: #fff;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.2;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -15,7 +15,6 @@ html, body {
 
 /* typography */
 .h1, .h2, .h3, h1, h2, h3 {
-    letter-spacing: -1px;
     color: #333;
 }
 
@@ -185,7 +184,7 @@ p {
 
 .video-header .see-all {
     float: right;
-    font-size: 12px;
+    font-size: 1vw;
     color: #f2f2f2;
     display: block;
     margin-top: 23px;
@@ -384,22 +383,25 @@ p {
     background-color: black
 }
 
-
 .carousels .tile_payment_details {
+  display: table;
   position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background: rgba(93, 93, 93, 0.6);
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
   text-align: center;
 }
 
-.carousels .tile_payment_details h2 {
-  font-size: 12px;
-  padding: 5px;
-  margin: 0;
-  color: #fff;
+.carousels .tile_payment_details .tile_payment_details_inner {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.carousels .tile_payment_details .tile_payment_details_inner h2 {
+    font-size: 14px;
+    margin: 0;
+    color: #949494;
+    padding: 0 20%;
 }
 
 .carousels .tile_details {
@@ -522,6 +524,27 @@ p {
 .static-row .tile_img {
     object-fit: cover;
     width: 100%;
+}
+
+.static-row .tile_payment_details {
+  display: table;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  text-align: center;
+}
+
+.static-row .tile_payment_details .tile_payment_details_inner {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.static-row .tile_payment_details .tile_payment_details_inner h2 {
+    font-size: 12px;
+    margin: 0;
+    color: #fff;
+    padding: 0 35px;
 }
 
 .static-row .tile_details {
@@ -805,6 +828,80 @@ p {
   color: white !important;
 }
 
+@media screen and (max-device-width: 700px) and (orientation: landscape){
+  /* some CSS here */
+  .container-fluid {
+    margin: 0px 10px;
+  }
+  .synopis-inner h2 {
+    font-size: 3vw !important;
+  }
+  .synopis-inner p {
+    font-size: 2vw !important;
+  }
+  .carousels .tile_play {
+      opacity: 1;
+      left: 50%;
+      top: 50%;
+      position: absolute;
+      margin-left: -4vw;
+      width: 8vw;
+      height: 8vw;
+      background-color: rgba(51,51,51,.8);
+      line-height: 8vw;
+      color: #fff;
+      cursor: pointer;
+      transition: all .2s ease-in-out;
+      font-size: 3vw;
+      display: block;
+      margin-top: -4vw;
+      z-index: 999;
+  }
+  .s3bubble-tile-border {
+    border: 1px solid #fff;
+  }
+  .static-row-first {
+    margin-top: 0px !important;
+  }
+  .static-row .tile_meta h4 {
+    font-size: 4vw !important;
+  }
+  .static-row .tile_meta p {
+      font-size: 3vw !important;
+  }
+  .main-spacer {
+    height: 80px;
+  }
+  .video-header h3 {
+      font-size: 3vw!important;
+  }
+  .video-header p {
+      font-size: 3vw;
+  }
+  .video-header .see-all {
+      font-size: 2vw !important;
+  }
+  .video-header-archive h3 {
+    font-size: 4vw !important;
+  }
+  .video-header-archive p {
+      font-size: 3vw;
+  }
+  .streamium-next, .streamium-prev {
+    display: none !important;
+  }
+  .cd-search form, .cd-search input {
+      font-size: 3vw;
+  }
+  .cd-overlay {
+    top: 50px !important;
+  }
+  #customer_login {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}
+
 @media screen and (max-device-width: 480px) and (orientation: portrait){
   /* some CSS here */
   .container-fluid {
@@ -861,8 +958,11 @@ p {
   .video-header p {
       font-size: 3vw;
   }
+  .video-header .see-all {
+      font-size: 3vw !important;
+  }
   .video-header-archive h3 {
-    font-size: 4vw!important;
+    font-size: 4vw !important;
   }
   .video-header-archive p {
       font-size: 3vw;
@@ -874,7 +974,7 @@ p {
       font-size: 5vw;
   }
   .cd-overlay {
-    top: 50px;
+    top: 50px !important;
   }
   #customer_login {
     margin-left: 15px;

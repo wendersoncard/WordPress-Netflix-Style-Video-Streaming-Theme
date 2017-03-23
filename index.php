@@ -193,7 +193,9 @@ endif;
 							<div class="tile" data-link="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-description="<?php echo htmlentities(get_the_content()); ?>" data-bgimage="<?php echo $fullImage[0]; ?>" data-cat="<?php echo $category->slug; ?>">
 								<?php if($post->premium) : ?>
 									<div class="tile_payment_details">
-										<h2>Available on <?php echo str_replace(array("_"), " ", $post->plans[0]); ?></h2>
+										<div class="tile_payment_details_inner">
+											<h2>Available on <?php echo str_replace(array("_"), " ", $post->plans[0]); ?></h2>
+										</div>
 									</div>
 								<?php endif; ?>
 								<?php if(get_comments_number()) : ?>
@@ -201,13 +203,11 @@ endif;
 								<?php endif; ?>
 						        <div class="tile_media" style="background-image: url(<?php echo esc_url(cloudfrontSwitch($image[0])); ?>);">
 						        </div>
-						        <a class="tile_play hidden-xs" href="<?php the_permalink(); ?>">
-							        <?php if($post->premium) : ?>
-										<i class="fa fa-credit-card fa-1x" aria-hidden="true"></i>
-									<?php else: ?>
-										<i class="fa fa-play fa-1x" aria-hidden="true"></i>
-									<?php endif; ?>
-					        	</a>
+						        <?php if(!($post->premium)) : ?>
+							        <a class="tile_play hidden-xs" href="<?php the_permalink(); ?>">
+								        <i class="fa fa-play fa-1x" aria-hidden="true"></i>
+						        	</a>
+					        	<?php endif; ?>
 						        <div class="tile_details">
 						          	<div class="tile_meta">
 						            	<h4><?php the_title(); ?></h4>						            	
