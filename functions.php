@@ -11,13 +11,14 @@
 
 if ( ! isset( $content_width ) ) $content_width = 900;
 
+// remove admin bar
+add_filter('show_admin_bar', '__return_false');
+
 // woocommerce fixes
 add_action( 'after_setup_theme', 'woocommerce_support' );
 function woocommerce_support() {
     add_theme_support( 'woocommerce' );
 }
-remove_action( 'woocommerce_before_shop_loop_item', 'woocommerce_template_loop_product_link_open', 10 );
-remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close', 5 );
 
 function isMobile() {
     return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
@@ -99,12 +100,6 @@ if (!function_exists('streamium_enqueue_scripts')) {
 }
 
 add_action('wp_enqueue_scripts', 'streamium_enqueue_scripts');
-
- 
-function so_27023433_disable_checkout_script(){
-    wp_dequeue_script( 'wc-checkout' );
-}
-//add_action( 'wp_enqueue_scripts', 'so_27023433_disable_checkout_script' );
 
 /*-----------------------------------------------------------------------------------*/
 /*  New theme customizer options
@@ -543,6 +538,3 @@ function streamium_user_reviews_callback(){
 
 add_action('wp_ajax_streamium_user_reviews', 'streamium_user_reviews_callback');
 add_action( 'wp_ajax_nopriv_streamium_user_reviews', 'streamium_user_reviews_callback' );
-
-
-add_filter('show_admin_bar', '__return_false');

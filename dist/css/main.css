@@ -22,7 +22,7 @@ p {
     color: #999;
 }
 
-.home, .archive, .search {
+.home, .archive, .search, .single {
   background: #141414;
 }
 
@@ -30,7 +30,7 @@ p {
     background: #f3f3f3;
 }
 
-.page .cd-main-header, .woocommerce-page .cd-main-header, .archive .cd-main-header, .search .cd-main-header {
+.page .cd-main-header, .woocommerce-page .cd-main-header, .archive .cd-main-header, .search .cd-main-header, .single .cd-main-header {
     background: rgba(0, 0, 0, 0.8);
 }
 
