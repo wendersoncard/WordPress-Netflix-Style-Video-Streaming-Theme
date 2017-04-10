@@ -903,6 +903,20 @@ p {
   color: white !important;
 }
 
+.streamium-no-video-content {
+    width: 50%;
+    text-align: center;
+    margin: auto;
+}
+
+.streamium-no-video-content h1 {
+  color: white;
+}
+
+.streamium-no-video-content p {
+  
+}
+
 @media screen and (max-device-width: 700px) and (orientation: landscape){
   /* some CSS here */
   .container-fluid {

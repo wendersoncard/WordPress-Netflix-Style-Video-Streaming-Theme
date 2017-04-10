@@ -38,14 +38,14 @@
 					        	<img class="tile_img" src="<?php echo esc_url($image[0]); ?>" alt=""  />
 					        </div>
 					        <?php if(!($post->premium)) : ?>
-						        <span class="play-icon-wrap hidden-xs">
+						        <a class="play-icon-wrap hidden-xs" href="<?php the_permalink(); ?>">
 									<div class="play-icon-wrap-rel">
 										<div class="play-icon-wrap-rel-ring"></div>
-										<a class="play-icon-wrap-rel-play" href="<?php the_permalink(); ?>">
+										<span class="play-icon-wrap-rel-play">
 											<i class="fa fa-play fa-1x" aria-hidden="true"></i>
-							        	</a>
+							        	</span>
 						        	</div>
-					        	</span>
+					        	</a>
 				        	<?php endif; ?>
 					        <div class="tile_details">
 					          	<div class="tile_meta">
@@ -75,14 +75,14 @@
 										</div>
 									</div>
 									<div class="col-sm-7 col-xs-7 rel">
-										<span class="play-icon-wrap">
+										<a class="play-icon-wrap synopis" href="#">
 											<div class="play-icon-wrap-rel">
 												<div class="play-icon-wrap-rel-ring"></div>
-												<a class="play-icon-wrap-rel-play synopis" href="#">
+												<span class="play-icon-wrap-rel-play">
 													<i class="fa fa-play fa-3x" aria-hidden="true"></i>
-									        	</a>
+									        	</span>
 								        	</div>
-							        	</span>
+							        	</a>
 							        	<a href="#" class="s3bubble-details-inner-close"><i class="fa fa-times" aria-hidden="true"></i></a>
 									</div><!--/.col-sm-12-->
 								</div><!--/.row-->

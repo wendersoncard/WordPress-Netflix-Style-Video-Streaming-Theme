@@ -14,7 +14,10 @@
 			
 			<?php else : ?>
 
-				<h1>No video id has been added</h1>
+				<div class="streamium-no-video-content">
+					<h1>No Video</h1>
+					<p>A video link has not been added to this post to display a video. Please go to your post and in the right sidebar enter a S3Bubble video url no plugin is needed.</p>
+				</div>
 			
 			<?php endif; ?>
 
@@ -26,7 +29,10 @@
 			
 			<?php else : ?>
 
-				<h1>No video id has been added</h1>
+				<div class="streamium-no-video-content">
+					<h1>No Video</h1>
+					<p>A video link has not been added to this post to display a video. Please go to your post and in the right sidebar enter a S3Bubble video url no plugin is needed.</p>
+				</div>
 			
 			<?php endif; ?>
 		    
