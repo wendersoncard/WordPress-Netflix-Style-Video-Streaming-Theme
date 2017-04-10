@@ -1,9 +1,14 @@
 jQuery( document ).ready(function( $ ) {
 
     $.post("https://s3api.com/oembed/codes/", {
-        website: "streamium.s3bubble.com"
+        website: streamium_meta_object.s3website
     }, function(response) {
-        console.log(response);
+
+        if(response.error){
+
+            $(".streamium-theme-select-group").html("<div class='streamium-current-url-error'>" + response.message + "</div>");
+            return;
+        }
 
         var html = '<select class="chosen-select" tabindex="1" name="streamium_video_code_meta_box_text" id="streamium_video_code_meta_box_text"><option value="">Select Media</option>';
         $.each(response.results, function (i, item) {

@@ -11,3 +11,20 @@
     border: 1px solid #333;
     border-radius: 4px;
 }
+
+.streamium-current-url-error {
+    display: block;
+    padding: 15px;
+    margin: 0 0 10px;
+    font-size: 13px;
+    line-height: 20px;
+    color: #fff;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: red;
+    border-radius: 4px;
+}
+
+.chosen-container {
+    width: 100% !important;
+}

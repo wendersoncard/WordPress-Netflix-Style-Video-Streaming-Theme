@@ -31,7 +31,6 @@ function streamium_meta_video_id(){
     wp_nonce_field( 'streamium_video_code_meta_box_nonce', 'meta_box_nonce' );
     ?>
     <p>
-        <label for="streamium_video_code_meta_box_text">Select Video</label>
         <span class="streamium-theme-select-group"></span>
         <?php echo isset($text[0]) ? "<div class='streamium-current-url'>Your current url is set to. " . $text[0] . "</div>" : ""; ?>
     </p>
@@ -82,6 +81,7 @@ function streamium_meta_box_admin_scripts(){
   wp_enqueue_style( 'streamium-theme-admin-css', get_template_directory_uri() . '/dist/css/admin.min.css', array() );
   wp_enqueue_script( 'streamium-theme-chosen-js', get_template_directory_uri() . '/dist/js/chosen.jquery.min.js', array( 'jquery' ), true );
   wp_enqueue_script( 'streamium-theme-admin-js', get_template_directory_uri() . '/dist/js/admin.min.js', array( 'jquery' ), true );
+  wp_localize_script('streamium-theme-admin-js', 'streamium_meta_object', array( 's3website' => (!empty($streamium_connected_website) ? $streamium_connected_website : "")));
 
 }
 
@@ -97,7 +97,7 @@ function streamium_website_connection(){
     if(isset($_SERVER['HTTP_HOST'])){
 
         $host = (isset($_SERVER['REMOTE_ADDR']) && $_SERVER['REMOTE_ADDR'] == "127.0.0.1") ? "localhost" : $_SERVER['HTTP_HOST'];
-        $host = preg_replace('#^www\.(.+\.)#i', '$1', $host); // remove the www
+        $host = preg_replace('#^www\.(.+\.)#i', '$1', $_SERVER['HTTP_HOST']); // remove the www
         update_option("streamium_connected_website", $host);
 
     }
