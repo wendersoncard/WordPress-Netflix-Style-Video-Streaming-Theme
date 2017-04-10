@@ -1,12 +1,3 @@
-<?php 
-if ( get_theme_mod( 'redirect_too_signup' ) ) : 
-
-	if ( wp_redirect( '/my-account/' ) ) {
-	    exit;
-	}
-
-endif; 
-?>
 <?php get_header(); ?>
 	<main class="cd-main-content">
 		<section class="hero">
@@ -111,9 +102,6 @@ endif;
 							
 								?>
 								<div class="tile" data-link="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-description="<?php echo htmlentities(get_the_content()); ?>" data-bgimage="<?php echo $fullImage[0]; ?>" data-cat="recent">
-										<?php if(get_comments_number()) : ?>
-											<a href="#" class="tile_reviews" data-pid="<?php echo $post->ID; ?>"><?php comments_number( '0 reviews', '1 review', '% reviews' ); ?></a>
-										<?php endif; ?>
 								        <div class="tile_media" style="background-image: url(<?php echo esc_url(cloudfrontSwitch($image[0])); ?>);">
 						       	 		</div>
 								        <a class="tile_play hidden-xs" href="<?php the_permalink(); ?>">
@@ -198,9 +186,6 @@ endif;
 											<h2>Available on <?php echo str_replace(array("_"), " ", $post->plans[0]); ?></h2>
 										</div>
 									</div>
-								<?php endif; ?>
-								<?php if(get_comments_number()) : ?>
-									<a href="#" class="tile_reviews" data-pid="<?php echo $post->ID; ?>"><?php comments_number( '0 reviews', '1 review', '% reviews' ); ?></a>
 								<?php endif; ?>
 						        <div class="tile_media" style="background-image: url(<?php echo esc_url(cloudfrontSwitch($image[0])); ?>);">
 						        </div>

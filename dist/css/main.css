@@ -50,6 +50,7 @@ p {
 }
 .cd-main-content {
     overflow: hidden;
+    padding-bottom: 80px;
 }
 
 .container-fluid {
@@ -171,6 +172,7 @@ p {
     text-decoration: none;
     display: inline-block;
     min-width: 6em;
+    font-style: normal;
 }
 
 .video-header p {

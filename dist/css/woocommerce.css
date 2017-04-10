@@ -1,3 +1,8 @@
+/* typography */
+.woocommerce h3 {
+    font-size: 20px;
+}
+
 /* globals */
 .woocommerce-page {
     background: url(../img/tiled-posters.jpg);
@@ -7,7 +12,7 @@
     background-color: #333;
 }
 
-.woocommerce-page.logged-in, .woocommerce-cart, .woocommerce-checkout {
+.woocommerce-account, .woocommerce-cart, .woocommerce-checkout {
     color: #333;
     background: none !important;
 }
@@ -182,8 +187,9 @@ input:-webkit-autofill {
     display: none;
 }
 
-.streamium-plans h3 {
+.streamium-plans h2.woocommerce-loop-product__title {
     text-align: center;
+    font-size: 24px;
 }
 
 input {

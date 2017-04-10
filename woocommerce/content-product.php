@@ -13,7 +13,7 @@
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @author  WooThemes
  * @package WooCommerce/Templates
- * @version 2.6.1
+ * @version 3.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -30,15 +30,8 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 
 <div class="col-sm-4">
    <div class="streamium-plans">
+
 	<?php
-
-	/**
-	 * woocommerce_shop_loop_item_title hook.
-	 *
-	 * @hooked woocommerce_template_loop_product_title - 10
-	 */
-	do_action( 'woocommerce_shop_loop_item_title' );
-
 	/**
 	 * woocommerce_before_shop_loop_item hook.
 	 *
@@ -54,7 +47,12 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 */
 	do_action( 'woocommerce_before_shop_loop_item_title' );
 
-	do_action( 'woocommerce_shop_loop_item_content' );
+	/**
+	 * woocommerce_shop_loop_item_title hook.
+	 *
+	 * @hooked woocommerce_template_loop_product_title - 10
+	 */
+	do_action( 'woocommerce_shop_loop_item_title' );
 
 	/**
 	 * woocommerce_after_shop_loop_item_title hook.
@@ -64,7 +62,13 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 */
 	do_action( 'woocommerce_after_shop_loop_item_title' );
 
-    the_content();
+	/**
+	 * woocommerce show the product content
+	 *
+	 * @hooked woocommerce_template_loop_rating - 5
+	 * @hooked woocommerce_template_loop_price - 10
+	 */
+	the_content();
 
 	/**
 	 * woocommerce_after_shop_loop_item hook.

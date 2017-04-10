@@ -20,6 +20,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+
+/*if ( is_user_logged_in() ) : 
+	if ( wp_redirect( '/my-account/' ) ) {
+	    exit;
+	}
+endif; */
+
 get_header( 'shop' ); ?>
 
 	<?php
@@ -28,19 +35,10 @@ get_header( 'shop' ); ?>
 		 *
 		 * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
 		 * @hooked woocommerce_breadcrumb - 20
+		 * @hooked WC_Structured_Data::generate_website_data() - 30
 		 */
 		do_action( 'woocommerce_before_main_content' );
 	?>
-
-		<?php
-			/**
-			 * woocommerce_archive_description hook.
-			 *
-			 * @hooked woocommerce_taxonomy_archive_description - 10
-			 * @hooked woocommerce_product_archive_description - 10
-			 */
-			do_action( 'woocommerce_archive_description' );
-		?>
 
 		<?php if ( have_posts() ) : ?>
 
@@ -56,9 +54,18 @@ get_header( 'shop' ); ?>
 
 			<?php woocommerce_product_loop_start(); ?>
 
-				<?php //woocommerce_product_subcategories(); ?>
+				<?php woocommerce_product_subcategories(); ?>
 
 				<?php while ( have_posts() ) : the_post(); ?>
+
+					<?php
+						/**
+						 * woocommerce_shop_loop hook.
+						 *
+						 * @hooked WC_Structured_Data::generate_product_data() - 10
+						 */
+						do_action( 'woocommerce_shop_loop' );
+					?>
 
 					<?php wc_get_template_part( 'content', 'product' ); ?>
 
@@ -77,7 +84,14 @@ get_header( 'shop' ); ?>
 
 		<?php elseif ( ! woocommerce_product_subcategories( array( 'before' => woocommerce_product_loop_start( false ), 'after' => woocommerce_product_loop_end( false ) ) ) ) : ?>
 
-			<?php wc_get_template( 'loop/no-products-found.php' ); ?>
+			<?php
+				/**
+				 * woocommerce_no_products_found hook.
+				 *
+				 * @hooked wc_no_products_found - 10
+				 */
+				do_action( 'woocommerce_no_products_found' );
+			?>
 
 		<?php endif; ?>
 
