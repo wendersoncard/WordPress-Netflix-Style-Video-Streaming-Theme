@@ -32,7 +32,19 @@ function streamium_meta_video_id(){
     ?>
     <p>
         <span class="streamium-theme-select-group"></span>
-        <?php echo isset($text[0]) ? "<div class='streamium-current-url'>Your current url is set to. " . $text[0] . "</div>" : ""; ?>
+        <?php 
+
+          if(get_theme_mod( 'streamium_enable_premium' )){
+
+            echo isset($text[0]) ? "<div class='streamium-current-url'>Premium video code: " . $text[0] . "</div>" : "";
+          
+          }else{
+          
+            echo isset($text[0]) ? "<div class='streamium-current-url'>Your current url is set to: " . $text[0] . "</div>" : "";
+          
+          }
+
+        ?>
     </p>
 
     <?php    
@@ -59,9 +71,20 @@ function streamium_video_code_meta_box_save( $post_id )
     // Make sure your data is set before trying to save it
     if( isset( $_POST['streamium_video_code_meta_box_text'] ) ){
 
-      if (strpos($_POST['streamium_video_code_meta_box_text'],'s3bubble') !== false) {
+      if(get_theme_mod( 'streamium_enable_premium' )){
+        
         update_post_meta( $post_id, 'streamium_video_code_meta_box_text', $_POST['streamium_video_code_meta_box_text'] );
+
+      }else{
+        
+        if (strpos($_POST['streamium_video_code_meta_box_text'],'s3bubble') !== false) {
+        
+          update_post_meta( $post_id, 'streamium_video_code_meta_box_text', $_POST['streamium_video_code_meta_box_text'] );
+        
+        }
+
       }
+      
 
     }
         
@@ -81,7 +104,10 @@ function streamium_meta_box_admin_scripts(){
   wp_enqueue_style( 'streamium-theme-admin-css', get_template_directory_uri() . '/dist/css/admin.min.css', array() );
   wp_enqueue_script( 'streamium-theme-chosen-js', get_template_directory_uri() . '/dist/js/chosen.jquery.min.js', array( 'jquery' ), true );
   wp_enqueue_script( 'streamium-theme-admin-js', get_template_directory_uri() . '/dist/js/admin.min.js', array( 'jquery' ), true );
-  wp_localize_script('streamium-theme-admin-js', 'streamium_meta_object', array( 's3website' => (!empty($streamium_connected_website) ? $streamium_connected_website : "")));
+  wp_localize_script('streamium-theme-admin-js', 'streamium_meta_object', array( 
+    's3website' => (!empty($streamium_connected_website) ? $streamium_connected_website : ""),
+    'streamiumPremium' => get_theme_mod( 'streamium_enable_premium' )
+  ));
 
 }
 

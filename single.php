@@ -14,7 +14,7 @@
 
     		<?php if ( ! empty( $s3videoid ) ) : ?>
 				
-				<script type="text/javascript">S3BubbleAWS.init({id : "s3bubble-aws",code : "QKeQ28487"});</script>
+				<script type="text/javascript">S3BubbleAWS.init({id : "s3bubble-aws",code : "<?php echo $s3videoid; ?>"});</script>
 			
 			<?php else : ?>
 
