@@ -6,7 +6,11 @@
 
     	<div id="s3bubble-aws" class="video-wrapper">
 
-    	<?php if ( get_theme_mod( 'streamium_enable_premium' ) ) : $s3videoid = get_post_meta( get_the_ID(), 's3bubble_video_code_meta_box_text', true ); ?>
+    	<?php 
+    	
+    		$s3videoid = get_post_meta( get_the_ID(), 's3bubble_video_code_meta_box_text', true );
+
+    		if ( get_theme_mod( 'streamium_enable_premium' ) ) : ?>
 
     		<?php if ( ! empty( $s3videoid ) ) : ?>
 				
