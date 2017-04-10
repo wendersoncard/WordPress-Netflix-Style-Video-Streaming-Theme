@@ -121,7 +121,7 @@ p {
     color: #fff;
 }
 
-.content-overlay .home-slider-play-icon {
+.content-overlay .play-icon-wrap {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -141,10 +141,26 @@ p {
     font-size: 1.3vw;
     display: block;
 }
-.content-overlay .home-slider-play-icon:hover {
+
+.content-overlay .play-icon-wrap-rel {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.content-overlay .play-icon-wrap-rel-ring {
+    border: .38vw solid #fff;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+}
+
+.content-overlay .play-icon-wrap:hover {
     transform: scale(1.1);
 }
-.content-overlay .home-slider-play-icon i {
+
+.content-overlay .play-icon-wrap-rel-play i {
     line-height: inherit;
     margin-left: 1vw; 
 }
@@ -260,7 +276,7 @@ p {
 
 /* :not(:required) hides these rules from IE9 and below */
 .streamium-loading:not(:required) {
-  /* hide "streamium-loading..." text */
+  /* hide "streamium-loading.." text */
   font: 0/0 a;
   color: transparent;
   text-shadow: none;
@@ -418,8 +434,8 @@ p {
   transition: 450ms opacity;
 }
 
-.carousels .tile_play {
-  opacity: 0;
+.carousels .play-icon-wrap {
+    opacity: 0;
     left: 50%;
     top: 50%;
     border-radius: 100%;
@@ -439,15 +455,32 @@ p {
     margin-top: -2vw;
     z-index: 999;
 }
-.carousels .tile_play i {
+
+.carousels .play-icon-wrap:hover {
+    transform: scale(1.1);
+}
+
+.carousels .play-icon-wrap-rel {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.carousels .play-icon-wrap-rel-ring {
+    border: .16vw solid #fff;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+}
+
+.carousels .play-icon-wrap-rel-play i {
     line-height: inherit;
 }
-.carousels .tile_play i.fa-play {
+
+.carousels .play-icon-wrap-rel-play i.fa-play {
     margin-left: 5px; 
 } 
-.carousels .tile_play_premium i {
-    line-height: inherit;
-}
 
 .carousels .tile_meta {
   width: 100%;
@@ -561,28 +594,53 @@ p {
   transition: 450ms opacity;
 }
 
-.static-row .tile_play {
-    position: absolute;
+.static-row .play-icon-wrap {
+    opacity: 0;
     left: 50%;
     top: 50%;
-    margin-left: -25px;
-    margin-top: -35px;
-    width: 50px;
-    height: 50px;
-    background-color: rgba(51,51,51,.8);
     border-radius: 100%;
-    line-height: 50px;
     text-align: center;
     vertical-align: middle;
-    display: inline-block;
+    position: absolute;
+    margin-left: -1.5vw;
+    width: 3vw;
+    height: 3vw;
+    background-color: rgba(51,51,51,.8);
+    line-height: 3vw;
     color: #fff;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+    font-size: 1.3vw;
+    display: block;
+    margin-top: -2vw;
     z-index: 999;
-    opacity: 0;
 }
-.static-row .tile_play i {
+
+.static-row .play-icon-wrap:hover {
+    transform: scale(1.1);
+}
+
+.static-row .play-icon-wrap-rel {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.static-row .play-icon-wrap-rel-ring {
+    border: .16vw solid #fff;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+}
+
+.static-row .play-icon-wrap-rel-play i {
     line-height: inherit;
-    margin-left: 5px; 
 }
+
+.static-row .play-icon-wrap-rel-play i.fa-play {
+    margin-left: 5px; 
+} 
 
 .static-row .tile_meta {
   width: 100%;
@@ -705,7 +763,7 @@ p {
     color: #fff;
 }
 
-.s3bubble-details-full .home-slider-play-icon {
+.s3bubble-details-full .play-icon-wrap {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -726,12 +784,27 @@ p {
     display: block;
 }
 
-.s3bubble-details-full .home-slider-play-icon:hover {
+.s3bubble-details-full .play-icon-wrap:hover {
     transform: scale(1.1);
 }
-.s3bubble-details-full .home-slider-play-icon i {
+
+.s3bubble-details-full .play-icon-wrap-rel {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.s3bubble-details-full .play-icon-wrap-rel-ring {
+    border: .38vw solid #fff;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+}
+
+.s3bubble-details-full .play-icon-wrap-rel-play i {
     line-height: inherit;
-   margin-left: 1vw; 
+    margin-left: 1vw; 
 }
 
 .s3bubble-details-full .s3bubble-details-inner-close {
@@ -915,29 +988,17 @@ p {
   .synopis-inner p {
     font-size: 2vw !important;
   }
+  .content-overlay .play-icon-wrap-rel-ring {
+    border: .6vw solid #fff;
+  }
+  .s3bubble-details-full .play-icon-wrap-rel-ring {
+    border: .6vw solid #fff;
+  }
   .carousels .tile_meta h4 {
     font-size: 3vw !important;
   }
   .carousels .tile_meta p {
     font-size: 2vw !important;
-  }
-  .carousels .tile_play {
-      opacity: 1;
-      left: 50%;
-      top: 50%;
-      position: absolute;
-      margin-left: -4vw;
-      width: 8vw;
-      height: 8vw;
-      background-color: rgba(51,51,51,.8);
-      line-height: 8vw;
-      color: #fff;
-      cursor: pointer;
-      transition: all .2s ease-in-out;
-      font-size: 3vw;
-      display: block;
-      margin-top: -4vw;
-      z-index: 999;
   }
   .s3bubble-tile-border {
     border: 1px solid #fff;

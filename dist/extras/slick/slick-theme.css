@@ -137,7 +137,7 @@
     overflow: visible;
 }
 .slick-slide {
-    margin: 2px;
+    margin: 1px;
     -webkit-transition: -webkit-transform 0.3s ease;
     -moz-transition: -moz-transform 0.3s ease;
     transition: transform 0.3s ease;
