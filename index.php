@@ -24,7 +24,7 @@
 
 					?>
 					<div class="slider-block">
-						<img src="<?php echo esc_url(cloudfrontSwitch($image[0])); ?>" />
+						<img src="<?php echo esc_url($image[0]); ?>" />
 						<article class="content-overlay">
 							<div class="container-fluid rel">
 								<div class="row rel">
@@ -107,7 +107,7 @@
 							
 								?>
 								<div class="tile" data-link="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-description="<?php echo htmlentities(get_the_content()); ?>" data-bgimage="<?php echo $fullImage[0]; ?>" data-cat="recent">
-								        <div class="tile_media" style="background-image: url(<?php echo esc_url(cloudfrontSwitch($image[0])); ?>);">
+								        <div class="tile_media" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
 						       	 		</div> 
 						       	 		<a class="play-icon-wrap hidden-xs" href="<?php the_permalink(); ?>">
 											<div class="play-icon-wrap-rel">
@@ -202,7 +202,7 @@
 										</div>
 									</div>
 								<?php endif; ?>
-						        <div class="tile_media" style="background-image: url(<?php echo esc_url(cloudfrontSwitch($image[0])); ?>);">
+						        <div class="tile_media" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
 						        </div>
 						        <?php if(!($post->premium)) : ?>
 							        <a class="play-icon-wrap hidden-xs" href="<?php the_permalink(); ?>">
