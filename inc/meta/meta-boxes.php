@@ -96,7 +96,6 @@ function streamium_website_connection(){
 
     if(isset($_SERVER['HTTP_HOST'])){
 
-        $host = (isset($_SERVER['REMOTE_ADDR']) && $_SERVER['REMOTE_ADDR'] == "127.0.0.1") ? "localhost" : $_SERVER['HTTP_HOST'];
         $host = preg_replace('#^www\.(.+\.)#i', '$1', $_SERVER['HTTP_HOST']); // remove the www
         update_option("streamium_connected_website", $host);
 
