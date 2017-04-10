@@ -12,7 +12,7 @@
     background-color: #333;
 }
 
-.woocommerce-account, .woocommerce-cart, .woocommerce-checkout {
+.woocommerce-account.logged-in, .woocommerce-cart, .woocommerce-checkout {
     color: #333;
     background: none !important;
 }
