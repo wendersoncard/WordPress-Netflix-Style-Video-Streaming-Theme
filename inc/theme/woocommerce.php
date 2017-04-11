@@ -87,9 +87,6 @@ if (class_exists('WooCommerce_Membership_Post')) {
       );
 
       function streamium_plugin_fixes( $posts ) {
-          // Maybe modify $example in some way.
-
-          //$obj = new WooCommerce_Membership_Post();
 
           // Iterate over posts
           foreach ($posts as $post_key => $post) {
@@ -110,6 +107,7 @@ if (class_exists('WooCommerce_Membership_Post')) {
           return $posts;
 
       }
+      
       add_filter( 'the_posts', 'streamium_plugin_fixes' );
 
   }

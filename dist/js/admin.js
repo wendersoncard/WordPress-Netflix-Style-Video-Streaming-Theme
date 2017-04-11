@@ -11,7 +11,7 @@ jQuery( document ).ready(function( $ ) {
             
         }
 
-        var html = '<select class="chosen-select" tabindex="1" name="s3bubble_video_code_meta_box_text" id="s3bubble_video_code_meta_box_text"><option value="">Select Media</option>';
+        var html = '';
         $.each(response.results, function (i, item) {
 
             var code = item.code;
@@ -23,6 +23,9 @@ jQuery( document ).ready(function( $ ) {
 
             if(parseInt(streamium_meta_object.streamiumPremium) === 1){
                 if(ext === "m3u8"){
+                    html += '<option id="' + code + '"  value="' + code + '">' + key + '</option>';  
+                }
+                if(ext === "mp4"){
                     html += '<option id="' + code + '"  value="' + code + '">' + key + '</option>';  
                 }
             }else{
@@ -44,8 +47,12 @@ jQuery( document ).ready(function( $ ) {
             }
             
         });
-        html += '</select>';
-        $('.streamium-theme-select-group').html(html);
+        html += '';
+        $('.streamium-theme-main-video-select-group').append(html);
+        $('.streamium-theme-video-trailer-select-group').append(html);
+        $('.streamium-theme-featured-video-select-group').append(html);
+        
+
         var config = {
           '.chosen-select'           : {},
           '.chosen-select-deselect'  : {allow_single_deselect:true},

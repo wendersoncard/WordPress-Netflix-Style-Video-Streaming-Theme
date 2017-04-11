@@ -165,6 +165,15 @@ p {
     margin-left: 1vw; 
 }
 
+.synopis-video-trailer {
+    position: absolute;
+    right: 10px;
+    bottom: 20px;
+    padding: 5px 10px;
+    border: 1px solid;
+    text-decoration: none !important;
+}
+
 .progress {
     height: 10px;
     border-radius: 5px;

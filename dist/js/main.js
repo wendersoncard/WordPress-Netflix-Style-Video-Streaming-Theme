@@ -165,6 +165,7 @@ jQuery(document).ready(function($) {
 	    	var bgimage = $(this).data('bgimage');
 	    	var cat = $(this).data('cat');
 	    	var href = $(this).data('link');
+	    	var trailer = $(this).data('trailer');
 
 	    	currentCat = "." + cat;
 	    	$('.tile').css('border','none');
@@ -176,6 +177,11 @@ jQuery(document).ready(function($) {
 	    	$(currentCat).find('p.synopis').html(decodeURI(desc));
 	    	$(currentCat).find('a.synopis').attr( "href", href);
 	    	$(currentCat).css("background-image", "url(" + bgimage + ")");
+	    	if(trailer === ""){
+	    		$(currentCat).find('a.synopis-video-trailer').hide();
+	    	}else{
+	    		$(currentCat).find('a.synopis-video-trailer').fadeIn().attr( "href", href + "?trailer=true");
+	    	}
 
 	    	var vmiddle = Math.round($('.cd-main-header').height());
 			var voff = Math.round($(currentCat).offset().top);

@@ -21,10 +21,31 @@
 							$title   = wp_trim_words( get_the_title(), $num_words = 10, $more = '... ' );
 							$excerpt = wp_trim_words( get_the_excerpt(), $num_words = 50, $more = '... ' );
 							$percentage = get_post_meta( get_the_ID(), 'percentage', true );
+							$streamiumVideoTrailer = get_post_meta( get_the_ID(), 'streamium_video_trailer_meta_box_text', true );
+							$streamiumFeaturedVideo = get_post_meta( get_the_ID(), 'streamium_featured_video_meta_box_text', true );
 
 					?>
 					<div class="slider-block">
-						<img src="<?php echo esc_url($image[0]); ?>" />
+						<!--<img src="<?php echo esc_url($image[0]); ?>" />
+						<video id="my-video" class="video-js vjs-fluid" muted poster="<?php echo esc_url($image[0]); ?>" data-setup='{ "controls": false, "autoplay": true, "preload": "auto", "loop": true }'>
+						    <source src="https://s3.amazonaws.com/Loop.Sam/intro2.mp4" type='video/mp4'>
+						    <p class="vjs-no-js">
+						      To view this video please enable JavaScript, and consider upgrading to a web browser that
+						      <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+						    </p>
+						</video>-->
+						<div id="s3bubble-aws"></div>
+						<script type="text/javascript">
+							S3BubbleAWS.init({
+								id : "s3bubble-aws",
+								code : "<?php echo $streamiumFeaturedVideo; ?>",
+								poster: "<?php echo esc_url($image[0]); ?>",
+								fluid: true,
+								muted : true,
+								autoplay : true,
+								controls: false
+							});
+						</script>
 						<article class="content-overlay">
 							<div class="container-fluid rel">
 								<div class="row rel">
@@ -49,6 +70,9 @@
 									        	</span>
 								        	</div>
 							        	</a>
+							        	<?php if ( ! empty( $streamiumVideoTrailer ) ) : ?>
+								        	<a class="synopis-video-trailer" href="<?php the_permalink(); ?>?trailer=true">Watch Trailer</a>
+								        <?php endif; ?>
 									</div>
 								</div>
 							</div>
@@ -104,6 +128,7 @@
 											$image   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-category' );
 											$fullImage  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-home-slider' );  
 											$trimmed_content = wp_trim_words( get_the_excerpt(), 11 );
+											$streamiumVideoTrailer = get_post_meta( get_the_ID(), 'streamium_video_trailer_meta_box_text', true );
 							
 								?>
 								<div class="tile" data-link="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-description="<?php echo htmlentities(get_the_content()); ?>" data-bgimage="<?php echo $fullImage[0]; ?>" data-cat="recent">
@@ -120,7 +145,7 @@
 								        <div class="tile_details">
 								          	<div class="tile_meta">
 								            	<h4><?php the_title(); ?></h4>						            	
-								            	<a data-link="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-description="<?php echo htmlentities(get_the_content()); ?>" data-bgimage="<?php echo $fullImage[0]; ?>" data-cat="recent" class="tile_meta_more_info hidden-xs"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+								            	<a data-trailer="<?php echo $streamiumVideoTrailer; ?>" data-link="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-description="<?php echo htmlentities(get_the_content()); ?>" data-bgimage="<?php echo $fullImage[0]; ?>" data-cat="recent" class="tile_meta_more_info hidden-xs"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
 								          	</div>
 								        </div>
 								    </div>
@@ -158,6 +183,7 @@
 						        	</span>
 					        	</div>
 				        	</a>
+				        	<a href="#" class="synopis-video-trailer">Watch Trailer</a>
 				        	<a href="#" class="s3bubble-details-inner-close"><i class="fa fa-times" aria-hidden="true"></i></a>
 						</div><!--/.col-sm-12-->
 					</div><!--/.row-->
@@ -192,6 +218,7 @@
 									$image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-category' );
 									$fullImage  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-home-slider' );  
 									$trimmed_content = wp_trim_words( get_the_excerpt(), 11 );
+									$streamiumVideoTrailer = get_post_meta( get_the_ID(), 'streamium_video_trailer_meta_box_text', true );
 
 						?>
 							<div class="tile" data-link="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-description="<?php echo htmlentities(get_the_content()); ?>" data-bgimage="<?php echo $fullImage[0]; ?>" data-cat="<?php echo $category->slug; ?>">
@@ -217,7 +244,7 @@
 						        <div class="tile_details">
 						          	<div class="tile_meta">
 						            	<h4><?php the_title(); ?></h4>						            	
-						            	<a data-link="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-description="<?php echo htmlentities(get_the_content()); ?>" data-bgimage="<?php echo $fullImage[0]; ?>" data-cat="<?php echo $category->slug; ?>" class="tile_meta_more_info hidden-xs"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+						            	<a data-trailer="<?php echo $streamiumVideoTrailer; ?>" data-link="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-description="<?php echo htmlentities(get_the_content()); ?>" data-bgimage="<?php echo $fullImage[0]; ?>" data-cat="<?php echo $category->slug; ?>" class="tile_meta_more_info hidden-xs"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
 						          	</div>
 						        </div>
 						    </div>
@@ -256,6 +283,7 @@
 					        	</span>
 				        	</div>
 			        	</a>
+			        	<a href="#" class="synopis-video-trailer">Watch Trailer</a>
 			        	<a href="#" class="s3bubble-details-inner-close"><i class="fa fa-times" aria-hidden="true"></i></a>
 					</div><!--/.col-sm-12-->
 				</div><!--/.row-->
