@@ -27,7 +27,7 @@
 
 		<?php else : ?>
 
-			<?php if ( ! empty( $s3videoid ) ) : ?>
+			<?php if ( ! empty( $s3videoid ) && filter_var($s3videoid, FILTER_VALIDATE_URL) ) : ?>
 				
 				<div style="position: relative;padding-bottom: 56.25%;"><iframe style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;" src="<?php echo $s3videoid; ?>" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div>
 			
