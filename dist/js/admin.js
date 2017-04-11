@@ -11,7 +11,7 @@ jQuery( document ).ready(function( $ ) {
             
         }
 
-        var html = '<select class="chosen-select" tabindex="1" name="streamium_video_code_meta_box_text" id="streamium_video_code_meta_box_text"><option value="">Select Media</option>';
+        var html = '<select class="chosen-select" tabindex="1" name="s3bubble_video_code_meta_box_text" id="s3bubble_video_code_meta_box_text"><option value="">Select Media</option>';
         $.each(response.results, function (i, item) {
 
             var code = item.code;

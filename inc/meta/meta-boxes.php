@@ -26,7 +26,7 @@ function streamium_meta_video_id(){
     // $post is already set, and contains an object: the WordPress post
     global $post;
     $values = get_post_custom( $post->ID );
-    $text = isset( $values['streamium_video_code_meta_box_text'] ) ? $values['streamium_video_code_meta_box_text'] : '';
+    $text = isset( $values['s3bubble_video_code_meta_box_text'] ) ? $values['s3bubble_video_code_meta_box_text'] : '';
     // We'll use this nonce field later on when saving.
     wp_nonce_field( 'streamium_video_code_meta_box_nonce', 'meta_box_nonce' );
     ?>
@@ -69,17 +69,17 @@ function streamium_video_code_meta_box_save( $post_id )
     if( !current_user_can( 'edit_post' ) ) return;
      
     // Make sure your data is set before trying to save it
-    if( isset( $_POST['streamium_video_code_meta_box_text'] ) ){
+    if( isset( $_POST['s3bubble_video_code_meta_box_text'] ) ){
 
-      if(get_theme_mod( 'streamium_enable_premium' )){
+      if(get_theme_mod( 'streamium_enable_premium' )){ 
         
-        update_post_meta( $post_id, 'streamium_video_code_meta_box_text', $_POST['streamium_video_code_meta_box_text'] );
+        update_post_meta( $post_id, 's3bubble_video_code_meta_box_text', $_POST['s3bubble_video_code_meta_box_text'] );
 
       }else{
         
-        if (strpos($_POST['streamium_video_code_meta_box_text'],'s3bubble') !== false) {
+        if (strpos($_POST['s3bubble_video_code_meta_box_text'],'s3bubble') !== false) {
         
-          update_post_meta( $post_id, 'streamium_video_code_meta_box_text', $_POST['streamium_video_code_meta_box_text'] );
+          update_post_meta( $post_id, 's3bubble_video_code_meta_box_text', $_POST['s3bubble_video_code_meta_box_text'] );
         
         }
 

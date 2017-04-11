@@ -8,7 +8,7 @@
 
     	<?php 
     	
-    		$s3videoid = get_post_meta( get_the_ID(), 'streamium_video_code_meta_box_text', true );
+    		$s3videoid = get_post_meta( get_the_ID(), 's3bubble_video_code_meta_box_text', true );
 
     		if ( get_theme_mod( 'streamium_enable_premium' ) ) : ?>
 
