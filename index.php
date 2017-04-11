@@ -26,26 +26,22 @@
 
 					?>
 					<div class="slider-block">
-						<!--<img src="<?php echo esc_url($image[0]); ?>" />
-						<video id="my-video" class="video-js vjs-fluid" muted poster="<?php echo esc_url($image[0]); ?>" data-setup='{ "controls": false, "autoplay": true, "preload": "auto", "loop": true }'>
-						    <source src="https://s3.amazonaws.com/Loop.Sam/intro2.mp4" type='video/mp4'>
-						    <p class="vjs-no-js">
-						      To view this video please enable JavaScript, and consider upgrading to a web browser that
-						      <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-						    </p>
-						</video>-->
-						<div id="s3bubble-aws"></div>
-						<script type="text/javascript">
-							S3BubbleAWS.init({
-								id : "s3bubble-aws",
-								code : "<?php echo $streamiumFeaturedVideo; ?>",
-								poster: "<?php echo esc_url($image[0]); ?>",
-								fluid: true,
-								muted : true,
-								autoplay : true,
-								controls: false
-							});
-						</script>
+						<?php if ( ! empty( $streamiumVideoTrailer ) ) : ?>
+							<div id="streamium-featured-background-<?php echo get_the_ID(); ?>"></div>
+							<script type="text/javascript">
+								S3BubbleAWS.init({
+									id : "streamium-featured-background-<?php echo get_the_ID(); ?>",
+									code : "<?php echo $streamiumFeaturedVideo; ?>",
+									poster: "<?php echo esc_url($image[0]); ?>",
+									fluid: true,
+									muted : true,
+									autoplay : true,
+									controls: false
+								});
+							</script>
+						<?php else : ?>
+							<img src="<?php echo esc_url($image[0]); ?>" />
+						<?php endif; ?>
 						<article class="content-overlay">
 							<div class="container-fluid rel">
 								<div class="row rel">
