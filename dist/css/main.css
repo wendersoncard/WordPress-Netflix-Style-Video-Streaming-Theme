@@ -121,6 +121,13 @@ p {
     color: #fff;
 }
 
+.content-overlay .synopis-premium-meta {
+    width: 100%;
+    float: left;
+    display: block;
+    margin: 5px 0 0 0;
+}
+
 .content-overlay .play-icon-wrap {
     position: absolute;
     left: 50%;

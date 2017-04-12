@@ -23,7 +23,11 @@
 							$percentage = get_post_meta( get_the_ID(), 'percentage', true );
 							$streamiumVideoTrailer = get_post_meta( get_the_ID(), 'streamium_video_trailer_meta_box_text', true );
 							$streamiumFeaturedVideo = get_post_meta( get_the_ID(), 'streamium_featured_video_meta_box_text', true );
-						
+							$nonce = wp_create_nonce( 'pt_like_it_nonce' );
+					        $link = admin_url('admin-ajax.php?action=pt_like_it&post_id='.get_the_ID().'&nonce='.$nonce);
+					        $likes = get_post_meta( get_the_ID(), '_pt_likes', true );
+					        $likes = ( empty( $likes ) ) ? 0 : $likes;
+
 					?>
 					<div class="slider-block">
 						<?php if ( ! empty( $streamiumFeaturedVideo ) && !isMobile() && ($sliderPostCount < 1) ) : ?>
@@ -53,8 +57,17 @@
 												<div class="synopis-inner">
 													<h2><?php echo (isset($title) ? $title : __( 'No Title', 'streamium' )); ?></h2>
 													<span class="hidden-xs">
-														<p><?php echo get_the_content(); ?></p>
+														<p><?php the_content(); ?></p>
 													</span>
+													<div class="synopis-premium-meta">
+														<div class="streamium-review-like-btn">
+									                        <a class="like-button" href="<?php echo $link; ?>" data-id="<?php echo get_the_ID(); ?>" data-nonce="<?php echo $nonce; ?>">Like it</a>
+									                        <span id="like-count-<?php echo get_the_ID(); ?>" class="like-count"><?php echo $likes; ?></span>
+									                    </div>
+									                    <div class="streamium-review-reviews-btn">
+									                        <a class="streamium-list-reviews" data-id="<?php echo get_the_ID(); ?>" data-nonce="<?php echo $nonce; ?>">Read reviews</a>
+									                    </div>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -125,12 +138,9 @@
 										while ( $loop->have_posts() ) : $loop->the_post();
 											if ( has_post_thumbnail() ) : // thumbnail check 
 											$image   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-category' );
-											$fullImage  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-home-slider' );  
-											$trimmed_content = wp_trim_words( get_the_excerpt(), 11 );
-											$streamiumVideoTrailer = get_post_meta( get_the_ID(), 'streamium_video_trailer_meta_box_text', true );
 							
 								?>
-								<div class="tile" data-link="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-description="<?php echo htmlentities(get_the_content()); ?>" data-bgimage="<?php echo $fullImage[0]; ?>" data-cat="recent">
+								<div class="tile">
 								        <div class="tile_media" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
 						       	 		</div> 
 						       	 		<a class="play-icon-wrap hidden-xs" href="<?php the_permalink(); ?>">
@@ -144,7 +154,7 @@
 								        <div class="tile_details">
 								          	<div class="tile_meta">
 								            	<h4><?php the_title(); ?></h4>						            	
-								            	<a data-trailer="<?php echo $streamiumVideoTrailer; ?>" data-link="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-description="<?php echo htmlentities(get_the_content()); ?>" data-bgimage="<?php echo $fullImage[0]; ?>" data-cat="recent" class="tile_meta_more_info hidden-xs"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+								            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="recent" class="tile_meta_more_info hidden-xs"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
 								          	</div>
 								        </div>
 								    </div>
@@ -169,6 +179,15 @@
 									<div class="synopis-inner">
 										<h2 class="synopis hidden-xs"></h2>
 										<p class="synopis"></p>
+										<div class="synopis-premium-meta">
+											<div class="streamium-review-like-btn">
+						                        <a class="like-button">Like it</a>
+						                        <span id="" class="like-count">0</span>
+						                    </div>
+						                    <div class="streamium-review-reviews-btn">
+						                        <a class="streamium-list-reviews" data-id="" data-nonce="">Read reviews</a>
+						                    </div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -214,13 +233,10 @@
 								if($loop->have_posts()):
 									while ( $loop->have_posts() ) : $loop->the_post();
 									if ( has_post_thumbnail() ) : // thumbnail check 
-									$image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-category' );
-									$fullImage  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-home-slider' );  
-									$trimmed_content = wp_trim_words( get_the_excerpt(), 11 );
-									$streamiumVideoTrailer = get_post_meta( get_the_ID(), 'streamium_video_trailer_meta_box_text', true );
+									$image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-category' ); 
 
 						?>
-							<div class="tile" data-link="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-description="<?php echo htmlentities(get_the_content()); ?>" data-bgimage="<?php echo $fullImage[0]; ?>" data-cat="<?php echo $category->slug; ?>">
+							<div class="tile">
 								<?php if($post->premium) : ?>
 									<div class="tile_payment_details">
 										<div class="tile_payment_details_inner">
@@ -243,7 +259,7 @@
 						        <div class="tile_details">
 						          	<div class="tile_meta">
 						            	<h4><?php the_title(); ?></h4>						            	
-						            	<a data-trailer="<?php echo $streamiumVideoTrailer; ?>" data-link="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-description="<?php echo htmlentities(get_the_content()); ?>" data-bgimage="<?php echo $fullImage[0]; ?>" data-cat="<?php echo $category->slug; ?>" class="tile_meta_more_info hidden-xs"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+						            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="<?php echo $category->slug; ?>" class="tile_meta_more_info hidden-xs"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
 						          	</div>
 						        </div>
 						    </div>
@@ -269,6 +285,15 @@
 								<div class="synopis-inner">
 									<h2 class="synopis hidden-xs"></h2>
 									<p class="synopis"></p>
+									<div class="synopis-premium-meta">
+										<div class="streamium-review-like-btn">
+					                        <a class="like-button">Like it</a>
+					                        <span id="" class="like-count">0</span>
+					                    </div>
+					                    <div class="streamium-review-reviews-btn">
+					                        <a class="streamium-list-reviews" data-id="" data-nonce="">Read reviews</a>
+					                    </div>
+									</div>
 								</div>
 							</div>
 						</div>

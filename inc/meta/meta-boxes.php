@@ -35,16 +35,17 @@ function streamium_meta_video_id(){
     <p>
         <select class="streamium-theme-main-video-select-group chosen-select" tabindex="1" name="s3bubble_video_code_meta_box_text" id="s3bubble_video_code_meta_box_text">
           <option value="<?php echo $text[0]; ?>">Select Main Video</option>
+          <option value="">Remove Current Video</option>
         </select>
         <?php 
 
           if(get_theme_mod( 'streamium_enable_premium' )){
 
-            echo isset($text[0]) ? "<div class='streamium-current-url'>Premium video code: " . $text[0] . "</div>" : "";
+            echo !empty($text[0]) ? "<div class='streamium-current-url'>Premium video code: " . $text[0] . "</div>" : "<div class='streamium-current-url-info'>No video selected. Please select a video to show as your main movie.</div>";
           
           }else{
           
-            echo isset($text[0]) ? "<div class='streamium-current-url'>Your current url is set to: " . $text[0] . "</div>" : "";
+            echo !empty($text[0]) ? "<div class='streamium-current-url'>Your current url is set to: " . $text[0] . "</div>" : "";
           
           }
 
@@ -75,9 +76,10 @@ function streamium_video_trailer_meta_box(){
         <?php if(get_theme_mod( 'streamium_enable_premium' )) : ?>
 
           <select class="streamium-theme-video-trailer-select-group chosen-select" tabindex="1" name="streamium_video_trailer_meta_box_text" id="streamium_video_trailer_meta_box_text">
-          <option value="<?php echo $text[0]; ?>">Select Video Trailer</option>
+            <option value="<?php echo $text[0]; ?>">Select Video Trailer</option>
+            <option value="">Remove Current Video</option>
           </select>
-          <?php echo isset($text[0]) ? "<div class='streamium-current-url'>Premium video code: " . $text[0] . "</div>" : ""; ?>
+          <?php echo !empty($text[0]) ? "<div class='streamium-current-url'>Premium video code: " . $text[0] . "</div>" : "<div class='streamium-current-url-info'>No video selected. Select a trailer to allow your users to preview a video first via the watch trailer button.</div>"; ?>
           
         <?php else : ?>
           
@@ -110,9 +112,11 @@ function streamium_featured_video_meta_box(){
         <?php if(get_theme_mod( 'streamium_enable_premium' )) : ?>
 
           <select class="streamium-theme-featured-video-select-group chosen-select" tabindex="1" name="streamium_featured_video_meta_box_text" id="streamium_featured_video_meta_box_text">
-          <option value="<?php echo $text[0]; ?>">Select Background Video</option>
+            <option value="<?php echo $text[0]; ?>">Select Background Video</option>
+            <option value="">Remove Current Video</option>
           </select>
-          <?php echo isset($text[0]) ? "<div class='streamium-current-url'>Premium video code: " . $text[0] . "</div>" : ""; ?>
+
+          <?php echo !empty($text[0]) ? "<div class='streamium-current-url'>Premium video code: " . $text[0] . "</div>" : "<div class='streamium-current-url-info'>No video selected. This will display a background video on the homepage slider if your post is set to Sticky.</div>"; ?>
           
         <?php else : ?>
           

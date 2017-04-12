@@ -1,6 +1,6 @@
 .streamium-current-url {
 	display: block;
-    padding: 15px;
+    padding: 10px;
     margin: 0 0 10px;
     font-size: 13px;
     line-height: 20px;
@@ -14,7 +14,7 @@
 
 .streamium-current-url-error {
     display: block;
-    padding: 15px;
+    padding: 10px;
     margin: 0 0 10px;
     font-size: 13px;
     line-height: 20px;
@@ -27,7 +27,7 @@
 
 .streamium-current-url-info {
     display: block;
-    padding: 15px;
+    padding: 10px;
     margin: 0 0 10px;
     font-size: 13px;
     line-height: 20px;

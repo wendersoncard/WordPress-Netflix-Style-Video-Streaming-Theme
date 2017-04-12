@@ -59,6 +59,19 @@
 				</li>
 			</ul> <!-- primary-nav -->
 		</nav> <!-- cd-nav -->
+
+		<div class="streamium-review-panel from-right">
+			<header class="streamium-review-panel-header">
+				<h1>Reviews</h1>
+				<a href="#0" class="streamium-review-panel-close">Close</a>
+			</header>
+
+			<div class="streamium-review-panel-container">
+				<div class="streamium-review-panel-content">
+					
+				</div> <!-- streamium-review-panel-content -->
+			</div> <!-- streamium-review-panel-container -->
+		</div> <!-- streamium-review-panel -->
 		<?php if ( !get_theme_mod( 'tutorial_btn' ) ) : ?>
 			<div class="streamium-install-instructions"><h2>Please follow this guide for help with installation <a href="https://s3bubble.com/wp_themes/streamium-netflix-style-wordpress-theme/" target="_blank">Video Series</a></h2><p>You can remove this alert in Appearance -> Customizer -> Streamium</p></div>
 		<?php endif; ?>

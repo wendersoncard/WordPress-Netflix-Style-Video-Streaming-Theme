@@ -225,6 +225,8 @@ class Streamium_Customize {
            <?php self::generate_css('.tile', 'border-color', 'link_textcolor','',' !important'); ?>
            <?php self::generate_css('.woocommerce-message, .woocommerce-info', 'border-top-color', 'link_textcolor','',' !important'); ?>
            <?php self::generate_css('.woocommerce-message:before, .woocommerce-info::before', 'color', 'link_textcolor','',' !important'); ?>
+           <?php self::generate_css('.confirm', 'background-color', 'link_textcolor','',' !important'); ?>
+
            
       </style> 
       <!--/Customizer CSS-->

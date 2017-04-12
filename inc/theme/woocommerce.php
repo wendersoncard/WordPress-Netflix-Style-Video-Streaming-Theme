@@ -97,7 +97,7 @@ if (class_exists('WooCommerce_Membership_Post')) {
                   // Filter out restricted post
                   $meta = get_post_meta( $post->ID );
                   $post->premium = (!empty($meta['_rpwcm_post_restriction_method'][0] == "none") ? false : true );
-                  $post->plans = $meta['_rpwcm_only_caps'];
+                  $post->plans = (!empty($meta['_rpwcm_only_caps']) ? $meta['_rpwcm_only_caps'] : null);
 
               }
 
