@@ -16,7 +16,7 @@ function streamium_reviews_db_install() {
 		user_id int NOT NULL,
 		post_id int NOT NULL,
 		message text NOT NULL,
-		state boolean NOT NULL DEFAULT 0
+		state boolean NOT NULL DEFAULT 0,
 		time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
 		PRIMARY KEY  (id)
 	) $charset_collate;";
