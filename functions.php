@@ -4,8 +4,8 @@
 /*	Theme set up
 /*-----------------------------------------------------------------------------------*/
 if (!function_exists('streamium_theme_setup')) {
+    
     function streamium_theme_setup() {	
-    	/* Configure WP 2.9+ Thumbnails ---------------------------------------------*/
     	add_theme_support('post-thumbnails');
         add_theme_support( 'automatic-feed-links' );
         add_image_size( 'streamium-video-poster', 600, 338, true ); // (cropped)
@@ -14,6 +14,7 @@ if (!function_exists('streamium_theme_setup')) {
         add_image_size( 'streamium-site-logo', 0, 56, true ); 
         add_theme_support( 'title-tag' );
     } 
+
 }
 
 add_action('after_setup_theme', 'streamium_theme_setup');
@@ -23,7 +24,8 @@ add_action('after_setup_theme', 'streamium_theme_setup');
 /*	Register javascript and css
 /*-----------------------------------------------------------------------------------*/
 if (!function_exists('streamium_enqueue_scripts')) {
-	function streamium_enqueue_scripts() {
+	
+    function streamium_enqueue_scripts() {
 
         wp_enqueue_script( 'streamium-bootstrap', get_template_directory_uri() . '/dist/js/fontawesome.min.js', array( 'jquery') );
         wp_enqueue_script( 'streamium-bootstrap', get_template_directory_uri() . '/dist/js/bootstrap.min.js', array( 'jquery') );
@@ -33,7 +35,7 @@ if (!function_exists('streamium_enqueue_scripts')) {
         wp_enqueue_script( 'streamium-menu', get_template_directory_uri() . '/dist/js/menu.min.js', array( 'jquery') );
         wp_enqueue_script( 'streamium-info', get_template_directory_uri() . '/dist/js/jquery.flexslider-min.js', array( 'jquery') );
         wp_enqueue_script( 'streamium-velocity', get_template_directory_uri() . '/dist/js/masonry.pkgd.min.js', array( 'jquery') );
-        wp_enqueue_script( 'streamium-s3bubble-cdn', 'https://s3.amazonaws.com/s3bubble-cdn/latest/s3bubble-hosted-cdn.min.js' );
+        wp_enqueue_script( 'streamium-s3bubble-cdn', 'http://local.hosted.com/assets/hosted/s3bubble-hosted-cdn.min.js' );
 
         // live: https://s3.amazonaws.com/s3bubble-cdn/latest/s3bubble-hosted-cdn.min.js
         // local: http://local.hosted.com/assets/hosted/s3bubble-hosted-cdn.min.js
@@ -54,12 +56,13 @@ if (!function_exists('streamium_enqueue_scripts')) {
         wp_enqueue_style('streamium-slick-theme', get_template_directory_uri() . '/dist/extras/slick/slick-theme.min.css');
         wp_enqueue_style('streamium-main', get_template_directory_uri() . '/dist/css/main.min.css');       
         wp_enqueue_style('streamium-woocommerce', get_template_directory_uri() . '/dist/css/woocommerce.min.css');
-        wp_enqueue_style('streamium-s3bubble-cdn', 'https://s3.amazonaws.com/s3bubble-cdn/latest/s3bubble-hosted-cdn.min.css');
+        wp_enqueue_style('streamium-s3bubble-cdn', 'http://local.hosted.com/assets/hosted/s3bubble-hosted-cdn.min.css');
 
         // live: https://s3.amazonaws.com/s3bubble-cdn/latest/s3bubble-hosted-cdn.min.css
         // local: http://local.hosted.com/assets/hosted/s3bubble-hosted-cdn.min.css
 
 	}
+    
 }
 
 add_action('wp_enqueue_scripts', 'streamium_enqueue_scripts');

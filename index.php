@@ -26,7 +26,7 @@
 
 					?>
 					<div class="slider-block">
-						<?php if ( ! empty( $streamiumVideoTrailer ) ) : ?>
+						<?php if ( ! empty( $streamiumVideoTrailer ) && !isMobile() ) : ?>
 							<div id="streamium-featured-background-<?php echo get_the_ID(); ?>"></div>
 							<script type="text/javascript">
 								S3BubbleAWS.init({
@@ -35,8 +35,10 @@
 									poster: "<?php echo esc_url($image[0]); ?>",
 									fluid: true,
 									muted : true,
+									loop : true,
 									autoplay : true,
-									controls: false
+									controls: false,
+									meta: false
 								});
 							</script>
 						<?php else : ?>

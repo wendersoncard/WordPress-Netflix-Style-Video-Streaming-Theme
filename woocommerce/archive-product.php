@@ -58,6 +58,8 @@ get_header( 'shop' ); ?>
 
 				<?php while ( have_posts() ) : the_post(); ?>
 
+				<div class="col-sm-4">
+   					<div class="streamium-plans">
 					<?php
 						/**
 						 * woocommerce_shop_loop hook.
@@ -68,6 +70,8 @@ get_header( 'shop' ); ?>
 					?>
 
 					<?php wc_get_template_part( 'content', 'product' ); ?>
+					</div>
+				</div>
 
 				<?php endwhile; // end of the loop. ?>
 
