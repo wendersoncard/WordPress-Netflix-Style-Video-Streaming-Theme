@@ -20,10 +20,9 @@
 						$total_count = $wp_query->post_count;
 						while ( have_posts() ) : the_post(); if ( has_post_thumbnail() ) { 
 						$image   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-poster' );
-						$fullImage  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-home-slider' );  
-						$trimmed_content = wp_trim_words( get_the_excerpt(), 11 ); 
+						$nonce = wp_create_nonce( 'pt_like_it_nonce' ); 
 						?>
-						<div class="col-sm-2 tile" data-link="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-description="<?php echo htmlentities(get_the_content()); ?>" data-bgimage="<?php echo $fullImage[0]; ?>" data-cat="static-<?php echo $cat_count; ?>">
+						<div class="col-sm-2 tile" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>">
 							<?php if($post->premium) : ?>
 								<div class="tile_payment_details">
 									<div class="tile_payment_details_inner">
@@ -47,7 +46,7 @@
 					        <div class="tile_details">
 					          	<div class="tile_meta">
 					            	<h4><?php the_title(); ?></h4>						            	
-					            	<a data-link="<?php the_permalink(); ?>" data-title="<?php the_title(); ?>" data-description="<?php echo htmlentities(get_the_content()); ?>" data-bgimage="<?php echo $fullImage[0]; ?>" data-cat="static-<?php echo $cat_count; ?>" class="tile_meta_more_info hidden-xs"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+					            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>" class="tile_meta_more_info hidden-xs"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
 					          	</div>
 					        </div>
 						</div>
@@ -67,6 +66,15 @@
 												<div class="synopis-inner">
 													<h2 class="synopis hidden-xs"></h2>
 													<p class="synopis"></p>
+													<div class="synopis-premium-meta hidden-xs">
+														<div class="streamium-review-like-btn">
+									                        <a class="like-button">Like it</a>
+									                        <span id="" class="like-count">0</span>
+									                    </div>
+									                    <div class="streamium-review-reviews-btn">
+									                        <a class="streamium-list-reviews" data-id="" data-nonce="">Read reviews</a>
+									                    </div>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -80,6 +88,7 @@
 									        	</span>
 								        	</div>
 							        	</a>
+							        	<a href="#" class="synopis-video-trailer">Watch Trailer</a>
 							        	<a href="#" class="s3bubble-details-inner-close"><i class="fa fa-times" aria-hidden="true"></i></a>
 									</div><!--/.col-sm-12-->
 								</div><!--/.row-->

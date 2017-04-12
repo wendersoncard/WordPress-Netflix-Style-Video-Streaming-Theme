@@ -16,28 +16,41 @@ function streamium_get_dynamic_content() {
 
     	$post_object = get_post( $postId );
 
-    	$fullImage  = wp_get_attachment_image_src( get_post_thumbnail_id( $postId ), 'streamium-home-slider' ); 
-    	$streamiumVideoTrailer = get_post_meta( $postId, 'streamium_video_trailer_meta_box_text', true );
-    	$nonce = wp_create_nonce( 'pt_like_it_nonce' );
-    	$link = admin_url('admin-ajax.php?action=pt_like_it&post_id='.get_the_ID().'&nonce='.$nonce);
-        $likes = get_post_meta( $postId, '_pt_likes', true );
-        $likes = ( empty( $likes ) ) ? 0 : $likes;
+    	if(!empty($post_object)){
 
-    	echo json_encode(
-	    	array(
-	    		'error' => false,
-	    		'cat' => $cat,
-	    		'title' => $post_object->post_title,
-	    		'content' => $post_object->post_content,
-	    		'bgimage' =>  $fullImage[0],
-	    		'trailer' => $streamiumVideoTrailer,
-	    		'href' => get_permalink($postId),
-	    		'likes' => $likes,
-	    		'link' => $link,
-	    		'id' => $postId,
-	    		'nonce' => $nonce
-	    	)
-	    );
+	    	$fullImage  = wp_get_attachment_image_src( get_post_thumbnail_id( $postId ), 'streamium-home-slider' ); 
+	    	$streamiumVideoTrailer = get_post_meta( $postId, 'streamium_video_trailer_meta_box_text', true );
+	    	$nonce = wp_create_nonce( 'pt_like_it_nonce' );
+	    	$link = admin_url('admin-ajax.php?action=pt_like_it&post_id='.get_the_ID().'&nonce='.$nonce);
+	        $likes = get_post_meta( $postId, '_pt_likes', true );
+	        $likes = ( empty( $likes ) ) ? 0 : $likes;
+
+	    	echo json_encode(
+		    	array(
+		    		'error' => false,
+		    		'cat' => $cat,
+		    		'title' => $post_object->post_title,
+		    		'content' => $post_object->post_content,
+		    		'bgimage' =>  $fullImage[0],
+		    		'trailer' => $streamiumVideoTrailer,
+		    		'href' => get_permalink($postId),
+		    		'likes' => $likes,
+		    		'link' => $link,
+		    		'id' => $postId,
+		    		'nonce' => $nonce
+		    	)
+		    );
+
+	    }else{
+
+	    	echo json_encode(
+		    	array(
+		    		'error' => true,
+		    		'message' => 'We could not find this post.'
+		    	)
+		    );
+
+	    }
 
         die();
 

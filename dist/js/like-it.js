@@ -31,8 +31,8 @@ jQuery(document).ready(function($) {
                             title: "Error",
                             text: response.message,
                             type: "info",
-                            showCancelButton: true,
-                            confirmButtonText: "Ok, got it!",
+                            showCancelButton: false,
+                            confirmButtonText: "Ok, thanks!",
                             closeOnConfirm: true
                         },
                         function() {
@@ -118,7 +118,6 @@ jQuery(document).ready(function($) {
                     },
                     success: function(response) {
 
-                        console.log('response', response);
                         if (response.error) {
 
                             swal({

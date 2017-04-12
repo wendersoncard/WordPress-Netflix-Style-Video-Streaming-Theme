@@ -59,7 +59,7 @@
 													<span class="hidden-xs">
 														<p><?php the_content(); ?></p>
 													</span>
-													<div class="synopis-premium-meta">
+													<div class="synopis-premium-meta hidden-xs">
 														<div class="streamium-review-like-btn">
 									                        <a class="like-button" href="<?php echo $link; ?>" data-id="<?php echo get_the_ID(); ?>" data-nonce="<?php echo $nonce; ?>">Like it</a>
 									                        <span id="like-count-<?php echo get_the_ID(); ?>" class="like-count"><?php echo $likes; ?></span>
@@ -138,9 +138,10 @@
 										while ( $loop->have_posts() ) : $loop->the_post();
 											if ( has_post_thumbnail() ) : // thumbnail check 
 											$image   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-category' );
+											$nonce = wp_create_nonce( 'pt_like_it_nonce' );
 							
 								?>
-								<div class="tile">
+								<div class="tile" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="recent">
 								        <div class="tile_media" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
 						       	 		</div> 
 						       	 		<a class="play-icon-wrap hidden-xs" href="<?php the_permalink(); ?>">
@@ -179,7 +180,7 @@
 									<div class="synopis-inner">
 										<h2 class="synopis hidden-xs"></h2>
 										<p class="synopis"></p>
-										<div class="synopis-premium-meta">
+										<div class="synopis-premium-meta hidden-xs">
 											<div class="streamium-review-like-btn">
 						                        <a class="like-button">Like it</a>
 						                        <span id="" class="like-count">0</span>
@@ -233,10 +234,11 @@
 								if($loop->have_posts()):
 									while ( $loop->have_posts() ) : $loop->the_post();
 									if ( has_post_thumbnail() ) : // thumbnail check 
-									$image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-category' ); 
+									$image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-category' );
+									$nonce = wp_create_nonce( 'pt_like_it_nonce' ); 
 
 						?>
-							<div class="tile">
+							<div class="tile" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="<?php echo $category->slug; ?>">
 								<?php if($post->premium) : ?>
 									<div class="tile_payment_details">
 										<div class="tile_payment_details_inner">
@@ -285,7 +287,7 @@
 								<div class="synopis-inner">
 									<h2 class="synopis hidden-xs"></h2>
 									<p class="synopis"></p>
-									<div class="synopis-premium-meta">
+									<div class="synopis-premium-meta hidden-xs">
 										<div class="streamium-review-like-btn">
 					                        <a class="like-button">Like it</a>
 					                        <span id="" class="like-count">0</span>
