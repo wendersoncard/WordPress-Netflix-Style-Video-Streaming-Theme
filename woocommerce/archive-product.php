@@ -42,40 +42,47 @@ get_header( 'shop' ); ?>
 
 		<?php if ( have_posts() ) : ?>
 
+
 			<?php
-				/**
-				 * woocommerce_before_shop_loop hook.
-				 *
-				 * @hooked woocommerce_result_count - 20
-				 * @hooked woocommerce_catalog_ordering - 30
-				 */
-				//do_action( 'woocommerce_before_shop_loop' );
+
+				switch ($wp_query->post_count) {
+					case 1:
+						$planClass = "col-sm-4 col-xs-12 col-md-offset-4"; 
+						break;
+					case 2:
+						$planClass = "col-sm-6 col-xs-12"; 
+						break;
+					case 3:
+						$planClass = "col-sm-4 col-xs-12"; 
+						break;
+					case 4:
+						$planClass = "col-sm-3 col-xs-12"; 
+						break;
+					default:
+						$planClass = "col-sm-4 col-xs-12"; 
+						break;
+				}
+			
 			?>
 
-			<?php woocommerce_product_loop_start(); ?>
+			<?php while ( have_posts() ) : the_post(); ?>
 
-				<?php woocommerce_product_subcategories(); ?>
+			<div class="<?php echo $planClass; ?>">
+					<div class="streamium-plans">
+				<?php
+					/**
+					 * woocommerce_shop_loop hook.
+					 *
+					 * @hooked WC_Structured_Data::generate_product_data() - 10
+					 */
+					do_action( 'woocommerce_shop_loop' );
+				?>
 
-				<?php while ( have_posts() ) : the_post(); ?>
-
-				<div class="col-sm-4">
-   					<div class="streamium-plans">
-					<?php
-						/**
-						 * woocommerce_shop_loop hook.
-						 *
-						 * @hooked WC_Structured_Data::generate_product_data() - 10
-						 */
-						do_action( 'woocommerce_shop_loop' );
-					?>
-
-					<?php wc_get_template_part( 'content', 'product' ); ?>
-					</div>
+				<?php wc_get_template_part( 'content', 'product' ); ?>
 				</div>
+			</div>
 
-				<?php endwhile; // end of the loop. ?>
-
-			<?php woocommerce_product_loop_end(); ?>
+			<?php endwhile; // end of the loop. ?>
 
 			<?php
 				/**

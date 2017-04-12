@@ -13,7 +13,7 @@
 					);
 					
 					$loop = new WP_Query( $args ); 
-
+					$sliderPostCount = 0;
 					if($loop->have_posts()):
 						while ( $loop->have_posts() ) : $loop->the_post();
 							global $post;
@@ -23,10 +23,10 @@
 							$percentage = get_post_meta( get_the_ID(), 'percentage', true );
 							$streamiumVideoTrailer = get_post_meta( get_the_ID(), 'streamium_video_trailer_meta_box_text', true );
 							$streamiumFeaturedVideo = get_post_meta( get_the_ID(), 'streamium_featured_video_meta_box_text', true );
-
+						
 					?>
 					<div class="slider-block">
-						<?php if ( ! empty( $streamiumVideoTrailer ) && !isMobile() ) : ?>
+						<?php if ( ! empty( $streamiumFeaturedVideo ) && !isMobile() && ($sliderPostCount < 1) ) : ?>
 							<div id="streamium-featured-background-<?php echo get_the_ID(); ?>"></div>
 							<script type="text/javascript">
 								S3BubbleAWS.init({
@@ -76,7 +76,8 @@
 							</div>
 						</article><!--/.content-overlay-->
 					</div>
-					<?php 
+					<?php
+					    $sliderPostCount++; 
 						endwhile; 
 					else: 
 					?>
