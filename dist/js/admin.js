@@ -23,10 +23,10 @@ jQuery( document ).ready(function( $ ) {
 
             if(parseInt(streamium_meta_object.streamiumPremium) === 1){
                 if(ext === "m3u8"){
-                    html += '<option id="' + code + '"  value="' + code + '">' + key + '</option>';  
+                    html += '<option id="' + code + '"  value="' + code + '">' + bucket + ': ' + key + '</option>';  
                 }
                 if(ext === "mp4"){
-                    html += '<option id="' + code + '"  value="' + code + '">' + key + '</option>';  
+                    html += '<option id="' + code + '"  value="' + code + '">' + bucket + ': ' + key + '</option>';  
                 }
             }else{
                 if(ext === "mp4"){

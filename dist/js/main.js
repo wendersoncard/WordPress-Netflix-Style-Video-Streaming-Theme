@@ -44,9 +44,19 @@ jQuery(document).ready(function($) {
 	$(".subscriptio_list_id a").contents().unwrap();
 	$(".product-thumbnail").remove();
 
+	
 	var vh = Math.round($(window).innerWidth()/21*9);
 	var wh = Math.round($(window).innerWidth());
-	$('.hero-slider .slider-block').css({'height' : vh,'width' : wh});
+
+	function resizeVideoJS(){
+        vh = Math.round($(window).innerWidth()/21*9);
+		wh = Math.round($(window).innerWidth());
+		$('.hero-slider .slider-block').css({'height' : vh,'width' : wh});
+		$(".hero").css("margin-bottom", "-" + $(".video-header").height() + "px");
+    }  
+      
+    resizeVideoJS();
+    window.onresize = resizeVideoJS; 
 
 	// Initialise Slider
 	$('.hero-slider').slick({
@@ -57,9 +67,9 @@ jQuery(document).ready(function($) {
 		slidesToScroll: 1,
 		dots: true,
       	autoplay: false,
-      	//adaptiveHeight: true,
+      	adaptiveHeight: true,
       	//centerMode: true,
-        variableWidth: true,
+        //variableWidth: true,
       	autoplaySpeed: 8000,
       	//mobileFirst: true,
 		pauseOnHover: true,
