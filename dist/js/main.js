@@ -58,7 +58,7 @@ jQuery(document).ready(function($) {
 		dots: true,
       	autoplay: false,
       	//adaptiveHeight: true,
-      	centerMode: true,
+      	//centerMode: true,
         variableWidth: true,
       	autoplaySpeed: 8000,
       	//mobileFirst: true,
