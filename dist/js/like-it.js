@@ -113,7 +113,7 @@ jQuery(document).ready(function($) {
                     type: 'post',
                     dataType: 'json',
                     data: {
-                        action: 'pt_like_it',
+                        action: 'streamium_likes',
                         post_id: post_id,
                         message: inputValue,
                         nonce: nonce

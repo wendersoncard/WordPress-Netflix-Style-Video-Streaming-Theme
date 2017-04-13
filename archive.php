@@ -20,7 +20,7 @@
 						$total_count = $wp_query->post_count;
 						while ( have_posts() ) : the_post(); if ( has_post_thumbnail() ) { 
 						$image   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-poster' );
-						$nonce = wp_create_nonce( 'pt_like_it_nonce' ); 
+						$nonce = wp_create_nonce( 'streamium_likes_nonce' ); 
 						?>
 						<div class="col-sm-2 tile" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>">
 							<?php if($post->premium) : ?>

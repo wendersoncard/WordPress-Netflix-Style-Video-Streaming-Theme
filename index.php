@@ -22,8 +22,8 @@
 							$percentage = get_post_meta( get_the_ID(), 'percentage', true );
 							$streamiumVideoTrailer = get_post_meta( get_the_ID(), 'streamium_video_trailer_meta_box_text', true );
 							$streamiumFeaturedVideo = get_post_meta( get_the_ID(), 'streamium_featured_video_meta_box_text', true );
-							$nonce = wp_create_nonce( 'pt_like_it_nonce' );
-					        $link = admin_url('admin-ajax.php?action=pt_like_it&post_id='.get_the_ID().'&nonce='.$nonce);
+							$nonce = wp_create_nonce( 'streamium_likes_nonce' );
+					        $link = admin_url('admin-ajax.php?action=streamium_likes&post_id='.get_the_ID().'&nonce='.$nonce);
 					        $likes = get_post_meta( get_the_ID(), '_pt_likes', true );
 					        $likes = ( empty( $likes ) ) ? 0 : $likes;
 					        $content = (isMobile()) ? get_the_excerpt() : get_the_content();
@@ -136,7 +136,7 @@
 										while ( $loop->have_posts() ) : $loop->the_post();
 											if ( has_post_thumbnail() ) : // thumbnail check 
 											$image   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-category' );
-											$nonce = wp_create_nonce( 'pt_like_it_nonce' );
+											$nonce = wp_create_nonce( 'streamium_likes_nonce' );
 								?>
 								<div class="tile" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="recent">
 								        <div class="tile_media" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
@@ -234,7 +234,7 @@
 									while ( $loop->have_posts() ) : $loop->the_post();
 									if ( has_post_thumbnail() ) : // thumbnail check 
 									$image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-category' );
-									$nonce = wp_create_nonce( 'pt_like_it_nonce' ); 
+									$nonce = wp_create_nonce( 'streamium_likes_nonce' ); 
 
 						?>
 							<div class="tile" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="<?php echo $category->slug; ?>">

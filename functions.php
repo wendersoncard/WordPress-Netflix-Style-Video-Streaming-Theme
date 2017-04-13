@@ -27,11 +27,10 @@ if (!function_exists('streamium_enqueue_scripts')) {
 	
     function streamium_enqueue_scripts() {
         
-        wp_enqueue_script( 'streamium-bootstrap', get_template_directory_uri() . '/dist/js/fontawesome.min.js', array( 'jquery') );
+        wp_enqueue_script( 'streamium-fontawesome', get_template_directory_uri() . '/dist/js/fontawesome.min.js', array( 'jquery') );
         wp_enqueue_script( 'streamium-bootstrap', get_template_directory_uri() . '/dist/js/bootstrap.min.js', array( 'jquery') );
 	      wp_enqueue_script( 'streamium-slick', get_template_directory_uri() . '/dist/extras/slick/slick.min.js', array( 'jquery') );
         wp_enqueue_script( 'streamium-modernizr', get_template_directory_uri() . '/dist/js/modernizr.min.js', array( 'jquery') );
-        wp_enqueue_script( 'streamium-jquery.mobile.custom', get_template_directory_uri() . '/dist/js/jquery.mobile.custom.min.js', array( 'jquery') );
         wp_enqueue_script( 'streamium-menu', get_template_directory_uri() . '/dist/js/menu.min.js', array( 'jquery') );
         wp_enqueue_script( 'streamium-sweetalert', get_template_directory_uri() . '/dist/extras/sweetalert/sweetalert.min.js', array( 'jquery') );
 

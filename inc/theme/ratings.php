@@ -33,9 +33,9 @@ add_action("after_switch_theme", "streamium_reviews_db_install");
 function like_it_button_html( $content ) {
     $like_text = '';
     //if ( is_singular() ) {
-        $nonce = wp_create_nonce( 'pt_like_it_nonce' );
-        $link = admin_url('admin-ajax.php?action=pt_like_it&post_id='.get_the_ID().'&nonce='.$nonce);
-        $likes = get_post_meta( get_the_ID(), '_pt_likes', true );
+        $nonce = wp_create_nonce( 'streamium_likes_nonce' );
+        $link = admin_url('admin-ajax.php?action=streamium_likes&post_id='.get_the_ID().'&nonce='.$nonce);
+        $likes = get_post_meta( get_the_ID(), 'streamium_likes', true );
         $likes = ( empty( $likes ) ) ? 0 : $likes;
         $like_text = '
                     <div class="pt-like-it">
@@ -57,7 +57,7 @@ function checkIfArrayKeyValueExists($array, $key, $val) {
     return false;
 }
 
-function pt_like_it() {
+function streamium_likes() {
 
 	global $wpdb;
 
@@ -66,7 +66,7 @@ function pt_like_it() {
 	$postId = $_REQUEST['post_id'];
 	$message = $_REQUEST['message'];
  
-    if ( ! wp_verify_nonce( $_REQUEST['nonce'], 'pt_like_it_nonce' ) || ! isset( $_REQUEST['nonce'] ) ) {
+    if ( ! wp_verify_nonce( $_REQUEST['nonce'], 'streamium_likes_nonce' ) || ! isset( $_REQUEST['nonce'] ) ) {
         exit( "No naughty business please" );
     }
 
@@ -127,10 +127,10 @@ function pt_like_it() {
 
 		}else{
 
-			$likes = get_post_meta( $_REQUEST['post_id'], '_pt_likes', true );
+			$likes = get_post_meta( $_REQUEST['post_id'], 'streamium_likes', true );
 		    $likes = ( empty( $likes ) ) ? 0 : $likes;
 		    $new_likes = $likes + 1;
-		    update_post_meta( $_REQUEST['post_id'], '_pt_likes', $new_likes );
+		    update_post_meta( $_REQUEST['post_id'], 'streamium_likes', $new_likes );
 
 			echo json_encode(
 		    	array(
@@ -154,8 +154,8 @@ function pt_like_it() {
 
 }
 
-add_action( 'wp_ajax_nopriv_pt_like_it', 'pt_like_it' );
-add_action( 'wp_ajax_pt_like_it', 'pt_like_it' );
+add_action( 'wp_ajax_nopriv_streamium_likes', 'streamium_likes' );
+add_action( 'wp_ajax_streamium_likes', 'streamium_likes' );
 
 function time2str($ts)
 {
@@ -209,7 +209,7 @@ function streamium_get_reviews() {
 	// Get params
 	$postId = $_REQUEST['post_id'];
  
-    if ( ! wp_verify_nonce( $_REQUEST['nonce'], 'pt_like_it_nonce' ) || ! isset( $_REQUEST['nonce'] ) ) {
+    if ( ! wp_verify_nonce( $_REQUEST['nonce'], 'streamium_likes_nonce' ) || ! isset( $_REQUEST['nonce'] ) ) {
         exit( "No naughty business please" );
     }
 
@@ -296,7 +296,7 @@ function streamium_get_reviews() {
 add_action( 'wp_ajax_nopriv_streamium_get_reviews', 'streamium_get_reviews' );
 add_action( 'wp_ajax_streamium_get_reviews', 'streamium_get_reviews' );
 
-function pt_like_it_scripts() {
+function streamium_likes_scripts() {
     if( !is_single() ) {
  
         wp_enqueue_style( 'like-it', get_template_directory_uri() . '/dist/css/like-it.min.css' );
@@ -305,4 +305,4 @@ function pt_like_it_scripts() {
     }
 }
 
-add_action( 'wp_enqueue_scripts', 'pt_like_it_scripts' );
+add_action( 'wp_enqueue_scripts', 'streamium_likes_scripts' );

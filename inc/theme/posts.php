@@ -56,7 +56,7 @@ function streamium_get_dynamic_content() {
 	$cat = $_REQUEST['cat'];
 	$postId = $_REQUEST['post_id'];
  
-    if ( ! wp_verify_nonce( $_REQUEST['nonce'], 'pt_like_it_nonce' ) || ! isset( $_REQUEST['nonce'] ) ) {
+    if ( ! wp_verify_nonce( $_REQUEST['nonce'], 'streamium_likes_nonce' ) || ! isset( $_REQUEST['nonce'] ) ) {
         exit( "No naughty business please" );
     }
 
@@ -68,8 +68,8 @@ function streamium_get_dynamic_content() {
 
     		$like_text = '';
 		    if ( get_theme_mod( 'streamium_enable_premium' ) ) {
-		        $nonce = wp_create_nonce( 'pt_like_it_nonce' );
-		    	$link = admin_url('admin-ajax.php?action=pt_like_it&post_id='. $postId .'&nonce='.$nonce);
+		        $nonce = wp_create_nonce( 'streamium_likes_nonce' );
+		    	$link = admin_url('admin-ajax.php?action=streamium_likes&post_id='. $postId .'&nonce='.$nonce);
 		        $likes = get_post_meta( $postId, '_pt_likes', true );
 		        $likes = ( empty( $likes ) ) ? 0 : $likes;
 		        $like_text = '<div class="synopis-premium-meta hidden-xs">
