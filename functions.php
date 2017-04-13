@@ -26,7 +26,7 @@ add_action('after_setup_theme', 'streamium_theme_setup');
 if (!function_exists('streamium_enqueue_scripts')) {
 	
     function streamium_enqueue_scripts() {
-
+        
         wp_enqueue_script( 'streamium-bootstrap', get_template_directory_uri() . '/dist/js/fontawesome.min.js', array( 'jquery') );
         wp_enqueue_script( 'streamium-bootstrap', get_template_directory_uri() . '/dist/js/bootstrap.min.js', array( 'jquery') );
 	      wp_enqueue_script( 'streamium-slick', get_template_directory_uri() . '/dist/extras/slick/slick.min.js', array( 'jquery') );
@@ -36,7 +36,11 @@ if (!function_exists('streamium_enqueue_scripts')) {
         wp_enqueue_script( 'streamium-sweetalert', get_template_directory_uri() . '/dist/extras/sweetalert/sweetalert.min.js', array( 'jquery') );
 
         wp_enqueue_script( 'streamium-scripts', get_template_directory_uri() . '/dist/js/main.min.js', array( 'jquery') );
-        wp_localize_script( 'streamium-scripts', 'streamium_object', array( 'ajax_url' => admin_url( 'admin-ajax.php') ) );
+        wp_localize_script( 'streamium-scripts', 'streamium_object', 
+            array( 
+                'ajax_url' => admin_url( 'admin-ajax.php')
+            )
+        );
 
         if( is_singular() ) {
             wp_enqueue_script('comment-reply'); // loads the javascript required for threaded comments

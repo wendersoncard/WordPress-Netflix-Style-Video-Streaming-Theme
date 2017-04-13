@@ -184,11 +184,12 @@ p {
 .synopis-video-trailer {
     position: absolute;
     right: 10px;
-    bottom: 20px;
+    bottom: 35px;
     padding: .5vw 1vw;
     border: 1px solid;
     text-decoration: none!important;
     font-size: 1vw;
+    z-index: 999;
 }
 
 .progress {

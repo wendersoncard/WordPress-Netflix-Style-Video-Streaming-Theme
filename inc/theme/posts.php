@@ -1,5 +1,53 @@
 <?php
 
+function load_scripts() {
+
+    if( is_page() || is_single() )
+    {
+    	$nonce = wp_create_nonce( 'single_nonce' );
+    	$s3videoid = get_post_meta( get_the_ID(), 's3bubble_video_code_meta_box_text', true );
+    	$streamiumVideoTrailer = get_post_meta( get_the_ID(), 'streamium_video_trailer_meta_box_text', true );
+    	
+    	if(is_user_logged_in()){
+    		$userId = get_current_user_id();
+    		$percentageWatched = get_post_meta( get_the_ID(), 'user_' . $userId, true );
+    	}
+
+    	if ( get_theme_mod( 'streamium_enable_premium' ) ) {
+
+    		// Setup premium
+	        wp_enqueue_script('video-post', get_template_directory_uri() . '/dist/js/single.premium.min.js', array('jquery'), '', false);
+	        wp_localize_script( 'video-post', 'video_post_object', 
+	            array( 
+	                'ajax_url' => admin_url( 'admin-ajax.php'),
+	                'post_id' => !empty(get_the_ID()) ? get_the_ID() : false,
+	                'percentage' => !empty($percentageWatched) ? $percentageWatched : 0,
+	                'code' => (isset($_GET['trailer'])) ? $streamiumVideoTrailer : $s3videoid,
+	                'trailer' => $streamiumVideoTrailer,
+	                'nonce' => $nonce
+	            )
+	        );
+
+        }else{
+
+        	//setup standard
+        	wp_enqueue_script('video-post', get_template_directory_uri() . '/dist/js/single.standard.min.js', array('jquery'), '', false);
+	        wp_localize_script( 'video-post', 'video_post_object', 
+	            array( 
+	                'ajax_url' => admin_url( 'admin-ajax.php'),
+	                'post_id' => !empty(get_the_ID()) ? get_the_ID() : false,
+	                'code' => ( ! empty( $s3videoid ) && filter_var($s3videoid, FILTER_VALIDATE_URL) ) ? $s3videoid : NULL
+	            )
+	        );
+
+        } 
+
+    } 
+
+}
+
+add_action('wp_enqueue_scripts', 'load_scripts');
+
 function streamium_get_dynamic_content() {
 
 	global $wpdb;
