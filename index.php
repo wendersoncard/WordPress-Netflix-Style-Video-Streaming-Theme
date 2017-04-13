@@ -19,7 +19,6 @@
 							global $post;
 						    $image   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-home-slider' ); 
 							$title   = wp_trim_words( get_the_title(), $num_words = 10, $more = '... ' );
-							$excerpt = wp_trim_words( get_the_excerpt(), $num_words = 50, $more = '... ' );
 							$percentage = get_post_meta( get_the_ID(), 'percentage', true );
 							$streamiumVideoTrailer = get_post_meta( get_the_ID(), 'streamium_video_trailer_meta_box_text', true );
 							$streamiumFeaturedVideo = get_post_meta( get_the_ID(), 'streamium_featured_video_meta_box_text', true );
@@ -27,11 +26,11 @@
 					        $link = admin_url('admin-ajax.php?action=pt_like_it&post_id='.get_the_ID().'&nonce='.$nonce);
 					        $likes = get_post_meta( get_the_ID(), '_pt_likes', true );
 					        $likes = ( empty( $likes ) ) ? 0 : $likes;
-
+ 
 					?>
-					<div class="slider-block">
+					<div class="slider-block" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
 						<?php if ( ! empty( $streamiumFeaturedVideo ) && !isMobile() && ($sliderPostCount < 1) ) : ?>
-							<div id="streamium-featured-background-<?php echo get_the_ID(); ?>"></div>
+							<div class="streamium-featured-background" id="streamium-featured-background-<?php echo get_the_ID(); ?>"></div>
 							<script type="text/javascript">
 								S3BubbleAWS.init({
 									id : "streamium-featured-background-<?php echo get_the_ID(); ?>",
@@ -45,8 +44,6 @@
 									meta: false
 								});
 							</script>
-						<?php else : ?>
-							<img src="<?php echo esc_url($image[0]); ?>" />
 						<?php endif; ?>
 						<article class="content-overlay">
 							<div class="container-fluid rel">

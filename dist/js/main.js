@@ -44,6 +44,10 @@ jQuery(document).ready(function($) {
 	$(".subscriptio_list_id a").contents().unwrap();
 	$(".product-thumbnail").remove();
 
+	var vh = Math.round($(window).innerWidth()/21*9);
+	var wh = Math.round($(window).innerWidth());
+	$('.hero-slider .slider-block').css({'height' : vh,'width' : wh});
+
 	// Initialise Slider
 	$('.hero-slider').slick({
 		appendArrows: $(this).prev(),
@@ -53,7 +57,9 @@ jQuery(document).ready(function($) {
 		slidesToScroll: 1,
 		dots: true,
       	autoplay: false,
-      	adaptiveHeight: true,
+      	//adaptiveHeight: true,
+      	centerMode: true,
+        variableWidth: true,
       	autoplaySpeed: 8000,
       	//mobileFirst: true,
 		pauseOnHover: true,
@@ -81,10 +87,6 @@ jQuery(document).ready(function($) {
 		    }
 		]
 	});
-
-	var vh = $(window).innerWidth()/21*9;
-	var wh = $(window).innerWidth();
-	$('.hero-slider .slider-block').css({'height' : vh,'width' : wh});
 	
 	$('.carousels').each(function(i, obj) {
 

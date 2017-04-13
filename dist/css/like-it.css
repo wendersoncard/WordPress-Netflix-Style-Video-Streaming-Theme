@@ -10,7 +10,7 @@
     text-align: center;
     text-decoration: none;
     cursor: pointer;
-    border: 1px solid;
+    border: 1px solid rgba(153, 153, 153, 0.5);
     vertical-align: bottom;
     white-space: nowrap;
     text-rendering: auto;
@@ -57,7 +57,7 @@
     text-align: center;
     text-decoration: none;
     cursor: pointer;
-    border: 1px solid;
+    border: 1px solid rgba(153, 153, 153, 0.5);
     vertical-align: bottom;
     white-space: nowrap;
     text-rendering: auto;
