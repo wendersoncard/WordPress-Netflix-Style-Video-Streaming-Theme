@@ -31,7 +31,7 @@ jQuery(document).ready(function($) {
 	$(window).scroll(function (event) {
 	    var scroll = $(window).scrollTop();
 	    if(scroll > 100){
-	    	$(".home .cd-main-header").css("background","rgba(0,0,0,0.8)");
+	    	$(".home .cd-main-header").css("background","rgba(0,0,0,0.9)");
 	    }else{
 	    	$(".home .cd-main-header").css("background","rgba(0,0,0,0)");
 	    }

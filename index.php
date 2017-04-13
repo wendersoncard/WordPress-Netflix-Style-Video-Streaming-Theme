@@ -26,6 +26,7 @@
 					        $link = admin_url('admin-ajax.php?action=pt_like_it&post_id='.get_the_ID().'&nonce='.$nonce);
 					        $likes = get_post_meta( get_the_ID(), '_pt_likes', true );
 					        $likes = ( empty( $likes ) ) ? 0 : $likes;
+					        $content = (isMobile()) ? get_the_excerpt() : get_the_content();
  
 					?>
 					<div class="slider-block" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
@@ -54,7 +55,7 @@
 												<div class="synopis-inner">
 													<h2><?php echo (isset($title) ? $title : __( 'No Title', 'streamium' )); ?></h2>
 													<span class="hidden-xs">
-														<p><?php the_content(); ?></p>
+														<p><?php echo $content; ?></p>
 													</span>
 													<div class="synopis-premium-meta hidden-xs">
 														<div class="streamium-review-like-btn">

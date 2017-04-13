@@ -18,6 +18,7 @@ function streamium_get_dynamic_content() {
 
     	if(!empty($post_object)){
 
+    		$content = (isMobile()) ? $post_object->post_excerpt : $post_object->post_content;
 	    	$fullImage  = wp_get_attachment_image_src( get_post_thumbnail_id( $postId ), 'streamium-home-slider' ); 
 	    	$streamiumVideoTrailer = get_post_meta( $postId, 'streamium_video_trailer_meta_box_text', true );
 	    	$nonce = wp_create_nonce( 'pt_like_it_nonce' );
@@ -30,7 +31,7 @@ function streamium_get_dynamic_content() {
 		    		'error' => false,
 		    		'cat' => $cat,
 		    		'title' => $post_object->post_title,
-		    		'content' => $post_object->post_content,
+		    		'content' => $content,
 		    		'bgimage' =>  $fullImage[0],
 		    		'trailer' => $streamiumVideoTrailer,
 		    		'href' => get_permalink($postId),
