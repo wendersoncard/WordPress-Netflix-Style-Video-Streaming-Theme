@@ -23,14 +23,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<p><?php
+<div class="streamium-woo-dashboard">
+<?php
+
+    /**
+	 * Deprecated woocommerce_before_my_account action.
+	 *
+	 * @deprecated 2.6.0
+	 */
+	do_action( 'woocommerce_before_my_account' );
+
 	/* translators: 1: user display name 2: logout url */
 	printf(
-		__( 'Hello %1$s (not %1$s? <a href="%2$s">Sign out</a>)', 'woocommerce' ),
+		__( '<p>Hello %1$s (not %1$s? <a href="%2$s">Sign out</a>)</p>', 'woocommerce' ),
 		'<strong>' . esc_html( $current_user->display_name ) . '</strong>',
 		esc_url( wc_logout_url( wc_get_page_permalink( 'myaccount' ) ) )
 	);
-?></p>
+?>
 
 <p><?php
 	printf(
@@ -41,6 +50,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	);
 ?></p>
 
+</div>
+
 <?php
 	/**
 	 * My Account dashboard.
@@ -49,12 +60,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 */
 	do_action( 'woocommerce_account_dashboard' );
 
-	/**
-	 * Deprecated woocommerce_before_my_account action.
-	 *
-	 * @deprecated 2.6.0
-	 */
-	do_action( 'woocommerce_before_my_account' );
+	
 
 	/**
 	 * Deprecated woocommerce_after_my_account action.

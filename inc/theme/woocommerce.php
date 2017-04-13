@@ -15,6 +15,19 @@ add_action( 'after_setup_theme', 'woocommerce_support' );
 remove_action( 'woocommerce_before_shop_loop_item', 'woocommerce_template_loop_product_link_open', 10 );
 remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close', 5 );
 
+/**
+ * Print the customer avatar in My Account page, after the welcome message
+ */
+function streamium_myaccount_customer_avatar() {
+
+    $current_user = wp_get_current_user();
+    $url = md5( strtolower( trim( $current_user->user_email ) ) );
+    echo '<div class="myaccount_avatar"><a href="https://www.gravatar.com/avatar/' . $url . '?s=200" target="_blank">' . get_avatar( $current_user->user_email, 72, '', $current_user->display_name ) . '</a></div>';
+
+}
+
+add_action( 'woocommerce_before_my_account', 'streamium_myaccount_customer_avatar', 50 );
+
 /*
 * Allows filters to be removed on the memebership plugin
 * @author sameast

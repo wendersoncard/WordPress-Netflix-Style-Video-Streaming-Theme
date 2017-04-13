@@ -254,3 +254,24 @@ input {
 .order-actions.subscriptio_list_actions {
     display: none;
 }
+
+.streamium-woo-dashboard {
+    float: left;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.myaccount_avatar {
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    float: left;
+    padding-right: 10px;
+    margin-right: 10px;
+    width: 83px;
+}
+
+.myaccount_user {
+    border-left: 3px solid #787E87;
+    float: right;
+    padding-left: 10px;
+    width: 88%;
+}
