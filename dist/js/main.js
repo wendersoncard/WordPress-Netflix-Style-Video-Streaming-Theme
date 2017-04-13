@@ -249,7 +249,7 @@ jQuery(document).ready(function($) {
 	    	$(this).css('opacity', '1');
 		    $(this).find('.tile_details').css('opacity', '1');
 		    $(this).find('.play-icon-wrap').css('opacity', '1');
-		    $(this).css('border-bottom','1px solid');
+		    //$(this).css('border-bottom','1px solid');
 
 		}, function() {
 
@@ -257,7 +257,7 @@ jQuery(document).ready(function($) {
 			$('.tile').css('opacity', '1');
 		    $(this).find('.tile_details').css('opacity', '0');
 		    $(this).find('.play-icon-wrap').css('opacity', '0');
-		    $(this).parent().parent().find('.tile').css('border','none');
+		    //$(this).parent().parent().find('.tile').css('border','none');
 
 		});
 

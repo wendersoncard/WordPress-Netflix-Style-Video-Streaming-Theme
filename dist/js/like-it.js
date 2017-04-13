@@ -100,7 +100,7 @@ jQuery(document).ready(function($) {
                 inputPlaceholder: "Write something"
             },
             function(inputValue) {
-
+                
                 if (inputValue === false) return false;
 
                 if (inputValue === "") {

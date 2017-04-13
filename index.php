@@ -137,7 +137,6 @@
 											if ( has_post_thumbnail() ) : // thumbnail check 
 											$image   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-category' );
 											$nonce = wp_create_nonce( 'pt_like_it_nonce' );
-							
 								?>
 								<div class="tile" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="recent">
 								        <div class="tile_media" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
@@ -156,6 +155,17 @@
 								            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="recent" class="tile_meta_more_info hidden-xs"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
 								          	</div>
 								        </div>
+								        <?php if(is_user_logged_in() && get_theme_mod( 'streamium_enable_premium' )){
+									    		$userId = get_current_user_id();
+									    		$percentageWatched = get_post_meta( get_the_ID(), 'user_' . $userId, true );
+									    ?>
+										    <div class="progress tile_progress">
+											  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $percentageWatched; ?>"
+											  aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $percentageWatched; ?>%">
+											    <span class="sr-only"><?php echo $percentageWatched; ?>% Complete</span>
+											  </div>
+											</div>
+									    <?php } ?>
 								    </div>
 								<?php
 											endif;  
@@ -253,6 +263,17 @@
 						            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="<?php echo $category->slug; ?>" class="tile_meta_more_info hidden-xs"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
 						          	</div>
 						        </div>
+						        <?php if(is_user_logged_in() && get_theme_mod( 'streamium_enable_premium' )){
+							    		$userId = get_current_user_id();
+							    		$percentageWatched = get_post_meta( get_the_ID(), 'user_' . $userId, true );
+							    ?>
+								    <div class="progress tile_progress">
+									  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $percentageWatched; ?>"
+									  aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $percentageWatched; ?>%">
+									    <span class="sr-only"><?php echo $percentageWatched; ?>% Complete</span>
+									  </div>
+									</div>
+							    <?php } ?>
 						    </div>
 						<?php
 								

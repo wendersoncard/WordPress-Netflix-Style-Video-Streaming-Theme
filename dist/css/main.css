@@ -461,6 +461,16 @@ p {
   transition: 450ms opacity;
 }
 
+.carousels .tile_progress {
+  height: 2px;
+  border-radius: 0px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -20px;
+  background: #000;
+}
+
 .carousels .play-icon-wrap {
     opacity: 0;
     left: 50%;

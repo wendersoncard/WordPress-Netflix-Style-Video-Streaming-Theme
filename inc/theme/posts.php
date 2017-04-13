@@ -74,7 +74,7 @@ function streamium_get_dynamic_content() {
 		        $likes = ( empty( $likes ) ) ? 0 : $likes;
 		        $like_text = '<div class="synopis-premium-meta hidden-xs">
 								<div class="streamium-review-like-btn">
-			                        <a class="like-button">' . __( 'Like it' ) . '</a>
+			                        <a class="like-button"  data-id="' . $postId . '" data-nonce="' . $nonce . '">' . __( 'Like it' ) . '</a>
 			                        <span id="like-count-' . $postId . '" class="like-count">' . $likes . '</span>
 			                    </div>
 			                    <div class="streamium-review-reviews-btn">
