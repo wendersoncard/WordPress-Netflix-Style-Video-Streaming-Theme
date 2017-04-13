@@ -32,7 +32,7 @@ add_action("after_switch_theme", "streamium_reviews_db_install");
 
 function like_it_button_html( $content ) {
     $like_text = '';
-    if ( is_singular() ) {
+    //if ( is_singular() ) {
         $nonce = wp_create_nonce( 'pt_like_it_nonce' );
         $link = admin_url('admin-ajax.php?action=pt_like_it&post_id='.get_the_ID().'&nonce='.$nonce);
         $likes = get_post_meta( get_the_ID(), '_pt_likes', true );
@@ -44,7 +44,7 @@ function like_it_button_html( $content ) {
                         '</a>
                         <span id="like-count-'.get_the_ID().'" class="like-count">' . $likes . '</span>
                     </div>';
-    }
+    //}
     return $content . $like_text;
 }
 

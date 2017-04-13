@@ -206,17 +206,7 @@ jQuery(document).ready(function($) {
 
 	                }
 
-	                currentCat = "." + response.cat;
-
-	                // Setup the like and reviews buttons
-	                $(currentCat).find('.streamium-list-reviews').attr('data-id', response.id); 
-	                $(currentCat).find('.streamium-list-reviews').attr('data-nonce', response.nonce);
-	                $(currentCat).find('.like-button').attr('href', response.href);
-	                $(currentCat).find('.like-button').attr('data-id', response.id); 
-	                $(currentCat).find('.like-button').attr('data-nonce', response.nonce);
-	                $(currentCat).find('.like-count').text(response.likes);
-	                $(currentCat).find('.like-count').attr('id', 'like-count-' + response.id);
-	                
+	                currentCat = "." + response.cat;	                
 
 	                // Populate the expanded view
 			    	var twidth = $(currentCat).width();

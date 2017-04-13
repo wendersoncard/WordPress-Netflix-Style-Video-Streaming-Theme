@@ -3,7 +3,7 @@
 /*--------------------------------------------------------*/
 jQuery(document).ready(function($) {
 
-    $('.streamium-list-reviews').on('click', function(event) {
+    $('.streamium-list-reviews').live('click', function(event) {
 
         event.preventDefault();
 
@@ -76,14 +76,16 @@ jQuery(document).ready(function($) {
     });
 
     //clode the lateral panel
-    $('.streamium-review-panel').on('click', function(event) {
+    $('.streamium-review-panel').live('click', function(event) {
+        
         if ($(event.target).is('.streamium-review-panel') || $(event.target).is('.streamium-review-panel-close')) {
             $('.streamium-review-panel').removeClass('is-visible');
             event.preventDefault();
         }
+
     });
 
-    $('.streamium-review-like-btn').on('click', function(event) {
+    $('.streamium-review-like-btn').live('click', function(event) {
 
         var post_id = $(this).find('.like-button').attr('data-id'),
             nonce = $(this).find('.like-button').attr("data-nonce");

@@ -16,8 +16,10 @@
 
 <?php
 	if (is_user_logged_in()) : 
+	   
 	   update_post_meta($post->ID,'recently_watched',current_time('mysql')); 
 	   update_post_meta($post->ID,'recently_watched_user_id',get_current_user_id());
+
 	endif;
 ?>
 

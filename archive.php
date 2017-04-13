@@ -66,15 +66,6 @@
 												<div class="synopis-inner">
 													<h2 class="synopis hidden-xs"></h2>
 													<p class="synopis"></p>
-													<div class="synopis-premium-meta hidden-xs">
-														<div class="streamium-review-like-btn">
-									                        <a class="like-button">Like it</a>
-									                        <span id="" class="like-count">0</span>
-									                    </div>
-									                    <div class="streamium-review-reviews-btn">
-									                        <a class="streamium-list-reviews" data-id="" data-nonce="">Read reviews</a>
-									                    </div>
-													</div>
 												</div>
 											</div>
 										</div>
