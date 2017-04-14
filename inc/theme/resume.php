@@ -51,5 +51,4 @@ function streamium_create_resume() {
 
 }
 
-add_action( 'wp_ajax_nopriv_streamium_create_resume', 'streamium_create_resume' );
 add_action( 'wp_ajax_streamium_create_resume', 'streamium_create_resume' );

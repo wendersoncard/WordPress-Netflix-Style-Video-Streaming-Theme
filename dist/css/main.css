@@ -482,7 +482,7 @@ p {
 }
 
 .carousels .tile_progress {
-  height: 1px;
+  height: 2px;
   border-radius: 0px;
   position: absolute;
   left: 0;
@@ -490,7 +490,6 @@ p {
   bottom: -20px;
   background: #000;
   box-shadow: none !important;
-  opacity: 0.8;
 }
 
 .carousels .play-icon-wrap {
