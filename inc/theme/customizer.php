@@ -152,39 +152,45 @@ class Streamium_Customize {
           )
       );
 
-
-      /*$wp_customize->add_section('streamium_cdn_section' , array(
-          'title'     => __('AWS CDN Options', 'streamium'),
+      /* CREATE A NEW SECTION */
+      $wp_customize->add_section('streamium_aws_media_uploader_section' , array(
+          'title'     => __('AWS Media Uploader', 'streamium'),
           'priority'  => 1020
       ));
 
-      $wp_customize->add_setting('streamium_enable_cloudfront', array(
-          'default'    => false
-      ));
-
-      $wp_customize->add_control(
-          new WP_Customize_Control(
-              $wp_customize,
-              'streamium_enable_cloudfront',
-              array(
-                  'label'     => __('Enable Cloudfront urls', 'streamium'),
-                  'section'   => 'streamium_cdn_section',
-                  'settings'  => 'streamium_enable_cloudfront',
-                  'type'      => 'checkbox',
-              )
-          )
+      $wp_customize->add_setting('streamium_aws_media_uploader_access_key');
+      
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_aws_media_uploader_access_key',
+        array(
+          'label' => 'AWS Access Key',
+          'section' => 'streamium_aws_media_uploader_section',
+          'settings' => 'streamium_aws_media_uploader_access_key',
+          'type' => 'password',
+          'input_attrs' => array( 'id' => 'streamium_aws_media_uploader_access_key' )
+        )) 
       );
 
-      // allow the user to remove the powered by link
-      $wp_customize->add_setting('streamium_enable_cloudfront_url');
-      
-      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_remove_powered_by_s3bubble',
+      $wp_customize->add_setting('streamium_aws_media_uploader_secret_key');
+
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_aws_media_uploader_secret_key',
         array(
-          'label' => 'Cloudfront/S3 url',
-          'section' => 'streamium_cdn_section',
-          'settings' => 'streamium_enable_cloudfront_url',
+          'label' => 'AWS Secret Key',
+          'section' => 'streamium_aws_media_uploader_section',
+          'settings' => 'streamium_aws_media_uploader_secret_key',
+          'type' => 'password',
+          'input_attrs' => array( 'id' => 'streamium_aws_media_uploader_secret_key' )
         )) 
-      );*/
+      );
+
+      $wp_customize->add_setting('streamium_aws_media_uploader_notification_email');
+
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_aws_media_uploader_notification_email',
+        array(
+          'label' => 'Notification Email',
+          'section' => 'streamium_aws_media_uploader_section',
+          'settings' => 'streamium_aws_media_uploader_notification_email',
+        )) 
+      );
   
    }
 

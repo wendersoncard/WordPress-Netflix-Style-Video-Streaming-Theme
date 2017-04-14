@@ -2,12 +2,15 @@
 /* jQuery functions
 /*--------------------------------------------------------*/
 jQuery(document).ready(function($) {
-
-	console.log("uploader");
-
+    
+    var IsMobile = false;
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        IsMobile = true;
+    }
+		        
     var s3bubbleUploader = new plupload.Uploader({
         runtimes: 'html5,flash,silverlight,html4',
-        url : 'https://12s3dewvwev2222.s3.amazonaws.com/',
+        url : 'https://' + streamium_uploader.bucket + '.s3.amazonaws.com/',
         drop_element: 'streamium-uploader',
         browse_button: 'streamium-add-to-queue',
         container: document.getElementById('streamium-uploader'),
@@ -48,6 +51,25 @@ jQuery(document).ready(function($) {
 
 	        BeforeUpload: function(up, file) {
 
+	        	if(IsMobile){
+					var rand = (Math.floor(Math.ranstreamium_uploader() * (10000 - 1 + 1)) + 1) + '_';
+		            if(streamium_uploader.folder != ''){
+		            	up.settings.multipart_params.key = ( streamium_uploader.folder + '/' + rand + file.name);
+		            	up.settings.multipart_params.Filename = ( streamium_uploader.folder + '/' + rand + file.name);
+		            }else{
+		            	up.settings.multipart_params.key = rand + file.name;
+		            	up.settings.multipart_params.Filename = rand + file.name;
+		            }
+                }else{
+					if(streamium_uploader.folder != ''){
+		            	up.settings.multipart_params.key = ( streamium_uploader.folder + '/' + file.name);
+		            	up.settings.multipart_params.Filename = ( streamium_uploader.folder + '/' + file.name);
+		            }else{
+		            	up.settings.multipart_params.key = file.name;
+		            	up.settings.multipart_params.Filename = file.name;
+		            }
+                }
+
 	        },
 
 	        UploadProgress: function(up, file) {
@@ -65,6 +87,17 @@ jQuery(document).ready(function($) {
 
 	            	$('#streamium-uploader span.streamium-uploader-label').html('Uploaded');
 				    $('.streamium-uploader-standby').html('Files successfully uploaded');
+
+				    // Send a notification email
+					$.post(streamium_object.ajax_url, {
+						action: 'streamium_user_content_uploader_email',
+						bucket: streamium_uploader.bucket,
+						folder: streamium_uploader.folder,
+						security: streamium_uploader.nonce
+					}, function(response) {
+						console.log(response);
+					});
+
 	            }
 
 	        },

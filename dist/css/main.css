@@ -244,12 +244,11 @@ p {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: 2.5vw;
+    font-size: 2.2vw;
     color: #fff;
-    line-height: 36px;
+    line-height: 50px;
     text-decoration: none;
     display: inline-block;
-    min-width: 6em;
     float: left;
     margin: 0;
 }

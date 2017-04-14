@@ -1,17 +1,31 @@
 <?php
 
-function streamium_user_content_uploader(){
-
-	$accessKeyId = "AKIAIHSEX5ZA6DUXT56Q"; //get_option("s3-s3bubble_uploader_access_key");
-	$secret	     = "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"; //get_option("s3-s3bubble_uploader_secret_key");
-
-	// Check for email
-	$ajax_nonce = wp_create_nonce( "s3bubble-nonce-security" );
+/*
+* Setup the uploader shortcode
+* @author sameast
+* @none
+*/ 
+function streamium_user_content_uploader($atts){
+    
+    // Check for email
+	$ajax_nonce = wp_create_nonce( "streamium-uploader-nonce-security" );
+	$accessKeyId = get_theme_mod( 'streamium_aws_media_uploader_access_key' );
+	$secret	     = get_theme_mod( 'streamium_aws_media_uploader_secret_key' );
+    
+    if(empty($accessKeyId) || empty($secret)){
+		return "<span style='color:black;'>ERROR: Please add your keys within the Appearance -> Customizer menu.</span>";
+	}
 
 	extract( shortcode_atts( array(
-		'bucket'   => '12s3dewvwev2222',
-		'folder'   => 'userid'
+		'bucket'   => '',
+		'folder'   => 'userid',
+		'filesize' => '20',
+		'filetypes' => '*'
 	), $atts, 'streamium_uploader' ) );
+
+	if(empty($bucket)){
+		return "<span style='color:black;'>ERROR: Please add a bucket param to your shortcode.</span>";
+	}
 
 	$current_user = wp_get_current_user();
 	if($folder == "userid"){
@@ -37,9 +51,9 @@ function streamium_user_content_uploader(){
 	$signature = base64_encode(hash_hmac('sha1', $policy, $secret, true));
 
 	// include the uploader script
-	wp_enqueue_style( 'streamium-uploader', get_template_directory_uri() . '/dist/css/uploader.css' );
+	wp_enqueue_style( 'streamium-uploader', get_template_directory_uri() . '/dist/css/uploader.min.css' );
     wp_enqueue_script( 'plupload' );
-    wp_enqueue_script( 'streamium-uploader', get_template_directory_uri() . '/dist/js/uploader.js', array( 'jquery') );
+    wp_enqueue_script( 'streamium-uploader', get_template_directory_uri() . '/dist/js/uploader.min.js', array( 'jquery') );
     wp_localize_script( 'streamium-uploader', 'streamium_uploader', 
         array( 
             'nonce' => $ajax_nonce,
@@ -48,8 +62,8 @@ function streamium_user_content_uploader(){
             'app' => $accessKeyId,
             'policy' => $policy,
             'signature' => $signature,
-            'filetypes' => "*", //$filetypes,
-            'filesize' => "200", //$filesize
+            'filetypes' => $filetypes,
+            'filesize' => $filesize,
         )
     );
 
@@ -71,3 +85,31 @@ function streamium_user_content_uploader(){
 }
 
 add_shortcode( 'streamium_uploader', 'streamium_user_content_uploader' );
+
+/*
+* Send a notification email
+* @author sameast
+* @none
+*/ 
+function streamium_user_content_uploader_email(){
+    
+    check_ajax_referer( 'streamium-uploader-nonce-security', 'security' );
+    $s3bubble_uploader_email = get_theme_mod( 'streamium_aws_media_uploader_notification_email' );
+    $s3bubble_subject = get_bloginfo() . ' ' . date('m/d/y H:i:s', time()) . ' new upload';
+    $bucket  = empty($_POST['bucket']) ? 'no bucket' : $_POST['bucket'];
+    $folder  = empty($_POST['folder']) ? 'no folder' : $_POST['folder'];
+
+    // send attached mysql to user
+	$headers = "From: support@s3bubble.com\r\n";
+	$headers .= "Reply-To: support@s3bubble.com\r\n";
+	wp_mail($s3bubble_uploader_email, $s3bubble_subject, 'S3Bubble new upload to bucket ' . $bucket . ' and folder ' . $folder, $headers);
+	echo json_encode(array(
+		'error' => false,
+		'message' => 'Notification email sent'
+	));
+
+	wp_die();	
+	
+}
+
+add_action( 'wp_ajax_streamium_user_content_uploader_email', 'streamium_user_content_uploader_email' );

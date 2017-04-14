@@ -2,7 +2,7 @@
 
 function streamium_single_video_scripts() {
 
-    if( is_page() || is_single() )
+    if( is_single() )
     {
     	$nonce = wp_create_nonce( 'single_nonce' );
     	$s3videoid = get_post_meta( get_the_ID(), 's3bubble_video_code_meta_box_text', true );
