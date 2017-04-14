@@ -18,8 +18,7 @@ jQuery(document).ready(function($) {
 
 			});
 
-			// ping the database to add a resume time
-			window.onbeforeunload = function(){
+			(function updateResumePercentage() {
 
 				$.ajax({
 			        url: streamium_object.ajax_url,
@@ -27,19 +26,18 @@ jQuery(document).ready(function($) {
 			        dataType: 'json',
 			        data: {
 			            action: 'streamium_create_resume',
-			            percentage : window.percentage,
+			            percentage : (window.percentage) ? window.percentage : 0,
 			            post_id: video_post_object.post_id,
 			            nonce: video_post_object.nonce
 			        },
 			        success: function(response) {
 
-			        	console.log("response",response);
+			        	setTimeout(updateResumePercentage, 1000);
 
 			        }
-
 			    }); // end jquery 
 
-			};
+			}());
 
 		}
 	});
