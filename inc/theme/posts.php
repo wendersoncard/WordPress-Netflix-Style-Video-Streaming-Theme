@@ -70,12 +70,10 @@ function streamium_get_dynamic_content() {
 		    if ( get_theme_mod( 'streamium_enable_premium' ) ) {
 		        $nonce = wp_create_nonce( 'streamium_likes_nonce' );
 		    	$link = admin_url('admin-ajax.php?action=streamium_likes&post_id='. $postId .'&nonce='.$nonce);
-		        $likes = get_post_meta( $postId, '_pt_likes', true );
-		        $likes = ( empty( $likes ) ) ? 0 : $likes;
 		        $like_text = '<div class="synopis-premium-meta hidden-xs">
 								<div class="streamium-review-like-btn">
 			                        <a class="like-button"  data-id="' . $postId . '" data-nonce="' . $nonce . '">' . __( 'Like it' ) . '</a>
-			                        <span id="like-count-' . $postId . '" class="like-count">' . $likes . '</span>
+			                        <span id="like-count-' . $postId . '" class="like-count">' . get_streamium_likes($postId) . '</span>
 			                    </div>
 			                    <div class="streamium-review-reviews-btn">
 			                        <a class="streamium-list-reviews" data-id="' . $postId . '" data-nonce="' . $nonce . '">Read reviews</a>

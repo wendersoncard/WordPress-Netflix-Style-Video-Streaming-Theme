@@ -55,6 +55,7 @@ if (!function_exists('streamium_enqueue_scripts')) {
         wp_enqueue_style('streamium-sweetalert', get_template_directory_uri() . '/dist/extras/sweetalert/sweetalert.min.css');
         wp_enqueue_style('streamium-main', get_template_directory_uri() . '/dist/css/main.min.css');       
         wp_enqueue_style('streamium-woocommerce', get_template_directory_uri() . '/dist/css/woocommerce.min.css');
+        wp_enqueue_style('streamium-s2member', get_template_directory_uri() . '/dist/css/s2member.min.css');
         
 
         // presetn while debugging

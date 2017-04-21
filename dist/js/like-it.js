@@ -103,8 +103,8 @@ jQuery(document).ready(function($) {
                 
                 if (inputValue === false) return false;
 
-                if (inputValue === "") {
-                    swal.showInputError("You need to write something!");
+                if (inputValue === "" || inputValue.length < 100) {
+                    swal.showInputError("Please enter over 100 characters!");
                     return false
                 }
 

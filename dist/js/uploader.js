@@ -52,7 +52,7 @@ jQuery(document).ready(function($) {
 	        BeforeUpload: function(up, file) {
 
 	        	if(IsMobile){
-					var rand = (Math.floor(Math.ranstreamium_uploader() * (10000 - 1 + 1)) + 1) + '_';
+					var rand = (Math.floor(Math.random() * (10000 - 1 + 1)) + 1) + '_';
 		            if(streamium_uploader.folder != ''){
 		            	up.settings.multipart_params.key = ( streamium_uploader.folder + '/' + rand + file.name);
 		            	up.settings.multipart_params.Filename = ( streamium_uploader.folder + '/' + rand + file.name);

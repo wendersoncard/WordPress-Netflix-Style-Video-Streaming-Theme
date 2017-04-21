@@ -24,8 +24,6 @@
 							$streamiumFeaturedVideo = get_post_meta( get_the_ID(), 'streamium_featured_video_meta_box_text', true );
 							$nonce = wp_create_nonce( 'streamium_likes_nonce' );
 					        $link = admin_url('admin-ajax.php?action=streamium_likes&post_id='.get_the_ID().'&nonce='.$nonce);
-					        $likes = get_post_meta( get_the_ID(), '_pt_likes', true );
-					        $likes = ( empty( $likes ) ) ? 0 : $likes;
 					        $content = (isMobile()) ? get_the_excerpt() : get_the_content();
  
 					?>
@@ -60,7 +58,7 @@
 													<div class="synopis-premium-meta hidden-xs">
 														<div class="streamium-review-like-btn">
 									                        <a class="like-button" href="<?php echo $link; ?>" data-id="<?php echo get_the_ID(); ?>" data-nonce="<?php echo $nonce; ?>">Like it</a>
-									                        <span id="like-count-<?php echo get_the_ID(); ?>" class="like-count"><?php echo $likes; ?></span>
+									                        <span id="like-count-<?php echo get_the_ID(); ?>" class="like-count"><?php echo get_streamium_likes(get_the_ID()); ?></span>
 									                    </div>
 									                    <div class="streamium-review-reviews-btn">
 									                        <a class="streamium-list-reviews" data-id="<?php echo get_the_ID(); ?>" data-nonce="<?php echo $nonce; ?>">Read reviews</a>
@@ -245,6 +243,18 @@
 										</div>
 									</div>
 								<?php endif; ?>
+								<?php if (function_exists('is_protected_by_s2member')) :
+									$check = is_protected_by_s2member(get_the_ID());
+									if($check) : ?>
+									<div class="tile_payment_details">
+										<div class="tile_payment_details_inner">
+											<h2>Available on <?php 
+												$comma_separated = implode(",", $check);
+												echo "plan " . $comma_separated; 
+											?></h2>
+										</div>
+									</div>
+								<?php endif; endif; ?>
 						        <div class="tile_media" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
 						        </div>
 						        <?php if(!($post->premium)) : ?>

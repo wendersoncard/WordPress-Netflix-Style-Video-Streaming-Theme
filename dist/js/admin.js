@@ -11,6 +11,15 @@ jQuery( document ).ready(function( $ ) {
             
         }
 
+        function baseName(str){
+
+           var base = str.replace(/\//gi, " ")
+           base = base.replace(/-/gi, " ");
+           base = base.toLowerCase();
+           return base;
+
+        }
+
         var html = '';
         $.each(response.results, function (i, item) {
 
@@ -23,10 +32,10 @@ jQuery( document ).ready(function( $ ) {
 
             if(parseInt(streamium_meta_object.streamiumPremium) === 1){
                 if(ext === "m3u8"){
-                    html += '<option id="' + code + '"  value="' + code + '">' + bucket + ': ' + key + '</option>';  
+                    html += '<option id="' + code + '"  value="' + code + '">' + baseName(key) + '</option>';  
                 }
                 if(ext === "mp4"){
-                    html += '<option id="' + code + '"  value="' + code + '">' + bucket + ': ' + key + '</option>';  
+                    html += '<option id="' + code + '"  value="' + code + '">' + baseName(key) + '</option>';  
                 }
             }else{
                 if(ext === "mp4"){
@@ -54,7 +63,7 @@ jQuery( document ).ready(function( $ ) {
         
 
         var config = {
-          '.chosen-select'           : {},
+          '.chosen-select'           : {search_contains:true},
           '.chosen-select-deselect'  : {allow_single_deselect:true},
           '.chosen-select-no-single' : {disable_search_threshold:10},
           '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
