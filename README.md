@@ -31,6 +31,14 @@ aws s3 sync ./ s3://{aws-bucket}/wp-content/ --exclude "*.php*" --exclude "*.txt
 
 ## Change Log
 
+* Review and rating functionality added
+* Video resume where you last viewed added
+* Self hosted premium functionality added
+* Background video slider
+* Option to add video trailers
+* S2member intergration
+* Customizer updates extra theme styling and Google fonts 
+* Change the genre text
 * Gtmetrix A PageScore [https://gtmetrix.com/reports/streamiumtheme.com/FUwRTi2Y](https://gtmetrix.com/reports/streamiumtheme.com/FUwRTi2Y)
 * Image Optimisation
 * Set a maximum value for the homepage carousels in WordPress customizer
