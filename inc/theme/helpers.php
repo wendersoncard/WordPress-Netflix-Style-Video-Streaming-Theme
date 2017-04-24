@@ -169,7 +169,7 @@ function streamium_connection_checks() {
     		echo json_encode(
 		    	array(
 		    		'error' => false,
-		    		'message' => 'Premmium has been added'
+		    		'message' => 'Premium has been added'
 		    	)
 		    );
     		
@@ -179,7 +179,7 @@ function streamium_connection_checks() {
     		echo json_encode(
 		    	array(
 		    		'error' => false,
-		    		'message' => 'Premmium has been removed'
+		    		'message' => 'Premium has been removed'
 		    	)
 		    );
     	}

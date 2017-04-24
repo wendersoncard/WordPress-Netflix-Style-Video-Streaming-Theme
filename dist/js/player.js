@@ -1,7 +1,7 @@
 jQuery( document ).ready(function( $ ) {
 
     $.ajax({
-        url: 'http://local.hosted.com/api/connected_check',
+        url: 'https://s3bubbleapi.com/api/connected_check',
         type: 'post',
         dataType: 'json',
         data: {
