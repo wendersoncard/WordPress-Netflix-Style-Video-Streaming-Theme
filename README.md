@@ -8,7 +8,7 @@ S3Bubble is excited to introduce Streamium. This Theme is ideal for any budding 
 
 ## Theme Demo
 
-[Theme Demo](http://streamium.s3bubble.com/)
+[Theme Demo](http://streamiumtheme.com/)
 
 ## Installation & Setup
 
@@ -20,7 +20,7 @@ S3Bubble is excited to introduce Streamium. This Theme is ideal for any budding 
 
 https://www.youtube.com/watch?v=-eEpuVGwdC4
 
-### Using the WordPress AWS driect uploader
+### Using the WordPress AWS direct uploader
 
 https://www.youtube.com/watch?v=FUqN-b1MSrc
 
