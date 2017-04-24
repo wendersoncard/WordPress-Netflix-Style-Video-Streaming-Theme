@@ -31,7 +31,7 @@ https://www.youtube.com/watch?v=FUqN-b1MSrc
 * Self hosted premium functionality added
 * Background video slider
 * Option to add video trailers
-* S2member intergration
+* S2member integration
 * Customizer updates extra theme styling and Google fonts 
 * Change the genre text
 * Gtmetrix A PageScore [https://gtmetrix.com/reports/streamiumtheme.com/FUwRTi2Y](https://gtmetrix.com/reports/streamiumtheme.com/FUwRTi2Y)
@@ -41,7 +41,7 @@ https://www.youtube.com/watch?v=FUqN-b1MSrc
 * Only show recently watched for logged in users
 * Meta data added to track recently watched based on user id
 * Woocommerce integration 
-* Subscritption and Membership intergration
+* Subscritption and Membership integration
 * Login Register all powered by Woocommerce
 * Logo update 
 * Background updates
