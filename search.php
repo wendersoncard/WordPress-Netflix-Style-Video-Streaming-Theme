@@ -6,8 +6,11 @@
 		<section class="categories">
 
 			<?php 
-			$allsearch = new WP_Query("s=$s&showposts=-1"); 
-			if ( $allsearch->have_posts() ) : ?>
+			$the_query = new WP_Query(array(
+			    'post_type' => 'post', 
+				's' => $s
+			)); 
+			if ( $the_query->have_posts() ) : ?>
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-sm-12 video-header-archive">
@@ -21,10 +24,11 @@
 						
 						$count = 0;
 						$cat_count = 0; 
-						$total_count = $wp_query->post_count;
+						$total_count = $the_query->post_count;
+						while ( $the_query->have_posts() ) : $the_query->the_post(); 
 
-						while ( have_posts() ) : the_post(); if ( has_post_thumbnail() ) { 
 						$image   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-poster' );
+						$tileImage = empty($image[0]) ? 'http://placehold.it/260x146' : esc_url($image[0]);
 						$nonce = wp_create_nonce( 'streamium_likes_nonce' ); 
 						?>
 						<div class="col-md-5ths tile" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>">
@@ -35,19 +39,29 @@
 									</div>
 								</div>
 							<?php endif; ?>
+							<?php if (function_exists('is_protected_by_s2member')) :
+								$check = is_protected_by_s2member(get_the_ID());
+								if($check) : ?>
+								<div class="tile_payment_details">
+									<div class="tile_payment_details_inner">
+										<h2>Available on <?php 
+											$comma_separated = implode(",", $check);
+											echo "plan " . $comma_separated; 
+										?></h2>
+									</div>
+								</div>
+							<?php endif; endif; ?>
 					        <div class="tile_media">
-					        	<img class="tile_img" src="<?php echo esc_url($image[0]); ?>" alt=""  />
+					        	<img class="tile_img" src="<?php echo $tileImage; ?>" alt=""  />
 					        </div>
-					        <?php if(!($post->premium)) : ?>
-						        <a class="play-icon-wrap hidden-xs" href="<?php the_permalink(); ?>">
-									<div class="play-icon-wrap-rel">
-										<div class="play-icon-wrap-rel-ring"></div>
-										<span class="play-icon-wrap-rel-play">
-											<i class="fa fa-play fa-1x" aria-hidden="true"></i>
-							        	</span>
-						        	</div>
-					        	</a>
-				        	<?php endif; ?>
+					        <a class="play-icon-wrap hidden-xs" href="<?php the_permalink(); ?>">
+								<div class="play-icon-wrap-rel">
+									<div class="play-icon-wrap-rel-ring"></div>
+									<span class="play-icon-wrap-rel-play">
+										<i class="fa fa-play fa-1x" aria-hidden="true"></i>
+						        	</span>
+					        	</div>
+				        	</a>
 					        <div class="tile_details">
 					          	<div class="tile_meta">
 					            	<h4><?php the_title(); ?></h4>						            	
@@ -58,13 +72,12 @@
 						    		$userId = get_current_user_id();
 						    		$percentageWatched = get_post_meta( get_the_ID(), 'user_' . $userId, true );
 						    ?>
-							    <div class="progress tile_progress">
-								  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $percentageWatched; ?>"
-								  aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $percentageWatched; ?>%">
-								    <span class="sr-only"><?php echo $percentageWatched; ?>% Complete</span>
-								  </div>
-								</div>
-						    <?php } ?>
+						    <div class="progress tile_progress">
+							  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $percentageWatched; ?>"
+							  aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $percentageWatched; ?>%">
+							    <span class="sr-only"><?php echo $percentageWatched; ?>% Complete</span>
+							  </div>
+							</div>
 						</div>
 						<?php
 							$count++;

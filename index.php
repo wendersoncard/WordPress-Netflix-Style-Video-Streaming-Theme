@@ -259,16 +259,14 @@
 								<?php endif; endif; ?>
 						        <div class="tile_media" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
 						        </div>
-						        <?php if(!($post->premium)) : ?>
-							        <a class="play-icon-wrap hidden-xs" href="<?php the_permalink(); ?>">
-										<div class="play-icon-wrap-rel">
-											<div class="play-icon-wrap-rel-ring"></div>
-											<span class="play-icon-wrap-rel-play">
-												<i class="fa fa-play fa-1x" aria-hidden="true"></i>
-								        	</span>
-							        	</div>
-						        	</a>
-					        	<?php endif; ?>
+						        <a class="play-icon-wrap hidden-xs" href="<?php the_permalink(); ?>">
+									<div class="play-icon-wrap-rel">
+										<div class="play-icon-wrap-rel-ring"></div>
+										<span class="play-icon-wrap-rel-play">
+											<i class="fa fa-play fa-1x" aria-hidden="true"></i>
+							        	</span>
+						        	</div>
+					        	</a>
 						        <div class="tile_details">
 						          	<div class="tile_meta">
 						            	<h4><?php the_title(); ?></h4>						            	
