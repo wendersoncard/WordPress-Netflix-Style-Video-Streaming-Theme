@@ -1,8 +1,13 @@
 <?php
-/*-----------------------------------------------------------------------------------*/
-/*  New theme customizer options
-/*-----------------------------------------------------------------------------------*/
+
+/**
+ * Add option to the WordPress theme customizer
+ *
+ * @return null
+ * @author  @sameast
+ */
 class Streamium_Customize {
+
    /**
     * This hooks into 'customize_register' (available as of WP 3.4) and allows
     * you to add new sections and controls to the Theme Customize screen.
@@ -17,10 +22,78 @@ class Streamium_Customize {
     */
    public static function register ( $wp_customize ) {
 
+      // Remove options
+      $wp_customize->remove_section('colors');
+
+      // STREAMIUM STYLES SECTION
+      $wp_customize->add_section( 'streamium_styles', array(
+          'title'       => __( 'Streamium Styles', 'streamium' ),
+          'priority'    => 30,
+          'description' => 'Here you can set the Streamium styles',
+      ) );
+
+      // Remove tutorial block
+      $wp_customize->add_setting('tutorial_btn', array(
+          'default' => false
+      ));
+      $wp_customize->add_control(
+          new WP_Customize_Control(
+              $wp_customize,
+              'tutorial_btn',
+              array(
+                  'label'     => __('Remove tutorial header', 'streamium'),
+                  'section'   => 'streamium_styles',
+                  'settings'  => 'tutorial_btn',
+                  'type'      => 'checkbox',
+              )
+          )
+      );
+
+      // Logo block
+      $wp_customize->add_setting( 'streamium_logo' );
+
+      $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'streamium_logo', array(
+          'label'    => __( 'Logo', 'streamium' ),
+          'section'  => 'streamium_styles',
+          'settings' => 'streamium_logo',
+      ) ) );
+      
+      // Full background block
+      $wp_customize->add_setting( 'streamium_plans_bg' );
+
+      $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'streamium_plans_bg', array(
+          'label'    => __( 'Background', 'streamium' ),
+          'section'  => 'streamium_styles',
+          'settings' => 'streamium_plans_bg',
+      ) ) );
+
+      // Link text color
+      $wp_customize->add_setting(
+          'link_textcolor',
+          array(
+              'default'     => '#999999',
+              'sanitize_callback' => 'sanitize_hex_color'
+          )
+      );
+   
+      $wp_customize->add_control(
+          new WP_Customize_Color_Control(
+              $wp_customize,
+              'link_textcolor',
+              array(
+                  'label'      => __( 'Main Link Color', 'streamium' ),
+                  'section'    => 'streamium_styles',
+                  'settings'   => 'link_textcolor'
+              ) 
+          )
+      );
+
+      // Caro heading text color
       $wp_customize->add_setting(
           'streamium_carousel_heading_color',
           array(
-              'default'     => '#999999'
+              'default'     => '#999999',
+              'sanitize_callback' => 'sanitize_hex_color'
           )
       );
    
@@ -30,16 +103,18 @@ class Streamium_Customize {
               'streamium_carousel_heading_color',
               array(
                   'label'      => __( 'Carousel Headings Color', 'streamium' ),
-                  'section'    => 'colors',
+                  'section'    => 'streamium_styles',
                   'settings'   => 'streamium_carousel_heading_color'
               ) 
           )
       );
-
+      
+      // Main background color
       $wp_customize->add_setting(
           'streamium_background_color',
           array(
-              'default'     => '#141414'
+              'default'     => '#141414',
+              'sanitize_callback' => 'sanitize_hex_color'
           )
       );
    
@@ -49,34 +124,26 @@ class Streamium_Customize {
               'streamium_background_color',
               array(
                   'label'      => __( 'Background Color', 'streamium' ),
-                  'section'    => 'colors',
+                  'section'    => 'streamium_styles',
                   'settings'   => 'streamium_background_color'
               ) 
           )
       );
 
-      $wp_customize->add_setting( 'link_textcolor', 
-         array(
-            'default' => '#2BA6CB', 
-            'type' => 'theme_mod', 
-            'capability' => 'edit_theme_options', 
-            'transport' => 'postMessage',
-            'sanitize_callback' => 'sanitize_hex_color'
-         ) 
-      );      
-          
-      $wp_customize->add_control( new WP_Customize_Color_Control( 
-         $wp_customize, 
-         'streamium_link_textcolor', 
-         array(
-            'label' => __( 'Main Theme Color', 'streamium' ), 
-            'section' => 'colors', 
-            'settings' => 'link_textcolor', 
-            'priority' => 10, 
-         ) 
-      ) );
+      // Use google font
+      $wp_customize->add_setting('streamium_google_font');
+      
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_google_font',
+        array(
+          'label' => 'Google Font Url',
+          'description' => 'Please only enter the full google font url<br>Leave blank to use "Helvetica Neue"',
+          'section' => 'streamium_styles',
+          'settings' => 'streamium_google_font',
+        )) 
+      );          
+      
 
-      // allow the user to remove the powered by link
+      // SITE IDENTITY SECTION
       $wp_customize->add_setting('streamium_remove_powered_by_s3bubble');
       
       $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_remove_powered_by_s3bubble',
@@ -99,60 +166,6 @@ class Streamium_Customize {
 
       $wp_customize->remove_control('display_header_text');
 
-      $wp_customize->add_section( 'streamium_options', 
-         array(
-            'title' => __( 'Streamium Options', 'streamium' ), 
-            'priority' => 35, 
-            'capability' => 'edit_theme_options', 
-            'description' => __('Allows you to customize some example settings for Streamium.', 'streamium'),
-         ) 
-      );
-
-      $wp_customize->add_section( 'streamium_logo_section' , array(
-          'title'       => __( 'Streamium Styles', 'streamium' ),
-          'priority'    => 30,
-          'description' => 'Upload a logo to replace the default site name and description in the header',
-      ) );
-
-       $wp_customize->add_setting('tutorial_btn', array(
-          'default' => false
-      ));
-      $wp_customize->add_control(
-          new WP_Customize_Control(
-              $wp_customize,
-              'tutorial_btn',
-              array(
-                  'label'     => __('Remove tutorial header', 'streamium'),
-                  'section'   => 'streamium_logo_section',
-                  'settings'  => 'tutorial_btn',
-                  'type'      => 'checkbox',
-              )
-          )
-      );
-
-      $wp_customize->add_setting( 'streamium_logo' );
-
-      $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'streamium_logo', array(
-          'label'    => __( 'Logo', 'streamium' ),
-          'section'  => 'streamium_logo_section',
-          'settings' => 'streamium_logo',
-      ) ) );
-      
-      // plans background image
-      $wp_customize->add_setting( 'streamium_plans_bg' );
-
-      $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'streamium_plans_bg', array(
-          'label'    => __( 'Background', 'streamium' ),
-          'section'  => 'streamium_logo_section',
-          'settings' => 'streamium_plans_bg',
-      ) ) );
-
-      // Add site options
-      $wp_customize->add_section('streamium_global_options' , array(
-          'title'     => __('Global Options', 'streamium'),
-          'priority'  => 1
-      ));
-
       $wp_customize->add_setting('streamium_global_options_homepage_desktop', array(
           'default'  => '-1'
       ));
@@ -163,7 +176,7 @@ class Streamium_Customize {
               'streamium_global_options_homepage_desktop',
               array(
                   'label'     => __('Maximum carousel videos - Desktop', 'streamium'),
-                  'section'   => 'streamium_global_options',
+                  'section'   => 'title_tagline',
                   'settings'  => 'streamium_global_options_homepage_desktop',
                   'type'      => 'select',
                   'choices' => array(
@@ -178,6 +191,8 @@ class Streamium_Customize {
           )
       );
 
+      // PREMIUM SECTION
+      /*
       $wp_customize->add_section('streamium_premium_section' , array(
           'title'     => __('Streamium Premium Options', 'streamium'),
           'priority'  => 1020
@@ -198,9 +213,9 @@ class Streamium_Customize {
                   'type'      => 'checkbox',
               )
           )
-      );
+      );*/
 
-      /* CREATE A NEW SECTION */
+      // AWS MEDIA SECTION
       $wp_customize->add_section('streamium_aws_media_uploader_section' , array(
           'title'     => __('AWS Media Uploader', 'streamium'),
           'priority'  => 1020
@@ -254,39 +269,19 @@ class Streamium_Customize {
       ?>
       <!--Customizer CSS--> 
       <style type="text/css">
+
            /* Theme colors */
            <?php self::generate_css('.archive, .home, .search, .single', 'background', 'streamium_background_color','',' !important'); ?>
            <?php self::generate_css('.video-header h3', 'color', 'streamium_carousel_heading_color','',' !important'); ?>
 
-           
+           /* link and background colors */
+           <?php self::generate_css('a, a:focus, a:hover, .cd-main-header .cd-logo, .play-icon-wrap i, .cd-primary-nav .cd-secondary-nav a:hover, .cd-primary-nav>li>a:hover, .cd-primary-nav .cd-nav-gallery .cd-nav-item h3, .cd-primary-nav .cd-nav-icons .cd-nav-item h3, .woocommerce-message:before, .woocommerce-info::before', 'color', 'link_textcolor','',' !important'); ?>
+           <?php self::generate_css('#place_order, .pagination a:hover, .pagination .current, .slick-dots li.slick-active button, .progress-bar, .button, .cd-overlay, .has-children > a:hover::before, .has-children > a:hover::after, .go-back a:hover::before, .go-back a:hover::after, #submit, #place_order, .checkout-button, .woocommerce-thankyou-order-received, .add_to_cart_button, .confirm', 'background-color', 'link_textcolor','',' !important'); ?>
 
-           <?php self::generate_css('a', 'color', 'link_textcolor'); ?>
-           <?php self::generate_css('a:focus', 'color', 'link_textcolor'); ?>
-           <?php self::generate_css('a:hover', 'color', 'link_textcolor'); ?>
-           <?php self::generate_css('#place_order', 'background-color', 'link_textcolor'); ?>
-           <?php self::generate_css('.pagination a:hover', 'background-color', 'link_textcolor'); ?>
-           <?php self::generate_css('.pagination .current', 'background-color', 'link_textcolor'); ?>
-           <?php self::generate_css('.slick-dots li.slick-active button', 'background-color', 'link_textcolor'); ?>
-           <?php self::generate_css('.progress-bar', 'background-color', 'link_textcolor'); ?>
-           <?php self::generate_css('.button', 'background', 'link_textcolor'); ?>
-           <?php self::generate_css('.label.heart', 'color', 'link_textcolor'); ?>
-           <?php self::generate_css('.progress-bar .progress', 'background', 'link_textcolor'); ?> 
-           <?php self::generate_css('.cd-main-header .cd-logo', 'color', 'link_textcolor'); ?>
-           <?php self::generate_css('.play-icon-wrap i', 'color', 'link_textcolor'); ?>
-           <?php self::generate_css('.cd-primary-nav .cd-secondary-nav a:hover', 'color', 'link_textcolor'); ?>
-           <?php self::generate_css('.cd-overlay', 'background-color', 'link_textcolor'); ?>
-           <?php self::generate_css('.cd-primary-nav>li>a:hover', 'color', 'link_textcolor'); ?>
-           <?php self::generate_css('.cd-primary-nav .cd-nav-gallery .cd-nav-item h3', 'color', 'link_textcolor'); ?>
-           <?php self::generate_css('.cd-primary-nav .cd-nav-icons .cd-nav-item h3', 'color', 'link_textcolor'); ?>
-           <?php self::generate_css('.has-children > a:hover::before, .has-children > a:hover::after, .go-back a:hover::before, .go-back a:hover::after', 'background', 'link_textcolor'); ?>
-           <?php self::generate_css('#submit, #place_order', 'background', 'link_textcolor'); ?>
            <?php self::generate_css('.post-type-archive, .woocommerce-cart, .woocommerce-account, .woocommerce-checkout, .woocommerce-page', 'background-image', 'streamium_plans_bg', 'url(', ')'); ?>
-           <?php self::generate_css('.checkout-button, .woocommerce-thankyou-order-received, .add_to_cart_button', 'background', 'link_textcolor','',' !important'); ?>
+
            <?php self::generate_css('.tile', 'border-color', 'link_textcolor','',' !important'); ?>
            <?php self::generate_css('.woocommerce-message, .woocommerce-info', 'border-top-color', 'link_textcolor','',' !important'); ?>
-           <?php self::generate_css('.woocommerce-message:before, .woocommerce-info::before', 'color', 'link_textcolor','',' !important'); ?>
-           <?php self::generate_css('.confirm', 'background-color', 'link_textcolor','',' !important'); ?>
-
            
       </style> 
       <!--/Customizer CSS-->
@@ -344,6 +339,32 @@ class Streamium_Customize {
       return $return;
     }
 }
+
+
+function streamium_google_font() {
+
+  // Setup params
+  $url = get_theme_mod( 'streamium_google_font' );
+  $parts = parse_url($url);
+  parse_str($parts['query'], $query);
+  $family = $query['family'];
+  if (strpos($family, ':') !== false) {
+    $family = substr($family, 0, strrpos($family, ':'));
+  }
+  if(get_theme_mod( 'streamium_google_font' )){
+    ?>
+    <style type="text/css">
+      @import url('<?php echo $url; ?>');
+      html, body {
+        font-family: '<?php echo $family; ?>', sans-serif !important;
+      }
+    </style>
+    <?php
+  }
+
+}
+
+add_action ( 'wp_head' , 'streamium_google_font');
 
 // Setup the Theme Customizer settings and controls...
 add_action( 'customize_register' , array( 'Streamium_Customize' , 'register' ) );

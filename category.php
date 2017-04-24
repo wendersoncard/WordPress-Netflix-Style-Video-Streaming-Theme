@@ -7,59 +7,101 @@
 			<?php 
 
 				$category = $wp_query->get_queried_object(); 
-				if(isset($_GET['reviewed'])){
+				switch (isset($_GET['sort']) ? $_GET['sort'] : 'all') {
+					case 'reviewed':
 
-					remove_all_filters('posts_fields');
-				    remove_all_filters('posts_join');
-				    remove_all_filters('posts_groupby');
-				    remove_all_filters('posts_orderby');
-				    add_filter( 'posts_fields', 'search_distinct' );
-					add_filter( 'posts_join','stats_posts_join_view');
-					add_filter( 'posts_groupby', 'my_posts_groupby' );
-					add_filter( 'posts_orderby', 'edit_posts_orderby' );
+						remove_all_filters('posts_fields');
+					    remove_all_filters('posts_join');
+					    remove_all_filters('posts_groupby');
+					    remove_all_filters('posts_orderby');
+					    add_filter( 'posts_fields', 'search_distinct' );
+						add_filter( 'posts_join','stats_posts_join_view');
+						add_filter( 'posts_groupby', 'my_posts_groupby' );
+						add_filter( 'posts_orderby', 'edit_posts_orderby' );
+						$the_query = new WP_Query( 
+							array(
+							    'cat' => $category->cat_ID, 
+								'posts_per_page' => -1, 
+								'ignore_sticky_posts' => true,
+								'orderby' => 'date',
+								'order'   => 'DESC', 
+							) 
+						);
 
-				}
+						break;
 
-				if(isset($_GET['oldest'])){
+					case 'newest':
+						
+						remove_all_filters('posts_fields');
+					    remove_all_filters('posts_join');
+					    remove_all_filters('posts_groupby');
+					    remove_all_filters('posts_orderby');
+					   
+						$the_query = new WP_Query( 
+							array(
+							    'cat' => $category->cat_ID, 
+								'posts_per_page' => -1, 
+								'ignore_sticky_posts' => true,
+								'orderby' => 'date',
+								'order'   => 'DESC', 
+							) 
+						);
+					
+						break;
 
-					remove_all_filters('posts_fields');
-				    remove_all_filters('posts_join');
-				    remove_all_filters('posts_groupby');
-				    remove_all_filters('posts_orderby');
-				    /*add_filter( 'posts_fields', 'search_distinct' );
-					add_filter( 'posts_join','stats_posts_join_view');
-					add_filter( 'posts_groupby', 'my_posts_groupby' );
-					add_filter( 'posts_orderby', 'edit_posts_orderby' );*/
+					case 'oldest':
 
+						remove_all_filters('posts_fields');
+					    remove_all_filters('posts_join');
+					    remove_all_filters('posts_groupby');
+					    remove_all_filters('posts_orderby');
+					    
+						$the_query = new WP_Query( 
+							array(
+							    'cat' => $category->cat_ID, 
+								'posts_per_page' => -1, 
+								'ignore_sticky_posts' => true,
+								'orderby' => 'date',
+								'order'   => 'ASC', 
+							) 
+						);
+					
+						break;
+					
+					default:
+
+						$the_query = new WP_Query( 
+							array(
+							    'cat' => $category->cat_ID, 
+								'posts_per_page' => -1, 
+								'ignore_sticky_posts' => true
+							) 
+						);
+
+						# code...
+						break;
 				}
 				
-				$the_query = new WP_Query( 
-					array(
-					    'cat' => $category->cat_ID, 
-						'posts_per_page' => -1, 
-						'ignore_sticky_posts' => true,
-						'orderby' => 'date',
-						'order'   => 'DESC', 
-					) 
-				);
 				if ( $the_query->have_posts() ) : 
 			?>
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-sm-12 video-header-archive">
 						<h3><?php printf( __( 'Viewing: %s', 'streamium' ), single_cat_title( '', false ) ); ?></h3>
-						<div class="dropdown video-header-archive-dropdown">
-						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-						    FILTER
-						    <span class="caret"></span>
-						  </button>
-						  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-						    <li><a href="#">View All</a></li>
-						    <li><a href="?reviewed=true">Most Reviews</a></li>
-						    <li><a href="?newest=true">Recently Added</a></li>
-						    <li><a href="?oldest=true">Oldest First</a></li>
-						  </ul>
-						</div>
+						<?php if(get_theme_mod( 'streamium_enable_premium' )) : ?>
+							<div class="dropdown video-header-archive-dropdown">
+							  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+							    FILTER
+							    <span class="caret"></span>
+							  </button>
+							  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+							    <li><a href="?sort=all">View All</a></li>
+							    <li><a href="?sort=reviewed">Most Reviews</a></li>
+							    <li><a href="?sort=newest">Recently Added</a></li>
+							    <li><a href="?sort=oldest">Oldest First</a></li>
+							  </ul>
+							</div>
+						<?php endif; ?>
 					</div><!--/.col-sm-12-->
 				</div><!--/.row-->
 			</div><!--/.container-->

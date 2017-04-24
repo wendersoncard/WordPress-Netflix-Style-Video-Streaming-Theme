@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Adds a meta box to the single post
+ * Adds meta boxes within a post
  *
- * @return bool
+ * @return null
  * @author  @sameast
  */
 function streamium_video_code_meta_box_add(){
@@ -16,11 +16,10 @@ function streamium_video_code_meta_box_add(){
 
 add_action( 'add_meta_boxes', 'streamium_video_code_meta_box_add' );
 
-
 /**
- * Video is meta box content
+ * Sets up the meta box content for the main video
  *
- * @return bool
+ * @return null
  * @author  @sameast
  */
 function streamium_meta_video_id(){
@@ -57,9 +56,9 @@ function streamium_meta_video_id(){
 }
 
 /**
- * Video is meta box content
+ * Sets up the meta box content for the video trailer
  *
- * @return bool
+ * @return null
  * @author  @sameast
  */
 function streamium_video_trailer_meta_box(){
@@ -94,14 +93,13 @@ function streamium_video_trailer_meta_box(){
 }
 
 /**
- * Video is meta box content
+ * Sets up the meta box content for the video background on home slider
  *
- * @return bool
+ * @return null
  * @author  @sameast
  */
 function streamium_featured_video_meta_box(){
 
-    // $post is already set, and contains an object: the WordPress post
     global $post;
     $values = get_post_custom( $post->ID );
     $text = isset( $values['streamium_featured_video_meta_box_text'] ) ? $values['streamium_featured_video_meta_box_text'] : '';
@@ -131,9 +129,9 @@ function streamium_featured_video_meta_box(){
 }
 
 /**
- * Save the meta box data
+ * Saves the meta box content
  *
- * @return bool
+ * @return null
  * @author  @sameast
  */
 function streamium_post_meta_box_save( $post_id )
@@ -201,11 +199,12 @@ function streamium_post_meta_box_save( $post_id )
 
 add_action( 'save_post', 'streamium_post_meta_box_save' );
 
-/*
-* Include the scripts needed for the meta box
-* @author sameast
-* @none
-*/ 
+/**
+ * Include the scripts for the meta boxes
+ *
+ * @return null
+ * @author  @sameast
+ */
 function streamium_meta_box_admin_scripts(){
   
   $streamium_connected_website = get_option("streamium_connected_website");
@@ -222,11 +221,12 @@ function streamium_meta_box_admin_scripts(){
 
 add_action( 'admin_enqueue_scripts', 'streamium_meta_box_admin_scripts' );
 
-/*
- * Create a connected webiste option
- * @author sameast
- * @params none
- */ 
+/**
+ * Get the websites domain needed for connected websites
+ *
+ * @return null
+ * @author  @sameast
+ */
 function streamium_website_connection(){
 
     if(isset($_SERVER['HTTP_HOST'])){

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Function to remove all recently wtached if need use for debug
+ * Function to remove all recently watched if need use for debug
  *
  * @return bool
  * @author  @sameast
