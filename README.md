@@ -16,18 +16,13 @@ S3Bubble is excited to introduce Streamium. This Theme is ideal for any budding 
 
 ## Optimization & Setup
 
-### Installing updating with git
-```
-cd wp-content/themes/
-git clone https://github.com/s3bubble/Streamium-Netflix-Theme.git Streamium-Netflix-Theme/
-```
+### Updating the WordPress theme
 
-### Uploading content to AWS and serving via Cloudfront
-```
-aws s3 sync ./ s3://{aws-bucket}/wp-content/ --exclude "*.php*" --exclude "*.txt*" --exclude "*.md*" --exclude "*.git/*" --exclude "*plugins/*"
-```
+https://www.youtube.com/watch?v=-eEpuVGwdC4
 
-* Cloudfront distribution you also need to set a invalidation / to clear cache
+### Using the WordPress AWS driect uploader
+
+https://www.youtube.com/watch?v=FUqN-b1MSrc
 
 ## Change Log
 
