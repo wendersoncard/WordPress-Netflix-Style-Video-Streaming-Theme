@@ -13,21 +13,23 @@ function isMobile() {
     return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
 }
 
-/*
-* Adds a main nav menu if needed
-* @author sameast
-* @none
-*/ 
+/**
+ * Adds the main menu
+ *
+ * @return null
+ * @author  @sameast
+ */
 function streamium_register_menu() {
     register_nav_menu('streamium-header-menu',__( 'Header Menu', 'streamium' ));
 }
 add_action( 'init', 'streamium_register_menu' );
 
-/*
-* Fix needed for man menu
-* @author sameast
-* @none
-*/ 
+/**
+ * Fix for the main menu
+ *
+ * @return null
+ * @author  @sameast
+ */
 function streamium_remove_ul( $menu ){
     return preg_replace( array( '#^<ul[^>]*>#', '#</ul>$#' ), '', $menu );
 }
@@ -123,7 +125,12 @@ function streamium_checks() {
 
 add_action('admin_enqueue_scripts', 'streamium_checks');
 
-// admin alert
+/**
+ * Adds a notice to the admin if premium is not enabled
+ *
+ * @return null
+ * @author  @sameast
+ */
 function premium_admin_notice__error() {
 
 	$class = 'notice notice-info is-dismissible';
@@ -138,7 +145,12 @@ if(!get_theme_mod( 'streamium_enable_premium' )){
 
 }
 
-
+/**
+ * Check for connected website
+ *
+ * @return null
+ * @author  @sameast
+ */
 function streamium_connection_checks() {
  	
  	$nonce = $_REQUEST['connected_nonce'];
@@ -185,24 +197,48 @@ function streamium_connection_checks() {
 
 add_action( 'wp_ajax_streamium_connection_checks', 'streamium_connection_checks' );
 
-function search_distinct() {
+/**
+ * appends the stramium reviews query for search
+ *
+ * @return null
+ * @author  @sameast
+ */
+function streamium_search_distinct() {
 	return "wp_posts.*, COUNT(wp_streamium_reviews.post_id) AS reviews";
 }
 
-function stats_posts_join_view ($join) {
+/**
+ * joins the stramium reviews query for search
+ *
+ * @return null
+ * @author  @sameast
+ */
+function streamium_search_join($join) {
     global $wpdb;
     $posts_stats_view_join = "LEFT JOIN wp_streamium_reviews ON ($wpdb->posts.ID = wp_streamium_reviews.post_id)";
     $join .= $posts_stats_view_join;
     return $join;
 }
 
-function my_posts_groupby($groupby) {
+/**
+ * groups the stramium reviews query for search
+ *
+ * @return null
+ * @author  @sameast
+ */
+function streamium_search_groupby($groupby) {
     global $wpdb;
     $groupby = "wp_streamium_reviews.post_id";
     return $groupby;
 }
 
-function edit_posts_orderby($orderby_statement) {
+/**
+ * joins the stramium reviews query for search
+ *
+ * @return null
+ * @author  @sameast
+ */
+function streamium_search_orderby($orderby_statement) {
 	global $wpdb;
 	$orderby_statement = "reviews DESC";
 	return $orderby_statement;

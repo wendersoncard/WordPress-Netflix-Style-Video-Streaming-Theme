@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Resume video time ajax
+ *
+ * @return bool
+ * @author  @sameast
+ */
 function streamium_create_resume() {
 
 	global $wpdb;

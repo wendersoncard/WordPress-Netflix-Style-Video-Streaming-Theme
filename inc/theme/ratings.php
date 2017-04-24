@@ -4,7 +4,13 @@ if ( ! class_exists( 'WP_List_Table' ) ) {
 	require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 }
 
-class Ratings_List extends WP_List_Table {
+/**
+ * Ratings class for admin
+ *
+ * @return bool
+ * @author  @sameast
+ */
+class Streamium_Ratings_List extends WP_List_Table {
 
 	/** Class constructor */
 	public function __construct() {
@@ -294,13 +300,17 @@ class Ratings_List extends WP_List_Table {
 
 	    }
 
-	    wp_redirect( esc_url( add_query_arg() ) );
-	    exit;
 	  }
 	}
 
 }
 
+/**
+ * Streamium Rating create menu
+ *
+ * @return bool
+ * @author  @sameast
+ */
 class Streamium_Ratings {
 
 	// class instance
@@ -347,7 +357,7 @@ class Streamium_Ratings {
 
 		add_screen_option( $option, $args );
 
-		$this->ratings_obj = new Ratings_List();
+		$this->ratings_obj = new Streamium_Ratings_List();
 	}
 
 	/**
@@ -391,14 +401,14 @@ add_action( 'after_setup_theme', function () {
 	Streamium_Ratings::get_instance();
 } );
 
-/*
-* Create a new table within the database
-* @author sameast
-* @none
-*/ 
+/**
+ * Add ratings to the database
+ *
+ * @return bool
+ * @author  @sameast
+ */
 global $streamium_reviews_db_version;
 $streamium_reviews_db_version = '1.0';
-
 function streamium_reviews_db_install() {
 
 	global $wpdb;
@@ -426,25 +436,6 @@ function streamium_reviews_db_install() {
 
 add_action("after_switch_theme", "streamium_reviews_db_install");
 
-function like_it_button_html( $content ) {
-    $like_text = '';
-    //if ( is_singular() ) {
-        $nonce = wp_create_nonce( 'streamium_likes_nonce' );
-        $link = admin_url('admin-ajax.php?action=streamium_likes&post_id='.get_the_ID().'&nonce='.$nonce);
-        $likes = get_post_meta( get_the_ID(), 'streamium_likes', true );
-        $likes = ( empty( $likes ) ) ? 0 : $likes;
-        $like_text = '
-                    <div class="pt-like-it">
-                        <a class="like-button" href="'.$link.'" data-id="' . get_the_ID() . '" data-nonce="' . $nonce . '">' . 
-                        __( 'Like it' ) .
-                        '</a>
-                        <span id="like-count-'.get_the_ID().'" class="like-count">' . $likes . '</span>
-                    </div>';
-    //}
-    return $content . $like_text;
-}
-
-//add_filter( 'the_content', 'like_it_button_html', 99 );
 
 function checkIfArrayKeyValueExists($array, $key, $val) {
     foreach ($array as $item)
@@ -453,6 +444,12 @@ function checkIfArrayKeyValueExists($array, $key, $val) {
     return false;
 }
 
+/**
+ * Streamium rating ajax
+ *
+ * @return bool
+ * @author  @sameast
+ */
 function streamium_likes() {
 
 	global $wpdb;
@@ -548,6 +545,12 @@ function streamium_likes() {
 add_action( 'wp_ajax_nopriv_streamium_likes', 'streamium_likes' );
 add_action( 'wp_ajax_streamium_likes', 'streamium_likes' );
 
+/**
+ * Add time from now to reviews
+ *
+ * @return bool
+ * @author  @sameast
+ */
 function time2str($ts)
 {
     if(!ctype_digit($ts))
@@ -593,6 +596,12 @@ function time2str($ts)
     }
 }
 
+/**
+ * Ajax sidebar get reviews
+ *
+ * @return bool
+ * @author  @sameast
+ */
 function streamium_get_reviews() {
 
 	global $wpdb;
@@ -688,6 +697,12 @@ function streamium_get_reviews() {
 add_action( 'wp_ajax_nopriv_streamium_get_reviews', 'streamium_get_reviews' );
 add_action( 'wp_ajax_streamium_get_reviews', 'streamium_get_reviews' );
 
+/**
+ * Get like count for post
+ *
+ * @return bool
+ * @author  @sameast
+ */
 function get_streamium_likes($post_id) {
 
 	global $wpdb;
@@ -697,11 +712,17 @@ function get_streamium_likes($post_id) {
 
 }
 
+/**
+ * Include streamium like scripts
+ *
+ * @return bool
+ * @author  @sameast
+ */
 function streamium_likes_scripts() {
     if( !is_single() ) {
  
-        wp_enqueue_style( 'like-it', get_template_directory_uri() . '/dist/css/like-it.min.css' );
-    	wp_enqueue_script( 'like-it', get_template_directory_uri() . '/dist/js/like-it.min.js', array('jquery'), '1.0', true );
+        wp_enqueue_style( 'reviews', get_template_directory_uri() . '/dist/css/reviews.min.css' );
+    	wp_enqueue_script( 'reviews', get_template_directory_uri() . '/dist/js/reviews.min.js', array('jquery'), '1.0', true );
 
     }
 }

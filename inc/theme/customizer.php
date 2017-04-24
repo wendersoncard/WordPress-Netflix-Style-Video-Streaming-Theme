@@ -266,9 +266,24 @@ class Streamium_Customize {
     * @since Streamium 1.0
     */
    public static function header_output() {
+
+      $url = get_theme_mod( 'streamium_google_font' );
+      $parts = parse_url($url);
+      parse_str($parts['query'], $query);
+      $family = $query['family'];
+      if (strpos($family, ':') !== false) {
+        $family = substr($family, 0, strrpos($family, ':'));
+      }
       ?>
       <!--Customizer CSS--> 
       <style type="text/css">
+
+            <?php if(get_theme_mod( 'streamium_google_font' )){ ?>
+              @import url('<?php echo $url; ?>');
+              html, body {
+                font-family: '<?php echo $family; ?>', sans-serif !important;
+              }
+            <?php } ?>
 
            /* Theme colors */
            <?php self::generate_css('.archive, .home, .search, .single', 'background', 'streamium_background_color','',' !important'); ?>
@@ -288,27 +303,6 @@ class Streamium_Customize {
       <?php
    }
    
-   /**
-    * This outputs the javascript needed to automate the live settings preview.
-    * Also keep in mind that this function isn't necessary unless your settings 
-    * are using 'transport'=>'postMessage' instead of the default 'transport'
-    * => 'refresh'
-    * 
-    * Used by hook: 'customize_preview_init'
-    * 
-    * @see add_action('customize_preview_init',$func)
-    * @since Streamium 1.0
-    */
-   public static function live_preview() {
-      wp_enqueue_script( 
-           'streamium-themecustomizer', // Give the script a unique ID
-           get_template_directory_uri() . '/dist/js/theme-customizer.js', // Define the path to the JS file
-           array(  'jquery', 'customize-preview' ), // Define dependencies
-           '', // Define a version (optional) 
-           true // Specify whether to put in footer (leave this true)
-      );
-   }
-
     /**
      * This will generate a line of CSS for use in header output. If the setting
      * ($mod_name) has no defined value, the CSS will not be output.
@@ -340,37 +334,8 @@ class Streamium_Customize {
     }
 }
 
-
-function streamium_google_font() {
-
-  // Setup params
-  $url = get_theme_mod( 'streamium_google_font' );
-  $parts = parse_url($url);
-  parse_str($parts['query'], $query);
-  $family = $query['family'];
-  if (strpos($family, ':') !== false) {
-    $family = substr($family, 0, strrpos($family, ':'));
-  }
-  if(get_theme_mod( 'streamium_google_font' )){
-    ?>
-    <style type="text/css">
-      @import url('<?php echo $url; ?>');
-      html, body {
-        font-family: '<?php echo $family; ?>', sans-serif !important;
-      }
-    </style>
-    <?php
-  }
-
-}
-
-add_action ( 'wp_head' , 'streamium_google_font');
-
 // Setup the Theme Customizer settings and controls...
 add_action( 'customize_register' , array( 'Streamium_Customize' , 'register' ) );
 
 // Output custom CSS to live site
 add_action( 'wp_head' , array( 'Streamium_Customize' , 'header_output' ) );
-
-// Enqueue live preview javascript in Theme Customizer admin screen
-add_action( 'customize_preview_init' , array( 'Streamium_Customize' , 'live_preview' ) );

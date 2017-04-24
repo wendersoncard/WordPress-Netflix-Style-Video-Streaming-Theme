@@ -14,10 +14,10 @@
 					    remove_all_filters('posts_join');
 					    remove_all_filters('posts_groupby');
 					    remove_all_filters('posts_orderby');
-					    add_filter( 'posts_fields', 'search_distinct' );
-						add_filter( 'posts_join','stats_posts_join_view');
-						add_filter( 'posts_groupby', 'my_posts_groupby' );
-						add_filter( 'posts_orderby', 'edit_posts_orderby' );
+					    add_filter( 'posts_fields', 'streamium_search_distinct' );
+						add_filter( 'posts_join','streamium_search_join');
+						add_filter( 'posts_groupby', 'streamium_search_groupby' );
+						add_filter( 'posts_orderby', 'streamium_search_orderby' );
 						$the_query = new WP_Query( 
 							array(
 							    'cat' => $category->cat_ID, 

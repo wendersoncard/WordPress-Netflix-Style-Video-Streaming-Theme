@@ -1,10 +1,11 @@
 <?php
 
-/*
-* Setup the uploader shortcode
-* @author sameast
-* @none
-*/ 
+/**
+ * Direct aws uploader
+ *
+ * @return bool
+ * @author  @sameast
+ */
 function streamium_user_content_uploader($atts){
     
     // Check for email
@@ -90,11 +91,12 @@ function streamium_user_content_uploader($atts){
 
 add_shortcode( 'streamium_uploader', 'streamium_user_content_uploader' );
 
-/*
-* Send a notification email
-* @author sameast
-* @none
-*/ 
+/**
+ * notify user whe upload takes place
+ *
+ * @return bool
+ * @author  @sameast
+ */
 function streamium_user_content_uploader_email(){
     
     check_ajax_referer( 'streamium-uploader-nonce-security', 'security' );

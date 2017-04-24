@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Ajax post scipts for single post
+ *
+ * @return bool
+ * @author  @sameast
+ */
 function streamium_single_video_scripts() {
 
     if( is_single() )
@@ -51,6 +57,12 @@ function streamium_single_video_scripts() {
 
 add_action('wp_enqueue_scripts', 'streamium_single_video_scripts');
 
+/**
+ * Ajax post scipts for content
+ *
+ * @return bool
+ * @author  @sameast
+ */
 function streamium_get_dynamic_content() {
 
 	global $wpdb;
