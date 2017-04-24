@@ -28,7 +28,7 @@
  
 					?>
 					<div class="slider-block" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
-						<?php if ( ! empty( $streamiumFeaturedVideo ) && !isMobile() && ($sliderPostCount < 1) ) : ?>
+						<?php if ( ! empty( $streamiumFeaturedVideo ) && !isMobile() && ($sliderPostCount < 1)  && get_theme_mod( 'streamium_enable_premium' ) ) : ?>
 							<div class="streamium-featured-background" id="streamium-featured-background-<?php echo get_the_ID(); ?>"></div>
 							<script type="text/javascript">
 								S3BubbleAWS.init({
@@ -55,15 +55,17 @@
 													<span class="hidden-xs">
 														<p><?php echo $content; ?></p>
 													</span>
-													<div class="synopis-premium-meta hidden-xs">
-														<div class="streamium-review-like-btn">
-									                        <a class="like-button" href="<?php echo $link; ?>" data-id="<?php echo get_the_ID(); ?>" data-nonce="<?php echo $nonce; ?>">Like it</a>
-									                        <span id="like-count-<?php echo get_the_ID(); ?>" class="like-count"><?php echo get_streamium_likes(get_the_ID()); ?></span>
-									                    </div>
-									                    <div class="streamium-review-reviews-btn">
-									                        <a class="streamium-list-reviews" data-id="<?php echo get_the_ID(); ?>" data-nonce="<?php echo $nonce; ?>">Read reviews</a>
-									                    </div>
-													</div>
+													<?php if(get_theme_mod( 'streamium_enable_premium' )) : ?>
+														<div class="synopis-premium-meta hidden-xs">
+															<div class="streamium-review-like-btn">
+										                        <a class="like-button" href="<?php echo $link; ?>" data-id="<?php echo get_the_ID(); ?>" data-nonce="<?php echo $nonce; ?>">Like it</a>
+										                        <span id="like-count-<?php echo get_the_ID(); ?>" class="like-count"><?php echo get_streamium_likes(get_the_ID()); ?></span>
+										                    </div>
+										                    <div class="streamium-review-reviews-btn">
+										                        <a class="streamium-list-reviews" data-id="<?php echo get_the_ID(); ?>" data-nonce="<?php echo $nonce; ?>">Read reviews</a>
+										                    </div>
+														</div>
+													<?php endif; ?>
 												</div>
 											</div>
 										</div>
@@ -77,7 +79,7 @@
 									        	</span>
 								        	</div>
 							        	</a>
-							        	<?php if ( ! empty( $streamiumVideoTrailer ) ) : ?>
+							        	<?php if ( ! empty( $streamiumVideoTrailer ) && get_theme_mod( 'streamium_enable_premium' ) ) : ?>
 								        	<a class="synopis-video-trailer" href="<?php the_permalink(); ?>?trailer=true">Watch Trailer</a>
 								        <?php endif; ?>
 									</div>

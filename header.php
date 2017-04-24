@@ -29,7 +29,9 @@
 
 </head>
 <body <?php body_class(); ?>>
+	
 	<div class="streamium-loading">Loading&#8230;</div>
+
 	<header class="cd-main-header">
 
 		<?php if ( get_theme_mod( 'streamium_logo' ) ) : ?>

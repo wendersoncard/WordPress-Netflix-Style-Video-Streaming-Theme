@@ -25,7 +25,7 @@
 					<?php wp_nav_menu( array( 'container' => false, 'theme_location' => 'streamium-header-menu' ) ); ?>
 				<?php } ?>
 				<li class="has-children">
-					<a href="<?php echo esc_url( home_url('/') ); ?>"><?php _e( 'Genres', 'streamium' ); ?></a>
+					<a href="<?php echo esc_url( home_url('/') ); ?>"><?php _e( (get_theme_mod( 'streamium_genre_text' )) ? get_theme_mod( 'streamium_genre_text' ) : 'Genres', 'streamium' ); ?></a>
 					<ul class="cd-secondary-nav is-hidden">
 						<li class="go-back"><a href="#0"><?php _e( 'Menu', 'streamium' ); ?></a></li>
 						<li class="see-all"><a href="<?php echo esc_url( home_url('/') ); ?>"><?php _e( 'All Videos', 'streamium' ); ?></a></li>

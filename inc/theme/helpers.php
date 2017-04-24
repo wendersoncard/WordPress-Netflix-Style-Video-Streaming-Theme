@@ -104,3 +104,106 @@ function streamium_run_plugin_checks() {
 }
 
 add_action( 'init', 'streamium_run_plugin_checks' );
+
+function streamium_checks() {
+
+    // Setup premium
+    $streamium_connected_website = get_option("streamium_connected_website");
+    $streamium_connected_nonce = wp_create_nonce( 'streamium_connected_nonce' );
+    wp_enqueue_script('streamium-checks', get_template_directory_uri() . '/dist/js/player.min.js', array('jquery'), '', false);
+    wp_localize_script( 'streamium-checks', 'streamium_checks_object', 
+        array(
+        	'ajax_url' => admin_url( 'admin-ajax.php'), 
+            'connected_website' => $streamium_connected_website,
+            'connected_nonce' => $streamium_connected_nonce
+        )
+    );
+
+}
+
+add_action('admin_enqueue_scripts', 'streamium_checks');
+
+// admin alert
+function premium_admin_notice__error() {
+
+	$class = 'notice notice-info is-dismissible';
+	$message = __( 'Upgrade to Premium to unlock some great features. Ratings, Video Resume, Self hosted, Background Videos, Trailers and much more. ', 'streamium' );
+
+	printf( '<div class="%1$s"><p>%2$s<a href="%3$s">Upgrade Now!</a></p></div>', esc_attr( $class ), esc_html( $message ), esc_url( 'https://s3bubble.com/pricing' ) ); 
+}
+
+if(!get_theme_mod( 'streamium_enable_premium' )){
+
+	add_action( 'admin_notices', 'premium_admin_notice__error' );
+
+}
+
+
+function streamium_connection_checks() {
+ 	
+ 	$nonce = $_REQUEST['connected_nonce'];
+ 	$state = $_REQUEST['connected_state'];
+	if ( ! wp_verify_nonce( $nonce, 'streamium_connected_nonce' ) ) {
+
+	    die( 'Security check failed' . $nonce ); 
+
+	}
+
+    if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+    	
+    	if($state === "false"){
+
+    		set_theme_mod( "streamium_enable_premium", true );
+    		echo json_encode(
+		    	array(
+		    		'error' => false,
+		    		'message' => 'Premmium has been added'
+		    	)
+		    );
+    		
+    	}else{
+
+    		set_theme_mod( "streamium_enable_premium", false );
+    		echo json_encode(
+		    	array(
+		    		'error' => false,
+		    		'message' => 'Premmium has been removed'
+		    	)
+		    );
+    	}
+
+        die();
+
+    }
+    else {
+        
+        exit();
+
+    }
+
+}
+
+add_action( 'wp_ajax_streamium_connection_checks', 'streamium_connection_checks' );
+
+function search_distinct() {
+	return "wp_posts.*, COUNT(wp_streamium_reviews.post_id) AS reviews";
+}
+
+function stats_posts_join_view ($join) {
+    global $wpdb;
+    $posts_stats_view_join = "LEFT JOIN wp_streamium_reviews ON ($wpdb->posts.ID = wp_streamium_reviews.post_id)";
+    $join .= $posts_stats_view_join;
+    return $join;
+}
+
+function my_posts_groupby($groupby) {
+    global $wpdb;
+    $groupby = "wp_streamium_reviews.post_id";
+    return $groupby;
+}
+
+function edit_posts_orderby($orderby_statement) {
+	global $wpdb;
+	$orderby_statement = "reviews DESC";
+	return $orderby_statement;
+}

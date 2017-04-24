@@ -17,6 +17,65 @@ class Streamium_Customize {
     */
    public static function register ( $wp_customize ) {
 
+      $wp_customize->add_setting(
+          'streamium_carousel_heading_color',
+          array(
+              'default'     => '#999999'
+          )
+      );
+   
+      $wp_customize->add_control(
+          new WP_Customize_Color_Control(
+              $wp_customize,
+              'streamium_carousel_heading_color',
+              array(
+                  'label'      => __( 'Carousel Headings Color', 'streamium' ),
+                  'section'    => 'colors',
+                  'settings'   => 'streamium_carousel_heading_color'
+              ) 
+          )
+      );
+
+      $wp_customize->add_setting(
+          'streamium_background_color',
+          array(
+              'default'     => '#141414'
+          )
+      );
+   
+      $wp_customize->add_control(
+          new WP_Customize_Color_Control(
+              $wp_customize,
+              'streamium_background_color',
+              array(
+                  'label'      => __( 'Background Color', 'streamium' ),
+                  'section'    => 'colors',
+                  'settings'   => 'streamium_background_color'
+              ) 
+          )
+      );
+
+      $wp_customize->add_setting( 'link_textcolor', 
+         array(
+            'default' => '#2BA6CB', 
+            'type' => 'theme_mod', 
+            'capability' => 'edit_theme_options', 
+            'transport' => 'postMessage',
+            'sanitize_callback' => 'sanitize_hex_color'
+         ) 
+      );      
+          
+      $wp_customize->add_control( new WP_Customize_Color_Control( 
+         $wp_customize, 
+         'streamium_link_textcolor', 
+         array(
+            'label' => __( 'Main Theme Color', 'streamium' ), 
+            'section' => 'colors', 
+            'settings' => 'link_textcolor', 
+            'priority' => 10, 
+         ) 
+      ) );
+
       // allow the user to remove the powered by link
       $wp_customize->add_setting('streamium_remove_powered_by_s3bubble');
       
@@ -25,6 +84,16 @@ class Streamium_Customize {
           'label' => 'Replace Powered By S3Bubble Text',
           'section' => 'title_tagline',
           'settings' => 'streamium_remove_powered_by_s3bubble',
+        )) 
+      );
+
+      $wp_customize->add_setting('streamium_genre_text');
+
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_genre_text',
+        array(
+          'label' => 'Replace Genre Text',
+          'section' => 'title_tagline',
+          'settings' => 'streamium_genre_text',
         )) 
       );
 
@@ -77,27 +146,6 @@ class Streamium_Customize {
           'section'  => 'streamium_logo_section',
           'settings' => 'streamium_plans_bg',
       ) ) );
-
-      $wp_customize->add_setting( 'link_textcolor', 
-         array(
-            'default' => '#2BA6CB', 
-            'type' => 'theme_mod', 
-            'capability' => 'edit_theme_options', 
-            'transport' => 'postMessage',
-            'sanitize_callback' => 'sanitize_hex_color'
-         ) 
-      );      
-          
-      $wp_customize->add_control( new WP_Customize_Color_Control( 
-         $wp_customize, 
-         'streamium_link_textcolor', 
-         array(
-            'label' => __( 'Main Theme Color', 'streamium' ), 
-            'section' => 'colors', 
-            'settings' => 'link_textcolor', 
-            'priority' => 10, 
-         ) 
-      ) );
 
       // Add site options
       $wp_customize->add_section('streamium_global_options' , array(
@@ -206,6 +254,12 @@ class Streamium_Customize {
       ?>
       <!--Customizer CSS--> 
       <style type="text/css">
+           /* Theme colors */
+           <?php self::generate_css('.archive, .home, .search, .single', 'background', 'streamium_background_color','',' !important'); ?>
+           <?php self::generate_css('.video-header h3', 'color', 'streamium_carousel_heading_color','',' !important'); ?>
+
+           
+
            <?php self::generate_css('a', 'color', 'link_textcolor'); ?>
            <?php self::generate_css('a:focus', 'color', 'link_textcolor'); ?>
            <?php self::generate_css('a:hover', 'color', 'link_textcolor'); ?>

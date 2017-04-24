@@ -4,22 +4,62 @@
 		<div class="main-spacer"></div>
 
 		<section class="categories">
-			<?php if ( have_posts() ) : ?>
+			<?php 
+
+				$category = $wp_query->get_queried_object(); 
+				if(isset($_GET['reviewed'])){
+
+					remove_all_filters('posts_fields');
+				    remove_all_filters('posts_join');
+				    remove_all_filters('posts_groupby');
+				    remove_all_filters('posts_orderby');
+				    add_filter( 'posts_fields', 'search_distinct' );
+					add_filter( 'posts_join','stats_posts_join_view');
+					add_filter( 'posts_groupby', 'my_posts_groupby' );
+					add_filter( 'posts_orderby', 'edit_posts_orderby' );
+
+				}
+
+				if(isset($_GET['oldest'])){
+
+					remove_all_filters('posts_fields');
+				    remove_all_filters('posts_join');
+				    remove_all_filters('posts_groupby');
+				    remove_all_filters('posts_orderby');
+				    /*add_filter( 'posts_fields', 'search_distinct' );
+					add_filter( 'posts_join','stats_posts_join_view');
+					add_filter( 'posts_groupby', 'my_posts_groupby' );
+					add_filter( 'posts_orderby', 'edit_posts_orderby' );*/
+
+				}
+				
+				$the_query = new WP_Query( 
+					array(
+					    'cat' => $category->cat_ID, 
+						'posts_per_page' => -1, 
+						'ignore_sticky_posts' => true,
+						'orderby' => 'date',
+						'order'   => 'DESC', 
+					) 
+				);
+				if ( $the_query->have_posts() ) : 
+			?>
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-sm-12 video-header-archive">
 						<h3><?php printf( __( 'Viewing: %s', 'streamium' ), single_cat_title( '', false ) ); ?></h3>
-						<!--<div class="dropdown video-header-archive-dropdown">
+						<div class="dropdown video-header-archive-dropdown">
 						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 						    FILTER
 						    <span class="caret"></span>
 						  </button>
 						  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-						    <li><a href="#">Most Like</a></li>
-						    <li><a href="#">Recently Added</a></li>
-						    <li><a href="#">Most Reviews</a></li>
+						    <li><a href="#">View All</a></li>
+						    <li><a href="?reviewed=true">Most Reviews</a></li>
+						    <li><a href="?newest=true">Recently Added</a></li>
+						    <li><a href="?oldest=true">Oldest First</a></li>
 						  </ul>
-						</div>-->
+						</div>
 					</div><!--/.col-sm-12-->
 				</div><!--/.row-->
 			</div><!--/.container-->
@@ -29,9 +69,9 @@
 						
 						$count = 0;
 						$cat_count = 0; 
-						$total_count = $wp_query->post_count;
+						$total_count = $the_query->post_count;
 
-						while ( have_posts() ) : the_post(); if ( has_post_thumbnail() ) { 
+						while ( $the_query->have_posts() ) : $the_query->the_post(); if ( has_post_thumbnail() ) { 
 						$image   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-poster' );
 						$nonce = wp_create_nonce( 'streamium_likes_nonce' ); 
 						?>

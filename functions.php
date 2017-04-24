@@ -27,6 +27,19 @@ if (!function_exists('streamium_enqueue_scripts')) {
 	
     function streamium_enqueue_scripts() {
         
+        /* Register styles -----------------------------------------------------*/
+        wp_enqueue_style( 'streamium-styles', get_stylesheet_uri() );
+        wp_enqueue_style('streamium-reset', get_template_directory_uri() . '/dist/css/bootstrap.min.css');  
+        wp_enqueue_style('streamium-menu', get_template_directory_uri() . '/dist/css/menu.min.css');
+        wp_enqueue_style('streamium-info', get_template_directory_uri() . '/dist/css/info.min.css');
+        wp_enqueue_style('streamium-slick', get_template_directory_uri() . '/dist/extras/slick/slick.min.css');
+        wp_enqueue_style('streamium-slick-theme', get_template_directory_uri() . '/dist/extras/slick/slick-theme.min.css');
+        wp_enqueue_style('streamium-sweetalert', get_template_directory_uri() . '/dist/extras/sweetalert/sweetalert.min.css');
+        wp_enqueue_style('streamium-main', get_template_directory_uri() . '/dist/css/main.min.css');       
+        wp_enqueue_style('streamium-woocommerce', get_template_directory_uri() . '/dist/css/woocommerce.min.css');
+        wp_enqueue_style('streamium-s2member', get_template_directory_uri() . '/dist/css/s2member.min.css');
+
+        /* Register scripts -----------------------------------------------------*/
         wp_enqueue_script( 'streamium-fontawesome', get_template_directory_uri() . '/dist/js/fontawesome.min.js', array( 'jquery') );
         wp_enqueue_script( 'streamium-bootstrap', get_template_directory_uri() . '/dist/js/bootstrap.min.js', array( 'jquery') );
 	      wp_enqueue_script( 'streamium-slick', get_template_directory_uri() . '/dist/extras/slick/slick.min.js', array( 'jquery') );
@@ -44,19 +57,6 @@ if (!function_exists('streamium_enqueue_scripts')) {
         if( is_singular() ) {
             wp_enqueue_script('comment-reply'); // loads the javascript required for threaded comments
         }
-
-        /* Register styles -----------------------------------------------------*/
-        wp_enqueue_style( 'streamium-styles', get_stylesheet_uri() );
-        wp_enqueue_style('streamium-reset', get_template_directory_uri() . '/dist/css/bootstrap.min.css');  
-        wp_enqueue_style('streamium-menu', get_template_directory_uri() . '/dist/css/menu.min.css');
-        wp_enqueue_style('streamium-info', get_template_directory_uri() . '/dist/css/info.min.css');
-        wp_enqueue_style('streamium-slick', get_template_directory_uri() . '/dist/extras/slick/slick.min.css');
-        wp_enqueue_style('streamium-slick-theme', get_template_directory_uri() . '/dist/extras/slick/slick-theme.min.css');
-        wp_enqueue_style('streamium-sweetalert', get_template_directory_uri() . '/dist/extras/sweetalert/sweetalert.min.css');
-        wp_enqueue_style('streamium-main', get_template_directory_uri() . '/dist/css/main.min.css');       
-        wp_enqueue_style('streamium-woocommerce', get_template_directory_uri() . '/dist/css/woocommerce.min.css');
-        wp_enqueue_style('streamium-s2member', get_template_directory_uri() . '/dist/css/s2member.min.css');
-        
 
         // presetn while debugging
         if(!in_array($_SERVER['REMOTE_ADDR'], array(

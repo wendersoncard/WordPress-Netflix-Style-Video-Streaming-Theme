@@ -15,6 +15,9 @@ function streamium_single_video_scripts() {
 
     	if ( get_theme_mod( 'streamium_enable_premium' ) ) {
 
+    		if(pathinfo($s3videoid, PATHINFO_DIRNAME) !== "."){
+			    $s3videoid = pathinfo($s3videoid, PATHINFO_BASENAME);
+			}
     		// Setup premium
 	        wp_enqueue_script('video-post', get_template_directory_uri() . '/dist/js/single.premium.min.js', array('jquery'), '', false);
 	        wp_localize_script( 'video-post', 'video_post_object', 

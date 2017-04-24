@@ -18,15 +18,16 @@
 			<div class="container-fluid">
 				<div class="row static-row static-row-first">
 					<?php
-						$cat_count = 0; 
+						
 						$count = 0;
-						$total_count = $allsearch ->found_posts;
-						while ( $allsearch->have_posts() ) : $allsearch->the_post(); 
+						$cat_count = 0; 
+						$total_count = $wp_query->post_count;
+
+						while ( have_posts() ) : the_post(); if ( has_post_thumbnail() ) { 
 						$image   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-poster' );
-						$fullImage  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-home-slider' );  
-						$trimmed_content = wp_trim_words( get_the_excerpt(), 11 ); 
+						$nonce = wp_create_nonce( 'streamium_likes_nonce' ); 
 						?>
-						<div class="col-sm-2 tile" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>">
+						<div class="col-md-5ths tile" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>">
 							<?php if($post->premium) : ?>
 								<div class="tile_payment_details">
 									<div class="tile_payment_details_inner">
@@ -53,10 +54,21 @@
 					            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>" class="tile_meta_more_info hidden-xs"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
 					          	</div>
 					        </div>
+					        <?php if(is_user_logged_in() && get_theme_mod( 'streamium_enable_premium' )){
+						    		$userId = get_current_user_id();
+						    		$percentageWatched = get_post_meta( get_the_ID(), 'user_' . $userId, true );
+						    ?>
+							    <div class="progress tile_progress">
+								  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $percentageWatched; ?>"
+								  aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $percentageWatched; ?>%">
+								    <span class="sr-only"><?php echo $percentageWatched; ?>% Complete</span>
+								  </div>
+								</div>
+						    <?php } ?>
 						</div>
 						<?php
 							$count++;
-  							if ($count % (isMobile() ? 1 : 6) == 0 || $count == $total_count) { 
+  							if ($count % (isMobile() ? 1 : 5) == 0 || $count == $total_count) { 
   						?>
   						</div>
   						</div>
@@ -90,7 +102,7 @@
 							</div><!--/.container-->
 						</section><div class="container-fluid"><div class="row static-row">
 					<?php $cat_count++; } ?>
-					<?php endwhile; ?>
+					<?php } endwhile; ?>
 				</div><!--/.row-->
 				<div class="row">
 					<div class="col-sm-12">
