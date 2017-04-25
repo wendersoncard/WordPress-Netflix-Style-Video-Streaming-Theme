@@ -239,7 +239,7 @@ class Streamium_Ratings_List extends WP_List_Table {
 	  /** Process bulk action */
 	  $this->process_bulk_action();
 
-	  $per_page     = $this->get_items_per_page( 'customers_per_page', 5 );
+	  $per_page     = $this->get_items_per_page( 'ratings_per_page', 25 );
 	  $current_page = $this->get_pagenum();
 	  $total_items  = self::record_count();
 
@@ -265,6 +265,7 @@ class Streamium_Ratings_List extends WP_List_Table {
 		    else {
 
 		      self::update_rating( absint( $_GET['rating'] ) );
+		      wp_redirect( esc_url( add_query_arg() ) );
 
 		    }
 
@@ -282,6 +283,7 @@ class Streamium_Ratings_List extends WP_List_Table {
 	    else {
 
 	      self::delete_rating( absint( $_GET['customer'] ) );
+	      wp_redirect( esc_url( add_query_arg() ) );
 
 	    }
 
@@ -296,9 +298,12 @@ class Streamium_Ratings_List extends WP_List_Table {
 
 	    // loop over the array of record IDs and delete them
 	    foreach ( $delete_ids as $id ) {
+
 	      self::delete_rating( $id );
 
 	    }
+
+	    wp_redirect( esc_url( add_query_arg() ) );
 
 	  }
 	}
@@ -321,8 +326,10 @@ class Streamium_Ratings {
 
 	// class constructor
 	public function __construct() {
+
 		add_filter( 'set-screen-option', [ __CLASS__, 'set_screen' ], 10, 3 );
 		add_action( 'admin_menu', [ $this, 'plugin_menu' ] );
+
 	}
 
 	public static function set_screen( $status, $option, $value ) {
@@ -350,9 +357,9 @@ class Streamium_Ratings {
 
 		$option = 'per_page';
 		$args   = [
-			'label'   => 'Customers',
+			'label'   => 'Streamium Ratings',
 			'default' => 25,
-			'option'  => 'customers_per_page'
+			'option'  => 'ratings_per_page'
 		];
 
 		add_screen_option( $option, $args );
@@ -707,7 +714,7 @@ function get_streamium_likes($post_id) {
 
 	global $wpdb;
 	$table_name = $wpdb->prefix . 'streamium_reviews';
-    $getReviews = $wpdb->get_var("SELECT COUNT(*) FROM $table_name WHERE post_id = $post_id");
+    $getReviews = $wpdb->get_var("SELECT COUNT(*) FROM $table_name WHERE post_id = $post_id AND state = 1");
     return $getReviews;
 
 }
