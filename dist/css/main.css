@@ -755,7 +755,7 @@ p {
 .s3bubble-details-full {
     position: relative;
     background: right #000;
-    background-size: contain;
+    background-size: cover;
     height: 0;
     overflow: hidden;
     background-repeat: no-repeat;
