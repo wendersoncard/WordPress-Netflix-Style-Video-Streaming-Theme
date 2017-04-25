@@ -141,7 +141,11 @@ jQuery(document).ready(function($) {
  
 	});
 
-	var tileWidth = Math.floor($(window).innerWidth()/6);
+	var tileCount = 6;
+	if ($('body').hasClass('category')) {
+		tileCount = 5;
+	}
+	var tileWidth = Math.floor($(window).innerWidth()/tileCount);
 	var growFactor = 1.4; 
 	var moveLeft = -(tileWidth * (growFactor - 1) / 2);
     var moveRight = (tileWidth-15) * (growFactor - 1);
@@ -212,7 +216,7 @@ jQuery(document).ready(function($) {
 			    	var twidth = $(currentCat).width();
 			    	var theight = twidth/21*8;
 			    	$(currentCat).find('h2.synopis').text(response.title);
-			    	$(currentCat).find('p.synopis').html(response.content);
+			    	$(currentCat).find('span.synopis').html(response.content);
 			    	$(currentCat).find('a.synopis').attr( "href", response.href);
 			    	$(currentCat).css("background-image", "url(" + response.bgimage + ")");
 			    	if(response.trailer === ""){
@@ -245,11 +249,10 @@ jQuery(document).ready(function($) {
 
 	    $('.tile').hover(function() {
 
-	    	$(this).parent().parent().find('.tile').css('opacity', '0.8');
+            $(this).parent().parent().find('.tile').css('opacity', '0.8');
 	    	$(this).css('opacity', '1');
 		    $(this).find('.tile_details').css('opacity', '1');
 		    $(this).find('.play-icon-wrap').css('opacity', '1');
-		    //$(this).css('border-bottom','1px solid');
 
 		}, function() {
 
@@ -257,16 +260,15 @@ jQuery(document).ready(function($) {
 			$('.tile').css('opacity', '1');
 		    $(this).find('.tile_details').css('opacity', '0');
 		    $(this).find('.play-icon-wrap').css('opacity', '0');
-		    //$(this).parent().parent().find('.tile').css('border','none');
 
 		});
 
 		$('head').append('<style type="text/css">' +
 			'.carousels:hover {transform: translate3d(0px, 0, 0);}' +
-			'.carousels:hover .tile:hover {transform: scale(' + growFactor + ');opacity: 1;}' +
+			'.carousels:hover .tile:hover {transform: scale(' + growFactor + ');opacity: 1;transition-delay: 0.1s;}' +
 			'.carousels .tile:hover ~ .tile {transform: translate3d(' + moveRight +'px, 0, 0);}' +
-			'.static-row:hover {transform: translate3d(0px, 0, 0);}' +
-			'.static-row:hover .tile:hover {transform: scale(' + growFactor + ');opacity: 1;}' +
+			'.static-row:hover {transform: translate3d(0px, 0, 0);transition-delay: 0.1s;}' +
+			'.static-row:hover .tile:hover {transform: scale(' + growFactor + ');opacity: 1;transition-delay: 0.1s;}' +
 			'.static-row .tile:hover ~ .tile {transform: translate3d(' + moveRight +'px, 0, 0);}' +
 		'</style>');
 
@@ -326,7 +328,7 @@ jQuery(document).ready(function($) {
 			    	var twidth = $(currentCat).width();
 			    	var theight = twidth/21*8;
 			    	$(currentCat).find('h2.synopis').text(response.title);
-			    	$(currentCat).find('p.synopis').html(response.content);
+			    	$(currentCat).find('span.synopis').html(response.content);
 			    	$(currentCat).find('a.synopis').attr( "href", response.href);
 			    	$(currentCat).css("background-image", "url(" + response.bgimage + ")");
 			    	if(response.trailer === ""){

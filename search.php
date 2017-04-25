@@ -94,7 +94,7 @@
 											<div class="synopis-middle">
 												<div class="synopis-inner">
 													<h2 class="synopis hidden-xs"></h2>
-													<p class="synopis"></p>
+													<span class="synopis content"></span>
 												</div>
 											</div>
 										</div>

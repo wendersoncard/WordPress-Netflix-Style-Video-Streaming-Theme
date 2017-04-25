@@ -149,6 +149,34 @@ class Streamium_Customize {
           'section' => 'streamium_styles',
           'settings' => 'streamium_google_font',
         )) 
+      );
+
+      $wp_customize->add_setting('streamium_synopsis_para', array(
+          'default'  => '1.3vw'
+      ));
+
+      $wp_customize->add_control(
+          new WP_Customize_Control(
+              $wp_customize,
+              'streamium_synopsis_para',
+              array(
+                  'label'     => __('Synopsis Paragraph Text', 'streamium'),
+                  'section'   => 'streamium_styles',
+                  'settings'  => 'streamium_synopsis_para',
+                  'type'      => 'select',
+                  'choices' => array( 
+                      '1.6vw'  => __( '1.6vw' ),
+                      '1.5vw'  => __( '1.5vw' ),
+                      '1.4vw'  => __( '1.4vw' ),
+                      '1.3vw'  => __( '1.3vw' ),
+                      '1.2vw'  => __( '1.2vw' ),
+                      '1.1vw'  => __( '1.1vw' ),
+                      '1vw'    => __( '1vw' ),
+                      '0.9.vw' => __( '0.9vw' ),
+                      '0.8.vw' => __( '0.8vw' )
+                  )
+              )
+          )
       );          
       
 
@@ -301,6 +329,9 @@ class Streamium_Customize {
            /* link and background colors */
            <?php self::generate_css('a, a:focus, a:hover, .cd-main-header .cd-logo, .play-icon-wrap i, .cd-primary-nav .cd-secondary-nav a:hover, .cd-primary-nav>li>a:hover, .cd-primary-nav .cd-nav-gallery .cd-nav-item h3, .cd-primary-nav .cd-nav-icons .cd-nav-item h3, .woocommerce-message:before, .woocommerce-info::before', 'color', 'link_textcolor'); ?>
            <?php self::generate_css('#place_order, .pagination a:hover, .pagination .current, .slick-dots li.slick-active button, .progress-bar, .button, .cd-overlay, .has-children > a:hover::before, .has-children > a:hover::after, .go-back a:hover::before, .go-back a:hover::after, #submit, #place_order, .checkout-button, .woocommerce-thankyou-order-received, .add_to_cart_button, .confirm', 'background-color', 'link_textcolor','',' !important'); ?>
+           <?php self::generate_css('.synopis-inner span.content', 'font-size', 'streamium_synopsis_para','',' !important'); ?>
+
+           
 
 
            <?php self::generate_css('.post-type-archive, .woocommerce-cart, .woocommerce-account, .woocommerce-checkout, .woocommerce-page, .archive', 'background-image', 'streamium_plans_bg', 'url(', ')'); ?>

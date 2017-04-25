@@ -54,8 +54,8 @@
 											<div class="synopis-middle">
 												<div class="synopis-inner">
 													<h2><?php echo (isset($title) ? $title : __( 'No Title', 'streamium' )); ?></h2>
-													<span class="hidden-xs">
-														<p><?php echo $content; ?></p>
+													<span class="content hidden-xs">
+														<?php echo $content; ?>
 													</span>
 													<?php if(get_theme_mod( 'streamium_enable_premium' )) : ?>
 														<div class="synopis-premium-meta hidden-xs">
@@ -189,7 +189,7 @@
 								<div class="synopis-middle">
 									<div class="synopis-inner">
 										<h2 class="synopis hidden-xs"></h2>
-										<p class="synopis"></p>
+										<span class="synopis content"></span>
 									</div>
 								</div>
 							</div>
@@ -308,7 +308,7 @@
 							<div class="synopis-middle">
 								<div class="synopis-inner">
 									<h2 class="synopis hidden-xs"></h2>
-									<p class="synopis"></p>
+									<span class="synopis content"></span>
 								</div>
 							</div>
 						</div>
