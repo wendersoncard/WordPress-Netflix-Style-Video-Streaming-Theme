@@ -329,12 +329,12 @@ class Streamium_Customize {
            /* link and background colors */
            <?php self::generate_css('a, a:focus, a:hover, .cd-main-header .cd-logo, .play-icon-wrap i, .cd-primary-nav .cd-secondary-nav a:hover, .cd-primary-nav>li>a:hover, .cd-primary-nav .cd-nav-gallery .cd-nav-item h3, .cd-primary-nav .cd-nav-icons .cd-nav-item h3, .woocommerce-message:before, .woocommerce-info::before', 'color', 'link_textcolor'); ?>
            <?php self::generate_css('#place_order, .pagination a:hover, .pagination .current, .slick-dots li.slick-active button, .progress-bar, .button, .cd-overlay, .has-children > a:hover::before, .has-children > a:hover::after, .go-back a:hover::before, .go-back a:hover::after, #submit, #place_order, .checkout-button, .woocommerce-thankyou-order-received, .add_to_cart_button, .confirm', 'background-color', 'link_textcolor','',' !important'); ?>
-           <?php self::generate_css('.synopis-inner span.content', 'font-size', 'streamium_synopsis_para','',' !important'); ?>
+           <?php if(!isMobile()) : 
+              self::generate_css('.synopis-inner .content', 'font-size', 'streamium_synopsis_para','',' !important'); 
+            endif;
+           ?>
 
-           
-
-
-           <?php self::generate_css('.post-type-archive, .woocommerce-cart, .woocommerce-account, .woocommerce-checkout, .woocommerce-page, .archive', 'background-image', 'streamium_plans_bg', 'url(', ')'); ?>
+           <?php self::generate_css('.post-type-archive, .woocommerce-cart, .woocommerce-account, .woocommerce-checkout, .woocommerce-page', 'background-image', 'streamium_plans_bg', 'url(', ')'); ?>
            <?php self::generate_css('body', 'background-image', 'streamium_global_bg', 'url(', ') !important'); ?>
 
            <?php self::generate_css('.tile', 'border-color', 'link_textcolor','',' !important'); ?>

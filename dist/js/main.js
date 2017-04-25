@@ -216,7 +216,7 @@ jQuery(document).ready(function($) {
 			    	var twidth = $(currentCat).width();
 			    	var theight = twidth/21*8;
 			    	$(currentCat).find('h2.synopis').text(response.title);
-			    	$(currentCat).find('span.synopis').html(response.content);
+			    	$(currentCat).find('div.synopis').html(response.content);
 			    	$(currentCat).find('a.synopis').attr( "href", response.href);
 			    	$(currentCat).css("background-image", "url(" + response.bgimage + ")");
 			    	if(response.trailer === ""){
@@ -327,7 +327,7 @@ jQuery(document).ready(function($) {
 			    	var twidth = $(currentCat).width();
 			    	var theight = twidth/21*8;
 			    	$(currentCat).find('h2.synopis').text(response.title);
-			    	$(currentCat).find('span.synopis').html(response.content);
+			    	$(currentCat).find('div.synopis').html(response.content);
 			    	$(currentCat).find('a.synopis').attr( "href", response.href);
 			    	$(currentCat).css("background-image", "url(" + response.bgimage + ")");
 			    	if(response.trailer === ""){

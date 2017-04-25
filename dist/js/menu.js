@@ -60,12 +60,16 @@ jQuery(document).ready(function($){
 	$('.has-children').children('a').on('click', function(event){
 		if( !checkWindowWidth() ) event.preventDefault();
 		var selected = $(this);
+		var addHeight = selected.parent().attr("id");
 		if( selected.next('ul').hasClass('is-hidden') ) {
 			//desktop version only
 			selected.addClass('selected').next('ul').removeClass('is-hidden').end().parent('.has-children').parent('ul').addClass('moves-out');
+			var numberLi = $("#" + addHeight).children().length;
+			$("#" + addHeight).css("height",numberLi*30);
 			selected.parent('.has-children').siblings('.has-children').children('ul').addClass('is-hidden').end().children('a').removeClass('selected');
 			$('.cd-overlay').addClass('is-visible');
 		} else {
+			$("#" + addHeight).css("height","auto");
 			selected.removeClass('selected').next('ul').addClass('is-hidden').end().parent('.has-children').parent('ul').removeClass('moves-out');
 			$('.cd-overlay').removeClass('is-visible');
 		}
@@ -74,6 +78,9 @@ jQuery(document).ready(function($){
 
 	//submenu items - go back link
 	$('.go-back').on('click', function(){
+		var selected = $(this);
+		var addHeight = selected.parents('li:eq(0)').attr('id');
+		$("#" + addHeight).css("height","auto");
 		$(this).parent('ul').addClass('is-hidden').parent('.has-children').parent('ul').removeClass('moves-out');
 	});
 
@@ -90,18 +97,18 @@ jQuery(document).ready(function($){
 	}
 
 	function toggleSearch(type) {
-		if(type==="close") {
+		if(type=="close") {
 			//close serach 
 			$('.cd-search').removeClass('is-visible');
 			$('.cd-search-trigger').removeClass('search-is-visible');
-			$('.cd-overlay').removeClass('search-is-visible');	
+			$('.cd-overlay').removeClass('search-is-visible');
 		} else {
 			//toggle search visibility
 			$('.cd-search').toggleClass('is-visible');
 			$('.cd-search-trigger').toggleClass('search-is-visible');
 			$('.cd-overlay').toggleClass('search-is-visible');
 			if($(window).width() > MqL && $('.cd-search').hasClass('is-visible')) $('.cd-search').find('input[type="search"]').focus();
-			($('.cd-search').hasClass('is-visible')) ? $('.cd-overlay').addClass('is-visible') : $('.cd-overlay').removeClass('is-visible');
+			($('.cd-search').hasClass('is-visible')) ? $('.cd-overlay').addClass('is-visible') : $('.cd-overlay').removeClass('is-visible') ;
 		}
 	}
 

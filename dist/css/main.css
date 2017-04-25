@@ -104,7 +104,7 @@ p {
     font-size: 3vw;
 }
 
-.content-overlay .synopis-inner span.content {
+.content-overlay .synopis-inner div.content {
     color: #999;
     line-height: 1.3;
 }
@@ -810,7 +810,7 @@ p {
     font-size: 3vw;
 }
 
-.s3bubble-details-full .synopis-inner span.content {
+.s3bubble-details-full .synopis-inner div.content {
     color: #999;
     line-height: 1.3;
 }
@@ -998,7 +998,7 @@ p {
   .synopis-inner h2 {
     font-size: 3vw !important;
   }
-  .synopis-inner span.content {
+  .synopis-inner div.content {
     font-size: 2vw !important;
   }
   .carousels .tile_play {
@@ -1072,8 +1072,8 @@ p {
   .synopis-inner h2 {
     font-size: 5vw !important;
   }
-  .synopis-inner span.content {
-    font-size: 2vw !important;
+  .synopis-inner div.content {
+    font-size: 2.5vw !important;
   }
   .content-overlay .play-icon-wrap-rel-ring {
     border: .6vw solid #fff;
