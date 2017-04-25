@@ -34,11 +34,11 @@ jQuery( document ).ready(function( $ ) {
                 if(ext === "m3u8"){
                     html += '<option id="' + code + '"  value="' + code + '">' + baseName(key) + '</option>';  
                 }
-                if(ext === "mp4"){
+                if(ext === "mp4" || ext === "m4v"){
                     html += '<option id="' + code + '"  value="' + code + '">' + baseName(key) + '</option>';  
                 }
             }else{
-                if(ext === "mp4"){
+                if(ext === "mp4" || ext === "m4v"){
                     html += '<option id="https://s3bubble.com/secure/#/single_video/' + bucket + '/' + key.replace(/\//g, "+") + '" value="https://media.s3bubble.com/embed/progressive/id/' + code + '">' + key + '</option>'; 
                 }
                 if(ext === "mp3" || ext === "m4a"){
