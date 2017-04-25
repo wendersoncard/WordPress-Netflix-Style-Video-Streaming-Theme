@@ -64,11 +64,12 @@ jQuery(document).ready(function($){
 		if( selected.next('ul').hasClass('is-hidden') ) {
 			//desktop version only
 			selected.addClass('selected').next('ul').removeClass('is-hidden').end().parent('.has-children').parent('ul').addClass('moves-out');
-			var numberLi = $("#" + addHeight).children().length;
-			$("#" + addHeight).css("height",numberLi*30);
+			var numberLi = $("#" + addHeight + " ul").children().length;
+			$("#" + addHeight).animate({height:numberLi*30},200);
 			selected.parent('.has-children').siblings('.has-children').children('ul').addClass('is-hidden').end().children('a').removeClass('selected');
 			$('.cd-overlay').addClass('is-visible');
 		} else {
+			$("#" + addHeight).animate({height:0},200);
 			$("#" + addHeight).css("height","auto");
 			selected.removeClass('selected').next('ul').addClass('is-hidden').end().parent('.has-children').parent('ul').removeClass('moves-out');
 			$('.cd-overlay').removeClass('is-visible');
