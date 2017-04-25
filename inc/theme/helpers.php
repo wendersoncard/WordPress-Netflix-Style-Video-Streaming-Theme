@@ -49,7 +49,7 @@ function streamium_run_plugin_checks() {
 		$pluginUrl = admin_url( 'plugin-install.php?s=Easy+Theme+and+Plugin+Upgrades&tab=search&type=term' );
 		$message = __( 'We highly recommend installing the Easy Theme and Plugin Upgrades plugin to make theme upgrades go smoothly. ', 'sample-text-domain' );
 
-		printf( '<div class="%1$s"><p>%2$s<a href="%3$s">Install Now!</a> | <a href="%3$s">How to Upgrade!</a></p></div>', esc_attr( $class ), esc_html( $message ), esc_url( $pluginUrl ) ); 
+		printf( '<div class="%1$s"><p>%2$s<a href="%3$s">Install Now!</a> | <a href="https://www.youtube.com/watch?v=-eEpuVGwdC4">How to Upgrade!</a></p></div>', esc_attr( $class ), esc_html( $message ), esc_url( $pluginUrl ) ); 
 	}
 
 	// admin alert
@@ -84,12 +84,12 @@ function streamium_run_plugin_checks() {
 	if (!in_array("Easy Theme and Plugin Upgrades", $formatArray)) {
 	    add_action( 'admin_notices', 'easy_theme_upgrades_admin_notice__error' );
 	}
-	if (!in_array("WooCommerce", $formatArray)) {
+	/*if (!in_array("WooCommerce", $formatArray)) {
 	    add_action( 'admin_notices', 'wooCommerce_admin_notice__error' );
 	}
 	if ((!in_array("WooCommerce Membership", $formatArray)) || (!in_array("Subscriptio", $formatArray))) {
 	    add_action( 'admin_notices', 'wooCommerce_membership_subscriptio_admin_notice__error' );
-	}
+	}*/
 
 	// Dummy content
 	// admin alert

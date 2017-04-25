@@ -245,7 +245,7 @@ jQuery(document).ready(function($) {
 
 	    $('.tile').hover(function() {
 
-	    	$(this).parent().parent().find('.tile').css('opacity', '0.3');
+	    	$(this).parent().parent().find('.tile').css('opacity', '0.8');
 	    	$(this).css('opacity', '1');
 		    $(this).find('.tile_details').css('opacity', '1');
 		    $(this).find('.play-icon-wrap').css('opacity', '1');

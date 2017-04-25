@@ -243,7 +243,7 @@
 										<div class="tile_payment_details_inner">
 											<h2>Available on <?php echo str_replace(array("_"), " ", $post->plans[0]); ?></h2>
 										</div>
-									</div>
+									</div> 
 								<?php endif; ?>
 								<?php if (function_exists('is_protected_by_s2member')) :
 									$check = is_protected_by_s2member(get_the_ID());
