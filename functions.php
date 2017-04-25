@@ -56,7 +56,7 @@ if (!function_exists('streamium_enqueue_scripts')) {
 
         if( is_singular() ) {
             wp_enqueue_script('comment-reply'); // loads the javascript required for threaded comments
-        }
+        } 
 
         // presetn while debugging
         if(!in_array($_SERVER['REMOTE_ADDR'], array(
