@@ -57,6 +57,15 @@ class Streamium_Customize {
           'section'  => 'streamium_styles',
           'settings' => 'streamium_logo',
       ) ) );
+
+      // Full background block
+      $wp_customize->add_setting( 'streamium_global_bg' );
+
+      $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'streamium_global_bg', array(
+          'label'    => __( 'Global Background', 'streamium' ),
+          'section'  => 'streamium_styles',
+          'settings' => 'streamium_global_bg',
+      ) ) );
       
       // Full background block
       $wp_customize->add_setting( 'streamium_plans_bg' );
@@ -136,7 +145,7 @@ class Streamium_Customize {
       $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_google_font',
         array(
           'label' => 'Google Font Url',
-          'description' => 'Please only enter the full google font url<br>Leave blank to use "Helvetica Neue"',
+          'description' => 'Please only enter the full google font url<br>Leave blank to use "Helvetica Neue"<br><a href="https://fonts.google.com/" target="_blank">https://fonts.google.com</a>',
           'section' => 'streamium_styles',
           'settings' => 'streamium_google_font',
         )) 
@@ -286,14 +295,16 @@ class Streamium_Customize {
             <?php } ?>
 
            /* Theme colors */
-           <?php self::generate_css('.archive, .home, .search, .single', 'background', 'streamium_background_color','',' !important'); ?>
+           <?php self::generate_css('.archive, .home, .search, .single', 'background-color', 'streamium_background_color','',' !important'); ?>
            <?php self::generate_css('.video-header h3', 'color', 'streamium_carousel_heading_color','',' !important'); ?>
 
            /* link and background colors */
            <?php self::generate_css('a, a:focus, a:hover, .cd-main-header .cd-logo, .play-icon-wrap i, .cd-primary-nav .cd-secondary-nav a:hover, .cd-primary-nav>li>a:hover, .cd-primary-nav .cd-nav-gallery .cd-nav-item h3, .cd-primary-nav .cd-nav-icons .cd-nav-item h3, .woocommerce-message:before, .woocommerce-info::before', 'color', 'link_textcolor','',' !important'); ?>
            <?php self::generate_css('#place_order, .pagination a:hover, .pagination .current, .slick-dots li.slick-active button, .progress-bar, .button, .cd-overlay, .has-children > a:hover::before, .has-children > a:hover::after, .go-back a:hover::before, .go-back a:hover::after, #submit, #place_order, .checkout-button, .woocommerce-thankyou-order-received, .add_to_cart_button, .confirm', 'background-color', 'link_textcolor','',' !important'); ?>
 
-           <?php self::generate_css('.post-type-archive, .woocommerce-cart, .woocommerce-account, .woocommerce-checkout, .woocommerce-page', 'background-image', 'streamium_plans_bg', 'url(', ')'); ?>
+
+           <?php self::generate_css('.post-type-archive, .woocommerce-cart, .woocommerce-account, .woocommerce-checkout, .woocommerce-page, .archive', 'background-image', 'streamium_plans_bg', 'url(', ')'); ?>
+           <?php self::generate_css('body', 'background-image', 'streamium_global_bg', 'url(', ') !important'); ?>
 
            <?php self::generate_css('.tile', 'border-color', 'link_textcolor','',' !important'); ?>
            <?php self::generate_css('.woocommerce-message, .woocommerce-info', 'border-top-color', 'link_textcolor','',' !important'); ?>
