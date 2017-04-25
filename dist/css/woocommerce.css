@@ -2,7 +2,12 @@
 .woocommerce h3, .woocommerce h2 {
     font-size: 20px;
 }
-
+.woocommerce a.button, .woocommerce .button {
+    color: #fff !important;
+}
+.woocommerce form .form-row .input-checkbox {
+    position: relative !important;
+}
 /* globals */
 .woocommerce-page {
     background: url(../img/tiled-posters.jpg);
@@ -11,17 +16,14 @@
     background-position: center;
     background-color: #333;
 }
-
 .woocommerce-account.logged-in, .woocommerce-cart, .woocommerce-checkout {
     color: #333;
     background: none !important;
 }
-
 .woocommerce-cart, .woocommerce-checkout {
     margin-bottom: 80px;
 }
-
-#customer_login {
+.customer_login {
     background: #fff;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
@@ -33,16 +35,14 @@
     background-clip: padding-box;
     padding: 40px;
 }
-
-#customer_login  .title {
+.customer_login  .title {
   font-weight: 300;
   margin-bottom: 60px;
   margin-top: 0;
 }
-#customer_login  .title {
+.customer_login  .title {
   margin-bottom: 15px;
 }
-
 /* remove woo css */
 .woocommerce form.checkout_coupon, .woocommerce form.login, .woocommerce form.register {
     border: none;
@@ -51,7 +51,6 @@
     text-align: left;
     border-radius: 0;
 }
-
 .woocommerce-password-strength {
     text-align: center;
     font-weight: 600;
@@ -59,14 +58,12 @@
     font-size: 12px;
     margin-top: 5px;
 }
-
 .woocommerce form .form-row label, .woocommerce-page form .form-row label, .woocommerce-password-hint {
     display: block;
     color: #999;
     font-size: 13px;
     margin: 0px;
 }
-
 .woocommerce-Input {
     display: block;
     width: 100%;
@@ -85,18 +82,15 @@
     -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
-
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px white inset;
 }
-
 .woocommerce-Input--checkbox {
     box-shadow: none !important;
     float: left;
     width: 18px;
     margin-right: 5px;
 }
-
 .woocommerce form .form-row label.inline {
     display: inline;
     line-height: 34px;

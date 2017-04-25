@@ -41,7 +41,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		<div class="col-md-3"></div>
 
-		<div class="col-md-6" id="customer_login">
+		<div class="col-md-6 customer_login">
 
 			<h2 class="title text-center">Register / Login</h2>  
         	<p class="intro text-center">It only takes 3 minutes!</p>
@@ -138,7 +138,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		<div class="col-md-4"></div>
 
-		<div class="col-md-4" id="customer_login">
+		<div class="col-md-4 customer_login">
 
 			<h2 class="title text-center">Login</h2>  
         	<p class="intro text-center">It only takes 3 minutes!</p>
