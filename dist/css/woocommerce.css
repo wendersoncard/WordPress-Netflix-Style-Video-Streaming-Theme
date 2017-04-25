@@ -1,7 +1,4 @@
 /* typography */
-.woocommerce h3, .woocommerce h2 {
-    font-size: 20px;
-}
 .woocommerce a.button, .woocommerce .button {
     color: #fff !important;
 }

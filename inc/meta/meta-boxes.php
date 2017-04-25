@@ -210,8 +210,8 @@ function streamium_meta_box_admin_scripts(){
   $streamium_connected_website = get_option("streamium_connected_website");
   wp_enqueue_style( 'streamium-theme-chosen-css', get_template_directory_uri() . '/dist/css/chosen.min.css', array() );
   wp_enqueue_style( 'streamium-theme-admin-css', get_template_directory_uri() . '/dist/css/admin.min.css', array() );
-  wp_enqueue_script( 'streamium-theme-chosen-js', get_template_directory_uri() . '/dist/js/chosen.jquery.min.js', array( 'jquery' ), true );
-  wp_enqueue_script( 'streamium-theme-admin-js', get_template_directory_uri() . '/dist/js/admin.min.js', array( 'jquery' ), true );
+  wp_enqueue_script( 'streamium-theme-chosen-js', get_template_directory_uri() . '/dist/js/chosen.jquery.min.js', array( 'jquery'),'1.1', true );
+  wp_enqueue_script( 'streamium-theme-admin-js', get_template_directory_uri() . '/dist/js/admin.min.js', array( 'jquery'),'1.1', true );
   wp_localize_script('streamium-theme-admin-js', 'streamium_meta_object', array( 
     's3website' => (!empty($streamium_connected_website) ? $streamium_connected_website : ""),
     'streamiumPremium' => get_theme_mod( 'streamium_enable_premium' )

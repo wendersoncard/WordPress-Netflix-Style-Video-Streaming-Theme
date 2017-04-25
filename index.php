@@ -31,17 +31,19 @@
 						<?php if ( ! empty( $streamiumFeaturedVideo ) && !isMobile() && ($sliderPostCount < 1)  && get_theme_mod( 'streamium_enable_premium' ) ) : ?>
 							<div class="streamium-featured-background" id="streamium-featured-background-<?php echo get_the_ID(); ?>"></div>
 							<script type="text/javascript">
-								S3BubbleAWS.init({
-									id : "streamium-featured-background-<?php echo get_the_ID(); ?>",
-									code : "<?php echo $streamiumFeaturedVideo; ?>",
-									poster: "<?php echo esc_url($image[0]); ?>",
-									fluid: true,
-									muted : true,
-									loop : true,
-									autoplay : true,
-									controls: false,
-									meta: false
-								});
+								jQuery( document ).ready(function( $ ) {
+									S3BubbleAWS.init({
+										id : "streamium-featured-background-<?php echo get_the_ID(); ?>",
+										code : "<?php echo $streamiumFeaturedVideo; ?>",
+										poster: "<?php echo esc_url($image[0]); ?>",
+										fluid: true,
+										muted : true,
+										loop : true,
+										autoplay : true,
+										controls: false,
+										meta: false
+									});
+								}); // end jquery 
 							</script>
 						<?php endif; ?>
 						<article class="content-overlay">

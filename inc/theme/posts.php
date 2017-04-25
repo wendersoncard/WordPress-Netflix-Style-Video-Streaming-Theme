@@ -25,7 +25,7 @@ function streamium_single_video_scripts() {
 			    $s3videoid = pathinfo($s3videoid, PATHINFO_BASENAME);
 			}
     		// Setup premium
-	        wp_enqueue_script('video-post', get_template_directory_uri() . '/dist/js/single.premium.min.js', array('jquery'), '', false);
+	        wp_enqueue_script('video-post', get_template_directory_uri() . '/dist/js/single.premium.min.js', array( 'streamium-s3bubble-cdn'),'1.1', true );
 	        wp_localize_script( 'video-post', 'video_post_object', 
 	            array( 
 	                'ajax_url' => admin_url( 'admin-ajax.php'),
@@ -40,7 +40,7 @@ function streamium_single_video_scripts() {
         }else{
 
         	//setup standard
-        	wp_enqueue_script('video-post', get_template_directory_uri() . '/dist/js/single.standard.min.js', array('jquery'), '', false);
+        	wp_enqueue_script('video-post', get_template_directory_uri() . '/dist/js/single.standard.min.js', array( 'streamium-s3bubble-cdn'),'1.1', true );
 	        wp_localize_script( 'video-post', 'video_post_object', 
 	            array( 
 	                'ajax_url' => admin_url( 'admin-ajax.php'),

@@ -729,7 +729,7 @@ function streamium_likes_scripts() {
     if( !is_single() ) {
  
         wp_enqueue_style( 'reviews', get_template_directory_uri() . '/dist/css/reviews.min.css' );
-    	wp_enqueue_script( 'reviews', get_template_directory_uri() . '/dist/js/reviews.min.js', array('jquery'), '1.0', true );
+    	wp_enqueue_script( 'reviews', get_template_directory_uri() . '/dist/js/reviews.min.js', array( 'jquery' ),'1.1', true );
 
     }
 }
