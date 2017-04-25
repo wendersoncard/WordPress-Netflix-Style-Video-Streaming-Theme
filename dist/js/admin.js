@@ -32,10 +32,10 @@ jQuery( document ).ready(function( $ ) {
 
             if(parseInt(streamium_meta_object.streamiumPremium) === 1){
                 if(ext === "m3u8"){
-                    html += '<option id="' + code + '"  value="' + code + '">' + baseName(key) + '</option>';  
+                    html += '<option id="' + code + '"  value="' + code + '">' + baseName(key) + ' ' + code + '</option>';  
                 }
                 if(ext === "mp4" || ext === "m4v"){
-                    html += '<option id="' + code + '"  value="' + code + '">' + baseName(key) + '</option>';  
+                    html += '<option id="' + code + '"  value="' + code + '">' + baseName(key) + ' ' + code + '</option>';  
                 }
             }else{
                 if(ext === "mp4" || ext === "m4v"){
