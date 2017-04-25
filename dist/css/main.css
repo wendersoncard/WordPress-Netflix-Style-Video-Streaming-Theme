@@ -127,7 +127,7 @@ p {
     width: 100%;
     float: left;
     display: block;
-    margin: 5px 0 0 0;
+    margin: 10px 0 0 0;
 }
 
 .content-overlay .play-icon-wrap {
@@ -879,6 +879,13 @@ p {
     top: 10px;
     font-size: 2vw;
     color: #fff;
+}
+
+.s3bubble-details-full .synopis-premium-meta {
+    width: 100%;
+    float: left;
+    display: block;
+    margin: 10px 0 0 0;
 }
 
 .footer {
