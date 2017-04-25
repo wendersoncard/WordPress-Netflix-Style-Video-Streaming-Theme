@@ -325,9 +325,9 @@ jQuery(document).ready(function($) {
 
 	                // Populate the expanded view
 			    	var twidth = $(currentCat).width();
-			    	var theight = twidth/21*8;
+			    	var theight = Math.round(twidth/21*8);
 			    	$(currentCat).find('h2.synopis').text(response.title);
-			    	$(currentCat).find('div.synopis').html(response.content);
+			    	$(currentCat).find('div.synopis').html(response.content).css("max-height",theight + "px");
 			    	$(currentCat).find('a.synopis').attr( "href", response.href);
 			    	$(currentCat).css("background-image", "url(" + response.bgimage + ")");
 			    	if(response.trailer === ""){

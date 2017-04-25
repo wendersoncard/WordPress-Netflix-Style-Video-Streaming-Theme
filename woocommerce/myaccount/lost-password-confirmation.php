@@ -24,14 +24,20 @@ wc_print_notices();
 wc_print_notice( __( 'Password reset email has been sent.', 'woocommerce' ) );
 ?>
 
-<div class="row">
+<div class="container">
 
-	<div class="col-md-4"></div>
+	<div class="row">
 
-	<div class="col-md-4 customer_login">
+		<div class="col-md-4"></div>
 
-		<p><?php echo apply_filters( 'woocommerce_lost_password_message', __( 'A password reset email has been sent to the email address on file for your account, but may take several minutes to show up in your inbox. Please wait at least 10 minutes before attempting another reset.', 'woocommerce' ) ); ?></p>
+		<div class="col-md-4 customer_login">
 
-	</div><!--/.col-sm-6-->
+			<p><?php echo apply_filters( 'woocommerce_lost_password_message', __( 'A password reset email has been sent to the email address on file for your account, but may take several minutes to show up in your inbox. Please wait at least 10 minutes before attempting another reset.', 'woocommerce' ) ); ?></p>
 
-	<div class="col-md-4"></div>
+		</div><!--/.col-sm-6-->
+
+		<div class="col-md-4"></div>
+
+	</div><!--/.row-->
+
+</div><!--/.container-->

@@ -22,34 +22,40 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 wc_print_notices(); ?>
 
-<div class="row">
+<div class="container">
 
-	<div class="col-md-4"></div>
+	<div class="row">
 
-	<div class="col-md-4 customer_login">
+		<div class="col-md-4"></div>
 
-		<form method="post" class="woocommerce-ResetPassword lost_reset_password">
+		<div class="col-md-4 customer_login">
 
-			<p><?php echo apply_filters( 'woocommerce_lost_password_message', __( 'Lost your password? Please enter your username or email address. You will receive a link to create a new password via email.', 'woocommerce' ) ); ?></p>
+			<form method="post" class="woocommerce-ResetPassword lost_reset_password">
 
-			<p class="woocommerce-form-row woocommerce-form-row--first form-row form-row-first">
-				<label for="user_login"><?php _e( 'Username or email', 'woocommerce' ); ?></label>
-				<input class="woocommerce-Input woocommerce-Input--text input-text" type="text" name="user_login" id="user_login" />
-			</p>
+				<p><?php echo apply_filters( 'woocommerce_lost_password_message', __( 'Lost your password? Please enter your username or email address. You will receive a link to create a new password via email.', 'woocommerce' ) ); ?></p>
 
-			<div class="clear"></div>
+				<p class="woocommerce-form-row woocommerce-form-row--first form-row form-row-first">
+					<label for="user_login"><?php _e( 'Username or email', 'woocommerce' ); ?></label>
+					<input class="woocommerce-Input woocommerce-Input--text input-text" type="text" name="user_login" id="user_login" />
+				</p>
 
-			<?php do_action( 'woocommerce_lostpassword_form' ); ?>
+				<div class="clear"></div>
 
-			<p class="woocommerce-form-row form-row">
-				<input type="hidden" name="wc_reset_password" value="true" />
-				<input type="submit" class="woocommerce-Button button" value="<?php esc_attr_e( 'Reset password', 'woocommerce' ); ?>" />
-			</p>
+				<?php do_action( 'woocommerce_lostpassword_form' ); ?>
 
-			<?php wp_nonce_field( 'lost_password' ); ?>
+				<p class="woocommerce-form-row form-row">
+					<input type="hidden" name="wc_reset_password" value="true" />
+					<input type="submit" class="woocommerce-Button button" value="<?php esc_attr_e( 'Reset password', 'woocommerce' ); ?>" />
+				</p>
 
-		</form>
+				<?php wp_nonce_field( 'lost_password' ); ?>
 
-	</div><!--/.col-sm-6-->
+			</form>
 
-	<div class="col-md-4"></div>
+		</div><!--/.col-sm-6-->
+
+		<div class="col-md-4"></div>
+
+	</div><!--/.row-->
+
+</div><!--/.container-->

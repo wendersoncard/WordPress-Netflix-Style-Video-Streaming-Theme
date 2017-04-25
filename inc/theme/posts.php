@@ -95,7 +95,7 @@ function streamium_get_dynamic_content() {
 			                    </div>
 							</div>';
 		    }
-    		$content = (isMobile()) ? $post_object->post_excerpt : $post_object->post_content . $like_text;
+    		$content = (isMobile()) ? (empty($post_object->post_excerpt) ? strip_tags($post_object->post_content) : $post_object->post_excerpt) : $post_object->post_content . $like_text;
 	    	$fullImage  = wp_get_attachment_image_src( get_post_thumbnail_id( $postId ), 'streamium-home-slider' ); 
 	    	$streamiumVideoTrailer = get_post_meta( $postId, 'streamium_video_trailer_meta_box_text', true );
 

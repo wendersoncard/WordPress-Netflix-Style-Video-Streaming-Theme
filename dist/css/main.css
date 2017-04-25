@@ -1074,6 +1074,8 @@ p {
   }
   .synopis-inner div.content {
     font-size: 2.5vw !important;
+    overflow-y: scroll;
+    padding: 10px 0;
   }
   .content-overlay .play-icon-wrap-rel-ring {
     border: .6vw solid #fff;
