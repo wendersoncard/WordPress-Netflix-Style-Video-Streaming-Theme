@@ -256,7 +256,6 @@ jQuery(document).ready(function($) {
 
 		}, function() {
 
-			//$(currentCat).height(0);
 			$('.tile').css('opacity', '1');
 		    $(this).find('.tile_details').css('opacity', '0');
 		    $(this).find('.play-icon-wrap').css('opacity', '0');
