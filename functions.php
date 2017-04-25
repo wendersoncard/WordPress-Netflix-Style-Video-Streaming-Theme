@@ -38,7 +38,7 @@ if (!function_exists('streamium_enqueue_scripts')) {
         wp_enqueue_style('streamium-main', get_template_directory_uri() . '/dist/css/main.min.css');       
         wp_enqueue_style('streamium-woocommerce', get_template_directory_uri() . '/dist/css/woocommerce.min.css');
         wp_enqueue_style('streamium-s2member', get_template_directory_uri() . '/dist/css/s2member.min.css');
-
+ 
         /* Register scripts -----------------------------------------------------*/
         wp_enqueue_script( 'streamium-fontawesome', get_template_directory_uri() . '/dist/js/fontawesome.min.js', array( 'jquery' ),'1.1', true);
         wp_enqueue_script( 'streamium-bootstrap', get_template_directory_uri() . '/dist/js/bootstrap.min.js', array( 'jquery' ),'1.1', true );
