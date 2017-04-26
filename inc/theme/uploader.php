@@ -98,8 +98,11 @@ add_shortcode( 'streamium_uploader', 'streamium_user_content_uploader' );
  * @author  @sameast
  */
 function streamium_user_content_uploader_email(){
-    
-    check_ajax_referer( 'streamium-uploader-nonce-security', 'security' );
+
+    if ( ! wp_verify_nonce( $_REQUEST['security'], 'streamium-uploader-nonce-security' ) || ! isset( $_REQUEST['security'] ) ) {
+        exit( "No naughty business please" );
+    }
+
     $s3bubble_uploader_email = get_theme_mod( 'streamium_aws_media_uploader_notification_email' );
     $s3bubble_subject = get_bloginfo() . ' ' . date('m/d/y H:i:s', time()) . ' new upload';
     $bucket  = empty($_POST['bucket']) ? 'no bucket' : $_POST['bucket'];

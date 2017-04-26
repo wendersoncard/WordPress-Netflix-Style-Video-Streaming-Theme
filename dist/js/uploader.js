@@ -88,15 +88,23 @@ jQuery(document).ready(function($) {
 	            	$('#streamium-uploader span.streamium-uploader-label').html('Uploaded');
 				    $('.streamium-uploader-standby').html('Files successfully uploaded');
 
-				    // Send a notification email
-					$.post(streamium_object.ajax_url, {
-						action: 'streamium_user_content_uploader_email',
-						bucket: streamium_uploader.bucket,
-						folder: streamium_uploader.folder,
-						security: streamium_uploader.nonce
-					}, function(response) {
-						console.log(response);
-					});
+				    $.ajax({
+		                url: streamium_object.ajax_url,
+		                type: 'post',
+		                dataType: 'json',
+		                data: {
+		                    action: 'streamium_user_content_uploader_email',
+							bucket: streamium_uploader.bucket,
+							folder: streamium_uploader.folder,
+							security: streamium_uploader.nonce
+		                },
+		                success: function(response) {
+
+		                    console.log(response);
+
+		                }
+
+		            }); // end jquery 
 
 	            }
 
