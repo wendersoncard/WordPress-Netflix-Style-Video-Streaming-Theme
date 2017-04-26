@@ -89,10 +89,8 @@ function streamium_run_plugin_checks() {
 	}
 	if ((!in_array("WooCommerce Membership", $formatArray)) || (!in_array("Subscriptio", $formatArray))) {
 	    add_action( 'admin_notices', 'wooCommerce_membership_subscriptio_admin_notice__error' );
-	}*/
+	}
 
-	// Dummy content
-	// admin alert
 	function streamium_dummy_xml_admin_notice__error() {
 		$class = 'notice notice-info is-dismissible';
 		$pluginUrl = admin_url( 'plugin-install.php?s=WooCommerce&tab=search&type=term' );
@@ -102,6 +100,7 @@ function streamium_run_plugin_checks() {
 	}
 
 	add_action( 'admin_notices', 'streamium_dummy_xml_admin_notice__error' );
+	*/
 
 }
 
