@@ -52,7 +52,9 @@ jQuery(document).ready(function($) {
         vh = Math.round($(window).innerWidth()/21*9);
 		wh = Math.round($(window).innerWidth());
 		$('.hero-slider .slider-block').css({'height' : vh,'width' : wh});
-		$(".hero").css("margin-bottom", "-" + $(".video-header").height() + "px");
+		if($('section.recently-watched').length > 0){
+			$(".hero").css("margin-bottom", "-" + $(".video-header").height() + "px");
+		}
     }  
       
     resizeVideoJS();

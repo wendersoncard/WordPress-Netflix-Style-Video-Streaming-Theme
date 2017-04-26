@@ -122,7 +122,7 @@
 			$loop = new WP_Query( $args ); 
 			if(is_user_logged_in() && $loop->post_count > 0) : 
 		?>
-			<section class="videos">
+			<section class="videos recently-watched">
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-sm-12 video-header">
