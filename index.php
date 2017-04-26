@@ -212,7 +212,10 @@
 		<?php endif; ?>
 
 		<?php 
-		  	$categories = get_categories(); 
+			$args = array(
+			  'parent' => 0
+			);
+		  	$categories = get_categories($args); 
 		  	foreach ($categories as $category) : ?>
 	  	<section class="videos">
 			<div class="container-fluid">
