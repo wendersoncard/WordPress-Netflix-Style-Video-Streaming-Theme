@@ -110,10 +110,16 @@ if (class_exists('WooCommerce_Membership_Post')) {
                   // Filter out restricted post
                   $meta = get_post_meta( $post->ID );
                   $post->premium = false;
-                  if(isset($meta['_rpwcm_post_restriction_method'][0])){
-                    $post->premium = true;
+                  if (array_key_exists("_rpwcm_post_restriction_method",$meta)){
+                    if(isset($meta['_rpwcm_post_restriction_method'][0])){
+                      $post->premium = true;
+                    }
                   }
-                  $post->plans = (!empty($meta['_rpwcm_only_caps']) ? $meta['_rpwcm_only_caps'] : null);
+
+                  $post->plans = null;
+                  if (array_key_exists("_rpwcm_only_caps",$meta)){
+                    $post->plans = $meta['_rpwcm_only_caps'];
+                  }
 
               }
 
