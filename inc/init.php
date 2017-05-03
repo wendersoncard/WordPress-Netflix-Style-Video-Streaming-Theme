@@ -19,5 +19,4 @@ require_once($incdir .'theme/uploader.php');
 require_once($incdir .'theme/helpers.php');
 require_once($incdir .'theme/woocommerce.php');
 require_once($incdir .'theme/s2member.php');
-require_once($incdir .'classes/Tax-meta-class.php');
 require_once($incdir .'theme/series.php');
