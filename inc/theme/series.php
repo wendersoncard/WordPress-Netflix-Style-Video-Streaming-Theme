@@ -8,7 +8,6 @@
  */
 function streamium_tv_custom_post_type() {
 
-// Set UI labels for Custom Post Type
 	$labels = array(
 		'name'                => _x( 'TV Programs', 'Post Type General Name', 'streamium' ),
 		'singular_name'       => _x( 'Episode', 'Post Type Singular Name', 'streamium' ),
@@ -24,8 +23,6 @@ function streamium_tv_custom_post_type() {
 		'not_found'           => __( 'Not Found', 'streamium' ),
 		'not_found_in_trash'  => __( 'Not found in Trash', 'streamium' ),
 	);
-	
-// Set other options for Custom Post Type
 	
 	$args = array(
 		'label'               => __( 'tv', 'streamium' ),
@@ -44,8 +41,6 @@ function streamium_tv_custom_post_type() {
 		'exclude_from_search' => false,
 		'publicly_queryable'  => true,
 		'capability_type'     => 'post',
-		
-		// This is where we add taxonomies to our CPT
 		'taxonomies'          => array( 'category', 'post_tag', 'programs' ),
 		//'rewrite' => array( 'slug' => 'sam', 'with_front' => FALSE ),
 		'has_category' =>true,
@@ -59,24 +54,29 @@ function streamium_tv_custom_post_type() {
 add_action( 'init', 'streamium_tv_custom_post_type', 0 );
 
 /**
- * Repeatable Custom Fields in a Metabox
- * Author: Helen Hou-Sandi
+ * Setup custom repeater needed for post type for TV Programs
  *
- * From a bespoke system, so currently not modular - will fix soon
- * Note that this particular metadata is saved as one multidimensional array (serialized)
+ * @return null
+ * @author  @sameast
  */
-
-add_action('admin_init', 'hhs_add_meta_boxes', 1);
-function hhs_add_meta_boxes() {
-	add_meta_box( 'repeatable-fields', 'Program Videos', 'hhs_repeatable_meta_box_display', 'programs', 'normal', 'high');
+function streamium_add_meta_boxes() {
+	add_meta_box( 'repeatable-fields', 'Program Videos', 'streamium_repeatable_meta_box_display', 'programs', 'normal', 'high');
 }
+add_action('admin_init', 'streamium_add_meta_boxes', 1);
 
-function hhs_repeatable_meta_box_display() {
+
+/**
+ * Setup custom repeater meta
+ *
+ * @return null
+ * @author  @sameast
+ */
+function streamium_repeatable_meta_box_display() {
 	global $post;
 
 	$repeatable_fields = get_post_meta($post->ID, 'repeatable_fields', true);
 
-	wp_nonce_field( 'hhs_repeatable_meta_box_nonce', 'hhs_repeatable_meta_box_nonce' );
+	wp_nonce_field( 'streamium_repeatable_meta_box_nonce', 'streamium_repeatable_meta_box_nonce' );
 	?>
 	<script type="text/javascript">
 	jQuery(document).ready(function( $ ){
@@ -162,16 +162,16 @@ function hhs_repeatable_meta_box_display() {
 		<td><a class="button remove-row" href="#">Remove</a></td>
 	</tr>
 	</tbody>
-	</table>
+	</table> 
 	
 	<p><a id="add-row" class="button" href="#">Add another</a></p>
 	<?php
 }
 
-add_action('save_post', 'hhs_repeatable_meta_box_save');
-function hhs_repeatable_meta_box_save($post_id) {
-	if ( ! isset( $_POST['hhs_repeatable_meta_box_nonce'] ) ||
-	! wp_verify_nonce( $_POST['hhs_repeatable_meta_box_nonce'], 'hhs_repeatable_meta_box_nonce' ) )
+add_action('save_post', 'streamium_repeatable_meta_box_save');
+function streamium_repeatable_meta_box_save($post_id) {
+	if ( ! isset( $_POST['streamium_repeatable_meta_box_nonce'] ) ||
+	! wp_verify_nonce( $_POST['streamium_repeatable_meta_box_nonce'], 'streamium_repeatable_meta_box_nonce' ) )
 		return;
 	
 	if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
