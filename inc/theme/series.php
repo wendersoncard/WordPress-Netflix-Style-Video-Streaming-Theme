@@ -80,15 +80,38 @@ function streamium_repeatable_meta_box_display() {
 	?>
 	<script type="text/javascript">
 	jQuery(document).ready(function( $ ){
-		$( '#add-row' ).on('click', function() {
-			var row = $( '.empty-row.screen-reader-text' ).clone(true);
-			row.removeClass( 'empty-row screen-reader-text' );
-			row.insertBefore( '#repeatable-fieldset-one tbody>tr:last' );
+		$( '#add-row' ).live('click', function() {
+
+			$('#repeatable-fieldset-one > tbody:last-child').append('<tr><td>' +
+				'<input class="streamium_upl_button button" type="button" value="Upload Image" />' +
+				'<input type="hidden" class="widefat" name="thumbnails[]" />' +
+				'<img src="http://placehold.it/260x146" style="width: 130px;" />' + 
+				'</td>' +
+				'<td><select class="streamium-theme-episode-select chosen-select" id="updateit" tabindex="1" name="codes[]"></select></td>' +
+				'<td><input type="text" class="widefat" name="titles[]" /></td>' +
+				'<td><input type="text" class="widefat" name="descriptions[]" value="" /></td>' +
+				'<td><a class="button remove-row" href="#">Remove</a></td>' +
+			'</tr>');
 			return false;
+
 		});
   	
-		$( '.remove-row' ).on('click', function() {
+		$( '.remove-row' ).live('click', function() {
 			$(this).parents('tr').remove();
+			return false;
+		});
+		$('.streamium_upl_button').live('click', function() {
+			var that = $(this);
+			//use here, because you may have multiple buttons, so `send_to_editor` needs fresh
+			window.send_to_editor = function(html) {
+				var imgurl = $(html).attr('src')
+				that.next('input').val(imgurl);
+				that.next().next('img').attr("src",imgurl);
+				tb_remove();
+			}
+		
+			//formfield = $('#streamium_image_URL').attr('name');
+			tb_show( '', 'media-upload.php?type=image&amp;TB_iframe=true' );
 			return false;
 		});
 	});
@@ -97,10 +120,11 @@ function streamium_repeatable_meta_box_display() {
 	<table id="repeatable-fieldset-one" width="100%">
 	<thead>
 		<tr>
-			<th width="12%">Code</th>
-			<th width="40%">Title</th>
-			<th width="40%">Description</th>
-			<th width="8%"></th>
+			<th align="left">Thumbnail</th>
+			<th align="left">Code</th>
+			<th align="left">Title</th>
+			<th align="left">Description</th>
+			<th align="left">Remove</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -111,23 +135,25 @@ function streamium_repeatable_meta_box_display() {
 	foreach ( $repeatable_fields as $field ) {
 	?>
 	<tr>
-		
-	
-		<td>
+		<td valign="top">
+			<input class="streamium_upl_button button" type="button" value="Upload Image" />
+			<input type="hidden" class="widefat" name="thumbnails[]" value="<?php if($field['thumbnails'] != '') echo esc_attr( $field['thumbnails'] ); ?>" />
+			<img src="<?php if($field['thumbnails'] != '') echo esc_attr( $field['thumbnails'] ); ?>" style="width: 130px;" /> 
+		</td>
+		<td valign="top">
 			<select class="streamium-theme-episode-select chosen-select" tabindex="1" name="codes[]">
 				<option value="<?php echo $field['codes']; ?>">Select Video <?php echo $field['codes']; ?></option>
-            	<option value="">Remove Current Video</option>
-				<?php /*foreach ( $options as $label => $value ) : ?>
-				<option value="<?php echo $value; ?>"<?php selected( $field['select'], $value ); ?>><?php echo $label; ?></option>
-				<?php endforeach;*/ ?>
 			</select>
 		</td>
-
-		<td><input type="text" class="widefat" name="titles[]" value="<?php if($field['titles'] != '') echo esc_attr( $field['titles'] ); ?>" /></td>
-	
-		<td><textarea rows="4" cols="50" class="widefat" name="descriptions[]" value=""><?php if ($field['descriptions'] != '') echo esc_attr( $field['descriptions'] ); else echo ''; ?></textarea></td>
-	
-		<td><a class="button remove-row" href="#">Remove</a></td>
+		<td valign="top">
+			<input type="text" class="widefat" name="titles[]" value="<?php if($field['titles'] != '') echo esc_attr( $field['titles'] ); ?>" />
+		</td>
+		<td valign="top">
+			<textarea rows="4" cols="50" class="widefat" name="descriptions[]" value=""><?php if ($field['descriptions'] != '') echo esc_attr( $field['descriptions'] ); else echo ''; ?></textarea>
+		</td>
+		<td valign="top">
+			<a class="button remove-row" href="#">Remove</a>
+		</td>
 	</tr>
 	<?php
 	}
@@ -135,7 +161,11 @@ function streamium_repeatable_meta_box_display() {
 	// show a blank one
 	?>
 	<tr>
-
+		<td>
+			<input class="streamium_upl_button button" type="button" value="Upload Image" />
+			<input type="hidden" class="widefat" name="thumbnails[]" />
+			<img src="http://placehold.it/260x146" style="width: 130px;" />  
+		</td>
 	    <td>
 			<select class="streamium-theme-episode-select chosen-select" tabindex="1" name="codes[]"></select>
 		</td>
@@ -148,23 +178,10 @@ function streamium_repeatable_meta_box_display() {
 	</tr>
 	<?php endif; ?>
 	
-	<!-- empty hidden one for jQuery -->
-	<tr class="empty-row screen-reader-text">
 	
-		<td>
-			<select class="streamium-theme-episode-select chosen-select" tabindex="1" name="codes[]"></select>
-		</td>
-
-		<td><input type="text" class="widefat" name="titles[]" /></td>
-		
-		<td><input type="text" class="widefat" name="descriptions[]" value="" /></td>
-		  
-		<td><a class="button remove-row" href="#">Remove</a></td>
-	</tr>
 	</tbody>
 	</table> 
-	
-	<p><a id="add-row" class="button" href="#">Add another</a></p>
+	<p><a id="add-row" class="button add-program-row" href="#">Add another</a></p>
 	<?php
 }
 
@@ -183,24 +200,29 @@ function streamium_repeatable_meta_box_save($post_id) {
 	$old = get_post_meta($post_id, 'repeatable_fields', true);
 	$new = array();
 	
-	$names = $_POST['titles'];
-	$selects = $_POST['codes'];
-	$urls = $_POST['descriptions'];
+	$thumbnails   = $_POST['thumbnails'];
+	$titles       = $_POST['titles'];
+	$codes        = $_POST['codes'];
+	$descriptions = $_POST['descriptions'];
 	
-	$count = count( $names );
+	$count = count( $titles );
 	
 	for ( $i = 0; $i < $count; $i++ ) {
-		if ( $names[$i] != '' ) :
+		if ( $titles[$i] != '' ) :
 
-			$new[$i]['titles'] = stripslashes( strip_tags( $names[$i] ) );
-			$new[$i]['codes'] = $selects[$i];
-			$new[$i]['descriptions'] = stripslashes( $urls[$i] );
+			$new[$i]['thumbnails'] = stripslashes( strip_tags( $thumbnails[$i] ) );
+			$new[$i]['titles'] = stripslashes( strip_tags( $titles[$i] ) );
+			$new[$i]['codes'] = $codes[$i];
+			$new[$i]['descriptions'] = stripslashes( $descriptions[$i] );
 
 		endif;
 	}
 
-	if ( !empty( $new ) && $new != $old )
+	if ( !empty( $new ) && $new != $old ) {
 		update_post_meta( $post_id, 'repeatable_fields', $new );
-	elseif ( empty($new) && $old )
+	}
+	elseif ( empty($new) && $old ) {
 		delete_post_meta( $post_id, 'repeatable_fields', $old );
+	}
+
 }

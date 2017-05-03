@@ -38,7 +38,7 @@
 							?>
 							<div class="media">
 							  <a class="media-left media-top streamium-program-update-video" data-id="<?php echo $key; ?>">
-							    <img src="<?php echo esc_url($image[0]); ?>" class="media-object" style="width:130px">
+							    <img src="<?php echo esc_url($value['thumbnails']); ?>" class="media-object" style="width:130px">
 							  </a>
 							  <div class="media-body">
 							    <h4 class="media-heading"><?php echo $value['titles']; ?></h4>
