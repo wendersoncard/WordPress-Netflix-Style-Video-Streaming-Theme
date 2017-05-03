@@ -29,11 +29,12 @@ function streamium_single_video_scripts() {
 			}
 
 			$codes = [];
-			foreach (get_post_meta(get_the_ID(), 'repeatable_fields' , true) as $key => $value) : 
-				
-				$codes[] = $value['codes'];	
-
-			endforeach; 
+			$episodes = get_post_meta(get_the_ID(), 'repeatable_fields' , true);
+			if(!empty($episodes)) : 
+				foreach ($episodes as $key => $value) : 
+					$codes[] = $value['codes'];
+				endforeach;
+			endif; 
 
     		// Setup premium
 	        wp_enqueue_script('streamium-video-post', get_template_directory_uri() . '/dist/js/single.premium.min.js', array( 'streamium-s3bubble-cdn'),'1.1', true );

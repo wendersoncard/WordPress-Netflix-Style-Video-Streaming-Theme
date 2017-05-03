@@ -32,10 +32,12 @@
 				    </div>
 				    <div class="col-md-8">
 					<?php
-						foreach (get_post_meta(get_the_ID(), 'repeatable_fields' , true) as $key => $value) : 
+						$episodes = get_post_meta(get_the_ID(), 'repeatable_fields' , true);
+						if(!empty($episodes)) : 
+							foreach ($episodes as $key => $value) : 
 							?>
 							<div class="media">
-							  <a class="media-left media-top streamium-program-update-video" href="<?php echo $value['codes']; ?>">
+							  <a class="media-left media-top streamium-program-update-video" data-id="<?php echo $key; ?>">
 							    <img src="<?php echo esc_url($image[0]); ?>" class="media-object" style="width:130px">
 							  </a>
 							  <div class="media-body">
@@ -44,7 +46,8 @@
 							  </div>
 							</div>
 					<?php 
-						endforeach; 
+							endforeach; 
+						endif;
 					?>
 					</div>
 				</div><!--/.row-->

@@ -277,17 +277,6 @@
 						            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="tv-programs" class="tile_meta_more_info hidden-xs"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
 						          	</div>
 						        </div>
-						        <?php if(is_user_logged_in() && get_theme_mod( 'streamium_enable_premium' )):
-							    		$userId = get_current_user_id();
-							    		$percentageWatched = get_post_meta( get_the_ID(), 'user_' . $userId, true );
-							    ?>
-								    <div class="progress tile_progress">
-									  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $percentageWatched; ?>"
-									  aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $percentageWatched; ?>%">
-									    <span class="sr-only"><?php echo $percentageWatched; ?>% Complete</span>
-									  </div>
-									</div>
-								<?php endif; ?>
 						    </div>
 						<?php
 							endif; 

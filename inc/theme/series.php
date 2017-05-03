@@ -46,7 +46,7 @@ function streamium_tv_custom_post_type() {
 		'capability_type'     => 'post',
 		
 		// This is where we add taxonomies to our CPT
-		'taxonomies'          => array( 'category', 'programs' ),
+		'taxonomies'          => array( 'category', 'post_tag', 'programs' ),
 		//'rewrite' => array( 'slug' => 'sam', 'with_front' => FALSE ),
 		'has_category' =>true,
 	);
