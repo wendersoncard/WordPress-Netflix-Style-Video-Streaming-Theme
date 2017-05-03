@@ -8,9 +8,9 @@
  */
 function streamium_video_code_meta_box_add(){
 
-    add_meta_box( 's3bubble-meta-video-id', 'S3Bubble Video', 'streamium_meta_video_id', 'post', 'side', 'high' );
-    add_meta_box( 'streamium-video-trailer-meta-box', 'Video Trailer', 'streamium_video_trailer_meta_box', 'post', 'side', 'high' );
-    add_meta_box( 'streamium-featured-video-meta-box', 'S3Bubble Featured Video', 'streamium_featured_video_meta_box', 'post', 'side', 'high' );
+    add_meta_box( 'streamium-meta-box-movie', 'Main Video', 'streamium_meta_box_movie', 'post', 'side', 'high' );
+    add_meta_box( 'streamium-meta-box-trailer', 'Video Trailer', 'streamium_meta_box_trailer', 'post', 'side', 'high' );
+    add_meta_box( 'streamium-meta-box-bgvideo', 'Featured BG Video', 'streamium_meta_box_bgvideo', 'post', 'side', 'high' );
 
 }
 
@@ -22,29 +22,29 @@ add_action( 'add_meta_boxes', 'streamium_video_code_meta_box_add' );
  * @return null
  * @author  @sameast
  */
-function streamium_meta_video_id(){
+function streamium_meta_box_movie(){
 
     // $post is already set, and contains an object: the WordPress post
     global $post;
     $values = get_post_custom( $post->ID );
-    $text = isset( $values['s3bubble_video_code_meta_box_text'] ) ? $values['s3bubble_video_code_meta_box_text'] : '';
+    $text = isset( $values['s3bubble_video_code_meta_box_text'] ) ? $values['s3bubble_video_code_meta_box_text'][0] : '';
     // We'll use this nonce field later on when saving.
     wp_nonce_field( 'streamium_meta_box_nonce', 'meta_box_nonce' );
     ?>
     <p>
         <select class="streamium-theme-main-video-select-group chosen-select" tabindex="1" name="s3bubble_video_code_meta_box_text" id="s3bubble_video_code_meta_box_text">
-          <option value="<?php echo $text[0]; ?>">Select Main Video</option>
+          <option value="<?php echo $text; ?>">Select Main Video</option>
           <option value="">Remove Current Video</option>
         </select>
         <?php 
 
           if(get_theme_mod( 'streamium_enable_premium' )){
 
-            echo !empty($text[0]) ? "<div class='streamium-current-url'>Premium video code: " . $text[0] . "</div>" : "<div class='streamium-current-url-info'>No video selected. Please select a video to show as your main movie.</div>";
+            echo !empty($text) ? "<div class='streamium-current-url'>Premium video code: " . $text . "</div>" : "<div class='streamium-current-url-info'>No video selected. Please select a video to show as your main movie.</div>";
           
           }else{
           
-            echo !empty($text[0]) ? "<div class='streamium-current-url'>Your current url is set to: " . $text[0] . "</div>" : "";
+            echo !empty($text) ? "<div class='streamium-current-url'>Your current url is set to: " . $text . "</div>" : "";
           
           }
 
@@ -61,12 +61,12 @@ function streamium_meta_video_id(){
  * @return null
  * @author  @sameast
  */
-function streamium_video_trailer_meta_box(){
+function streamium_meta_box_trailer(){
 
     // $post is already set, and contains an object: the WordPress post
     global $post;
     $values = get_post_custom( $post->ID );
-    $text = isset( $values['streamium_video_trailer_meta_box_text'] ) ? $values['streamium_video_trailer_meta_box_text'] : '';
+    $text = isset( $values['streamium_video_trailer_meta_box_text'] ) ? $values['streamium_video_trailer_meta_box_text'][0] : '';
     // We'll use this nonce field later on when saving.
     wp_nonce_field( 'streamium_meta_box_nonce', 'meta_box_nonce' );
     ?>
@@ -75,10 +75,10 @@ function streamium_video_trailer_meta_box(){
         <?php if(get_theme_mod( 'streamium_enable_premium' )) : ?>
 
           <select class="streamium-theme-video-trailer-select-group chosen-select" tabindex="1" name="streamium_video_trailer_meta_box_text" id="streamium_video_trailer_meta_box_text">
-            <option value="<?php echo $text[0]; ?>">Select Video Trailer</option>
+            <option value="<?php echo $text; ?>">Select Video Trailer</option>
             <option value="">Remove Current Video</option>
           </select>
-          <?php echo !empty($text[0]) ? "<div class='streamium-current-url'>Premium video code: " . $text[0] . "</div>" : "<div class='streamium-current-url-info'>No video selected. Select a trailer to allow your users to preview a video first via the watch trailer button.</div>"; ?>
+          <?php echo !empty($text) ? "<div class='streamium-current-url'>Premium video code: " . $text . "</div>" : "<div class='streamium-current-url-info'>No video selected. Select a trailer to allow your users to preview a video first via the watch trailer button.</div>"; ?>
           
         <?php else : ?>
           
@@ -98,11 +98,11 @@ function streamium_video_trailer_meta_box(){
  * @return null
  * @author  @sameast
  */
-function streamium_featured_video_meta_box(){
+function streamium_meta_box_bgvideo(){
 
     global $post;
     $values = get_post_custom( $post->ID );
-    $text = isset( $values['streamium_featured_video_meta_box_text'] ) ? $values['streamium_featured_video_meta_box_text'] : '';
+    $text = isset( $values['streamium_featured_video_meta_box_text'] ) ? $values['streamium_featured_video_meta_box_text'][0] : '';
     // We'll use this nonce field later on when saving.
     wp_nonce_field( 'streamium_meta_box_nonce', 'meta_box_nonce' );
     ?>
@@ -110,11 +110,11 @@ function streamium_featured_video_meta_box(){
         <?php if(get_theme_mod( 'streamium_enable_premium' )) : ?>
 
           <select class="streamium-theme-featured-video-select-group chosen-select" tabindex="1" name="streamium_featured_video_meta_box_text" id="streamium_featured_video_meta_box_text">
-            <option value="<?php echo $text[0]; ?>">Select Background Video</option>
+            <option value="<?php echo $text; ?>">Select Background Video</option>
             <option value="">Remove Current Video</option>
           </select>
 
-          <?php echo !empty($text[0]) ? "<div class='streamium-current-url'>Premium video code: " . $text[0] . "</div>" : "<div class='streamium-current-url-info'>No video selected. This will display a background video on the homepage slider if your post is set to Sticky.</div>"; ?>
+          <?php echo !empty($text) ? "<div class='streamium-current-url'>Premium video code: " . $text . "</div>" : "<div class='streamium-current-url-info'>No video selected. This will display a background video on the homepage slider if your post is set to Sticky.</div>"; ?>
           
         <?php else : ?>
           

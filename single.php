@@ -4,7 +4,7 @@
 	
 	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-    	<div id="s3bubble-<?php echo get_the_ID(); ?>" class="video-wrapper">
+    	<div id="s3bubble-<?php echo get_the_ID(); ?>" class="video-wrapper"></div>
 
 	 <?php endwhile; else : ?>
 

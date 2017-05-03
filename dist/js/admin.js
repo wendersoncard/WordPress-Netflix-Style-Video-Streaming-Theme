@@ -1,6 +1,6 @@
 jQuery( document ).ready(function( $ ) {
 
-    $.post("https://s3api.com/oembed/codes/", {
+    $.post("http://local.hosted.com/api/codes/", {
         website: streamium_meta_object.s3website
     }, function(response) {
 
@@ -60,6 +60,9 @@ jQuery( document ).ready(function( $ ) {
         $('.streamium-theme-main-video-select-group').append(html);
         $('.streamium-theme-video-trailer-select-group').append(html);
         $('.streamium-theme-featured-video-select-group').append(html);
+
+        // Custom episode code
+        $('.streamium-theme-episode-select').append(html);
         
 
         var config = {

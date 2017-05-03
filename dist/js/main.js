@@ -249,6 +249,83 @@ jQuery(document).ready(function($) {
 
 		});
 
+		$('.tile_program_meta_more_info').on("click",function(event) {
+
+	    	event.preventDefault(); 
+
+	    	var cat = $(this).data('cat');
+	    	var term_id = $(this).data('id');
+	    	var nonce = $(this).data('nonce');
+
+	    	$.ajax({
+	            url: streamium_object.ajax_url,
+	            type: 'post',
+	            dataType: 'json',
+	            data: {
+	                action: 'streamium_programs_get_dynamic_content',
+	                cat : cat,
+	                term_id: term_id,
+	                nonce: nonce
+	            },
+	            success: function(response) {
+
+	                if (response.error) {
+
+	                    swal({
+	                            title: "Error",
+	                            text: response.message,
+	                            type: "info",
+	                            showCancelButton: true,
+	                            confirmButtonColor: "#d86c2d",
+	                            confirmButtonText: "Ok, got it!",
+	                            closeOnConfirm: true
+	                        },
+	                        function() {
+
+	                        });
+	                    return;
+
+	                }
+
+	                currentCat = "." + response.cat;	
+
+	                console.log(response);                
+
+	                // Populate the expanded view
+			    	var twidth = $(currentCat).width();
+			    	var theight = twidth/21*8;
+			    	$(currentCat).find('h2.synopis').text(response.title);
+			    	$(currentCat).find('div.synopis').html(response.content);
+			    	$(currentCat).find('a.synopis').attr( "href", response.href);
+			    	$(currentCat).css("background-image", "url(" + response.bgimage + ")");
+			    	if(response.trailer === ""){
+			    		$(currentCat).find('a.synopis-video-trailer').hide();
+			    	}else{
+			    		$(currentCat).find('a.synopis-video-trailer').fadeIn().attr( "href", response.href + "?trailer=true");
+			    	}
+
+			    	var vmiddle = Math.round($('.cd-main-header').height());
+					var voff = Math.round($(currentCat).offset().top);
+			    	$('html, body').animate({scrollTop: (voff-vmiddle)}, 500);
+
+			        $(currentCat).animate({
+					    height: theight
+					}, 250, function() {
+
+						$(currentCat + ' .s3bubble-details-inner-content').animate({
+						    opacity: 1,
+						}, 500, function() {
+
+						});
+
+					});
+
+	            }
+
+	        }); // end jquery 
+
+		});
+
 	    $('.tile').hover(function() {
 
             $(this).parent().parent().find('.tile').css('opacity', '0.8');

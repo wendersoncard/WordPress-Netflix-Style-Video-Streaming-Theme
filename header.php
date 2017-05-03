@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
-<head>
+<head data-cast-api-enabled="true">
 	<!-- Meta Data -->
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />

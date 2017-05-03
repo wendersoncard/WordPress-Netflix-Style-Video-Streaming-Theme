@@ -31,7 +31,7 @@
 						<?php if ( ! empty( $streamiumFeaturedVideo ) && !isMobile() && ($sliderPostCount < 1)  && get_theme_mod( 'streamium_enable_premium' ) ) : ?>
 							<div class="streamium-featured-background" id="streamium-featured-background-<?php echo get_the_ID(); ?>"></div>
 							<script type="text/javascript">
-								jQuery( document ).ready(function( $ ) {
+								document.addEventListener("DOMContentLoaded", function(event) { 
 									S3BubbleAWS.init({
 										id : "streamium-featured-background-<?php echo get_the_ID(); ?>",
 										code : "<?php echo $streamiumFeaturedVideo; ?>",
@@ -43,7 +43,7 @@
 										controls: false,
 										meta: false
 									});
-								}); // end jquery 
+								});
 							</script>
 						<?php endif; ?>
 						<article class="content-overlay">
@@ -56,7 +56,11 @@
 													<h2><?php echo (isset($title) ? $title : __( 'No Title', 'streamium' )); ?></h2>
 													<div class="synopis content hidden-xs">
 														<?php echo $content; ?>
+														<ul>
+															<?php do_action('synopis_meta'); ?>
+														</ul>
 													</div>
+													
 													<?php if(get_theme_mod( 'streamium_enable_premium' )) : ?>
 														<div class="synopis-premium-meta hidden-xs">
 															<div class="streamium-review-like-btn">
@@ -210,6 +214,122 @@
 				</div><!--/.container-->
 			</section><!--/.videos-->
 		<?php endif; ?>
+
+		<section class="videos">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-12 video-header">
+						<h3>TV Programes</h3>
+						<a class="see-all" href="<?php echo esc_url( home_url() ); ?>/programs">View all</a>
+					</div><!--/.col-sm-12-->
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="prev_next"></div>
+						<div class="carousels">
+					  	<?php
+							$args = array(
+								    'posts_per_page' => (int)get_theme_mod( 'streamium_global_options_homepage_desktop' ),
+								    'post_type' => 'programs'
+								);
+								$loop = new WP_Query( $args ); 
+								if($loop->have_posts()):
+									while ( $loop->have_posts() ) : $loop->the_post();
+									if ( has_post_thumbnail() ) : // thumbnail check 
+									$image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-category' );
+									$nonce = wp_create_nonce( 'streamium_likes_nonce' ); 
+
+						?>
+							<div class="tile" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="tv-programs">
+								<?php if($post->premium) : ?>
+									<div class="tile_payment_details">
+										<div class="tile_payment_details_inner">
+											<h2>Available on <?php echo str_replace(array("_"), " ", $post->plans[0]); ?></h2>
+										</div>
+									</div> 
+								<?php endif; ?>
+								<?php if (function_exists('is_protected_by_s2member')) :
+									$check = is_protected_by_s2member(get_the_ID());
+									if($check) : ?>
+									<div class="tile_payment_details">
+										<div class="tile_payment_details_inner">
+											<h2>Available on <?php 
+												$comma_separated = implode(",", $check);
+												echo "plan " . $comma_separated; 
+											?></h2>
+										</div>
+									</div>
+								<?php endif; endif; ?>
+						        <div class="tile_media" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
+						        </div>
+						        <a class="play-icon-wrap hidden-xs" href="<?php the_permalink(); ?>">
+									<div class="play-icon-wrap-rel">
+										<div class="play-icon-wrap-rel-ring"></div>
+										<span class="play-icon-wrap-rel-play">
+											<i class="fa fa-play fa-1x" aria-hidden="true"></i>
+							        	</span>
+						        	</div>
+					        	</a>
+						        <div class="tile_details">
+						          	<div class="tile_meta">
+						          		<span class="tile_meta_episodes"><?php echo count(get_post_meta(get_the_ID(), 'repeatable_fields' , true) ); ?> Episodes</span>
+						            	<h4><?php the_title(); ?></h4>						            	
+						            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="tv-programs" class="tile_meta_more_info hidden-xs"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+						          	</div>
+						        </div>
+						        <?php if(is_user_logged_in() && get_theme_mod( 'streamium_enable_premium' )):
+							    		$userId = get_current_user_id();
+							    		$percentageWatched = get_post_meta( get_the_ID(), 'user_' . $userId, true );
+							    ?>
+								    <div class="progress tile_progress">
+									  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $percentageWatched; ?>"
+									  aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $percentageWatched; ?>%">
+									    <span class="sr-only"><?php echo $percentageWatched; ?>% Complete</span>
+									  </div>
+									</div>
+								<?php endif; ?>
+						    </div>
+						<?php
+							endif; 
+							endwhile;
+							endif;
+							wp_reset_query();
+						?>
+						</div><!--/.carousel-->
+					</div><!--/.col-sm-12-->
+				</div><!--/.row-->
+			</div><!--/.container-->
+		</section><!--/.videos-->
+		<section class="s3bubble-details-full tv-programs">
+			<div class="s3bubble-details-full-overlay"></div>
+			<div class="container-fluid s3bubble-details-inner-content">
+				<div class="row">
+					<div class="col-sm-5 col-xs-5 rel">
+						<div class="synopis-outer">
+							<div class="synopis-middle">
+								<div class="synopis-inner">
+									<h2 class="synopis hidden-xs"></h2>
+									<div class="synopis content"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-7 col-xs-7 rel">
+						<a class="play-icon-wrap synopis" href="#">
+							<div class="play-icon-wrap-rel">
+								<div class="play-icon-wrap-rel-ring"></div>
+								<span class="play-icon-wrap-rel-play">
+									<i class="fa fa-play fa-3x" aria-hidden="true"></i>
+					        	</span>
+				        	</div>
+			        	</a>
+			        	<a href="#" class="synopis-video-trailer">Watch Trailer</a>
+			        	<a href="#" class="s3bubble-details-inner-close"><i class="fa fa-times" aria-hidden="true"></i></a>
+					</div><!--/.col-sm-12-->
+				</div><!--/.row-->
+			</div><!--/.container-->
+			<div class="program-carousels"></div><!--/.program-carousels-->
+		</section><!--/.videos-->
 
 		<?php 
 			$args = array(

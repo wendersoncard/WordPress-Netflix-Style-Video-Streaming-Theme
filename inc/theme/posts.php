@@ -27,6 +27,14 @@ function streamium_single_video_scripts() {
     		if(pathinfo($s3videoid, PATHINFO_DIRNAME) !== "."){
 			    $s3videoid = pathinfo($s3videoid, PATHINFO_BASENAME);
 			}
+
+			$codes = [];
+			foreach (get_post_meta(get_the_ID(), 'repeatable_fields' , true) as $key => $value) : 
+				
+				$codes[] = $value['codes'];	
+
+			endforeach; 
+
     		// Setup premium
 	        wp_enqueue_script('streamium-video-post', get_template_directory_uri() . '/dist/js/single.premium.min.js', array( 'streamium-s3bubble-cdn'),'1.1', true );
 	        wp_localize_script( 'streamium-video-post', 'video_post_object', 
@@ -35,7 +43,8 @@ function streamium_single_video_scripts() {
 	                'post_id' => $post->ID,
 	                'percentage' => !empty($percentageWatched) ? $percentageWatched : 0,
 	                'code' => isset($_GET['trailer']) ? $streamiumVideoTrailer : $s3videoid,
-	                'trailer' => $streamiumVideoTrailer,
+	                'codes' => $codes,
+	                'trailer' => isset($streamiumVideoTrailer) ? $streamiumVideoTrailer : "",
 	                'nonce' => $nonce
 	            )
 	        ); 
@@ -72,7 +81,7 @@ function streamium_get_dynamic_content() {
 
 	// Get params
 	$cat = $_REQUEST['cat'];
-	$postId = $_REQUEST['post_id'];
+	$postId = (int) $_REQUEST['post_id'];
  
     if ( ! wp_verify_nonce( $_REQUEST['nonce'], 'streamium_likes_nonce' ) || ! isset( $_REQUEST['nonce'] ) ) {
         exit( "No naughty business please" );
@@ -86,6 +95,47 @@ function streamium_get_dynamic_content() {
 
     		$like_text = '';
 		    if ( get_theme_mod( 'streamium_enable_premium' ) ) {
+
+		    	$buildMeta = '<ul>';
+
+				// Tags
+				$posttags = get_the_tags($postId);
+				$staring = 'Staring: ';
+				if ($posttags) {
+					$numItems = count($posttags);
+					$i = 0;
+				  	foreach($posttags as $tag) {
+
+					  	$staring .= '<a href="/?s=' . esc_html( $tag->name ) . '">' . $tag->name . '</a>';
+					  	if(++$i !== $numItems) {
+				    		$staring .= ', ';
+				  		}
+
+				    }
+				    $buildMeta .= '<li class="synopis-meta-spacer">' . $staring . '</li>';
+				}
+				
+				// Cats
+				$categories = get_the_category($postId);
+				$genres = 'Genres: ';
+				if ($categories) {
+					$numItems = count($categories);
+					$g = 0;
+				  	foreach($categories as $cats) {
+
+				  		$genres .= '<a href="' . esc_url( get_category_link( $cats->term_id ) ) . '">' . $cats->name . '</a>';
+				  		if(++$g !== $numItems) {
+				    		$genres .= ', ';
+				  		}
+
+				  	}
+				  	$buildMeta .= '<li class="synopis-meta-spacer">' . $genres . '</li>';
+				}
+
+				// Release date
+				$buildMeta .= '<li class="synopis-meta-spacer">Released: <a href="/?s=all&date=' . get_the_date('Y/m/d', $postId) . '">' . get_the_date('l, F j, Y', $postId) . '</a></li></ul>';
+
+				// Likes and reviews
 		        $nonce = wp_create_nonce( 'streamium_likes_nonce' );
 		    	$link = admin_url('admin-ajax.php?action=streamium_likes&post_id='. $postId .'&nonce='.$nonce);
 		        $like_text = '<div class="synopis-premium-meta hidden-xs">
@@ -97,8 +147,13 @@ function streamium_get_dynamic_content() {
 			                        <a class="streamium-list-reviews" data-id="' . $postId . '" data-nonce="' . $nonce . '">Read reviews</a>
 			                    </div>
 							</div>';
+
 		    }
-    		$content = (isMobile()) ? (empty($post_object->post_excerpt) ? strip_tags($post_object->post_content) : $post_object->post_excerpt) : $post_object->post_content . $like_text;
+
+		    $content = $post_object->post_content . $buildMeta . $like_text;
+		    if(isMobile()){
+		    	$content = (empty($post_object->post_excerpt) ? strip_tags($post_object->post_content) : $post_object->post_excerpt);
+		    }
 	    	$fullImage  = wp_get_attachment_image_src( get_post_thumbnail_id( $postId ), 'streamium-home-slider' ); 
 	    	$streamiumVideoTrailer = get_post_meta( $postId, 'streamium_video_trailer_meta_box_text', true );
 
@@ -108,9 +163,10 @@ function streamium_get_dynamic_content() {
 		    		'cat' => $cat,
 		    		'title' => $post_object->post_title,
 		    		'content' => $content,
-		    		'bgimage' =>  $fullImage[0],
+		    		'bgimage' =>  isset($fullImage) ? $fullImage[0] : "",
 		    		'trailer' => $streamiumVideoTrailer,
-		    		'href' => get_permalink($postId)
+		    		'href' => get_permalink($postId),
+		    		'post' => $post_object
 		    	)
 		    );
 
@@ -139,3 +195,83 @@ function streamium_get_dynamic_content() {
 
 add_action( 'wp_ajax_nopriv_streamium_get_dynamic_content', 'streamium_get_dynamic_content' );
 add_action( 'wp_ajax_streamium_get_dynamic_content', 'streamium_get_dynamic_content' );
+
+/**
+ * Ajax post scipts for content
+ *
+ * @return bool
+ * @author  @sameast
+ */
+function streamium_programs_get_dynamic_content() {
+
+	global $wpdb;
+
+	// Get params
+	$cat = $_REQUEST['cat'];
+	$termId =  (int) $_REQUEST['term_id'];
+ 
+    if ( ! wp_verify_nonce( $_REQUEST['nonce'], 'streamium_likes_nonce' ) || ! isset( $_REQUEST['nonce'] ) ) {
+        exit( "No naughty business please" );
+    }
+
+    if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+
+    	$post_object = get_term( $termId, 'tv' );
+
+    	if(!empty($post_object)){
+
+    		$like_text = '';
+		    if ( get_theme_mod( 'streamium_enable_premium' ) ) {
+		        $nonce = wp_create_nonce( 'streamium_likes_nonce' );
+		    	$link = admin_url('admin-ajax.php?action=streamium_likes&post_id='. $termId .'&nonce='.$nonce);
+		        $like_text = '<div class="synopis-premium-meta hidden-xs">
+								<div class="streamium-review-like-btn">
+			                        <a class="like-button"  data-id="' . $termId . '" data-nonce="' . $nonce . '">' . __( 'Like it' ) . '</a>
+			                        <span id="like-count-' . $termId . '" class="like-count">' . get_streamium_likes($termId) . '</span>
+			                    </div>
+			                    <div class="streamium-review-reviews-btn">
+			                        <a class="streamium-list-reviews" data-id="' . $termId . '" data-nonce="' . $nonce . '">Read reviews</a>
+			                    </div>
+							</div>';
+		    }
+    		$content = (isMobile()) ? strip_tags($post_object->description) : $post_object->description . $like_text;
+	    	$fullImage  =get_tax_meta($termId,'streamium_program_image'); 
+	    	//$streamiumVideoTrailer = get_post_meta( $termId, 'streamium_video_trailer_meta_box_text', true );
+
+	    	echo json_encode(
+		    	array(
+		    		'error' => false,
+		    		'cat' => $cat,
+		    		'title' => $post_object->name,
+		    		'content' => $content,
+		    		'bgimage' =>  $fullImage[0]['url'],
+		    		'trailer' => '',//$streamiumVideoTrailer,
+		    		'href' => get_term_link( $termId )
+		    	)
+		    );
+
+	    }else{
+
+	    	echo json_encode(
+		    	array(
+		    		'error' => true,
+		    		'message' => 'We could not find this post.'
+		    	)
+		    );
+
+	    }
+
+        die();
+
+    }
+    else {
+        
+        wp_redirect( get_permalink( $_REQUEST['post_id'] ) );
+        exit();
+
+    }
+
+}
+
+add_action( 'wp_ajax_nopriv_streamium_programs_get_dynamic_content', 'streamium_programs_get_dynamic_content' );
+add_action( 'wp_ajax_streamium_programs_get_dynamic_content', 'streamium_programs_get_dynamic_content' );

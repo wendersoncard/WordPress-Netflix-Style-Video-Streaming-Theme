@@ -5,19 +5,131 @@
 
 		<section class="categories">
 
-			<?php 
-			$the_query = new WP_Query(array(
-			    'post_type' => 'post', 
-				's' => $s
-			)); 
-			if ( $the_query->have_posts() ) : ?>
+			<?php
+
+			switch (isset($_GET['date']) ? 'date' : 'all') {
+				case 'date':
+
+					if($_GET['date'] === 'day'){
+
+						$the_query = new WP_Query(array(
+						    'post_type' => 'post',
+						    'posts_per_page' => -1, 
+							'ignore_sticky_posts' => true, 
+							'date_query' => array(
+							     array(
+							        'after'     => '1 day ago'
+							     ),
+							 ),
+					
+						));
+
+					}else if($_GET['date'] === 'week'){
+
+						$the_query = new WP_Query(array(
+						    'post_type' => 'post',
+						    'posts_per_page' => -1, 
+							'ignore_sticky_posts' => true, 
+							'date_query' => array(
+							     array(
+							        'after' => '1 week ago'
+							     ),
+							 ),
+					
+						));
+
+					}else{
+
+						if(strpos($_GET['date'], '/') !== false) {
+
+							$date = explode('/', $_GET['date']);
+							$year  = $date[0];
+							$month = $date[1];
+							$day   = $date[2];
+							$the_query = new WP_Query(array(
+							    'post_type' => 'post',
+							    'posts_per_page' => -1, 
+								'ignore_sticky_posts' => true, 
+								'date_query' => array(
+								    array(
+								      'year' => $year,
+								      'month' => $month,
+								      //'day' => $day 
+								      ),
+								    ),
+						
+							));
+
+						}else{
+
+							$the_query = new WP_Query(array(
+							    'post_type' => 'post',
+							    'posts_per_page' => -1, 
+								'ignore_sticky_posts' => true, 
+								'date_query' => array(
+								    array(
+								      'year' => $_GET['date']
+								      ),
+								    ),
+						
+							));
+
+						}
+					}
+
+					break;
+				
+				default:
+
+					$the_query = new WP_Query(array(
+					    'post_type' => 'post', 
+						's' => $s
+					)); 
+
+					break;
+
+			} 
+			?>
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-sm-12 video-header-archive">
 						<h3 class="pull-left"><?php printf( __( 'Search Results for: %s', 'streamium' ), get_search_query() ); ?></h3>
+						<?php if(get_theme_mod( 'streamium_enable_premium' )) : ?>
+							<div class="dropdown video-header-archive-dropdown">
+							  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+							    FILTER
+							    <span class="caret"></span>
+							  </button>
+							  <ul class="dropdown-menu dropdown-menu-right streamium-menu-filter" aria-labelledby="dropdownMenu1">
+							  	<li><a href="?s=all&date=day">1 Day Ago</a></li>
+							  	<li><a href="?s=all&date=week">1 Week Ago</a></li>
+							  	<?php
+							  		$begin = new DateTime( '2015-01-01' );
+									$end = new DateTime();
+									$interval = DateInterval::createFromDateString('1 year');
+									$period = new DatePeriod($begin, $interval, $end);
+									foreach ( array_reverse(iterator_to_array($period)) as $dt ) : ?>
+										<li><a href="?s=all&date=<?php echo $dt->format( "Y" ); ?>"><?php echo $dt->format( "Y" ); ?></a></li>
+								<?php 
+									endforeach; 
+								?>
+							  	<?php
+							  		$begin = new DateTime( '2015-01-01' );
+									$end = new DateTime();
+									$interval = DateInterval::createFromDateString('1 month');
+									$period = new DatePeriod($begin, $interval, $end);
+									foreach ( array_reverse(iterator_to_array($period)) as $dt ) : ?>
+										<li><a href="?s=all&date=<?php echo $dt->format( "Y/m/d" ); ?>"><?php echo $dt->format( "M Y" ); ?></a></li>
+								<?php 
+									endforeach; 
+								?>
+							  </ul>
+							</div>
+						<?php endif; ?>
 					</div><!--/.col-sm-12-->
 				</div><!--/.row-->
 			</div><!--/.container-->
+			<?php if ( $the_query->have_posts() ) : ?> 
 			<div class="container-fluid">
 				<div class="row static-row static-row-first">
 					<?php
@@ -130,7 +242,6 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-sm-12 video-header-archive">
-						<h3 class="pull-left"><?php printf( __( 'Search Results for: %s', 'streamium' ), get_search_query() ); ?></h3>
 						<p><?php _e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'twentyseventeen' ); ?></p>
 					</div><!--/.col-sm-12-->
 				</div><!--/.row-->
@@ -139,5 +250,6 @@
 		</section><!--/.videos-->
 
 		<div class="main-spacer"></div>
+}
 		
 <?php get_footer(); ?>

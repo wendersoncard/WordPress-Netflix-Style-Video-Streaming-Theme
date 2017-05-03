@@ -255,6 +255,7 @@ class Streamium_Customize {
       // AWS MEDIA SECTION
       $wp_customize->add_section('streamium_aws_media_uploader_section' , array(
           'title'     => __('AWS Media Uploader', 'streamium'),
+          'description' => 'For infomation on how to setup the uploader with S3Bubble please watch this video<br><a href="https://www.youtube.com/watch?v=FUqN-b1MSrc" target="_blank">AWS direct uploader setup</a>',
           'priority'  => 1020
       ));
 
