@@ -181,11 +181,16 @@ function streamium_repeatable_meta_box_display() {
 	
 	</tbody>
 	</table> 
-	<p><a id="add-row" class="button add-program-row" href="#">Add another</a></p>
+	<p><a id="add-row" class="button add-program-row button-primary" href="#">Add another</a></p>
 	<?php
 }
 
-add_action('save_post', 'streamium_repeatable_meta_box_save');
+/**
+ * Setup custom repeater meta box save
+ *
+ * @return null
+ * @author  @sameast
+ */
 function streamium_repeatable_meta_box_save($post_id) {
 	if ( ! isset( $_POST['streamium_repeatable_meta_box_nonce'] ) ||
 	! wp_verify_nonce( $_POST['streamium_repeatable_meta_box_nonce'], 'streamium_repeatable_meta_box_nonce' ) )
@@ -226,3 +231,4 @@ function streamium_repeatable_meta_box_save($post_id) {
 	}
 
 }
+add_action('save_post', 'streamium_repeatable_meta_box_save');
