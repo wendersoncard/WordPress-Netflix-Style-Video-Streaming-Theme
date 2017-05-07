@@ -1,5 +1,3 @@
-
-
 <?php get_header(); ?>
 
 	<main class="cd-main-content">

@@ -138,14 +138,12 @@ function streamium_get_dynamic_content() {
 				// Likes and reviews
 		        $nonce = wp_create_nonce( 'streamium_likes_nonce' );
 		    	$link = admin_url('admin-ajax.php?action=streamium_likes&post_id='. $postId .'&nonce='.$nonce);
+
+		    	
+
 		        $like_text = '<div class="synopis-premium-meta hidden-xs">
-								<div class="streamium-review-like-btn">
-			                        <a class="like-button"  data-id="' . $postId . '" data-nonce="' . $nonce . '">' . __( 'Like it' ) . '</a>
-			                        <span id="like-count-' . $postId . '" class="like-count">' . get_streamium_likes($postId) . '</span>
-			                    </div>
-			                    <div class="streamium-review-reviews-btn">
-			                        <a class="streamium-list-reviews" data-id="' . $postId . '" data-nonce="' . $nonce . '">Read reviews</a>
-			                    </div>
+		        				<a id="like-count-' . $postId . '" class="streamium-review-like-btn streamium-btns streamium-reviews-btns" data-toggle="tooltip" title="CLICK TO LIKE!" data-id="' . $postId . '" data-nonce="' . $nonce . '">' . get_streamium_likes($postId) . '</a>
+		        				<a class="streamium-list-reviews streamium-btns streamium-reviews-btns" data-id="' . $postId . '" data-nonce="' . $nonce . '">Read reviews</a>
 							</div>';
 
 		    }

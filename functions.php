@@ -6,10 +6,15 @@
 if (!function_exists('streamium_theme_setup')) {
     
     function streamium_theme_setup() {	
-    	add_theme_support('post-thumbnails');
+
+        // Create aspects based on average
+        $width = 1366/6;
+        $height = $width/16*9;
+    	  add_theme_support('post-thumbnails');
         add_theme_support( 'automatic-feed-links' );
         add_image_size( 'streamium-video-poster', 600, 338, true ); // (cropped)
-        add_image_size( 'streamium-video-category', 285, 160 );
+        add_image_size( 'streamium-video-category', $width, $height ); //, 285, 160
+        add_image_size( 'streamium-video-tile-expanded', ($width*2), ($height*2)); //, 285, 160
         add_image_size( 'streamium-home-slider', 1600, 900 ); 
         add_image_size( 'streamium-site-logo', 0, 56, true ); 
         add_theme_support( 'title-tag' );
@@ -41,10 +46,6 @@ if (!function_exists('streamium_enqueue_scripts')) {
             )
         );
 
-        if( is_singular() ) {
-            wp_enqueue_script('comment-reply'); // loads the javascript required for threaded comments
-        } 
-
         wp_enqueue_style('streamium-s3bubble-cdn', 'http://local.hosted.com/assets/hosted/s3bubble-hosted-cdn.min.css');
             wp_enqueue_script( 'streamium-s3bubble-cdn', 'http://local.hosted.com/assets/hosted/s3bubble-hosted-cdn.min.js', array( 'jquery'),'1.1', true );
 
@@ -70,8 +71,8 @@ if (!function_exists('streamium_enqueue_admin_scripts')) {
       
       $streamium_connected_website = get_option("streamium_connected_website");
       $streamium_connected_nonce = wp_create_nonce( 'streamium_connected_nonce' );
-      wp_enqueue_style( 'streamium-admin', get_template_directory_uri() . '/dist/production/css/admin.min.css', array() );
-      wp_enqueue_script( 'streamium-admin', get_template_directory_uri() . '/dist/production/js/admin.min.js', array( 'jquery'),'1.1', true );
+      wp_enqueue_style( 'streamium-admin', get_template_directory_uri() . '/production/css/admin.min.css', array() );
+      wp_enqueue_script( 'streamium-admin', get_template_directory_uri() . '/production/js/admin.min.js', array( 'jquery'),'1.1', true );
       wp_localize_script('streamium-admin', 'streamium_meta_object', array(
         'ajax_url' => admin_url( 'admin-ajax.php'),  
         's3website' => (!empty($streamium_connected_website) ? $streamium_connected_website : ""),

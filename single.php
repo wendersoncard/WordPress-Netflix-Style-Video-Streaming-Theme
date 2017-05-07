@@ -62,7 +62,7 @@ jQuery(document).ready(function($) {
 			    }); // end jquery 
 
 			}());
-
+ 
 			player.play();
 
 		}

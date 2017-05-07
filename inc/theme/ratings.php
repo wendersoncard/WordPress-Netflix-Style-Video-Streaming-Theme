@@ -715,6 +715,6 @@ function get_streamium_likes($post_id) {
 	global $wpdb;
 	$table_name = $wpdb->prefix . 'streamium_reviews';
     $getReviews = $wpdb->get_var("SELECT COUNT(*) FROM $table_name WHERE post_id = $post_id AND state = 1");
-    return $getReviews;
+    return ((int) $getReviews === 1) ? $getReviews . " Like" : $getReviews . " Likes";
 
 }

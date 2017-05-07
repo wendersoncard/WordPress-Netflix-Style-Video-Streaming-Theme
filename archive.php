@@ -120,7 +120,7 @@
 					        	</span>
 				        	</div>
 			        	</a>
-			        	<a href="#" class="synopis-video-trailer">Watch Trailer</a>
+			        	<a href="#" class="synopis-video-trailer streamium-btns">Watch Trailer</a>
 			        	<a href="#" class="s3bubble-details-inner-close"><i class="fa fa-times" aria-hidden="true"></i></a>
 					</div><!--/.col-sm-12-->
 				</div><!--/.row-->

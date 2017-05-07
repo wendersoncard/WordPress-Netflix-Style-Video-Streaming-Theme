@@ -63,13 +63,9 @@
 													
 													<?php if(get_theme_mod( 'streamium_enable_premium' )) : ?>
 														<div class="synopis-premium-meta hidden-xs">
-															<div class="streamium-review-like-btn">
-										                        <a class="like-button" href="<?php echo $link; ?>" data-id="<?php echo get_the_ID(); ?>" data-nonce="<?php echo $nonce; ?>">Like it</a>
-										                        <span id="like-count-<?php echo get_the_ID(); ?>" class="like-count"><?php echo get_streamium_likes(get_the_ID()); ?></span>
-										                    </div>
-										                    <div class="streamium-review-reviews-btn">
-										                        <a class="streamium-list-reviews" data-id="<?php echo get_the_ID(); ?>" data-nonce="<?php echo $nonce; ?>">Read reviews</a>
-										                    </div>
+															<a id="like-count-<?php echo get_the_ID(); ?>" class="streamium-review-like-btn streamium-btns streamium-reviews-btns" data-toggle="tooltip" title="CLICK TO LIKE!" data-id="<?php echo get_the_ID(); ?>" data-nonce="<?php echo $nonce; ?>">	<?php echo get_streamium_likes(get_the_ID()); ?>
+															</a>
+										                    <a class="streamium-list-reviews streamium-btns streamium-reviews-btns" data-id="<?php echo get_the_ID(); ?>" data-nonce="<?php echo $nonce; ?>">Read reviews</a>
 														</div>
 													<?php endif; ?>
 												</div>
@@ -86,7 +82,7 @@
 								        	</div>
 							        	</a>
 							        	<?php if ( ! empty( $streamiumVideoTrailer ) && get_theme_mod( 'streamium_enable_premium' ) ) : ?>
-								        	<a class="synopis-video-trailer" href="<?php the_permalink(); ?>?trailer=true">Watch Trailer</a>
+								        	<a class="synopis-video-trailer streamium-btns" href="<?php the_permalink(); ?>?trailer=true">Watch Trailer</a>
 								        <?php endif; ?>
 									</div>
 								</div>
@@ -142,36 +138,42 @@
 										while ( $loop->have_posts() ) : $loop->the_post();
 											if ( has_post_thumbnail() ) : // thumbnail check 
 											$image   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-category' );
+											$imageExpanded   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile-expanded' );
 											$nonce = wp_create_nonce( 'streamium_likes_nonce' );
 								?>
 								<div class="tile" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="recent">
-								        <div class="tile_media" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
-						       	 		</div> 
-						       	 		<a class="play-icon-wrap hidden-xs" href="<?php the_permalink(); ?>">
-											<div class="play-icon-wrap-rel">
-												<div class="play-icon-wrap-rel-ring"></div>
-												<span class="play-icon-wrap-rel-play">
-													<i class="fa fa-play fa-1x" aria-hidden="true"></i>
-									        	</span>
-								        	</div>
-							        	</a>
-								        <div class="tile_details">
-								          	<div class="tile_meta">
+
+									<div class="tile_inner" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
+										<div class="content">
+									      <div class="overlay" style="background-image: url(<?php echo esc_url($imageExpanded[0]); ?>);">
+									      	<div class="overlay-gradient"></div>
+									        <a class="play-icon-wrap hidden-xs" href="<?php the_permalink(); ?>">
+												<div class="play-icon-wrap-rel">
+													<div class="play-icon-wrap-rel-ring"></div>
+													<span class="play-icon-wrap-rel-play">
+														<i class="fa fa-play fa-1x" aria-hidden="true"></i>
+										        	</span>
+									        	</div>
+								        	</a>
+								          	<div class="overlay-meta">
 								            	<h4><?php the_title(); ?></h4>						            	
 								            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="recent" class="tile_meta_more_info hidden-xs"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
 								          	</div>
-								        </div>
-								        <?php if(is_user_logged_in() && get_theme_mod( 'streamium_enable_premium' )):
-									    		$userId = get_current_user_id();
-									    		$percentageWatched = get_post_meta( get_the_ID(), 'user_' . $userId, true );
-									    ?>
-										    <div class="progress tile_progress">
-											  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $percentageWatched; ?>"
-											  aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $percentageWatched; ?>%">
-											    <span class="sr-only"><?php echo $percentageWatched; ?>% Complete</span>
-											  </div>
-											</div>
-										<?php endif; ?>
+									      </div>
+									    </div>
+									</div>
+
+									<?php if(is_user_logged_in() && get_theme_mod( 'streamium_enable_premium' )):
+								    		$userId = get_current_user_id();
+								    		$percentageWatched = get_post_meta( get_the_ID(), 'user_' . $userId, true );
+								    ?>
+									    <div class="progress tile_progress">
+										  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $percentageWatched; ?>"
+										  aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $percentageWatched; ?>%">
+										  </div>
+										</div>
+									<?php endif; ?>
+								        
 								    </div>
 								<?php
 											endif;  
@@ -207,7 +209,7 @@
 						        	</span>
 					        	</div>
 				        	</a>
-				        	<a href="#" class="synopis-video-trailer">Watch Trailer</a>
+				        	<a href="#" class="synopis-video-trailer streamium-btns">Watch Trailer</a>
 				        	<a href="#" class="s3bubble-details-inner-close"><i class="fa fa-times" aria-hidden="true"></i></a>
 						</div><!--/.col-sm-12-->
 					</div><!--/.row-->
@@ -237,46 +239,54 @@
 									while ( $loop->have_posts() ) : $loop->the_post();
 									if ( has_post_thumbnail() ) : // thumbnail check 
 									$image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-category' );
+									$imageExpanded   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile-expanded' );
 									$nonce = wp_create_nonce( 'streamium_likes_nonce' ); 
 
 						?>
 							<div class="tile" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="tv-programs">
-								<?php if($post->premium) : ?>
-									<div class="tile_payment_details">
-										<div class="tile_payment_details_inner">
-											<h2>Available on <?php echo str_replace(array("_"), " ", $post->plans[0]); ?></h2>
+								
+								<div class="tile_inner" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
+
+									<?php if($post->premium) : ?>
+										<div class="tile_payment_details">
+											<div class="tile_payment_details_inner">
+												<h2>Available on <?php echo str_replace(array("_"), " ", $post->plans[0]); ?></h2>
+											</div>
+										</div> 
+									<?php endif; ?>
+									<?php if (function_exists('is_protected_by_s2member')) :
+										$check = is_protected_by_s2member(get_the_ID());
+										if($check) : ?>
+										<div class="tile_payment_details">
+											<div class="tile_payment_details_inner">
+												<h2>Available on <?php 
+													$comma_separated = implode(",", $check);
+													echo "plan " . $comma_separated; 
+												?></h2>
+											</div>
 										</div>
-									</div> 
-								<?php endif; ?>
-								<?php if (function_exists('is_protected_by_s2member')) :
-									$check = is_protected_by_s2member(get_the_ID());
-									if($check) : ?>
-									<div class="tile_payment_details">
-										<div class="tile_payment_details_inner">
-											<h2>Available on <?php 
-												$comma_separated = implode(",", $check);
-												echo "plan " . $comma_separated; 
-											?></h2>
-										</div>
-									</div>
-								<?php endif; endif; ?>
-						        <div class="tile_media" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
-						        </div>
-						        <a class="play-icon-wrap hidden-xs" href="<?php the_permalink(); ?>">
-									<div class="play-icon-wrap-rel">
-										<div class="play-icon-wrap-rel-ring"></div>
-										<span class="play-icon-wrap-rel-play">
-											<i class="fa fa-play fa-1x" aria-hidden="true"></i>
-							        	</span>
-						        	</div>
-					        	</a>
-						        <div class="tile_details">
-						          	<div class="tile_meta">
-						          		<span class="tile_meta_episodes"><?php echo count(get_post_meta(get_the_ID(), 'repeatable_fields' , true) ); ?> Episodes</span>
-						            	<h4><?php the_title(); ?></h4>						            	
-						            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="tv-programs" class="tile_meta_more_info hidden-xs"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
-						          	</div>
-						        </div>
+									<?php endif; endif; ?>
+
+									<div class="content">
+								      <div class="overlay" style="background-image: url(<?php echo esc_url($imageExpanded[0]); ?>);">
+								      	<div class="overlay-gradient"></div>
+								        <a class="play-icon-wrap hidden-xs" href="<?php the_permalink(); ?>">
+											<div class="play-icon-wrap-rel">
+												<div class="play-icon-wrap-rel-ring"></div>
+												<span class="play-icon-wrap-rel-play">
+													<i class="fa fa-play fa-1x" aria-hidden="true"></i>
+									        	</span>
+								        	</div>
+							        	</a>
+							          	<div class="overlay-meta">
+							          		<span class="tile_meta_episodes"><?php echo count(get_post_meta(get_the_ID(), 'repeatable_fields' , true) ); ?> Episodes</span>
+							            	<h4><?php the_title(); ?></h4>						            	
+							            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="tv-programs" class="tile_meta_more_info hidden-xs"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+							          	</div>
+								      </div>
+								    </div>
+								</div>
+
 						    </div>
 						<?php
 							endif; 
@@ -312,7 +322,7 @@
 					        	</span>
 				        	</div>
 			        	</a>
-			        	<a href="#" class="synopis-video-trailer">Watch Trailer</a>
+			        	<a href="#" class="synopis-video-trailer streamium-btns">Watch Trailer</a>
 			        	<a href="#" class="s3bubble-details-inner-close"><i class="fa fa-times" aria-hidden="true"></i></a>
 					</div><!--/.col-sm-12-->
 				</div><!--/.row-->
@@ -348,56 +358,63 @@
 									while ( $loop->have_posts() ) : $loop->the_post();
 									if ( has_post_thumbnail() ) : // thumbnail check 
 									$image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-category' );
+									$imageExpanded   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile-expanded' );
 									$nonce = wp_create_nonce( 'streamium_likes_nonce' ); 
 
 						?>
 							<div class="tile" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="<?php echo $category->slug; ?>">
-								<?php if($post->premium) : ?>
-									<div class="tile_payment_details">
-										<div class="tile_payment_details_inner">
-											<h2>Available on <?php echo str_replace(array("_"), " ", $post->plans[0]); ?></h2>
+
+								<div class="tile_inner" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
+
+									<?php if($post->premium) : ?>
+										<div class="tile_payment_details">
+											<div class="tile_payment_details_inner">
+												<h2>Available on <?php echo str_replace(array("_"), " ", $post->plans[0]); ?></h2>
+											</div>
+										</div> 
+									<?php endif; ?>
+									<?php if (function_exists('is_protected_by_s2member')) :
+										$check = is_protected_by_s2member(get_the_ID());
+										if($check) : ?>
+										<div class="tile_payment_details">
+											<div class="tile_payment_details_inner">
+												<h2>Available on <?php 
+													$comma_separated = implode(",", $check);
+													echo "plan " . $comma_separated; 
+												?></h2>
+											</div>
 										</div>
-									</div> 
-								<?php endif; ?>
-								<?php if (function_exists('is_protected_by_s2member')) :
-									$check = is_protected_by_s2member(get_the_ID());
-									if($check) : ?>
-									<div class="tile_payment_details">
-										<div class="tile_payment_details_inner">
-											<h2>Available on <?php 
-												$comma_separated = implode(",", $check);
-												echo "plan " . $comma_separated; 
-											?></h2>
-										</div>
-									</div>
-								<?php endif; endif; ?>
-						        <div class="tile_media" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
-						        </div>
-						        <a class="play-icon-wrap hidden-xs" href="<?php the_permalink(); ?>">
-									<div class="play-icon-wrap-rel">
-										<div class="play-icon-wrap-rel-ring"></div>
-										<span class="play-icon-wrap-rel-play">
-											<i class="fa fa-play fa-1x" aria-hidden="true"></i>
-							        	</span>
-						        	</div>
-					        	</a>
-						        <div class="tile_details">
-						          	<div class="tile_meta">
-						            	<h4><?php the_title(); ?></h4>						            	
-						            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="<?php echo $category->slug; ?>" class="tile_meta_more_info hidden-xs"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
-						          	</div>
-						        </div>
-						        <?php if(is_user_logged_in() && get_theme_mod( 'streamium_enable_premium' )):
+									<?php endif; endif; ?>
+									<div class="content">
+								      <div class="overlay" style="background-image: url(<?php echo esc_url($imageExpanded[0]); ?>);">
+								        <div class="overlay-gradient"></div>
+								        <a class="play-icon-wrap hidden-xs" href="<?php the_permalink(); ?>">
+											<div class="play-icon-wrap-rel">
+												<div class="play-icon-wrap-rel-ring"></div>
+												<span class="play-icon-wrap-rel-play">
+													<i class="fa fa-play fa-1x" aria-hidden="true"></i>
+									        	</span>
+								        	</div>
+							        	</a>
+							          	<div class="overlay-meta">
+							            	<h4><?php the_title(); ?></h4>						            	
+							            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="<?php echo $category->slug; ?>" class="tile_meta_more_info hidden-xs"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+							          	</div>
+								      </div>
+								    </div>
+								</div>
+
+								<?php if(is_user_logged_in() && get_theme_mod( 'streamium_enable_premium' )):
 							    		$userId = get_current_user_id();
 							    		$percentageWatched = get_post_meta( get_the_ID(), 'user_' . $userId, true );
 							    ?>
 								    <div class="progress tile_progress">
 									  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $percentageWatched; ?>"
 									  aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $percentageWatched; ?>%">
-									    <span class="sr-only"><?php echo $percentageWatched; ?>% Complete</span>
 									  </div>
 									</div>
 								<?php endif; ?>
+
 						    </div>
 						<?php
 								
@@ -434,7 +451,7 @@
 					        	</span>
 				        	</div>
 			        	</a>
-			        	<a href="#" class="synopis-video-trailer">Watch Trailer</a>
+			        	<a href="#" class="synopis-video-trailer streamium-btns">Watch Trailer</a>
 			        	<a href="#" class="s3bubble-details-inner-close"><i class="fa fa-times" aria-hidden="true"></i></a>
 					</div><!--/.col-sm-12-->
 				</div><!--/.row-->
