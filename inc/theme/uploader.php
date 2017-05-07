@@ -55,10 +55,7 @@ function streamium_user_content_uploader($atts){
 	// sign policy
 	$signature = base64_encode(hash_hmac('sha1', $policy, $secret, true));
 
-	// include the uploader script
-	//wp_enqueue_style( 'streamium-uploader', get_template_directory_uri() . '/dist/css/uploader.min.css' );
-    
-    //wp_enqueue_script( 'streamium-uploader', get_template_directory_uri() . '/dist/js/uploader.min.js', array( 'jquery' ),'1.1', true );
+	// Pass the signed objects to the dom
     wp_localize_script( 'streamium-production', 'streamium_uploader', 
         array( 
             'nonce' => $ajax_nonce,
