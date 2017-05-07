@@ -30,21 +30,21 @@ function streamium_single_video_scripts() {
 
 			$codes = [];
 			$episodes = get_post_meta(get_the_ID(), 'repeatable_fields' , true);
-			if(!empty($episodes)) : 
+			if(!empty($episodes)) {
 				foreach ($episodes as $key => $value) : 
 					$codes[] = $value['codes'];
 				endforeach;
-			endif; 
+			}else{
+				$codes = [$s3videoid];
+			}
 
     		// Setup premium
-	        wp_enqueue_script('streamium-video-post', get_template_directory_uri() . '/dist/js/single.premium.min.js', array( 'streamium-s3bubble-cdn'),'1.1', true );
-	        wp_localize_script( 'streamium-video-post', 'video_post_object', 
+	        wp_localize_script( 'streamium-production', 'video_post_object', 
 	            array( 
 	                'ajax_url' => admin_url( 'admin-ajax.php'),
 	                'post_id' => $post->ID,
 	                'percentage' => !empty($percentageWatched) ? $percentageWatched : 0,
-	                'code' => isset($_GET['trailer']) ? $streamiumVideoTrailer : $s3videoid,
-	                'codes' => $codes,
+	                'codes' => isset($_GET['trailer']) ? $streamiumVideoTrailer : $codes,
 	                'trailer' => isset($streamiumVideoTrailer) ? $streamiumVideoTrailer : "",
 	                'nonce' => $nonce
 	            )
@@ -53,8 +53,7 @@ function streamium_single_video_scripts() {
         }else{
 
         	//setup standard
-        	wp_enqueue_script('streamium-video-post', get_template_directory_uri() . '/dist/js/single.standard.min.js', array( 'streamium-s3bubble-cdn'),'1.1', true );
-	        wp_localize_script( 'streamium-video-post', 'video_post_object', 
+	        wp_localize_script( 'streamium-production', 'video_post_object', 
 	            array( 
 	                'ajax_url' => admin_url( 'admin-ajax.php'),
 	                'post_id' => $post->ID,

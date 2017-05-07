@@ -29,7 +29,7 @@ function streamium_meta_box_movie(){
     $values = get_post_custom( $post->ID );
     $text = isset( $values['s3bubble_video_code_meta_box_text'] ) ? $values['s3bubble_video_code_meta_box_text'][0] : '';
     // We'll use this nonce field later on when saving.
-    wp_nonce_field( 'streamium_meta_box_nonce', 'meta_box_nonce' );
+    wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
     ?>
     <p>
         <select class="streamium-theme-main-video-select-group chosen-select" tabindex="1" name="s3bubble_video_code_meta_box_text" id="s3bubble_video_code_meta_box_text">
@@ -68,7 +68,7 @@ function streamium_meta_box_trailer(){
     $values = get_post_custom( $post->ID );
     $text = isset( $values['streamium_video_trailer_meta_box_text'] ) ? $values['streamium_video_trailer_meta_box_text'][0] : '';
     // We'll use this nonce field later on when saving.
-    wp_nonce_field( 'streamium_meta_box_nonce', 'meta_box_nonce' );
+    wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
     ?>
     <p>
 
@@ -104,7 +104,7 @@ function streamium_meta_box_bgvideo(){
     $values = get_post_custom( $post->ID );
     $text = isset( $values['streamium_featured_video_meta_box_text'] ) ? $values['streamium_featured_video_meta_box_text'][0] : '';
     // We'll use this nonce field later on when saving.
-    wp_nonce_field( 'streamium_meta_box_nonce', 'meta_box_nonce' );
+    wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
     ?>
     <p>
         <?php if(get_theme_mod( 'streamium_enable_premium' )) : ?>
@@ -138,9 +138,9 @@ function streamium_post_meta_box_save( $post_id )
 {
     // Bail if we're doing an auto save
     if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
- 
+
     // if our nonce isn't there, or we can't verify it, bail
-    if( !isset( $_POST['meta_box_nonce'] ) || !wp_verify_nonce( $_POST['meta_box_nonce'], 'streamium_meta_box_nonce' ) ) return;
+    if( !isset( $_POST['streamium_meta_box_movie_nonce'] ) || !wp_verify_nonce( $_POST['streamium_meta_box_movie_nonce'], 'streamium_meta_box_movie' ) ) return;
      
     // if our current user can't edit this post, bail
     if( !current_user_can( 'edit_post' ) ) return;
@@ -198,28 +198,6 @@ function streamium_post_meta_box_save( $post_id )
 }
 
 add_action( 'save_post', 'streamium_post_meta_box_save' );
-
-/**
- * Include the scripts for the meta boxes
- *
- * @return null
- * @author  @sameast
- */
-function streamium_meta_box_admin_scripts(){
-  
-  $streamium_connected_website = get_option("streamium_connected_website");
-  wp_enqueue_style( 'streamium-theme-chosen-css', get_template_directory_uri() . '/dist/css/chosen.min.css', array() );
-  wp_enqueue_style( 'streamium-theme-admin-css', get_template_directory_uri() . '/dist/css/admin.min.css', array() );
-  wp_enqueue_script( 'streamium-theme-chosen-js', get_template_directory_uri() . '/dist/js/chosen.jquery.min.js', array( 'jquery'),'1.1', true );
-  wp_enqueue_script( 'streamium-theme-admin-js', get_template_directory_uri() . '/dist/js/admin.min.js', array( 'jquery'),'1.1', true );
-  wp_localize_script('streamium-theme-admin-js', 'streamium_meta_object', array( 
-    's3website' => (!empty($streamium_connected_website) ? $streamium_connected_website : ""),
-    'streamiumPremium' => get_theme_mod( 'streamium_enable_premium' )
-  ));
-
-}
-
-add_action( 'admin_enqueue_scripts', 'streamium_meta_box_admin_scripts' );
 
 /**
  * Get the websites domain needed for connected websites

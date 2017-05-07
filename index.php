@@ -32,9 +32,9 @@
 							<div class="streamium-featured-background" id="streamium-featured-background-<?php echo get_the_ID(); ?>"></div>
 							<script type="text/javascript">
 								document.addEventListener("DOMContentLoaded", function(event) { 
-									S3BubbleAWS.init({
+									S3Bubble.player({
 										id : "streamium-featured-background-<?php echo get_the_ID(); ?>",
-										code : "<?php echo $streamiumFeaturedVideo; ?>",
+										codes : "<?php echo $streamiumFeaturedVideo; ?>",
 										poster: "<?php echo esc_url($image[0]); ?>",
 										fluid: true,
 										muted : true,

@@ -56,10 +56,10 @@ function streamium_user_content_uploader($atts){
 	$signature = base64_encode(hash_hmac('sha1', $policy, $secret, true));
 
 	// include the uploader script
-	wp_enqueue_style( 'streamium-uploader', get_template_directory_uri() . '/dist/css/uploader.min.css' );
-    wp_enqueue_script( 'plupload' );
-    wp_enqueue_script( 'streamium-uploader', get_template_directory_uri() . '/dist/js/uploader.min.js', array( 'jquery' ),'1.1', true );
-    wp_localize_script( 'streamium-uploader', 'streamium_uploader', 
+	//wp_enqueue_style( 'streamium-uploader', get_template_directory_uri() . '/dist/css/uploader.min.css' );
+    
+    //wp_enqueue_script( 'streamium-uploader', get_template_directory_uri() . '/dist/js/uploader.min.js', array( 'jquery' ),'1.1', true );
+    wp_localize_script( 'streamium-production', 'streamium_uploader', 
         array( 
             'nonce' => $ajax_nonce,
             'bucket' => $bucket,

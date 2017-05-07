@@ -718,20 +718,3 @@ function get_streamium_likes($post_id) {
     return $getReviews;
 
 }
-
-/**
- * Include streamium like scripts
- *
- * @return bool
- * @author  @sameast
- */
-function streamium_likes_scripts() {
-    if( !is_single() ) {
- 
-        wp_enqueue_style( 'reviews', get_template_directory_uri() . '/dist/css/reviews.min.css' );
-    	wp_enqueue_script( 'reviews', get_template_directory_uri() . '/dist/js/reviews.min.js', array( 'jquery' ),'1.1', true );
-
-    }
-}
-
-add_action( 'wp_enqueue_scripts', 'streamium_likes_scripts' );

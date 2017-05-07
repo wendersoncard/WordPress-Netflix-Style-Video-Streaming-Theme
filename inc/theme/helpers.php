@@ -106,24 +106,6 @@ function streamium_run_plugin_checks() {
 
 add_action( 'init', 'streamium_run_plugin_checks' );
 
-function streamium_checks() {
-
-    // Setup premium
-    $streamium_connected_website = get_option("streamium_connected_website");
-    $streamium_connected_nonce = wp_create_nonce( 'streamium_connected_nonce' );
-    wp_enqueue_script('streamium-checks', get_template_directory_uri() . '/dist/js/player.min.js', array( 'jquery'),'1.1', true );
-    wp_localize_script( 'streamium-checks', 'streamium_checks_object', 
-        array(
-        	'ajax_url' => admin_url( 'admin-ajax.php'), 
-            'connected_website' => $streamium_connected_website,
-            'connected_nonce' => $streamium_connected_nonce
-        )
-    );
-
-}
-
-add_action('admin_enqueue_scripts', 'streamium_checks');
-
 /**
  * Adds a notice to the admin if premium is not enabled
  *
