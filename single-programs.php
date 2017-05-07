@@ -10,9 +10,9 @@
 			$image   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-home-slider' ); 
 		?>
 
-		<div id="s3bubble-<?php echo get_the_ID(); ?>"></div>
+		<div id="s3bubble-<?php echo get_the_ID(); ?>" class="program-default-height"></div>
 
-		<section class="categories">
+		<section class="programs">
 
 			<div class="container-fluid">
 				<div class="row">
@@ -34,15 +34,18 @@
 					<?php
 						$episodes = get_post_meta(get_the_ID(), 'repeatable_fields' , true);
 						if(!empty($episodes)) : 
-							foreach ($episodes as $key => $value) : 
+							foreach ($episodes as $key => $value) :
+							$thumbnail = !isset($value['thumbnails']) ? "http://placehold.it/260x146" : esc_url($value['thumbnails']);
+							$title = !isset($value['titles']) ? "No Title" : esc_html($value['titles']); 
+							$description = !isset($value['descriptions']) ? "No Description" : esc_html($value['descriptions']);  
 							?>
-							<div class="media">
-							  <a class="media-left media-top streamium-program-update-video" data-id="<?php echo $key; ?>">
-							    <img src="<?php echo esc_url($value['thumbnails']); ?>" class="media-object" style="width:130px">
+							<div class="media episodes">
+							  <a class="media-left media-top" data-id="<?php echo $key; ?>">
+							    <img src="<?php echo $thumbnail; ?>" class="media-object" style="width:130px">
 							  </a>
 							  <div class="media-body">
-							    <h4 class="media-heading"><?php echo $value['titles']; ?></h4>
-							    <p><?php echo $value['descriptions']; ?></p>
+							    <h4 class="media-heading"><?php echo $title; ?></h4>
+							    <p><?php echo $description; ?></p>
 							  </div>
 							</div>
 					<?php 
@@ -105,6 +108,16 @@ jQuery(document).ready(function($) {
 
 		}
 	});
+
+	$('.episodes a').on('click',function(){
+
+		$('.episodes a').removeClass('selected');
+		var ind = $(this).data('id');
+		$(this).addClass('selected');
+		S3Bubble.skip(ind);
+		return false;
+
+	});	
 
 });
 </script>
