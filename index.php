@@ -154,7 +154,7 @@
 										        	</span>
 									        	</div>
 								        	</a>
-								          	<div class="overlay-meta">
+								          	<div class="overlay-meta hidden-xs">
 								            	<h4><?php the_title(); ?></h4>						            	
 								            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="recent" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
 								          	</div>
@@ -278,7 +278,7 @@
 										        	</span>
 									        	</div>
 								        	</a>
-								          	<div class="overlay-meta">
+								          	<div class="overlay-meta hidden-xs">
 								          		<span class="tile_meta_episodes"><?php echo count(get_post_meta(get_the_ID(), 'repeatable_fields' , true) ); ?> Episodes</span>
 								            	<h4><?php the_title(); ?></h4>						            	
 								            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="tv-programs" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
@@ -393,7 +393,7 @@
 										        	</span>
 									        	</div>
 								        	</a>
-								          	<div class="overlay-meta">
+								          	<div class="overlay-meta hidden-xs">
 								          		<span class="tile_meta_episodes"><?php echo count(get_post_meta(get_the_ID(), 'repeatable_fields' , true) ); ?> Episodes</span>
 								            	<h4><?php the_title(); ?></h4>						            	
 								            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="tv-programs" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
@@ -508,7 +508,7 @@
 										        	</span>
 									        	</div>
 								        	</a>
-								          	<div class="overlay-meta">
+								          	<div class="overlay-meta hidden-xs">
 								          		<span class="tile_meta_episodes"><?php echo count(get_post_meta(get_the_ID(), 'repeatable_fields' , true) ); ?> Episodes</span>
 								            	<h4><?php the_title(); ?></h4>						            	
 								            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="tv-programs" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
@@ -623,7 +623,7 @@
 										        	</span>
 									        	</div>
 								        	</a>
-								          	<div class="overlay-meta">
+								          	<div class="overlay-meta hidden-xs">
 								          		<span class="tile_meta_episodes"><?php echo count(get_post_meta(get_the_ID(), 'repeatable_fields' , true) ); ?> Episodes</span>
 								            	<h4><?php the_title(); ?></h4>						            	
 								            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="tv-programs" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
@@ -742,7 +742,7 @@
 									        	</span>
 								        	</div>
 							        	</a>
-							          	<div class="overlay-meta">
+							          	<div class="overlay-meta hidden-xs">
 							            	<h4><?php the_title(); ?></h4>						            	
 							            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="<?php echo $category->slug; ?>" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
 							          	</div>
