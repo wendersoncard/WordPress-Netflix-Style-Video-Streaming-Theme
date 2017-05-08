@@ -19,11 +19,11 @@
 			</div><!--/.container-->
 			<div class="container-fluid">
 				<div class="row">
-				    <div class="col-md-4">
+				    <div class="col-md-4 programs-synopis">
 				    	<img src="<?php echo esc_url($image[0]); ?>" class="img-responsive" />
 				    	<p><?php the_content(); ?></p>
 				    	<ul>
-							<?php do_action('synopis_meta'); ?>
+							<?php do_action('synopis_tv_meta'); ?>
 						</ul>
 				    </div>
 				    <div class="col-md-8">
@@ -36,7 +36,7 @@
 							$description = !isset($value['descriptions']) ? "No Description" : esc_html($value['descriptions']);  
 							?>
 							<div class="media episodes">
-							  <a class="media-left media-top" data-id="<?php echo $key; ?>">
+							  <a class="media-left media-top <?php echo ($key === 0) ? "selected" : ""; ?>" data-id="<?php echo $key; ?>">
 							    <img src="<?php echo $thumbnail; ?>" class="media-object" style="width:130px">
 							  </a>
 							  <div class="media-body">
