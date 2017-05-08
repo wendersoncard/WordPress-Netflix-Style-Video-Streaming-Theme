@@ -232,7 +232,7 @@
 					  	<?php
 							$args = array(
 								    'posts_per_page' => (int)get_theme_mod( 'streamium_global_options_homepage_desktop' ),
-								    'post_type' => 'programs'
+								    'post_type' => 'tv'
 								);
 								$loop = new WP_Query( $args ); 
 								if($loop->have_posts()):

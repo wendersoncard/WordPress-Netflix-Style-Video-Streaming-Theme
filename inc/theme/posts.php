@@ -117,6 +117,9 @@ function streamium_get_dynamic_content() {
 				
 				// Cats
 				$categories = get_the_category($postId);
+				if($post_object->post_type === 'tv'){
+					$categories = get_terms( 'programs', array('hide_empty' => false) );
+				}
 				$genres = 'Genres: ';
 				if ($categories) {
 					$numItems = count($categories);
@@ -130,6 +133,14 @@ function streamium_get_dynamic_content() {
 
 				  	}
 				  	$buildMeta .= '<li class="synopis-meta-spacer">' . $genres . '</li>';
+				}
+
+				// If its a tv list episodes
+				$episodes = get_post_meta($postId, 'repeatable_fields' , true);
+				if(!empty($episodes)) {
+
+					$buildMeta .= '<li class="synopis-meta-spacer">Epsodes: <a>' . count($episodes) . '</a></li>';
+
 				}
 
 				// Release date
