@@ -144,53 +144,60 @@
 						$nonce = wp_create_nonce( 'streamium_likes_nonce' ); 
 						?>
 						<div class="col-md-5ths tile" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>">
-							<?php if($post->premium) : ?>
-								<div class="tile_payment_details">
-									<div class="tile_payment_details_inner">
-										<h2>Available on <?php echo str_replace(array("_"), " ", $post->plans[0]); ?></h2>
+
+							<div class="tile_inner" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
+
+								<?php if($post->premium) : ?>
+									<div class="tile_payment_details">
+										<div class="tile_payment_details_inner">
+											<h2>Available on <?php echo str_replace(array("_"), " ", $post->plans[0]); ?></h2>
+										</div>
+									</div> 
+								<?php endif; ?>
+								<?php if (function_exists('is_protected_by_s2member')) :
+									$check = is_protected_by_s2member(get_the_ID());
+									if($check) : ?>
+									<div class="tile_payment_details">
+										<div class="tile_payment_details_inner">
+											<h2>Available on <?php 
+												$comma_separated = implode(",", $check);
+												echo "plan " . $comma_separated; 
+											?></h2>
+										</div>
 									</div>
-								</div>
-							<?php endif; ?>
-							<?php if (function_exists('is_protected_by_s2member')) :
-								$check = is_protected_by_s2member(get_the_ID());
-								if($check) : ?>
-								<div class="tile_payment_details">
-									<div class="tile_payment_details_inner">
-										<h2>Available on <?php 
-											$comma_separated = implode(",", $check);
-											echo "plan " . $comma_separated; 
-										?></h2>
-									</div>
-								</div>
-							<?php endif; endif; ?>
-					        <div class="tile_media">
-					        	<img class="tile_img" src="<?php echo $tileImage; ?>" alt=""  />
-					        </div>
-					        <a class="play-icon-wrap hidden-xs" href="<?php the_permalink(); ?>">
-								<div class="play-icon-wrap-rel">
-									<div class="play-icon-wrap-rel-ring"></div>
-									<span class="play-icon-wrap-rel-play">
-										<i class="fa fa-play fa-1x" aria-hidden="true"></i>
-						        	</span>
-					        	</div>
-				        	</a>
-					        <div class="tile_details">
-					          	<div class="tile_meta">
-					            	<h4><?php the_title(); ?></h4>						            	
-					            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
-					          	</div>
-					        </div>
-					        <?php if(is_user_logged_in() && get_theme_mod( 'streamium_enable_premium' )):
+								<?php endif; endif; ?>
+
+								<div class="content">
+							      <div class="overlay" style="background-image: url(<?php echo esc_url($imageExpanded[0]); ?>);">
+							        <div class="overlay-gradient"></div>
+							        <a class="play-icon-wrap hidden-xs" href="<?php the_permalink(); ?>">
+										<div class="play-icon-wrap-rel">
+											<div class="play-icon-wrap-rel-ring"></div>
+											<span class="play-icon-wrap-rel-play">
+												<i class="fa fa-play fa-1x" aria-hidden="true"></i>
+								        	</span>
+							        	</div>
+						        	</a>
+						          	<div class="overlay-meta hidden-xs">
+						            	<h4><?php the_title(); ?></h4>						            	
+						            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
+						          	</div>
+							      </div>
+							    </div>
+
+							</div>
+
+							<?php if(is_user_logged_in() && get_theme_mod( 'streamium_enable_premium' )):
 						    		$userId = get_current_user_id();
 						    		$percentageWatched = get_post_meta( get_the_ID(), 'user_' . $userId, true );
 						    ?>
 							    <div class="progress tile_progress">
 								  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $percentageWatched; ?>"
 								  aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $percentageWatched; ?>%">
-								    <span class="sr-only"><?php echo $percentageWatched; ?>% Complete</span>
 								  </div>
 								</div>
 							<?php endif; ?>
+
 						</div>
 						<?php
 							$count++;
@@ -250,6 +257,5 @@
 		</section><!--/.videos-->
 
 		<div class="main-spacer"></div>
-}
 		
 <?php get_footer(); ?>
