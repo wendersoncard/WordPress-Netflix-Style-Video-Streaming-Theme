@@ -216,7 +216,7 @@
 			</section><!--/.videos-->
 		<?php endif; ?>
 
-		<?php if ( get_theme_mod( 'streamium_tv_section_checkbox_enable_tv' ) ) : ?>
+		<?php if ( get_theme_mod( 'streamium_tv_section_checkbox_enable' ) ) : ?>
 			<section class="videos">
 				<div class="container-fluid">
 					<div class="row">
