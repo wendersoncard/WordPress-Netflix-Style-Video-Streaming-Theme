@@ -118,7 +118,7 @@
 						$imageExpanded   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile-expanded' );
 						$nonce = wp_create_nonce( 'streamium_likes_nonce' ); 
 						?>
-						<div class="col-md-5ths tile" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>">
+						<div class="col-xs-6 col-md-5ths tile" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>">
 							
 							<div class="tile_inner" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
 
@@ -155,7 +155,7 @@
 						        	</a>
 						          	<div class="overlay-meta">
 						            	<h4><?php the_title(); ?></h4>						            	
-						            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>" class="tile_meta_more_info hidden-xs"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+						            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
 						          	</div>
 							      </div>
 							    </div>
@@ -176,7 +176,7 @@
 						</div>
 						<?php
 							$count++;
-  							if ($count % (isMobile() ? 1 : 5) == 0 || $count == $total_count) { 
+  							if ($count % (isMobile() ? 2 : 5) == 0 || $count == $total_count) { 
   						?>
   						</div>
   						</div>
@@ -203,7 +203,7 @@
 									        	</span>
 								        	</div>
 							        	</a>
-							        	<a href="#" class="synopis-video-trailer streamium-btns">Watch Trailer</a>
+							        	<a href="#" class="synopis-video-trailer streamium-btns hidden-xs">Watch Trailer</a>
 							        	<a href="#" class="s3bubble-details-inner-close"><i class="fa fa-times" aria-hidden="true"></i></a>
 									</div><!--/.col-sm-12-->
 								</div><!--/.row-->

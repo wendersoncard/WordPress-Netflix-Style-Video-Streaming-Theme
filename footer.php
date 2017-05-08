@@ -114,91 +114,373 @@
 					</ul>				
 				</li>
 
-				<li class="has-children">
-					<a href="<?php echo esc_url( home_url('/') ); ?>"><?php _e( (get_theme_mod( 'streamium_tv_text' )) ? get_theme_mod( 'streamium_tv_text' ) : 'TV Programs', 'streamium' ); ?></a>
-					<ul class="cd-secondary-nav is-hidden">
-						<li class="go-back">
-							<a href="#0"><?php _e( 'Menu', 'streamium' ); ?></a>
-						</li>
-						<li class="see-all">
-							<a href="<?php echo esc_url( home_url('/tv') ); ?>"><?php _e( 'All TV', 'streamium' ); ?></a>
-						</li>
+				<?php 
 
-						<?php 
+				if ( get_theme_mod( 'streamium_tv_section_checkbox_enable' ) ) : ?>
 
-						$categories = get_terms( 'programs', array('hide_empty' => false) );
+					<li class="has-children">
+						<a href="<?php echo esc_url( home_url('/') ); ?>"><?php _e( (get_theme_mod( 'streamium_tv_section_input_menu_text' )) ? get_theme_mod( 'streamium_tv_section_input_menu_text' ) : 'TV Programs', 'streamium' ); ?></a>
+						<ul class="cd-secondary-nav is-hidden">
+							<li class="go-back">
+								<a href="#0"><?php _e( 'Menu', 'streamium' ); ?></a>
+							</li>
+							<li class="see-all">
+								<a href="<?php echo esc_url( home_url('/' . (get_theme_mod( 'streamium_tv_section_input_posttype' ) ? get_theme_mod( 'streamium_tv_section_input_posttype' ) : 'tv')) ); ?>"><?php _e( (get_theme_mod( 'streamium_tv_section_input_menu_text' )) ? 'All ' . get_theme_mod( 'streamium_tv_section_input_menu_text' ) : 'All TV Programs', 'streamium' ); ?></a>
+							</li>
 
-						if(isMobile()) : 
+							<?php 
 
-						    foreach ( $categories  as $key => $category ) {
-						        $genre = $category->name; 
-						        $children = get_terms( $category->taxonomy, array(
-						            'parent'    => $category->term_id,
-						            'hide_empty' => false
-						        ) );
-						        if($children) { ?>
-						        <li class="has-children"><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>"><?php echo $category->name; ?></a>
-									<ul class="is-hidden">
-										<li class="go-back"><a href="#0"><?php echo $category->name; ?></a></li>
-										<li class="see-all"><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>"><?php echo 'All ' . $category->name; ?></a></li>
-										<?php $ChildCats = get_categories('child_of=' . $category->cat_ID); 
-								            foreach ($ChildCats as $ChildCat) { ?>
-											<li><a href="<?php echo esc_url(get_category_link( $ChildCat->term_id )); ?>"><?php echo $ChildCat->cat_name; ?></a></li>
-								        <?php } ?>
-									</ul>
-								</li>
+							$categories = get_terms( 'programs', array('hide_empty' => false) );
 
-							<?php } else { ?>
-								<li><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>"><?php echo $category->name; ?></a></li>
-							<?php } } ?>
+							if(isMobile()) : 
 
-						<?php else: 
+							    foreach ( $categories  as $key => $category ) {
+							        $genre = $category->name; 
+							        $children = get_terms( $category->taxonomy, array(
+							            'parent'    => $category->term_id,
+							            'hide_empty' => false
+							        ) );
+							        if($children) { ?>
+							        <li class="has-children"><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>"><?php echo $category->name; ?></a>
+										<ul class="is-hidden">
+											<li class="go-back"><a href="#0"><?php echo $category->name; ?></a></li>
+											<li class="see-all"><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>"><?php echo 'All ' . $category->name; ?></a></li>
+											<?php $ChildCats = get_categories('child_of=' . $category->cat_ID); 
+									            foreach ($ChildCats as $ChildCat) { ?>
+												<li><a href="<?php echo esc_url(get_category_link( $ChildCat->term_id )); ?>"><?php echo $ChildCat->cat_name; ?></a></li>
+									        <?php } ?>
+										</ul>
+									</li>
 
-							foreach ( partition($categories, 4)  as $key => $parentCategory ) { ?>
+								<?php } else { ?>
+									<li><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>"><?php echo $category->name; ?></a></li>
+								<?php } } ?>
 
-						    	<li class="has-children">
-							    	
-									<ul class="is-hidden">
+							<?php else: 
 
-										<?php 
-									    foreach ( $parentCategory  as $key => $category ) {
-									        $genre = $category->name; 
-									        $children = get_terms( $category->taxonomy, array(
-									            'parent'    => $category->term_id,
-									            'hide_empty' => false
-									        ) );
-									    ?>	
+								foreach ( partition($categories, 4)  as $key => $parentCategory ) { ?>
 
-										<li class="go-back"><a href="#0"><?php echo $category->name; ?></a></li>
-										<?php if($children) : ?>
+							    	<li class="has-children">
+								    	
+										<ul class="is-hidden">
 
-											<li class="has-children" id="<?php echo $category->slug; ?>">
-												<a href="#0"><?php echo $category->name; ?></a>
+											<?php 
+										    foreach ( $parentCategory  as $key => $category ) {
+										        $genre = $category->name; 
+										        $children = get_terms( $category->taxonomy, array(
+										            'parent'    => $category->term_id,
+										            'hide_empty' => false
+										        ) );
+										    ?>	
 
-												<ul class="is-hidden">
-													<li class="go-back"><a href="#0">Accessories</a></li>
-													<li class="see-all"><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>">All <?php echo $category->name; ?></a></li>
-													<?php $ChildCats = get_categories('child_of=' . $category->cat_ID); 
-											            foreach ($ChildCats as $ChildCat) { ?>
-														<li><a href="<?php echo esc_url(get_category_link( $ChildCat->term_id )); ?>"><?php echo $ChildCat->cat_name; ?></a></li>
-											        <?php } ?>
-												</ul>
-											</li>
+											<li class="go-back"><a href="#0"><?php echo $category->name; ?></a></li>
+											<?php if($children) : ?>
 
-										<?php else : ?>
+												<li class="has-children" id="<?php echo $category->slug; ?>">
+													<a href="#0"><?php echo $category->name; ?></a>
 
-											<li><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>"><?php echo $category->name; ?></a></li>
+													<ul class="is-hidden">
+														<li class="go-back"><a href="#0">Accessories</a></li>
+														<li class="see-all"><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>">All <?php echo $category->name; ?></a></li>
+														<?php $ChildCats = get_categories('child_of=' . $category->cat_ID); 
+												            foreach ($ChildCats as $ChildCat) { ?>
+															<li><a href="<?php echo esc_url(get_category_link( $ChildCat->term_id )); ?>"><?php echo $ChildCat->cat_name; ?></a></li>
+												        <?php } ?>
+													</ul>
+												</li>
 
-										<?php endif; ?>
-		
+											<?php else : ?>
 
-										<?php }  ?>
-									</ul>
-								</li>
-						    <?php } ?>	
-						<?php endif; ?>
-					</ul>				
-				</li>
+												<li><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>"><?php echo $category->name; ?></a></li>
+
+											<?php endif; ?>
+			
+
+											<?php }  ?>
+										</ul>
+									</li>
+							    <?php } ?>	
+							<?php endif; ?>
+						</ul>				
+					</li>
+
+				<?php endif; ?>
+
+				<?php 
+
+				if ( get_theme_mod( 'streamium_sports_section_checkbox_enable' ) ) : ?>
+
+					<li class="has-children">
+						<a href="<?php echo esc_url( home_url('/') ); ?>"><?php _e( (get_theme_mod( 'streamium_sports_section_input_menu_text' )) ? get_theme_mod( 'streamium_sports_section_input_menu_text' ) : 'Sports', 'streamium' ); ?></a>
+						<ul class="cd-secondary-nav is-hidden">
+							<li class="go-back">
+								<a href="#0"><?php _e( 'Menu', 'streamium' ); ?></a>
+							</li>
+							<li class="see-all">
+								<a href="<?php echo esc_url( home_url('/' . (get_theme_mod( 'streamium_sports_section_input_posttype' ) ? get_theme_mod( 'streamium_sports_section_input_posttype' ) : 'sports')) ); ?>"><?php _e( (get_theme_mod( 'streamium_sports_section_input_menu_text' )) ? 'All ' . get_theme_mod( 'streamium_sports_section_input_menu_text' ) : 'All Sports', 'streamium' ); ?></a>
+							</li>
+
+							<?php 
+
+							$categories = get_terms( 'sports', array('hide_empty' => false) );
+
+							if(isMobile()) : 
+
+							    foreach ( $categories  as $key => $category ) {
+							        $genre = $category->name; 
+							        $children = get_terms( $category->taxonomy, array(
+							            'parent'    => $category->term_id,
+							            'hide_empty' => false
+							        ) );
+							        if($children) { ?>
+							        <li class="has-children"><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>"><?php echo $category->name; ?></a>
+										<ul class="is-hidden">
+											<li class="go-back"><a href="#0"><?php echo $category->name; ?></a></li>
+											<li class="see-all"><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>"><?php echo 'All ' . $category->name; ?></a></li>
+											<?php $ChildCats = get_categories('child_of=' . $category->cat_ID); 
+									            foreach ($ChildCats as $ChildCat) { ?>
+												<li><a href="<?php echo esc_url(get_category_link( $ChildCat->term_id )); ?>"><?php echo $ChildCat->cat_name; ?></a></li>
+									        <?php } ?>
+										</ul>
+									</li>
+
+								<?php } else { ?>
+									<li><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>"><?php echo $category->name; ?></a></li>
+								<?php } } ?>
+
+							<?php else: 
+
+								foreach ( partition($categories, 4)  as $key => $parentCategory ) { ?>
+
+							    	<li class="has-children">
+								    	
+										<ul class="is-hidden">
+
+											<?php 
+										    foreach ( $parentCategory  as $key => $category ) {
+										        $genre = $category->name; 
+										        $children = get_terms( $category->taxonomy, array(
+										            'parent'    => $category->term_id,
+										            'hide_empty' => false
+										        ) );
+										    ?>	
+
+											<li class="go-back"><a href="#0"><?php echo $category->name; ?></a></li>
+											<?php if($children) : ?>
+
+												<li class="has-children" id="<?php echo $category->slug; ?>">
+													<a href="#0"><?php echo $category->name; ?></a>
+
+													<ul class="is-hidden">
+														<li class="go-back"><a href="#0">Accessories</a></li>
+														<li class="see-all"><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>">All <?php echo $category->name; ?></a></li>
+														<?php $ChildCats = get_categories('child_of=' . $category->cat_ID); 
+												            foreach ($ChildCats as $ChildCat) { ?>
+															<li><a href="<?php echo esc_url(get_category_link( $ChildCat->term_id )); ?>"><?php echo $ChildCat->cat_name; ?></a></li>
+												        <?php } ?>
+													</ul>
+												</li>
+
+											<?php else : ?>
+
+												<li><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>"><?php echo $category->name; ?></a></li>
+
+											<?php endif; ?>
+			
+
+											<?php }  ?>
+										</ul>
+									</li>
+							    <?php } ?>	
+							<?php endif; ?>
+						</ul>				
+					</li>
+
+				<?php endif; ?>
+
+				<?php 
+
+				if ( get_theme_mod( 'streamium_kids_section_checkbox_enable' ) ) : ?>
+
+					<li class="has-children">
+						<a href="<?php echo esc_url( home_url('/') ); ?>"><?php _e( (get_theme_mod( 'streamium_kids_section_input_menu_text' )) ? get_theme_mod( 'streamium_kids_section_input_menu_text' ) : 'Kids', 'streamium' ); ?></a>
+						<ul class="cd-secondary-nav is-hidden">
+							<li class="go-back">
+								<a href="#0"><?php _e( 'Menu', 'streamium' ); ?></a>
+							</li>
+							<li class="see-all">
+								<a href="<?php echo esc_url( home_url('/' . (get_theme_mod( 'streamium_sports_section_input_posttype' ) ? get_theme_mod( 'streamium_sports_section_input_posttype' ) : 'sports')) ); ?>"><?php _e( (get_theme_mod( 'streamium_kids_section_input_menu_text' )) ? 'All ' . get_theme_mod( 'streamium_kids_section_input_menu_text' ) : 'All Kids', 'streamium' ); ?></a>
+							</li>
+
+							<?php 
+
+							$categories = get_terms( 'kids', array('hide_empty' => false) );
+
+							if(isMobile()) : 
+
+							    foreach ( $categories  as $key => $category ) {
+							        $genre = $category->name; 
+							        $children = get_terms( $category->taxonomy, array(
+							            'parent'    => $category->term_id,
+							            'hide_empty' => false
+							        ) );
+							        if($children) { ?>
+							        <li class="has-children"><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>"><?php echo $category->name; ?></a>
+										<ul class="is-hidden">
+											<li class="go-back"><a href="#0"><?php echo $category->name; ?></a></li>
+											<li class="see-all"><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>"><?php echo 'All ' . $category->name; ?></a></li>
+											<?php $ChildCats = get_categories('child_of=' . $category->cat_ID); 
+									            foreach ($ChildCats as $ChildCat) { ?>
+												<li><a href="<?php echo esc_url(get_category_link( $ChildCat->term_id )); ?>"><?php echo $ChildCat->cat_name; ?></a></li>
+									        <?php } ?>
+										</ul>
+									</li>
+
+								<?php } else { ?>
+									<li><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>"><?php echo $category->name; ?></a></li>
+								<?php } } ?>
+
+							<?php else: 
+
+								foreach ( partition($categories, 4)  as $key => $parentCategory ) { ?>
+
+							    	<li class="has-children">
+								    	
+										<ul class="is-hidden">
+
+											<?php 
+										    foreach ( $parentCategory  as $key => $category ) {
+										        $genre = $category->name; 
+										        $children = get_terms( $category->taxonomy, array(
+										            'parent'    => $category->term_id,
+										            'hide_empty' => false
+										        ) );
+										    ?>	
+
+											<li class="go-back"><a href="#0"><?php echo $category->name; ?></a></li>
+											<?php if($children) : ?>
+
+												<li class="has-children" id="<?php echo $category->slug; ?>">
+													<a href="#0"><?php echo $category->name; ?></a>
+
+													<ul class="is-hidden">
+														<li class="go-back"><a href="#0">Accessories</a></li>
+														<li class="see-all"><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>">All <?php echo $category->name; ?></a></li>
+														<?php $ChildCats = get_categories('child_of=' . $category->cat_ID); 
+												            foreach ($ChildCats as $ChildCat) { ?>
+															<li><a href="<?php echo esc_url(get_category_link( $ChildCat->term_id )); ?>"><?php echo $ChildCat->cat_name; ?></a></li>
+												        <?php } ?>
+													</ul>
+												</li>
+
+											<?php else : ?>
+
+												<li><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>"><?php echo $category->name; ?></a></li>
+
+											<?php endif; ?>
+			
+
+											<?php }  ?>
+										</ul>
+									</li>
+							    <?php } ?>	
+							<?php endif; ?>
+						</ul>				
+					</li>
+
+				<?php endif; ?>
+
+				<?php 
+
+				if ( get_theme_mod( 'streamium_live_section_checkbox_enable' ) ) : ?>
+
+					<li class="has-children">
+						<a href="<?php echo esc_url( home_url('/') ); ?>"><?php _e( (get_theme_mod( 'streamium_live_section_input_menu_text' )) ? get_theme_mod( 'streamium_live_section_input_menu_text' ) : 'Live', 'streamium' ); ?></a>
+						<ul class="cd-secondary-nav is-hidden">
+							<li class="go-back">
+								<a href="#0"><?php _e( 'Menu', 'streamium' ); ?></a>
+							</li>
+							<li class="see-all">
+								<a href="<?php echo esc_url( home_url('/' . (get_theme_mod( 'streamium_sports_section_input_posttype' ) ? get_theme_mod( 'streamium_sports_section_input_posttype' ) : 'sports')) ); ?>"><?php _e( (get_theme_mod( 'streamium_live_section_input_menu_text' )) ? 'All ' . get_theme_mod( 'streamium_live_section_input_menu_text' ) : 'All Live', 'streamium' ); ?></a>
+							</li>
+
+							<?php 
+
+							$categories = get_terms( 'sports', array('hide_empty' => false) );
+
+							if(isMobile()) : 
+
+							    foreach ( $categories  as $key => $category ) {
+							        $genre = $category->name; 
+							        $children = get_terms( $category->taxonomy, array(
+							            'parent'    => $category->term_id,
+							            'hide_empty' => false
+							        ) );
+							        if($children) { ?>
+							        <li class="has-children"><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>"><?php echo $category->name; ?></a>
+										<ul class="is-hidden">
+											<li class="go-back"><a href="#0"><?php echo $category->name; ?></a></li>
+											<li class="see-all"><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>"><?php echo 'All ' . $category->name; ?></a></li>
+											<?php $ChildCats = get_categories('child_of=' . $category->cat_ID); 
+									            foreach ($ChildCats as $ChildCat) { ?>
+												<li><a href="<?php echo esc_url(get_category_link( $ChildCat->term_id )); ?>"><?php echo $ChildCat->cat_name; ?></a></li>
+									        <?php } ?>
+										</ul>
+									</li>
+
+								<?php } else { ?>
+									<li><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>"><?php echo $category->name; ?></a></li>
+								<?php } } ?>
+
+							<?php else: 
+
+								foreach ( partition($categories, 4)  as $key => $parentCategory ) { ?>
+
+							    	<li class="has-children">
+								    	
+										<ul class="is-hidden">
+
+											<?php 
+										    foreach ( $parentCategory  as $key => $category ) {
+										        $genre = $category->name; 
+										        $children = get_terms( $category->taxonomy, array(
+										            'parent'    => $category->term_id,
+										            'hide_empty' => false
+										        ) );
+										    ?>	
+
+											<li class="go-back"><a href="#0"><?php echo $category->name; ?></a></li>
+											<?php if($children) : ?>
+
+												<li class="has-children" id="<?php echo $category->slug; ?>">
+													<a href="#0"><?php echo $category->name; ?></a>
+
+													<ul class="is-hidden">
+														<li class="go-back"><a href="#0">Accessories</a></li>
+														<li class="see-all"><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>">All <?php echo $category->name; ?></a></li>
+														<?php $ChildCats = get_categories('child_of=' . $category->cat_ID); 
+												            foreach ($ChildCats as $ChildCat) { ?>
+															<li><a href="<?php echo esc_url(get_category_link( $ChildCat->term_id )); ?>"><?php echo $ChildCat->cat_name; ?></a></li>
+												        <?php } ?>
+													</ul>
+												</li>
+
+											<?php else : ?>
+
+												<li><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>"><?php echo $category->name; ?></a></li>
+
+											<?php endif; ?>
+			
+
+											<?php }  ?>
+										</ul>
+									</li>
+							    <?php } ?>	
+							<?php endif; ?>
+						</ul>				
+					</li>
+
+				<?php endif; ?>
 
 			</ul> <!-- primary-nav -->
 		</nav> <!-- cd-nav -->

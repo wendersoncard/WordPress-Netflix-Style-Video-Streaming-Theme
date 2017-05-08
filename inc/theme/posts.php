@@ -28,14 +28,26 @@ function streamium_single_video_scripts() {
 			    $s3videoid = pathinfo($s3videoid, PATHINFO_BASENAME);
 			}
 
+			// Setup a array for codes
 			$codes = [];
+
+			// Check for resume
+			$resume = !empty($percentageWatched) ? $percentageWatched : 0;
+
+			// Check for a video trailer
+			if(isset($_GET['trailer']) && isset($streamiumVideoTrailer)){
+				$codes[] = $streamiumVideoTrailer;
+				$resume = 0;
+			}
+
+			// Check if this post has programs
 			$episodes = get_post_meta(get_the_ID(), 'repeatable_fields' , true);
 			if(!empty($episodes)) {
 				foreach ($episodes as $key => $value) : 
 					$codes[] = $value['codes'];
 				endforeach;
 			}else{
-				$codes = [$s3videoid];
+				$codes[] = $s3videoid;
 			}
 
     		// Setup premium
@@ -43,9 +55,8 @@ function streamium_single_video_scripts() {
 	            array( 
 	                'ajax_url' => admin_url( 'admin-ajax.php'),
 	                'post_id' => $post->ID,
-	                'percentage' => !empty($percentageWatched) ? $percentageWatched : 0,
-	                'codes' => isset($_GET['trailer']) ? $streamiumVideoTrailer : $codes,
-	                'trailer' => isset($streamiumVideoTrailer) ? $streamiumVideoTrailer : "",
+	                'percentage' => $resume,
+	                'codes' => $codes,
 	                'nonce' => $nonce
 	            )
 	        ); 

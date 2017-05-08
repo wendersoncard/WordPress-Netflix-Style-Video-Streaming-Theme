@@ -3,7 +3,11 @@
 	<main class="cd-main-content">
 
 		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); 
-			$image   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-home-slider' ); 
+			
+			$mainImage = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-home-slider' );
+			$mainImage = isset( $mainImage[0] ) ? $mainImage[0] : "http://placehold.it/350x150";
+
+			$streamiumVideoTrailer = get_post_meta( $post->ID, 'streamium_video_trailer_meta_box_text', true ); 
 		?>
 
 		<div id="s3bubble-<?php echo get_the_ID(); ?>" class="program-default-height"></div>
@@ -20,7 +24,7 @@
 			<div class="container-fluid">
 				<div class="row">
 				    <div class="col-md-4 programs-synopis">
-				    	<img src="<?php echo esc_url($image[0]); ?>" class="img-responsive" />
+				    	<img src="<?php echo esc_url($mainImage); ?>" class="img-responsive" />
 				    	<p><?php the_content(); ?></p>
 				    	<ul>
 							<?php do_action('synopis_tv_meta'); ?>
@@ -29,14 +33,21 @@
 				    <div class="col-md-8">
 					<?php
 						$episodes = get_post_meta(get_the_ID(), 'repeatable_fields' , true);
-						if(!empty($episodes)) : 
+						if(!empty($episodes)) :
+
+							$epInd = 0;
+							if(isset($_GET['trailer']) && isset($streamiumVideoTrailer)){
+								$epInd = 1;
+							} 
 							foreach ($episodes as $key => $value) :
+
 							$thumbnail = !isset($value['thumbnails']) ? "http://placehold.it/260x146" : esc_url($value['thumbnails']);
 							$title = !isset($value['titles']) ? "No Title" : esc_html($value['titles']); 
 							$description = !isset($value['descriptions']) ? "No Description" : esc_html($value['descriptions']);  
-							?>
+							
+					?>
 							<div class="media episodes">
-							  <a class="media-left media-top <?php echo ($key === 0) ? "selected" : ""; ?>" data-id="<?php echo $key; ?>">
+							  <a class="media-left media-top <?php echo ($epInd === 0) ? "selected" : ""; ?>" data-id="<?php echo $epInd; ?>">
 							    <img src="<?php echo $thumbnail; ?>" class="media-object" style="width:130px">
 							  </a>
 							  <div class="media-body">
@@ -45,6 +56,7 @@
 							  </div>
 							</div>
 					<?php 
+							$epInd++;
 							endforeach; 
 						endif;
 					?>

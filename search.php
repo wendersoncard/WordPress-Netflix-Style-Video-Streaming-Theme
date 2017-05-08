@@ -177,7 +177,7 @@
 					        <div class="tile_details">
 					          	<div class="tile_meta">
 					            	<h4><?php the_title(); ?></h4>						            	
-					            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>" class="tile_meta_more_info hidden-xs"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+					            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
 					          	</div>
 					        </div>
 					        <?php if(is_user_logged_in() && get_theme_mod( 'streamium_enable_premium' )):

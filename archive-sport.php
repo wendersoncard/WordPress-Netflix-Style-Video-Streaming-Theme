@@ -8,8 +8,8 @@
 					$args = array(
 						'post_status' => 'publish',
 						'posts_per_page'      => -1,
-						'post_type' => 'tv',
-						'meta_key' => 'streamium_tv_featured_checkbox_value',
+						'post_type' => 'sport',
+						'meta_key' => 'streamium_sport_featured_checkbox_value',
 						'meta_value' => '1'
 					);
 					  
@@ -85,15 +85,15 @@
 
 		<?php 
 
-		  	$categories = get_terms( 'programs', array('hide_empty' => false) );
+		  	$categories = get_terms( 'sports', array('hide_empty' => false) );
 		  	foreach ($categories as $category) : 
 
 				$args = array(
 				    'posts_per_page' => (int)get_theme_mod( 'streamium_global_options_homepage_desktop' ),
-				    'post_type' => 'tv',
+				    'post_type' => 'sport',
 				    'tax_query' => array(
 				        array(
-				            'taxonomy'  => 'programs',
+				            'taxonomy'  => 'sports',
 				            'field'     => 'term_id',
 				            'terms'     => $category->term_id,
 				        )

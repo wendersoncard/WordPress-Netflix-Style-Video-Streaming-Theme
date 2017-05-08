@@ -6,56 +6,29 @@
  * @return null
  * @author  @sameast
  */
-function streamium_tv_custom_post_type() {
+function streamium_custom_post_types() {
 
-	// Add new "Program Cats" taxonomy to Posts
-  register_taxonomy('programs', 'post', array(
-    // Hierarchical taxonomy (like categories)
-    'hierarchical' => true,
-    // This array of options controls the labels displayed in the WordPress Admin UI
-    'labels' => array(
-      'name' => _x( 'Program Cats', 'taxonomy general name' ),
-      'singular_name' => _x( 'Location', 'taxonomy singular name' ),
-      'search_items' =>  __( 'Search Program Cats' ),
-      'all_items' => __( 'All Program Cats' ),
-      'parent_item' => __( 'Parent Location' ),
-      'parent_item_colon' => __( 'Parent Location:' ),
-      'edit_item' => __( 'Edit Location' ),
-      'update_item' => __( 'Update Location' ),
-      'add_new_item' => __( 'Add New Location' ),
-      'new_item_name' => __( 'New Location Name' ),
-      'menu_name' => __( 'Program Cats' ),
+	$tax = (get_theme_mod( 'streamium_tv_section_input_taxonomy' ) ? get_theme_mod( 'streamium_tv_section_input_taxonomy' ) : 'programs');
+	$type = (get_theme_mod( 'streamium_tv_section_input_posttype' ) ? get_theme_mod( 'streamium_tv_section_input_posttype' ) : 'tv');
+	$menuText = (get_theme_mod( 'streamium_tv_section_input_menu_text' ) ? get_theme_mod( 'streamium_tv_section_input_menu_text' ) : 'TV Programs');
+
+	// TV PROGRAMS
+  	register_taxonomy('programs', 'post', array(
+    	'hierarchical' => true,
+    	'labels' => array(
+      	'name' => __( $menuText, 'streamium' ),
     ),
-    // Control the slugs used for this taxonomy
-    'rewrite' => array(
-      'slug' => 'programs', // This controls the base slug that will display before each term
-      'with_front' => false, // Don't display the category base before "/locations/"
-      'hierarchical' => true // This will allow URL's like "/locations/boston/cambridge/"
-    ),
-  ));
-
-  //flush_rewrite_rules();
-
-	$labels = array(
-		'name'                => _x( 'TV Programs', 'Post Type General Name', 'streamium' ),
-		'singular_name'       => _x( 'Episode', 'Post Type Singular Name', 'streamium' ),
-		'menu_name'           => __( 'TV Programs', 'streamium' ),
-		'parent_item_colon'   => __( 'Parent Episode', 'streamium' ),
-		'all_items'           => __( 'All Programs', 'streamium' ),
-		'view_item'           => __( 'View Episode', 'streamium' ),
-		'add_new_item'        => __( 'Add New Episode', 'streamium' ),
-		'add_new'             => __( 'Add New', 'streamium' ),
-		'edit_item'           => __( 'Edit Episode', 'streamium' ),
-		'update_item'         => __( 'Update Episode', 'streamium' ),
-		'search_items'        => __( 'Search Episode', 'streamium' ),
-		'not_found'           => __( 'Not Found', 'streamium' ),
-		'not_found_in_trash'  => __( 'Not found in Trash', 'streamium' ),
-	);
+    	'rewrite' => array(
+      		'slug' => $tax, 
+      		'with_front' => false, 
+      		'hierarchical' => true 
+    	),
+  	));
 	
 	$args = array(
-		'label'               => __( 'tv', 'streamium' ),
-		'description'         => __( 'TV Programs', 'streamium' ),
-		'labels'              => $labels,
+		'labels'              => array(
+			'name'                => __( ucfirst($type), 'streamium' ),
+		),
 		'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
 		'hierarchical'        => false,
 		'public'              => true,
@@ -70,16 +43,141 @@ function streamium_tv_custom_post_type() {
 		'publicly_queryable'  => true,
 		'capability_type'     => 'post',
 		'taxonomies'          => array(  'post_tag', 'programs' ),
-		//'rewrite' => array( 'slug' => 'sam', 'with_front' => FALSE ),
-		//'has_category' =>true,
+		'rewrite' => array('slug' => $type,'with_front' => false),
 	);
 	
 	// Registering your Custom Post Type
 	register_post_type( 'tv', $args );
 
+	/* SPORTS */
+	$taxSport = (get_theme_mod( 'streamium_sports_section_input_taxonomy' ) ? get_theme_mod( 'streamium_sports_section_input_taxonomy' ) : 'sports');
+	$typeSport = (get_theme_mod( 'streamium_sports_section_input_posttype' ) ? get_theme_mod( 'streamium_sports_section_input_posttype' ) : 'sport');
+	$menuTextSport = (get_theme_mod( 'streamium_sports_section_input_menu_text' ) ? get_theme_mod( 'streamium_sports_section_input_menu_text' ) : 'Sports');
+
+  	register_taxonomy('sports', 'post', array(
+    	'hierarchical' => true,
+    	'labels' => array(
+      	'name' => __( $menuTextSport, 'streamium' ),
+    ),
+    	'rewrite' => array(
+      		'slug' => $taxSport, 
+      		'with_front' => false, 
+      		'hierarchical' => true 
+    	),
+  	));
+
+	$args = array(
+		'labels'              => array(
+			'name'                => __( ucfirst($typeSport), 'streamium' ),
+		),
+		'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
+		'hierarchical'        => false,
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'show_in_nav_menus'   => true,
+		'show_in_admin_bar'   => true,
+		'menu_position'       => 5,
+		'can_export'          => true,
+		'has_archive'         => true,
+		'exclude_from_search' => false,
+		'publicly_queryable'  => true,
+		'capability_type'     => 'post',
+		'taxonomies'          => array(  'post_tag', 'sports' ),
+		'rewrite' => array('slug' => $typeSport,'with_front' => false),
+	);
+	
+	// Registering your Custom Post Type
+	register_post_type( 'sport', $args );
+
+	/* KIDS */
+	$taxKids = (get_theme_mod( 'streamium_kids_section_input_taxonomy' ) ? get_theme_mod( 'streamium_kids_section_input_taxonomy' ) : 'kids');
+	$typeKid = (get_theme_mod( 'streamium_kids_section_input_posttype' ) ? get_theme_mod( 'streamium_kids_section_input_posttype' ) : 'kid');
+	$menuTextKids = (get_theme_mod( 'streamium_kids_section_input_menu_text' ) ? get_theme_mod( 'streamium_kids_section_input_menu_text' ) : 'Kids');
+
+  	register_taxonomy('kids', 'post', array(
+    	'hierarchical' => true,
+    	'labels' => array(
+      	'name' => __( $menuTextKids, 'streamium' ),
+    ),
+    	'rewrite' => array(
+      		'slug' => $taxKids, 
+      		'with_front' => false, 
+      		'hierarchical' => true 
+    	),
+  	));
+
+	$labels = array(
+		'name'                => __( ucfirst($taxKids), 'streamium' ),
+	);
+	
+	$args = array(
+		'labels'              => $labels,
+		'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
+		'hierarchical'        => false,
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'show_in_nav_menus'   => true,
+		'show_in_admin_bar'   => true,
+		'menu_position'       => 5,
+		'can_export'          => true,
+		'has_archive'         => true,
+		'exclude_from_search' => false,
+		'publicly_queryable'  => true,
+		'capability_type'     => 'post',
+		'taxonomies'          => array(  'post_tag', 'kids' ),
+		'rewrite' => array('slug' => $typeKid,'with_front' => false),
+	);
+	
+	// Registering your Custom Post Type
+	register_post_type( 'kid', $args );
+
+
+	/* LIVE */
+	$taxStreams = (get_theme_mod( 'streamium_live_section_input_taxonomy' ) ? get_theme_mod( 'streamium_live_section_input_taxonomy' ) : 'streams');
+	$typeStream = (get_theme_mod( 'streamium_live_section_input_posttype' ) ? get_theme_mod( 'streamium_live_section_input_posttype' ) : 'stream');
+	$menuTextStreams = (get_theme_mod( 'streamium_live_section_input_menu_text' ) ? get_theme_mod( 'streamium_live_section_input_menu_text' ) : 'Streams');
+
+  	register_taxonomy('streams', 'post', array(
+    	'hierarchical' => true,
+    	'labels' => array(
+      	'name' => __( $menuTextStreams, 'streamium' ),
+    ),
+    	'rewrite' => array(
+      		'slug' => $taxStreams, 
+      		'with_front' => false, 
+      		'hierarchical' => true 
+    	),
+  	));
+
+	$args = array(
+		'labels'              => array(
+			'name'                => __( ucfirst($taxStreams), 'streamium' ),
+		),
+		'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
+		'hierarchical'        => false,
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'show_in_nav_menus'   => true,
+		'show_in_admin_bar'   => true,
+		'menu_position'       => 5,
+		'can_export'          => true,
+		'has_archive'         => true,
+		'exclude_from_search' => false,
+		'publicly_queryable'  => true,
+		'capability_type'     => 'post',
+		'taxonomies'          => array(  'post_tag', 'kids' ),
+		'rewrite' => array('slug' => $typeStream,'with_front' => false),
+	);
+	
+	// Registering your Custom Post Type
+	register_post_type( 'stream', $args );
+
 }
 
-add_action( 'init', 'streamium_tv_custom_post_type', 0 );
+add_action( 'init', 'streamium_custom_post_types', 0 );
 
 /**
  * Setup custom repeater needed for post type for TV Programs
@@ -88,7 +186,11 @@ add_action( 'init', 'streamium_tv_custom_post_type', 0 );
  * @author  @sameast
  */
 function streamium_add_meta_boxes() {
-	add_meta_box( 'repeatable-fields', 'Program Videos', 'streamium_repeatable_meta_box_display', 'tv', 'normal', 'high');
+
+	add_meta_box( 'streamium-repeatable-fields', 'Multiple Videos', 'streamium_repeatable_meta_box_display', array('tv','sport','kids','live'), 'normal', 'high');
+	add_meta_box( 'streamium-meta-box-main-slider', 'Featured Video', 'streamium_meta_box_main_slider', array('tv','sport','kids','live'), 'side', 'high' );
+	add_meta_box( 'streamium-meta-box-trailer', 'Video Trailer', 'streamium_meta_box_trailer', array('tv','sport','kids','live'), 'side', 'high' );
+ 
 }
 add_action('admin_init', 'streamium_add_meta_boxes', 1);
 
@@ -100,51 +202,14 @@ add_action('admin_init', 'streamium_add_meta_boxes', 1);
  * @author  @sameast
  */
 function streamium_repeatable_meta_box_display() {
+
 	global $post;
 
 	$repeatable_fields = get_post_meta($post->ID, 'repeatable_fields', true);
 
 	wp_nonce_field( 'streamium_repeatable_meta_box_nonce', 'streamium_repeatable_meta_box_nonce' );
-	?>
-	<script type="text/javascript">
-	jQuery(document).ready(function( $ ){
-		$( '#add-row' ).live('click', function() {
 
-			$('#repeatable-fieldset-one > tbody:last-child').append('<tr><td>' +
-				'<input class="streamium_upl_button button" type="button" value="Upload Image" />' +
-				'<input type="hidden" class="widefat" name="thumbnails[]" />' +
-				'<img src="http://placehold.it/260x146" style="width: 130px;" />' + 
-				'</td>' +
-				'<td><select class="streamium-theme-episode-select chosen-select" id="updateit" tabindex="1" name="codes[]"></select></td>' +
-				'<td><input type="text" class="widefat" name="titles[]" /></td>' +
-				'<td><input type="text" class="widefat" name="descriptions[]" value="" /></td>' +
-				'<td><a class="button remove-row" href="#">Remove</a></td>' +
-			'</tr>');
-			return false;
-
-		});
-  	
-		$( '.remove-row' ).live('click', function() {
-			$(this).parents('tr').remove();
-			return false;
-		});
-		$('.streamium_upl_button').live('click', function() {
-			var that = $(this);
-			//use here, because you may have multiple buttons, so `send_to_editor` needs fresh
-			window.send_to_editor = function(html) {
-				var imgurl = $(html).attr('src')
-				that.next('input').val(imgurl);
-				that.next().next('img').attr("src",imgurl);
-				tb_remove();
-			}
-		
-			//formfield = $('#streamium_image_URL').attr('name');
-			tb_show( '', 'media-upload.php?type=image&amp;TB_iframe=true' );
-			return false;
-		});
-	});
-	</script>
-  
+	?>  
 	<table id="repeatable-fieldset-one" width="100%">
 	<thead>
 		<tr>
@@ -168,7 +233,7 @@ function streamium_repeatable_meta_box_display() {
 			<input type="hidden" class="widefat" name="thumbnails[]" value="<?php if($field['thumbnails'] != '') echo esc_attr( $field['thumbnails'] ); ?>" />
 			<img src="<?php if($field['thumbnails'] != '') echo esc_attr( $field['thumbnails'] ); ?>" style="width: 130px;" /> 
 		</td>
-		<td valign="top">
+		<td valign="top" width="60">
 			<select class="streamium-theme-episode-select chosen-select" tabindex="1" name="codes[]">
 				<option value="<?php echo $field['codes']; ?>">Select Video <?php echo $field['codes']; ?></option>
 			</select>
@@ -189,18 +254,20 @@ function streamium_repeatable_meta_box_display() {
 	// show a blank one
 	?>
 	<tr>
-		<td>
+		<td valign="top">
 			<input class="streamium_upl_button button" type="button" value="Upload Image" />
 			<input type="hidden" class="widefat" name="thumbnails[]" />
 			<img src="http://placehold.it/260x146" style="width: 130px;" />  
 		</td>
-	    <td>
+	    <td valign="top" width="60">
 			<select class="streamium-theme-episode-select chosen-select" tabindex="1" name="codes[]"></select>
 		</td>
 
-		<td><input type="text" class="widefat" name="titles[]" /></td>
+		<td valign="top"><input type="text" class="widefat" name="titles[]" /></td>
 	
-		<td><input type="text" class="widefat" name="descriptions[]" value="" /></td>
+		<td valign="top">
+			<textarea rows="4" cols="50" class="widefat" name="descriptions[]" value=""></textarea>
+		</td>
 	
 		<td><a class="button remove-row" href="#">Remove</a></td>
 	</tr>
@@ -214,12 +281,35 @@ function streamium_repeatable_meta_box_display() {
 }
 
 /**
+ * Setup custom repeater meta
+ *
+ * @return null
+ * @author  @sameast
+ */
+function streamium_meta_box_main_slider() {
+	
+	global $post;
+
+	$meta = get_post_meta( $post->ID );
+	$streamium_tv_featured_checkbox_value = ( isset( $meta['streamium_tv_featured_checkbox_value'][0] ) &&  '1' === $meta['streamium_tv_featured_checkbox_value'][0] ) ? 1 : 0;
+	wp_nonce_field( 'streamium_repeatable_meta_box_nonce', 'streamium_repeatable_meta_box_nonce' );
+	
+	?>
+		<p>
+			<label><input type="checkbox" name="streamium_tv_featured_checkbox_value" value="1" <?php checked( $streamium_tv_featured_checkbox_value, 1 ); ?> /><?php esc_attr_e( 'Show in the main feature slider', 'streamium' ); ?></label>
+		</p>
+	<?php
+
+}
+
+/**
  * Setup custom repeater meta box save
  *
  * @return null
  * @author  @sameast
  */
 function streamium_repeatable_meta_box_save($post_id) {
+
 	if ( ! isset( $_POST['streamium_repeatable_meta_box_nonce'] ) ||
 	! wp_verify_nonce( $_POST['streamium_repeatable_meta_box_nonce'], 'streamium_repeatable_meta_box_nonce' ) )
 		return;
@@ -257,6 +347,9 @@ function streamium_repeatable_meta_box_save($post_id) {
 	elseif ( empty($new) && $old ) {
 		delete_post_meta( $post_id, 'repeatable_fields', $old );
 	}
+
+	$streamium_tv_featured_checkbox_value = ( isset( $_POST['streamium_tv_featured_checkbox_value'] ) && '1' === $_POST['streamium_tv_featured_checkbox_value'] ) ? 1 : 0; 
+	update_post_meta( $post_id, 'streamium_tv_featured_checkbox_value', esc_attr( $streamium_tv_featured_checkbox_value ) );
 
 }
 add_action('save_post', 'streamium_repeatable_meta_box_save');

@@ -6,7 +6,7 @@
  * @return null
  * @author  @sameast
  */
-class Streamium_Customize {
+class Streamium_Customize { 
 
    /**
     * This hooks into 'customize_register' (available as of WP 3.4) and allows
@@ -228,30 +228,6 @@ class Streamium_Customize {
           )
       );
 
-      // PREMIUM SECTION
-      /*
-      $wp_customize->add_section('streamium_premium_section' , array(
-          'title'     => __('Streamium Premium Options', 'streamium'),
-          'priority'  => 1020
-      ));
-
-      $wp_customize->add_setting('streamium_enable_premium', array(
-          'default'    => false
-      ));
-
-      $wp_customize->add_control(
-          new WP_Customize_Control(
-              $wp_customize,
-              'streamium_enable_premium',
-              array(
-                  'label'     => __('Enable Premium', 'streamium'),
-                  'section'   => 'streamium_premium_section',
-                  'settings'  => 'streamium_enable_premium',
-                  'type'      => 'checkbox',
-              )
-          )
-      );*/
-
       // AWS MEDIA SECTION
       $wp_customize->add_section('streamium_aws_media_uploader_section' , array(
           'title'     => __('AWS Media Uploader', 'streamium'),
@@ -292,6 +268,283 @@ class Streamium_Customize {
           'settings' => 'streamium_aws_media_uploader_notification_email',
         )) 
       );
+
+      // TV SECTION
+      $wp_customize->add_section('streamium_tv_section' , array(
+          'title'     => __('TV/Series Options', 'streamium'),
+          'description' => 'For infomation on how to setup the uploader with S3Bubble please watch this video<br><a href="https://www.youtube.com/watch?v=FUqN-b1MSrc" target="_blank">AWS direct uploader setup</a>',
+          'priority'  => 1019
+      ));
+
+      $wp_customize->add_setting('streamium_tv_section_input_menu_text', array(
+          'default'    => 'TV Programs'
+      ));
+
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_tv_section_input_menu_text',
+        array(
+          'label' => 'Change Top Menu Text',
+          'section' => 'streamium_tv_section',
+          'settings' => 'streamium_tv_section_input_menu_text'
+        )) 
+      );
+
+      $wp_customize->add_setting('streamium_tv_section_input_taxonomy', array(
+          'default'    => 'programs',
+          'sanitize_callback' => 'streamium_sanitize_tv_text',
+      ));
+
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_tv_section_input_taxonomy',
+        array(
+          'label' => 'Change Taxonomy',
+          'section' => 'streamium_tv_section',
+          'settings' => 'streamium_tv_section_input_taxonomy'
+        )) 
+      );
+
+      $wp_customize->add_setting('streamium_tv_section_input_posttype', array(
+          'default'    => 'tv',
+          'sanitize_callback' => 'streamium_sanitize_tv_text',
+      ));
+
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_tv_section_input_posttype',
+        array(
+          'label' => 'Change Post Type',
+          'section' => 'streamium_tv_section',
+          'settings' => 'streamium_tv_section_input_posttype'
+        )) 
+      );
+
+      $wp_customize->add_setting('streamium_tv_section_checkbox_enable', array(
+          'default'    => false
+      ));
+
+      $wp_customize->add_control(
+          new WP_Customize_Control(
+              $wp_customize,
+              'streamium_tv_section_checkbox_enable',
+              array(
+                  'label'     => __('Enable TV Programs', 'streamium'),
+                  'section'   => 'streamium_tv_section',
+                  'settings'  => 'streamium_tv_section_checkbox_enable',
+                  'type'      => 'checkbox',
+              )
+          )
+      );
+
+      // TV SPORTS
+      $wp_customize->add_section('streamium_sports_section' , array(
+          'title'     => __('Sports Options', 'streamium'),
+          'description' => 'For infomation on how to setup the uploader with S3Bubble please watch this video<br><a href="https://www.youtube.com/watch?v=FUqN-b1MSrc" target="_blank">AWS direct uploader setup</a>',
+          'priority'  => 1019
+      ));
+
+      $wp_customize->add_setting('streamium_sports_section_input_menu_text', array(
+          'default'    => 'Sports'
+      ));
+
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_sports_section_input_menu_text',
+        array(
+          'label' => 'Change Top Menu Text',
+          'section' => 'streamium_sports_section',
+          'settings' => 'streamium_sports_section_input_menu_text'
+        )) 
+      );
+
+      $wp_customize->add_setting('streamium_sports_section_input_taxonomy', array(
+          'default'    => 'sports',
+          'sanitize_callback' => 'streamium_sanitize_tv_text',
+      ));
+
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_sports_section_input_taxonomy',
+        array(
+          'label' => 'Change Taxonomy',
+          'section' => 'streamium_sports_section',
+          'settings' => 'streamium_sports_section_input_taxonomy'
+        )) 
+      );
+
+      $wp_customize->add_setting('streamium_sports_section_input_posttype', array(
+          'default'    => 'sport',
+          'sanitize_callback' => 'streamium_sanitize_tv_text',
+      ));
+
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_sports_section_input_posttype',
+        array(
+          'label' => 'Change Post Type',
+          'section' => 'streamium_sports_section',
+          'settings' => 'streamium_sports_section_input_posttype'
+        )) 
+      );
+
+      $wp_customize->add_setting('streamium_sports_section_checkbox_enable', array(
+          'default'    => false
+      ));
+
+      $wp_customize->add_control(
+          new WP_Customize_Control(
+              $wp_customize,
+              'streamium_sports_section_checkbox_enable',
+              array(
+                  'label'     => __('Enable Sport', 'streamium'),
+                  'section'   => 'streamium_sports_section',
+                  'settings'  => 'streamium_sports_section_checkbox_enable',
+                  'type'      => 'checkbox',
+              )
+          )
+      );
+
+      // TV KIDS
+      $wp_customize->add_section('streamium_kids_section' , array(
+          'title'     => __('Kids Options', 'streamium'),
+          'description' => 'For infomation on how to setup the uploader with S3Bubble please watch this video<br><a href="https://www.youtube.com/watch?v=FUqN-b1MSrc" target="_blank">AWS direct uploader setup</a>',
+          'priority'  => 1019
+      ));
+
+      $wp_customize->add_setting('streamium_kids_section_input_menu_text', array(
+          'default'    => 'Kids'
+      ));
+
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_kids_section_input_menu_text',
+        array(
+          'label' => 'Change Top Menu Text',
+          'section' => 'streamium_kids_section',
+          'settings' => 'streamium_kids_section_input_menu_text'
+        )) 
+      );
+
+      $wp_customize->add_setting('streamium_kids_section_input_taxonomy', array(
+          'default'    => 'kids',
+          'sanitize_callback' => 'streamium_sanitize_tv_text',
+      ));
+
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_kids_section_input_taxonomy',
+        array(
+          'label' => 'Change Taxonomy',
+          'section' => 'streamium_kids_section',
+          'settings' => 'streamium_kids_section_input_taxonomy'
+        )) 
+      );
+
+      $wp_customize->add_setting('streamium_kids_section_input_posttype', array(
+          'default'    => 'kid',
+          'sanitize_callback' => 'streamium_sanitize_tv_text',
+      ));
+
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_kids_section_input_posttype',
+        array(
+          'label' => 'Change Post Type',
+          'section' => 'streamium_kids_section',
+          'settings' => 'streamium_kids_section_input_posttype'
+        )) 
+      );
+
+      $wp_customize->add_setting('streamium_kids_section_checkbox_enable', array(
+          'default'    => false
+      ));
+
+      $wp_customize->add_control(
+          new WP_Customize_Control(
+              $wp_customize,
+              'streamium_kids_section_checkbox_enable',
+              array(
+                  'label'     => __('Enable Kids', 'streamium'),
+                  'section'   => 'streamium_kids_section',
+                  'settings'  => 'streamium_kids_section_checkbox_enable',
+                  'type'      => 'checkbox',
+              )
+          )
+      );
+
+      // LIVE STREAMING
+      $wp_customize->add_section('streamium_live_section' , array(
+          'title'     => __('Live Streaming Options', 'streamium'),
+          'description' => 'For infomation on how to setup the uploader with S3Bubble please watch this video<br><a href="https://www.youtube.com/watch?v=FUqN-b1MSrc" target="_blank">AWS direct uploader setup</a>',
+          'priority'  => 1019
+      ));
+
+      $wp_customize->add_setting('streamium_live_section_input_menu_text', array(
+          'default'    => 'Live Streaming'
+      ));
+
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_live_section_input_menu_text',
+        array(
+          'label' => 'Change Top Menu Text',
+          'section' => 'streamium_live_section',
+          'settings' => 'streamium_live_section_input_menu_text'
+        )) 
+      );
+
+      $wp_customize->add_setting('streamium_live_section_input_taxonomy', array(
+          'default'    => 'streams',
+          'sanitize_callback' => 'streamium_sanitize_tv_text',
+      ));
+
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_live_section_input_taxonomy',
+        array(
+          'label' => 'Change Taxonomy',
+          'section' => 'streamium_live_section',
+          'settings' => 'streamium_live_section_input_taxonomy'
+        )) 
+      );
+
+      $wp_customize->add_setting('streamium_live_section_input_posttype', array(
+          'default'    => 'stream',
+          'sanitize_callback' => 'streamium_sanitize_tv_text',
+      ));
+
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_live_section_input_posttype',
+        array(
+          'label' => 'Change Post Type',
+          'section' => 'streamium_live_section',
+          'settings' => 'streamium_live_section_input_posttype'
+        )) 
+      );
+
+      $wp_customize->add_setting('streamium_live_section_checkbox_enable', array(
+          'default'    => false
+      ));
+
+      $wp_customize->add_control(
+          new WP_Customize_Control(
+              $wp_customize,
+              'streamium_live_section_checkbox_enable',
+              array(
+                  'label'     => __('Enable Live Streaming', 'streamium'),
+                  'section'   => 'streamium_live_section',
+                  'settings'  => 'streamium_live_section_checkbox_enable',
+                  'type'      => 'checkbox',
+              )
+          )
+      );
+
+      // PREMIUM SECTION
+      $wp_customize->add_section('streamium_premium_section' , array(
+          'title'     => __('Premium Options', 'streamium'),
+          'priority'  => 1021
+      ));
+
+      /*$wp_customize->add_setting('streamium_enable_tv', array(
+          'default'    => false
+      ));
+
+      $wp_customize->add_control(
+          new WP_Customize_Control(
+              $wp_customize,
+              'streamium_enable_tv',
+              array(
+                  'label'     => __('Enable TV Programs', 'streamium'),
+                  'section'   => 'streamium_premium_section',
+                  'settings'  => 'streamium_enable_tv',
+                  'type'      => 'checkbox',
+              )
+          )
+      );*/
+
+      function streamium_sanitize_tv_text( $value ) {
+       
+          return strtolower($value);
+      
+      }
   
    }
 
