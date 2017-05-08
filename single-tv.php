@@ -2,8 +2,6 @@
 
 	<main class="cd-main-content">
 
-		<div class="main-spacer-program"></div>
-
 		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); 
 			$image   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-home-slider' ); 
 		?>

@@ -222,7 +222,7 @@
 				<div class="row">
 					<div class="col-sm-12 video-header">
 						<h3>TV Programes</h3>
-						<a class="see-all" href="<?php echo esc_url( home_url() ); ?>/programs">View all</a>
+						<a class="see-all" href="<?php echo esc_url( home_url() ); ?>/tv">View all</a>
 					</div><!--/.col-sm-12-->
 				</div>
 				<div class="row">

@@ -8,6 +8,34 @@
  */
 function streamium_tv_custom_post_type() {
 
+	// Add new "Program Cats" taxonomy to Posts
+  register_taxonomy('programs', 'post', array(
+    // Hierarchical taxonomy (like categories)
+    'hierarchical' => true,
+    // This array of options controls the labels displayed in the WordPress Admin UI
+    'labels' => array(
+      'name' => _x( 'Program Cats', 'taxonomy general name' ),
+      'singular_name' => _x( 'Location', 'taxonomy singular name' ),
+      'search_items' =>  __( 'Search Program Cats' ),
+      'all_items' => __( 'All Program Cats' ),
+      'parent_item' => __( 'Parent Location' ),
+      'parent_item_colon' => __( 'Parent Location:' ),
+      'edit_item' => __( 'Edit Location' ),
+      'update_item' => __( 'Update Location' ),
+      'add_new_item' => __( 'Add New Location' ),
+      'new_item_name' => __( 'New Location Name' ),
+      'menu_name' => __( 'Program Cats' ),
+    ),
+    // Control the slugs used for this taxonomy
+    'rewrite' => array(
+      'slug' => 'programs', // This controls the base slug that will display before each term
+      'with_front' => false, // Don't display the category base before "/locations/"
+      'hierarchical' => true // This will allow URL's like "/locations/boston/cambridge/"
+    ),
+  ));
+
+  //flush_rewrite_rules();
+
 	$labels = array(
 		'name'                => _x( 'TV Programs', 'Post Type General Name', 'streamium' ),
 		'singular_name'       => _x( 'Episode', 'Post Type Singular Name', 'streamium' ),
@@ -41,13 +69,13 @@ function streamium_tv_custom_post_type() {
 		'exclude_from_search' => false,
 		'publicly_queryable'  => true,
 		'capability_type'     => 'post',
-		'taxonomies'          => array( 'category', 'post_tag', 'programs' ),
+		'taxonomies'          => array(  'post_tag', 'programs' ),
 		//'rewrite' => array( 'slug' => 'sam', 'with_front' => FALSE ),
-		'has_category' =>true,
+		//'has_category' =>true,
 	);
 	
 	// Registering your Custom Post Type
-	register_post_type( 'programs', $args );
+	register_post_type( 'tv', $args );
 
 }
 
@@ -60,7 +88,7 @@ add_action( 'init', 'streamium_tv_custom_post_type', 0 );
  * @author  @sameast
  */
 function streamium_add_meta_boxes() {
-	add_meta_box( 'repeatable-fields', 'Program Videos', 'streamium_repeatable_meta_box_display', 'programs', 'normal', 'high');
+	add_meta_box( 'repeatable-fields', 'Program Videos', 'streamium_repeatable_meta_box_display', 'tv', 'normal', 'high');
 }
 add_action('admin_init', 'streamium_add_meta_boxes', 1);
 
