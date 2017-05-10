@@ -276,41 +276,41 @@ class Streamium_Customize {
           'priority'  => 1019
       ));
 
-      $wp_customize->add_setting('streamium_tv_section_input_menu_text', array(
+      $wp_customize->add_setting('streamium_section_input_menu_text_tv', array(
           'default'    => 'TV Programs'
       ));
 
-      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_tv_section_input_menu_text',
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_section_input_menu_text_tv',
         array(
           'label' => 'Change Top Menu Text',
           'section' => 'streamium_tv_section',
-          'settings' => 'streamium_tv_section_input_menu_text'
+          'settings' => 'streamium_section_input_menu_text_tv'
         )) 
       );
 
-      $wp_customize->add_setting('streamium_tv_section_input_taxonomy', array(
+      $wp_customize->add_setting('streamium_section_input_taxonomy_programs', array(
           'default'    => 'programs',
-          'sanitize_callback' => 'streamium_sanitize_tv_text',
+          'sanitize_callback' => 'streamium_sanitize_customizer_text',
       ));
 
-      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_tv_section_input_taxonomy',
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_section_input_taxonomy_programs',
         array(
           'label' => 'Change Taxonomy',
           'section' => 'streamium_tv_section',
-          'settings' => 'streamium_tv_section_input_taxonomy'
+          'settings' => 'streamium_section_input_taxonomy_programs'
         )) 
       );
 
-      $wp_customize->add_setting('streamium_tv_section_input_posttype', array(
+      $wp_customize->add_setting('streamium_section_input_posttype_tv', array(
           'default'    => 'tv',
-          'sanitize_callback' => 'streamium_sanitize_tv_text',
+          'sanitize_callback' => 'streamium_sanitize_customizer_text',
       ));
 
-      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_tv_section_input_posttype',
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_section_input_posttype_tv',
         array(
           'label' => 'Change Post Type',
           'section' => 'streamium_tv_section',
-          'settings' => 'streamium_tv_section_input_posttype'
+          'settings' => 'streamium_section_input_posttype_tv'
         )) 
       );
 
@@ -338,41 +338,41 @@ class Streamium_Customize {
           'priority'  => 1019
       ));
 
-      $wp_customize->add_setting('streamium_sports_section_input_menu_text', array(
+      $wp_customize->add_setting('streamium_section_input_menu_text_sport', array(
           'default'    => 'Sports'
       ));
 
-      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_sports_section_input_menu_text',
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_section_input_menu_text_sport',
         array(
           'label' => 'Change Top Menu Text',
           'section' => 'streamium_sports_section',
-          'settings' => 'streamium_sports_section_input_menu_text'
+          'settings' => 'streamium_section_input_menu_text_sport'
         )) 
       );
 
-      $wp_customize->add_setting('streamium_sports_section_input_taxonomy', array(
+      $wp_customize->add_setting('streamium_section_input_taxonomy_sports', array(
           'default'    => 'sports',
-          'sanitize_callback' => 'streamium_sanitize_tv_text',
+          'sanitize_callback' => 'streamium_sanitize_customizer_text',
       ));
 
-      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_sports_section_input_taxonomy',
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_section_input_taxonomy_sports',
         array(
           'label' => 'Change Taxonomy',
           'section' => 'streamium_sports_section',
-          'settings' => 'streamium_sports_section_input_taxonomy'
+          'settings' => 'streamium_section_input_taxonomy_sports'
         )) 
       );
 
-      $wp_customize->add_setting('streamium_sports_section_input_posttype', array(
+      $wp_customize->add_setting('streamium_section_input_posttype_sport', array(
           'default'    => 'sport',
-          'sanitize_callback' => 'streamium_sanitize_tv_text',
+          'sanitize_callback' => 'streamium_sanitize_customizer_text',
       ));
 
-      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_sports_section_input_posttype',
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_section_input_posttype_sport',
         array(
           'label' => 'Change Post Type',
           'section' => 'streamium_sports_section',
-          'settings' => 'streamium_sports_section_input_posttype'
+          'settings' => 'streamium_section_input_posttype_sport'
         )) 
       );
 
@@ -400,41 +400,41 @@ class Streamium_Customize {
           'priority'  => 1019
       ));
 
-      $wp_customize->add_setting('streamium_kids_section_input_menu_text', array(
+      $wp_customize->add_setting('streamium_section_input_menu_text_kid', array(
           'default'    => 'Kids'
       ));
 
-      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_kids_section_input_menu_text',
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_section_input_menu_text_kid',
         array(
           'label' => 'Change Top Menu Text',
           'section' => 'streamium_kids_section',
-          'settings' => 'streamium_kids_section_input_menu_text'
+          'settings' => 'streamium_section_input_menu_text_kid'
         )) 
       );
 
-      $wp_customize->add_setting('streamium_kids_section_input_taxonomy', array(
+      $wp_customize->add_setting('streamium_section_input_taxonomy_kids', array(
           'default'    => 'kids',
-          'sanitize_callback' => 'streamium_sanitize_tv_text',
+          'sanitize_callback' => 'streamium_sanitize_customizer_text',
       ));
 
-      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_kids_section_input_taxonomy',
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_section_input_taxonomy_kids',
         array(
           'label' => 'Change Taxonomy',
           'section' => 'streamium_kids_section',
-          'settings' => 'streamium_kids_section_input_taxonomy'
+          'settings' => 'streamium_section_input_taxonomy_kids'
         )) 
       );
 
-      $wp_customize->add_setting('streamium_kids_section_input_posttype', array(
+      $wp_customize->add_setting('streamium_section_input_posttype_kid', array(
           'default'    => 'kid',
-          'sanitize_callback' => 'streamium_sanitize_tv_text',
+          'sanitize_callback' => 'streamium_sanitize_customizer_text',
       ));
 
-      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_kids_section_input_posttype',
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_section_input_posttype_kid',
         array(
           'label' => 'Change Post Type',
           'section' => 'streamium_kids_section',
-          'settings' => 'streamium_kids_section_input_posttype'
+          'settings' => 'streamium_section_input_posttype_kid'
         )) 
       );
 
@@ -462,41 +462,41 @@ class Streamium_Customize {
           'priority'  => 1019
       ));
 
-      $wp_customize->add_setting('streamium_live_section_input_menu_text', array(
+      $wp_customize->add_setting('streamium_section_input_menu_text_stream', array(
           'default'    => 'Live Streaming'
       ));
 
-      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_live_section_input_menu_text',
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_section_input_menu_text_stream',
         array(
           'label' => 'Change Top Menu Text',
           'section' => 'streamium_live_section',
-          'settings' => 'streamium_live_section_input_menu_text'
+          'settings' => 'streamium_section_input_menu_text_stream'
         )) 
       );
 
-      $wp_customize->add_setting('streamium_live_section_input_taxonomy', array(
+      $wp_customize->add_setting('streamium_section_input_taxonomy_streams', array(
           'default'    => 'streams',
-          'sanitize_callback' => 'streamium_sanitize_tv_text',
+          'sanitize_callback' => 'streamium_sanitize_customizer_text',
       ));
 
-      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_live_section_input_taxonomy',
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_section_input_taxonomy_streams',
         array(
           'label' => 'Change Taxonomy',
           'section' => 'streamium_live_section',
-          'settings' => 'streamium_live_section_input_taxonomy'
+          'settings' => 'streamium_section_input_taxonomy_streams'
         )) 
       );
 
-      $wp_customize->add_setting('streamium_live_section_input_posttype', array(
+      $wp_customize->add_setting('streamium_stream_section_input_posttype', array(
           'default'    => 'stream',
-          'sanitize_callback' => 'streamium_sanitize_tv_text',
+          'sanitize_callback' => 'streamium_sanitize_customizer_text',
       ));
 
-      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_live_section_input_posttype',
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_stream_section_input_posttype',
         array(
           'label' => 'Change Post Type',
           'section' => 'streamium_live_section',
-          'settings' => 'streamium_live_section_input_posttype'
+          'settings' => 'streamium_stream_section_input_posttype'
         )) 
       );
 
@@ -540,9 +540,13 @@ class Streamium_Customize {
           )
       );*/
 
-      function streamium_sanitize_tv_text( $value ) {
-       
-          return strtolower($value);
+      function streamium_sanitize_customizer_text( $value ) {
+          
+          if($value != ""){
+            
+            return strtolower(sanitize_text_field($value));
+            
+          }
       
       }
   

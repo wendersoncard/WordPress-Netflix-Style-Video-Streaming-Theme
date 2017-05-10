@@ -3,7 +3,8 @@
 		<section class="hero">
 			<button class="streamium-prev fa fa-angle-left" aria-hidden="true"></button>
 			<div class="hero-slider">
-				<?php 
+				<?php
+				 
 					$args = array(
 						'post_status' => 'publish',
 						'posts_per_page'      => -1,
@@ -212,8 +213,8 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-sm-12 video-header">
-							<h3><?php _e( (get_theme_mod( 'streamium_tv_section_input_menu_text' )) ? get_theme_mod( 'streamium_tv_section_input_menu_text' ) : 'TV Programs', 'streamium' ); ?></h3>
-							<a class="see-all" href="<?php echo esc_url( home_url('/' . (get_theme_mod( 'streamium_tv_section_input_posttype' ) ? get_theme_mod( 'streamium_tv_section_input_posttype' ) : 'tv')) ); ?>">View all</a>
+							<h3><?php _e( (get_theme_mod( 'streamium_section_input_menu_text_tv' )) ? get_theme_mod( 'streamium_section_input_menu_text_tv' ) : 'TV Programs', 'streamium' ); ?></h3>
+							<a class="see-all" href="<?php echo esc_url( home_url('/' . (get_theme_mod( 'streamium_section_input_posttype_tv' ) ? get_theme_mod( 'streamium_section_input_posttype_tv' ) : 'tv')) ); ?>">View all</a>
 						</div><!--/.col-sm-12-->
 					</div>
 					<div class="row">
@@ -329,8 +330,8 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-sm-12 video-header">
-							<h3><?php _e( (get_theme_mod( 'streamium_sports_section_input_menu_text' )) ? get_theme_mod( 'streamium_sports_section_input_menu_text' ) : 'Sports', 'streamium' ); ?></h3>
-							<a class="see-all" href="<?php echo esc_url( home_url('/' . (get_theme_mod( 'streamium_sports_section_input_posttype' ) ? get_theme_mod( 'streamium_sports_section_input_posttype' ) : 'sport')) ); ?>">View all</a>
+							<h3><?php _e( (get_theme_mod( 'streamium_section_input_menu_text_sport' )) ? get_theme_mod( 'streamium_section_input_menu_text_sport' ) : 'Sports', 'streamium' ); ?></h3>
+							<a class="see-all" href="<?php echo esc_url( home_url('/' . (get_theme_mod( 'streamium_section_input_posttype_sport' ) ? get_theme_mod( 'streamium_section_input_posttype_sport' ) : 'sport')) ); ?>">View all</a>
 						</div><!--/.col-sm-12-->
 					</div>
 					<div class="row">
@@ -446,8 +447,8 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-sm-12 video-header">
-							<h3><?php _e( (get_theme_mod( 'streamium_kids_section_input_menu_text' )) ? get_theme_mod( 'streamium_kids_section_input_menu_text' ) : 'Kids', 'streamium' ); ?></h3>
-							<a class="see-all" href="<?php echo esc_url( home_url('/' . (get_theme_mod( 'streamium_kids_section_input_posttype' ) ? get_theme_mod( 'streamium_kids_section_input_posttype' ) : 'kid')) ); ?>">View all</a>
+							<h3><?php _e( (get_theme_mod( 'streamium_section_input_menu_text_kid' )) ? get_theme_mod( 'streamium_section_input_menu_text_kid' ) : 'Kids', 'streamium' ); ?></h3>
+							<a class="see-all" href="<?php echo esc_url( home_url('/' . (get_theme_mod( 'streamium_section_input_posttype_kid' ) ? get_theme_mod( 'streamium_section_input_posttype_kid' ) : 'kid')) ); ?>">View all</a>
 						</div><!--/.col-sm-12-->
 					</div>
 					<div class="row">
@@ -563,8 +564,8 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-sm-12 video-header">
-							<h3><?php _e( (get_theme_mod( 'streamium_live_section_input_menu_text' )) ? get_theme_mod( 'streamium_live_section_input_menu_text' ) : 'Live Streaming', 'streamium' ); ?></h3>
-							<a class="see-all" href="<?php echo esc_url( home_url('/' . (get_theme_mod( 'streamium_live_section_input_posttype' ) ? get_theme_mod( 'streamium_live_section_input_posttype' ) : 'live')) ); ?>">View all</a>
+							<h3><?php _e( (get_theme_mod( 'streamium_section_input_menu_text_stream' )) ? get_theme_mod( 'streamium_section_input_menu_text_stream' ) : 'Live Streaming', 'streamium' ); ?></h3>
+							<a class="see-all" href="<?php echo esc_url( home_url('/' . (get_theme_mod( 'streamium_stream_section_input_posttype' ) ? get_theme_mod( 'streamium_stream_section_input_posttype' ) : 'stream')) ); ?>">View all</a>
 						</div><!--/.col-sm-12-->
 					</div>
 					<div class="row">

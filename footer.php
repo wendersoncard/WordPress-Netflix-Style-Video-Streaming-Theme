@@ -217,7 +217,7 @@
 								<a href="#0"><?php _e( 'Menu', 'streamium' ); ?></a>
 							</li>
 							<li class="see-all">
-								<a href="<?php echo esc_url( home_url('/' . (get_theme_mod( 'streamium_sports_section_input_posttype' ) ? get_theme_mod( 'streamium_sports_section_input_posttype' ) : 'sports')) ); ?>"><?php _e( (get_theme_mod( 'streamium_sports_section_input_menu_text' )) ? 'All ' . get_theme_mod( 'streamium_sports_section_input_menu_text' ) : 'All Sports', 'streamium' ); ?></a>
+								<a href="<?php echo esc_url( home_url('/' . (get_theme_mod( 'streamium_sports_section_input_posttype' ) ? get_theme_mod( 'streamium_sports_section_input_posttype' ) : 'sport')) ); ?>"><?php _e( (get_theme_mod( 'streamium_sports_section_input_menu_text' )) ? 'All ' . get_theme_mod( 'streamium_sports_section_input_menu_text' ) : 'All Sports', 'streamium' ); ?></a>
 							</li>
 
 							<?php 

@@ -7,8 +7,7 @@
      				
      				$query = $wp_query->get_queried_object(); 
      				$tax = isset($query->taxonomies[1]) ? $query->taxonomies[1] : "";
-     				$rewrite = isset($query->rewrite['slug']) ? $query->rewrite['slug'] : "";
-     				$rewrite = (null !== get_theme_mod( 'streamium_' . $tax . '_section_input_taxonomy' )) ? get_theme_mod( 'streamium_' . $tax . '_section_input_taxonomy' ) : $rewrite; 
+     				$rewrite = (get_theme_mod( 'streamium_section_input_taxonomy_' . $tax )) ? get_theme_mod( 'streamium_section_input_taxonomy_' . $tax ) : $tax; 
 
 					$args = array(
 						'post_status' => 'publish',

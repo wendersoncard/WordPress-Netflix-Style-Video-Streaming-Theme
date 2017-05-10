@@ -8,12 +8,12 @@
  */
 function streamium_custom_post_types() {
 
-	$tax = (get_theme_mod( 'streamium_tv_section_input_taxonomy' ) ? get_theme_mod( 'streamium_tv_section_input_taxonomy' ) : 'programs');
-	$type = (get_theme_mod( 'streamium_tv_section_input_posttype' ) ? get_theme_mod( 'streamium_tv_section_input_posttype' ) : 'tv');
-	$menuText = (get_theme_mod( 'streamium_tv_section_input_menu_text' ) ? get_theme_mod( 'streamium_tv_section_input_menu_text' ) : 'TV Programs');
+	$tax = (get_theme_mod( 'streamium_section_input_taxonomy_programs' ) ? get_theme_mod( 'streamium_section_input_taxonomy_programs' ) : 'programs');
+	$type = (get_theme_mod( 'streamium_section_input_posttype_tv' ) ? get_theme_mod( 'streamium_section_input_posttype_tv' ) : 'tv');
+	$menuText = (get_theme_mod( 'streamium_section_input_menu_text_tv' ) ? get_theme_mod( 'streamium_section_input_menu_text_tv' ) : 'TV Programs');
 
-	// TV PROGRAMS
-  	register_taxonomy('programs', 'tv', array(
+	// TV PROGRAM
+	$tvTax = array(
     	'hierarchical' => true,
     	'labels' => array(
       	'name' => __( $menuText, 'streamium' ),
@@ -23,9 +23,10 @@ function streamium_custom_post_types() {
       		'with_front' => false, 
       		'hierarchical' => true 
     	),
-  	)); 
+  	);
+  	
 	
-	$args = array(
+	$tvArgs = array(
 		'labels'              => array(
 			'name'                => __( ucfirst($type), 'streamium' ),
 		),
@@ -46,15 +47,12 @@ function streamium_custom_post_types() {
 		'rewrite' => array('slug' => $type,'with_front' => false),
 	);
 	
-	// Registering your Custom Post Type
-	register_post_type( 'tv', $args );
-
 	/* SPORTS */
-	$taxSport = (get_theme_mod( 'streamium_sports_section_input_taxonomy' ) ? get_theme_mod( 'streamium_sports_section_input_taxonomy' ) : 'sports');
-	$typeSport = (get_theme_mod( 'streamium_sports_section_input_posttype' ) ? get_theme_mod( 'streamium_sports_section_input_posttype' ) : 'sport');
-	$menuTextSport = (get_theme_mod( 'streamium_sports_section_input_menu_text' ) ? get_theme_mod( 'streamium_sports_section_input_menu_text' ) : 'Sports');
+	$taxSport = (get_theme_mod( 'streamium_section_input_taxonomy_sports' ) ? get_theme_mod( 'streamium_section_input_taxonomy_sports' ) : 'sports');
+	$typeSport = (get_theme_mod( 'streamium_section_input_posttype_sport' ) ? get_theme_mod( 'streamium_section_input_posttype_sport' ) : 'sport');
+	$menuTextSport = (get_theme_mod( 'streamium_section_input_menu_text_sport' ) ? get_theme_mod( 'streamium_section_input_menu_text_sport' ) : 'Sport');
 
-  	register_taxonomy('sports', 'sport', array(
+	$sportTax = array(
     	'hierarchical' => true,
     	'labels' => array(
       	'name' => __( $menuTextSport, 'streamium' ),
@@ -64,9 +62,9 @@ function streamium_custom_post_types() {
       		'with_front' => false, 
       		'hierarchical' => true 
     	),
-  	));
+  	);
 
-	$args = array(
+	$sportArgs = array(
 		'labels'              => array(
 			'name'                => __( ucfirst($typeSport), 'streamium' ),
 		),
@@ -86,16 +84,13 @@ function streamium_custom_post_types() {
 		'taxonomies'          => array(  'post_tag', 'sports' ),
 		'rewrite' => array('slug' => $typeSport,'with_front' => false),
 	);
-	
-	// Registering your Custom Post Type
-	register_post_type( 'sport', $args );
 
 	/* KIDS */
-	$taxKids = (get_theme_mod( 'streamium_kids_section_input_taxonomy' ) ? get_theme_mod( 'streamium_kids_section_input_taxonomy' ) : 'kids');
-	$typeKid = (get_theme_mod( 'streamium_kids_section_input_posttype' ) ? get_theme_mod( 'streamium_kids_section_input_posttype' ) : 'kid');
-	$menuTextKids = (get_theme_mod( 'streamium_kids_section_input_menu_text' ) ? get_theme_mod( 'streamium_kids_section_input_menu_text' ) : 'Kids');
+	$taxKids = (get_theme_mod( 'streamium_section_input_taxonomy_kids' ) ? get_theme_mod( 'streamium_section_input_taxonomy_kids' ) : 'kids');
+	$typeKid = (get_theme_mod( 'streamium_section_input_posttype_kid' ) ? get_theme_mod( 'streamium_section_input_posttype_kid' ) : 'kid');
+	$menuTextKids = (get_theme_mod( 'streamium_section_input_menu_text_kid' ) ? get_theme_mod( 'streamium_section_input_menu_text_kid' ) : 'Kids');
 
-  	register_taxonomy('kids', 'kid', array(
+	$kidTax = array(
     	'hierarchical' => true,
     	'labels' => array(
       	'name' => __( $menuTextKids, 'streamium' ),
@@ -105,9 +100,9 @@ function streamium_custom_post_types() {
       		'with_front' => false, 
       		'hierarchical' => true 
     	),
-  	));
+  	);
 	
-	$args = array(
+	$kidArgs = array(
 		'labels'              => array(
 			'name'                => __( ucfirst($typeKid), 'streamium' ),
 		),
@@ -127,17 +122,13 @@ function streamium_custom_post_types() {
 		'taxonomies'          => array(  'post_tag', 'kids' ),
 		'rewrite' => array('slug' => $typeKid,'with_front' => false),
 	);
-	
-	// Registering your Custom Post Type
-	register_post_type( 'kid', $args );
-
 
 	/* LIVE */
-	$taxStreams = (get_theme_mod( 'streamium_live_section_input_taxonomy' ) ? get_theme_mod( 'streamium_live_section_input_taxonomy' ) : 'streams');
-	$typeStream = (get_theme_mod( 'streamium_live_section_input_posttype' ) ? get_theme_mod( 'streamium_live_section_input_posttype' ) : 'stream');
-	$menuTextStreams = (get_theme_mod( 'streamium_live_section_input_menu_text' ) ? get_theme_mod( 'streamium_live_section_input_menu_text' ) : 'Streams');
+	$taxStreams = (get_theme_mod( 'streamium_section_input_taxonomy_streams' ) ? get_theme_mod( 'streamium_section_input_taxonomy_streams' ) : 'streams');
+	$typeStream = (get_theme_mod( 'streamium_stream_section_input_posttype' ) ? get_theme_mod( 'streamium_stream_section_input_posttype' ) : 'stream');
+	$menuTextStreams = (get_theme_mod( 'streamium_section_input_menu_text_stream' ) ? get_theme_mod( 'streamium_section_input_menu_text_stream' ) : 'Streams');
 
-  	register_taxonomy('streams', 'stream', array(
+	$streamTax = array(
     	'hierarchical' => true,
     	'labels' => array(
       	'name' => __( $menuTextStreams, 'streamium' ),
@@ -147,9 +138,9 @@ function streamium_custom_post_types() {
       		'with_front' => false, 
       		'hierarchical' => true 
     	),
-  	));
+  	);
 
-	$args = array(
+	$streamArgs = array(
 		'labels'              => array(
 			'name'                => __( ucfirst($typeStream), 'streamium' ),
 		),
@@ -171,7 +162,14 @@ function streamium_custom_post_types() {
 	);
 	
 	// Registering your Custom Post Type
-	register_post_type( 'stream', $args );
+	register_taxonomy('programs', 'tv', $tvTax); 
+	register_post_type( 'tv', $tvArgs );
+	register_taxonomy('kids', 'kid', $kidTax);
+	register_post_type( 'kid', $kidArgs );
+	register_taxonomy('sports', 'sport', $sportTax);
+	register_post_type( 'sport', $sportArgs );
+	register_taxonomy('streams', 'stream', $streamTax);
+	register_post_type( 'stream', $streamArgs );
 
 }
 
