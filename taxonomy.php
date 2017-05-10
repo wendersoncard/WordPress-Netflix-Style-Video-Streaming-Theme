@@ -6,7 +6,9 @@
 		<section class="categories">
 			<?php 
 
-				$category = $wp_query->get_queried_object(); 
+				$query = $wp_query->get_queried_object(); 
+     			$tax = isset($query->taxonomy) ? $query->taxonomy : "";
+
 				switch (isset($_GET['sort']) ? $_GET['sort'] : 'all') {
 					case 'reviewed':
 
@@ -22,12 +24,11 @@
 							array(
 								'posts_per_page' => -1, 
 								'ignore_sticky_posts' => true,
-								'post_type' => 'tv',
 							    'tax_query' => array(
 							        array(
-							            'taxonomy'  => 'programs',
+							            'taxonomy'  => $tax,
 							            'field'     => 'term_id',
-							            'terms'     => $category->term_id,
+							            'terms'     => $query->term_id,
 							        )
 							    ),
 								'orderby' => 'date',
@@ -48,12 +49,11 @@
 							array(
 								'posts_per_page' => -1, 
 								'ignore_sticky_posts' => true,
-								'post_type' => 'tv',
 							    'tax_query' => array(
 							        array(
-							            'taxonomy'  => 'programs',
+							            'taxonomy'  => $tax,
 							            'field'     => 'term_id',
-							            'terms'     => $category->term_id,
+							            'terms'     => $query->term_id,
 							        )
 							    ),
 								'orderby' => 'date',
@@ -74,12 +74,11 @@
 							array(
 								'posts_per_page' => -1, 
 								'ignore_sticky_posts' => true,
-								'post_type' => 'tv',
 							    'tax_query' => array(
 							        array(
-							            'taxonomy'  => 'programs',
+							            'taxonomy'  => $tax,
 							            'field'     => 'term_id',
-							            'terms'     => $category->term_id,
+							            'terms'     => $query->term_id,
 							        )
 							    ),
 								'orderby' => 'date',
@@ -95,18 +94,16 @@
 							array(
 								'posts_per_page' => -1, 
 								'ignore_sticky_posts' => true,
-								'post_type' => 'tv',
 							    'tax_query' => array(
 							        array(
-							            'taxonomy'  => 'programs',
+							            'taxonomy'  => $tax,
 							            'field'     => 'term_id',
-							            'terms'     => $category->term_id,
+							            'terms'     => $query->term_id,
 							        )
 							    )
 							) 
 						);
 
-						# code...
 						break;
 				}
 				
@@ -190,16 +187,7 @@
 
 							</div>
 
-							<?php if(is_user_logged_in() && get_theme_mod( 'streamium_enable_premium' )):
-						    		$userId = get_current_user_id();
-						    		$percentageWatched = get_post_meta( get_the_ID(), 'user_' . $userId, true );
-						    ?>
-							    <div class="progress tile_progress">
-								  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $percentageWatched; ?>"
-								  aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $percentageWatched; ?>%">
-								  </div>
-								</div>
-							<?php endif; ?>
+							<?php do_action('synopis_video_progress'); ?>
 
 						</div>
 						<?php

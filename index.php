@@ -162,16 +162,7 @@
 									    </div>
 									</div>
 
-									<?php if(is_user_logged_in() && get_theme_mod( 'streamium_enable_premium' )):
-								    		$userId = get_current_user_id();
-								    		$percentageWatched = get_post_meta( get_the_ID(), 'user_' . $userId, true );
-								    ?>
-									    <div class="progress tile_progress">
-										  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $percentageWatched; ?>"
-										  aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $percentageWatched; ?>%">
-										  </div>
-										</div>
-									<?php endif; ?>
+									<?php do_action('synopis_video_progress'); ?>
 								        
 								    </div>
 								<?php
@@ -243,7 +234,7 @@
 										$nonce = wp_create_nonce( 'streamium_likes_nonce' ); 
 
 							?>
-								<div class="tile" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="tv-programs">
+								<div class="tile" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="tv">
 									
 									<div class="tile_inner" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
 
@@ -281,11 +272,13 @@
 								          	<div class="overlay-meta hidden-xs">
 								          		<span class="tile_meta_episodes"><?php echo count(get_post_meta(get_the_ID(), 'repeatable_fields' , true) ); ?> Episodes</span>
 								            	<h4><?php the_title(); ?></h4>						            	
-								            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="tv-programs" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
+								            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="tv" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
 								          	</div>
 									      </div>
 									    </div>
 									</div>
+
+									<?php do_action('synopis_video_progress'); ?>
 
 							    </div>
 							<?php
@@ -299,7 +292,7 @@
 					</div><!--/.row-->
 				</div><!--/.container-->
 			</section><!--/.videos-->
-			<section class="s3bubble-details-full tv-programs">
+			<section class="s3bubble-details-full tv">
 				<div class="s3bubble-details-full-overlay"></div>
 				<div class="container-fluid s3bubble-details-inner-content">
 					<div class="row">
@@ -396,11 +389,13 @@
 								          	<div class="overlay-meta hidden-xs">
 								          		<span class="tile_meta_episodes"><?php echo count(get_post_meta(get_the_ID(), 'repeatable_fields' , true) ); ?> Episodes</span>
 								            	<h4><?php the_title(); ?></h4>						            	
-								            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="tv-programs" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
+								            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="sport" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
 								          	</div>
 									      </div>
 									    </div>
 									</div>
+
+									<?php do_action('synopis_video_progress'); ?>
 
 							    </div>
 							<?php
@@ -473,7 +468,7 @@
 										$nonce = wp_create_nonce( 'streamium_likes_nonce' ); 
 
 							?>
-								<div class="tile" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="tv-programs">
+								<div class="tile" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="kid">
 									
 									<div class="tile_inner" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
 
@@ -511,11 +506,13 @@
 								          	<div class="overlay-meta hidden-xs">
 								          		<span class="tile_meta_episodes"><?php echo count(get_post_meta(get_the_ID(), 'repeatable_fields' , true) ); ?> Episodes</span>
 								            	<h4><?php the_title(); ?></h4>						            	
-								            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="tv-programs" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
+								            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="kid" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
 								          	</div>
 									      </div>
 									    </div>
 									</div>
+
+									<?php do_action('synopis_video_progress'); ?>
 
 							    </div>
 							<?php
@@ -529,7 +526,7 @@
 					</div><!--/.row-->
 				</div><!--/.container-->
 			</section><!--/.videos-->
-			<section class="s3bubble-details-full tv-programs">
+			<section class="s3bubble-details-full kid">
 				<div class="s3bubble-details-full-overlay"></div>
 				<div class="container-fluid s3bubble-details-inner-content">
 					<div class="row">
@@ -588,7 +585,7 @@
 										$nonce = wp_create_nonce( 'streamium_likes_nonce' ); 
 
 							?>
-								<div class="tile" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="tv-programs">
+								<div class="tile" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="stream">
 									
 									<div class="tile_inner" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
 
@@ -626,11 +623,13 @@
 								          	<div class="overlay-meta hidden-xs">
 								          		<span class="tile_meta_episodes"><?php echo count(get_post_meta(get_the_ID(), 'repeatable_fields' , true) ); ?> Episodes</span>
 								            	<h4><?php the_title(); ?></h4>						            	
-								            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="tv-programs" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
+								            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="stream" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
 								          	</div>
 									      </div>
 									    </div>
 									</div>
+
+									<?php do_action('synopis_video_progress'); ?>
 
 							    </div>
 							<?php
@@ -644,7 +643,7 @@
 					</div><!--/.row-->
 				</div><!--/.container-->
 			</section><!--/.videos-->
-			<section class="s3bubble-details-full tv-programs">
+			<section class="s3bubble-details-full stream">
 				<div class="s3bubble-details-full-overlay"></div>
 				<div class="container-fluid s3bubble-details-inner-content">
 					<div class="row">
@@ -750,16 +749,7 @@
 								    </div>
 								</div>
 
-								<?php if(is_user_logged_in() && get_theme_mod( 'streamium_enable_premium' )):
-							    		$userId = get_current_user_id();
-							    		$percentageWatched = get_post_meta( get_the_ID(), 'user_' . $userId, true );
-							    ?>
-								    <div class="progress tile_progress">
-									  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $percentageWatched; ?>"
-									  aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $percentageWatched; ?>%">
-									  </div>
-									</div>
-								<?php endif; ?>
+								<?php do_action('synopis_video_progress'); ?>
 
 						    </div>
 						<?php

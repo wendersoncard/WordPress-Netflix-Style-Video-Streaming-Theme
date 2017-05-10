@@ -53,7 +53,7 @@ function synopis_meta_release( ) {
 
 add_action( 'synopis_meta', 'synopis_meta_release', 3, 0 );
 
-function synopis_tv_meta_starring( ) {
+function synopis_multi_meta_starring( ) {
    // do stuff here
 	$posttags = get_the_tags();
 	$staring = "Staring: ";
@@ -73,12 +73,15 @@ function synopis_tv_meta_starring( ) {
 	
 }
 
-add_action( 'synopis_tv_meta', 'synopis_tv_meta_starring', 1, 0 );
+add_action( 'synopis_multi_meta', 'synopis_multi_meta_starring', 1, 0 );
 
 
-function synopis_tv_meta_genre( ) {
+function synopis_multi_meta_genre() {
 
-	$categories = get_terms( 'programs', array('hide_empty' => false) );
+	$query = get_post_taxonomies( get_the_ID() );
+	$tax = isset($query[1]) ? $query[1] : "";
+	$categories = get_terms( $tax, array('hide_empty' => false) );
+
 	$genres = "Genres: ";
 	if ($categories) {
 		$numItems = count($categories);
@@ -96,12 +99,34 @@ function synopis_tv_meta_genre( ) {
 
 }
 
-add_action( 'synopis_tv_meta', 'synopis_tv_meta_genre', 2, 0 );
+add_action( 'synopis_multi_meta', 'synopis_multi_meta_genre', 2, 0 );
 
-function synopis_tv_meta_release( ) {
+function synopis_multi_meta_release(){
 
 	echo '<li class="synopis-meta-spacer">Released: <a href="/?s=all&date=' . get_the_date('Y/m/d') . '">' . get_the_date() . '</a></li>';
 
 }
 
-add_action( 'synopis_tv_meta', 'synopis_tv_meta_release', 3, 0 );
+add_action( 'synopis_multi_meta', 'synopis_multi_meta_release', 3, 0 );
+
+function synopis_video_progressbar(){
+
+	if(is_user_logged_in() && get_theme_mod( 'streamium_enable_premium' )) {
+		$userId = get_current_user_id();
+    	$percentageWatched = get_post_meta( get_the_ID(), 'user_' . $userId, true );
+		$episodes = get_post_meta(get_the_ID(), 'repeatable_fields' , true);
+		if(!empty($episodes)) {
+
+			
+
+		}else{
+
+			echo '<div class="progress tile_progress"><div class="progress-bar" role="progressbar" aria-valuenow="' . $percentageWatched . '" aria-valuemin="0" aria-valuemax="100" style="width:' . $percentageWatched . '%"></div></div>';
+			
+		}
+
+	}
+
+}
+
+add_action( 'synopis_video_progress', 'synopis_video_progressbar', 0, 0 );

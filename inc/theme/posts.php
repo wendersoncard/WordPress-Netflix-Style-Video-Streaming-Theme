@@ -55,6 +55,9 @@ function streamium_single_video_scripts() {
 	            array( 
 	                'ajax_url' => admin_url( 'admin-ajax.php'),
 	                'post_id' => $post->ID,
+	                'subTitle' => "You're watching",
+	                'title' => $post->post_title,
+	                'para' => trim(stripslashes(strip_tags($post->post_excerpt))),
 	                'percentage' => $resume,
 	                'codes' => $codes,
 	                'nonce' => $nonce
@@ -128,8 +131,12 @@ function streamium_get_dynamic_content() {
 				
 				// Cats
 				$categories = get_the_category($postId);
-				if($post_object->post_type === 'tv'){
-					$categories = get_terms( 'programs', array('hide_empty' => false) );
+				if($post_object->post_type !== 'post'){
+
+					$query = get_post_taxonomies( $postId );
+					$tax = isset($query[1]) ? $query[1] : "";
+					$categories = get_terms( $tax, array('hide_empty' => false) );
+
 				}
 				$genres = 'Genres: ';
 				if ($categories) {

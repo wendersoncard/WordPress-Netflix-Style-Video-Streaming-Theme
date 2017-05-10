@@ -4,11 +4,16 @@
 			<button class="streamium-prev fa fa-angle-left" aria-hidden="true"></button>
 			<div class="hero-slider">
 				<?php 
-     
+     				
+     				$query = $wp_query->get_queried_object(); 
+     				$tax = isset($query->taxonomies[1]) ? $query->taxonomies[1] : "";
+     				$rewrite = isset($query->rewrite['slug']) ? $query->rewrite['slug'] : "";
+     				$rewrite = (null !== get_theme_mod( 'streamium_' . $tax . '_section_input_taxonomy' )) ? get_theme_mod( 'streamium_' . $tax . '_section_input_taxonomy' ) : $rewrite; 
+
 					$args = array(
 						'post_status' => 'publish',
 						'posts_per_page'      => -1,
-						'post_type' => 'tv',
+						'post_type' => $query->name,
 						'meta_key' => 'streamium_tv_featured_checkbox_value',
 						'meta_value' => '1'
 					);
@@ -40,7 +45,7 @@
 													<div class="synopis content hidden-xs">
 														<?php echo $content; ?>
 														<ul>
-															<?php do_action('synopis_meta'); ?>
+															<?php do_action('synopis_multi_meta'); ?>
 														</ul>
 													</div>
 													
@@ -85,20 +90,21 @@
 
 		<?php 
 
-		  	$categories = get_terms( 'programs', array('hide_empty' => false) );
+		  	$categories = get_terms( $tax, array('hide_empty' => false) );
 		  	foreach ($categories as $category) : 
 
 				$args = array(
 				    'posts_per_page' => (int)get_theme_mod( 'streamium_global_options_homepage_desktop' ),
-				    'post_type' => 'tv',
+				    //'post_type' => $query->name,
 				    'tax_query' => array(
 				        array(
-				            'taxonomy'  => 'programs',
+				            'taxonomy'  => $tax,
 				            'field'     => 'term_id',
 				            'terms'     => $category->term_id,
 				        )
 				    )
 				);
+
 				$loop = new WP_Query( $args );
 
 				if($loop->have_posts()):
@@ -108,7 +114,7 @@
 				<div class="row">
 					<div class="col-sm-12 video-header">
 						<h3><?php echo ucfirst($category->name); ?></h3>
-						<a class="see-all" href="<?php echo esc_url( home_url('/' . (get_theme_mod( 'streamium_tv_section_input_taxonomy' ) ? get_theme_mod( 'streamium_tv_section_input_taxonomy' ) : 'programs') . '/' . $category->slug ) ); ?>">View all</a>
+						<a class="see-all" href="<?php echo esc_url( home_url('/' . $rewrite . '/' . $category->slug ) ); ?>">View all</a>
 					</div><!--/.col-sm-12-->
 				</div>
 				<div class="row">
@@ -167,6 +173,8 @@
 								    </div>
 
 								</div>
+
+								<?php do_action('synopis_video_progress'); ?>
 
 						    </div>
 						<?php
