@@ -134,7 +134,7 @@ add_action( 'synopis_video_progress', 'synopis_video_progressbar', 0, 0 );
 function streamium_video_payment_callback(){
 
 	global $post;
-	
+
 	if($post->premium) : ?>
 		<div class="tile_payment_details">
 			<div class="tile_payment_details_inner">
@@ -149,7 +149,7 @@ function streamium_video_payment_callback(){
 			<div class="tile_payment_details_inner">
 				<h2>Available on <?php 
 					$comma_separated = implode(",", $check);
-					echo "plan " . $comma_separated; 
+					echo "<br>plan " . $comma_separated; 
 				?></h2>
 			</div>
 		</div>

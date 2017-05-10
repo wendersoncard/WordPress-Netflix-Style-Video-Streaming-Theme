@@ -292,7 +292,7 @@ function streamium_post_meta_box_save( $post_id )
     if( !isset( $_POST['streamium_meta_box_movie_nonce'] ) || !wp_verify_nonce( $_POST['streamium_meta_box_movie_nonce'], 'streamium_meta_box_movie' ) ) return;
      
     // if our current user can't edit this post, bail
-    if( !current_user_can( 'edit_post' ) ) return;
+    if ( ! current_user_can( 'edit_posts' ) ) return;
      
     // Make sure your data is set before trying to save it
     if( isset( $_POST['s3bubble_video_code_meta_box_text'] ) ){
@@ -389,7 +389,7 @@ function streamium_post_meta_box_save( $post_id )
 
 }
 
-add_action( 'save_post', 'streamium_post_meta_box_save' );
+add_action( 'save_post', 'streamium_post_meta_box_save', 10, 3 );
 
 /**
  * Get the websites domain needed for connected websites
