@@ -6,7 +6,9 @@
 		<section class="categories">
 			<?php 
 
-				$category = $wp_query->get_queried_object(); 
+				$category = $wp_query->get_queried_object();
+				$paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
+
 				switch (isset($_GET['sort']) ? $_GET['sort'] : 'all') {
 					case 'reviewed':
 
@@ -21,7 +23,7 @@
 						$the_query = new WP_Query( 
 							array(
 							    'cat' => $category->cat_ID, 
-								'posts_per_page' => -1, 
+								'paged' => $paged,
 								'ignore_sticky_posts' => true,
 								'orderby' => 'date',
 								'order'   => 'DESC', 
@@ -40,7 +42,7 @@
 						$the_query = new WP_Query( 
 							array(
 							    'cat' => $category->cat_ID, 
-								'posts_per_page' => -1, 
+								'paged' => $paged,
 								'ignore_sticky_posts' => true,
 								'orderby' => 'date',
 								'order'   => 'DESC', 
@@ -59,7 +61,7 @@
 						$the_query = new WP_Query( 
 							array(
 							    'cat' => $category->cat_ID, 
-								'posts_per_page' => -1, 
+								'paged' => $paged,
 								'ignore_sticky_posts' => true,
 								'orderby' => 'date',
 								'order'   => 'ASC', 
@@ -72,13 +74,12 @@
 
 						$the_query = new WP_Query( 
 							array(
-							    'cat' => $category->cat_ID, 
-								'posts_per_page' => -1, 
+							    'cat' => $category->cat_ID,
+								'paged' => $paged,
 								'ignore_sticky_posts' => true
 							) 
 						);
 
-						# code...
 						break;
 				}
 				
