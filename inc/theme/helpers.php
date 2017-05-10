@@ -178,6 +178,16 @@ function streamium_connection_checks() {
 
 add_action( 'wp_ajax_streamium_connection_checks', 'streamium_connection_checks' );
 
+
+function streamium_extra_body_class( $classes ) {
+ 	 
+    $classes[] = ( get_theme_mod( 'streamium_enable_premium' )  ) ? 'streamium-premium' : 'streamium-standard';
+    return $classes;
+     
+}
+
+add_filter( 'body_class','streamium_extra_body_class' );
+
 /**
  * appends the stramium reviews query for search
  *

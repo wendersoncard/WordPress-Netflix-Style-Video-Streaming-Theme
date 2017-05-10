@@ -10,7 +10,7 @@ if (!function_exists('streamium_theme_setup')) {
         // Create aspects based on average
         $width = 1366/6;
         $height = $width/16*9;
-    	  add_theme_support('post-thumbnails');
+    	add_theme_support('post-thumbnails');
         add_theme_support( 'automatic-feed-links' );
         add_image_size( 'streamium-video-tile', $width, $height ); //, 285, 160
         add_image_size( 'streamium-video-tile-expanded', ($width*2), ($height*2)); //, 285, 160
@@ -91,9 +91,8 @@ if (!function_exists('streamium_enqueue_admin_scripts')) {
       wp_enqueue_script( 'streamium-admin', get_template_directory_uri() . '/production/js/admin.min.js', array( 'jquery'),'1.1', true );
       wp_localize_script('streamium-admin', 'streamium_meta_object', array(
         'ajax_url' => admin_url( 'admin-ajax.php'),  
-        's3website' => (!empty($streamium_connected_website) ? $streamium_connected_website : ""),
         'streamiumPremium' => get_theme_mod( 'streamium_enable_premium' ),
-        'connected_website' => $streamium_connected_website,
+        'connected_website' => (!empty($streamium_connected_website) ? $streamium_connected_website : ""),
         'connected_nonce' => $streamium_connected_nonce
       ));
 

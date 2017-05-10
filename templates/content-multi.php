@@ -36,6 +36,14 @@
 			<?php
 	
 				if(!empty($episodes)) :
+
+					// Order the list
+					$positions = array();
+					foreach ($episodes as $key => $row){
+					    $positions[$key] = $row['positions'];
+					}
+					array_multisort($positions, SORT_ASC, $episodes);
+	
 					foreach ($episodes as $key => $value) :
 
 						$thumbnail = !isset($value['thumbnails']) ? "http://placehold.it/260x146" : esc_url($value['thumbnails']);

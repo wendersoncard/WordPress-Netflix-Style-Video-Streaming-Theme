@@ -130,3 +130,31 @@ function synopis_video_progressbar(){
 }
 
 add_action( 'synopis_video_progress', 'synopis_video_progressbar', 0, 0 );
+
+function streamium_video_payment_callback(){
+
+	global $post;
+	
+	if($post->premium) : ?>
+		<div class="tile_payment_details">
+			<div class="tile_payment_details_inner">
+				<h2>Available on <?php echo str_replace(array("_"), " ", $post->plans[0]); ?></h2>
+			</div>
+		</div> 
+	<?php endif; ?>
+	<?php if (function_exists('is_protected_by_s2member')) :
+		$check = is_protected_by_s2member(get_the_ID());
+		if($check) : ?>
+		<div class="tile_payment_details">
+			<div class="tile_payment_details_inner">
+				<h2>Available on <?php 
+					$comma_separated = implode(",", $check);
+					echo "plan " . $comma_separated; 
+				?></h2>
+			</div>
+		</div>
+	<?php endif; endif;
+
+}
+
+add_action( 'streamium_video_payment', 'streamium_video_payment_callback', 0, 0 );

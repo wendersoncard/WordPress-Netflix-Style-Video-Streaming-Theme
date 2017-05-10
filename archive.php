@@ -133,25 +133,7 @@
 
 								<div class="tile_inner" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
 
-									<?php if($post->premium) : ?>
-										<div class="tile_payment_details">
-											<div class="tile_payment_details_inner">
-												<h2>Available on <?php echo str_replace(array("_"), " ", $post->plans[0]); ?></h2>
-											</div>
-										</div> 
-									<?php endif; ?>
-									<?php if (function_exists('is_protected_by_s2member')) :
-										$check = is_protected_by_s2member(get_the_ID());
-										if($check) : ?>
-										<div class="tile_payment_details">
-											<div class="tile_payment_details_inner">
-												<h2>Available on <?php 
-													$comma_separated = implode(",", $check);
-													echo "plan " . $comma_separated; 
-												?></h2>
-											</div>
-										</div>
-									<?php endif; endif; ?>
+									<?php do_action('streamium_video_payment'); ?>
 
 									<div class="content">
 								      <div class="overlay" style="background-image: url(<?php echo esc_url($imageExpanded[0]); ?>);">

@@ -116,7 +116,7 @@
 
 				<?php 
 
-				if ( get_theme_mod( 'streamium_tv_section_checkbox_enable' ) ) : ?>
+				if ( get_theme_mod( 'streamium_tv_section_checkbox_enable' ) && get_theme_mod( 'streamium_enable_premium' )  ) : ?>
 
 					<li class="has-children">
 						<a href="<?php echo esc_url( home_url('/') ); ?>"><?php _e( (get_theme_mod( 'streamium_section_input_menu_text_tv' )) ? get_theme_mod( 'streamium_section_input_menu_text_tv' ) : 'TV Programs', 'streamium' ); ?></a>
@@ -208,7 +208,7 @@
 
 				<?php 
 
-				if ( get_theme_mod( 'streamium_sports_section_checkbox_enable' ) ) : ?>
+				if ( get_theme_mod( 'streamium_sports_section_checkbox_enable' ) && get_theme_mod( 'streamium_enable_premium' )  ) : ?>
 
 					<li class="has-children">
 						<a href="<?php echo esc_url( home_url('/') ); ?>"><?php _e( (get_theme_mod( 'streamium_section_input_menu_text_sport' )) ? get_theme_mod( 'streamium_section_input_menu_text_sport' ) : 'Sports', 'streamium' ); ?></a>
@@ -300,7 +300,7 @@
 
 				<?php 
 
-				if ( get_theme_mod( 'streamium_kids_section_checkbox_enable' ) ) : ?>
+				if ( get_theme_mod( 'streamium_kids_section_checkbox_enable' ) && get_theme_mod( 'streamium_enable_premium' )  ) : ?>
 
 					<li class="has-children">
 						<a href="<?php echo esc_url( home_url('/') ); ?>"><?php _e( (get_theme_mod( 'streamium_section_input_menu_text_kid' )) ? get_theme_mod( 'streamium_section_input_menu_text_kid' ) : 'Kids', 'streamium' ); ?></a>
@@ -392,7 +392,7 @@
 
 				<?php 
 
-				if ( get_theme_mod( 'streamium_live_section_checkbox_enable' ) ) : ?>
+				if ( get_theme_mod( 'streamium_live_section_checkbox_enable' ) && get_theme_mod( 'streamium_enable_premium' )  ) : ?>
 
 					<li class="has-children">
 						<a href="<?php echo esc_url( home_url('/') ); ?>"><?php _e( (get_theme_mod( 'streamium_section_input_menu_text_stream' )) ? get_theme_mod( 'streamium_section_input_menu_text_stream' ) : 'Live', 'streamium' ); ?></a>

@@ -11,8 +11,12 @@ function streamium_video_code_meta_box_add(){
     add_meta_box( 'streamium-meta-box-movie', 'Main Video', 'streamium_meta_box_movie', array('post', 'tv','sport','kid','stream'), 'side', 'high' );
     add_meta_box( 'streamium-meta-box-trailer', 'Video Trailer', 'streamium_meta_box_trailer', array('post', 'tv','sport','kid','stream'), 'side', 'high' );
     add_meta_box( 'streamium-meta-box-bgvideo', 'Featured BG Video', 'streamium_meta_box_bgvideo', array('post', 'tv','sport','kid','stream'), 'side', 'high' );
-    add_meta_box( 'streamium-repeatable-fields', 'Multiple Videos', 'streamium_repeatable_meta_box_display', array('post', 'tv','sport','kid','stream'), 'normal', 'high');
     add_meta_box( 'streamium-meta-box-main-slider', 'Featured Video', 'streamium_meta_box_main_slider', array('post', 'tv','sport','kid','stream'), 'side', 'high' );
+
+    // Only allow repeater for premium
+    if(get_theme_mod( 'streamium_enable_premium' )) {
+        add_meta_box( 'streamium-repeatable-fields', 'Multiple Videos', 'streamium_repeatable_meta_box_display', array('post', 'tv','sport','kid','stream'), 'normal', 'high');
+    }
 
 }
 
@@ -30,8 +34,8 @@ function streamium_meta_box_movie(){
     global $post;
     $values = get_post_custom( $post->ID );
     $text = isset( $values['s3bubble_video_code_meta_box_text'] ) ? $values['s3bubble_video_code_meta_box_text'][0] : '';
-    // We'll use this nonce field later on when saving.
     wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
+
     ?>
     <p>
         <select class="streamium-theme-main-video-select-group chosen-select" tabindex="1" name="s3bubble_video_code_meta_box_text" id="s3bubble_video_code_meta_box_text">
@@ -139,9 +143,7 @@ function streamium_meta_box_bgvideo(){
 function streamium_repeatable_meta_box_display() {
 
   global $post;
-
   $repeatable_fields = get_post_meta($post->ID, 'repeatable_fields', true);
-
   wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
 
   ?>  
@@ -149,6 +151,14 @@ function streamium_repeatable_meta_box_display() {
     <?php
 
         if ( $repeatable_fields ) :
+
+        // Order the list
+        $positions = array();
+        foreach ($repeatable_fields as $key => $row){
+            $positions[$key] = $row['positions'];
+        }
+        array_multisort($positions, SORT_ASC, $repeatable_fields);
+
         foreach ( $repeatable_fields as $field ) {
     ?>
         <li class="streamium-repeater-list">
@@ -161,6 +171,16 @@ function streamium_repeatable_meta_box_display() {
                 </p> 
             </div>
             <div class="streamium-repeater-right">
+                <p>
+                    <label>Video Season</label>
+                    <select class="widefat" tabindex="1" name="seasons[]">
+                        <option value="<?php echo $field['seasons']; ?>"><?php echo $field['seasons']; ?></option>
+                    </select>
+                </p>
+                <p>
+                    <label>Video List Position</label>
+                    <input type="text" class="widefat" name="positions[]" onkeypress="return event.charCode >= 48 && event.charCode <= 57" value="<?php if($field['positions'] != '') echo esc_attr( $field['positions'] ); ?>" />
+                </p>
                 <p>
                     <label>Video Code</label>
                     <select class="streamium-theme-episode-select chosen-select" tabindex="1" name="codes[]">
@@ -191,6 +211,27 @@ function streamium_repeatable_meta_box_display() {
                 </p> 
             </div>
             <div class="streamium-repeater-right">
+                <p>
+                    <label>Video Season</label>
+                    <select class="widefat" tabindex="1" name="seasons[]">
+                        <option value="1">Season 1</option>
+                        <option value="2">Season 2</option>
+                        <option value="3">Season 3</option>
+                        <option value="4">Season 4</option>
+                        <option value="5">Season 5</option>
+                        <option value="6">Season 6</option>
+                        <option value="7">Season 7</option>
+                        <option value="8">Season 8</option>
+                        <option value="9">Season 9</option>
+                        <option value="10">Season 10</option>
+                        <option value="11">Season 11</option>
+                        <option value="12">Season 12</option>
+                    </select>
+                </p>
+                <p>
+                    <label>Video List Position</label>
+                    <input type="text" class="widefat" name="positions[]" onkeypress="return event.charCode >= 48 && event.charCode <= 57" value="1" />
+                </p>
                 <p>
                     <label>Video Code</label>
                     <select class="streamium-theme-episode-select chosen-select" style="width: 50px !important;" tabindex="1" name="codes[]"></select>
@@ -223,8 +264,8 @@ function streamium_repeatable_meta_box_display() {
 function streamium_meta_box_main_slider() {
   
     global $post;
-
     $meta = get_post_meta( $post->ID );
+    
     $streamium_tv_featured_checkbox_value = ( isset( $meta['streamium_tv_featured_checkbox_value'][0] ) &&  '1' === $meta['streamium_tv_featured_checkbox_value'][0] ) ? 1 : 0;
     wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
   
@@ -306,6 +347,8 @@ function streamium_post_meta_box_save( $post_id )
     $new = array();
     
     $thumbnails   = isset($_POST['thumbnails']) ? $_POST['thumbnails'] : "";
+    $seasons      = isset($_POST['seasons']) ? $_POST['seasons'] : "";
+    $positions    = isset($_POST['positions']) ? $_POST['positions'] : "";
     $titles       = isset($_POST['titles']) ? $_POST['titles'] : "";
     $codes        = isset($_POST['codes']) ? $_POST['codes'] : "";
     $descriptions = isset($_POST['descriptions']) ? $_POST['descriptions'] : "";
@@ -313,9 +356,11 @@ function streamium_post_meta_box_save( $post_id )
     $count = count( $titles );
     
     for ( $i = 0; $i < $count; $i++ ) {
-      if ( $thumbnails[$i] != '' && $titles[$i] != '' && $codes[$i] != '' && $descriptions[$i] != '') :
+      if ( $thumbnails[$i] != '' && $titles[$i] != '' && $seasons[$i] != '' && $positions[$i] != '' && $codes[$i] != '' && $descriptions[$i] != '') :
 
         $new[$i]['thumbnails'] = esc_url(stripslashes( strip_tags( $thumbnails[$i] )));
+        $new[$i]['seasons'] = trim(stripslashes( strip_tags( $seasons[$i] ) ));
+        $new[$i]['positions'] = trim(stripslashes( strip_tags( $positions[$i] ) ));
         $new[$i]['titles'] = trim(stripslashes( strip_tags( $titles[$i] ) ));
         $new[$i]['codes'] = $codes[$i];
         $new[$i]['descriptions'] = trim(stripslashes( $descriptions[$i] ));

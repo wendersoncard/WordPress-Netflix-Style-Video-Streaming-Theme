@@ -46,6 +46,7 @@ function streamium_single_video_scripts() {
 				foreach ($episodes as $key => $value) : 
 					$codes[] = $value['codes'];
 				endforeach;
+				$resume = 0;
 			}else{
 				$codes[] = $s3videoid;
 			}
@@ -53,7 +54,6 @@ function streamium_single_video_scripts() {
     		// Setup premium
 	        wp_localize_script( 'streamium-production', 'video_post_object', 
 	            array( 
-	                'ajax_url' => admin_url( 'admin-ajax.php'),
 	                'post_id' => $post->ID,
 	                'subTitle' => "You're watching",
 	                'title' => $post->post_title,
@@ -69,7 +69,6 @@ function streamium_single_video_scripts() {
         	//setup standard
 	        wp_localize_script( 'streamium-production', 'video_post_object', 
 	            array( 
-	                'ajax_url' => admin_url( 'admin-ajax.php'),
 	                'post_id' => $post->ID,
 	                'code' => (!empty( $s3videoid ) && filter_var($s3videoid, FILTER_VALIDATE_URL)) ? $s3videoid : NULL
 	            )
