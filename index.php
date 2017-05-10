@@ -137,7 +137,7 @@
 									if($loop->have_posts()):
 										while ( $loop->have_posts() ) : $loop->the_post();
 											if ( has_post_thumbnail() ) : // thumbnail check 
-											$image   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-category' );
+											$image   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile' );
 											$imageExpanded   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile-expanded' );
 											$nonce = wp_create_nonce( 'streamium_likes_nonce' );
 								?>
@@ -230,7 +230,7 @@
 									if($loop->have_posts()):
 										while ( $loop->have_posts() ) : $loop->the_post();
 										if ( has_post_thumbnail() ) : // thumbnail check 
-										$image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-category' );
+										$image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile' );
 										$imageExpanded   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile-expanded' );
 										$nonce = wp_create_nonce( 'streamium_likes_nonce' ); 
 
@@ -346,7 +346,7 @@
 									if($loop->have_posts()):
 										while ( $loop->have_posts() ) : $loop->the_post();
 										if ( has_post_thumbnail() ) : // thumbnail check 
-										$image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-category' );
+										$image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile' );
 										$imageExpanded   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile-expanded' );
 										$nonce = wp_create_nonce( 'streamium_likes_nonce' ); 
 
@@ -462,7 +462,7 @@
 									if($loop->have_posts()):
 										while ( $loop->have_posts() ) : $loop->the_post();
 										if ( has_post_thumbnail() ) : // thumbnail check 
-										$image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-category' );
+										$image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile' );
 										$imageExpanded   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile-expanded' );
 										$nonce = wp_create_nonce( 'streamium_likes_nonce' ); 
 
@@ -578,7 +578,7 @@
 									if($loop->have_posts()):
 										while ( $loop->have_posts() ) : $loop->the_post();
 										if ( has_post_thumbnail() ) : // thumbnail check 
-										$image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-category' );
+										$image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile' );
 										$imageExpanded   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile-expanded' );
 										$nonce = wp_create_nonce( 'streamium_likes_nonce' ); 
 
@@ -699,7 +699,7 @@
 								if($loop->have_posts()):
 									while ( $loop->have_posts() ) : $loop->the_post();
 									if ( has_post_thumbnail() ) : // thumbnail check 
-									$image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-category' );
+									$image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile' );
 									$imageExpanded   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile-expanded' );
 									$nonce = wp_create_nonce( 'streamium_likes_nonce' ); 
 

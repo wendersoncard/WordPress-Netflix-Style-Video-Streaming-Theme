@@ -139,7 +139,7 @@
 						$total_count = $the_query->post_count;
 						while ( $the_query->have_posts() ) : $the_query->the_post(); 
 
-						$image   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-poster' );
+						$image   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile' );
 						$imageExpanded   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile-expanded' );
 						$tileImage = empty($image[0]) ? 'http://placehold.it/260x146' : esc_url($image[0]);
 						$nonce = wp_create_nonce( 'streamium_likes_nonce' ); 

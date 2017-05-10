@@ -12,14 +12,29 @@ if (!function_exists('streamium_theme_setup')) {
         $height = $width/16*9;
     	  add_theme_support('post-thumbnails');
         add_theme_support( 'automatic-feed-links' );
-        add_image_size( 'streamium-video-poster', 600, 338, true ); // (cropped)
-        add_image_size( 'streamium-video-category', $width, $height ); //, 285, 160
+        add_image_size( 'streamium-video-tile', $width, $height ); //, 285, 160
         add_image_size( 'streamium-video-tile-expanded', ($width*2), ($height*2)); //, 285, 160
         add_image_size( 'streamium-video-multi-thumb', 160, 90 ); //, 285, 160
         add_image_size( 'streamium-home-slider', 1600, 900 ); 
         add_image_size( 'streamium-site-logo', 0, 56, true ); 
         add_theme_support( 'title-tag' );
-    } 
+    }
+
+    //* Add new image sizes to post or page editor
+    function streamium_extra_image_sizes( $sizes ) {
+
+        $mythemesizes = array(
+            'streamium-video-tile'    => __( 'Video Tile' ), 
+            'streamium-video-tile-expanded'   => __( 'Video Tile Expanded' ),
+            'streamium-video-multi-thumb'   => __( 'Multi Video Thumb' ),
+            'streamium-home-slider'   => __( 'Main Slider' ),  
+        );
+        $sizes = array_merge( $sizes, $mythemesizes );
+
+        return $sizes;
+    }
+
+    add_filter( 'image_size_names_choose', 'streamium_extra_image_sizes' ); 
 
 }
 

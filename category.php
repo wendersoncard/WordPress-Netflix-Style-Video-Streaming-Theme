@@ -114,7 +114,7 @@
 						$total_count = $the_query->post_count;
 
 						while ( $the_query->have_posts() ) : $the_query->the_post(); 
-						$image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-category' );
+						$image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile' );
 						$imageExpanded   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile-expanded' );
 						$nonce = wp_create_nonce( 'streamium_likes_nonce' ); 
 						?>

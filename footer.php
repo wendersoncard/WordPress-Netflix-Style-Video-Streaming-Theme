@@ -119,13 +119,13 @@
 				if ( get_theme_mod( 'streamium_tv_section_checkbox_enable' ) ) : ?>
 
 					<li class="has-children">
-						<a href="<?php echo esc_url( home_url('/') ); ?>"><?php _e( (get_theme_mod( 'streamium_tv_section_input_menu_text' )) ? get_theme_mod( 'streamium_tv_section_input_menu_text' ) : 'TV Programs', 'streamium' ); ?></a>
+						<a href="<?php echo esc_url( home_url('/') ); ?>"><?php _e( (get_theme_mod( 'streamium_section_input_menu_text_tv' )) ? get_theme_mod( 'streamium_section_input_menu_text_tv' ) : 'TV Programs', 'streamium' ); ?></a>
 						<ul class="cd-secondary-nav is-hidden">
 							<li class="go-back">
 								<a href="#0"><?php _e( 'Menu', 'streamium' ); ?></a>
 							</li>
 							<li class="see-all">
-								<a href="<?php echo esc_url( home_url('/' . (get_theme_mod( 'streamium_tv_section_input_posttype' ) ? get_theme_mod( 'streamium_tv_section_input_posttype' ) : 'tv')) ); ?>"><?php _e( (get_theme_mod( 'streamium_tv_section_input_menu_text' )) ? 'All ' . get_theme_mod( 'streamium_tv_section_input_menu_text' ) : 'All TV Programs', 'streamium' ); ?></a>
+								<a href="<?php echo esc_url( home_url('/' . (get_theme_mod( 'streamium_section_input_posttype_tv' ) ? get_theme_mod( 'streamium_section_input_posttype_tv' ) : 'tv')) ); ?>"><?php _e( (get_theme_mod( 'streamium_section_input_menu_text_tv' )) ? 'All ' . get_theme_mod( 'streamium_section_input_menu_text_tv' ) : 'All TV Programs', 'streamium' ); ?></a>
 							</li>
 
 							<?php 
@@ -211,13 +211,13 @@
 				if ( get_theme_mod( 'streamium_sports_section_checkbox_enable' ) ) : ?>
 
 					<li class="has-children">
-						<a href="<?php echo esc_url( home_url('/') ); ?>"><?php _e( (get_theme_mod( 'streamium_sports_section_input_menu_text' )) ? get_theme_mod( 'streamium_sports_section_input_menu_text' ) : 'Sports', 'streamium' ); ?></a>
+						<a href="<?php echo esc_url( home_url('/') ); ?>"><?php _e( (get_theme_mod( 'streamium_section_input_menu_text_sport' )) ? get_theme_mod( 'streamium_section_input_menu_text_sport' ) : 'Sports', 'streamium' ); ?></a>
 						<ul class="cd-secondary-nav is-hidden">
 							<li class="go-back">
 								<a href="#0"><?php _e( 'Menu', 'streamium' ); ?></a>
 							</li>
 							<li class="see-all">
-								<a href="<?php echo esc_url( home_url('/' . (get_theme_mod( 'streamium_sports_section_input_posttype' ) ? get_theme_mod( 'streamium_sports_section_input_posttype' ) : 'sport')) ); ?>"><?php _e( (get_theme_mod( 'streamium_sports_section_input_menu_text' )) ? 'All ' . get_theme_mod( 'streamium_sports_section_input_menu_text' ) : 'All Sports', 'streamium' ); ?></a>
+								<a href="<?php echo esc_url( home_url('/' . (get_theme_mod( 'streamium_section_input_posttype_sport' ) ? get_theme_mod( 'streamium_section_input_posttype_sport' ) : 'sport')) ); ?>"><?php _e( (get_theme_mod( 'streamium_section_input_menu_text_sport' )) ? 'All ' . get_theme_mod( 'streamium_section_input_menu_text_sport' ) : 'All Sports', 'streamium' ); ?></a>
 							</li>
 
 							<?php 
@@ -303,13 +303,13 @@
 				if ( get_theme_mod( 'streamium_kids_section_checkbox_enable' ) ) : ?>
 
 					<li class="has-children">
-						<a href="<?php echo esc_url( home_url('/') ); ?>"><?php _e( (get_theme_mod( 'streamium_kids_section_input_menu_text' )) ? get_theme_mod( 'streamium_kids_section_input_menu_text' ) : 'Kids', 'streamium' ); ?></a>
+						<a href="<?php echo esc_url( home_url('/') ); ?>"><?php _e( (get_theme_mod( 'streamium_section_input_menu_text_kid' )) ? get_theme_mod( 'streamium_section_input_menu_text_kid' ) : 'Kids', 'streamium' ); ?></a>
 						<ul class="cd-secondary-nav is-hidden">
 							<li class="go-back">
 								<a href="#0"><?php _e( 'Menu', 'streamium' ); ?></a>
 							</li>
 							<li class="see-all">
-								<a href="<?php echo esc_url( home_url('/' . (get_theme_mod( 'streamium_kids_section_input_posttype' ) ? get_theme_mod( 'streamium_kids_section_input_posttype' ) : 'kid')) ); ?>"><?php _e( (get_theme_mod( 'streamium_kids_section_input_menu_text' )) ? 'All ' . get_theme_mod( 'streamium_kids_section_input_menu_text' ) : 'All Kids', 'streamium' ); ?></a>
+								<a href="<?php echo esc_url( home_url('/' . (get_theme_mod( 'streamium_section_input_posttype_kid' ) ? get_theme_mod( 'streamium_section_input_posttype_kid' ) : 'kid')) ); ?>"><?php _e( (get_theme_mod( 'streamium_section_input_menu_text_kid' )) ? 'All ' . get_theme_mod( 'streamium_section_input_menu_text_kid' ) : 'All Kids', 'streamium' ); ?></a>
 							</li>
 
 							<?php 
@@ -395,13 +395,13 @@
 				if ( get_theme_mod( 'streamium_live_section_checkbox_enable' ) ) : ?>
 
 					<li class="has-children">
-						<a href="<?php echo esc_url( home_url('/') ); ?>"><?php _e( (get_theme_mod( 'streamium_live_section_input_menu_text' )) ? get_theme_mod( 'streamium_live_section_input_menu_text' ) : 'Live', 'streamium' ); ?></a>
+						<a href="<?php echo esc_url( home_url('/') ); ?>"><?php _e( (get_theme_mod( 'streamium_section_input_menu_text_stream' )) ? get_theme_mod( 'streamium_section_input_menu_text_stream' ) : 'Live', 'streamium' ); ?></a>
 						<ul class="cd-secondary-nav is-hidden">
 							<li class="go-back">
 								<a href="#0"><?php _e( 'Menu', 'streamium' ); ?></a>
 							</li>
 							<li class="see-all">
-								<a href="<?php echo esc_url( home_url('/' . (get_theme_mod( 'streamium_live_section_input_posttype' ) ? get_theme_mod( 'streamium_live_section_input_posttype' ) : 'stream')) ); ?>"><?php _e( (get_theme_mod( 'streamium_live_section_input_menu_text' )) ? 'All ' . get_theme_mod( 'streamium_live_section_input_menu_text' ) : 'All Live', 'streamium' ); ?></a>
+								<a href="<?php echo esc_url( home_url('/' . (get_theme_mod( 'streamium_stream_section_input_posttype' ) ? get_theme_mod( 'streamium_stream_section_input_posttype' ) : 'stream')) ); ?>"><?php _e( (get_theme_mod( 'streamium_section_input_menu_text_stream' )) ? 'All ' . get_theme_mod( 'streamium_section_input_menu_text_stream' ) : 'All Streams', 'streamium' ); ?></a>
 							</li>
 
 							<?php 
