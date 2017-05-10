@@ -162,14 +162,16 @@ function streamium_custom_post_types() {
 	);
 	
 	// Registering your Custom Post Type
-	register_taxonomy('programs', 'tv', $tvTax); 
-	register_post_type( 'tv', $tvArgs );
-	register_taxonomy('kids', 'kid', $kidTax);
-	register_post_type( 'kid', $kidArgs );
-	register_taxonomy('sports', 'sport', $sportTax);
-	register_post_type( 'sport', $sportArgs );
-	register_taxonomy('streams', 'stream', $streamTax);
-	register_post_type( 'stream', $streamArgs );
+	if ( get_theme_mod( 'streamium_enable_premium' ) ){
+		register_taxonomy('programs', 'tv', $tvTax); 
+		register_post_type( 'tv', $tvArgs );
+		register_taxonomy('kids', 'kid', $kidTax);
+		register_post_type( 'kid', $kidArgs );
+		register_taxonomy('sports', 'sport', $sportTax);
+		register_post_type( 'sport', $sportArgs );
+		register_taxonomy('streams', 'stream', $streamTax);
+		register_post_type( 'stream', $streamArgs );
+	}
 
 }
 

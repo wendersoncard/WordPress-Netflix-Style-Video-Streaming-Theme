@@ -4,7 +4,7 @@
 			<button class="streamium-prev fa fa-angle-left" aria-hidden="true"></button>
 			<div class="hero-slider">
 				<?php
-				 
+
 					$args = array(
 						'post_status' => 'publish',
 						'posts_per_page'      => -1,
@@ -271,7 +271,6 @@
 									        	</div>
 								        	</a>
 								          	<div class="overlay-meta hidden-xs">
-								          		<span class="tile_meta_episodes"><?php echo count(get_post_meta(get_the_ID(), 'repeatable_fields' , true) ); ?> Episodes</span>
 								            	<h4><?php the_title(); ?></h4>						            	
 								            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="tv" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
 								          	</div>
@@ -388,7 +387,6 @@
 									        	</div>
 								        	</a>
 								          	<div class="overlay-meta hidden-xs">
-								          		<span class="tile_meta_episodes"><?php echo count(get_post_meta(get_the_ID(), 'repeatable_fields' , true) ); ?> Episodes</span>
 								            	<h4><?php the_title(); ?></h4>						            	
 								            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="sport" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
 								          	</div>
@@ -505,7 +503,6 @@
 									        	</div>
 								        	</a>
 								          	<div class="overlay-meta hidden-xs">
-								          		<span class="tile_meta_episodes"><?php echo count(get_post_meta(get_the_ID(), 'repeatable_fields' , true) ); ?> Episodes</span>
 								            	<h4><?php the_title(); ?></h4>						            	
 								            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="kid" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
 								          	</div>
@@ -622,7 +619,6 @@
 									        	</div>
 								        	</a>
 								          	<div class="overlay-meta hidden-xs">
-								          		<span class="tile_meta_episodes"><?php echo count(get_post_meta(get_the_ID(), 'repeatable_fields' , true) ); ?> Episodes</span>
 								            	<h4><?php the_title(); ?></h4>						            	
 								            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="stream" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
 								          	</div>
