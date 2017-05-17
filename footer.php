@@ -164,5 +164,82 @@
 			<div class="streamium-install-instructions"><h2>Please follow this guide for help with installation <a href="https://s3bubble.com/wp_themes/streamium-netflix-style-wordpress-theme/" target="_blank">Video Series</a></h2><p>You can remove this alert in Appearance -> Customizer -> Streamium</p></div>
 		<?php endif; ?>
 	<?php wp_footer(); ?>
+
+	<script type="text/javascript">
+
+		jQuery( document ).ready(function( $ ) {
+
+			$.ajax({
+			        'url': 'https://apis.blueowl.net/productowner/v1/conversion',
+			        'data': 'Reference=grl5YCX8T0uI378sSEBS~wA',
+			        'dataType': 'jsonp',
+			        'type': 'POST',
+			        'headers': {'Authorization': 'ApiKey AS2200eb-f5f1-4bf5-81f1-551c23e0b5d4',
+		        	'Content-Type': 'application/json'
+		       	},
+			   	success : function(result) { 
+			       //set your variable to the result 
+			       console.log("success",result);
+			   	}, 
+			   	error : function(result) { 
+			     	//handle the error 
+			    	console.log("error",result);
+			    } 
+			});
+
+		});
+		
+		(function runBlueOwlAnalytics() {
+
+     		// get setup post vars
+		    var param = function(object) {
+		        var encodedString = '';
+		        for (var prop in object) {
+		            if (object.hasOwnProperty(prop)) {
+		                if (encodedString.length > 0) {
+		                    encodedString += '&';
+		                }
+		                encodedString += encodeURI(prop + '=' + object[prop]);
+		            }
+		        }
+		        return encodedString;
+		    }
+
+		    // Get url params
+     		var match,
+		        pl     = /\+/g,  // Regex for replacing addition symbol with a space
+		        search = /([^&=]+)=?([^&]*)/g,
+		        decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+		        query  = window.location.search.substring(1);
+
+		    urlParams = {};
+		    while (match = search.exec(query))
+		       urlParams[decode(match[1])] = decode(match[2]);
+
+		   	// Setup the http request
+		   	var xhr = new XMLHttpRequest();
+	        xhr.open('POST', 'https://apis.blueowl.net/productowner/v1/conversion');
+	        xhr.setRequestHeader('Authorization', 'ApiKey AS2200eb-f5f1-4bf5-81f1-551c23e0b5d4');
+	        xhr.setRequestHeader('Content-Type', 'application/json');
+	        xhr.onload = function() {
+	        	
+	        	var obj = JSON.parse(xhr.responseText); 
+	            console.log("obj",obj);
+	            if (xhr.status === 200) {
+
+
+	            } else if (xhr.status !== 200) {
+	                console.log('Request failed.  Returned status of ' + xhr.status);
+	            }
+	        };
+	        xhr.send(JSON.stringify({
+	        	Reference:"grl5YCX8T0uI378sSEBS~wA"
+	        }));
+
+
+    	}());
+
+
+	</script>
 </body>
 </html>

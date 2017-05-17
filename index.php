@@ -11,7 +11,6 @@
 		<?php 
 			$args = array(
 			    'posts_per_page' => (int)get_theme_mod( 'streamium_global_options_homepage_desktop' ),
-			    'ignore_sticky_posts' => 1,
 			    'post_type' => array('movie', 'tv','sport','kid','stream'),
 			    'meta_query' => array(
 					array(

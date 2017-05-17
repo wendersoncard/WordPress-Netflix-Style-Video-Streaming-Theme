@@ -7,9 +7,9 @@
 
 			$args = array(
 			    'posts_per_page' => (int)get_theme_mod( 'streamium_global_options_homepage_desktop' ),
-			    'post_type' => $setType,
+			    'post_type' => array('movie', 'tv','sport','kid','stream'),
 			    'meta_key' => 'streamium_slider_featured_checkbox_value',
-				'meta_value' => '1'
+				'meta_value' => 'yes'
 			);
 			 
 			$loop = new WP_Query( $args ); 
@@ -19,7 +19,6 @@
 					global $post;
 				    $image   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-home-slider' ); 
 					$title   = wp_trim_words( get_the_title(), $num_words = 10, $more = '... ' );
-					$percentage = get_post_meta( get_the_ID(), 'percentage', true );
 					$streamiumVideoTrailer = get_post_meta( get_the_ID(), 'streamium_video_trailer_meta_box_text', true );
 					$streamiumFeaturedVideo = get_post_meta( get_the_ID(), 'streamium_featured_video_meta_box_text', true );
 					$nonce = wp_create_nonce( 'streamium_likes_nonce' );
@@ -95,10 +94,10 @@
 			else: 
 			?>
 			<div style="background:url(<?php echo esc_url(get_template_directory_uri()); ?>/dist/frontend/assets/tech-2-mobile.jpg);" class="slider-block">
-				<article class="content-overlay">
+				<div class="slider-no-content">
 					<h2><?php _e( 'S3Bubble Media Streaming', 'streamium' ); ?></h2>
-					<p><?php _e( 'Please replace this by making a post sticky, when you have do this you new sticky post will be displayed here.', 'streamium' ); ?></p>
-				</article><!--/.content-overlay-->
+					<p><?php _e( 'Please replace this by checking the box Show in the main feature slider, when you have do this your post will be displayed here.', 'streamium' ); ?></p>
+				</div><!--/.content-overlay-->
 			</div>
 			<?php
 			endif;

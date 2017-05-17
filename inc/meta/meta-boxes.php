@@ -8,15 +8,18 @@
  */
 function streamium_video_code_meta_box_add(){
 
-    add_meta_box( 'streamium-meta-box-movie', 'Main Video', 'streamium_meta_box_movie', array('movie', 'tv','sport','kid','stream'), 'side', 'high' );
-    add_meta_box( 'streamium-meta-box-trailer', 'Video Trailer', 'streamium_meta_box_trailer', array('movie', 'tv','sport','kid','stream'), 'side', 'high' );
-    add_meta_box( 'streamium-meta-box-bgvideo', 'Featured BG Video', 'streamium_meta_box_bgvideo', array('movie', 'tv','sport','kid','stream'), 'side', 'high' );
+    add_meta_box( 'streamium-meta-box-movie', 'Main Video', 'streamium_meta_box_movie', array('movie', 'tv','sport','kid'), 'side', 'high' );
+    add_meta_box( 'streamium-meta-box-trailer', 'Video Trailer', 'streamium_meta_box_trailer', array('movie', 'tv','sport','kid'), 'side', 'high' );
+    add_meta_box( 'streamium-meta-box-bgvideo', 'Featured BG Video', 'streamium_meta_box_bgvideo', array('movie', 'tv','sport','kid'), 'side', 'high' );
     add_meta_box( 'streamium-meta-box-main-slider', 'Featured Video', 'streamium_meta_box_main_slider', array('movie', 'tv','sport','kid','stream'), 'side', 'high' );
 
     // Only allow repeater for premium
     if(get_theme_mod( 'streamium_enable_premium' )) {
-        add_meta_box( 'streamium-repeatable-fields', 'Multiple Videos', 'streamium_repeatable_meta_box_display', array('movie', 'tv','sport','kid','stream'), 'normal', 'high');
+        add_meta_box( 'streamium-repeatable-fields', 'Multiple Videos', 'streamium_repeatable_meta_box_display', array('movie', 'tv','sport','kid'), 'normal', 'high');
     }
+
+    // live stream meta
+    add_meta_box( 'streamium-meta-box-live-streams', 'Live Streams', 'streamium_meta_box_live_streams', array('stream'), 'side', 'high' );
 
 }
 
@@ -266,16 +269,55 @@ function streamium_meta_box_main_slider() {
     global $post;
     $meta = get_post_meta( $post->ID );
     
-    $streamium_slider_featured_checkbox_value = ( isset( $meta['streamium_slider_featured_checkbox_value'][0] ) &&  '1' === $meta['streamium_slider_featured_checkbox_value'][0] ) ? 1 : 0;
     wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
-  
+
     ?>
         <p>
-            <label><input type="checkbox" name="streamium_slider_featured_checkbox_value" value="1" <?php checked( $streamium_slider_featured_checkbox_value, 1 ); ?> /><?php esc_attr_e( 'Show in the main feature slider', 'streamium' ); ?></label>
+            <label>
+                <input type="checkbox" name="streamium_slider_featured_checkbox_value" id="streamium_slider_featured_checkbox_value" value="yes" <?php if ( isset ( $meta['streamium_slider_featured_checkbox_value'] ) ) checked( $meta['streamium_slider_featured_checkbox_value'][0], 'yes' ); ?> />
+                <?php esc_attr_e( 'Show in the main feature slider', 'streamium' ); ?>
+            </label>
         </p>
     <?php
 
 }
+
+/**
+ * Setup live stream meta
+ *
+ * @return null
+ * @author  @sameast
+ */
+function streamium_meta_box_live_streams() {
+  
+    global $post;
+    $values = get_post_custom( $post->ID );
+    $text = isset( $values['streamium_live_stream_meta_box_text'] ) ? $values['streamium_live_stream_meta_box_text'][0] : '';
+    // We'll use this nonce field later on when saving.
+    wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
+    ?>
+    <p>
+        <?php if(get_theme_mod( 'streamium_enable_premium' )) : ?>
+
+            <select class="streamium-theme-live-stream-select-group chosen-select" tabindex="1" name="streamium_live_stream_meta_box_text" id="streamium_live_stream_meta_box_text">
+                <option value="<?php echo $text; ?>">Select Stream</option>
+                <option value="">Remove Current Stream</option>
+            </select>
+
+        <?php echo !empty($text) ? "<div class='streamium-current-url'>Premium stream code: " . $text . "</div>" : "<div class='streamium-current-url-info'>No stream selected.</div>"; ?>
+          
+        <?php else : ?>
+          
+          <div class='streamium-current-url-info'>This is only available with the Premium package. <a href="https://s3bubble.com/pricing/" target="_blank">Upgrade</a></div>
+          
+        <?php endif; ?>
+
+    </p>
+
+    <?php 
+
+}
+
 
 /**
  * Saves the meta box content
@@ -342,48 +384,72 @@ function streamium_post_meta_box_save( $post_id )
       }
     }
 
+    // Save the featured video
+    if( isset( $_POST['streamium_live_stream_meta_box_text'] ) ){
+
+      if(get_theme_mod( 'streamium_enable_premium' )){ 
+        
+        update_post_meta( $post_id, 'streamium_live_stream_meta_box_text', $_POST['streamium_live_stream_meta_box_text'] );
+
+      }else{
+        
+        if (strpos($_POST['streamium_live_stream_meta_box_text'],'s3bubble') !== false) {
+        
+          update_post_meta( $post_id, 'streamium_live_stream_meta_box_text', $_POST['streamium_live_stream_meta_box_text'] );
+        
+        }
+
+      }
+    }
+
     // Get the old values
     $old = get_post_meta($post_id, 'repeatable_fields', true);
     $new = array();
+    if(isset($_POST['thumbnails']) && isset($_POST['seasons']) && isset($_POST['positions']) && isset($_POST['titles']) && isset($_POST['codes']) && isset($_POST['descriptions'])){
     
-    $thumbnails   = isset($_POST['thumbnails']) ? $_POST['thumbnails'] : "";
-    $seasons      = isset($_POST['seasons']) ? $_POST['seasons'] : "";
-    $positions    = isset($_POST['positions']) ? $_POST['positions'] : "";
-    $titles       = isset($_POST['titles']) ? $_POST['titles'] : "";
-    $codes        = isset($_POST['codes']) ? $_POST['codes'] : "";
-    $descriptions = isset($_POST['descriptions']) ? $_POST['descriptions'] : "";
-    
-    $count = count( $titles );
-    
-    for ( $i = 0; $i < $count; $i++ ) {
-      if ( $thumbnails[$i] != '' && $titles[$i] != '' && $seasons[$i] != '' && $positions[$i] != '' && $codes[$i] != '' && $descriptions[$i] != '') :
+        $thumbnails   = isset($_POST['thumbnails']) ? $_POST['thumbnails'] : "";
+        $seasons      = isset($_POST['seasons']) ? $_POST['seasons'] : "";
+        $positions    = isset($_POST['positions']) ? $_POST['positions'] : "";
+        $titles       = isset($_POST['titles']) ? $_POST['titles'] : "";
+        $codes        = isset($_POST['codes']) ? $_POST['codes'] : "";
+        $descriptions = isset($_POST['descriptions']) ? $_POST['descriptions'] : "";
+        
+        $count = count( $titles );
+        
+        for ( $i = 0; $i < $count; $i++ ) {
+          if ( $thumbnails[$i] != '' && $titles[$i] != '' && $seasons[$i] != '' && $positions[$i] != '' && $codes[$i] != '' && $descriptions[$i] != '') :
 
-        $new[$i]['thumbnails'] = esc_url(stripslashes( strip_tags( $thumbnails[$i] )));
-        $new[$i]['seasons'] = trim(stripslashes( strip_tags( $seasons[$i] ) ));
-        $new[$i]['positions'] = trim(stripslashes( strip_tags( $positions[$i] ) ));
-        $new[$i]['titles'] = trim(stripslashes( strip_tags( $titles[$i] ) ));
-        $new[$i]['codes'] = $codes[$i];
-        $new[$i]['descriptions'] = trim(stripslashes( $descriptions[$i] ));
+            $new[$i]['thumbnails'] = esc_url(stripslashes( strip_tags( $thumbnails[$i] )));
+            $new[$i]['seasons'] = trim(stripslashes( strip_tags( $seasons[$i] ) ));
+            $new[$i]['positions'] = trim(stripslashes( strip_tags( $positions[$i] ) ));
+            $new[$i]['titles'] = trim(stripslashes( strip_tags( $titles[$i] ) ));
+            $new[$i]['codes'] = $codes[$i];
+            $new[$i]['descriptions'] = trim(stripslashes( $descriptions[$i] ));
 
-      endif;
-    }
+          endif;
+        }
 
-    // Check and save repeater fields
-    if ( !empty( $new ) && $new != $old ) {
-    
-      update_post_meta( $post_id, 'repeatable_fields', $new );
-    
-    } elseif ( empty($new) && $old ) {
-    
-      delete_post_meta( $post_id, 'repeatable_fields', $old );
-    
+        // Check and save repeater fields
+        if ( !empty( $new ) && $new != $old ) {
+        
+          update_post_meta( $post_id, 'repeatable_fields', $new );
+        
+        } elseif ( empty($new) && $old ) {
+        
+          delete_post_meta( $post_id, 'repeatable_fields', $old );
+        
+        }
+
     }
 
     // Save the checkbox
-    if( isset( $_POST['streamium_slider_featured_checkbox_value'] ) ){
+    if( isset( $_POST[ 'streamium_slider_featured_checkbox_value' ] ) ) {
 
-        $streamium_slider_featured_checkbox_value = ( isset( $_POST['streamium_slider_featured_checkbox_value'] ) && '1' === $_POST['streamium_slider_featured_checkbox_value'] ) ? 1 : 0; 
-        update_post_meta( $post_id, 'streamium_slider_featured_checkbox_value', esc_attr( $streamium_slider_featured_checkbox_value ) );
+        update_post_meta( $post_id, 'streamium_slider_featured_checkbox_value', 'yes' );
+    
+    } else {
+    
+        update_post_meta( $post_id, 'streamium_slider_featured_checkbox_value', '' );
     
     }
 

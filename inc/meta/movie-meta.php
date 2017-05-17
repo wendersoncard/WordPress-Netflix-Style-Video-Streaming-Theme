@@ -115,7 +115,7 @@ function synopis_video_progressbar(){
 		$userId = get_current_user_id();
     	$percentageWatched = get_post_meta( get_the_ID(), 'user_' . $userId, true );
 		$episodes = get_post_meta(get_the_ID(), 'repeatable_fields' , true);
-		if(!empty($episodes)) {
+		if(!empty($episodes) || get_post_type( get_the_ID() ) == 'stream') {
 
 			
 

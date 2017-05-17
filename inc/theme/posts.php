@@ -15,7 +15,9 @@ function streamium_single_video_scripts() {
 
     	$nonce = wp_create_nonce( 'single_nonce' );
     	$s3videoid = get_post_meta( $post->ID, 's3bubble_video_code_meta_box_text', true );
+    	$stream = get_post_meta( $post->ID, 'streamium_live_stream_meta_box_text', true );
     	$streamiumVideoTrailer = get_post_meta( $post->ID, 'streamium_video_trailer_meta_box_text', true );
+    	$poster   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-home-slider' ); 
     	
     	if(is_user_logged_in()){
     		$userId = get_current_user_id();
@@ -60,6 +62,8 @@ function streamium_single_video_scripts() {
 	                'para' => trim(stripslashes(strip_tags($post->post_excerpt))),
 	                'percentage' => $resume,
 	                'codes' => $codes,
+	                'stream' => $stream,
+	                'poster' => esc_url($poster[0]),
 	                'nonce' => $nonce
 	            )
 	        ); 
@@ -294,3 +298,27 @@ function streamium_programs_get_dynamic_content() {
 
 add_action( 'wp_ajax_nopriv_streamium_programs_get_dynamic_content', 'streamium_programs_get_dynamic_content' );
 add_action( 'wp_ajax_streamium_programs_get_dynamic_content', 'streamium_programs_get_dynamic_content' );
+
+function streamium_custom_post_types_general( $hook_suffix ){
+
+    if( in_array($hook_suffix, array('post.php') ) ){
+        
+        $screen = get_current_screen();
+
+        if( is_object( $screen ) && in_array($screen->post_type, array('movie', 'tv','sport','kid'))){
+
+            // Register, enqueue scripts and styles here
+            wp_enqueue_script( 'streamium-admin-custom-post-type-general', get_template_directory_uri() . '/production/js/custom.post.type.general.min.js', array( 'jquery'),'1.1', true );
+
+        }
+
+        if( is_object( $screen ) && in_array($screen->post_type, array('stream'))){
+
+            // Register, enqueue scripts and styles here
+            wp_enqueue_script( 'streamium-admin-custom-post-type-stream', get_template_directory_uri() . '/production/js/custom.post.type.stream.min.js', array( 'jquery'),'1.1', true );
+
+        }
+    }
+}
+
+add_action( 'admin_enqueue_scripts', 'streamium_custom_post_types_general');
