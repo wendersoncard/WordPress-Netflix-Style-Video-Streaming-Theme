@@ -1,7 +1,6 @@
 <?php get_header(); ?>
 	<main class="cd-main-content">
 		<section class="hero">
-			<button class="streamium-prev fa fa-angle-left" aria-hidden="true"></button>
 			<div class="hero-slider">
 				<?php 
      				
@@ -11,7 +10,7 @@
 
 					$args = array(
 						'post_status' => 'publish',
-						'posts_per_page'      => -1,
+						'posts_per_page' => -1,
 						'post_type' => $query->name,
 						'meta_key' => 'streamium_tv_featured_checkbox_value',
 						'meta_value' => '1'
@@ -84,7 +83,6 @@
 					wp_reset_query(); 
 				?>
 			</div><!--/.hero-slider-->
-			<button class="streamium-next fa fa-angle-right" aria-hidden="true"></button>
 		</section><!--/.hero-->
 
 		<?php 
@@ -97,7 +95,7 @@
 				    //'post_type' => $query->name,
 				    'tax_query' => array(
 				        array(
-				            'taxonomy'  => $tax,
+				            'taxonomy'  => $category->taxonomy,
 				            'field'     => 'term_id',
 				            'terms'     => $category->term_id,
 				        )
@@ -119,7 +117,7 @@
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="prev_next"></div>
-						<div class="carousels">
+						<div class="carousels" id="<?php echo $category->slug; ?>">
 					  	<?php
 							
 									while ( $loop->have_posts() ) : $loop->the_post();

@@ -8,170 +8,90 @@
  */
 function streamium_custom_post_types() {
 
-	$tax = (get_theme_mod( 'streamium_section_input_taxonomy_programs' ) ? get_theme_mod( 'streamium_section_input_taxonomy_programs' ) : 'programs');
-	$type = (get_theme_mod( 'streamium_section_input_posttype_tv' ) ? get_theme_mod( 'streamium_section_input_posttype_tv' ) : 'tv');
-	$menuText = (get_theme_mod( 'streamium_section_input_menu_text_tv' ) ? get_theme_mod( 'streamium_section_input_menu_text_tv' ) : 'TV Programs');
 
-	// TV PROGRAM
-	$tvTax = array(
-    	'hierarchical' => true,
-    	'labels' => array(
-      	'name' => __( $menuText, 'streamium' ),
-    ),
-    	'rewrite' => array(
-      		'slug' => $tax, 
-      		'with_front' => false, 
-      		'hierarchical' => true 
-    	),
-  	);
-  	
-	
-	$tvArgs = array(
-		'labels'              => array(
-			'name'                => __( ucfirst($type), 'streamium' ),
-		),
-		'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
-		'hierarchical'        => false,
-		'public'              => true,
-		'show_ui'             => true,
-		'show_in_menu'        => true,
-		'show_in_nav_menus'   => true,
-		'show_in_admin_bar'   => true,
-		'menu_position'       => 5,
-		'can_export'          => true,
-		'has_archive'         => true,
-		'exclude_from_search' => false,
-		'publicly_queryable'  => true,
-		'capability_type'     => 'post',
-		'taxonomies'          => array(  'post_tag', 'programs' ),
-		'rewrite' => array('slug' => $type,'with_front' => false),
-	);
-	
-	/* SPORTS */
-	$taxSport = (get_theme_mod( 'streamium_section_input_taxonomy_sports' ) ? get_theme_mod( 'streamium_section_input_taxonomy_sports' ) : 'sports');
-	$typeSport = (get_theme_mod( 'streamium_section_input_posttype_sport' ) ? get_theme_mod( 'streamium_section_input_posttype_sport' ) : 'sport');
-	$menuTextSport = (get_theme_mod( 'streamium_section_input_menu_text_sport' ) ? get_theme_mod( 'streamium_section_input_menu_text_sport' ) : 'Sport');
+	$postTypes = array(
+				array(
+                    'tax' => 'movies',
+                    'type' => 'movie',
+                    'menu' => 'Movies'
+                ),
+                array(
+                    'tax' => 'programs',
+                    'type' => 'tv',
+                    'menu' => 'TV Programs'
+                ),
+                array(
+                    'tax' => 'sports',
+                    'type' => 'sport',
+                    'menu' => 'Sport'
+                ),
+                array(
+                    'tax' => 'kids',
+                    'type' => 'kid',
+                    'menu' => 'Kids'
+                ),
+                array(
+                    'tax' => 'streams',
+                    'type' => 'stream',
+                    'menu' => 'Streams'
+                )
+            );
 
-	$sportTax = array(
-    	'hierarchical' => true,
-    	'labels' => array(
-      	'name' => __( $menuTextSport, 'streamium' ),
-    ),
-    	'rewrite' => array(
-      		'slug' => $taxSport, 
-      		'with_front' => false, 
-      		'hierarchical' => true 
-    	),
-  	);
+	foreach ($postTypes as $key => $value) {
 
-	$sportArgs = array(
-		'labels'              => array(
-			'name'                => __( ucfirst($typeSport), 'streamium' ),
-		),
-		'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
-		'hierarchical'        => false,
-		'public'              => true,
-		'show_ui'             => true,
-		'show_in_menu'        => true,
-		'show_in_nav_menus'   => true,
-		'show_in_admin_bar'   => true,
-		'menu_position'       => 5,
-		'can_export'          => true,
-		'has_archive'         => true,
-		'exclude_from_search' => false,
-		'publicly_queryable'  => true,
-		'capability_type'     => 'post',
-		'taxonomies'          => array(  'post_tag', 'sports' ),
-		'rewrite' => array('slug' => $typeSport,'with_front' => false),
-	);
+    	// Check for modifications
+    	$rewriteTax = (get_theme_mod( 'streamium_section_input_taxonomy_' . $value['tax'] ) ? get_theme_mod( 'streamium_section_input_taxonomy_' . $value['tax'] ) : $value['tax']);
 
-	/* KIDS */
-	$taxKids = (get_theme_mod( 'streamium_section_input_taxonomy_kids' ) ? get_theme_mod( 'streamium_section_input_taxonomy_kids' ) : 'kids');
-	$typeKid = (get_theme_mod( 'streamium_section_input_posttype_kid' ) ? get_theme_mod( 'streamium_section_input_posttype_kid' ) : 'kid');
-	$menuTextKids = (get_theme_mod( 'streamium_section_input_menu_text_kid' ) ? get_theme_mod( 'streamium_section_input_menu_text_kid' ) : 'Kids');
+    	$rewriteType = (get_theme_mod( 'streamium_section_input_posttype_' . $value['type'] ) ? get_theme_mod( 'streamium_section_input_posttype_' . $value['type'] ) : $value['type']);
 
-	$kidTax = array(
-    	'hierarchical' => true,
-    	'labels' => array(
-      	'name' => __( $menuTextKids, 'streamium' ),
-    ),
-    	'rewrite' => array(
-      		'slug' => $taxKids, 
-      		'with_front' => false, 
-      		'hierarchical' => true 
-    	),
-  	);
-	
-	$kidArgs = array(
-		'labels'              => array(
-			'name'                => __( ucfirst($typeKid), 'streamium' ),
-		),
-		'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
-		'hierarchical'        => false,
-		'public'              => true,
-		'show_ui'             => true,
-		'show_in_menu'        => true,
-		'show_in_nav_menus'   => true,
-		'show_in_admin_bar'   => true,
-		'menu_position'       => 5,
-		'can_export'          => true,
-		'has_archive'         => true,
-		'exclude_from_search' => false,
-		'publicly_queryable'  => true,
-		'capability_type'     => 'post',
-		'taxonomies'          => array(  'post_tag', 'kids' ),
-		'rewrite' => array('slug' => $typeKid,'with_front' => false),
-	);
+    	$menuLabel = (get_theme_mod( 'streamium_section_input_menu_text_' . $value['type'] ) ? get_theme_mod( 'streamium_section_input_menu_text_' . $value['type'] ) : $value['menu']);
 
-	/* LIVE */
-	$taxStreams = (get_theme_mod( 'streamium_section_input_taxonomy_streams' ) ? get_theme_mod( 'streamium_section_input_taxonomy_streams' ) : 'streams');
-	$typeStream = (get_theme_mod( 'streamium_stream_section_input_posttype' ) ? get_theme_mod( 'streamium_stream_section_input_posttype' ) : 'stream');
-	$menuTextStreams = (get_theme_mod( 'streamium_section_input_menu_text_stream' ) ? get_theme_mod( 'streamium_section_input_menu_text_stream' ) : 'Streams');
+    	// TV PROGRAM
+		$setupTax = array(
+	    	'hierarchical' => true,
+	    	'labels' => array(
+	      	'name' => __( ucfirst($rewriteTax) . ' Categories', 'streamium' ),
+	    ),
+	    	'rewrite' => array(
+	      		'slug' => $rewriteTax, 
+	      		'with_front' => false, 
+	      		'hierarchical' => true 
+	    	),
+	  	);
 
-	$streamTax = array(
-    	'hierarchical' => true,
-    	'labels' => array(
-      	'name' => __( $menuTextStreams, 'streamium' ),
-    ),
-    	'rewrite' => array(
-      		'slug' => $taxStreams, 
-      		'with_front' => false, 
-      		'hierarchical' => true 
-    	),
-  	);
+	  	$setupArgs = array(
+			'labels'              => array(
+				'name'                => __( ucfirst($menuLabel), 'streamium' ),
+			),
+			'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
+			'hierarchical'        => false,
+			'public'              => true,
+			'show_ui'             => true,
+			'show_in_menu'        => true,
+			'show_in_nav_menus'   => true,
+			'show_in_admin_bar'   => true,
+			'menu_position'       => 5,
+			'can_export'          => true,
+			'has_archive'         => true,
+			'exclude_from_search' => false,
+			'publicly_queryable'  => true,
+			'capability_type'     => 'post',
+			'taxonomies'          => array(  'post_tag', $value['tax'] ),
+			'rewrite'			  => array(
+										'slug' => $rewriteType, 
+										'with_front' => false
+									),
+		);
 
-	$streamArgs = array(
-		'labels'              => array(
-			'name'                => __( ucfirst($typeStream), 'streamium' ),
-		),
-		'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
-		'hierarchical'        => false,
-		'public'              => true,
-		'show_ui'             => true,
-		'show_in_menu'        => true,
-		'show_in_nav_menus'   => true,
-		'show_in_admin_bar'   => true,
-		'menu_position'       => 5,
-		'can_export'          => true,
-		'has_archive'         => true,
-		'exclude_from_search' => false,
-		'publicly_queryable'  => true,
-		'capability_type'     => 'post',
-		'taxonomies'          => array(  'post_tag', 'streams' ),
-		'rewrite' => array('slug' => $typeStream,'with_front' => false),
-	);
-	
-	// Registering your Custom Post Type
-	if ( get_theme_mod( 'streamium_enable_premium' ) ){
-		register_taxonomy('programs', 'tv', $tvTax); 
-		register_post_type( 'tv', $tvArgs );
-		register_taxonomy('kids', 'kid', $kidTax);
-		register_post_type( 'kid', $kidArgs );
-		register_taxonomy('sports', 'sport', $sportTax);
-		register_post_type( 'sport', $sportArgs );
-		register_taxonomy('streams', 'stream', $streamTax);
-		register_post_type( 'stream', $streamArgs );
-	}
+		// Registering your Custom Post Type
+		if ( get_theme_mod( 'streamium_enable_premium' ) ){
+
+			register_taxonomy( $value['tax'], $value['type'], $setupTax); 
+			register_post_type( $value['type'], $setupArgs );
+
+		}
+
+  	}	
 
 }
 

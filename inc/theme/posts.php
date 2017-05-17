@@ -129,14 +129,9 @@ function streamium_get_dynamic_content() {
 				}
 				
 				// Cats
-				$categories = get_the_category($postId);
-				if($post_object->post_type !== 'post'){
-
-					$query = get_post_taxonomies( $postId );
-					$tax = isset($query[1]) ? $query[1] : "";
-					$categories = get_terms( $tax, array('hide_empty' => false) );
-
-				}
+				$query = get_post_taxonomies( $postId );
+				$tax = isset($query[1]) ? $query[1] : "";
+				$categories = get_terms( $tax, array('hide_empty' => false) );
 				$genres = 'Genres: ';
 				if ($categories) {
 					$numItems = count($categories);
@@ -166,8 +161,6 @@ function streamium_get_dynamic_content() {
 				// Likes and reviews
 		        $nonce = wp_create_nonce( 'streamium_likes_nonce' );
 		    	$link = admin_url('admin-ajax.php?action=streamium_likes&post_id='. $postId .'&nonce='.$nonce);
-
-		    	
 
 		        $like_text = '<div class="synopis-premium-meta hidden-xs">
 		        				<a id="like-count-' . $postId . '" class="streamium-review-like-btn streamium-btns streamium-reviews-btns" data-toggle="tooltip" title="CLICK TO LIKE!" data-id="' . $postId . '" data-nonce="' . $nonce . '">' . get_streamium_likes($postId) . '</a>

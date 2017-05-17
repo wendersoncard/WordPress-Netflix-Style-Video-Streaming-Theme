@@ -8,14 +8,14 @@
  */
 function streamium_video_code_meta_box_add(){
 
-    add_meta_box( 'streamium-meta-box-movie', 'Main Video', 'streamium_meta_box_movie', array('post', 'tv','sport','kid','stream'), 'side', 'high' );
-    add_meta_box( 'streamium-meta-box-trailer', 'Video Trailer', 'streamium_meta_box_trailer', array('post', 'tv','sport','kid','stream'), 'side', 'high' );
-    add_meta_box( 'streamium-meta-box-bgvideo', 'Featured BG Video', 'streamium_meta_box_bgvideo', array('post', 'tv','sport','kid','stream'), 'side', 'high' );
-    add_meta_box( 'streamium-meta-box-main-slider', 'Featured Video', 'streamium_meta_box_main_slider', array('post', 'tv','sport','kid','stream'), 'side', 'high' );
+    add_meta_box( 'streamium-meta-box-movie', 'Main Video', 'streamium_meta_box_movie', array('movie', 'tv','sport','kid','stream'), 'side', 'high' );
+    add_meta_box( 'streamium-meta-box-trailer', 'Video Trailer', 'streamium_meta_box_trailer', array('movie', 'tv','sport','kid','stream'), 'side', 'high' );
+    add_meta_box( 'streamium-meta-box-bgvideo', 'Featured BG Video', 'streamium_meta_box_bgvideo', array('movie', 'tv','sport','kid','stream'), 'side', 'high' );
+    add_meta_box( 'streamium-meta-box-main-slider', 'Featured Video', 'streamium_meta_box_main_slider', array('movie', 'tv','sport','kid','stream'), 'side', 'high' );
 
     // Only allow repeater for premium
     if(get_theme_mod( 'streamium_enable_premium' )) {
-        add_meta_box( 'streamium-repeatable-fields', 'Multiple Videos', 'streamium_repeatable_meta_box_display', array('post', 'tv','sport','kid','stream'), 'normal', 'high');
+        add_meta_box( 'streamium-repeatable-fields', 'Multiple Videos', 'streamium_repeatable_meta_box_display', array('movie', 'tv','sport','kid','stream'), 'normal', 'high');
     }
 
 }
@@ -266,12 +266,12 @@ function streamium_meta_box_main_slider() {
     global $post;
     $meta = get_post_meta( $post->ID );
     
-    $streamium_tv_featured_checkbox_value = ( isset( $meta['streamium_tv_featured_checkbox_value'][0] ) &&  '1' === $meta['streamium_tv_featured_checkbox_value'][0] ) ? 1 : 0;
+    $streamium_slider_featured_checkbox_value = ( isset( $meta['streamium_slider_featured_checkbox_value'][0] ) &&  '1' === $meta['streamium_slider_featured_checkbox_value'][0] ) ? 1 : 0;
     wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
   
     ?>
         <p>
-            <label><input type="checkbox" name="streamium_tv_featured_checkbox_value" value="1" <?php checked( $streamium_tv_featured_checkbox_value, 1 ); ?> /><?php esc_attr_e( 'Show in the main feature slider', 'streamium' ); ?></label>
+            <label><input type="checkbox" name="streamium_slider_featured_checkbox_value" value="1" <?php checked( $streamium_slider_featured_checkbox_value, 1 ); ?> /><?php esc_attr_e( 'Show in the main feature slider', 'streamium' ); ?></label>
         </p>
     <?php
 
@@ -380,10 +380,10 @@ function streamium_post_meta_box_save( $post_id )
     }
 
     // Save the checkbox
-    if( isset( $_POST['streamium_tv_featured_checkbox_value'] ) ){
+    if( isset( $_POST['streamium_slider_featured_checkbox_value'] ) ){
 
-        $streamium_tv_featured_checkbox_value = ( isset( $_POST['streamium_tv_featured_checkbox_value'] ) && '1' === $_POST['streamium_tv_featured_checkbox_value'] ) ? 1 : 0; 
-        update_post_meta( $post_id, 'streamium_tv_featured_checkbox_value', esc_attr( $streamium_tv_featured_checkbox_value ) );
+        $streamium_slider_featured_checkbox_value = ( isset( $_POST['streamium_slider_featured_checkbox_value'] ) && '1' === $_POST['streamium_slider_featured_checkbox_value'] ) ? 1 : 0; 
+        update_post_meta( $post_id, 'streamium_slider_featured_checkbox_value', esc_attr( $streamium_slider_featured_checkbox_value ) );
     
     }
 

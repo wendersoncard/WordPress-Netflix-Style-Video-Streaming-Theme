@@ -53,7 +53,7 @@
 			?>
 					<div class="media episodes">
 					  	<a class="media-left media-top <?php echo ($epInd === 0) ? "selected" : ""; ?>" data-id="<?php echo $epInd; ?>">
-					    	<img src="<?php echo $thumbnail; ?>" class="media-object" />
+					    	<img src="<?php echo $thumbnail; ?>" class="media-object img-responsive" />
 					  	</a>
 					  	<div class="media-body">
 					    	<h4 class="media-heading"><?php echo $title; ?></h4>

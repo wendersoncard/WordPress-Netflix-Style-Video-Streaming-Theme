@@ -9,7 +9,7 @@ function synopis_meta_starring( ) {
 		$i = 0;
 	  	foreach($posttags as $tag) {
 
-		  	$staring .= '<a href="/?s=' . esc_html( $tag->name ) . '">' . $tag->name . '</a>';
+		  	$staring .= '<a href="/?s=' . esc_html( $tag->name ) . '">' . ucfirst($tag->name) . '</a>';
 		  	if(++$i !== $numItems) {
 	    		$staring .= ', ';
 	  		}
@@ -32,7 +32,7 @@ function synopis_meta_genre( ) {
 		$i = 0;
 	  	foreach($categories as $cat) {
 
-	  		$genres .= '<a href="' . esc_url( get_category_link( $cat->term_id ) ) . '">' . $cat->name . '</a>';
+	  		$genres .= '<a href="' . esc_url( get_category_link( $cat->term_id ) ) . '">' . ucfirst($cat->name) . '</a>';
 	  		if(++$i !== $numItems) {
 	    		$genres .= ', ';
 	  		}
@@ -62,7 +62,7 @@ function synopis_multi_meta_starring( ) {
 		$i = 0;
 	  	foreach($posttags as $tag) {
 
-		  	$staring .= '<a href="/?s=' . esc_html( $tag->name ) . '">' . $tag->name . '</a>';
+		  	$staring .= '<a href="/?s=' . esc_html( $tag->name ) . '">' . ucfirst($tag->name) . '</a>';
 		  	if(++$i !== $numItems) {
 	    		$staring .= ', ';
 	  		}
@@ -88,7 +88,7 @@ function synopis_multi_meta_genre() {
 		$i = 0;
 	  	foreach($categories as $cat) {
 
-	  		$genres .= '<a href="' . esc_url( get_category_link( $cat->term_id ) ) . '">' . $cat->name . '</a>';
+	  		$genres .= '<a href="' . esc_url( get_category_link( $cat->term_id ) ) . '">' . ucfirst($cat->name) . '</a>';
 	  		if(++$i !== $numItems) {
 	    		$genres .= ', ';
 	  		}
@@ -137,21 +137,17 @@ function streamium_video_payment_callback(){
 
 	if($post->premium) : ?>
 		<div class="tile_payment_details">
-			<div class="tile_payment_details_inner">
-				<h2>Available on <?php echo str_replace(array("_"), " ", $post->plans[0]); ?></h2>
-			</div>
+			<h2>Available on <br><?php echo str_replace(array("_"), " ", $post->plans[0]); ?></h2>
 		</div> 
 	<?php endif; ?>
 	<?php if (function_exists('is_protected_by_s2member')) :
 		$check = is_protected_by_s2member(get_the_ID());
 		if($check) : ?>
 		<div class="tile_payment_details">
-			<div class="tile_payment_details_inner">
-				<h2>Available on <?php 
-					$comma_separated = implode(",", $check);
-					echo "<br>plan " . $comma_separated; 
-				?></h2>
-			</div>
+			<h2>Available on <?php 
+				$comma_separated = implode(",", $check);
+				echo "plan " . $comma_separated; 
+			?></h2>
 		</div>
 	<?php endif; endif;
 

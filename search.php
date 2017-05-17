@@ -13,7 +13,7 @@
 					if($_GET['date'] === 'day'){
 
 						$the_query = new WP_Query(array(
-						    'post_type' => 'post',
+						    'post_type' => array('movie', 'tv','sport','kid','stream'),
 						    'posts_per_page' => -1, 
 							'ignore_sticky_posts' => true, 
 							'date_query' => array(
@@ -27,7 +27,7 @@
 					}else if($_GET['date'] === 'week'){
 
 						$the_query = new WP_Query(array(
-						    'post_type' => 'post',
+						    'post_type' => array('movie', 'tv','sport','kid','stream'),
 						    'posts_per_page' => -1, 
 							'ignore_sticky_posts' => true, 
 							'date_query' => array(
@@ -47,7 +47,7 @@
 							$month = $date[1];
 							$day   = $date[2];
 							$the_query = new WP_Query(array(
-							    'post_type' => 'post',
+							    'post_type' => array('movie', 'tv','sport','kid','stream'),
 							    'posts_per_page' => -1, 
 								'ignore_sticky_posts' => true, 
 								'date_query' => array(
@@ -63,7 +63,7 @@
 						}else{
 
 							$the_query = new WP_Query(array(
-							    'post_type' => 'post',
+							    'post_type' => array('movie', 'tv','sport','kid','stream'),
 							    'posts_per_page' => -1, 
 								'ignore_sticky_posts' => true, 
 								'date_query' => array(
@@ -82,7 +82,7 @@
 				default:
 
 					$the_query = new WP_Query(array(
-					    'post_type' => 'post', 
+					    'post_type' => array('movie', 'tv','sport','kid','stream'), 
 						's' => $s
 					)); 
 
@@ -142,9 +142,17 @@
 						$image   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile' );
 						$imageExpanded   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile-expanded' );
 						$tileImage = empty($image[0]) ? 'http://placehold.it/260x146' : esc_url($image[0]);
-						$nonce = wp_create_nonce( 'streamium_likes_nonce' ); 
+						$nonce = wp_create_nonce( 'streamium_likes_nonce' );
+
+						$class = "";
+						if($count % 6 == 0){
+							$class = "far-left";
+						}elseif($count % 5 == 0){
+							$class = "far-right";
+						}
+
 						?>
-						<div class="col-md-5ths tile" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>">
+						<div class="col-xs-6 col-sm-3 col-md-2 tile <?php echo $class; ?>" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>">
 
 							<div class="tile_inner" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
 
@@ -202,7 +210,7 @@
 						</div>
 						<?php
 							$count++;
-  							if ($count % (isMobile() ? 1 : 5) == 0 || $count == $total_count) { 
+  							if ($count % (isMobile() ? 2 : 6) == 0 || $count == $total_count) { 
   						?>
   						</div>
   						</div>

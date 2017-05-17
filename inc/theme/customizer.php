@@ -181,6 +181,49 @@ class Streamium_Customize {
       
 
       // SITE IDENTITY SECTION
+      $wp_customize->add_setting( 'streamium_main_post_type', array(
+        'default' => 'movie',
+        'sanitize_callback' => 'streamium_sanitize_customizer_main_tax',
+      ) );
+
+      function streamium_sanitize_customizer_main_tax( $value ) {
+
+          switch ($value) {
+            case 'movie':
+              set_theme_mod( "streamium_main_tax", "movies" );
+              break;
+            case 'tv':
+              set_theme_mod( "streamium_main_tax", "programs" );
+              break;
+            case 'sport':
+              set_theme_mod( "streamium_main_tax", "sports" );
+              break;
+            case 'kid':
+              set_theme_mod( "streamium_main_tax", "kids" );
+              break;
+            case 'stream':
+              set_theme_mod( "streamium_main_tax", "streams" );
+              break;
+          }
+
+          return $value;
+
+      }
+
+      $wp_customize->add_control( 'streamium_main_post_type', array(
+        'type' => 'radio',
+        'section' => 'title_tagline', // Add a default or your own section
+        'label' => __( 'Select the main post type to show on the homepage' ),
+        'description' => __( 'This is a custom radio input.' ),
+        'choices' => array(
+          'movie' => __( 'Movies' ),
+          'tv' => __( 'TV Programs' ),
+          'sport' => __( 'Sports' ),
+          'kid' => __( 'Kids' ),
+          'stream' => __( 'Streams' )
+        ),
+      ) );
+
       $wp_customize->add_setting('streamium_remove_powered_by_s3bubble');
       
       $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_remove_powered_by_s3bubble',
@@ -269,253 +312,83 @@ class Streamium_Customize {
         )) 
       );
 
-      // TV SECTION
-      $wp_customize->add_section('streamium_tv_section' , array(
-          'title'     => __('TV/Series Options', 'streamium'),
-          'description' => 'For infomation on how to setup the uploader with S3Bubble please watch this video<br><a href="https://www.youtube.com/watch?v=FUqN-b1MSrc" target="_blank">AWS direct uploader setup</a>',
-          'priority'  => 1019
-      ));
+        $postTypes = array(
+            array('tax' => 'movies','type' => 'movie','menu' => 'Movies'),
+            array('tax' => 'programs','type' => 'tv','menu' => 'TV Programs'),
+            array('tax' => 'sports','type' => 'sport','menu' => 'Sport'),
+            array('tax' => 'kids','type' => 'kid','menu' => 'Kids'),
+            array('tax' => 'streams','type' => 'stream','menu' => 'Streams')
+        );
 
-      $wp_customize->add_setting('streamium_section_input_menu_text_tv', array(
-          'default'    => 'TV Programs'
-      ));
+        foreach ($postTypes as $key => $value) :
 
-      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_section_input_menu_text_tv',
-        array(
-          'label' => 'Change Top Menu Text',
-          'section' => 'streamium_tv_section',
-          'settings' => 'streamium_section_input_menu_text_tv'
-        )) 
-      );
+            $tax = $value['tax'];
+            $type = $value['type'];
+            $menu = $value['menu'];
 
-      $wp_customize->add_setting('streamium_section_input_taxonomy_programs', array(
-          'default'    => 'programs',
-          'sanitize_callback' => 'streamium_sanitize_customizer_text',
-      ));
+            // MOVIE SECTION
+            $wp_customize->add_section('streamium_section_' . $type , array(
+                'title'     => __( $menu . ' Options', 'streamium'),
+                'description' => 'For infomation on how to setup the uploader with S3Bubble please watch this video<br><a href="https://www.youtube.com/watch?v=FUqN-b1MSrc" target="_blank">AWS direct uploader setup</a>',
+                'priority'  => 1019
+            ));
 
-      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_section_input_taxonomy_programs',
-        array(
-          'label' => 'Change Taxonomy',
-          'section' => 'streamium_tv_section',
-          'settings' => 'streamium_section_input_taxonomy_programs'
-        )) 
-      );
+            $wp_customize->add_setting('streamium_section_input_menu_text_' . $type, array(
+                'default'    => $menu
+            ));
 
-      $wp_customize->add_setting('streamium_section_input_posttype_tv', array(
-          'default'    => 'tv',
-          'sanitize_callback' => 'streamium_sanitize_customizer_text',
-      ));
-
-      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_section_input_posttype_tv',
-        array(
-          'label' => 'Change Post Type',
-          'section' => 'streamium_tv_section',
-          'settings' => 'streamium_section_input_posttype_tv'
-        )) 
-      );
-
-      $wp_customize->add_setting('streamium_tv_section_checkbox_enable', array(
-          'default'    => false
-      ));
-
-      $wp_customize->add_control(
-          new WP_Customize_Control(
-              $wp_customize,
-              'streamium_tv_section_checkbox_enable',
+            $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_section_input_menu_text_' . $type,
               array(
-                  'label'     => __('Enable TV Programs', 'streamium'),
-                  'section'   => 'streamium_tv_section',
-                  'settings'  => 'streamium_tv_section_checkbox_enable',
-                  'type'      => 'checkbox',
-              )
-          )
-      );
+                'label' => 'Change Top Menu Text',
+                'section' => 'streamium_section_' . $type,
+                'settings' => 'streamium_section_input_menu_text_' . $type
+              )) 
+            );
 
-      // TV SPORTS
-      $wp_customize->add_section('streamium_sports_section' , array(
-          'title'     => __('Sports Options', 'streamium'),
-          'description' => 'For infomation on how to setup the uploader with S3Bubble please watch this video<br><a href="https://www.youtube.com/watch?v=FUqN-b1MSrc" target="_blank">AWS direct uploader setup</a>',
-          'priority'  => 1019
-      ));
+            $wp_customize->add_setting('streamium_section_input_taxonomy_' . $tax, array(
+                'default'    => $tax,
+                'sanitize_callback' => 'streamium_sanitize_customizer_text',
+            ));
 
-      $wp_customize->add_setting('streamium_section_input_menu_text_sport', array(
-          'default'    => 'Sports'
-      ));
-
-      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_section_input_menu_text_sport',
-        array(
-          'label' => 'Change Top Menu Text',
-          'section' => 'streamium_sports_section',
-          'settings' => 'streamium_section_input_menu_text_sport'
-        )) 
-      );
-
-      $wp_customize->add_setting('streamium_section_input_taxonomy_sports', array(
-          'default'    => 'sports',
-          'sanitize_callback' => 'streamium_sanitize_customizer_text',
-      ));
-
-      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_section_input_taxonomy_sports',
-        array(
-          'label' => 'Change Taxonomy',
-          'section' => 'streamium_sports_section',
-          'settings' => 'streamium_section_input_taxonomy_sports'
-        )) 
-      );
-
-      $wp_customize->add_setting('streamium_section_input_posttype_sport', array(
-          'default'    => 'sport',
-          'sanitize_callback' => 'streamium_sanitize_customizer_text',
-      ));
-
-      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_section_input_posttype_sport',
-        array(
-          'label' => 'Change Post Type',
-          'section' => 'streamium_sports_section',
-          'settings' => 'streamium_section_input_posttype_sport'
-        )) 
-      );
-
-      $wp_customize->add_setting('streamium_sports_section_checkbox_enable', array(
-          'default'    => false
-      ));
-
-      $wp_customize->add_control(
-          new WP_Customize_Control(
-              $wp_customize,
-              'streamium_sports_section_checkbox_enable',
+            $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_section_input_taxonomy_' . $tax,
               array(
-                  'label'     => __('Enable Sport', 'streamium'),
-                  'section'   => 'streamium_sports_section',
-                  'settings'  => 'streamium_sports_section_checkbox_enable',
-                  'type'      => 'checkbox',
-              )
-          )
-      );
+                'label' => 'Change Taxonomy',
+                'section' => 'streamium_section_' . $type,
+                'settings' => 'streamium_section_input_taxonomy_' . $tax
+              )) 
+            );
 
-      // TV KIDS
-      $wp_customize->add_section('streamium_kids_section' , array(
-          'title'     => __('Kids Options', 'streamium'),
-          'description' => 'For infomation on how to setup the uploader with S3Bubble please watch this video<br><a href="https://www.youtube.com/watch?v=FUqN-b1MSrc" target="_blank">AWS direct uploader setup</a>',
-          'priority'  => 1019
-      ));
+            $wp_customize->add_setting('streamium_section_input_posttype_' . $type, array(
+                'default'    => $type,
+                'sanitize_callback' => 'streamium_sanitize_customizer_text',
+            ));
 
-      $wp_customize->add_setting('streamium_section_input_menu_text_kid', array(
-          'default'    => 'Kids'
-      ));
-
-      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_section_input_menu_text_kid',
-        array(
-          'label' => 'Change Top Menu Text',
-          'section' => 'streamium_kids_section',
-          'settings' => 'streamium_section_input_menu_text_kid'
-        )) 
-      );
-
-      $wp_customize->add_setting('streamium_section_input_taxonomy_kids', array(
-          'default'    => 'kids',
-          'sanitize_callback' => 'streamium_sanitize_customizer_text',
-      ));
-
-      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_section_input_taxonomy_kids',
-        array(
-          'label' => 'Change Taxonomy',
-          'section' => 'streamium_kids_section',
-          'settings' => 'streamium_section_input_taxonomy_kids'
-        )) 
-      );
-
-      $wp_customize->add_setting('streamium_section_input_posttype_kid', array(
-          'default'    => 'kid',
-          'sanitize_callback' => 'streamium_sanitize_customizer_text',
-      ));
-
-      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_section_input_posttype_kid',
-        array(
-          'label' => 'Change Post Type',
-          'section' => 'streamium_kids_section',
-          'settings' => 'streamium_section_input_posttype_kid'
-        )) 
-      );
-
-      $wp_customize->add_setting('streamium_kids_section_checkbox_enable', array(
-          'default'    => false
-      ));
-
-      $wp_customize->add_control(
-          new WP_Customize_Control(
-              $wp_customize,
-              'streamium_kids_section_checkbox_enable',
+            $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_section_input_posttype_' . $type,
               array(
-                  'label'     => __('Enable Kids', 'streamium'),
-                  'section'   => 'streamium_kids_section',
-                  'settings'  => 'streamium_kids_section_checkbox_enable',
-                  'type'      => 'checkbox',
-              )
-          )
-      );
+                'label' => 'Change Post Type',
+                'section' => 'streamium_section_' . $type,
+                'settings' => 'streamium_section_input_posttype_' . $type
+              )) 
+            );
 
-      // LIVE STREAMING
-      $wp_customize->add_section('streamium_live_section' , array(
-          'title'     => __('Live Streaming Options', 'streamium'),
-          'description' => 'For infomation on how to setup the uploader with S3Bubble please watch this video<br><a href="https://www.youtube.com/watch?v=FUqN-b1MSrc" target="_blank">AWS direct uploader setup</a>',
-          'priority'  => 1019
-      ));
+            $wp_customize->add_setting('streamium_section_checkbox_enable_' . $tax, array(
+                'default'    => false
+            ));
 
-      $wp_customize->add_setting('streamium_section_input_menu_text_stream', array(
-          'default'    => 'Live Streaming'
-      ));
+            $wp_customize->add_control(
+                new WP_Customize_Control(
+                    $wp_customize,
+                    'streamium_section_checkbox_enable_' . $tax,
+                    array(
+                        'label'     => __('Enable ' . $menu, 'streamium'),
+                        'section'   => 'streamium_section_' . $type,
+                        'settings'  => 'streamium_section_checkbox_enable_' . $tax,
+                        'type'      => 'checkbox',
+                    )
+                )
+            );
 
-      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_section_input_menu_text_stream',
-        array(
-          'label' => 'Change Top Menu Text',
-          'section' => 'streamium_live_section',
-          'settings' => 'streamium_section_input_menu_text_stream'
-        )) 
-      );
-
-      $wp_customize->add_setting('streamium_section_input_taxonomy_streams', array(
-          'default'    => 'streams',
-          'sanitize_callback' => 'streamium_sanitize_customizer_text',
-      ));
-
-      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_section_input_taxonomy_streams',
-        array(
-          'label' => 'Change Taxonomy',
-          'section' => 'streamium_live_section',
-          'settings' => 'streamium_section_input_taxonomy_streams'
-        )) 
-      );
-
-      $wp_customize->add_setting('streamium_stream_section_input_posttype', array(
-          'default'    => 'stream',
-          'sanitize_callback' => 'streamium_sanitize_customizer_text',
-      ));
-
-      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_stream_section_input_posttype',
-        array(
-          'label' => 'Change Post Type',
-          'section' => 'streamium_live_section',
-          'settings' => 'streamium_stream_section_input_posttype'
-        )) 
-      );
-
-      $wp_customize->add_setting('streamium_live_section_checkbox_enable', array(
-          'default'    => false
-      ));
-
-      $wp_customize->add_control(
-          new WP_Customize_Control(
-              $wp_customize,
-              'streamium_live_section_checkbox_enable',
-              array(
-                  'label'     => __('Enable Live Streaming', 'streamium'),
-                  'section'   => 'streamium_live_section',
-                  'settings'  => 'streamium_live_section_checkbox_enable',
-                  'type'      => 'checkbox',
-              )
-          )
-      );
+        endforeach;
 
       // PREMIUM SECTION
       $wp_customize->add_section('streamium_premium_section' , array(
@@ -580,14 +453,14 @@ class Streamium_Customize {
 
             <?php if(get_theme_mod( 'streamium_google_font' )){ ?>
               @import url('<?php echo $url; ?>');
-              html, body {
+              .h1, .h2, .h3, h1, h2, h3, .cd-logo {
                 font-family: '<?php echo $family; ?>', sans-serif !important;
               }
             <?php } ?>
 
            /* Theme colors */
            <?php self::generate_css('.archive, .home, .search, .single', 'background-color', 'streamium_background_color','',' !important'); ?>
-           <?php self::generate_css('.video-header h3', 'color', 'streamium_carousel_heading_color','',' !important'); ?>
+           <?php self::generate_css('.video-header h3, .see-all', 'color', 'streamium_carousel_heading_color','',' !important'); ?>
 
            /* link and background colors */
            <?php self::generate_css('.page a, a:focus, a:hover, .cd-main-header .cd-logo, .play-icon-wrap i, .cd-primary-nav .cd-secondary-nav a:hover, .cd-primary-nav>li>a:hover, .cd-primary-nav .cd-nav-gallery .cd-nav-item h3, .cd-primary-nav .cd-nav-icons .cd-nav-item h3, .woocommerce-message:before, .woocommerce-info::before', 'color', 'link_textcolor'); ?>
