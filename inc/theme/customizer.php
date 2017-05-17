@@ -451,6 +451,12 @@ class Streamium_Customize {
       <!--Customizer CSS--> 
       <style type="text/css">
 
+            <?php if(get_theme_mod( 'streamium_google_font' )){ ?>
+              @import url('<?php echo $url; ?>');
+              .h1, .h2, .h3, h1, h2, h3, .cd-logo {
+                font-family: '<?php echo $family; ?>', sans-serif !important;
+              }
+           <?php } ?>
            /* Theme colors */
            <?php self::generate_css('.archive, .home, .search, .single', 'background-color', 'streamium_background_color','',' !important'); ?>
            <?php self::generate_css('.video-header h3, .see-all', 'color', 'streamium_carousel_heading_color','',' !important'); ?>
@@ -473,17 +479,8 @@ class Streamium_Customize {
            /* Override media player brand colors */
            <?php self::generate_css('button.vjs-play-control.vjs-control.vjs-button.vjs-paused, .vjs-play-progress, .vjs-volume-level', 'background-color', 'link_textcolor','',' !important'); ?>
            
-           <?php if(get_theme_mod( 'streamium_google_font' )){ ?>
-              @import url('<?php echo $url; ?>');
-              .h1, .h2, .h3, h1, h2, h3, .cd-logo {
-                font-family: '<?php echo $family; ?>', sans-serif !important;
-              }
-              .streamium-list-reviews {
-                background: #000 !important;
-              }
-           <?php } ?>
-           
-           
+           .streamium-list-reviews { background: #000 !important;}
+          
       </style> 
       <!--/Customizer CSS-->
       <?php
