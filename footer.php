@@ -87,7 +87,7 @@
 									</li>
 
 								<?php } else { ?>
-									<li><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>"><?php echo $category->name; ?></a></li>
+									<li><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>"><?php echo ucwords($category->name); ?></a></li>
 								<?php } } ?>
 
 							<?php else: 
@@ -107,7 +107,7 @@
 										        ) );
 										    ?>	
 
-											<li class="go-back"><a href="#0"><?php echo $category->name; ?></a></li>
+											<li class="go-back"><a href="#0"><?php echo ucwords($category->name); ?></a></li>
 											<?php if($children) : ?>
 
 												<li class="has-children" id="<?php echo $category->slug; ?>">

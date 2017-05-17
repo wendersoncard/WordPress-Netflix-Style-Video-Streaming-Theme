@@ -353,18 +353,21 @@
 			  'parent' => 0,
 			  'hide_empty' => false
 			);
-			$categories = get_terms( get_theme_mod( 'streamium_main_tax' ), $args );
+			$categories = get_terms( $setTax, $args );
 
 		  	foreach ($categories as $category) : 
 
+				$typeTitle =  (get_theme_mod( 'streamium_section_input_posttype_' . $setType )) ? get_theme_mod( 'streamium_section_input_posttype_' . $setType ) : $setType;
+
+				$taxUrl =  (get_theme_mod( 'streamium_section_input_taxonomy_' . $setTax )) ? get_theme_mod( 'streamium_section_input_taxonomy_' . $setTax ) : $setTax;
 		?>
 
 	  	<section class="videos">
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-sm-12 video-header">
-						<h3><?php echo ucfirst($setType); ?> <i class="fa fa-chevron-right" aria-hidden="true"></i> <?php echo ucfirst($category->name); ?></h3>
-						<a class="see-all" href="<?php echo esc_url( home_url() ); ?>/<?php echo $category->taxonomy; ?>/<?php echo $category->slug; ?>">View all</a>
+						<h3><?php echo ucwords($typeTitle); ?> <i class="fa fa-chevron-right" aria-hidden="true"></i> <?php echo ucfirst($category->name); ?></h3>
+						<a class="see-all" href="<?php echo esc_url( home_url() ); ?>/<?php echo $taxUrl; ?>/<?php echo $category->slug; ?>">View all</a>
 					</div><!--/.col-sm-12-->
 				</div>
 				<div class="row">

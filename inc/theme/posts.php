@@ -119,7 +119,7 @@ function streamium_get_dynamic_content() {
 					$i = 0;
 				  	foreach($posttags as $tag) {
 
-					  	$staring .= '<a href="/?s=' . esc_html( $tag->name ) . '">' . $tag->name . '</a>';
+					  	$staring .= '<a href="/?s=' . esc_html( $tag->name ) . '">' . ucwords($tag->name) . '</a>';
 					  	if(++$i !== $numItems) {
 				    		$staring .= ', ';
 				  		}
@@ -138,7 +138,7 @@ function streamium_get_dynamic_content() {
 					$g = 0;
 				  	foreach($categories as $cats) {
 
-				  		$genres .= '<a href="' . esc_url( get_category_link( $cats->term_id ) ) . '">' . $cats->name . '</a>';
+				  		$genres .= '<a href="' . esc_url( get_category_link( $cats->term_id ) ) . '">' . ucwords($cats->name) . '</a>';
 				  		if(++$g !== $numItems) {
 				    		$genres .= ', ';
 				  		}
