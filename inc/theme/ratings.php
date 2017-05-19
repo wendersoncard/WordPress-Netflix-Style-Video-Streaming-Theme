@@ -343,7 +343,9 @@ class Streamium_Ratings {
 			'Ratings',
 			'manage_options',
 			'wp_list_table_class',
-			[ $this, 'plugin_settings_page' ]
+			[ $this, 'plugin_settings_page' ],
+			'https://s3.amazonaws.com/s3bubble-cdn/theme-images/s3bubblelogo.png',
+			65
 		);
 
 		add_action( "load-$hook", [ $this, 'screen_option' ] );
