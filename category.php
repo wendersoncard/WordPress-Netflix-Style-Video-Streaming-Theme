@@ -87,20 +87,6 @@
 				<div class="row">
 					<div class="col-sm-12 video-header-archive">
 						<h3><?php printf( __( 'Viewing: %s', 'streamium' ), single_cat_title( '', false ) ); ?></h3>
-						<?php if(get_theme_mod( 'streamium_enable_premium' )) : ?>
-							<div class="dropdown video-header-archive-dropdown">
-							  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-							    FILTER
-							    <span class="caret"></span>
-							  </button>
-							  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-							    <li><a href="?sort=all">View All</a></li>
-							    <li><a href="?sort=reviewed">Most Reviews</a></li>
-							    <li><a href="?sort=newest">Recently Added</a></li>
-							    <li><a href="?sort=oldest">Oldest First</a></li>
-							  </ul>
-							</div>
-						<?php endif; ?>
 					</div><!--/.col-sm-12-->
 				</div><!--/.row-->
 			</div><!--/.container-->
@@ -115,35 +101,40 @@
 						while ( $the_query->have_posts() ) : $the_query->the_post(); 
 						$image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile' );
 						$imageExpanded   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile-expanded' );
-						$nonce = wp_create_nonce( 'streamium_likes_nonce' ); 
+						$nonce = wp_create_nonce( 'streamium_likes_nonce' );
+						$trimexcerpt = !empty(get_the_excerpt()) ? get_the_excerpt() : get_the_content(); 
+
+						$class = "";
+						if($count % 6 == 0){
+							$class = "far-left";
+						}elseif($count % 5 == 0){
+							$class = "far-right";
+						}   
 						?>
-						<div class="col-xs-6 col-md-5ths tile" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>">
+						<div class="col-xs-6 col-sm-3 col-md-2 tile <?php echo $class; ?>" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>">
 							
 							<div class="tile_inner" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
 
-								<?php do_action('streamium_video_payment'); ?>
-
 								<div class="content">
-							      <div class="overlay" style="background-image: url(<?php echo esc_url($imageExpanded[0]); ?>);">
-							        <div class="overlay-gradient"></div>
-							        <a class="play-icon-wrap hidden-xs" href="<?php the_permalink(); ?>">
-										<div class="play-icon-wrap-rel">
-											<div class="play-icon-wrap-rel-ring"></div>
-											<span class="play-icon-wrap-rel-play">
-												<i class="fa fa-play fa-1x" aria-hidden="true"></i>
-								        	</span>
-							        	</div>
-						        	</a>
-						          	<div class="overlay-meta hidden-xs">
-						            	<h4><?php the_title(); ?></h4>						            	
-						            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
-						          	</div>
-							      </div>
+							      	<div class="overlay" style="background-image: url(<?php echo esc_url($imageExpanded[0]); ?>);">
+							        	<div class="overlay-gradient"></div>
+							        	<a class="play-icon-wrap hidden-xs" href="<?php the_permalink(); ?>">
+											<div class="play-icon-wrap-rel">
+												<div class="play-icon-wrap-rel-ring"></div>
+												<span class="play-icon-wrap-rel-play">
+													<i class="fa fa-eye fa-1x" aria-hidden="true"></i>
+								        		</span>
+							        		</div>
+						        		</a>
+						          		<div class="overlay-meta">
+						            		<h4><?php the_title(); ?></h4>
+						            		<p><?php echo wp_trim_words( $trimexcerpt, $num_words = 30, $more = '...' ); ?></p>
+						            		<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
+						          		</div>
+							      	</div>
 							    </div>
 
 							</div>
-
-							<?php do_action('synopis_video_progress'); ?>
 
 						</div>
 						<?php
@@ -171,7 +162,7 @@
 											<div class="play-icon-wrap-rel">
 												<div class="play-icon-wrap-rel-ring"></div>
 												<span class="play-icon-wrap-rel-play">
-													<i class="fa fa-play fa-3x" aria-hidden="true"></i>
+													<i class="fa fa-eye fa-3x" aria-hidden="true"></i>
 									        	</span>
 								        	</div>
 							        	</a>

@@ -93,36 +93,35 @@
 					<div class="col-sm-12 video-header-archive">
 						<h3 class="pull-left"><?php printf( __( 'Search Results for: %s', 'streamium' ), get_search_query() ); ?></h3>
 						<?php if(get_theme_mod( 'streamium_enable_premium' )) : ?>
-							<div class="dropdown video-header-archive-dropdown">
-							  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-							    FILTER
-							    <span class="caret"></span>
-							  </button>
-							  <ul class="dropdown-menu dropdown-menu-right streamium-menu-filter" aria-labelledby="dropdownMenu1">
-							  	<li><a href="?s=all&date=day">1 Day Ago</a></li>
-							  	<li><a href="?s=all&date=week">1 Week Ago</a></li>
-							  	<?php
-							  		$begin = new DateTime( '2015-01-01' );
-									$end = new DateTime();
-									$interval = DateInterval::createFromDateString('1 year');
-									$period = new DatePeriod($begin, $interval, $end);
-									foreach ( array_reverse(iterator_to_array($period)) as $dt ) : ?>
-										<li><a href="?s=all&date=<?php echo $dt->format( "Y" ); ?>"><?php echo $dt->format( "Y" ); ?></a></li>
-								<?php 
-									endforeach; 
-								?>
-							  	<?php
-							  		$begin = new DateTime( '2015-01-01' );
-									$end = new DateTime();
-									$interval = DateInterval::createFromDateString('1 month');
-									$period = new DatePeriod($begin, $interval, $end);
-									foreach ( array_reverse(iterator_to_array($period)) as $dt ) : ?>
-										<li><a href="?s=all&date=<?php echo $dt->format( "Y/m/d" ); ?>"><?php echo $dt->format( "M Y" ); ?></a></li>
-								<?php 
-									endforeach; 
-								?>
-							  </ul>
-							</div>
+							<div class="streamium-drop-dropdown-wrapper open-to-left">
+								<a class="streamium-drop-dropdown-trigger" href="#0">FILTER</a>
+								<nav class="streamium-drop-dropdown">
+									<ul class="streamium-drop-dropdown-content">
+										<li><a href="?s=all&date=day">1 Day Ago</a></li>
+									  	<li><a href="?s=all&date=week">1 Week Ago</a></li>
+									  	<?php
+									  		$begin = new DateTime( '2015-01-01' );
+											$end = new DateTime();
+											$interval = DateInterval::createFromDateString('1 year');
+											$period = new DatePeriod($begin, $interval, $end);
+											foreach ( array_reverse(iterator_to_array($period)) as $dt ) : ?>
+												<li><a href="?s=all&date=<?php echo $dt->format( "Y" ); ?>"><?php echo $dt->format( "Y" ); ?></a></li>
+										<?php 
+											endforeach; 
+										?>
+									  	<?php
+									  		$begin = new DateTime( '2015-01-01' );
+											$end = new DateTime();
+											$interval = DateInterval::createFromDateString('1 month');
+											$period = new DatePeriod($begin, $interval, $end);
+											foreach ( array_reverse(iterator_to_array($period)) as $dt ) : ?>
+												<li><a href="?s=all&date=<?php echo $dt->format( "Y/m/d" ); ?>"><?php echo $dt->format( "M Y" ); ?></a></li>
+										<?php 
+											endforeach; 
+										?>
+									</ul> <!-- .cd-dropdown-content -->
+								</nav> <!-- .cd-dropdown -->
+							</div> <!-- .cd-dropdown-wrapper -->
 						<?php endif; ?>
 					</div><!--/.col-sm-12-->
 				</div><!--/.row-->
@@ -170,11 +169,13 @@
 						        		</a>
 						          		<div class="overlay-meta">
 						            		<h4><?php the_title(); ?></h4>
-						            		<p><?php echo wp_trim_words( $trimexcerpt, $num_words = 30, $more = '...' ); ?></p>
+						            		<p><strong><?php printf( __( '%s:', 'textdomain' ), ucwords(get_post_type( get_the_ID() )) ); ?></strong> <?php echo wp_trim_words( $trimexcerpt, $num_words = 30, $more = '...' ); ?></p>
 						            		<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
 						          		</div>
 							      	</div>
 							    </div>
+
+							    <?php do_action('streamium_video_extra_meta'); ?>
 
 							</div>
 

@@ -112,18 +112,17 @@
 					<div class="col-xs-12 col-sm-12 col-md-12 video-header-archive">
 						<h3><?php printf( __( 'Viewing: %s', 'streamium' ), single_cat_title( '', false ) ); ?></h3>
 						<?php if(get_theme_mod( 'streamium_enable_premium' )) : ?>
-							<div class="dropdown video-header-archive-dropdown">
-							  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-							    FILTER
-							    <span class="caret"></span>
-							  </button>
-							  <ul class="dropdown-menu dropdown-menu-right">
-							    <li><a href="?sort=all">View All</a></li>
-							    <li><a href="?sort=reviewed">Most Reviews</a></li>
-							    <li><a href="?sort=newest">Recently Added</a></li>
-							    <li><a href="?sort=oldest">Oldest First</a></li>
-							  </ul>
-							</div>
+							<div class="streamium-drop-dropdown-wrapper open-to-left">
+								<a class="streamium-drop-dropdown-trigger" href="#0">FILTER</a>
+								<nav class="streamium-drop-dropdown">
+									<ul class="streamium-drop-dropdown-content">
+										<li><a href="?sort=all">View All</a></li>
+									    <li><a href="?sort=reviewed">Most Reviews</a></li>
+									    <li><a href="?sort=newest">Recently Added</a></li>
+									    <li><a href="?sort=oldest">Oldest First</a></li>
+									</ul> <!-- .cd-dropdown-content -->
+								</nav> <!-- .cd-dropdown -->
+							</div> <!-- .cd-dropdown-wrapper -->
 						<?php endif; ?>
 					</div><!--/.col-sm-12-->
 				</div><!--/.row-->
@@ -173,6 +172,8 @@
 						          		</div>
 							      	</div>
 							    </div>
+
+							    <?php do_action('streamium_video_extra_meta'); ?>
 
 							</div>
 

@@ -122,12 +122,12 @@
 						<div class="carousels" id="<?php echo $category->slug; ?>">
 					  	<?php
 							
-									while ( $loop->have_posts() ) : $loop->the_post();
-									if ( has_post_thumbnail() ) : // thumbnail check 
-									$image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile' );
-									$imageExpanded   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile-expanded' );
-									$nonce = wp_create_nonce( 'streamium_likes_nonce' );
-									$trimexcerpt = !empty(get_the_excerpt()) ? get_the_excerpt() : get_the_content();  
+							while ( $loop->have_posts() ) : $loop->the_post();
+							if ( has_post_thumbnail() ) : // thumbnail check 
+							$image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile' );
+							$imageExpanded   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile-expanded' );
+							$nonce = wp_create_nonce( 'streamium_likes_nonce' );
+							$trimexcerpt = !empty(get_the_excerpt()) ? get_the_excerpt() : get_the_content();  
 
 						?>
 							<div class="tile" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="<?php echo $category->slug; ?>">
@@ -154,6 +154,8 @@
 							          	</div>
 								      </div>
 								    </div>
+
+								    <?php do_action('streamium_video_extra_meta'); ?>
 
 								</div>
 

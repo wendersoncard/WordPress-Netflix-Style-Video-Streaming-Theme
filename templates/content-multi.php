@@ -29,10 +29,11 @@
 		$buildList = '<div class="tab-content">'; 
 		foreach (array_reverse($result) as $key => $value) :
 
-			$active = ($key == 0)? "active" : "fade"; 
-			$buildNav .= '<li class="streamium-season-filter ' . $active . '"><a data-target="#vtab' . $key . '" data-toggle="tab">Season ' . $value[0]['seasons'] . '</a></li>'; 
+			$activeNav = ($key == 0)? "active" : "";
+			$activeList = ($key == 0)? "active" : "fade"; 
+			$buildNav .= '<li class="streamium-season-filter ' . $activeNav . '"><a data-target="#vtab' . $key . '" data-toggle="tab">Season ' . $value[0]['seasons'] . '</a></li>'; 
 
-			$buildList .= '<div class="tab-pane ' . $active . '" id="vtab' . $key . '">';
+			$buildList .= '<div class="tab-pane ' . $activeList . '" id="vtab' . $key . '">';
 			foreach ($value as $key2 => $value2) :
 
 				$thumbnail = !isset($value2['thumbnails']) ? "http://placehold.it/260x146" : esc_url($value2['thumbnails']);
@@ -68,15 +69,14 @@
 		<div class="row">
 			<div class="col-sm-12 video-header-archive">
 				<h3><?php the_title(); ?></h3>
-				<div class="dropdown video-header-archive-dropdown bs-dark">
-				  	<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-				    	FILTER
-				    	<span class="caret"></span>
-				  	</button>
-				  	<ul class="dropdown-menu dropdown-menu-right ">
-				 		<?php echo $buildNav; ?>
-				  	</ul>
-				</div>
+				<div class="streamium-drop-dropdown-wrapper open-to-left">
+					<a class="streamium-drop-dropdown-trigger" href="#0">FILTER</a>
+					<nav class="streamium-drop-dropdown">
+						<ul class="streamium-drop-dropdown-content">
+							<?php echo $buildNav; ?>
+						</ul> <!-- .cd-dropdown-content -->
+					</nav> <!-- .cd-dropdown -->
+				</div> <!-- .cd-dropdown-wrapper -->
 			</div><!--/.col-sm-12-->
 		</div><!--/.row-->
 	</div><!--/.container-->
