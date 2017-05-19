@@ -64,7 +64,7 @@
 
 							<?php 
 
-							$categories = get_terms( $tax, array('hide_empty' => false) );
+							$categories = get_terms( array( 'taxonomy' => $tax, 'parent'   => 0 ));
 
 							if(isMobile()) : 
 
@@ -101,24 +101,26 @@
 											<?php 
 										    foreach ( $parentCategory  as $key => $category ) {
 										        $genre = $category->name; 
-										        $children = get_terms( $category->taxonomy, array(
-										            'parent'    => $category->term_id,
-										            'hide_empty' => false
-										        ) );
 										    ?>	
 
 											<li class="go-back"><a href="#0"><?php echo ucwords($category->name); ?></a></li>
-											<?php if($children) : ?>
+											<?php 
 
-												<li class="has-children">
+												$children = get_term_children( $category->term_id, $tax);
+												if($children) : 
+											
+											?>
+
+												<li class="has-children" id="<?php echo $category->slug; ?>">
 													<a href="#0"><?php echo ucwords($category->name); ?></a>
 
 													<ul class="is-hidden">
 														<li class="go-back"><a href="#0">Accessories</a></li>
 														<li class="see-all"><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>">All <?php echo ucwords($category->name); ?></a></li>
-														<?php $ChildCats = get_categories('child_of=' . $category->cat_ID); 
-												            foreach ($ChildCats as $ChildCat) { ?>
-															<li><a href="<?php echo esc_url(get_category_link( $ChildCat->term_id )); ?>"><?php echo ucwords($ChildCat->cat_name); ?></a></li>
+														<?php foreach ($children as $key => $value) { 
+												            	$term = get_term($value);
+												            ?>
+															<li><a href="<?php echo esc_url(get_category_link( $term->term_id )); ?>"><?php echo ucwords($term->name); ?></a></li>
 												        <?php } ?>
 													</ul>
 												</li>
