@@ -68,14 +68,14 @@
 		<div class="row">
 			<div class="col-sm-12 video-header-archive">
 				<h3><?php the_title(); ?></h3>
-				<div class="dropdown video-header-archive-dropdown">
-				  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-				    FILTER
-				    <span class="caret"></span>
-				  </button>
-				  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-				    <?php echo $buildNav; ?>
-				  </ul>
+				<div class="dropdown video-header-archive-dropdown bs-dark">
+				  	<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+				    	FILTER
+				    	<span class="caret"></span>
+				  	</button>
+				  	<ul class="dropdown-menu dropdown-menu-right ">
+				 		<?php echo $buildNav; ?>
+				  	</ul>
 				</div>
 			</div><!--/.col-sm-12-->
 		</div><!--/.row-->
