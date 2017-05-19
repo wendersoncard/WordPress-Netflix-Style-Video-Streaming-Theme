@@ -1,8 +1,6 @@
 <?php get_header(); ?>
 	<main class="cd-main-content">
 
-		<div class="main-spacer"></div>
-
 		<section class="categories">
 			<?php 
 

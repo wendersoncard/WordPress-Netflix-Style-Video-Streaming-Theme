@@ -109,9 +109,11 @@
 	  	<section class="videos">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-sm-12 video-header">
-						<h3><?php echo ucfirst($category->name); ?></h3>
-						<a class="see-all" href="<?php echo esc_url( home_url('/' . $rewrite . '/' . $category->slug ) ); ?>">View all</a>
+					<div class="col-sm-12">
+						<div class="video-header">
+							<h3><?php echo ucfirst($category->name); ?></h3>
+							<a class="see-all" href="<?php echo esc_url( home_url('/' . $rewrite . '/' . $category->slug ) ); ?>">View all</a>
+						</div>
 					</div><!--/.col-sm-12-->
 				</div>
 				<div class="row">
@@ -124,7 +126,8 @@
 									if ( has_post_thumbnail() ) : // thumbnail check 
 									$image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile' );
 									$imageExpanded   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile-expanded' );
-									$nonce = wp_create_nonce( 'streamium_likes_nonce' ); 
+									$nonce = wp_create_nonce( 'streamium_likes_nonce' );
+									$trimexcerpt = !empty(get_the_excerpt()) ? get_the_excerpt() : get_the_content();  
 
 						?>
 							<div class="tile" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="<?php echo $category->slug; ?>">
@@ -145,7 +148,8 @@
 								        	</div>
 							        	</a>
 							          	<div class="overlay-meta hidden-xs">
-							            	<h4><?php the_title(); ?></h4>						            	
+							            	<h4><?php the_title(); ?></h4>
+							            	<p><?php echo wp_trim_words( $trimexcerpt, $num_words = 30, $more = '...' ); ?></p>            	
 							            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="<?php echo $category->slug; ?>" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
 							          	</div>
 								      </div>

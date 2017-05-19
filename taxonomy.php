@@ -1,8 +1,6 @@
 <?php get_header(); ?>
 	<main class="cd-main-content">
 
-		<div class="main-spacer"></div>
-
 		<section class="categories">
 			<?php 
 
@@ -142,6 +140,7 @@
 						$image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile' );
 						$imageExpanded   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile-expanded' );
 						$nonce = wp_create_nonce( 'streamium_likes_nonce' );
+						$trimexcerpt = !empty(get_the_excerpt()) ? get_the_excerpt() : get_the_content(); 
 
 						$class = "";
 						if($count % 6 == 0){
@@ -168,7 +167,8 @@
 							        		</div>
 						        		</a>
 						          		<div class="overlay-meta">
-						            		<h4><?php the_title(); ?></h4>						            	
+						            		<h4><?php the_title(); ?></h4>
+						            		<p><?php echo wp_trim_words( $trimexcerpt, $num_words = 30, $more = '...' ); ?></p>
 						            		<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
 						          		</div>
 							      	</div>

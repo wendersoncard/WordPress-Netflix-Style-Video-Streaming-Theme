@@ -1,4 +1,4 @@
-<main class="cd-main-content">
+<main class="cd-main-content video-player-streaming">
 
 <?php
 	
@@ -7,6 +7,56 @@
 	$streamiumVideoTrailer = get_post_meta( $post->ID, 'streamium_video_trailer_meta_box_text', true );
 	$epInd = (isset($_GET['trailer']) && isset($streamiumVideoTrailer)) ? 1 : 0;
 	$episodes = get_post_meta(get_the_ID(), 'repeatable_fields' , true);
+
+	if(!empty($episodes)) :
+
+		// Order the list
+		$positions = array();
+		foreach ($episodes as $key => $row){
+		    $positions[$key] = $row['positions'];
+		}
+		array_multisort($positions, SORT_ASC, $episodes);
+
+		// Sort the seasons
+		$result = array();
+		foreach ($episodes as $v) {
+		    $seasons = $v['seasons'];
+		    if (!isset($result[$seasons])) $result[$seasons] = array();
+		    $result[$seasons][] = $v;
+		}
+
+		$buildNav = "";
+		$buildList = '<div class="tab-content">'; 
+		foreach (array_reverse($result) as $key => $value) :
+
+			$active = ($key == 0)? "active" : "fade"; 
+			$buildNav .= '<li class="streamium-season-filter ' . $active . '"><a data-target="#vtab' . $key . '" data-toggle="tab">Season ' . $value[0]['seasons'] . '</a></li>'; 
+
+			$buildList .= '<div class="tab-pane ' . $active . '" id="vtab' . $key . '">';
+			foreach ($value as $key2 => $value2) :
+
+				$thumbnail = !isset($value2['thumbnails']) ? "http://placehold.it/260x146" : esc_url($value2['thumbnails']);
+				$title = !isset($value2['titles']) ? "No Title" : esc_html($value2['titles']); 
+				$description = !isset($value2['descriptions']) ? "No Description" : esc_html($value2['descriptions']);
+
+				$buildList .= '<div class="media episodes">
+					  	<a class="media-left media-top ' . (($epInd === 0) ? "selected" : "") . '" data-id="' . $epInd . '" style="background-image: url(' . $thumbnail . ');">
+					  	</a>
+					  	<div class="media-body">
+					    	<h4 class="media-heading">' . $title . '</h4>
+					    	<p>' . $description . '</p>
+					  	</div>
+					</div>';
+
+			$epInd++; 
+
+			endforeach;
+
+			$buildList .= "</div>"; 
+
+		endforeach;
+
+	endif;
 
 ?>
 
@@ -18,6 +68,15 @@
 		<div class="row">
 			<div class="col-sm-12 video-header-archive">
 				<h3><?php the_title(); ?></h3>
+				<div class="dropdown video-header-archive-dropdown">
+				  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+				    FILTER
+				    <span class="caret"></span>
+				  </button>
+				  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+				    <?php echo $buildNav; ?>
+				  </ul>
+				</div>
 			</div><!--/.col-sm-12-->
 		</div><!--/.row-->
 	</div><!--/.container-->
@@ -33,38 +92,7 @@
 				</ul>
 		    </div>
 		    <div class="col-md-8">
-			<?php
-	
-				if(!empty($episodes)) :
-
-					// Order the list
-					$positions = array();
-					foreach ($episodes as $key => $row){
-					    $positions[$key] = $row['positions'];
-					}
-					array_multisort($positions, SORT_ASC, $episodes);
-	
-					foreach ($episodes as $key => $value) :
-
-						$thumbnail = !isset($value['thumbnails']) ? "http://placehold.it/260x146" : esc_url($value['thumbnails']);
-						$title = !isset($value['titles']) ? "No Title" : esc_html($value['titles']); 
-						$description = !isset($value['descriptions']) ? "No Description" : esc_html($value['descriptions']);  
-					
-			?>
-					<div class="media episodes">
-					  	<a class="media-left media-top <?php echo ($epInd === 0) ? "selected" : ""; ?>" data-id="<?php echo $epInd; ?>">
-					    	<img src="<?php echo $thumbnail; ?>" class="media-object img-responsive" />
-					  	</a>
-					  	<div class="media-body">
-					    	<h4 class="media-heading"><?php echo $title; ?></h4>
-					    	<p><?php echo $description; ?></p>
-					  	</div>
-					</div>
-			<?php 
-					$epInd++;
-					endforeach; 
-				endif;
-			?>
+				<?php echo $buildList; ?>
 			</div>
 		</div><!--/.row-->
 	</div><!--/.container-->

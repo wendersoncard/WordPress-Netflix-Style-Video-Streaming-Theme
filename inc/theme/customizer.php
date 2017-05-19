@@ -453,7 +453,7 @@ class Streamium_Customize {
 
             <?php if(get_theme_mod( 'streamium_google_font' )){ ?>
               @import url('<?php echo $url; ?>');
-              .h1, .h2, .h3, h1, h2, h3, .cd-logo {
+              .h1, .h2, .h3, h1, h2, h3, h4, .cd-logo {
                 font-family: '<?php echo $family; ?>', sans-serif !important;
               }
            <?php } ?>
