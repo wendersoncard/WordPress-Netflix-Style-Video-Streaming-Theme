@@ -67,6 +67,8 @@
 									      	</div>
 									    </div>
 
+									    <?php do_action('streamium_video_extra_meta'); ?>
+
 									</div>
 
 									<?php do_action('synopis_video_progress'); ?>
@@ -192,6 +194,8 @@
 										      	</div>
 										    </div>
 
+										    <?php do_action('streamium_video_extra_meta'); ?>
+
 										</div>
 
 										<?php do_action('synopis_video_progress'); ?>
@@ -309,23 +313,26 @@
 									<?php do_action('streamium_video_payment'); ?>
 									
 									<div class="content">
-								      <div class="overlay" style="background-image: url(<?php echo esc_url($imageExpanded[0]); ?>);">
-								        <div class="overlay-gradient"></div>
-								        <a class="play-icon-wrap hidden-xs" href="<?php the_permalink(); ?>">
-											<div class="play-icon-wrap-rel">
-												<div class="play-icon-wrap-rel-ring"></div>
-												<span class="play-icon-wrap-rel-play">
-													<i class="fa fa-play fa-1x" aria-hidden="true"></i>
-									        	</span>
-								        	</div>
-							        	</a>
-							          	<div class="overlay-meta hidden-xs">
-							            	<h4><?php the_title(); ?></h4>
-							            	<p><?php echo wp_trim_words( $trimexcerpt, $num_words = 25, $more = '...' ); ?></p>					            	
-							            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="<?php echo $category->slug; ?>" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
-							          	</div>
-								      </div>
+								      	<div class="overlay" style="background-image: url(<?php echo esc_url($imageExpanded[0]); ?>);">
+								      		<div class="overlay-gradient"></div>
+								        	<a class="play-icon-wrap hidden-xs" href="<?php the_permalink(); ?>">
+												<div class="play-icon-wrap-rel">
+													<div class="play-icon-wrap-rel-ring"></div>
+													<span class="play-icon-wrap-rel-play">
+														<i class="fa fa-play fa-1x" aria-hidden="true"></i>
+									        		</span>
+								        		</div>
+							        		</a>
+								          	<div class="overlay-meta hidden-xs">
+								            	<h4><?php the_title(); ?></h4>
+								            	<p><?php echo wp_trim_words( $trimexcerpt, $num_words = 25, $more = '...' ); ?></p>
+								            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="<?php echo $type; ?>" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
+								          	</div>
+								      	</div>
 								    </div>
+
+								    <?php do_action('streamium_video_extra_meta'); ?>
+
 								</div>
 
 								<?php do_action('synopis_video_progress'); ?>

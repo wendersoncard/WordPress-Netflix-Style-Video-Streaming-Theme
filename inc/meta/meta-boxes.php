@@ -21,6 +21,9 @@ function streamium_video_code_meta_box_add(){
     // live stream meta
     add_meta_box( 'streamium-meta-box-live-streams', 'Live Streams', 'streamium_meta_box_live_streams', array('stream'), 'side', 'high' );
 
+    // Global extra meta
+    add_meta_box( 'streamium-meta-box-extra-meta', 'Extra Video Tile Meta', 'streamium_meta_box_extra_meta', array('movie', 'tv','sport','kid','stream'), 'side', 'high' );
+
 }
 
 add_action( 'add_meta_boxes', 'streamium_video_code_meta_box_add' );
@@ -40,7 +43,7 @@ function streamium_meta_box_movie(){
     wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
 
     ?>
-    <p>
+    <p class="streamium-meta-box-wrapper">
         <select class="streamium-theme-main-video-select-group chosen-select" tabindex="1" name="s3bubble_video_code_meta_box_text" id="s3bubble_video_code_meta_box_text">
             <option value="<?php echo $text; ?>">Select Main Video</option>
             <option value="">Remove Current Video</option>
@@ -79,7 +82,7 @@ function streamium_meta_box_trailer(){
     // We'll use this nonce field later on when saving.
     wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
     ?>
-    <p>
+    <p class="streamium-meta-box-wrapper">
 
         <?php if(get_theme_mod( 'streamium_enable_premium' )) : ?>
 
@@ -115,7 +118,7 @@ function streamium_meta_box_bgvideo(){
     // We'll use this nonce field later on when saving.
     wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
     ?>
-    <p>
+    <p class="streamium-meta-box-wrapper">
         <?php if(get_theme_mod( 'streamium_enable_premium' )) : ?>
 
             <select class="streamium-theme-featured-video-select-group chosen-select" tabindex="1" name="streamium_featured_video_meta_box_text" id="streamium_featured_video_meta_box_text">
@@ -272,7 +275,7 @@ function streamium_meta_box_main_slider() {
     wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
 
     ?>
-        <p>
+        <p class="streamium-meta-box-wrapper">
             <label>
                 <input type="checkbox" name="streamium_slider_featured_checkbox_value" id="streamium_slider_featured_checkbox_value" value="yes" <?php if ( isset ( $meta['streamium_slider_featured_checkbox_value'] ) ) checked( $meta['streamium_slider_featured_checkbox_value'][0], 'yes' ); ?> />
                 <?php esc_attr_e( 'Show in the main feature slider', 'streamium' ); ?>
@@ -296,7 +299,7 @@ function streamium_meta_box_live_streams() {
     // We'll use this nonce field later on when saving.
     wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
     ?>
-    <p>
+    <p class="streamium-meta-box-wrapper">
         <?php if(get_theme_mod( 'streamium_enable_premium' )) : ?>
 
             <select class="streamium-theme-live-stream-select-group chosen-select" tabindex="1" name="streamium_live_stream_meta_box_text" id="streamium_live_stream_meta_box_text">
@@ -311,6 +314,30 @@ function streamium_meta_box_live_streams() {
           <div class='streamium-current-url-info'>This is only available with the Premium package. <a href="https://s3bubble.com/pricing/" target="_blank">Upgrade</a></div>
           
         <?php endif; ?>
+
+    </p>
+
+    <?php 
+
+}
+
+/**
+ * Optional extra meta
+ *
+ * @return null
+ * @author  @sameast
+ */
+function streamium_meta_box_extra_meta() {
+  
+    global $post;
+    $values = get_post_custom( $post->ID );
+    $text = isset( $values['streamium_extra_meta_meta_box_text'] ) ? $values['streamium_extra_meta_meta_box_text'][0] : '';
+    // We'll use this nonce field later on when saving.
+    wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
+    ?>
+    <p class="streamium-meta-box-wrapper">
+
+        <input type="text" name="streamium_extra_meta_meta_box_text" class="form-control" id="streamium_extra_meta_meta_box_text" value="<?php echo $text; ?>" />
 
     </p>
 
@@ -451,6 +478,13 @@ function streamium_post_meta_box_save( $post_id )
     
         update_post_meta( $post_id, 'streamium_slider_featured_checkbox_value', '' );
     
+    }
+
+    // Save extra meta
+    if( isset( $_POST['streamium_extra_meta_meta_box_text'] ) ){
+        
+        update_post_meta( $post_id, 'streamium_extra_meta_meta_box_text', $_POST['streamium_extra_meta_meta_box_text'] );
+
     }
 
 }

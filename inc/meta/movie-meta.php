@@ -154,3 +154,14 @@ function streamium_video_payment_callback(){
 }
 
 add_action( 'streamium_video_payment', 'streamium_video_payment_callback', 0, 0 );
+
+function streamium_video_extra_meta_callback(){
+
+	$streamium_extra_meta = get_post_meta( get_the_ID(), 'streamium_extra_meta_meta_box_text', true );
+	if ( ! empty( $streamium_extra_meta ) ) {
+	    echo '<div class="streamium-extra-meta"><h5>' . $streamium_extra_meta . '</h5></div>';
+	}
+
+}
+
+add_action( 'streamium_video_extra_meta', 'streamium_video_extra_meta_callback', 0, 0 );
