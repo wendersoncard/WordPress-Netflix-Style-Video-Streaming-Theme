@@ -113,11 +113,11 @@
 						<h3><?php printf( __( 'Viewing: %s', 'streamium' ), single_cat_title( '', false ) ); ?></h3>
 						<?php if(get_theme_mod( 'streamium_enable_premium' )) : ?>
 							<div class="dropdown video-header-archive-dropdown">
-							  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+							  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 							    FILTER
 							    <span class="caret"></span>
 							  </button>
-							  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+							  <ul class="dropdown-menu dropdown-menu-right">
 							    <li><a href="?sort=all">View All</a></li>
 							    <li><a href="?sort=reviewed">Most Reviews</a></li>
 							    <li><a href="?sort=newest">Recently Added</a></li>

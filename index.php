@@ -25,8 +25,10 @@
 			<section class="videos recently-watched">
 				<div class="container-fluid">
 					<div class="row">
-						<div class="col-sm-12 video-header">
-							<h3>Recently Watched</h3>
+						<div class="col-sm-12">
+							<div class="video-header">
+								<h3>Recently Watched</h3>
+							</div>
 						</div><!--/.col-sm-12-->
 					</div>
 					<div class="row">
@@ -140,9 +142,11 @@
 				<section class="videos">
 					<div class="container-fluid">
 						<div class="row">
-							<div class="col-sm-12 video-header">
-								<h3><?php _e( $taxTitle, 'streamium' ); ?></h3>
-								<a class="see-all" href="<?php echo esc_url( home_url('/' . $taxUrls ) ); ?>">View all</a>
+							<div class="col-sm-12">
+								<div class="video-header">
+									<h3><?php _e( $taxTitle, 'streamium' ); ?></h3>
+									<a class="see-all" href="<?php echo esc_url( home_url('/' . $taxUrls ) ); ?>">View all</a>
+								</div>
 							</div><!--/.col-sm-12-->
 						</div>
 						<div class="row">

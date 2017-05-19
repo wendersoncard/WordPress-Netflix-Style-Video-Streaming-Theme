@@ -110,7 +110,7 @@
 											<li class="go-back"><a href="#0"><?php echo ucwords($category->name); ?></a></li>
 											<?php if($children) : ?>
 
-												<li class="has-children" id="<?php echo $category->slug; ?>">
+												<li class="has-children">
 													<a href="#0"><?php echo ucwords($category->name); ?></a>
 
 													<ul class="is-hidden">
