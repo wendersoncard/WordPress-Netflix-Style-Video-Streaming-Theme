@@ -40,7 +40,7 @@
 				$description = !isset($value2['descriptions']) ? "No Description" : esc_html($value2['descriptions']);
 
 				$buildList .= '<div class="media episodes">
-					  	<a class="media-left media-top ' . (($epInd === 0) ? "selected" : "") . '" data-id="' . $epInd . '" style="background-image: url(' . $thumbnail . ');">
+					  	<a class="col-sm-12 media-left media-top ' . (($epInd === 0) ? "selected" : "") . '" data-id="' . $epInd . '" style="background-image: url(' . $thumbnail . ');">
 					  	</a>
 					  	<div class="media-body">
 					    	<h4 class="media-heading">' . $title . '</h4>

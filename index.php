@@ -61,7 +61,7 @@
 								        		</a>
 									          	<div class="overlay-meta hidden-xs">
 									            	<h4><?php echo get_the_title(); ?></h4>
-									            	<p><?php echo wp_trim_words( $trimexcerpt, $num_words = 30, $more = '...' ); ?></p>           	
+									            	<p><?php echo wp_trim_words( $trimexcerpt, $num_words = 25, $more = '...' ); ?></p>           	
 									            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="recent" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
 									          	</div>
 									      	</div>
@@ -186,7 +186,7 @@
 									        		</a>
 										          	<div class="overlay-meta hidden-xs">
 										            	<h4><?php the_title(); ?></h4>
-										            	<p><?php echo wp_trim_words( $trimexcerpt, $num_words = 30, $more = '...' ); ?></p>
+										            	<p><?php echo wp_trim_words( $trimexcerpt, $num_words = 25, $more = '...' ); ?></p>
 										            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="<?php echo $type; ?>" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
 										          	</div>
 										      	</div>
@@ -321,7 +321,7 @@
 							        	</a>
 							          	<div class="overlay-meta hidden-xs">
 							            	<h4><?php the_title(); ?></h4>
-							            	<p><?php echo wp_trim_words( $trimexcerpt, $num_words = 30, $more = '...' ); ?></p>					            	
+							            	<p><?php echo wp_trim_words( $trimexcerpt, $num_words = 25, $more = '...' ); ?></p>					            	
 							            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="<?php echo $category->slug; ?>" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
 							          	</div>
 								      </div>
