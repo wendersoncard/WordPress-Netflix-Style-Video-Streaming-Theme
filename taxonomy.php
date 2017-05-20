@@ -148,7 +148,7 @@
 							$class = "far-right";
 						}  
 						?>
-						<div class="col-xs-6 col-sm-3 col-md-2 tile <?php echo $class; ?>" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>">
+						<div class="<?php echo streamium_get_device('class'); ?> tile <?php echo $class; ?>" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>">
 							
 							<div class="tile_inner" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
 
@@ -182,7 +182,7 @@
 						</div>
 						<?php
 							$count++;
-  							if ($count % (isMobile() ? 2 : 6) == 0 || $count == $total_count) { 
+  							if ($count % streamium_get_device('count') == 0 || $count == $total_count) { 
   						?>
   						</div>
   						</div>

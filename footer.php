@@ -66,7 +66,7 @@
 
 							$categories = get_terms( array( 'taxonomy' => $tax, 'parent'   => 0 ));
 
-							if(isMobile()) : 
+							if(streamium_get_device('device') == "mobile" || streamium_get_device('device') == "tablet") : 
 
 							    foreach ( $categories  as $key => $category ) {
 							        $genre = $category->name; 

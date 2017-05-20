@@ -23,11 +23,11 @@
 					$streamiumFeaturedVideo = get_post_meta( get_the_ID(), 'streamium_featured_video_meta_box_text', true );
 					$nonce = wp_create_nonce( 'streamium_likes_nonce' );
 			        $link = admin_url('admin-ajax.php?action=streamium_likes&post_id='.get_the_ID().'&nonce='.$nonce);
-			        $content = (isMobile()) ? get_the_excerpt() : get_the_content();
+			        $content = (streamium_get_device('device') == 'desktop') ? get_the_content() : get_the_excerpt();
 
 			?>
 			<div class="slider-block" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
-				<?php if ( ! empty( $streamiumFeaturedVideo ) && !isMobile() && ($sliderPostCount < 1)  && get_theme_mod( 'streamium_enable_premium' ) ) : ?>
+				<?php if ( ! empty( $streamiumFeaturedVideo ) && (streamium_get_device('device') == 'desktop') && ($sliderPostCount < 1)  && get_theme_mod( 'streamium_enable_premium' ) ) : ?>
 					<div class="streamium-featured-background" id="streamium-featured-background-<?php echo get_the_ID(); ?>"></div>
 					<script type="text/javascript">
 						document.addEventListener("DOMContentLoaded", function(event) { 

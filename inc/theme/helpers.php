@@ -4,16 +4,6 @@
 add_filter('show_admin_bar', '__return_false');
 
 /**
- * Is mobile check for theme styling
- *
- * @return bool
- * @author  @sameast
- */
-function isMobile() {
-    return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
-}
-
-/**
  * Adds the main menu
  *
  * @return null
@@ -179,14 +169,52 @@ function streamium_connection_checks() {
 add_action( 'wp_ajax_streamium_connection_checks', 'streamium_connection_checks' );
 
 
+/**
+ * Is mobile check for theme styling
+ *
+ * @return bool
+ * @author  @sameast
+ */
 function streamium_extra_body_class( $classes ) {
- 	 
+ 	
+ 	// include classes
+ 	$detect = new Mobile_Detect;
+
     $classes[] = ( get_theme_mod( 'streamium_enable_premium' )  ) ? 'streamium-premium' : 'streamium-standard';
+    if ( $detect->isTablet() ) {
+ 		$classes[] = 'streamium-tablet';
+	}else if( $detect->isMobile() ){
+	 	$classes[] = 'streamium-mobile';
+	}else{
+		$classes[] = 'streamium-desktop';
+	}
     return $classes;
      
 }
 
 add_filter( 'body_class','streamium_extra_body_class' );
+
+
+/**
+ * Is mobile check for theme styling
+ *
+ * @return bool
+ * @author  @sameast
+ */
+function streamium_get_device($type){
+
+	// include classes
+ 	$detect = new Mobile_Detect;
+    if ( $detect->isTablet() ) {
+ 		$device = array('count' => 4, 'class' => 'col-xs-3', 'device' => 'tablet');
+	}else if( $detect->isMobile() ){
+	 	$device = array('count' => 2, 'class' => 'col-xs-6', 'device' => 'mobile');
+	}else{
+		$device = array('count' => 6, 'class' => 'col-xs-2', 'device' => 'desktop');
+	}
+	return $device[$type];
+
+}
 
 /**
  * appends the stramium reviews query for search
