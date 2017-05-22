@@ -71,7 +71,7 @@
 .carousels .tile {
   position: relative;
   display: inline-block;
-  font-size: 20px;
+  font-size: 20px; 
   cursor: pointer;
 }
 
