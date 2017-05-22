@@ -40,8 +40,6 @@ if (!function_exists('streamium_theme_setup')) {
 
 add_action('after_setup_theme', 'streamium_theme_setup');
 
-flush_rewrite_rules( false );
-
 /*-----------------------------------------------------------------------------------*/
 /*	Register javascript and css
 /*-----------------------------------------------------------------------------------*/
@@ -62,12 +60,12 @@ if (!function_exists('streamium_enqueue_scripts')) {
             )
         );
 
-        //wp_enqueue_style('streamium-s3bubble-cdn', 'http://local.hosted.com/assets/hosted/s3bubble-hosted-cdn.min.css');
-        //wp_enqueue_script( 'streamium-s3bubble-cdn', 'http://local.hosted.com/assets/hosted/s3bubble-hosted-cdn.min.js', array( 'jquery'),'1.1', true );
+        wp_enqueue_style('streamium-s3bubble-cdn', 'http://local.hosted.com/assets/hosted/s3bubble-hosted-cdn.min.css');
+        wp_enqueue_script( 'streamium-s3bubble-cdn', 'http://local.hosted.com/assets/hosted/s3bubble-hosted-cdn.min.js', array( 'jquery'),'1.1', true );
 
         // not valid
-        wp_enqueue_style('streamium-s3bubble-cdn', 'https://s3.amazonaws.com/s3bubble-cdn/v1/s3bubble-hosted-cdn.min.css');
-        wp_enqueue_script( 'streamium-s3bubble-cdn', 'https://s3.amazonaws.com/s3bubble-cdn/v1/s3bubble-hosted-cdn.min.js','','1.1', true );
+        //wp_enqueue_style('streamium-s3bubble-cdn', 'https://s3.amazonaws.com/s3bubble-cdn/v1/s3bubble-hosted-cdn.min.css');
+        //wp_enqueue_script( 'streamium-s3bubble-cdn', 'https://s3.amazonaws.com/s3bubble-cdn/v1/s3bubble-hosted-cdn.min.js','','1.1', true );
 
 	}
 
@@ -91,7 +89,7 @@ if (!function_exists('streamium_enqueue_admin_scripts')) {
       wp_enqueue_script( 'streamium-admin', get_template_directory_uri() . '/production/js/admin.min.js', array( 'jquery'),'1.1', true );
       wp_localize_script('streamium-admin', 'streamium_meta_object', array(
         'ajax_url' => admin_url( 'admin-ajax.php'),
-        'api' => 'https://s3bubbleapi.com', // https://s3bubbleapi.com http://local.hosted.com leave of the trailing slash 
+        'api' => 'http://local.hosted.com', // https://s3bubbleapi.com http://local.hosted.com leave of the trailing slash 
         'streamiumPremium' => get_theme_mod( 'streamium_enable_premium' ),
         'connected_website' => (!empty($streamium_connected_website) ? $streamium_connected_website : ""),
         'connected_nonce' => $streamium_connected_nonce
