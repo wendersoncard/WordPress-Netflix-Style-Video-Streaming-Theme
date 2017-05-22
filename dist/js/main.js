@@ -184,7 +184,7 @@ jQuery(document).ready(function($) {
 	            $(this).find('.slick-prev').removeClass('hidden');
 	        }
 
-	    });
+	    }); 
  
 	});
 
