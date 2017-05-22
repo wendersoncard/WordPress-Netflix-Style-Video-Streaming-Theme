@@ -1,11 +1,11 @@
 @charset 'UTF-8';
 /* Slider */
 .liftIt {
-    z-index: 1;
+    z-index: 1; 
 }
-/* Dots */
+/* Dots */ 
 .slick-dots
-{
+{ 
     position: absolute;
     bottom: 0px;
     display: block;

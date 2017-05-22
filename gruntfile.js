@@ -4,7 +4,7 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
         watch: {
             scripts: {
-                files: ['dist/js/*.js', 'dist/css/*.css'],
+                files: ['dist/js/*.js', 'dist/css/*.css', 'dist/extras/slick/*.css'],
                 tasks: ['concat:dist1', 'concat:dist2', 'concat:dist3', 'concat:dist4', 'concat:dist5', 'concat:dist6', 'uglify:dist2min', 'cssmin:dist3min']
             },
         },

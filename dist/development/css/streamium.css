@@ -10273,7 +10273,7 @@ input {
 .slick-loading .slick-track
 {
     visibility: hidden;
-}
+} 
 
 .slick-slide
 {
@@ -10283,11 +10283,11 @@ input {
     height: 100%;
     min-height: 1px;
 }
-[dir='rtl'] .slick-slide
+[dir='rtl'] .slick-slide 
 {
     float: right;
 }
-.slick-slide img
+.slick-slide img 
 {
     display: block;
 }
@@ -10321,11 +10321,11 @@ input {
 @charset 'UTF-8';
 /* Slider */
 .liftIt {
-    z-index: 1;
+    z-index: 1; 
 }
-/* Dots */
+/* Dots */ 
 .slick-dots
-{
+{ 
     position: absolute;
     bottom: 0px;
     display: block;
