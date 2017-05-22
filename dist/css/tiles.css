@@ -45,7 +45,7 @@
 }
 
 .slick-next.slick-arrow {
-  right: -50px; 
+  right: -45px; 
 }
 
 .slick-next:before {
@@ -73,6 +73,7 @@
   display: inline-block;
   font-size: 20px; 
   cursor: pointer;
+  padding: 0px 2px;
 }
 
 .carousels .tile_payment_details {

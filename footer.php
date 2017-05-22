@@ -46,9 +46,9 @@
 
 						if ( get_theme_mod( 'streamium_section_checkbox_enable_' . $tax )) :
 
-						$taxTitle = (get_theme_mod( 'streamium_section_input_menu_text_' . $type )) ? get_theme_mod( 'streamium_section_input_menu_text_' . $type ) : $menu;
-						$typeUrls =  (get_theme_mod( 'streamium_section_input_posttype_' . $type )) ? get_theme_mod( 'streamium_section_input_posttype_' . $type ) : $type;
-						$taxUrls =  (get_theme_mod( 'streamium_section_input_taxonomy_' . $tax )) ? get_theme_mod( 'streamium_section_input_taxonomy_' . $tax ) : $tax;
+						$taxTitle = get_theme_mod( 'streamium_section_input_menu_text_' . $type, $menu);
+						$typeUrls = get_theme_mod( 'streamium_section_input_posttype_' . $type, $type);
+						$taxUrls  = get_theme_mod( 'streamium_section_input_taxonomy_' . $tax, $tax );
 
 					?>
 

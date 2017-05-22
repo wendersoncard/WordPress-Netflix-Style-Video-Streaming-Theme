@@ -126,7 +126,7 @@ jQuery(document).ready(function($) {
 	    $(sliderId).slick({
 			slidesToShow: 6,
 			slidesToScroll: 6,
-			infinite: false,
+			infinite: true,
 			//variableWidth : false,
 			adaptiveHeight: true,
 			responsive: [{
