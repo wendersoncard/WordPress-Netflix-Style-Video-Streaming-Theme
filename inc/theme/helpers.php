@@ -133,7 +133,7 @@ function streamium_connection_checks() {
 	}
 
     if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
-    	
+		    	
     	if($state === "false"){
 
     		set_theme_mod( "streamium_enable_premium", true );
@@ -179,8 +179,6 @@ function streamium_extra_body_class( $classes ) {
  	
  	// include classes
  	$detect = new Mobile_Detect;
-
-    $classes[] = ( get_theme_mod( 'streamium_enable_premium' )  ) ? 'streamium-premium' : 'streamium-standard';
     if ( $detect->isTablet() ) {
  		$classes[] = 'streamium-tablet';
 	}else if( $detect->isMobile() ){

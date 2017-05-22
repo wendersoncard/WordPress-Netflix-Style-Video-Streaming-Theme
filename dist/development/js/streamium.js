@@ -2670,8 +2670,6 @@ jQuery(document).ready(function($) {
 			slidesToShow: 6,
 			slidesToScroll: 6,
 			infinite: true,
-			//variableWidth : false,
-			adaptiveHeight: true,
 			responsive: [{
 		      breakpoint: 1024,
 		      settings: {
@@ -2827,82 +2825,7 @@ jQuery(document).ready(function($) {
 	        }); // end jquery 
 
 		});
-
-		$('.tile_program_meta_more_info').on("click",function(event) {
-
-	    	event.preventDefault(); 
-
-	    	var cat = $(this).data('cat');
-	    	var term_id = $(this).data('id');
-	    	var nonce = $(this).data('nonce');
-
-	    	$.ajax({
-	            url: streamium_object.ajax_url,
-	            type: 'post',
-	            dataType: 'json',
-	            data: {
-	                action: 'streamium_programs_get_dynamic_content',
-	                cat : cat,
-	                term_id: term_id,
-	                nonce: nonce
-	            },
-	            success: function(response) {
-
-	                if (response.error) {
-
-	                    swal({
-                            title: "Error",
-                            text: response.message,
-                            type: "info",
-                            showCancelButton: true,
-                            confirmButtonColor: "#d86c2d",
-                            confirmButtonText: "Ok, got it!",
-                            closeOnConfirm: true
-                        },
-                        function() {
-
-                        });
-	                    return;
-
-	                }
-
-	                currentCat = "." + response.cat;            
-
-	                // Populate the expanded view
-			    	var twidth = $(currentCat).width();
-			    	var theight = Math.floor(twidth/21*8);
-			    	$(currentCat).find('h2.synopis').text(response.title);
-			    	$(currentCat).find('div.synopis').html(response.content);
-			    	$(currentCat).find('a.synopis').attr( "href", response.href);
-			    	$(currentCat).css("background-image", "url(" + response.bgimage + ")");
-			    	if(response.trailer === ""){
-			    		$(currentCat).find('a.synopis-video-trailer').hide();
-			    	}else{
-			    		$(currentCat).find('a.synopis-video-trailer').fadeIn().attr( "href", response.href + "?trailer=true");
-			    	}
-
-			    	var vmiddle = Math.round($('.cd-main-header').height());
-					var voff = Math.round($(currentCat).offset().top);
-			    	$('html, body').animate({scrollTop: (voff-vmiddle)}, 500);
-
-			        $(currentCat).animate({
-					    height: theight
-					}, 250, function() {
-
-						$(currentCat + ' .s3bubble-details-inner-content').animate({
-						    opacity: 1,
-						}, 500, function() {
-
-						});
-
-					});
-
-	            }
-
-	        }); // end jquery 
-
-		});
-
+		
 		$('head').append('<style type="text/css">' +
 			
 			'.shiftLeft { transform: translate3d(-' + moveDistance +'px, 0, 0);}' +
@@ -4844,8 +4767,6 @@ jQuery(document).ready(function($) {
 jQuery(document).ready(function($) {
 
 	function setupStreamiumPlayerLive(){
-
-		console.log("setupStreamiumPlayerLive");
 		
 		S3Bubble.live({
 			id : "s3bubble-" + video_post_object.post_id,
@@ -4868,8 +4789,6 @@ jQuery(document).ready(function($) {
 	}
 
 	function setupStreamiumPlayer(){
-
-		console.log("setupStreamiumPlayer");
 
 		S3Bubble.player({
 			id : "s3bubble-" + video_post_object.post_id,
@@ -4939,29 +4858,11 @@ jQuery(document).ready(function($) {
 
 	}
 
-	function setupStreamiumStandardPlayer(){
-
-		if(video_post_object.code === null){
-
-			$("#s3bubble-" + video_post_object.post_id).html('<div class="streamium-no-video-content"><h1>No Video</h1><p>A video link has not been added to this post to display a video. Please go to your post and in the right sidebar enter a S3Bubble video url no plugin is needed.</p></div>');
-
-		}else{ 
-
-			//video_post_object.code = "https://media.s3bubble.com/embed/hls/id/gqtm22989";
-			$("#s3bubble-" + video_post_object.post_id).html('<div style="position: relative;padding-bottom: 56.25%;"><iframe style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;" src="' + video_post_object.code + '" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div>');
-
-		}
-
-	}
-
 	// Check if this is the single post page
-    if ($(".streamium-standard .video-player-streaming")[0]){
-    	setupStreamiumStandardPlayer();
-    }
-    if ($(".streamium-premium .video-player-streaming")[0]){
+    if ($(".video-player-streaming")[0]){
     	setupStreamiumPlayer();
     } 
-    if ($(".streamium-premium .video-live-streaming")[0]){
+    if ($(".video-live-streaming")[0]){
     	setupStreamiumPlayerLive();
     }
 
