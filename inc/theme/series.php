@@ -40,11 +40,9 @@ function streamium_custom_post_types() {
 	foreach ($postTypes as $key => $value) {
 
     	// Check for modifications
-    	$rewriteTax = (get_theme_mod( 'streamium_section_input_taxonomy_' . $value['tax'] ) ? get_theme_mod( 'streamium_section_input_taxonomy_' . $value['tax'] ) : $value['tax']);
-
-    	$rewriteType = (get_theme_mod( 'streamium_section_input_posttype_' . $value['type'] ) ? get_theme_mod( 'streamium_section_input_posttype_' . $value['type'] ) : $value['type']);
-
-    	$menuLabel = (get_theme_mod( 'streamium_section_input_menu_text_' . $value['type'] ) ? get_theme_mod( 'streamium_section_input_menu_text_' . $value['type'] ) : $value['menu']);
+    	$rewriteTax = get_theme_mod( 'streamium_section_input_taxonomy_' . $value['tax'], $value['tax'] );
+    	$rewriteType = get_theme_mod( 'streamium_section_input_posttype_' . $value['type'], $value['type'] );
+    	$menuLabel = get_theme_mod( 'streamium_section_input_menu_text_' . $value['type'], $value['menu'] );
 
     	// TV PROGRAM
 		$setupTax = array(
@@ -86,12 +84,8 @@ function streamium_custom_post_types() {
 		);
 
 		// Registering your Custom Post Type
-		if ( get_theme_mod( 'streamium_enable_premium' ) ){
-
-			register_taxonomy( $value['tax'], $value['type'], $setupTax); 
-			register_post_type( $value['type'], $setupArgs );
-
-		}
+		register_taxonomy( $value['tax'], $value['type'], $setupTax); 
+		register_post_type( $value['type'], $setupArgs );
 
   	}	
 

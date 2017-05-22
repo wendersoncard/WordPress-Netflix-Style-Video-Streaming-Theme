@@ -80,7 +80,7 @@ class Streamium_Customize {
       $wp_customize->add_setting(
           'link_textcolor',
           array(
-              'default'     => '#999999',
+              'default'     => '#F66E38',
               'sanitize_callback' => 'sanitize_hex_color'
           )
       );
@@ -101,7 +101,7 @@ class Streamium_Customize {
       $wp_customize->add_setting(
           'streamium_carousel_heading_color',
           array(
-              'default'     => '#999999',
+              'default'     => '#f2f2f2',
               'sanitize_callback' => 'sanitize_hex_color'
           )
       );

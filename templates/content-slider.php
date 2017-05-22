@@ -2,8 +2,8 @@
 	<div class="hero-slider">
 		<?php 
 
-			$setType = get_theme_mod( 'streamium_main_post_type');
-			$setTax = get_theme_mod( 'streamium_main_tax');
+			$setType = get_theme_mod( 'streamium_main_post_type', 'movie');
+			$setTax = get_theme_mod( 'streamium_main_tax', 'movies');
 
 			$args = array(
 			    'posts_per_page' => (int)get_theme_mod( 'streamium_global_options_homepage_desktop' ),

@@ -101,7 +101,14 @@ function streamium_get_dynamic_content() {
 	$postId = (int) $_REQUEST['post_id'];
  
     if ( ! wp_verify_nonce( $_REQUEST['nonce'], 'streamium_likes_nonce' ) || ! isset( $_REQUEST['nonce'] ) ) {
-        exit( "No naughty business please" );
+       	
+       	echo json_encode(
+	    	array(
+	    		'error' => true,
+	    		'message' => 'We could not find this post.'
+	    	)
+	    );
+
     }
 
     if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
@@ -301,21 +308,21 @@ add_action( 'wp_ajax_streamium_programs_get_dynamic_content', 'streamium_program
 
 function streamium_custom_post_types_general( $hook_suffix ){
 
-    if( in_array($hook_suffix, array('post.php') ) ){
+    if( in_array($hook_suffix, array('post.php', 'post-new.php') ) ){
         
         $screen = get_current_screen();
 
         if( is_object( $screen ) && in_array($screen->post_type, array('movie', 'tv','sport','kid'))){
 
             // Register, enqueue scripts and styles here
-            wp_enqueue_script( 'streamium-admin-custom-post-type-general', get_template_directory_uri() . '/production/js/custom.post.type.general.min.js', array( 'jquery'),'1.1', true );
+            wp_enqueue_script( 'streamium-admin-custom-post-type-general', get_template_directory_uri() . '/production/js/custom.post.type.general.min.js', array( 'jquery' ),'1.1', true );
 
         }
 
         if( is_object( $screen ) && in_array($screen->post_type, array('stream'))){
 
             // Register, enqueue scripts and styles here
-            wp_enqueue_script( 'streamium-admin-custom-post-type-stream', get_template_directory_uri() . '/production/js/custom.post.type.stream.min.js', array( 'jquery'),'1.1', true );
+            wp_enqueue_script( 'streamium-admin-custom-post-type-stream', get_template_directory_uri() . '/production/js/custom.post.type.stream.min.js', array( 'jquery' ),'1.1', true );
 
         }
     }

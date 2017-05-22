@@ -1,7 +1,7 @@
 <?php get_header(); 
 	
-	$setType = get_theme_mod( 'streamium_main_post_type');
-	$setTax = get_theme_mod( 'streamium_main_tax');
+	$setType = get_theme_mod( 'streamium_main_post_type', 'movie');
+	$setTax = get_theme_mod( 'streamium_main_tax', 'movies');
 
 	?>
 	<main class="cd-main-content">
@@ -259,15 +259,15 @@
 
 			$args = array(
 			  'parent' => 0,
-			  'hide_empty' => false
+			  'hide_empty' => true
 			);
 			$categories = get_terms( $setTax, $args );
 
 		  	foreach ($categories as $category) : 
 
-				$typeTitle =  (get_theme_mod( 'streamium_section_input_posttype_' . $setType )) ? get_theme_mod( 'streamium_section_input_posttype_' . $setType ) : $setType;
+				$typeTitle =  get_theme_mod( 'streamium_section_input_posttype_' . $setType, $setType);
+				$taxUrl =  get_theme_mod( 'streamium_section_input_taxonomy_' . $setTax, $setTax);
 
-				$taxUrl =  (get_theme_mod( 'streamium_section_input_taxonomy_' . $setTax )) ? get_theme_mod( 'streamium_section_input_taxonomy_' . $setTax ) : $setTax;
 		?>
 
 	  	<section class="videos">
