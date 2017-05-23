@@ -35,7 +35,7 @@
   display: none;
   position: absolute;
   top: 0;
-  height: 83%;
+  bottom: 0;
   width: 45px;
   margin: 0;
   z-index: 1;
@@ -45,7 +45,7 @@
 }
 
 .slick-next.slick-arrow {
-  right: -50px; 
+  right: -45px; 
 }
 
 .slick-next:before {
@@ -105,7 +105,7 @@
 
 .carousels .tile_inner {
   box-sizing: border-box;
-  transition: 250ms transform;
+  transition: 250ms transform; 
   transform-origin: center center;
   width: 100%;
   padding-bottom: 56.25%; /* 16:9 */
@@ -113,6 +113,7 @@
   background: black;
   background-size: cover;
   background-position: center;
+  border: 2px solid #000;
 }
 
 .carousels .far-left .tile_inner {
@@ -255,9 +256,13 @@
 .carousels .tile_progress {
   height: 4px;
   border-radius: 0;
-  margin: 10px 40px;
+  margin: 10px 0;
   background: rgba(255,255,255,.3);
   box-shadow: none!important;
+  position: absolute;
+  left: 40px;
+  right: 40px;
+  z-index: -1;
 }
 
 .carousels .overlay .tile_meta_episodes {

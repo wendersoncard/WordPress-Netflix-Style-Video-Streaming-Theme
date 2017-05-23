@@ -2666,8 +2666,8 @@ jQuery(document).ready(function($) {
 		var sliderId = "#" + $(this).attr("id");
 
 	    $(sliderId).slick({
-			slidesToShow: 6,
-			slidesToScroll: 6,
+			slidesToShow: 5,
+			slidesToScroll: 5,
 			infinite: true,
 			adaptiveHeight: true,
 			responsive: [{
