@@ -30,7 +30,4 @@ jQuery( document ).ready(function( $ ) {
 
     }); // end jquery 
 
-    // add a icon to meta boxs
-    $('#streamium-meta-box-movie').append('<button type="button" class="handlediv button-link" aria-expanded="true"><span class="screen-reader-text">Toggle panel: Main Video</span><span class="toggle-indicator" aria-hidden="true"></span></button>');
-
 });
