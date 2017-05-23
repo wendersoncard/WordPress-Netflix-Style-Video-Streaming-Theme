@@ -142,9 +142,9 @@
 						$trimexcerpt = !empty(get_the_excerpt()) ? get_the_excerpt() : get_the_content(); 
 
 						$class = "";
-						if($count % 6 == 0){
+						if($count % 5 == 0){
 							$class = "far-left";
-						}elseif($count % 5 == 0){
+						}elseif($count % 4 == 0){
 							$class = "far-right";
 						}  
 						?>
