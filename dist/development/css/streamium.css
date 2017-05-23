@@ -9025,7 +9025,7 @@ support for no js
 
 .streamium-list-reviews {
     border: 1px solid;
-    padding: 9px 10px;
+    padding: 9px 10px !important;
 }
 
 .streamium-review-panel {
