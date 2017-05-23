@@ -206,7 +206,7 @@ function streamium_get_device($type){
 	}else if( $detect->isMobile() ){
 	 	$device = array('count' => 2, 'class' => 'col-xs-6', 'device' => 'mobile');
 	}else{
-		$device = array('count' => 6, 'class' => 'col-xs-2', 'device' => 'desktop');
+		$device = array('count' => 5, 'class' => 'col-xs-5ths', 'device' => 'desktop');
 	}
 	return $device[$type];
 
