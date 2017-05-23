@@ -33,7 +33,7 @@
   
 .slick-arrow {
   display: none;
-  position: absolute;
+  position: absolute; 
   top: 0;
   height: calc(100% - 24px);
   width: 45px;
