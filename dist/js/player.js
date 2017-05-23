@@ -27,7 +27,7 @@ jQuery(document).ready(function($) {
 
 	function setupStreamiumPlayer(){
 
-		S3Bubble.player({
+		var setupPlayer = {
 			id : "s3bubble-" + video_post_object.post_id,
 			codes : video_post_object.codes,
 			startTime : video_post_object.percentage,
@@ -76,7 +76,14 @@ jQuery(document).ready(function($) {
 				player.play();
  
 			}
-		});
+		};
+
+		// check for youtube
+		if(video_post_object.youtube){
+			setupPlayer.youtube = true;
+		}
+
+		S3Bubble.player(setupPlayer);
  
 		$('.episodes a').on('click',function(){
 

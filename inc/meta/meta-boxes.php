@@ -9,6 +9,7 @@
 function streamium_video_code_meta_box_add(){
 
     add_meta_box( 'streamium-meta-box-movie', 'Main Video', 'streamium_meta_box_movie', array('movie', 'tv','sport','kid'), 'side', 'high' );
+    add_meta_box( 'streamium-meta-box-youtube', 'Youtube Video', 'streamium_meta_box_youtube', array('movie', 'tv','sport','kid'), 'side', 'high' ); 
     add_meta_box( 'streamium-meta-box-trailer', 'Video Trailer', 'streamium_meta_box_trailer', array('movie', 'tv','sport','kid'), 'side', 'high' );
     add_meta_box( 'streamium-meta-box-bgvideo', 'Featured BG Video', 'streamium_meta_box_bgvideo', array('movie', 'tv','sport','kid'), 'side', 'high' );
     add_meta_box( 'streamium-meta-box-main-slider', 'Featured Video', 'streamium_meta_box_main_slider', array('movie', 'tv','sport','kid','stream'), 'side', 'high' );
@@ -32,6 +33,44 @@ add_action( 'add_meta_boxes', 'streamium_video_code_meta_box_add' );
  * @return null
  * @author  @sameast
  */
+function streamium_meta_box_youtube(){
+
+    // $post is already set, and contains an object: the WordPress post
+    global $post;
+    $values = get_post_custom( $post->ID );
+    $text = isset( $values['s3bubble_video_youtube_code_meta_box_text'] ) ? $values['s3bubble_video_youtube_code_meta_box_text'][0] : '';
+    wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
+
+    ?>
+    <p class="streamium-meta-box-wrapper">
+
+        <input type="text" name="s3bubble_video_youtube_code_meta_box_text" class="form-control" id="s3bubble_video_youtube_code_meta_box_text" value="<?php echo $text; ?>" />
+        
+        <?php 
+
+          if(get_theme_mod( 'streamium_enable_premium' )){
+
+            echo !empty($text) ? "<div class='streamium-current-url'>Premium video code: " . $text . "</div>" : "<div class='streamium-current-url-info'>No video selected. Please select a video to show as your main movie.</div>";
+          
+          }else{
+          
+            echo !empty($text) ? "<div class='streamium-current-url'>Your current url is set to: " . $text . "</div>" : "";
+          
+          }
+
+        ?>
+    </p>
+
+    <?php    
+
+}
+
+/**
+ * Sets up the meta box content for the main video
+ *
+ * @return null
+ * @author  @sameast
+ */
 function streamium_meta_box_movie(){
 
     // $post is already set, and contains an object: the WordPress post
@@ -46,6 +85,7 @@ function streamium_meta_box_movie(){
             <option value="<?php echo $text; ?>">Select Main Video</option>
             <option value="">Remove Current Video</option>
         </select>
+
         <?php 
 
           if(get_theme_mod( 'streamium_enable_premium' )){
@@ -335,7 +375,6 @@ function streamium_meta_box_extra_meta() {
     $values = get_post_custom( $post->ID );
     $text = isset( $values['streamium_extra_meta_meta_box_text'] ) ? $values['streamium_extra_meta_meta_box_text'][0] : '';
     wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
-    
     ?>
     <p class="streamium-meta-box-wrapper">
 
@@ -488,6 +527,14 @@ function streamium_post_meta_box_save( $post_id )
         update_post_meta( $post_id, 'streamium_extra_meta_meta_box_text', $_POST['streamium_extra_meta_meta_box_text'] );
 
     }
+
+    // Save youtube code
+    if( isset( $_POST['s3bubble_video_youtube_code_meta_box_text'] ) ){
+        
+        update_post_meta( $post_id, 's3bubble_video_youtube_code_meta_box_text', $_POST['s3bubble_video_youtube_code_meta_box_text'] );
+
+    }
+    
 
 }
 

@@ -15,6 +15,8 @@ function streamium_single_video_scripts() {
 
     	$nonce = wp_create_nonce( 'single_nonce' );
     	$s3videoid = get_post_meta( $post->ID, 's3bubble_video_code_meta_box_text', true );
+    	$youtube = false;
+    	$youtubeCode = get_post_meta( $post->ID, 's3bubble_video_youtube_code_meta_box_text', true );
     	$stream = get_post_meta( $post->ID, 'streamium_live_stream_meta_box_text', true );
     	$streamiumVideoTrailer = get_post_meta( $post->ID, 'streamium_video_trailer_meta_box_text', true );
     	$poster   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-home-slider' ); 
@@ -48,7 +50,14 @@ function streamium_single_video_scripts() {
 			endforeach;
 			$resume = 0;
 		}else{
-			$codes[] = $s3videoid;
+
+			if(!empty($youtubeCode)){
+				$youtube = true;
+				$codes[] = $youtubeCode;
+			}else{
+				$codes[] = $s3videoid;
+			}
+			
 		}
 
 		// Setup premium
@@ -61,6 +70,7 @@ function streamium_single_video_scripts() {
                 'percentage' => $resume,
                 'codes' => $codes,
                 'stream' => $stream,
+                'youtube' => $youtube,
                 'poster' => esc_url($poster[0]),
                 'nonce' => $nonce
             )

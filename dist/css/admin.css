@@ -100,7 +100,7 @@
 .menu-icon-movie img, .menu-icon-tv img, .menu-icon-sport img, .menu-icon-kid img, .menu-icon-stream img, .toplevel_page_wp_list_table_class img {
     margin-top: -2px;
 }
-#streamium-meta-box-movie h2, #streamium-repeatable-fields h2, #streamium-meta-box-bgvideo h2, #streamium-meta-box-main-slider h2, #streamium-meta-box-trailer h2, #streamium-meta-box-live-streams h2, #streamium-meta-box-extra-meta h2 {
+#streamium-meta-box-movie h2, #streamium-meta-box-youtube h2, #streamium-repeatable-fields h2, #streamium-meta-box-bgvideo h2, #streamium-meta-box-main-slider h2, #streamium-meta-box-trailer h2, #streamium-meta-box-live-streams h2, #streamium-meta-box-extra-meta h2 {
     background-image: url(https://s3.amazonaws.com/s3bubble-cdn/theme-images/s3bubblelogo.png);
     background-repeat: no-repeat;
     padding-left: 34px;
