@@ -104,16 +104,14 @@ add_action( 'init', 'streamium_run_plugin_checks' );
  */
 function premium_admin_notice__error() {
 
-	$class = 'notice notice-info is-dismissible';
+	$class = 'notice notice-info notice-premium is-dismissible';
 	$message = __( 'Upgrade to Premium to unlock some great features. Ratings, Video Resume, Self hosted, Background Videos, Trailers and much more. ', 'streamium' );
 
-	printf( '<div class="%1$s"><p>%2$s<a href="%3$s">Upgrade Now!</a></p></div>', esc_attr( $class ), esc_html( $message ), esc_url( 'https://s3bubble.com/pricing' ) ); 
+	printf( '<div class="%1$s"><p>%2$s<a href="%3$s">Upgrade Now!</a></p></div>', esc_attr( $class ), esc_html( $message ), esc_url( 'https://s3bubble.com/pricing' ) );
 }
 
-if(!get_theme_mod( 'streamium_enable_premium' )){
-
+if(!get_theme_mod( 'streamium_enable_premium' ) && get_option('notice_premium') == 1) {
 	add_action( 'admin_notices', 'premium_admin_notice__error' );
-
 }
 
 /**

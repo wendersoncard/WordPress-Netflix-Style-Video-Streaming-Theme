@@ -34,8 +34,9 @@ if (!function_exists('streamium_theme_setup')) {
         return $sizes;
     }
 
-    add_filter( 'image_size_names_choose', 'streamium_extra_image_sizes' ); 
+    add_option('notice_premium', 1);
 
+    add_filter( 'image_size_names_choose', 'streamium_extra_image_sizes' );
 }
 
 add_action('after_setup_theme', 'streamium_theme_setup');
@@ -94,12 +95,22 @@ if (!function_exists('streamium_enqueue_admin_scripts')) {
         'connected_website' => (!empty($streamium_connected_website) ? $streamium_connected_website : ""),
         'connected_nonce' => $streamium_connected_nonce
       ));
-
     }
 
     add_action( 'admin_enqueue_scripts', 'streamium_enqueue_admin_scripts' );
 
 }
+
+// Dismiss premium notice with ajax
+function dismiss_premium_notice() {
+    update_option('notice_premium', 0);
+    echo json_encode(array('success' => true, 'message' => __('Notice dismissed')));
+    die();
+}
+
+// Enable the user with no privileges to run dismiss_premium_notice() in AJAX
+add_action( 'wp_ajax_ajaxnopremium', 'dismiss_premium_notice' );
+add_action( 'wp_ajax_nopriv_ajaxnopremium', 'dismiss_premium_notice' );
 
 /*-----------------------------------------------------------------------------------*/
 /*  Include the Streamium Framework

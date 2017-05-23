@@ -2615,7 +2615,6 @@ jQuery(document).ready(function($) {
 		}
 		ph = Math.floor($(window).innerWidth()/16*9);
 		$('.program-default-height').height(ph);
-		$('.slick-arrow').height($('.tile:last-child').height()-30);
     }  
       
     resizeVideoJS();
@@ -2970,8 +2969,7 @@ jQuery(document).ready(function($) {
 		$(".streamium-loading").fadeOut();
 	},1000);
 
-	$('[data-toggle="tooltip"]').tooltip(); 
-
+	$('[data-toggle="tooltip"]').tooltip();
 });
 jQuery(document).ready(function($){
 	//if you change this breakpoint in the style.css file (or _layout.scss if you use SASS), don't forget to update this value as well

@@ -1,5 +1,4 @@
-jQuery( document ).ready(function( $ ) {
-
+jQuery(document).ready(function( $ ) {
     $.ajax({
         url: streamium_meta_object.api + "/api/connected_check",
         type: 'post',
@@ -28,6 +27,22 @@ jQuery( document ).ready(function( $ ) {
 
         }
 
-    }); // end jquery 
+    }); // end jquery
 
+    $('.notice-premium .notice-dismiss').on('click', function() {
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: streamium_meta_object.ajax_url,
+            data: {
+                action: 'ajaxnopremium'
+            },
+            success: function(data){
+                console.log(data);
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
+    });
 });
