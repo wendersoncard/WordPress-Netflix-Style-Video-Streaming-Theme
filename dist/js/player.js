@@ -4,6 +4,8 @@
 jQuery(document).ready(function($) {
 
 	function setupStreamiumPlayerLive(){
+
+		console.log("setupStreamiumPlayerLive");
 		
 		S3Bubble.live({
 			id : "s3bubble-" + video_post_object.post_id,
@@ -27,7 +29,9 @@ jQuery(document).ready(function($) {
 
 	function setupStreamiumPlayer(){
 
-		var setupPlayer = {
+		console.log("setupStreamiumPlayer");
+
+		S3Bubble.player({
 			id : "s3bubble-" + video_post_object.post_id,
 			codes : video_post_object.codes,
 			startTime : video_post_object.percentage,
@@ -76,14 +80,7 @@ jQuery(document).ready(function($) {
 				player.play();
  
 			}
-		};
-
-		// check for youtube
-		if(video_post_object.youtube){
-			setupPlayer.youtube = true;
-		}
-
-		S3Bubble.player(setupPlayer);
+		});
  
 		$('.episodes a').on('click',function(){
 
@@ -102,11 +99,29 @@ jQuery(document).ready(function($) {
 
 	}
 
+	function setupStreamiumStandardPlayer(){
+
+		if(video_post_object.code === null){
+
+			$("#s3bubble-" + video_post_object.post_id).html('<div class="streamium-no-video-content"><h1>No Video</h1><p>A video link has not been added to this post to display a video. Please go to your post and in the right sidebar enter a S3Bubble video url no plugin is needed.</p></div>');
+
+		}else{ 
+
+			//video_post_object.code = "https://media.s3bubble.com/embed/hls/id/gqtm22989";
+			$("#s3bubble-" + video_post_object.post_id).html('<div style="position: relative;padding-bottom: 56.25%;"><iframe style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;" src="' + video_post_object.code + '" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div>');
+
+		}
+
+	}
+
 	// Check if this is the single post page
-    if ($(".video-player-streaming")[0]){
+    if ($(".streamium-standard .video-player-streaming")[0]){
+    	setupStreamiumStandardPlayer();
+    }
+    if ($(".streamium-premium .video-player-streaming")[0]){
     	setupStreamiumPlayer();
     } 
-    if ($(".video-live-streaming")[0]){
+    if ($(".streamium-premium .video-live-streaming")[0]){
     	setupStreamiumPlayerLive();
     }
 

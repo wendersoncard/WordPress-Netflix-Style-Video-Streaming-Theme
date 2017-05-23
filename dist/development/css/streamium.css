@@ -7293,7 +7293,7 @@ body::after {
 }
 
 .slick-next.slick-arrow {
-  right: -45px; 
+  right: -50px; 
 }
 
 .slick-next:before {
@@ -7319,13 +7319,16 @@ body::after {
 .carousels .tile {
   position: relative;
   display: inline-block;
-  font-size: 20px; 
+  font-size: 20px;
   cursor: pointer;
-  padding: 0px 2px;
 }
 
 .carousels .tile_payment_details {
   position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   height: 100%;
   width: 100%;
   background: rgba(0, 0, 0, 0.7);
@@ -7338,11 +7341,6 @@ body::after {
     color: #949494;
     overflow: hidden;
     white-space: nowrap;
-    position: absolute;
-    top: 50%;
-    text-align: center;
-    width: 100%;
-    transform: translateY(-50%);
 }
 
 .carousels .content {
@@ -7542,6 +7540,10 @@ body::after {
 
 .static-row .tile_payment_details {
   position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   height: 100%;
   width: 100%;
   background: rgba(0, 0, 0, 0.7);
@@ -7554,11 +7556,6 @@ body::after {
     color: #949494;
     overflow: hidden;
     white-space: nowrap;
-    position: absolute;
-    top: 50%;
-    text-align: center;
-    width: 100%;
-    transform: translateY(-50%);
 }
 
 .static-row .content {
@@ -9028,7 +9025,7 @@ support for no js
 
 .streamium-list-reviews {
     border: 1px solid;
-    padding: 9px 10px !important;
+    padding: 9px 10px;
 }
 
 .streamium-review-panel {
@@ -10274,9 +10271,9 @@ input {
 .slick-loading .slick-track
 {
     visibility: hidden;
-} 
+}
 
-.slick-slide 
+.slick-slide
 {
     display: none;
     float: left;
@@ -10284,11 +10281,11 @@ input {
     height: 100%;
     min-height: 1px;
 }
-[dir='rtl'] .slick-slide 
+[dir='rtl'] .slick-slide
 {
     float: right;
 }
-.slick-slide img 
+.slick-slide img
 {
     display: block;
 }
@@ -10322,11 +10319,11 @@ input {
 @charset 'UTF-8';
 /* Slider */
 .liftIt {
-    z-index: 1; 
+    z-index: 1;
 }
-/* Dots */ 
+/* Dots */
 .slick-dots
-{ 
+{
     position: absolute;
     bottom: 0px;
     display: block;
@@ -10403,6 +10400,7 @@ input {
     overflow: visible;
 }
 .slick-slide {
+    margin: 0px 2px;
     -webkit-transition: -webkit-transform 0.3s ease;
     -moz-transition: -moz-transform 0.3s ease;
     transition: transform 0.3s ease;
@@ -11467,6 +11465,10 @@ a {
     width: 100%;
     height: 100%;
     position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
     background-color: rgba(0,0,0,1) 40%;
     background-image: -webkit-gradient(linear,right top,right bottom,color-stop(40%,rgba(0,0,0,1)),to(rgba(0,0,0,0)));
     background-image: -webkit-linear-gradient(left,rgba(0,0,0,1) 40%,rgba(0,0,0,0));
@@ -11628,7 +11630,7 @@ a {
     min-width: 6em;
     font-style: normal;
     line-height: normal;
-    margin: 0;
+    margin: 0 0 .5em;
     position: absolute;
     bottom: 0px;
 }
@@ -11646,6 +11648,7 @@ a {
     position: absolute;
     bottom: 5px;
     right: 0px;
+    margin-bottom: .4em;
 }
 
 .video-header-archive {
@@ -11706,17 +11709,33 @@ a {
 .video-main {
     height: 100%;
     width: 100%;
-    display: table;
     background: black;
 }
 .video-wrapper {
-    display: table-cell;
-    height: 100%;
-    vertical-align: middle;
     background: black;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+}
+.video-js.vjs-16-9 {
+    padding: 0 !important;
+    position: absolute;
+    width: 100%;
+    height: 100% !important;
+}
+.video-js .vjs-control-bar {
+  left: 10% !important;
+  width: 80% !important;
 }
 .slick-slide {
     position: relative;
+}
+.single-movie {
+  overflow: hidden;
 }
 
 /* Absolute Center Spinner */

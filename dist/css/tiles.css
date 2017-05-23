@@ -45,7 +45,7 @@
 }
 
 .slick-next.slick-arrow {
-  right: -45px; 
+  right: -50px; 
 }
 
 .slick-next:before {
@@ -71,13 +71,16 @@
 .carousels .tile {
   position: relative;
   display: inline-block;
-  font-size: 20px; 
+  font-size: 20px;
   cursor: pointer;
-  padding: 0px 2px;
 }
 
 .carousels .tile_payment_details {
   position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   height: 100%;
   width: 100%;
   background: rgba(0, 0, 0, 0.7);
@@ -90,11 +93,6 @@
     color: #949494;
     overflow: hidden;
     white-space: nowrap;
-    position: absolute;
-    top: 50%;
-    text-align: center;
-    width: 100%;
-    transform: translateY(-50%);
 }
 
 .carousels .content {
@@ -294,6 +292,10 @@
 
 .static-row .tile_payment_details {
   position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   height: 100%;
   width: 100%;
   background: rgba(0, 0, 0, 0.7);
@@ -306,11 +308,6 @@
     color: #949494;
     overflow: hidden;
     white-space: nowrap;
-    position: absolute;
-    top: 50%;
-    text-align: center;
-    width: 100%;
-    transform: translateY(-50%);
 }
 
 .static-row .content {

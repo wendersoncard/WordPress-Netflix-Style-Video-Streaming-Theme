@@ -108,11 +108,29 @@ jQuery( document ).ready(function( $ ) {
                 var ext = item.ext;
                 var type = item.type;
 
-                if(ext === "m3u8"){
-                    html += '<option id="' + code + '"  value="' + code + '">' + baseName(key) + ' ' + code + '</option>';  
-                }
-                if(ext === "mp4" || ext === "m4v"){
-                    html += '<option id="' + code + '"  value="' + code + '">' + baseName(key) + ' ' + code + '</option>';  
+                if(parseInt(streamium_meta_object.streamiumPremium) === 1){
+                    if(ext === "m3u8"){
+                        html += '<option id="' + code + '"  value="' + code + '">' + baseName(key) + ' ' + code + '</option>';  
+                    }
+                    if(ext === "mp4" || ext === "m4v"){
+                        html += '<option id="' + code + '"  value="' + code + '">' + baseName(key) + ' ' + code + '</option>';  
+                    }
+                }else{
+                    if(ext === "mp4" || ext === "m4v"){
+                        html += '<option id="https://s3bubble.com/secure/#/single_video/' + bucket + '/' + key.replace(/\//g, "+") + '" value="https://media.s3bubble.com/embed/progressive/id/' + code + '">' + key + '</option>'; 
+                    }
+                    if(ext === "mp3" || ext === "m4a"){
+                        html += '<option id="https://s3bubble.com/secure/#/single_audio/' + bucket + '/' + key.replace(/\//g, "+") + '"  value="https://media.s3bubble.com/embed/aprogressive/id/' + code + '">' + key + '</option>';   
+                    }
+                    if(ext === "m3u8"){
+                        html += '<option id="https://s3bubble.com/secure/#/single_hls/' + bucket + '/' + key.replace(/\//g, "+") + '"  value="https://media.s3bubble.com/embed/hls/id/' + code + '">' + key + '</option>';  
+                    }
+                    if(type === "audio"){
+                        html += '<option id="https://s3bubble.com/secure/#/audio_playlist/' + code + '"  value="https://media.s3bubble.com/embed/aplaylist/id/' + code + '">Audio Playlist: ' + title + '</option>';    
+                    }
+                    if(type === "video"){
+                        html += '<option id="https://s3bubble.com/secure/#/video_playlist/' + code + '"  value="https://media.s3bubble.com/embed/playlist/id/' + code + '">Video Playlist: ' + title + '</option>'; 
+                    }
                 }
                 
             });
