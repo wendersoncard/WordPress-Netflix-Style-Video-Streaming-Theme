@@ -77,6 +77,7 @@ function streamium_custom_post_types() {
 			'menu_icon'           => 'https://s3.amazonaws.com/s3bubble-cdn/theme-images/s3bubblelogo.png',
 			'menu_position'       => 5,
 			'taxonomies'          => array(  'post_tag', $value['tax'] ),
+			'supports'			  => array('title', 'editor', 'thumbnail', 'excerpt'),
 			'rewrite'			  => array(
 										'slug' => $rewriteType, 
 										'with_front' => false
@@ -87,6 +88,9 @@ function streamium_custom_post_types() {
 		register_taxonomy( $value['tax'], $value['type'], $setupTax); 
 		register_post_type( $value['type'], $setupArgs );
 
+		// Remove comments and discussions from custom posts
+		remove_meta_box('commentsdiv', $value['type'], 'normal');
+		remove_meta_box('commentstatusdiv', $value['type'], 'normal');
   	}	
 
 }
