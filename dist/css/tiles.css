@@ -35,7 +35,7 @@
   display: none;
   position: absolute;
   top: 0;
-  bottom: 0;
+  height: calc(100% - 24px);
   width: 45px;
   margin: 0;
   z-index: 1;
@@ -256,13 +256,9 @@
 .carousels .tile_progress {
   height: 4px;
   border-radius: 0;
-  margin: 10px 0;
+  margin: 10px 40px;
   background: rgba(255,255,255,.3);
-  box-shadow: none!important;
-  position: absolute;
-  left: 40px;
-  right: 40px;
-  z-index: -1;
+  box-shadow: none!important; 
 }
 
 .carousels .overlay .tile_meta_episodes {

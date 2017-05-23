@@ -2588,9 +2588,9 @@ jQuery(document).ready(function($) {
 	$(".product-thumbnail").remove();
 
 	
-	var tileCount = 6;
+	var tileCount = 5;
 	var tileWidth = Math.round($('.container-fluid').width()/tileCount);
-	var numberItems = 6;
+	var numberItems = 5;
 	var growFactor = 2; 
 	var moveDistance = ((tileWidth / 2)-2);
     var currentCat;
@@ -2702,7 +2702,7 @@ jQuery(document).ready(function($) {
 		$(this).on('setPosition', function (event, slick, currentSlide) {
 
 			$(this).find(".slick-active:first").addClass( "far-left" );
-			if(slick.slideCount > 6){ // Get the slide count
+			if(slick.slideCount > 5){ // Get the slide count
 				$(this).find(".slick-active:last").addClass( "far-right" );
 			}
 
