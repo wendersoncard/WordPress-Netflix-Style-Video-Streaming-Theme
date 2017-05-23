@@ -27,12 +27,7 @@ jQuery( document ).ready(function( $ ) {
             $.each(response.results, function (i, item) {
 
                 var stream = item.stream;
-
-                if(parseInt(streamium_meta_object.streamiumPremium) === 1){
-                    html += '<option id="' + stream + '"  value="' + stream + '">' + stream + '</option>';  
-                }else{
-                    html += '<option id="https://s3bubble.com/secure/#/video_playlist/' + stream + '"  value="https://media.s3bubble.com/embed/playlist/id/' + stream + '">Video Playlist: ' + title + '</option>'; 
-                }
+                html += '<option id="' + stream + '"  value="' + stream + '">' + stream + '</option>';  
                 
             });
             html += '';
