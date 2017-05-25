@@ -4771,6 +4771,7 @@ jQuery(document).ready(function($) {
 			id : "s3bubble-" + video_post_object.post_id,
 			stream : video_post_object.stream,
 			poster : video_post_object.poster,
+			fluid : true,
 			meta : {
                 backButton: true,
                 subTitle: video_post_object.subTitle,

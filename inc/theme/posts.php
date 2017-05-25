@@ -114,6 +114,7 @@ function streamium_get_dynamic_content() {
     	if(!empty($post_object)){
 
     		$like_text = '';
+    		$buildMeta = '';
 		    if ( get_theme_mod( 'streamium_enable_premium' ) ) {
 
 		    	$buildMeta = '<ul>';
