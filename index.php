@@ -1,6 +1,4 @@
 <?php get_header();
-
-	// People say bald is the new beautiful
 	
 	$setType = get_theme_mod( 'streamium_main_post_type', 'movie');
 	$setTax = get_theme_mod( 'streamium_main_tax', 'movies');
