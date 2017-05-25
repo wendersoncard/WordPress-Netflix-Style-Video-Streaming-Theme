@@ -24,8 +24,12 @@
 
 				<?php if ( has_nav_menu( 'streamium-header-menu', 'streamium' ) ) :
 					
-					wp_nav_menu( array( 'container' => false, 'theme_location' => 'streamium-header-menu' ) ); 
-				
+					wp_nav_menu( array( 'container' => false, 'theme_location' => 'streamium-header-menu' ) );
+
+				else :  
+					
+					echo '<ul id="cd-primary-nav" class="cd-primary-nav is-fixed"><li><a href="#">!To display a menu here go to Apperance and menus create a menu and select (Display location Header Menu).</a></li></ul>';
+
 				endif;
 
 				$postTypes = array(
@@ -46,9 +50,9 @@
 
 						if ( get_theme_mod( 'streamium_section_checkbox_enable_' . $tax )) :
 
-						$taxTitle = (get_theme_mod( 'streamium_section_input_menu_text_' . $type )) ? get_theme_mod( 'streamium_section_input_menu_text_' . $type ) : $menu;
-						$typeUrls =  (get_theme_mod( 'streamium_section_input_posttype_' . $type )) ? get_theme_mod( 'streamium_section_input_posttype_' . $type ) : $type;
-						$taxUrls =  (get_theme_mod( 'streamium_section_input_taxonomy_' . $tax )) ? get_theme_mod( 'streamium_section_input_taxonomy_' . $tax ) : $tax;
+						$taxTitle = get_theme_mod( 'streamium_section_input_menu_text_' . $type, $menu);
+						$typeUrls = get_theme_mod( 'streamium_section_input_posttype_' . $type, $type);
+						$taxUrls  = get_theme_mod( 'streamium_section_input_taxonomy_' . $tax, $tax );
 
 					?>
 

@@ -436,13 +436,16 @@ class Streamium_Customize {
    public static function header_output() {
 
       $url = get_theme_mod( 'streamium_google_font' );
+      $family = 'Helvetica';
       if(!empty($url)){
 
         $parts = parse_url($url);
-        parse_str($parts['query'], $query);
-        $family = isset($query['family']) ? $query['family'] : "";
-        if (strpos($family, ':') !== false) {
-          $family = substr($family, 0, strrpos($family, ':'));
+        if(isset($parts['query'])){
+            parse_str($parts['query'], $query);
+            $family = isset($query['family']) ? $query['family'] : "";
+            if (strpos($family, ':') !== false) {
+                $family = substr($family, 0, strrpos($family, ':'));
+            }
         }
 
       }

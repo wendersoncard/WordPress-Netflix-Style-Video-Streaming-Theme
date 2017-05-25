@@ -43,10 +43,10 @@ function streamium_run_plugin_checks() {
 	}
 
 	// admin alert
-	function wooCommerce_admin_notice__error() {
+	function saerch_everything_admin_notice__error() {
 		$class = 'notice notice-info is-dismissible';
-		$pluginUrl = admin_url( 'plugin-install.php?s=WooCommerce&tab=search&type=term' );
-		$message = __( 'Streamium works in conjunction with WooCommerce to allow you to take online payments. ', 'sample-text-domain' );
+		$pluginUrl = admin_url( 'plugin-install.php?s=Search+Everything&tab=search&type=term' );
+		$message = __( 'Streamium works in conjunction with Search Everything plugin to allow tags and other elements to become searchable. ', 'sample-text-domain' );
 
 		printf( '<div class="%1$s"><p>%2$s<a href="%3$s">Install Now!</a></p></div>', esc_attr( $class ), esc_html( $message ), esc_url( $pluginUrl ) ); 
 	}
@@ -74,9 +74,12 @@ function streamium_run_plugin_checks() {
 	if (!in_array("Easy Theme and Plugin Upgrades", $formatArray)) {
 	    add_action( 'admin_notices', 'easy_theme_upgrades_admin_notice__error' );
 	}
-	/*if (!in_array("WooCommerce", $formatArray)) {
-	    add_action( 'admin_notices', 'wooCommerce_admin_notice__error' );
+
+	if (!in_array("Search Everything", $formatArray)) {
+	    add_action( 'admin_notices', 'saerch_everything_admin_notice__error' );
 	}
+
+	/*
 	if ((!in_array("WooCommerce Membership", $formatArray)) || (!in_array("Subscriptio", $formatArray))) {
 	    add_action( 'admin_notices', 'wooCommerce_membership_subscriptio_admin_notice__error' );
 	}
@@ -104,16 +107,14 @@ add_action( 'init', 'streamium_run_plugin_checks' );
  */
 function premium_admin_notice__error() {
 
-	$class = 'notice notice-info is-dismissible';
+	$class = 'notice notice-info notice-premium is-dismissible';
 	$message = __( 'Upgrade to Premium to unlock some great features. Ratings, Video Resume, Self hosted, Background Videos, Trailers and much more. ', 'streamium' );
 
-	printf( '<div class="%1$s"><p>%2$s<a href="%3$s">Upgrade Now!</a></p></div>', esc_attr( $class ), esc_html( $message ), esc_url( 'https://s3bubble.com/pricing' ) ); 
+	printf( '<div class="%1$s"><p>%2$s<a href="%3$s">Upgrade Now!</a></p></div>', esc_attr( $class ), esc_html( $message ), esc_url( 'https://s3bubble.com/pricing' ) );
 }
 
-if(!get_theme_mod( 'streamium_enable_premium' )){
-
+if(!get_theme_mod( 'streamium_enable_premium' ) && get_option('notice_premium') == 1) {
 	add_action( 'admin_notices', 'premium_admin_notice__error' );
-
 }
 
 /**
@@ -133,7 +134,7 @@ function streamium_connection_checks() {
 	}
 
     if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
-    	
+		    	
     	if($state === "false"){
 
     		set_theme_mod( "streamium_enable_premium", true );
@@ -179,8 +180,6 @@ function streamium_extra_body_class( $classes ) {
  	
  	// include classes
  	$detect = new Mobile_Detect;
-
-    $classes[] = ( get_theme_mod( 'streamium_enable_premium' )  ) ? 'streamium-premium' : 'streamium-standard';
     if ( $detect->isTablet() ) {
  		$classes[] = 'streamium-tablet';
 	}else if( $detect->isMobile() ){
@@ -210,7 +209,7 @@ function streamium_get_device($type){
 	}else if( $detect->isMobile() ){
 	 	$device = array('count' => 2, 'class' => 'col-xs-6', 'device' => 'mobile');
 	}else{
-		$device = array('count' => 6, 'class' => 'col-xs-2', 'device' => 'desktop');
+		$device = array('count' => 5, 'class' => 'col-xs-5ths', 'device' => 'desktop');
 	}
 	return $device[$type];
 

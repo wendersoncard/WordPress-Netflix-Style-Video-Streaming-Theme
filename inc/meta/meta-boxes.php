@@ -9,14 +9,13 @@
 function streamium_video_code_meta_box_add(){
 
     add_meta_box( 'streamium-meta-box-movie', 'Main Video', 'streamium_meta_box_movie', array('movie', 'tv','sport','kid'), 'side', 'high' );
+    add_meta_box( 'streamium-meta-box-youtube', 'Youtube Video', 'streamium_meta_box_youtube', array('movie', 'tv','sport','kid'), 'side', 'high' ); 
     add_meta_box( 'streamium-meta-box-trailer', 'Video Trailer', 'streamium_meta_box_trailer', array('movie', 'tv','sport','kid'), 'side', 'high' );
     add_meta_box( 'streamium-meta-box-bgvideo', 'Featured BG Video', 'streamium_meta_box_bgvideo', array('movie', 'tv','sport','kid'), 'side', 'high' );
-    add_meta_box( 'streamium-meta-box-main-slider', 'Featured Video', 'streamium_meta_box_main_slider', array('movie', 'tv','sport','kid','stream'), 'side', 'high' );
+    add_meta_box( 'streamium-meta-box-main-slider', 'Main Slider Video', 'streamium_meta_box_main_slider', array('movie', 'tv','sport','kid','stream'), 'side', 'high' );
 
-    // Only allow repeater for premium
-    if(get_theme_mod( 'streamium_enable_premium' )) {
-        add_meta_box( 'streamium-repeatable-fields', 'Multiple Videos', 'streamium_repeatable_meta_box_display', array('movie', 'tv','sport','kid'), 'normal', 'high');
-    }
+    // Repeater for premium
+    add_meta_box( 'streamium-repeatable-fields', 'Multiple Videos - Seasons/Episodes', 'streamium_repeatable_meta_box_display', array('movie', 'tv','sport','kid'), 'normal', 'high');
 
     // live stream meta
     add_meta_box( 'streamium-meta-box-live-streams', 'Live Streams', 'streamium_meta_box_live_streams', array('stream'), 'side', 'high' );
@@ -27,6 +26,44 @@ function streamium_video_code_meta_box_add(){
 }
 
 add_action( 'add_meta_boxes', 'streamium_video_code_meta_box_add' );
+
+/**
+ * Sets up the meta box content for the main video
+ *
+ * @return null
+ * @author  @sameast
+ */
+function streamium_meta_box_youtube(){
+
+    // $post is already set, and contains an object: the WordPress post
+    global $post;
+    $values = get_post_custom( $post->ID );
+    $text = isset( $values['s3bubble_video_youtube_code_meta_box_text'] ) ? $values['s3bubble_video_youtube_code_meta_box_text'][0] : '';
+    wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
+
+    ?>
+    <p class="streamium-meta-box-wrapper">
+
+        <input type="text" name="s3bubble_video_youtube_code_meta_box_text" class="form-control" id="s3bubble_video_youtube_code_meta_box_text" value="<?php echo $text; ?>" />
+        
+        <?php 
+
+          if(get_theme_mod( 'streamium_enable_premium' )){
+
+            echo !empty($text) ? "<div class='streamium-current-url'>Premium video code: " . $text . "</div>" : "<div class='streamium-current-url-info'>No video selected. Please select a video to show as your main movie.</div>";
+          
+          }else{
+          
+            echo !empty($text) ? "<div class='streamium-current-url'>Your current url is set to: " . $text . "</div>" : "";
+          
+          }
+
+        ?>
+    </p>
+
+    <?php    
+
+}
 
 /**
  * Sets up the meta box content for the main video
@@ -48,6 +85,7 @@ function streamium_meta_box_movie(){
             <option value="<?php echo $text; ?>">Select Main Video</option>
             <option value="">Remove Current Video</option>
         </select>
+
         <?php 
 
           if(get_theme_mod( 'streamium_enable_premium' )){
@@ -148,12 +186,16 @@ function streamium_meta_box_bgvideo(){
  */
 function streamium_repeatable_meta_box_display() {
 
-  global $post;
-  $repeatable_fields = get_post_meta($post->ID, 'repeatable_fields', true);
-  wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
+    global $post;
+    $repeatable_fields = get_post_meta($post->ID, 'repeatable_fields', true);
+    wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
 
-  ?>  
-    <ul id="repeatable-fieldset-one" width="100%">
+    if(get_theme_mod( 'streamium_enable_premium' )) :
+    
+    ?> 
+    
+        <ul id="repeatable-fieldset-one" width="100%">
+    
     <?php
 
         if ( $repeatable_fields ) :
@@ -254,11 +296,18 @@ function streamium_repeatable_meta_box_display() {
             </div>
         </li>
     <?php endif; ?>
+    
     </ul> 
     <div class="streamium-repeater-footer">
         <a id="streamium-add-repeater-row" class="button add-program-row button-primary" href="#">Add another</a>
     </div>
-  <?php
+
+    <?php else : ?>
+          
+        <div class='streamium-current-url-info'>This is only available with the Premium package. <a href="https://s3bubble.com/pricing/" target="_blank">Upgrade</a></div>
+          
+    <?php endif; 
+
 }
 
 /**
@@ -296,24 +345,17 @@ function streamium_meta_box_live_streams() {
     global $post;
     $values = get_post_custom( $post->ID );
     $text = isset( $values['streamium_live_stream_meta_box_text'] ) ? $values['streamium_live_stream_meta_box_text'][0] : '';
-    // We'll use this nonce field later on when saving.
     wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
+
     ?>
     <p class="streamium-meta-box-wrapper">
-        <?php if(get_theme_mod( 'streamium_enable_premium' )) : ?>
-
-            <select class="streamium-theme-live-stream-select-group chosen-select" tabindex="1" name="streamium_live_stream_meta_box_text" id="streamium_live_stream_meta_box_text">
+        
+        <select class="streamium-theme-live-stream-select-group chosen-select" tabindex="1" name="streamium_live_stream_meta_box_text" id="streamium_live_stream_meta_box_text">
                 <option value="<?php echo $text; ?>">Select Stream</option>
                 <option value="">Remove Current Stream</option>
             </select>
 
         <?php echo !empty($text) ? "<div class='streamium-current-url'>Premium stream code: " . $text . "</div>" : "<div class='streamium-current-url-info'>No stream selected.</div>"; ?>
-          
-        <?php else : ?>
-          
-          <div class='streamium-current-url-info'>This is only available with the Premium package. <a href="https://s3bubble.com/pricing/" target="_blank">Upgrade</a></div>
-          
-        <?php endif; ?>
 
     </p>
 
@@ -332,7 +374,6 @@ function streamium_meta_box_extra_meta() {
     global $post;
     $values = get_post_custom( $post->ID );
     $text = isset( $values['streamium_extra_meta_meta_box_text'] ) ? $values['streamium_extra_meta_meta_box_text'][0] : '';
-    // We'll use this nonce field later on when saving.
     wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
     ?>
     <p class="streamium-meta-box-wrapper">
@@ -486,6 +527,14 @@ function streamium_post_meta_box_save( $post_id )
         update_post_meta( $post_id, 'streamium_extra_meta_meta_box_text', $_POST['streamium_extra_meta_meta_box_text'] );
 
     }
+
+    // Save youtube code
+    if( isset( $_POST['s3bubble_video_youtube_code_meta_box_text'] ) ){
+        
+        update_post_meta( $post_id, 's3bubble_video_youtube_code_meta_box_text', $_POST['s3bubble_video_youtube_code_meta_box_text'] );
+
+    }
+    
 
 }
 

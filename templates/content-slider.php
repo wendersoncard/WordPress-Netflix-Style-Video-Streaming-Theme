@@ -96,7 +96,7 @@
 			<div style="background:url(<?php echo esc_url(get_template_directory_uri()); ?>/dist/frontend/assets/tech-2-mobile.jpg);" class="slider-block">
 				<div class="slider-no-content">
 					<h2><?php _e( 'S3Bubble Media Streaming', 'streamium' ); ?></h2>
-					<p><?php _e( 'Please replace this by checking the box Show in the main feature slider, when you have do this your post will be displayed here.', 'streamium' ); ?></p>
+					<p><?php _e( 'To display a image here go to your custom post and look for the metabox (Main Slider Video) and check it.', 'streamium' ); ?></p>
 				</div><!--/.content-overlay-->
 			</div>
 			<?php

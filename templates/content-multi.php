@@ -27,10 +27,10 @@
 
 		$buildNav = "";
 		$buildList = '<div class="tab-content">'; 
-		foreach (array_reverse($result) as $key => $value) :
+		foreach ($result as $key => $value) :
 
-			$activeNav = ($key == 0)? "active" : "";
-			$activeList = ($key == 0)? "active" : "fade"; 
+			$activeNav = ($key === 0)? "active" : "";
+			$activeList = ($key === 1)? "active" : "fade"; 
 			$buildNav .= '<li class="streamium-season-filter ' . $activeNav . '"><a data-target="#vtab' . $key . '" data-toggle="tab">Season ' . $value[0]['seasons'] . '</a></li>'; 
 
 			$buildList .= '<div class="tab-pane ' . $activeList . '" id="vtab' . $key . '">';
