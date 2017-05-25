@@ -2729,12 +2729,6 @@ jQuery(document).ready(function($) {
  
 	});
 
-    // adjust the height for payment checks
-	$('.tile_payment_details h2').css({
-		lineHeight: Math.round(itemWidth/16*9) + "px",
-		height: Math.round(itemWidth/16*9) + "px"
-	})
-
     $('.s3bubble-details-inner-close').on('click',function(event) {
 
     	event.preventDefault();
@@ -4783,14 +4777,22 @@ jQuery(document).ready(function($) {
                 title: video_post_object.title,
                 para: video_post_object.para
             },
-			playerEnded  : function(player){
-				console.log("boosh");
+            playerError  : function(_response){
+
+            	// check for the error message
+				if(_response.error){
+					$("#" + _response.id).html(_response.message);
+				}
+
 			},
-			playerLoaded  : function(player){
+			playerEnded  : function(_player){
+				
+			},
+			playerLoaded  : function(_player){
 
 			}
 		});
-
+ 
 	}
 
 	function setupStreamiumPlayer(){
@@ -4806,12 +4808,20 @@ jQuery(document).ready(function($) {
                 title: video_post_object.title,
                 para: video_post_object.para
             },
-			playerEnded  : function(player){
-				console.log("boosh");
-			},
-			playerLoaded  : function(player){
+            playerError  : function(_response){
 
-				player.on("timeupdate", function() {
+            	// check for the error message
+				if(_response.error){
+					$("#" + _response.id).html(_response.message);
+				}
+
+			},
+			playerEnded  : function(_player){
+				
+			},
+			playerLoaded  : function(_player){
+
+				_player.on("timeupdate", function() {
 
 				    var current = this.currentTime();
 				    var duration = this.duration();
@@ -4841,14 +4851,21 @@ jQuery(document).ready(function($) {
 
 				}());
 
-				player.play();
+				_player.play();
  
 			}
 		};
 
+		// Apply youtube setting if it exists
 		if(video_post_object.youtube){
 			setupPlayer.youtube = true;
 		}
+
+		// Set the container to fluid for single video
+		if(video_post_object.codes.length === 1){
+			setupPlayer.fluid = true;
+		}
+		
 		S3Bubble.player(setupPlayer);
  
 		$('.episodes a').on('click',function(){

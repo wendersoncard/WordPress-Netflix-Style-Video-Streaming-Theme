@@ -12,7 +12,7 @@ function streamium_video_code_meta_box_add(){
     add_meta_box( 'streamium-meta-box-youtube', 'Youtube Video', 'streamium_meta_box_youtube', array('movie', 'tv','sport','kid'), 'side', 'high' ); 
     add_meta_box( 'streamium-meta-box-trailer', 'Video Trailer', 'streamium_meta_box_trailer', array('movie', 'tv','sport','kid'), 'side', 'high' );
     add_meta_box( 'streamium-meta-box-bgvideo', 'Featured BG Video', 'streamium_meta_box_bgvideo', array('movie', 'tv','sport','kid'), 'side', 'high' );
-    add_meta_box( 'streamium-meta-box-main-slider', 'Featured Video', 'streamium_meta_box_main_slider', array('movie', 'tv','sport','kid','stream'), 'side', 'high' );
+    add_meta_box( 'streamium-meta-box-main-slider', 'Main Slider Video', 'streamium_meta_box_main_slider', array('movie', 'tv','sport','kid','stream'), 'side', 'high' );
 
     // Repeater for premium
     add_meta_box( 'streamium-repeatable-fields', 'Multiple Videos - Seasons/Episodes', 'streamium_repeatable_meta_box_display', array('movie', 'tv','sport','kid'), 'normal', 'high');

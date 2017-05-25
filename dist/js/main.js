@@ -186,12 +186,6 @@ jQuery(document).ready(function($) {
  
 	});
 
-    // adjust the height for payment checks
-	$('.tile_payment_details h2').css({
-		lineHeight: Math.round(itemWidth/16*9) + "px",
-		height: Math.round(itemWidth/16*9) + "px"
-	})
-
     $('.s3bubble-details-inner-close').on('click',function(event) {
 
     	event.preventDefault();

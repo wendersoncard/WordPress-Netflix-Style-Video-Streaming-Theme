@@ -363,21 +363,23 @@ a {
     position: absolute;
     width: 100%;
 }
+/*
 .video-js.vjs-16-9 {
     padding: 0 !important;
     position: absolute;
     width: 100%;
     height: 100% !important;
 }
+.single-movie {
+  overflow: hidden;
+}
+*/
 .video-js .vjs-control-bar {
   left: 10% !important;
   width: 80% !important;
 }
 .slick-slide {
     position: relative;
-}
-.single-movie {
-  overflow: hidden;
 }
 
 /* Absolute Center Spinner */

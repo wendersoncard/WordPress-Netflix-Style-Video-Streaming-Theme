@@ -7325,10 +7325,6 @@ body::after {
 
 .carousels .tile_payment_details {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
   height: 100%;
   width: 100%;
   background: rgba(0, 0, 0, 0.7);
@@ -7341,6 +7337,11 @@ body::after {
     color: #949494;
     overflow: hidden;
     white-space: nowrap;
+    position: absolute;
+    top: 50%;
+    text-align: center;
+    width: 100%;
+    transform: translateY(-50%);
 }
 
 .carousels .content {
@@ -7541,15 +7542,11 @@ body::after {
 
 .static-row .tile_payment_details {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
   height: 100%;
   width: 100%;
   background: rgba(0, 0, 0, 0.7);
   text-align: center;
-}
+} 
 
 .static-row .tile_payment_details h2 {
     font-size: 14px;
@@ -7557,6 +7554,11 @@ body::after {
     color: #949494;
     overflow: hidden;
     white-space: nowrap;
+    position: absolute;
+    top: 50%;
+    text-align: center;
+    width: 100%;
+    transform: translateY(-50%);
 }
 
 .static-row .content {
@@ -11721,21 +11723,23 @@ a {
     position: absolute;
     width: 100%;
 }
+/*
 .video-js.vjs-16-9 {
     padding: 0 !important;
     position: absolute;
     width: 100%;
     height: 100% !important;
 }
+.single-movie {
+  overflow: hidden;
+}
+*/
 .video-js .vjs-control-bar {
   left: 10% !important;
   width: 80% !important;
 }
 .slick-slide {
     position: relative;
-}
-.single-movie {
-  overflow: hidden;
 }
 
 /* Absolute Center Spinner */

@@ -43,10 +43,10 @@ function streamium_run_plugin_checks() {
 	}
 
 	// admin alert
-	function wooCommerce_admin_notice__error() {
+	function saerch_everything_admin_notice__error() {
 		$class = 'notice notice-info is-dismissible';
-		$pluginUrl = admin_url( 'plugin-install.php?s=WooCommerce&tab=search&type=term' );
-		$message = __( 'Streamium works in conjunction with WooCommerce to allow you to take online payments. ', 'sample-text-domain' );
+		$pluginUrl = admin_url( 'plugin-install.php?s=Search+Everything&tab=search&type=term' );
+		$message = __( 'Streamium works in conjunction with Search Everything plugin to allow tags and other elements to become searchable. ', 'sample-text-domain' );
 
 		printf( '<div class="%1$s"><p>%2$s<a href="%3$s">Install Now!</a></p></div>', esc_attr( $class ), esc_html( $message ), esc_url( $pluginUrl ) ); 
 	}
@@ -74,9 +74,12 @@ function streamium_run_plugin_checks() {
 	if (!in_array("Easy Theme and Plugin Upgrades", $formatArray)) {
 	    add_action( 'admin_notices', 'easy_theme_upgrades_admin_notice__error' );
 	}
-	/*if (!in_array("WooCommerce", $formatArray)) {
-	    add_action( 'admin_notices', 'wooCommerce_admin_notice__error' );
+
+	if (!in_array("Search Everything", $formatArray)) {
+	    add_action( 'admin_notices', 'saerch_everything_admin_notice__error' );
 	}
+
+	/*
 	if ((!in_array("WooCommerce Membership", $formatArray)) || (!in_array("Subscriptio", $formatArray))) {
 	    add_action( 'admin_notices', 'wooCommerce_membership_subscriptio_admin_notice__error' );
 	}
