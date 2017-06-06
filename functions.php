@@ -61,12 +61,13 @@ if (!function_exists('streamium_enqueue_scripts')) {
             )
         );
 
-        //wp_enqueue_style('streamium-s3bubble-cdn', 'http://local.hosted.com/assets/hosted/s3bubble-hosted-cdn.min.css');
-        //wp_enqueue_script( 'streamium-s3bubble-cdn', 'http://local.hosted.com/assets/hosted/s3bubble-hosted-cdn.min.js', array( 'jquery'),'1.1', true );
+        // Local
+        //wp_enqueue_style('streamium-s3bubble-cdn', 'http://local.hosted.com/assets/hosted/s3bubble.min.css');
+        //wp_enqueue_script( 'streamium-s3bubble-cdn', 'http://local.hosted.com/assets/hosted/s3bubble.min.js', array( 'jquery'),'1.1', true );
 
-        // not valid
-        wp_enqueue_style('streamium-s3bubble-cdn', 'https://s3.amazonaws.com/s3bubble-cdn/production/s3bubble-hosted-cdn.min.css');
-        wp_enqueue_script( 'streamium-s3bubble-cdn', 'https://s3.amazonaws.com/s3bubble-cdn/production/s3bubble-hosted-cdn.min.js','','1.1', true );
+        // Live 
+        wp_enqueue_style('streamium-s3bubble-cdn', '//s3.amazonaws.com/aws-hosted/s3bubble.min.css');
+        wp_enqueue_script( 'streamium-s3bubble-cdn', '//s3.amazonaws.com/aws-hosted/s3bubble.min.js','','1.1', true );
 
 	}
 

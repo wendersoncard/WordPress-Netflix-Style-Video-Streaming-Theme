@@ -107,9 +107,9 @@ class Streamium_Ratings_List extends WP_List_Table {
 	  return $wpdb->get_var( $sql );
 	}
 
-	/** Text displayed when no customer data is available */
+	/** Text displayed when no ratings data is available */
 	public function no_items() {
-	  _e( 'No customers avaliable.', 'sp' );
+	  _e( 'No ratings avaliable.', 'sp' );
 	}
 
 	/**
