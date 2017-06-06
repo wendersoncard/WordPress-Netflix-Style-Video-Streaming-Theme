@@ -8,12 +8,12 @@ function streamium_add_login_logout_register_menu( $items, $args ) {
  
  	if ( is_user_logged_in() ) {
  
- 		$items .= '<li><a href="' . wp_logout_url() . '">' . __( 'Log Out' ) . '</a></li>';
+ 		$items .= '<li><a href="' . wp_logout_url() . '">' . __( 'Logout' ) . '</a></li>';
  
  	} else {
  	
- 		$items .= '<li><a href="' . wp_login_url() . '">' . __( 'Login In' ) . '</a></li>';
- 		$items .= '<li><a href="' . wp_registration_url() . '">' . __( 'Sign Up' ) . '</a></li>';
+ 		$items .= '<li><a href="' . wp_login_url() . '">' . __( 'Login' ) . '</a></li>';
+ 		//$items .= '<li><a href="' . wp_registration_url() . '">' . __( 'Sign Up' ) . '</a></li>';
 
  	}
  	return $items;

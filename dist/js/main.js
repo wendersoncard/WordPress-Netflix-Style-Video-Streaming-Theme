@@ -51,7 +51,8 @@ jQuery(document).ready(function($) {
 	var growFactor = 2; 
 	var moveDistance = ((tileWidth / 2)-2);
     var currentCat;
-	var vh = Math.round($(window).innerWidth()/21*9);
+    var ratio = ($(window).innerWidth()/21*9);
+	var vh = Math.round(ratio);
 	var wh = Math.round($(window).innerWidth());
 
 	// Set the number of carousel items based on width
@@ -62,58 +63,30 @@ jQuery(document).ready(function($) {
 		numberItems = 2;
 	}
 
+	$('.streamium-slider .slick-slide').height(vh);
+
 	function resizeVideoJS(){
-        vh = Math.round($(window).innerWidth()/21*9);
+        vh = Math.round(ratio);
 		wh = Math.round($(window).innerWidth());
-		$('.hero-slider .slider-block').css({'height' : vh,'width' : wh});
 		if($('section.recently-watched').length > 0){
 			var hrh = parseInt($(".video-header").height())-2;
-			$(".hero").css("margin-bottom", "-" + hrh + "px");
+			$(".streamium-slider").css("margin-bottom", "-" + hrh + "px");
 		}
-		ph = Math.floor($(window).innerWidth()/16*9);
-		$('.program-default-height').height(ph);
-    }  
-      
-    resizeVideoJS();
-    window.onresize = resizeVideoJS; 
+		$('.program-default-height').height(vh);
+		$('.streamium-slider .slick-slide').height(vh);
+    }
 
 	// Initialise Slider
-	$('.hero-slider').slick({ 
+	$('.streamium-slider').slick({ 
 		slidesToShow: 1,
 		slidesToScroll: 1,
-		dots: true,
-      	autoplay: false,
-      	arrows : true,
-      	adaptiveHeight: true,
-      	//centerMode: true,
-        //variableWidth: true,
-      	autoplaySpeed: 8000,
-      	//mobileFirst: true,
-		pauseOnHover: true,
-		responsive: [
-		    {
-		      breakpoint: 1024,
-		      settings: {
-		        dots: true
-		      }
-		    },
-		    {
-		      breakpoint: 600,
-		      settings: {
-		      	appendArrows: false,
-		        dots: false
-		      }
-		    },
-		    {
-		      breakpoint: 480,
-		      settings: {
-		      	appendArrows: false,
-		        slidesToShow: 1,
-		        slidesToScroll: 1
-		      }
-		    }
-		]
+		dots: false,
+      	autoplay: false
 	});
+
+	$('.streamium-slider .slick-slide').height(vh);
+	resizeVideoJS();
+    window.onresize = resizeVideoJS;
 
 	var itemWidth = Math.round($('.container-fluid').width()/numberItems);
 	
@@ -127,7 +100,7 @@ jQuery(document).ready(function($) {
 			slidesToScroll: 5,
 			infinite: true,
 			adaptiveHeight: true,
-			responsive: [{
+			responsive: [{ 
 		      breakpoint: 1024,
 		      settings: {
 		      	appendArrows: false,
@@ -416,9 +389,7 @@ jQuery(document).ready(function($) {
 
 	}	
 
-	setTimeout(function(){
-		$(".streamium-loading").fadeOut();
-	},1000);
-
+	//setTimeout(function(){ $(".streamium-loading").fadeOut(); },1000);
 	$('[data-toggle="tooltip"]').tooltip();
+
 });

@@ -9,9 +9,9 @@
 function streamium_video_code_meta_box_add(){
 
     add_meta_box( 'streamium-meta-box-movie', 'Main Video', 'streamium_meta_box_movie', array('movie', 'tv','sport','kid'), 'side', 'high' );
-    add_meta_box( 'streamium-meta-box-youtube', 'Youtube Video', 'streamium_meta_box_youtube', array('movie', 'tv','sport','kid'), 'side', 'high' ); 
+    add_meta_box( 'streamium-meta-box-youtube', 'External Video Full Url', 'streamium_meta_box_youtube', array('movie', 'tv','sport','kid'), 'side', 'high' ); 
     add_meta_box( 'streamium-meta-box-trailer', 'Video Trailer', 'streamium_meta_box_trailer', array('movie', 'tv','sport','kid'), 'side', 'high' );
-    add_meta_box( 'streamium-meta-box-bgvideo', 'Featured BG Video', 'streamium_meta_box_bgvideo', array('movie', 'tv','sport','kid'), 'side', 'high' );
+    add_meta_box( 'streamium-meta-box-bgvideo', 'Main Slider BG Video', 'streamium_meta_box_bgvideo', array('movie', 'tv','sport','kid'), 'side', 'high' );
     add_meta_box( 'streamium-meta-box-main-slider', 'Main Slider Video', 'streamium_meta_box_main_slider', array('movie', 'tv','sport','kid','stream'), 'side', 'high' );
 
     // Repeater for premium
@@ -50,7 +50,7 @@ function streamium_meta_box_youtube(){
 
           if(get_theme_mod( 'streamium_enable_premium' )){
 
-            echo !empty($text) ? "<div class='streamium-current-url'>Premium video code: " . $text . "</div>" : "<div class='streamium-current-url-info'>No video selected. Please select a video to show as your main movie.</div>";
+            echo !empty($text) ? "<div class='streamium-current-url'>Premium video code: " . $text . "</div>" : "<div class='streamium-current-url-info'>No video selected. Please select a video to show as your main movie. This can be a full url to Youtube or other support services.</div>";
           
           }else{
           

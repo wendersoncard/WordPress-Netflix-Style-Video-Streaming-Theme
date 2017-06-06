@@ -31,7 +31,7 @@
   padding-left: 2px; 
 }
   
-.slick-arrow {
+.carousels .slick-arrow {
   display: none;
   position: absolute;
   top: 0;
@@ -44,21 +44,63 @@
   background: rgba(0, 0, 0, 0.3);
 }
 
-.slick-next.slick-arrow {
+.carousels .slick-next.slick-arrow {
   right: -45px; 
 }
 
-.slick-next:before {
+.carousels .slick-next:before {
   font-family: FontAwesome;
    content: "\f105";
    font-size: 44px;
 }
 
-.slick-prev.slick-arrow {
+.carousels .slick-prev.slick-arrow {
   left: -45px;
 }
 
-.slick-prev:before {
+.carousels .slick-prev:before {
+  font-family: FontAwesome;
+   content: "\f104";
+   font-size: 44px;
+}
+
+.streamium-slider {
+    width: auto;
+}
+
+.streamium-slider .slick-slide {
+    background-position: center;
+    background-size: cover;
+}
+
+.streamium-slider .slick-arrow {
+  display: none;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 45px;
+  margin: 0;
+  z-index: 1;
+  font-size: 0;
+  border: none;
+  background: transparent;
+}
+
+.streamium-slider .slick-next.slick-arrow {
+  right: 0px; 
+}
+
+.streamium-slider .slick-next:before {
+  font-family: FontAwesome;
+   content: "\f105";
+   font-size: 44px;
+}
+
+.streamium-slider .slick-prev.slick-arrow {
+  left: 0px;
+}
+
+.streamium-slider .slick-prev:before {
   font-family: FontAwesome;
    content: "\f104";
    font-size: 44px;
@@ -257,7 +299,7 @@
 .carousels .tile_progress {
   height: 4px;
   border-radius: 0;
-  margin: 10px 40px;
+  margin: 10px 20%;
   background: rgba(255,255,255,.3);
   box-shadow: none!important; 
 }
@@ -474,7 +516,7 @@
 .static-row .tile_progress {
   height: 4px;
   border-radius: 0;
-  margin: 10px 40px;
+  margin: 10px 20%;
   background: rgba(255,255,255,.3);
   box-shadow: none!important;
 }
