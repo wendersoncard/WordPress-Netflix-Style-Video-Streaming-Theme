@@ -34,8 +34,8 @@ jQuery(document).ready(function($) {
 				'policy': streamium_uploader.policy,
 				'signature': streamium_uploader.signature
 	        },
-	        filters : {
-				max_file_size : streamium_uploader.filesize + 'mb',
+	        filters : {  
+				max_file_size : streamium_uploader.filesize,
 				mime_types: [
 					{title : 'Allowed files', extensions : streamium_uploader.filetypes}
 				]

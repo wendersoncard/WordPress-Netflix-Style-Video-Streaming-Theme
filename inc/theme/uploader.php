@@ -9,9 +9,10 @@
 function streamium_user_content_uploader($atts){
     
     // Check for email
-	$ajax_nonce = wp_create_nonce( "streamium-uploader-nonce-security" );
+	$ajax_nonce  = wp_create_nonce( "streamium-uploader-nonce-security" );
 	$accessKeyId = get_theme_mod( 'streamium_aws_media_uploader_access_key' );
 	$secret	     = get_theme_mod( 'streamium_aws_media_uploader_secret_key' );
+	$loginOnly	 = get_theme_mod( 'streamium_aws_media_uploader_login' );
     
     if(!get_theme_mod( 'streamium_enable_premium' )) {
     	return "<span style='color:black;'>ERROR: only available on the premium package please upgrade.</span>";
@@ -24,19 +25,27 @@ function streamium_user_content_uploader($atts){
 	extract( shortcode_atts( array(
 		'bucket'   => '',
 		'folder'   => 'userid',
-		'filesize' => '20',
+		'filesize' => '1gb',  
 		'filetypes' => '*'
 	), $atts, 'streamium_uploader' ) );
-
+  
 	if(empty($bucket)){
 		return "<span style='color:black;'>ERROR: Please add a bucket param to your shortcode.</span>";
 	}
 
-	$current_user = wp_get_current_user();
-	if($folder == "userid"){
-		$folder = $current_user->ID;
-	}else if($folder == "username"){
-		$folder = $current_user->user_login;
+	if ( is_user_logged_in() ) {
+
+		$current_user = wp_get_current_user();
+		if($folder == "userid"){
+			$folder = $current_user->ID;
+		}else if($folder == "username"){
+			$folder = $current_user->user_login;
+		}
+ 
+	}else{
+
+		$folder = "loggedout";
+
 	}
 
 	// prepare policy
@@ -69,20 +78,33 @@ function streamium_user_content_uploader($atts){
         )
     );
 
-	if ( is_user_logged_in() ) {
+    if($loginOnly){
 
-		return "<div id='streamium-uploader' class='streamium-uploader'>
+    	if ( is_user_logged_in() ) { 
+
+			return "<div id='streamium-uploader' class='streamium-uploader'>
+					<input type='button' id='streamium-add-to-queue' class='streamium-uploader-label' value='Select Files' />
+					<div class='streamium-uploader-progressbar'></div>
+					<span class='streamium-uploader-standby'>Waiting for files...</span>
+					<span class='streamium-uploader-progress'>Uploading - <span class='streamium-uploader-percent'></span>%</span>
+				</div>";
+		
+		}else{
+		
+			return "<div class='s3bubble-uploader-loggedout'><h2>Please login to upload</h2></div>";
+		
+		}
+
+    }else{
+
+    	return "<div id='streamium-uploader' class='streamium-uploader'>
 				<input type='button' id='streamium-add-to-queue' class='streamium-uploader-label' value='Select Files' />
 				<div class='streamium-uploader-progressbar'></div>
 				<span class='streamium-uploader-standby'>Waiting for files...</span>
 				<span class='streamium-uploader-progress'>Uploading - <span class='streamium-uploader-percent'></span>%</span>
 			</div>";
-	
-	}else{
-	
-		return "<div class='s3bubble-uploader-loggedout'><h2>Please login to upload</h2></div>";
-	
-	}
+
+    }
 
 }
 
