@@ -312,6 +312,23 @@ class Streamium_Customize {
         )) 
       );
 
+      // Only allow uploads from logged in users
+      $wp_customize->add_setting('streamium_aws_media_uploader_login', array(
+          'default' => false
+      ));
+      $wp_customize->add_control(
+          new WP_Customize_Control(
+              $wp_customize,
+              'streamium_aws_media_uploader_login',
+              array(
+                  'label'     => __('Only allow uploads from logged in users', 'streamium'),
+                  'section'   => 'streamium_aws_media_uploader_section',
+                  'settings'  => 'streamium_aws_media_uploader_login',
+                  'type'      => 'checkbox',
+              )
+          )
+      );
+
         $postTypes = array(
             array('tax' => 'movies','type' => 'movie','menu' => 'Movies'),
             array('tax' => 'programs','type' => 'tv','menu' => 'TV Programs'),
@@ -329,7 +346,7 @@ class Streamium_Customize {
             // MOVIE SECTION
             $wp_customize->add_section('streamium_section_' . $type , array(
                 'title'     => __( $menu . ' Options', 'streamium'),
-                'description' => 'For infomation on how to setup the uploader with S3Bubble please watch this video<br><a href="https://www.youtube.com/watch?v=FUqN-b1MSrc" target="_blank">AWS direct uploader setup</a>',
+                'description' => 'These options can be changed to create custom post types',
                 'priority'  => 1019
             ));
 
