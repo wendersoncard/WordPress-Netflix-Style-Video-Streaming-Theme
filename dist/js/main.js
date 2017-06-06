@@ -51,9 +51,7 @@ jQuery(document).ready(function($) {
 	var growFactor = 2; 
 	var moveDistance = ((tileWidth / 2)-2);
     var currentCat;
-    var ratio = ($(window).innerWidth()/21*9);
-	var vh = Math.round(ratio);
-	var wh = Math.round($(window).innerWidth());
+	var view_height = Math.round(($(window).innerWidth()/21*9));
 
 	// Set the number of carousel items based on width
 	if ($("body.streamium-tablet")[0]){
@@ -63,17 +61,15 @@ jQuery(document).ready(function($) {
 		numberItems = 2;
 	}
 
-	$('.streamium-slider .slick-slide').height(vh);
+	$('.streamium-slider .slick-slide').height(view_height);
 
 	function resizeVideoJS(){
-        vh = Math.round(ratio);
-		wh = Math.round($(window).innerWidth());
+        view_height = Math.round(($(window).innerWidth()/21*9));
 		if($('section.recently-watched').length > 0){
 			var hrh = parseInt($(".video-header").height())-2;
 			$(".streamium-slider").css("margin-bottom", "-" + hrh + "px");
 		}
-		$('.program-default-height').height(vh);
-		$('.streamium-slider .slick-slide').height(vh);
+		$('.streamium-slider .slick-slide').height(view_height);
     }
 
 	// Initialise Slider
@@ -84,7 +80,7 @@ jQuery(document).ready(function($) {
       	autoplay: false
 	});
 
-	$('.streamium-slider .slick-slide').height(vh);
+	$('.streamium-slider .slick-slide').height(view_height);
 	resizeVideoJS();
     window.onresize = resizeVideoJS;
 
