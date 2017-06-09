@@ -241,9 +241,7 @@ function streamium_repeatable_meta_box_display() {
                 </p>
                 <p>
                     <label>Video Description</label>
-                    <textarea rows="4" cols="50" class="widefat" name="descriptions[]" value="">
-                        <?php if ($field['descriptions'] != '') echo esc_attr( $field['descriptions'] ); else echo ''; ?>
-                    </textarea>
+                    <textarea rows="4" cols="50" class="widefat" name="descriptions[]" value=""><?php if ($field['descriptions'] != '') echo esc_attr( $field['descriptions'] ); else echo ''; ?></textarea>
                 </p>
                 <a class="button streamium-repeater-remove-row" href="#">Remove</a>
             </div>

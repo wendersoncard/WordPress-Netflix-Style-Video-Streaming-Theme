@@ -60,18 +60,20 @@ jQuery( document ).ready(function( $ ) {
     });
 
     $('.streamium_upl_button').live('click', function() {
-        
-        var that = $(this);
-        //use here, because you may have multiple buttons, so `send_to_editor` needs fresh
-        window.send_to_editor = function(html) {
-            var imgurl = $(html).attr('src')
-            that.prev().prev('input').val(imgurl);
-            that.prev('img').attr("src",imgurl);
-            tb_remove();
-        } 
-    
-        //formfield = $('#streamium_image_URL').attr('name');
-        tb_show( '', 'media-upload.php?type=image&amp;TB_iframe=true' );
+
+        var thisInput = $(this).prev().prev();
+        var thisImage = $(this).prev();
+        var send_attachment_bkp = wp.media.editor.send.attachment;
+
+        wp.media.editor.send.attachment = function(props, attachment) {
+
+            thisInput.attr('value', attachment.url);
+            thisImage.attr('src', attachment.url);
+            wp.media.editor.send.attachment = send_attachment_bkp;
+
+        }
+
+        wp.media.editor.open();
         return false;
 
     });
