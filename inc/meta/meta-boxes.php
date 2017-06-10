@@ -9,7 +9,7 @@
 function streamium_video_code_meta_box_add(){
 
     add_meta_box( 'streamium-meta-box-movie', 'Main Video', 'streamium_meta_box_movie', array('movie', 'tv','sport','kid'), 'side', 'high' );
-    add_meta_box( 'streamium-meta-box-youtube', 'External Video Full Url', 'streamium_meta_box_youtube', array('movie', 'tv','sport','kid'), 'side', 'high' ); 
+    add_meta_box( 'streamium-meta-box-youtube', 'Youtube Video Full Url', 'streamium_meta_box_youtube', array('movie', 'tv','sport','kid'), 'side', 'high' ); 
     add_meta_box( 'streamium-meta-box-trailer', 'Video Trailer', 'streamium_meta_box_trailer', array('movie', 'tv','sport','kid'), 'side', 'high' );
     add_meta_box( 'streamium-meta-box-bgvideo', 'Main Slider BG Video', 'streamium_meta_box_bgvideo', array('movie', 'tv','sport','kid'), 'side', 'high' );
     add_meta_box( 'streamium-meta-box-main-slider', 'Main Slider Video', 'streamium_meta_box_main_slider', array('movie', 'tv','sport','kid','stream'), 'side', 'high' );
@@ -46,19 +46,6 @@ function streamium_meta_box_youtube(){
 
         <input type="text" name="s3bubble_video_youtube_code_meta_box_text" class="form-control" id="s3bubble_video_youtube_code_meta_box_text" value="<?php echo $text; ?>" />
         
-        <?php 
-
-          if(get_theme_mod( 'streamium_enable_premium' )){
-
-            echo !empty($text) ? "<div class='streamium-current-url'>Premium video code: " . $text . "</div>" : "<div class='streamium-current-url-info'>No video selected. Please select a video to show as your main movie. This can be a full url to Youtube or other support services.</div>";
-          
-          }else{
-          
-            echo !empty($text) ? "<div class='streamium-current-url'>Your current url is set to: " . $text . "</div>" : "";
-          
-          }
-
-        ?>
     </p>
 
     <?php    
@@ -88,15 +75,7 @@ function streamium_meta_box_movie(){
 
         <?php 
 
-          if(get_theme_mod( 'streamium_enable_premium' )){
-
-            echo !empty($text) ? "<div class='streamium-current-url'>Premium video code: " . $text . "</div>" : "<div class='streamium-current-url-info'>No video selected. Please select a video to show as your main movie.</div>";
-          
-          }else{
-          
-            echo !empty($text) ? "<div class='streamium-current-url'>Your current url is set to: " . $text . "</div>" : "";
-          
-          }
+          echo !empty($text) ? "<div class='streamium-current-url'>Main video code: " . $text . "</div>" : "<div class='streamium-current-url-info'>No video selected. Please select a video to show as your main movie.</div>";
 
         ?>
     </p>
@@ -128,7 +107,8 @@ function streamium_meta_box_trailer(){
                 <option value="<?php echo $text; ?>">Select Video Trailer</option>
                 <option value="">Remove Current Video</option>
             </select>
-        <?php echo !empty($text) ? "<div class='streamium-current-url'>Premium video code: " . $text . "</div>" : "<div class='streamium-current-url-info'>No video selected. Select a trailer to allow your users to preview a video first via the watch trailer button.</div>"; ?>
+
+            <?php echo !empty($text) ? "<div class='streamium-current-url'>Premium video code: " . $text . "</div>" : "<div class='streamium-current-url-info'>No video selected. Select a trailer to allow your users to preview a video first via the watch trailer button.</div>"; ?>
           
         <?php else : ?>
           
@@ -164,7 +144,7 @@ function streamium_meta_box_bgvideo(){
                 <option value="">Remove Current Video</option>
             </select>
 
-        <?php echo !empty($text) ? "<div class='streamium-current-url'>Premium video code: " . $text . "</div>" : "<div class='streamium-current-url-info'>No video selected. This will display a background video on the homepage slider if your post is set to Sticky.</div>"; ?>
+            <?php echo !empty($text) ? "<div class='streamium-current-url'>Premium video code: " . $text . "</div>" : "<div class='streamium-current-url-info'>No video selected. This will display a background video on the homepage slider if your post is set to Sticky.</div>"; ?>
           
         <?php else : ?>
           
@@ -353,7 +333,7 @@ function streamium_meta_box_live_streams() {
                 <option value="">Remove Current Stream</option>
             </select>
 
-        <?php echo !empty($text) ? "<div class='streamium-current-url'>Premium stream code: " . $text . "</div>" : "<div class='streamium-current-url-info'>No stream selected.</div>"; ?>
+        <?php echo !empty($text) ? "<div class='streamium-current-url'>Main live stream: " . $text . "</div>" : "<div class='streamium-current-url-info'>No stream selected.</div>"; ?>
 
     </p>
 
@@ -405,19 +385,7 @@ function streamium_post_meta_box_save( $post_id )
     // Make sure your data is set before trying to save it
     if( isset( $_POST['s3bubble_video_code_meta_box_text'] ) ){
 
-      if(get_theme_mod( 'streamium_enable_premium' )){ 
-        
-        update_post_meta( $post_id, 's3bubble_video_code_meta_box_text', $_POST['s3bubble_video_code_meta_box_text'] );
-
-      }else{
-        
-        if (strpos($_POST['s3bubble_video_code_meta_box_text'],'s3bubble') !== false) {
-        
-          update_post_meta( $post_id, 's3bubble_video_code_meta_box_text', $_POST['s3bubble_video_code_meta_box_text'] );
-        
-        }
-
-      }
+      update_post_meta( $post_id, 's3bubble_video_code_meta_box_text', $_POST['s3bubble_video_code_meta_box_text'] );
       
     }
 
@@ -441,11 +409,7 @@ function streamium_post_meta_box_save( $post_id )
 
       }else{
         
-        if (strpos($_POST['streamium_featured_video_meta_box_text'],'s3bubble') !== false) {
-        
-          update_post_meta( $post_id, 'streamium_featured_video_meta_box_text', $_POST['streamium_featured_video_meta_box_text'] );
-        
-        }
+        update_post_meta( $post_id, 'streamium_featured_video_meta_box_text', $_POST['streamium_featured_video_meta_box_text'] );
 
       }
     }
@@ -459,11 +423,7 @@ function streamium_post_meta_box_save( $post_id )
 
       }else{
         
-        if (strpos($_POST['streamium_live_stream_meta_box_text'],'s3bubble') !== false) {
-        
-          update_post_meta( $post_id, 'streamium_live_stream_meta_box_text', $_POST['streamium_live_stream_meta_box_text'] );
-        
-        }
+        update_post_meta( $post_id, 'streamium_live_stream_meta_box_text', $_POST['streamium_live_stream_meta_box_text'] );
 
       }
     }
