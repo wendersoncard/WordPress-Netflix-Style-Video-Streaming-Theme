@@ -91,6 +91,9 @@
   .s3bubble-details-full .play-icon-wrap-rel-ring {
     border: .6vw solid #fff;
   }
+  .streamium-slider .slick-arrow {
+    display: none !important;
+  }
   .carousels .tile_meta h4 {
     font-size: 3vw !important;
   }

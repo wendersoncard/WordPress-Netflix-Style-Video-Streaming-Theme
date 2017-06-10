@@ -143,12 +143,11 @@
 						$trimexcerpt = !empty(get_the_excerpt()) ? get_the_excerpt() : get_the_content();
 
 						$class = "";
-						if($count % 6 == 0){
+						if($count % 5 == 0){
 							$class = "far-left";
-						}elseif($count % 5 == 0){
+						}elseif($count % 4 == 0){
 							$class = "far-right";
-						}
-
+						} 
 						?>
 						<div class="<?php echo streamium_get_device('class'); ?> tile <?php echo $class; ?>" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>">
 
@@ -169,7 +168,7 @@
 						        		</a>
 						          		<div class="overlay-meta">
 						            		<h4><?php the_title(); ?></h4>
-						            		<p><strong><?php printf( __( '%s:', 'textdomain' ), ucwords(get_post_type( get_the_ID() )) ); ?></strong> <?php echo wp_trim_words( $trimexcerpt, $num_words = 30, $more = '...' ); ?></p>
+						            		<p><strong><?php printf( __( '%s:', 'textdomain' ), ucwords(get_post_type( get_the_ID() )) ); ?></strong> <?php echo wp_trim_words( $trimexcerpt, $num_words = 25, $more = '...' ); ?></p>
 						            		<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
 						          		</div>
 							      	</div>

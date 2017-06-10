@@ -24,8 +24,12 @@
 
 				<?php if ( has_nav_menu( 'streamium-header-menu', 'streamium' ) ) :
 					
-					wp_nav_menu( array( 'container' => false, 'theme_location' => 'streamium-header-menu' ) ); 
-				
+					wp_nav_menu( array( 'container' => false, 'theme_location' => 'streamium-header-menu' ) );
+
+				else :  
+					
+					echo '<ul id="cd-primary-nav" class="cd-primary-nav is-fixed"><li><a href="#">!To display a menu here go to Apperance and menus create a menu and select (Display location Header Menu).</a></li></ul>';
+
 				endif;
 
 				$postTypes = array(

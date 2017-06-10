@@ -2594,8 +2594,7 @@ jQuery(document).ready(function($) {
 	var growFactor = 2; 
 	var moveDistance = ((tileWidth / 2)-2);
     var currentCat;
-	var vh = Math.round($(window).innerWidth()/21*9);
-	var wh = Math.round($(window).innerWidth());
+	var view_height = Math.round(($(window).innerWidth()/21*9));
 
 	// Set the number of carousel items based on width
 	if ($("body.streamium-tablet")[0]){
@@ -2605,58 +2604,28 @@ jQuery(document).ready(function($) {
 		numberItems = 2;
 	}
 
+	$('.streamium-slider .slick-slide').height(view_height);
+
 	function resizeVideoJS(){
-        vh = Math.round($(window).innerWidth()/21*9);
-		wh = Math.round($(window).innerWidth());
-		$('.hero-slider .slider-block').css({'height' : vh,'width' : wh});
+        view_height = Math.round(($(window).innerWidth()/21*9));
 		if($('section.recently-watched').length > 0){
 			var hrh = parseInt($(".video-header").height())-2;
-			$(".hero").css("margin-bottom", "-" + hrh + "px");
+			$(".streamium-slider").css("margin-bottom", "-" + hrh + "px");
 		}
-		ph = Math.floor($(window).innerWidth()/16*9);
-		$('.program-default-height').height(ph);
-    }  
-      
-    resizeVideoJS();
-    window.onresize = resizeVideoJS; 
+		$('.streamium-slider .slick-slide').height(view_height);
+    }
 
 	// Initialise Slider
-	$('.hero-slider').slick({ 
+	$('.streamium-slider').slick({ 
 		slidesToShow: 1,
 		slidesToScroll: 1,
-		dots: true,
-      	autoplay: false,
-      	arrows : true,
-      	adaptiveHeight: true,
-      	//centerMode: true,
-        //variableWidth: true,
-      	autoplaySpeed: 8000,
-      	//mobileFirst: true,
-		pauseOnHover: true,
-		responsive: [
-		    {
-		      breakpoint: 1024,
-		      settings: {
-		        dots: true
-		      }
-		    },
-		    {
-		      breakpoint: 600,
-		      settings: {
-		      	appendArrows: false,
-		        dots: false
-		      }
-		    },
-		    {
-		      breakpoint: 480,
-		      settings: {
-		      	appendArrows: false,
-		        slidesToShow: 1,
-		        slidesToScroll: 1
-		      }
-		    }
-		]
+		dots: false,
+      	autoplay: false
 	});
+
+	$('.streamium-slider .slick-slide').height(view_height);
+	resizeVideoJS();
+    window.onresize = resizeVideoJS;
 
 	var itemWidth = Math.round($('.container-fluid').width()/numberItems);
 	
@@ -2670,7 +2639,7 @@ jQuery(document).ready(function($) {
 			slidesToScroll: 5,
 			infinite: true,
 			adaptiveHeight: true,
-			responsive: [{
+			responsive: [{ 
 		      breakpoint: 1024,
 		      settings: {
 		      	appendArrows: false,
@@ -2728,12 +2697,6 @@ jQuery(document).ready(function($) {
 	    });
  
 	});
-
-    // adjust the height for payment checks
-	$('.tile_payment_details h2').css({
-		lineHeight: Math.round(itemWidth/16*9) + "px",
-		height: Math.round(itemWidth/16*9) + "px"
-	})
 
     $('.s3bubble-details-inner-close').on('click',function(event) {
 
@@ -2965,11 +2928,9 @@ jQuery(document).ready(function($) {
 
 	}	
 
-	setTimeout(function(){
-		$(".streamium-loading").fadeOut();
-	},1000);
-
+	//setTimeout(function(){ $(".streamium-loading").fadeOut(); },1000);
 	$('[data-toggle="tooltip"]').tooltip();
+
 });
 jQuery(document).ready(function($){
 	//if you change this breakpoint in the style.css file (or _layout.scss if you use SASS), don't forget to update this value as well
@@ -4772,46 +4733,53 @@ jQuery(document).ready(function($) {
 jQuery(document).ready(function($) {
 
 	function setupStreamiumPlayerLive(){
-		
-		S3Bubble.live({
-			id : "s3bubble-" + video_post_object.post_id,
+		 
+		// Self hosted
+    	s3bubble("s3bubble-" + video_post_object.post_id).live({
 			stream : video_post_object.stream,
-			poster : video_post_object.poster,
+			source : {
+				poster : video_post_object.poster,
+			},
+			options : {
+				fluid : (video_post_object.codes.length === 1) ? true : false,
+			},
 			meta : {
                 backButton: true,
                 subTitle: video_post_object.subTitle,
                 title: video_post_object.title,
                 para: video_post_object.para
             },
-			playerEnded  : function(player){
-				console.log("boosh");
-			},
-			playerLoaded  : function(player){
+        }, function(player) {
 
-			}
-		});
+			//player.play();
 
+        });
+ 
 	}
 
 	function setupStreamiumPlayer(){
 
-		var setupPlayer = {
-			id : "s3bubble-" + video_post_object.post_id,
-			codes : video_post_object.codes,
-			startTime : video_post_object.percentage,
-			poster : video_post_object.poster,
-			meta : {
-                backButton: true,
-                subTitle: video_post_object.subTitle,
-                title: video_post_object.title,
-                para: video_post_object.para
-            },
-			playerEnded  : function(player){
-				console.log("boosh");
-			},
-			playerLoaded  : function(player){
+		if(video_post_object.youtube){
 
-				player.on("timeupdate", function() {
+			// Self hosted
+	    	s3bubble("s3bubble-" + video_post_object.post_id).service({
+	            codes : video_post_object.codes,
+				startTime : video_post_object.percentage,
+				source : {
+					poster : video_post_object.poster,
+				},
+				options : {
+					fluid : (video_post_object.codes.length === 1) ? true : false,
+				},
+				meta : {
+	                backButton: true,
+	                subTitle: video_post_object.subTitle,
+	                title: video_post_object.title,
+	                para: video_post_object.para
+	            },
+	        }, function(player) {
+
+	        	player.on("timeupdate", function() {
 
 				    var current = this.currentTime();
 				    var duration = this.duration();
@@ -4842,25 +4810,76 @@ jQuery(document).ready(function($) {
 				}());
 
 				player.play();
+
+	        });
+
+		}else{
+
+			// Self hosted
+	    	s3bubble("s3bubble-" + video_post_object.post_id).video({
+	            codes : video_post_object.codes,
+				startTime : video_post_object.percentage,
+				source : {
+					poster : video_post_object.poster,
+				},
+				options : {
+					fluid : (video_post_object.codes.length === 1) ? true : false,
+				},
+				meta : {
+	                backButton: true,
+	                subTitle: video_post_object.subTitle,
+	                title: video_post_object.title,
+	                para: video_post_object.para
+	            },
+	        }, function(player) {
+
+	        	player.on("timeupdate", function() {
+
+				    var current = this.currentTime();
+				    var duration = this.duration();
+				    var percentage = current / duration * 100;
+				    window.percentage = Math.round(parseInt(percentage));
+
+				});
+
+				(function updateResumePercentage() {
+
+					$.ajax({
+				        url: streamium_object.ajax_url,
+				        type: 'post',
+				        dataType: 'json',
+				        data: {
+				            action: 'streamium_create_resume',
+				            percentage : (window.percentage) ? window.percentage : 0,
+				            post_id: video_post_object.post_id,
+				            nonce: video_post_object.nonce
+				        },
+				        success: function(response) {
+
+				        	setTimeout(updateResumePercentage, 1000);
+
+				        }
+				    }); // end jquery 
+
+				}());
+
+				//player.play();
+				$('.episodes a').on('click',function(){
+
+					$("html, body").animate({ scrollTop: 0 }, "slow");
+					$('.episodes a').removeClass('selected');
+					var ind = $(this).data('code');
+					$(this).addClass('selected');
+					player.playlistSkip(ind);
+					return false;
+
+				});
+
+	        });
+
+	    }
  
-			}
-		};
-
-		if(video_post_object.youtube){
-			setupPlayer.youtube = true;
-		}
-		S3Bubble.player(setupPlayer);
- 
-		$('.episodes a').on('click',function(){
-
-			$("html, body").animate({ scrollTop: 0 }, "slow");
-			$('.episodes a').removeClass('selected');
-			var ind = $(this).data('id');
-			$(this).addClass('selected');
-			S3Bubble.skip(ind);
-			return false;
-
-		});
+		
 
 		$('.streamium-season-filter').on('click', function (e) {
 	        $(this).removeClass('active');
@@ -4913,8 +4932,8 @@ jQuery(document).ready(function($) {
 				'policy': streamium_uploader.policy,
 				'signature': streamium_uploader.signature
 	        },
-	        filters : {
-				max_file_size : streamium_uploader.filesize + 'mb',
+	        filters : {  
+				max_file_size : streamium_uploader.filesize,
 				mime_types: [
 					{title : 'Allowed files', extensions : streamium_uploader.filetypes}
 				]

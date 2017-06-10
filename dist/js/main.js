@@ -51,8 +51,7 @@ jQuery(document).ready(function($) {
 	var growFactor = 2; 
 	var moveDistance = ((tileWidth / 2)-2);
     var currentCat;
-	var vh = Math.round($(window).innerWidth()/21*9);
-	var wh = Math.round($(window).innerWidth());
+	var view_height = Math.round(($(window).innerWidth()/21*9));
 
 	// Set the number of carousel items based on width
 	if ($("body.streamium-tablet")[0]){
@@ -62,58 +61,28 @@ jQuery(document).ready(function($) {
 		numberItems = 2;
 	}
 
+	$('.streamium-slider .slick-slide').height(view_height);
+
 	function resizeVideoJS(){
-        vh = Math.round($(window).innerWidth()/21*9);
-		wh = Math.round($(window).innerWidth());
-		$('.hero-slider .slider-block').css({'height' : vh,'width' : wh});
+        view_height = Math.round(($(window).innerWidth()/21*9));
 		if($('section.recently-watched').length > 0){
 			var hrh = parseInt($(".video-header").height())-2;
-			$(".hero").css("margin-bottom", "-" + hrh + "px");
+			$(".streamium-slider").css("margin-bottom", "-" + hrh + "px");
 		}
-		ph = Math.floor($(window).innerWidth()/16*9);
-		$('.program-default-height').height(ph);
-    }  
-      
-    resizeVideoJS();
-    window.onresize = resizeVideoJS; 
+		$('.streamium-slider .slick-slide').height(view_height);
+    }
 
 	// Initialise Slider
-	$('.hero-slider').slick({ 
+	$('.streamium-slider').slick({ 
 		slidesToShow: 1,
 		slidesToScroll: 1,
-		dots: true,
-      	autoplay: false,
-      	arrows : true,
-      	adaptiveHeight: true,
-      	//centerMode: true,
-        //variableWidth: true,
-      	autoplaySpeed: 8000,
-      	//mobileFirst: true,
-		pauseOnHover: true,
-		responsive: [
-		    {
-		      breakpoint: 1024,
-		      settings: {
-		        dots: true
-		      }
-		    },
-		    {
-		      breakpoint: 600,
-		      settings: {
-		      	appendArrows: false,
-		        dots: false
-		      }
-		    },
-		    {
-		      breakpoint: 480,
-		      settings: {
-		      	appendArrows: false,
-		        slidesToShow: 1,
-		        slidesToScroll: 1
-		      }
-		    }
-		]
+		dots: false,
+      	autoplay: false
 	});
+
+	$('.streamium-slider .slick-slide').height(view_height);
+	resizeVideoJS();
+    window.onresize = resizeVideoJS;
 
 	var itemWidth = Math.round($('.container-fluid').width()/numberItems);
 	
@@ -127,7 +96,7 @@ jQuery(document).ready(function($) {
 			slidesToScroll: 5,
 			infinite: true,
 			adaptiveHeight: true,
-			responsive: [{
+			responsive: [{ 
 		      breakpoint: 1024,
 		      settings: {
 		      	appendArrows: false,
@@ -185,12 +154,6 @@ jQuery(document).ready(function($) {
 	    });
  
 	});
-
-    // adjust the height for payment checks
-	$('.tile_payment_details h2').css({
-		lineHeight: Math.round(itemWidth/16*9) + "px",
-		height: Math.round(itemWidth/16*9) + "px"
-	})
 
     $('.s3bubble-details-inner-close').on('click',function(event) {
 
@@ -422,9 +385,7 @@ jQuery(document).ready(function($) {
 
 	}	
 
-	setTimeout(function(){
-		$(".streamium-loading").fadeOut();
-	},1000);
-
+	//setTimeout(function(){ $(".streamium-loading").fadeOut(); },1000);
 	$('[data-toggle="tooltip"]').tooltip();
+
 });

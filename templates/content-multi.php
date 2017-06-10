@@ -27,21 +27,22 @@
 
 		$buildNav = "";
 		$buildList = '<div class="tab-content">'; 
-		foreach (array_reverse($result) as $key => $value) :
+		foreach ($result as $key => $value) :
 
-			$activeNav = ($key == 0)? "active" : "";
-			$activeList = ($key == 0)? "active" : "fade"; 
+			$activeNav = ($key === 0)? "active" : "";
+			$activeList = ($key === 1)? "active" : "fade"; 
 			$buildNav .= '<li class="streamium-season-filter ' . $activeNav . '"><a data-target="#vtab' . $key . '" data-toggle="tab">Season ' . $value[0]['seasons'] . '</a></li>'; 
 
 			$buildList .= '<div class="tab-pane ' . $activeList . '" id="vtab' . $key . '">';
 			foreach ($value as $key2 => $value2) :
 
+				$code = !isset($value2['codes']) ? "No Codes" : esc_html($value2['codes']); 
 				$thumbnail = !isset($value2['thumbnails']) ? "http://placehold.it/260x146" : esc_url($value2['thumbnails']);
 				$title = !isset($value2['titles']) ? "No Title" : esc_html($value2['titles']); 
 				$description = !isset($value2['descriptions']) ? "No Description" : esc_html($value2['descriptions']);
 
 				$buildList .= '<div class="media episodes">
-					  	<a class="col-sm-12 media-left media-top ' . (($epInd === 0) ? "selected" : "") . '" data-id="' . $epInd . '" style="background-image: url(' . $thumbnail . ');">
+					  	<a class="col-sm-12 media-left media-top ' . (($epInd === 0) ? "selected" : "") . '" data-id="' . $epInd . '" data-code="' . $code . '" style="background-image: url(' . $thumbnail . ');">
 					  	</a>
 					  	<div class="media-body">
 					    	<h4 class="media-heading">' . $title . '</h4>

@@ -87,10 +87,7 @@ function streamium_custom_post_types() {
 		// Registering your Custom Post Type
 		register_taxonomy( $value['tax'], $value['type'], $setupTax); 
 		register_post_type( $value['type'], $setupArgs );
-
-		// Remove comments and discussions from custom posts
-		remove_meta_box('commentsdiv', $value['type'], 'normal');
-		remove_meta_box('commentstatusdiv', $value['type'], 'normal');
+		
   	}	
 
 }
