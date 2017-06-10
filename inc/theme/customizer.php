@@ -370,6 +370,7 @@ class Streamium_Customize {
             $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_section_input_taxonomy_' . $tax,
               array(
                 'label' => 'Change Taxonomy',
+                'description' => __( '!IMPORTANT this value cannot be the same name as the Post Type (only hyphens allowed NO spaces). Please make sure you save your permalinks after changing these values.' ),
                 'section' => 'streamium_section_' . $type,
                 'settings' => 'streamium_section_input_taxonomy_' . $tax
               )) 
@@ -383,6 +384,7 @@ class Streamium_Customize {
             $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_section_input_posttype_' . $type,
               array(
                 'label' => 'Change Post Type',
+                'description' => __( '!IMPORTANT this value cannot be the same name as the Taxonomy (only hyphens allowed NO spaces). Please make sure you save your permalinks after changing these values.' ),
                 'section' => 'streamium_section_' . $type,
                 'settings' => 'streamium_section_input_posttype_' . $type
               )) 
