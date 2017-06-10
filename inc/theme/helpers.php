@@ -134,16 +134,7 @@ function streamium_connection_checks() {
 	}
 
     if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
-
-    	set_theme_mod( "streamium_enable_premium", false );
-    		echo json_encode(
-		    	array(
-		    		'error' => false,
-		    		'message' => 'Premium has been removed'
-		    	)
-		    );
-		die();
-		  	
+		    	
     	if($state === "false"){
 
     		set_theme_mod( "streamium_enable_premium", true );
