@@ -1,5 +1,5 @@
 <?php get_header();
-	
+
 	$setType = get_theme_mod( 'streamium_main_post_type', 'movie');
 	$setTax = get_theme_mod( 'streamium_main_tax', 'movies');
 
@@ -7,8 +7,8 @@
 	<main class="cd-main-content">
 
 		<?php get_template_part( 'templates/content', 'slider' ); ?>
-		
-		<?php 
+
+		<?php
 			$args = array(
 			    'posts_per_page' => (int)get_theme_mod( 'streamium_global_options_homepage_desktop' ),
 			    'post_type' => array('movie', 'tv','sport','kid','stream'),
@@ -19,8 +19,8 @@
 					)
 				)
 			);
-			$loop = new WP_Query( $args ); 
-			if(is_user_logged_in() && $loop->post_count > 0) : 
+			$loop = new WP_Query( $args );
+			if(is_user_logged_in() && $loop->post_count > 0) :
 		?>
 			<section class="videos recently-watched">
 				<div class="container-fluid">
@@ -32,12 +32,12 @@
 						</div><!--/.col-sm-12-->
 					</div>
 					<div class="row">
-						<div class="col-sm-12"> 
+						<div class="col-sm-12">
 							<div class="carousels" id="recently">
 								<?php
 									if($loop->have_posts()):
 										while ( $loop->have_posts() ) : $loop->the_post();
-											if ( has_post_thumbnail() ) : // thumbnail check 
+											if ( has_post_thumbnail() ) : // thumbnail check
 											$image   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile' );
 											$imageExpanded   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile-expanded' );
 											$nonce = wp_create_nonce( 'streamium_likes_nonce' );
@@ -61,7 +61,7 @@
 								        		</a>
 									          	<div class="overlay-meta hidden-xs">
 									            	<h4><?php echo get_the_title(); ?></h4>
-									            	<p><?php echo wp_trim_words( $trimexcerpt, $num_words = 25, $more = '...' ); ?></p>           	
+									            	<p><?php echo wp_trim_words( $trimexcerpt, $num_words = 25, $more = '...' ); ?></p>
 									            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="recent" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
 									          	</div>
 									      	</div>
@@ -72,10 +72,10 @@
 									</div>
 
 									<?php do_action('synopis_video_progress'); ?>
-								        
+
 								    </div>
 								<?php
-											endif;  
+											endif;
 										endwhile;
 										endif;
 									wp_reset_query();
@@ -116,7 +116,7 @@
 			</section><!--/.videos-->
 		<?php endif; ?>
 
-		<?php 
+		<?php
 
 		$postTypes = array(
 			array('tax' => 'movies','type' => 'movie','menu' => 'Movies'),
@@ -126,10 +126,10 @@
             array('tax' => 'streams','type' => 'stream','menu' => 'Streams')
         );
 
-		foreach ($postTypes as $key => $value) : ?> 
-			
-			<?php 
-				
+		foreach ($postTypes as $key => $value) : ?>
+
+			<?php
+
 				$tax = $value['tax'];
 				$type = $value['type'];
 				$menu = $value['menu'];
@@ -159,22 +159,22 @@
 										    'posts_per_page' => (int)get_theme_mod( 'streamium_global_options_homepage_desktop' ),
 										    'post_type' => $type
 										);
-										$loop = new WP_Query( $args ); 
+										$loop = new WP_Query( $args );
 										if($loop->have_posts()):
 											while ( $loop->have_posts() ) : $loop->the_post();
-											
+
 											$image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile' );
 											$imageExpanded   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile-expanded' );
 											$nonce = wp_create_nonce( 'streamium_likes_nonce' );
-											$trimexcerpt = !empty(get_the_excerpt()) ? get_the_excerpt() : get_the_content(); 
+											$trimexcerpt = !empty(get_the_excerpt()) ? get_the_excerpt() : get_the_content();
 
 								?>
 									<div class="tile" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="<?php echo $type; ?>">
-										
+
 										<div class="tile_inner" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
 
 											<?php do_action('streamium_video_payment'); ?>
-											
+
 											<div class="content">
 										      	<div class="overlay" style="background-image: url(<?php echo esc_url($imageExpanded[0]); ?>);">
 										      		<div class="overlay-gradient"></div>
@@ -202,7 +202,7 @@
 
 								    </div>
 								<?php
-						
+
 									endwhile;
 									endif;
 									wp_reset_query();
@@ -243,19 +243,19 @@
 					<div class="program-carousels"></div><!--/.program-carousels-->
 				</section><!--/.videos-->
 
-			<?php 
-			
-				endif; 
-			
+			<?php
+
+				endif;
+
 			?>
-			
-		<?php 
+
+		<?php
 
 			endforeach;
 
 		?>
 
-		<?php 
+		<?php
 
 			$args = array(
 			  'parent' => 0,
@@ -263,7 +263,7 @@
 			);
 			$categories = get_terms( $setTax, $args );
 
-		  	foreach ($categories as $category) : 
+		  	foreach ($categories as $category) :
 
 				$typeTitle =  get_theme_mod( 'streamium_section_input_posttype_' . $setType, $setType);
 				$taxUrl =  get_theme_mod( 'streamium_section_input_taxonomy_' . $setTax, $setTax);
@@ -296,14 +296,14 @@
 							    )
 							);
 
-							$loop = new WP_Query( $args ); 
+							$loop = new WP_Query( $args );
 								if($loop->have_posts()):
 									while ( $loop->have_posts() ) : $loop->the_post();
-									if ( has_post_thumbnail() ) : // thumbnail check 
+									if ( has_post_thumbnail() ) : // thumbnail check
 									$image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile' );
 									$imageExpanded   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile-expanded' );
 									$nonce = wp_create_nonce( 'streamium_likes_nonce' );
-									$trimexcerpt = !empty(get_the_excerpt()) ? get_the_excerpt() : get_the_content(); 
+									$trimexcerpt = !empty(get_the_excerpt()) ? get_the_excerpt() : get_the_content();
 
 						?>
 							<div class="tile" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="<?php echo $category->slug; ?>">
@@ -311,7 +311,7 @@
 								<div class="tile_inner" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
 
 									<?php do_action('streamium_video_payment'); ?>
-									
+
 									<div class="content">
 								      	<div class="overlay" style="background-image: url(<?php echo esc_url($imageExpanded[0]); ?>);">
 								      		<div class="overlay-gradient"></div>
@@ -339,8 +339,8 @@
 
 						    </div>
 						<?php
-								
-							endif; 
+
+							endif;
 							endwhile;
 							endif;
 							wp_reset_query();
@@ -379,9 +379,9 @@
 				</div><!--/.row-->
 			</div><!--/.container-->
 		</section><!--/.videos-->
-			
-		<?php  	
-			endforeach; 
+
+		<?php
+			endforeach;
 		?>
 
 		<section class="videos">

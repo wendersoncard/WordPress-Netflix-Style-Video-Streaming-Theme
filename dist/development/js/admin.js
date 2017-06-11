@@ -1273,10 +1273,10 @@ jQuery(document).ready(function( $ ) {
         url: streamium_meta_object.api + "/api/connected_check",
         type: 'post',
         dataType: 'json',
-        data: { 
+        data: {
             website: streamium_meta_object.connected_website
         },
-        success: function(response) { 
+        success: function(response) {
 
             $.ajax({
                 url: streamium_meta_object.ajax_url,
@@ -1293,7 +1293,7 @@ jQuery(document).ready(function( $ ) {
 
                 }
 
-            }); // end jquery 
+            }); // end jquery
 
         }
 
@@ -1314,5 +1314,31 @@ jQuery(document).ready(function( $ ) {
                 console.log(err);
             }
         });
+    });
+
+    // import demo data
+    $('#demo-data').on('click', function(e) {
+        $import_true = confirm('Are you sure you want to import the demo data? This will overwrite any existing data');
+        if($import_true == false) return;
+
+        $('.demo-data-notice p').html('Data is being imported please be patient as this can sometimes take a few minutes.');
+
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: streamium_meta_object.ajax_url,
+            data: {
+                action: 'ajaximportdemo'
+            },
+            success: function(data){
+                console.log(data);
+                $('.demo-data-notice p').html('Data was successfully imported.');
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
+
+        e.preventDefault();
     });
 });
