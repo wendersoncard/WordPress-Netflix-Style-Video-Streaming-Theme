@@ -25,80 +25,61 @@ function streamium_remove_ul( $menu ){
 }
 add_filter( 'wp_nav_menu', 'streamium_remove_ul' );
 
-
 /*
-* Adds a main nav menu if needed
-* @author sameast
+* Recommended plugins managment and notifications
+* @author jonathansmith
 * @none
 */
-function streamium_run_plugin_checks() {
+require_once get_template_directory() . '/inc/recommended-plugins/class-tgm-plugin-activation.php';
+add_action( 'tgmpa_register', 'sb_register_required_plugins' );
 
-	// admin alert
-	function easy_theme_upgrades_admin_notice__error() {
-		$class = 'notice notice-info is-dismissible';
-		$pluginUrl = admin_url( 'plugin-install.php?s=Easy+Theme+and+Plugin+Upgrades&tab=search&type=term' );
-		$message = __( 'We highly recommend installing the Easy Theme and Plugin Upgrades plugin to make theme upgrades go smoothly. ', 'sample-text-domain' );
+function sb_register_required_plugins() {
+    $plugins = array(
+      array(
+        'name'      => 'Easy Theme and Plugin Upgrades',
+        'slug'      => 'easy-theme-and-plugin-upgrades',
+        'required'  => false,
+      ),
+      array(
+        'name'      => 'Search Everything',
+        'slug'      => 'search-everything',
+        'required'  => false,
+  	  )
+    );
 
-		printf( '<div class="%1$s"><p>%2$s<a href="%3$s">Install Now!</a> | <a href="https://www.youtube.com/watch?v=-eEpuVGwdC4">How to Upgrade!</a></p></div>', esc_attr( $class ), esc_html( $message ), esc_url( $pluginUrl ) );
-	}
+    $config = array(
+      'id'           => 's3bubble',
+      'default_path' => '',
+      'menu'         => 'tgmpa-install-plugins',
+      'parent_slug'  => 'themes.php',
+      'capability'   => 'edit_theme_options',
+      'has_notices'  => true,
+      'dismissable'  => true,
+      'dismiss_msg'  => '',
+      'is_automatic' => false,
+      'message'      => 'To get the most out of Streamium we recommend that you install the following plugins',
+    );
 
-	// admin alert
-	function saerch_everything_admin_notice__error() {
-		$class = 'notice notice-info is-dismissible';
-		$pluginUrl = admin_url( 'plugin-install.php?s=Search+Everything&tab=search&type=term' );
-		$message = __( 'Streamium works in conjunction with Search Everything plugin to allow tags and other elements to become searchable. ', 'sample-text-domain' );
-
-		printf( '<div class="%1$s"><p>%2$s<a href="%3$s">Install Now!</a></p></div>', esc_attr( $class ), esc_html( $message ), esc_url( $pluginUrl ) );
-	}
-
-	// admin alert
-	function wooCommerce_membership_subscriptio_admin_notice__error() {
-		$class = 'notice notice-info is-dismissible';
-		$pluginUrl = admin_url( 'plugin-install.php?s=WooCommerce&tab=search&type=term' );
-		$message = __( 'The WooCommerce Membership plugin and the Subscriptio are required to allow you to take online payments with this theme. ', 'sample-text-domain' );
-
-		printf( '<div class="%1$s"><p>%2$s<a href="%3$s">Install Subscriptio!</a> | <a href="%4$s">Install Woocommerce Membership!</a></p></div>', esc_attr( $class ), esc_html( $message ), esc_url( 'https://codecanyon.net/item/subscriptio-woocommerce-subscriptions/8754068' ), esc_url( 'https://codecanyon.net/item/woocommerce-membership/8746370' ) );
-	}
-
-	if ( ! function_exists( 'get_plugins' ) ) {
-		require_once ABSPATH . 'wp-admin/includes/plugin.php';
-	}
-	$all_plugins = get_plugins();
-
-	// loop through and run checks
-	$formatArray = array();
-	foreach ($all_plugins as $key => $value) {
-		array_push($formatArray, $value['Name']);
-	}
-
-	if (!in_array("Easy Theme and Plugin Upgrades", $formatArray)) {
-	    add_action( 'admin_notices', 'easy_theme_upgrades_admin_notice__error' );
-	}
-
-	if (!in_array("Search Everything", $formatArray)) {
-	    add_action( 'admin_notices', 'saerch_everything_admin_notice__error' );
-	}
-
-	/*
-	if ((!in_array("WooCommerce Membership", $formatArray)) || (!in_array("Subscriptio", $formatArray))) {
-	    add_action( 'admin_notices', 'wooCommerce_membership_subscriptio_admin_notice__error' );
-	}
-  */
-
-	function streamium_dummy_xml_admin_notice__error() {
-		$class = 'notice notice-info is-dismissible demo-data-notice';
-		$pluginUrl = admin_url( 'plugin-install.php?s=WooCommerce&tab=search&type=term' );
-		$message = __( 'Get setup quickly by installing our demo data. ', 'sample-text-domain' );
-
-		printf( '<div class="%1$s"><p>%2$s <a id="demo-data" href="#">Install demo data</a></p></div>', esc_attr( $class ), esc_html( $message ));
-	}
-
-	add_action( 'admin_notices', 'streamium_dummy_xml_admin_notice__error' );
-
-
+    tgmpa( $plugins, $config );
 }
 
-add_action( 'init', 'streamium_run_plugin_checks' );
+
+/*
+* Adds a notice to the admin to install demo data
+* @author jonathansmith
+* @none
+*/
+function streamium_dummy_xml_admin_notice__error() {
+    $class = 'notice notice-info notice-demo-data is-dismissible';
+    $pluginUrl = admin_url( 'plugin-install.php?s=WooCommerce&tab=search&type=term' );
+    $message = __( 'Get setup quickly by installing our demo data. ', 'sample-text-domain' );
+
+    printf( '<div class="%1$s"><p>%2$s <a id="demo-data" href="#">Install demo data</a></p></div>', esc_attr( $class ), esc_html( $message ));
+}
+
+if(get_option('notice_demo_data') == 1) {
+  add_action( 'admin_notices', 'streamium_dummy_xml_admin_notice__error' );
+}
 
 /**
  * Adds a notice to the admin if premium is not enabled

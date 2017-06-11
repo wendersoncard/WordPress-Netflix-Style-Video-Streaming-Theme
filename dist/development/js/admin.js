@@ -1316,6 +1316,23 @@ jQuery(document).ready(function( $ ) {
         });
     });
 
+    $('.notice-demo-data .notice-dismiss').on('click', function() {
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: streamium_meta_object.ajax_url,
+            data: {
+                action: 'ajaxnodemo'
+            },
+            success: function(data){
+                console.log(data);
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
+    });
+
     // import demo data
     $('#demo-data').on('click', function(e) {
         $import_true = confirm('Are you sure you want to import the demo data? This will overwrite any existing data');

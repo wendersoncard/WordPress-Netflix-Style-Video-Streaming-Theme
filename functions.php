@@ -35,6 +35,7 @@ if (!function_exists('streamium_theme_setup')) {
     }
 
     add_option('notice_premium', 1);
+    add_option('notice_demo_data', 1);
 
     add_filter( 'image_size_names_choose', 'streamium_extra_image_sizes' );
 }
@@ -112,9 +113,20 @@ function dismiss_premium_notice() {
 add_action( 'wp_ajax_ajaxnopremium', 'dismiss_premium_notice' );
 add_action( 'wp_ajax_nopriv_ajaxnopremium', 'dismiss_premium_notice' );
 
+// Dismiss demo data notice with ajax
+function dismiss_demo_data_notice() {
+    update_option('notice_demo_data', 0);
+    echo json_encode(array('success' => true, 'message' => __('Notice dismissed')));
+    die();
+}
+
+// Enable the user with no privileges to run dismiss_demo_data_notice() in AJAX
+add_action( 'wp_ajax_ajaxnodemo', 'dismiss_demo_data_notice' );
+add_action( 'wp_ajax_nopriv_ajaxnodemo', 'dismiss_demo_data_notice' );
+
 /*-----------------------------------------------------------------------------------*/
 /*  Include the Streamium Framework
 /*-----------------------------------------------------------------------------------*/
 $tempdir = get_template_directory();
 require_once($tempdir .'/inc/init.php');
-include_once( 'inc/import/init.php' );
+//include_once( 'inc/import/init.php' );
