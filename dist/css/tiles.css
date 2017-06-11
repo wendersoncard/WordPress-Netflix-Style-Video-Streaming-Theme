@@ -28,12 +28,12 @@
 
 .static-row .col-xs-2, .static-row .col-xs-5ths, .static-row .col-xs-3, .static-row .col-xs-6 {
   padding-right: 2px;
-  padding-left: 2px; 
+  padding-left: 2px;
 }
-  
+
 .carousels .slick-arrow {
   display: none;
-  position: absolute; 
+  position: absolute;
   top: 0;
   height: calc(100% - 24px);
   width: 45px;
@@ -45,7 +45,7 @@
 }
 
 .carousels .slick-next.slick-arrow {
-  right: -45px; 
+  right: -45px;
 }
 
 .carousels .slick-next:before {
@@ -87,7 +87,7 @@
 }
 
 .streamium-slider .slick-next.slick-arrow {
-  right: 0px; 
+  right: 0px;
 }
 
 .streamium-slider .slick-next:before {
@@ -124,7 +124,7 @@
   background: rgba(0, 0, 0, 0.7);
   text-align: center;
 }
- 
+
 .carousels .tile_payment_details h2 {
     font-size: 14px;
     margin: 0;
@@ -148,7 +148,7 @@
 
 .carousels .tile_inner {
   box-sizing: border-box;
-  transition: 250ms transform; 
+  transition: 250ms transform;
   transform-origin: center center;
   width: 100%;
   padding-bottom: 56.25%; /* 16:9 */
@@ -157,6 +157,10 @@
   background-size: cover;
   background-position: center;
   border: 2px solid #000;
+}
+
+.carousels .filler .tile_inner {
+  background-color: rgba(255,255,255,0.1);
 }
 
 .carousels .far-left .tile_inner {
@@ -255,7 +259,7 @@
 }
 
 .carousels .overlay .play-icon-wrap-rel-play i.fa-play {
-    margin-left: 10px; 
+    margin-left: 10px;
 }
 
 .carousels .overlay .overlay-meta {
@@ -294,14 +298,14 @@
     position: relative;
     line-height: 30px;
     text-decoration: none;
-} 
+}
 
 .carousels .tile_progress {
   height: 4px;
   border-radius: 0;
   margin: 10px 20%;
   background: rgba(255,255,255,.3);
-  box-shadow: none!important; 
+  box-shadow: none!important;
 }
 
 .carousels .overlay .tile_meta_episodes {
@@ -324,7 +328,7 @@
   position: relative;
   margin: 80px 0 0 0;
 }
- 
+
 .static-row .tile {
   position: relative;
   display: inline-block;
@@ -340,7 +344,7 @@
   width: 100%;
   background: rgba(0, 0, 0, 0.7);
   text-align: center;
-} 
+}
 
 .static-row .tile_payment_details h2 {
     font-size: 14px;
@@ -472,7 +476,7 @@
 }
 
 .static-row .overlay .play-icon-wrap-rel-play i.fa-play {
-    margin-left: 10px; 
+    margin-left: 10px;
 }
 
 .static-row .overlay .overlay-meta {
@@ -511,7 +515,7 @@
     position: relative;
     line-height: 30px;
     text-decoration: none;
-} 
+}
 
 .static-row .tile_progress {
   height: 4px;

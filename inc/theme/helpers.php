@@ -77,9 +77,9 @@ function streamium_dummy_xml_admin_notice__error() {
     printf( '<div class="%1$s"><p>%2$s <a id="demo-data" href="#">Install demo data</a></p></div>', esc_attr( $class ), esc_html( $message ));
 }
 
-if(get_option('notice_demo_data') == 1) {
-  add_action( 'admin_notices', 'streamium_dummy_xml_admin_notice__error' );
-}
+// if(get_option('notice_demo_data') == 1) {
+//   add_action( 'admin_notices', 'streamium_dummy_xml_admin_notice__error' );
+// }
 
 /**
  * Adds a notice to the admin if premium is not enabled
