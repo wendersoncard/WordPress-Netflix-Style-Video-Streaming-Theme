@@ -7,7 +7,7 @@ jQuery(document).ready(function( $ ) {
             website: streamium_meta_object.connected_website
         },
         success: function(response) {
-
+ 
             $.ajax({
                 url: streamium_meta_object.ajax_url,
                 type: 'post',

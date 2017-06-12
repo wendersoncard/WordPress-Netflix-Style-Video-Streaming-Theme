@@ -4826,7 +4826,7 @@ jQuery(document).ready(function($) {
 				},
 				options : {
 					fluid : (video_post_object.codes.length === 1) ? true : false,
-				vpaid : video_post_object.vpaid
+					vpaid : video_post_object.vpaid
 				},
 				meta : {
 	                backButton: true,

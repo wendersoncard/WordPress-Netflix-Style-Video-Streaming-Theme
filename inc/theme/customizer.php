@@ -413,14 +413,46 @@ class Streamium_Customize
     */
    public static function header_output()
    {
-       $param = get_theme_mod('streamium_google_font') == '' ? 'Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic&subset=greek-ext,latin,cyrillic-ext,vietnamese,cyrillic,latin-ext,greek' : get_theme_mod('streamium_google_font');
-       $fonts = self::get_google_fonts();
-       $font_family = get_theme_mod('streamium_google_font') == '' ? 'Roboto' : $fonts[get_theme_mod('streamium_google_font')]; ?>
+        
+        // Added backward compatibility 
+        $fontFamily = get_theme_mod('streamium_google_font');
+
+        if (filter_var($fontFamily, FILTER_VALIDATE_URL)) {
+
+            $fontUrl = $fontFamily;
+            $parts = parse_url($fontUrl);
+
+            if(isset($parts['query'])){
+                
+                // grab the query param
+                parse_str($parts['query'], $query);
+
+                // Some font have a : seperator
+                $fontFamily = isset($query['family']) ? $query['family'] : "";
+                if (strpos($fontFamily, ':') !== false) {
+                    $fontFamily = substr($fontFamily, 0, strrpos($fontFamily, ':'));
+                }
+
+            }
+
+        }else{
+
+            // New font setup
+            $fontUrl = "https://fonts.googleapis.com/css?family=" . $fontFamily;
+
+            // Not sure why this is needed please put back if i am wrong ;) :100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic&subset=greek-ext,latin,cyrillic-ext,vietnamese,cyrillic,latin-ext,greek
+
+            $fonts = self::get_google_fonts();
+            $fontFamily = $fonts[$fontFamily];
+
+        }
+
+    ?>
       <!--Customizer CSS-->
       <style type="text/css">
-              @import url('https://fonts.googleapis.com/css?family=<?php echo $param; ?>');
+              @import url('<?php echo $fontUrl; ?>');
               .h1, .h2, .h3, h1, h2, h3, h4, .cd-logo {
-                font-family: '<?php echo $font_family; ?>', sans-serif !important;
+                font-family: '<?php echo $fontFamily; ?>', sans-serif !important;
               }
 
            /* Theme colors */
