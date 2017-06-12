@@ -272,64 +272,7 @@ class Streamium_Customize
           )
       );
 
-      // AWS MEDIA SECTION
-      $wp_customize->add_section('streamium_aws_media_uploader_section', array(
-          'title'     => __('AWS Media Uploader', 'streamium'),
-          'description' => 'For infomation on how to setup the uploader with S3Bubble please watch this video<br><a href="https://www.youtube.com/watch?v=FUqN-b1MSrc" target="_blank">AWS direct uploader setup</a>',
-          'priority'  => 1020
-      ));
-
-       $wp_customize->add_setting('streamium_aws_media_uploader_access_key');
-
-       $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'streamium_aws_media_uploader_access_key',
-        array(
-          'label' => 'AWS Access Key',
-          'section' => 'streamium_aws_media_uploader_section',
-          'settings' => 'streamium_aws_media_uploader_access_key',
-          'type' => 'password',
-          'input_attrs' => array( 'id' => 'streamium_aws_media_uploader_access_key' )
-        ))
-      );
-
-       $wp_customize->add_setting('streamium_aws_media_uploader_secret_key');
-
-       $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'streamium_aws_media_uploader_secret_key',
-        array(
-          'label' => 'AWS Secret Key',
-          'section' => 'streamium_aws_media_uploader_section',
-          'settings' => 'streamium_aws_media_uploader_secret_key',
-          'type' => 'password',
-          'input_attrs' => array( 'id' => 'streamium_aws_media_uploader_secret_key' )
-        ))
-      );
-
-       $wp_customize->add_setting('streamium_aws_media_uploader_notification_email');
-
-       $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'streamium_aws_media_uploader_notification_email',
-        array(
-          'label' => 'Notification Email',
-          'section' => 'streamium_aws_media_uploader_section',
-          'settings' => 'streamium_aws_media_uploader_notification_email',
-        ))
-      );
-
-      // Only allow uploads from logged in users
-      $wp_customize->add_setting('streamium_aws_media_uploader_login', array(
-          'default' => false
-      ));
-       $wp_customize->add_control(
-          new WP_Customize_Control(
-              $wp_customize,
-              'streamium_aws_media_uploader_login',
-              array(
-                  'label'     => __('Only allow uploads from logged in users', 'streamium'),
-                  'section'   => 'streamium_aws_media_uploader_section',
-                  'settings'  => 'streamium_aws_media_uploader_login',
-                  'type'      => 'checkbox',
-              )
-          )
-      );
-
+       // START CUSTOM POST TYPE SECTION
        $postTypes = array(
             array('tax' => 'movies','type' => 'movie','menu' => 'Movies'),
             array('tax' => 'programs','type' => 'tv','menu' => 'TV Programs'),
@@ -410,29 +353,44 @@ class Streamium_Customize
 
        endforeach;
 
-      // PREMIUM SECTION
-      $wp_customize->add_section('streamium_premium_section', array(
-          'title'     => __('Premium Options', 'streamium'),
-          'priority'  => 1021
+       // END CUSTOM POST TYPE SECTION
+
+       // START ADVERTISEMENT SECTION
+      $wp_customize->add_section('streamium_advertisement_section', array(
+          'title'     => __('Global Advertisement', 'streamium'),
+          'description' => 'Here you can set a global vpaid advertisement url. !Important this does not work with YouTube',
+          'priority'  => 1020
       ));
 
-      /*$wp_customize->add_setting('streamium_enable_tv', array(
-          'default'    => false
-      ));
+       $wp_customize->add_setting('streamium_advertisement_vpaid_url');
 
-      $wp_customize->add_control(
+       $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'streamium_advertisement_vpaid_url',
+        array(
+          'label' => 'VPaid url',
+          'section' => 'streamium_advertisement_section',
+          'settings' => 'streamium_advertisement_vpaid_url'
+        ))
+      );
+
+      $wp_customize->add_setting('streamium_advertisement_enabled', array(
+          'default' => false
+      ));
+       $wp_customize->add_control(
           new WP_Customize_Control(
               $wp_customize,
-              'streamium_enable_tv',
+              'streamium_advertisement_enabled',
               array(
-                  'label'     => __('Enable TV Programs', 'streamium'),
-                  'section'   => 'streamium_premium_section',
-                  'settings'  => 'streamium_enable_tv',
+                  'label'     => __('Global set advertisements for all videos', 'streamium'),
+                  'section'   => 'streamium_advertisement_section',
+                  'settings'  => 'streamium_advertisement_enabled',
                   'type'      => 'checkbox',
               )
           )
-      );*/
+      );
 
+       // END ADVERTISEMENT SECTION
+
+       // Validation functions
       function streamium_sanitize_customizer_text($value)
       {
           if ($value != "") {

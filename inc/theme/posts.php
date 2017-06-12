@@ -59,6 +59,12 @@ function streamium_single_video_scripts() {
 			}
 			
 		}
+		
+		// Check if global adverts are setup
+		$globalAdvertisements = "";
+		if(get_theme_mod( 'streamium_advertisement_enabled' )){
+			$globalAdvertisements = get_theme_mod( 'streamium_advertisement_vpaid_url' );
+		}
 
 		// Setup premium
         wp_localize_script( 'streamium-production', 'video_post_object', 
@@ -71,6 +77,7 @@ function streamium_single_video_scripts() {
                 'codes' => $codes,
                 'stream' => $stream,
                 'youtube' => $youtube,
+                'vpaid' => $globalAdvertisements,
                 'poster' => esc_url($poster[0]),
                 'nonce' => $nonce
             )
