@@ -44,11 +44,11 @@ jQuery(document).ready(function($) {
 	$(".subscriptio_list_id a").contents().unwrap();
 	$(".product-thumbnail").remove();
 
-	
+
 	var tileCount = 5;
 	var tileWidth = Math.round($('.container-fluid').width()/tileCount);
 	var numberItems = 5;
-	var growFactor = 2; 
+	var growFactor = 2;
 	var moveDistance = ((tileWidth / 2)-2);
     var currentCat;
 	var view_height = Math.round(($(window).innerWidth()/21*9));
@@ -73,7 +73,7 @@ jQuery(document).ready(function($) {
     }
 
 	// Initialise Slider
-	$('.streamium-slider').slick({ 
+	$('.streamium-slider').slick({
 		slidesToShow: 1,
 		slidesToScroll: 1,
 		dots: false,
@@ -85,7 +85,7 @@ jQuery(document).ready(function($) {
     window.onresize = resizeVideoJS;
 
 	var itemWidth = Math.round($('.container-fluid').width()/numberItems);
-	
+
 	$('.carousels').each(function(i, obj) {
 
 		// setup a caro id for individual arrows
@@ -96,7 +96,7 @@ jQuery(document).ready(function($) {
 			slidesToScroll: 5,
 			infinite: true,
 			adaptiveHeight: true,
-			responsive: [{ 
+			responsive: [{
 		      breakpoint: 1024,
 		      settings: {
 		      	appendArrows: false,
@@ -135,7 +135,7 @@ jQuery(document).ready(function($) {
 	    });
 
 		$(this).on('beforeChange', function(event, slick, currentSlide, nextSlide){
-		 	
+
 		});
 
 		$(this).on('afterChange', function (event, slick, currentSlide) {
@@ -152,7 +152,7 @@ jQuery(document).ready(function($) {
 	        }
 
 	    });
- 
+
 	});
 
     $('.s3bubble-details-inner-close').on('click',function(event) {
@@ -175,7 +175,7 @@ jQuery(document).ready(function($) {
 
 		$('.tile_meta_more_info').on("click",function(event) {
 
-	    	event.preventDefault(); 
+	    	event.preventDefault();
 
 	    	var cat = $(this).data('cat');
 	    	var post_id = $(this).data('id');
@@ -207,12 +207,12 @@ jQuery(document).ready(function($) {
                         function() {
 
                         });
-                        
+
 	                    return;
 
 	                }
 
-	                currentCat = "." + response.cat;	                
+	                currentCat = "." + response.cat;
 
 	                // Populate the expanded view
 			    	var twidth = $(currentCat).width();
@@ -242,18 +242,18 @@ jQuery(document).ready(function($) {
 						});
 
 						// Initailise the tooltips
-						$('[data-toggle="tooltip"]').tooltip(); 
+						$('[data-toggle="tooltip"]').tooltip();
 
 					});
 
 	            }
 
-	        }); // end jquery 
+	        }); // end jquery
 
 		});
 
 		$('head').append('<style type="text/css">' +
-			
+
 			'.shiftLeft { transform: translate3d(-' + moveDistance +'px, 0, 0);}' +
 			'.shiftRight { transform: translate3d(' + moveDistance +'px, 0, 0);}' +
 			'.shiftLeftFirst { transform: translate3d(' + (moveDistance*2) +'px, 0, 0);}' +
@@ -262,20 +262,20 @@ jQuery(document).ready(function($) {
 		'</style>');
 
 		$('.tile_inner').hover(function() {
+			if(!$(this).parent().hasClass('filler')) {
+				$(this).find('.streamium-extra-meta').hide();
 
-			$(this).find('.streamium-extra-meta').hide();
+				if($(this).parent().hasClass("far-left")){
+					$(this).parent().nextAll().addClass( "shiftLeftFirst" );
+				}else if($(this).parent().hasClass("far-right")){
+					$(this).parent().prevAll().addClass( "shiftRightFirst" );
+				}else{
+					$(this).parent().nextAll().addClass( "shiftRight" );
+					$(this).parent().prevAll().addClass( "shiftLeft" );
+				}
 
-			if($(this).parent().hasClass("far-left")){
-				$(this).parent().nextAll().addClass( "shiftLeftFirst" );
-			}else if($(this).parent().hasClass("far-right")){
-				$(this).parent().prevAll().addClass( "shiftRightFirst" );
-			}else{
-				$(this).parent().nextAll().addClass( "shiftRight" );
-				$(this).parent().prevAll().addClass( "shiftLeft" );
+				$(this).css('transform', 'scale(2)');
 			}
-
-			$(this).css('transform', 'scale(2)');    	
-
 		}, function() {
 
 			$(this).find('.streamium-extra-meta').fadeIn();
@@ -297,7 +297,7 @@ jQuery(document).ready(function($) {
 
 		$('.tile').on("click",function(event) {
 
-			event.preventDefault(); 
+			event.preventDefault();
 
 	    	var cat = $(this).data('cat');
 	    	var post_id = $(this).data('id');
@@ -336,14 +336,14 @@ jQuery(document).ready(function($) {
 	                currentCat = "." + response.cat;
 
 	                // Setup the like and reviews buttons
-	                $(currentCat).find('.streamium-list-reviews').attr('data-id', response.id); 
+	                $(currentCat).find('.streamium-list-reviews').attr('data-id', response.id);
 	                $(currentCat).find('.streamium-list-reviews').attr('data-nonce', response.nonce);
 	                $(currentCat).find('.like-button').attr('href', response.href);
-	                $(currentCat).find('.like-button').attr('data-id', response.id); 
+	                $(currentCat).find('.like-button').attr('data-id', response.id);
 	                $(currentCat).find('.like-button').attr('data-nonce', response.nonce);
 	                $(currentCat).find('.like-count').text(response.likes);
 	                $(currentCat).find('.like-count').attr('id', 'like-count-' + response.id);
-	                
+
 
 	                // Populate the expanded view
 			    	var twidth = $(currentCat).width();
@@ -376,14 +376,14 @@ jQuery(document).ready(function($) {
 
 	            }
 
-	        }); // end jquery 
+	        }); // end jquery
 
 		});
 
 		// Run on mobile
 		$('.content .overlay').hide();
 
-	}	
+	}
 
 	//setTimeout(function(){ $(".streamium-loading").fadeOut(); },1000);
 	$('[data-toggle="tooltip"]').tooltip();
