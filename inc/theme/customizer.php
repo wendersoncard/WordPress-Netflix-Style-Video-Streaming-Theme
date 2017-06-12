@@ -82,7 +82,7 @@ class Streamium_Customize
       $wp_customize->add_setting(
           'link_textcolor',
           array(
-              'default'     => '#F66E38',
+              'default'     => '#dd3333',
               'sanitize_callback' => 'sanitize_hex_color'
           )
       );
@@ -142,14 +142,18 @@ class Streamium_Customize
       );
 
       // Use google font
-      $wp_customize->add_setting('streamium_google_font');
+      $wp_customize->add_setting('streamium_google_font', array(
+         'default'  => 'Roboto'
+     ));
 
        $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'streamium_google_font',
         array(
-          'label' => 'Google Font Url',
-          'description' => 'Please only enter the full google font url<br>Leave blank to use "Helvetica Neue"<br><a href="https://fonts.google.com/" target="_blank">https://fonts.google.com</a>',
+          'label' => 'Header Font',
+          'description' => '<a href="https://fonts.google.com/" target="_blank">Preview fonts on Google</a>',
           'section' => 'streamium_styles',
           'settings' => 'streamium_google_font',
+          'type'      => 'select',
+          'choices'   => self::get_google_fonts()
         ))
       );
 
@@ -451,29 +455,16 @@ class Streamium_Customize
     */
    public static function header_output()
    {
-       $url = get_theme_mod('streamium_google_font');
-       $family = 'Helvetica';
-       if (!empty($url)) {
-           $parts = parse_url($url);
-           if (isset($parts['query'])) {
-               parse_str($parts['query'], $query);
-               $family = isset($query['family']) ? $query['family'] : "";
-               if (strpos($family, ':') !== false) {
-                   $family = substr($family, 0, strrpos($family, ':'));
-               }
-           }
-       } ?>
+       $param = get_theme_mod('streamium_google_font') == '' ? 'Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic&subset=greek-ext,latin,cyrillic-ext,vietnamese,cyrillic,latin-ext,greek' : get_theme_mod('streamium_google_font');
+       $fonts = self::get_google_fonts();
+       $font_family = get_theme_mod('streamium_google_font') == '' ? 'Roboto' : $fonts[get_theme_mod('streamium_google_font')]; ?>
       <!--Customizer CSS-->
       <style type="text/css">
-
-            <?php if (get_theme_mod('streamium_google_font')) {
-           ?>
-              @import url('<?php echo $url; ?>');
+              @import url('https://fonts.googleapis.com/css?family=<?php echo $param; ?>');
               .h1, .h2, .h3, h1, h2, h3, h4, .cd-logo {
-                font-family: '<?php echo $family; ?>', sans-serif !important;
+                font-family: '<?php echo $font_family; ?>', sans-serif !important;
               }
-           <?php
-       } ?>
+
            /* Theme colors */
            <?php self::generate_css('.archive, .home, .search, .single', 'background-color', 'streamium_background_color', '', ' !important'); ?>
            <?php self::generate_css('.carousels .tile_inner', 'border-color', 'streamium_background_color', '', ' !important'); ?>
@@ -533,6 +524,14 @@ class Streamium_Customize
             }
         }
         return $return;
+    }
+
+    public static function get_google_fonts()
+    {
+        // get google font styles from file
+        $font_file = TEMPLATEPATH . '/inc/data/google-fonts.txt';
+        $fonts = unserialize(@file_get_contents($font_file));
+        return $fonts;
     }
 }
 
