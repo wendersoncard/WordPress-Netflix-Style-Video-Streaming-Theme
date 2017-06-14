@@ -2,6 +2,21 @@
     width: 100%;
 }
 
+.streamium-pre {
+    display: block;
+    padding: 10px;
+    margin: 0 0 10px;
+    font-size: 13px;
+    line-height: 20px;
+    color: #2ab4c0;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: #333;
+    border: 1px solid #333;
+    border-radius: 4px;
+    white-space: pre-line;
+}
+
 .streamium-current-url {
 	display: block;
     padding: 10px;
