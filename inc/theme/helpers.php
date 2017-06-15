@@ -74,12 +74,12 @@ function streamium_dummy_xml_admin_notice__error() {
     $pluginUrl = admin_url( 'plugin-install.php?s=WooCommerce&tab=search&type=term' );
     $message = __( 'Get setup quickly by installing our demo data. ', 'sample-text-domain' );
 
-    printf( '<div class="%1$s"><p>%2$s <a id="demo-data" href="#">Install demo data</a></p></div>', esc_attr( $class ), esc_html( $message ));
+    printf( '<div class="%1$s"><p>%2$s <a id="demo-data" href="%3$s">Install demo data</a></p></div>', esc_attr( $class ), esc_html( $message ), admin_url('themes.php?page=streamium_demo_installer'));
 }
 
-// if(get_option('notice_demo_data') == 1) {
-//   add_action( 'admin_notices', 'streamium_dummy_xml_admin_notice__error' );
-// }
+if(get_option('notice_demo_data') == 1) {
+  add_action( 'admin_notices', 'streamium_dummy_xml_admin_notice__error' );
+}
 
 /**
  * Adds a notice to the admin if premium is not enabled

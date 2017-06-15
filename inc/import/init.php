@@ -9,22 +9,22 @@
 if ( !defined( 'ABSPATH' ) ) exit;
 
 // Don't duplicate me!
-if ( !class_exists( 'Radium_Theme_Demo_Data_Importer' ) ) {
+if ( !class_exists( 'streamium_Theme_Demo_Data_Importer' ) ) {
 
-	require_once( dirname( __FILE__ ) . '/importer/radium-importer.php' ); //load admin theme data importer
+	require_once( dirname( __FILE__ ) . '/importer/streamium-importer.php' ); //load admin theme data importer
 
-	class Radium_Theme_Demo_Data_Importer extends Radium_Theme_Importer {
+	class streamium_Theme_Demo_Data_Importer extends streamium_Theme_Importer {
 
 		/**
 		 * Set framewok
 		 *
-		 * options that can be used are 'default', 'radium' or 'optiontree'
+		 * options that can be used are 'default', 'streamium' or 'optiontree'
 		 *
 		 * @since 0.0.3
 		 *
 		 * @var string
 		 */
-		public $theme_options_framework = 'radium';
+		public $theme_options_framework = 'streamium';
 
 		/**
 		 * Holds a copy of the object for easy reference.
@@ -42,7 +42,7 @@ if ( !class_exists( 'Radium_Theme_Demo_Data_Importer' ) ) {
 		 *
 		 * @var string
 		 */
-		public $theme_option_name       = 'my_theme_options_name'; //set theme options name here (key used to save theme options). Optiontree option name will be set automatically
+		public $theme_option_name       = 'streamium'; //set theme options name here (key used to save theme options). Optiontree option name will be set automatically
 
 		/**
 		 * Set name of the theme options file
@@ -119,6 +119,6 @@ if ( !class_exists( 'Radium_Theme_Demo_Data_Importer' ) ) {
 
 	}
 
-	new Radium_Theme_Demo_Data_Importer;
+	new streamium_Theme_Demo_Data_Importer;
 
 }

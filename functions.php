@@ -128,4 +128,4 @@ add_action('wp_ajax_nopriv_ajaxnodemo', 'dismiss_demo_data_notice');
 /*-----------------------------------------------------------------------------------*/
 $tempdir = get_template_directory();
 require_once($tempdir .'/inc/init.php');
-//include_once( 'inc/import/init.php' );
+include_once( 'inc/import/init.php' );

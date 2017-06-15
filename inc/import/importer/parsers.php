@@ -39,8 +39,8 @@ class WXR_Parser {
 				echo $error[0] . ':' . $error[1] . ' ' . esc_html( $error[2] );
 			}
 			echo '</pre>';
-			echo '<p><strong>' . __( 'There was an error when reading this WXR file', 'radium' ) . '</strong><br />';
-			echo __( 'Details are shown above. The importer will now try again with a different parser...', 'radium' ) . '</p>';
+			echo '<p><strong>' . __( 'There was an error when reading this WXR file', 'streamium' ) . '</strong><br />';
+			echo __( 'Details are shown above. The importer will now try again with a different parser...', 'streamium' ) . '</p>';
 		}
 
 		// use regular expressions if nothing else available or this is bad XML
@@ -60,16 +60,16 @@ class WXR_Parser_SimpleXML {
 		$xml = simplexml_load_file( $file );
 		// halt if loading produces an error
 		if ( ! $xml )
-			return new WP_Error( 'SimpleXML_parse_error', __( 'There was an error when reading this WXR file', 'radium' ), libxml_get_errors() );
+			return new WP_Error( 'SimpleXML_parse_error', __( 'There was an error when reading this WXR file', 'streamium' ), libxml_get_errors() );
 
 		$wxr_version = $xml->xpath('/rss/channel/wp:wxr_version');
 		if ( ! $wxr_version )
-			return new WP_Error( 'WXR_parse_error', __( 'This does not appear to be a WXR file, missing/invalid WXR version number', 'radium' ) );
+			return new WP_Error( 'WXR_parse_error', __( 'This does not appear to be a WXR file, missing/invalid WXR version number', 'streamium' ) );
 
 		$wxr_version = (string) trim( $wxr_version[0] );
 		// confirm that we are dealing with the correct file format
 		if ( ! preg_match( '/^\d+\.\d+$/', $wxr_version ) )
-			return new WP_Error( 'WXR_parse_error', __( 'This does not appear to be a WXR file, missing/invalid WXR version number', 'radium' ) );
+			return new WP_Error( 'WXR_parse_error', __( 'This does not appear to be a WXR file, missing/invalid WXR version number', 'streamium' ) );
 
 		$base_url = $xml->xpath('/rss/channel/wp:base_site_url');
 		$base_url = (string) trim( $base_url[0] );
@@ -259,7 +259,7 @@ class WXR_Parser_XML {
 		xml_parser_free( $xml );
 
 		if ( ! preg_match( '/^\d+\.\d+$/', $this->wxr_version ) )
-			return new WP_Error( 'WXR_parse_error', __( 'This does not appear to be a WXR file, missing/invalid WXR version number', 'radium' ) );
+			return new WP_Error( 'WXR_parse_error', __( 'This does not appear to be a WXR file, missing/invalid WXR version number', 'streamium' ) );
 
 		return array(
 			'authors' => $this->authors,
@@ -444,7 +444,7 @@ class WXR_Parser_Regex {
 		}
 
 		if ( ! $wxr_version )
-			return new WP_Error( 'WXR_parse_error', __( 'This does not appear to be a WXR file, missing/invalid WXR version number', 'radium' ) );
+			return new WP_Error( 'WXR_parse_error', __( 'This does not appear to be a WXR file, missing/invalid WXR version number', 'streamium' ) );
 
 		return array(
 			'authors' => $this->authors,
