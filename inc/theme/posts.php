@@ -122,7 +122,7 @@ function streamium_get_dynamic_content() {
 
     		$like_text = '';
 	    	$buildMeta = '<ul>';
-
+  
 			// Tags
 			$posttags = get_the_tags($postId);
 			$staring = 'Staring: ';
@@ -175,7 +175,8 @@ function streamium_get_dynamic_content() {
 
 			// Release date
 			$buildMeta .= '<li class="synopis-meta-spacer">Released: <a href="/?s=all&date=' . get_the_date('Y/m/d', $postId) . '">' . get_the_date('l, F j, Y', $postId) . '</a></li></ul>';
-
+            
+            // Only allow like/reviews for premium users
 			if ( get_theme_mod( 'streamium_enable_premium' ) ) {
 
 				// Likes and reviews
