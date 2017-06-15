@@ -121,57 +121,62 @@ function streamium_get_dynamic_content() {
     	if(!empty($post_object)){
 
     		$like_text = '';
-    		$buildMeta = '';
-		    if ( get_theme_mod( 'streamium_enable_premium' ) ) {
+	    	$buildMeta = '<ul>';
 
-		    	$buildMeta = '<ul>';
+			// Tags
+			$posttags = get_the_tags($postId);
+			$staring = 'Staring: ';
+			if ($posttags) {
+				$numItems = count($posttags);
+				$i = 0;
+			  	foreach($posttags as $tag) {
 
-				// Tags
-				$posttags = get_the_tags($postId);
-				$staring = 'Staring: ';
-				if ($posttags) {
-					$numItems = count($posttags);
-					$i = 0;
-				  	foreach($posttags as $tag) {
+				  	$staring .= '<a href="/?s=' . esc_html( $tag->name ) . '">' . ucwords($tag->name) . '</a>';
+				  	if(++$i !== $numItems) {
+			    		$staring .= ', ';
+			  		}
 
-					  	$staring .= '<a href="/?s=' . esc_html( $tag->name ) . '">' . ucwords($tag->name) . '</a>';
-					  	if(++$i !== $numItems) {
-				    		$staring .= ', ';
-				  		}
+			    }
+			    $buildMeta .= '<li class="synopis-meta-spacer">' . $staring . '</li>';
+			}
+			
+			// Cats
+			$query = get_post_taxonomies( $postId );
+			$tax = isset($query[1]) ? $query[1] : "";
 
-				    }
-				    $buildMeta .= '<li class="synopis-meta-spacer">' . $staring . '</li>';
-				}
-				
-				// Cats
-				$query = get_post_taxonomies( $postId );
-				$tax = isset($query[1]) ? $query[1] : "";
-				$categories = get_terms( $tax, array('hide_empty' => false) );
-				$genres = 'Genres: ';
-				if ($categories) {
-					$numItems = count($categories);
-					$g = 0;
-				  	foreach($categories as $cats) {
+			// Get the taxonomy name
+			$taxName  = get_theme_mod( 'streamium_section_input_taxonomy_' . $tax, $tax );
 
-				  		$genres .= '<a href="' . esc_url( get_category_link( $cats->term_id ) ) . '">' . ucwords($cats->name) . '</a>';
-				  		if(++$g !== $numItems) {
-				    		$genres .= ', ';
-				  		}
+			// Get the terms which is the taxonomies
+			$categories = get_the_terms( $postId, $tax );
+			if ($categories) {
 
-				  	}
-				  	$buildMeta .= '<li class="synopis-meta-spacer">' . $genres . '</li>';
-				}
+				$genres = ucfirst($taxName) . ': ';
+				$numItems = count($categories);
+				$g = 0;
+			  	foreach($categories as $cats) {
 
-				// If its a tv list episodes
-				$episodes = get_post_meta($postId, 'repeatable_fields' , true);
-				if(!empty($episodes)) {
+			  		$genres .= '<a href="' . esc_url( get_category_link( $cats->term_id ) ) . '">' . ucwords($cats->name) . '</a>';
+			  		if(++$g !== $numItems) {
+			    		$genres .= ', ';
+			  		}
 
-					$buildMeta .= '<li class="synopis-meta-spacer">Epsodes: <a>' . count($episodes) . '</a></li>';
+			  	}
+			  	$buildMeta .= '<li class="synopis-meta-spacer">' . $genres . '</li>';
+			}
 
-				}
+			// If its a tv list episodes
+			$episodes = get_post_meta($postId, 'repeatable_fields' , true);
+			if(!empty($episodes)) {
 
-				// Release date
-				$buildMeta .= '<li class="synopis-meta-spacer">Released: <a href="/?s=all&date=' . get_the_date('Y/m/d', $postId) . '">' . get_the_date('l, F j, Y', $postId) . '</a></li></ul>';
+				$buildMeta .= '<li class="synopis-meta-spacer">Epsodes: <a>' . count($episodes) . '</a></li>';
+
+			}
+
+			// Release date
+			$buildMeta .= '<li class="synopis-meta-spacer">Released: <a href="/?s=all&date=' . get_the_date('Y/m/d', $postId) . '">' . get_the_date('l, F j, Y', $postId) . '</a></li></ul>';
+
+			if ( get_theme_mod( 'streamium_enable_premium' ) ) {
 
 				// Likes and reviews
 		        $nonce = wp_create_nonce( 'streamium_likes_nonce' );
