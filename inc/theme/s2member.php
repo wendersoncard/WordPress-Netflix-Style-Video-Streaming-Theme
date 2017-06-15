@@ -13,7 +13,6 @@ function streamium_add_login_logout_register_menu( $items, $args ) {
  	} else {
  	
  		$items .= '<li><a href="' . wp_login_url() . '">' . __( 'Login' ) . '</a></li>';
- 		//$items .= '<li><a href="' . wp_registration_url() . '">' . __( 'Sign Up' ) . '</a></li>';
 
  	}
  	return $items;

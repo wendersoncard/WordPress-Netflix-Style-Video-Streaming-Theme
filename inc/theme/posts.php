@@ -138,7 +138,7 @@ function streamium_get_dynamic_content() {
 
 			    }
 			    $buildMeta .= '<li class="synopis-meta-spacer">' . $staring . '</li>';
-			}
+			} 
 			
 			// Cats
 			$query = get_post_taxonomies( $postId );
