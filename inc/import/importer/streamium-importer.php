@@ -1,16 +1,16 @@
 <?php
 
 /**
- * Class Radium_Theme_Importer
+ * Class streamium_Theme_Importer
  *
  * This class provides the capability to import demo content as well as import widgets and WordPress menus
  *
  * @since 0.0.2
  *
- * @category RadiumFramework
+ * @category streamiumFramework
  * @package  NewsCore WP
  * @author   Franklin M Gitonga
- * @link     http://radiumthemes.com/
+ * @link     http://streamiumthemes.com/
  *
  */
 
@@ -18,9 +18,9 @@
  if ( !defined( 'ABSPATH' ) ) exit;
 
  // Don't duplicate me!
- if ( !class_exists( 'Radium_Theme_Importer' ) ) {
+ if ( !class_exists( 'streamium_Theme_Importer' ) ) {
 
-	class Radium_Theme_Importer {
+	class streamium_Theme_Importer {
 
 		/**
 		 * Set the theme framework in use
@@ -29,7 +29,7 @@
 		 *
 		 * @var object
 		 */
-		public $theme_options_framework = 'radium'; //supports radium framework and option tree
+		public $theme_options_framework = 'streamium'; //supports streamium framework and option tree
 
 		/**
 		 * Holds a copy of the object for easy reference.
@@ -103,15 +103,15 @@
 
 	        self::$instance = $this;
 
-	        $this->demo_files_path 		= apply_filters('radium_theme_importer_demo_files_path', $this->demo_files_path);
+	        $this->demo_files_path 		= apply_filters('streamium_theme_importer_demo_files_path', $this->demo_files_path);
 
-	        $this->theme_options_file 	= apply_filters('radium_theme_importer_theme_options_file', $this->demo_files_path . $this->theme_options_file_name);
+	        $this->theme_options_file 	= apply_filters('streamium_theme_importer_theme_options_file', $this->demo_files_path . $this->theme_options_file_name);
 
-	        $this->widgets 				= apply_filters('radium_theme_importer_widgets_file', $this->demo_files_path . $this->widgets_file_name);
+	        $this->widgets 				= apply_filters('streamium_theme_importer_widgets_file', $this->demo_files_path . $this->widgets_file_name);
 
-	        $this->content_demo 		= apply_filters('radium_theme_importer_content_demo_file', $this->demo_files_path . $this->content_demo_file_name);
+	        $this->content_demo 		= apply_filters('streamium_theme_importer_content_demo_file', $this->demo_files_path . $this->content_demo_file_name);
 
-			$this->imported_demos = get_option( 'radium_imported_demo' );
+			$this->imported_demos = get_option( 'streamium_imported_demo' );
 
             if( $this->theme_options_framework == 'optiontree' ) {
                 $this->theme_option_name = ot_options_id();
@@ -121,7 +121,7 @@
 
 			add_filter( 'add_post_metadata', array( $this, 'check_previous_meta' ), 10, 5 );
 
-      		add_action( 'radium_import_end', array( $this, 'after_wp_importer' ) );
+      		add_action( 'streamium_import_end', array( $this, 'after_wp_importer' ) );
 
 	    }
 
@@ -132,7 +132,7 @@
 		 */
 	    public function add_admin() {
 
-	        add_submenu_page('themes.php', "Import Demo Data", "Import Demo Data", 'switch_themes', 'radium_demo_installer', array($this, 'demo_installer'));
+	        add_submenu_page('themes.php', "Import Demo Data", "Import Demo Data", 'switch_themes', 'streamium_demo_installer', array($this, 'demo_installer'));
 
 	    }
 
@@ -177,9 +177,9 @@
     	 */
     	public function after_wp_importer() {
 
-			do_action( 'radium_importer_after_content_import');
+			do_action( 'streamium_importer_after_content_import');
 
-			update_option( 'radium_imported_demo', $this->flag_as_imported );
+			update_option( 'streamium_imported_demo', $this->flag_as_imported );
 
 		}
 
@@ -187,27 +187,25 @@
 
 			?>
 
-			<div style="background-color: #F5FAFD; margin:10px 0;padding: 5px 10px;color: #0C518F;border: 2px solid #CAE0F3; clear:both; width:90%; line-height:18px;">
+			<div class="notice notice-info">
 			    <p class="tie_message_hint">Importing demo data (post, pages, images, theme settings, ...) is the easiest way to setup your theme. It will
 			    allow you to quickly edit everything instead of creating content from scratch. When you import the data following things will happen:</p>
 
 			      <ul style="padding-left: 20px;list-style-position: inside;list-style-type: square;}">
 			          <li>No existing posts, pages, categories, images, custom post types or any other data will be deleted or modified .</li>
 			          <li>No WordPress settings will be modified .</li>
-			          <li>Posts, pages, some images, some widgets and menus will get imported .</li>
-			          <li>Images will be downloaded from our server, these images are copyrighted and are for demo use only .</li>
+			          <li>Posts, pages, some images and menus will get imported .</li>
+			          <li>Images will be downloaded from our server, these images are copyrighted and are for demo use only.</li>
 			          <li>Please click import only once and wait, it can take a couple of minutes</li>
 			      </ul>
 			 </div>
-
-			 <div style="background-color: #F5FAFD; margin:10px 0;padding: 5px 10px;color: #0C518F;border: 2px solid #CAE0F3; clear:both; width:90%; line-height:18px;"><p class="tie_message_hint">Before you begin, make sure all the required plugins are activated.</p></div>
 
 			 <?php
 
 			 if( !empty($this->imported_demos) ) { ?>
 
-			  	<div style="background-color: #FAFFFB; margin:10px 0;padding: 5px 10px;color: #8AB38A;border: 2px solid #a1d3a2; clear:both; width:90%; line-height:18px;">
-			  		<p><?php _e('Demo already imported', 'radium'); ?></p>
+			  	<div style="background-color: #FAFFFB; margin:10px 0;padding: 5px 10px;color: #8AB38A;border: 2px solid #a1d3a2; clear:both; width:100%; line-height:18px; box-sizing: border-box;">
+			  		<p><?php _e('Demo already imported', 'streamium'); ?></p>
 			  	</div><?php
 			   	//return;
 
@@ -227,29 +225,29 @@
 
 			if( !empty($this->imported_demos ) ) {
 
-				$button_text = __('Import Again', 'radium');
+				$button_text = __('Import Again', 'streamium');
 
 			} else {
 
-				$button_text = __('Import Demo Data', 'radium');
+				$button_text = __('Import Demo Data', 'streamium');
 
 			}
 
 	        ?><div id="icon-tools" class="icon32"><br></div>
-	        <h2>Import Demo Data</h2>
 
-	       <div class="radium-importer-wrap" data-demo-id="1"  data-nonce="<?php echo wp_create_nonce('radium-demo-code'); ?>">
 
+	       <div class="wrap" data-demo-id="1"  data-nonce="<?php echo wp_create_nonce('streamium-demo-code'); ?>">
+           <h1>Import Demo Data</h1>
 		        <form method="post">
 		        	<?php $this->intro_html(); ?>
-		          	<input type="hidden" name="demononce" value="<?php echo wp_create_nonce('radium-demo-code'); ?>" />
-		          	<input name="reset" class="panel-save button-primary radium-import-start" type="submit" value="<?php echo $button_text ; ?>" />
+		          	<input type="hidden" name="demononce" value="<?php echo wp_create_nonce('streamium-demo-code'); ?>" />
+		          	<input name="reset" class="panel-save button-primary streamium-import-start" type="submit" value="<?php echo $button_text ; ?>" />
 		          	<input type="hidden" name="action" value="demo-data" />
 
 		          	<br />
 		          	<br />
-					<div class="radium-importer-message clear">
-				        <?php if( 'demo-data' == $action && check_admin_referer('radium-demo-code' , 'demononce')){
+					<div class="streamium-importer-message clear">
+				        <?php if( 'demo-data' == $action && check_admin_referer('streamium-demo-code' , 'demononce')){
 				         	$this->process_imports();
 			 	        } ?>
 					</div>
@@ -291,7 +289,7 @@
 				$this->process_widget_import_file( $this->widgets );
 			}
 
-			do_action( 'radium_import_end');
+			do_action( 'streamium_import_end');
 
         }
 
@@ -384,7 +382,7 @@
 
 	    	}
 
-	    	do_action( 'radium_importer_after_theme_content_import');
+	    	do_action( 'streamium_importer_after_theme_content_import');
 
 
 	    }
@@ -399,9 +397,9 @@
 				// Get file contents and decode
 				$data = file_get_contents( $file );
 
-				if( $this->theme_options_framework == 'radium') {
+				if( $this->theme_options_framework == 'streamium') {
 
-					//radium framework
+					//streamium framework
 					$data = unserialize( trim($data, '###') );
 
 				} elseif( $this->theme_options_framework == 'optiontree' ) {
@@ -425,19 +423,19 @@
 				if ( !empty( $data ) || is_array( $data ) ) {
 
 					// Hook before import
-					$data = apply_filters( 'radium_theme_import_theme_options', $data );
+					$data = apply_filters( 'streamium_theme_import_theme_options', $data );
 
 					update_option( $this->theme_option_name, $data );
 
 					$this->flag_as_imported['options'] = true;
 				}
 
-	      		do_action( 'radium_importer_after_theme_options_import', $this->demo_files_path );
+	      		do_action( 'streamium_importer_after_theme_options_import', $this->demo_files_path );
 
       		} else {
 
 	      		wp_die(
-      				__( 'Theme options Import file could not be found. Please try again.', 'radium' ),
+      				__( 'Theme options Import file could not be found. Please try again.', 'streamium' ),
       				'',
       				array( 'back_link' => true )
       			);
@@ -475,7 +473,7 @@
 
 	    	}
 
-	    	return apply_filters( 'radium_theme_import_widget_available_widgets', $available_widgets );
+	    	return apply_filters( 'streamium_theme_import_widget_available_widgets', $available_widgets );
 
 	    }
 
@@ -495,7 +493,7 @@
 	    	// File exists?
 	    	if ( ! file_exists( $file ) ) {
 	    		wp_die(
-	    			__( 'Widget Import file could not be found. Please try again.', 'radium' ),
+	    			__( 'Widget Import file could not be found. Please try again.', 'streamium' ),
 	    			'',
 	    			array( 'back_link' => true )
 	    		);
@@ -534,7 +532,7 @@
 	    	}
 
 	    	// Hook before import
-	    	$data = apply_filters( 'radium_theme_import_widget_data', $data );
+	    	$data = apply_filters( 'streamium_theme_import_widget_data', $data );
 
 	    	// Get all available widgets site supports
 	    	$available_widgets = $this->available_widgets();
@@ -568,7 +566,7 @@
 	    			$sidebar_available = false;
 	    			$use_sidebar_id = 'wp_inactive_widgets'; // add to inactive if sidebar does not exist in theme
 	    			$sidebar_message_type = 'error';
-	    			$sidebar_message = __( 'Sidebar does not exist in theme (using Inactive)', 'radium' );
+	    			$sidebar_message = __( 'Sidebar does not exist in theme (using Inactive)', 'streamium' );
 	    		}
 
 	    		// Result for sidebar
@@ -590,12 +588,12 @@
 	    			if ( ! $fail && ! isset( $available_widgets[$id_base] ) ) {
 	    				$fail = true;
 	    				$widget_message_type = 'error';
-	    				$widget_message = __( 'Site does not support widget', 'radium' ); // explain why widget not imported
+	    				$widget_message = __( 'Site does not support widget', 'streamium' ); // explain why widget not imported
 	    			}
 
 	    			// Filter to modify settings before import
 	    			// Do before identical check because changes may make it identical to end result (such as URL replacements)
-	    			$widget = apply_filters( 'radium_theme_import_widget_settings', $widget );
+	    			$widget = apply_filters( 'streamium_theme_import_widget_settings', $widget );
 
 	    			// Does widget with identical settings already exist in same sidebar?
 	    			if ( ! $fail && isset( $widget_instances[$id_base] ) ) {
@@ -613,7 +611,7 @@
 
 	    						$fail = true;
 	    						$widget_message_type = 'warning';
-	    						$widget_message = __( 'Widget already exists', 'radium' ); // explain why widget not imported
+	    						$widget_message = __( 'Widget already exists', 'streamium' ); // explain why widget not imported
 
 	    						break;
 
@@ -662,17 +660,17 @@
 	    				// Success message
 	    				if ( $sidebar_available ) {
 	    					$widget_message_type = 'success';
-	    					$widget_message = __( 'Imported', 'radium' );
+	    					$widget_message = __( 'Imported', 'streamium' );
 	    				} else {
 	    					$widget_message_type = 'warning';
-	    					$widget_message = __( 'Imported to Inactive', 'radium' );
+	    					$widget_message = __( 'Imported to Inactive', 'streamium' );
 	    				}
 
 	    			}
 
 	    			// Result for widget instance
 	    			$results[$sidebar_id]['widgets'][$widget_instance_id]['name'] = isset( $available_widgets[$id_base]['name'] ) ? $available_widgets[$id_base]['name'] : $id_base; // widget name or ID if name not available (not supported by site)
-	    			$results[$sidebar_id]['widgets'][$widget_instance_id]['title'] = $widget->title ? $widget->title : __( 'No Title', 'radium' ); // show "No Title" if widget instance is untitled
+	    			$results[$sidebar_id]['widgets'][$widget_instance_id]['title'] = $widget->title ? $widget->title : __( 'No Title', 'streamium' ); // show "No Title" if widget instance is untitled
 	    			$results[$sidebar_id]['widgets'][$widget_instance_id]['message_type'] = $widget_message_type;
 	    			$results[$sidebar_id]['widgets'][$widget_instance_id]['message'] = $widget_message;
 
@@ -683,10 +681,10 @@
 			$this->flag_as_imported['widgets'] = true;
 
 	    	// Hook after import
-	    	do_action( 'radium_theme_import_widget_after_import' );
+	    	do_action( 'streamium_theme_import_widget_after_import' );
 
 	    	// Return results
-	    	return apply_filters( 'radium_theme_import_widget_results', $results );
+	    	return apply_filters( 'streamium_theme_import_widget_results', $results );
 
 	    }
 

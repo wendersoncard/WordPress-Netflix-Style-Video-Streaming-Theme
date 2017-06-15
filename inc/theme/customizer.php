@@ -359,6 +359,60 @@ class Streamium_Customize
 
        // END CUSTOM POST TYPE SECTION
 
+       // AWS MEDIA SECTION
+      $wp_customize->add_section('streamium_aws_media_uploader_section' , array(
+          'title'     => __('AWS Media Uploader', 'streamium'),
+          'description' => 'For infomation on how to setup the uploader with S3Bubble please watch this video<br><a href="https://www.youtube.com/watch?v=FUqN-b1MSrc" target="_blank">AWS direct uploader setup</a>.<p><br/></p>Example shortcode: <pre class="streamium-pre">[streamium_uploader folder="userid" bucket="Enter your bucket here" filetypes="mp4,m4v,mov" filesize="1gb"]</pre>',
+          'priority'  => 1020
+      ));
+      $wp_customize->add_setting('streamium_aws_media_uploader_access_key');
+      
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_aws_media_uploader_access_key',
+        array(
+          'label' => 'AWS Access Key',
+          'section' => 'streamium_aws_media_uploader_section',
+          'settings' => 'streamium_aws_media_uploader_access_key',
+          'type' => 'password',
+          'input_attrs' => array( 'id' => 'streamium_aws_media_uploader_access_key' )
+        )) 
+      );
+      $wp_customize->add_setting('streamium_aws_media_uploader_secret_key');
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_aws_media_uploader_secret_key',
+        array(
+          'label' => 'AWS Secret Key',
+          'section' => 'streamium_aws_media_uploader_section',
+          'settings' => 'streamium_aws_media_uploader_secret_key',
+          'type' => 'password',
+          'input_attrs' => array( 'id' => 'streamium_aws_media_uploader_secret_key' )
+        )) 
+      );
+      $wp_customize->add_setting('streamium_aws_media_uploader_notification_email');
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_aws_media_uploader_notification_email',
+        array(
+          'label' => 'Notification Email',
+          'section' => 'streamium_aws_media_uploader_section',
+          'settings' => 'streamium_aws_media_uploader_notification_email',
+        )) 
+      );
+      // Only allow uploads from logged in users
+      $wp_customize->add_setting('streamium_aws_media_uploader_login', array(
+          'default' => false
+      ));
+      $wp_customize->add_control(
+          new WP_Customize_Control(
+              $wp_customize,
+              'streamium_aws_media_uploader_login',
+              array(
+                  'label'     => __('Only allow uploads from logged in users', 'streamium'),
+                  'section'   => 'streamium_aws_media_uploader_section',
+                  'settings'  => 'streamium_aws_media_uploader_login',
+                  'type'      => 'checkbox',
+              )
+          )
+      );
+
+      // END AWS MEDIA SECTION
+
        // START ADVERTISEMENT SECTION
       $wp_customize->add_section('streamium_advertisement_section', array(
           'title'     => __('Global Advertisement', 'streamium'),
