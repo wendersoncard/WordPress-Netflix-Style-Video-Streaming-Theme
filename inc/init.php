@@ -18,6 +18,14 @@ require_once($incdir .'theme/posts.php');
 require_once($incdir .'theme/uploader.php');
 require_once($incdir .'theme/helpers.php');
 require_once($incdir .'theme/mobileDetect.php');
-require_once($incdir .'theme/woocommerce.php');
-require_once($incdir .'theme/s2member.php');
 require_once($incdir .'theme/series.php');
+
+// Only include if s2member is installed
+if ( class_exists( 'WooCommerce' ) ) {
+	require_once($incdir .'theme/woocommerce.php');
+}
+
+// Only include if woocommerce is installed
+if (function_exists('is_protected_by_s2member')) {
+	require_once($incdir .'theme/s2member.php');
+}

@@ -80,10 +80,16 @@ function synopis_multi_meta_genre() {
 
 	$query = get_post_taxonomies( get_the_ID() );
 	$tax = isset($query[1]) ? $query[1] : "";
-	$categories = get_terms( $tax, array('hide_empty' => false) );
 
-	$genres = "Genres: ";
+	// Get the taxonomy name
+	$taxName  = get_theme_mod( 'streamium_section_input_taxonomy_' . $tax, $tax );
+
+	// Get the terms which is the taxonomies
+	$categories = get_the_terms( get_the_ID(), $tax );
+
 	if ($categories) {
+
+		$genres = ucfirst($taxName) . ': ';
 		$numItems = count($categories);
 		$i = 0;
 	  	foreach($categories as $cat) {
