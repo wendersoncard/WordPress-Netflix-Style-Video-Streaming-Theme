@@ -8,7 +8,8 @@ if (!function_exists('streamium_theme_setup')) {
     {
 
         // Create aspects based on average
-        $width = round(1920/5); // sets up a average width based on tiles currently 5 
+        $averageBrowserWidth = 1366;
+        $width = round($averageBrowserWidth/5); // sets up a average width based on tiles currently 5 
         $height = round($width/16*9);
 
         add_theme_support('post-thumbnails');
@@ -16,7 +17,7 @@ if (!function_exists('streamium_theme_setup')) {
         add_image_size('streamium-video-tile', $width, $height, true); //, 285, 160
         add_image_size('streamium-video-tile-expanded', 960, 540, true); //, 285, 160
         add_image_size('streamium-video-multi-thumb', 320, 180, true); //, 285, 160
-        add_image_size('streamium-home-slider', 1366, 768, true);
+        add_image_size('streamium-home-slider', $averageBrowserWidth, 768, true);
         add_image_size('streamium-site-logo', 0, 56, true);
         add_theme_support('title-tag');
 
