@@ -469,7 +469,7 @@ class Streamium_Customize
    {
         
         // Added backward compatibility 
-        $fontFamily = get_theme_mod('streamium_google_font');
+        $fontFamily = get_theme_mod('streamium_google_font') ? get_theme_mod('streamium_google_font') : "Roboto";
 
         if (filter_var($fontFamily, FILTER_VALIDATE_URL)) {
 
@@ -497,7 +497,7 @@ class Streamium_Customize
             // Not sure why this is needed please put back if i am wrong ;) :100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic&subset=greek-ext,latin,cyrillic-ext,vietnamese,cyrillic,latin-ext,greek
 
             $fonts = self::get_google_fonts();
-            $fontFamily = $fonts[$fontFamily];
+            $fontFamily = isset($fonts[$fontFamily]) ? $fonts[$fontFamily] : "Roboto";
 
         }
 
