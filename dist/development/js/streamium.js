@@ -2764,6 +2764,7 @@ jQuery(document).ready(function($) {
 			    	$(currentCat).find('div.synopis').html(response.content);
 			    	$(currentCat).find('a.synopis').attr( "href", response.href);
 			    	$(currentCat).css("background-image", "url(" + response.bgimage + ")");
+
 			    	if(response.trailer === ""){
 			    		$(currentCat).find('a.synopis-video-trailer').hide();
 			    	}else{
