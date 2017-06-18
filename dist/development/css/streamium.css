@@ -11409,7 +11409,7 @@ html, body {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     height: 100%;
     color: #fff;
-    -webkit-font-smoothing: antialiased; 
+    -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 14px;
     line-height: 1.2;
@@ -11479,6 +11479,8 @@ a {
 .streamium-btns:focus {
     color: #fff;
     cursor: pointer;
+    opacity: 0.9;
+    text-decoration: none;
 }
 
 .home, .archive, .search, .single {
@@ -11568,7 +11570,7 @@ a {
 }
 
 .content-overlay .synopis-inner {
-    margin-right: auto; 
+    margin-right: auto;
 }
 .content-overlay .synopis-inner h2 {
    line-height: 1;
@@ -11645,7 +11647,7 @@ a {
     border: .38vw solid #fff;
     position: absolute;
     width: 100%;
-    height: 100%; 
+    height: 100%;
     border-radius: 100%;
 }
 
@@ -11655,11 +11657,11 @@ a {
 
 .content-overlay .play-icon-wrap-rel-play i {
     line-height: inherit;
-    margin-left: 1vw; 
+    margin-left: 1vw;
 }
 
 .streamium-featured-background {
-  width: 100%;  
+  width: 100%;
   height: 100%;
   position: relative;
 }
@@ -11796,7 +11798,7 @@ a {
     position: absolute;
     width: 100%;
 }
-  
+
 .slick-slide {
     position: relative;
 }
@@ -11978,7 +11980,7 @@ a {
 }
 
 .s3bubble-details-full .synopis-inner {
-    margin-right: auto; 
+    margin-right: auto;
 }
 
 .s3bubble-details-full .synopis-inner h2 {
@@ -12053,7 +12055,7 @@ a {
 }
 
 .s3bubble-details-full .play-icon-wrap-rel-play i.fa-play {
-    margin-left: 1vw; 
+    margin-left: 1vw;
 }
 
 .s3bubble-details-full .s3bubble-details-inner-close {
@@ -12068,7 +12070,7 @@ a {
     width: 100%;
     float: left;
     display: block;
-    margin: 10px 0 0 0; 
+    margin: 10px 0 0 0;
 }
 
 .footer {
@@ -12077,7 +12079,7 @@ a {
     width: 100%;
     line-height: 40px;
     position: fixed;
-    bottom: 0; 
+    bottom: 0;
     z-index: 999;
 }
 
@@ -12132,7 +12134,7 @@ a {
     font-size:11px;
     line-height:13px;
 }
- 
+
 .pagination span, .pagination a {
     display:block;
     float:left;
@@ -12143,12 +12145,12 @@ a {
     color:#fff;
     background: #333;
 }
- 
+
 .pagination a:hover{
     color:#fff;
     background: #3279BB;
 }
- 
+
 .pagination .current{
     padding:6px 9px 5px 9px;
     background: #3279BB;
@@ -12170,8 +12172,8 @@ a {
 }
 
 .streamium-no-video-content p {
-  
-} 
+
+}
 
 .bs-dark.navbar-inverse {
   background-color: #222;
@@ -12217,7 +12219,7 @@ a {
   margin-top: 5px;
   padding:8px 0px;
 }
- 
+
 .bs-dark .navbar-form .search-box {
   border:0px;
   height:35px;
@@ -12230,7 +12232,7 @@ a {
   -moz-border-radius: 22px;
   border-radius: 22px;
 }
- 
+
 .bs-dark .navbar-form button {
   border: 0;
   background: none;
@@ -12243,9 +12245,9 @@ a {
   -moz-border-radius: 3px;
   border-radius: 3px;
 }
- 
+
 .bs-dark .search-box:focus + button {
-  z-index: 3;   
+  z-index: 3;
 }
 
 @media (min-width: 768px) {
@@ -12255,13 +12257,14 @@ a {
     }
     .bs-dark .navbar-form {
       padding:0px;
-    }   
+    }
     .bs-dark .navbar-form .search-box {
       width:260px;
       height:32px;
     }
 
 }
+
 @media screen and (max-device-width: 700px) and (orientation: landscape){
   /* some CSS here */
   .container-fluid {
