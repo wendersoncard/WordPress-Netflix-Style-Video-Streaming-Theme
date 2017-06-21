@@ -366,7 +366,7 @@ class Streamium_Customize
           'priority'  => 1020
       ));
       $wp_customize->add_setting('streamium_aws_media_uploader_access_key');
-      
+
       $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_aws_media_uploader_access_key',
         array(
           'label' => 'AWS Access Key',
@@ -374,7 +374,7 @@ class Streamium_Customize
           'settings' => 'streamium_aws_media_uploader_access_key',
           'type' => 'password',
           'input_attrs' => array( 'id' => 'streamium_aws_media_uploader_access_key' )
-        )) 
+        ))
       );
       $wp_customize->add_setting('streamium_aws_media_uploader_secret_key');
       $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_aws_media_uploader_secret_key',
@@ -384,7 +384,7 @@ class Streamium_Customize
           'settings' => 'streamium_aws_media_uploader_secret_key',
           'type' => 'password',
           'input_attrs' => array( 'id' => 'streamium_aws_media_uploader_secret_key' )
-        )) 
+        ))
       );
       $wp_customize->add_setting('streamium_aws_media_uploader_notification_email');
       $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_aws_media_uploader_notification_email',
@@ -392,7 +392,7 @@ class Streamium_Customize
           'label' => 'Notification Email',
           'section' => 'streamium_aws_media_uploader_section',
           'settings' => 'streamium_aws_media_uploader_notification_email',
-        )) 
+        ))
       );
       // Only allow uploads from logged in users
       $wp_customize->add_setting('streamium_aws_media_uploader_login', array(
@@ -467,8 +467,8 @@ class Streamium_Customize
     */
    public static function header_output()
    {
-        
-        // Added backward compatibility 
+
+        // Added backward compatibility
         $fontFamily = get_theme_mod('streamium_google_font') ? get_theme_mod('streamium_google_font') : "Roboto";
 
         if (filter_var($fontFamily, FILTER_VALIDATE_URL)) {
@@ -477,7 +477,7 @@ class Streamium_Customize
             $parts = parse_url($fontUrl);
 
             if(isset($parts['query'])){
-                
+
                 // grab the query param
                 parse_str($parts['query'], $query);
 
@@ -532,6 +532,7 @@ class Streamium_Customize
            <?php self::generate_css('button.vjs-play-control.vjs-control.vjs-button.vjs-paused, .vjs-play-progress, .vjs-volume-level', 'background-color', 'link_textcolor', '', ' !important'); ?>
 
            .streamium-list-reviews { background: #000 !important;}
+           .streamium-list-reviews:hover { background: #fff !important; color: #000;}
 
       </style>
       <!--/Customizer CSS-->
