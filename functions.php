@@ -66,12 +66,12 @@ if (!function_exists('streamium_enqueue_scripts')) {
         );
 
         // Local
-        wp_enqueue_style('streamium-s3bubble-cdn', 'http://local.hosted.com/assets/hosted/s3bubble.min.css');
-        wp_enqueue_script( 'streamium-s3bubble-cdn', 'http://local.hosted.com/assets/hosted/s3bubble.min.js', array( 'jquery'),'1.1', true );
+        //wp_enqueue_style('streamium-s3bubble-cdn', 'http://local.hosted.com/assets/hosted/s3bubble.min.css');
+        //wp_enqueue_script( 'streamium-s3bubble-cdn', 'http://local.hosted.com/assets/hosted/s3bubble.min.js', array( 'jquery'),'1.1', true );
 
         // Live
-        //wp_enqueue_style('streamium-s3bubble-cdn', '//s3.amazonaws.com/aws-hosted/s3bubble.min.css');
-        //wp_enqueue_script('streamium-s3bubble-cdn', '//s3.amazonaws.com/aws-hosted/s3bubble.min.js', '', '1.1', true);
+        wp_enqueue_style('streamium-s3bubble-cdn', '//s3.amazonaws.com/aws-hosted/s3bubble.min.css');
+        wp_enqueue_script('streamium-s3bubble-cdn', '//s3.amazonaws.com/aws-hosted/s3bubble.min.js', '', '1.1', true);
     }
 
     add_action('wp_enqueue_scripts', 'streamium_enqueue_scripts');
@@ -93,7 +93,7 @@ if (!function_exists('streamium_enqueue_admin_scripts')) {
         wp_enqueue_script('streamium-admin', get_template_directory_uri() . '/production/js/admin.min.js', array( 'jquery'), '1.1', true);
         wp_localize_script('streamium-admin', 'streamium_meta_object', array(
         'ajax_url' => admin_url('admin-ajax.php'),
-        'api' => 'http://local.hosted.com', // https://s3bubbleapi.com http://local.hosted.com leave of the trailing slash
+        'api' => 'https://s3bubbleapi.com', // https://s3bubbleapi.com http://local.hosted.com leave of the trailing slash
         'connected_website' => (!empty($streamium_connected_website) ? $streamium_connected_website : ""),
         'connected_nonce' => $streamium_connected_nonce
       ));
