@@ -357,7 +357,7 @@ jQuery(document).ready(function($) {
 			    		$(currentCat).find('a.synopis-video-trailer').hide();
 			    	}else{
 			    		$(currentCat).find('a.synopis-video-trailer').fadeIn().attr( "href", response.href + "?trailer=true");
-			    	}
+			    	} 
 
 			    	var vmiddle = Math.round($('.cd-main-header').height());
 					var voff = Math.round($(currentCat).offset().top);
@@ -386,7 +386,17 @@ jQuery(document).ready(function($) {
 
 	}
 
-	//setTimeout(function(){ $(".streamium-loading").fadeOut(); },1000);
+	function animateResults() {
+		var count = $('.carousels').length;
+		$('.carousels').each(function(index) {
+			$(this).delay(200*index).fadeTo(10, 1);
+		}).promise().done( function(){ 
+			$(".streamium-loading").fadeOut();
+		});
+	}
+
+	animateResults();
+
 	$('[data-toggle="tooltip"]').tooltip();
 
 });
