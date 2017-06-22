@@ -43,7 +43,7 @@ class Streamium_Customize
               $wp_customize,
               'tutorial_btn',
               array(
-                  'label'     => __('Remove tutorial header', 'streamium'),
+                  'label'     => __('Remove tutorial footer notification', 'streamium'),
                   'section'   => 'streamium_styles',
                   'settings'  => 'tutorial_btn',
                   'type'      => 'checkbox',
@@ -228,6 +228,23 @@ class Streamium_Customize
           'stream' => __('Streams')
         ),
       ));
+
+        $wp_customize->add_setting('streamium_enable_loader', array(
+                'default'    => false
+            ));
+
+       $wp_customize->add_control(
+          new WP_Customize_Control(
+              $wp_customize,
+              'streamium_enable_loader',
+              array(
+                  'label'     => __('Enable Loading Indicator', 'streamium'),
+                  'section'   => 'title_tagline',
+                  'settings'  => 'streamium_enable_loader',
+                  'type'      => 'checkbox',
+              )
+          )
+       );
 
        $wp_customize->add_setting('streamium_remove_powered_by_s3bubble');
 
@@ -515,12 +532,15 @@ class Streamium_Customize
            <?php self::generate_css('.video-header h3, .see-all', 'color', 'streamium_carousel_heading_color', '', ' !important'); ?>
 
            /* link and background colors */
-           <?php self::generate_css('.page a, a:focus, a:hover, .cd-main-header .cd-logo, .play-icon-wrap i, .cd-primary-nav .cd-secondary-nav a:hover, .cd-primary-nav>li>a:hover, .cd-primary-nav .cd-nav-gallery .cd-nav-item h3, .cd-primary-nav .cd-nav-icons .cd-nav-item h3, .woocommerce-message:before, .woocommerce-info::before', 'color', 'link_textcolor'); ?>
+           <?php self::generate_css('.page a, a:focus, a:hover, .cd-main-header .cd-logo, .play-icon-wrap i, .cd-primary-nav .cd-secondary-nav a:hover, .cd-primary-nav>li>a:hover, .cd-primary-nav .cd-nav-gallery .cd-nav-item h3, .cd-primary-nav .cd-nav-icons .cd-nav-item h3, .woocommerce-message:before, .woocommerce-info::before', 'color', 'link_textcolor', '', '', true, '#dd3333'); 
+           ?>
 
-           <?php self::generate_css('#place_order, .pagination a:hover, .pagination .current, .slick-dots li.slick-active button, .progress-bar, .button, .cd-overlay, .has-children > a:hover::before, .has-children > a:hover::after, .go-back a:hover::before, .go-back a:hover::after, #submit, #place_order, .checkout-button, .woocommerce-thankyou-order-received, .add_to_cart_button, .confirm, .streamium-btns, .streamium-extra-meta', 'background-color', 'link_textcolor', '', ' !important'); ?>
+           <?php self::generate_css('#place_order, .pagination a:hover, .pagination .current, .slick-dots li.slick-active button, .progress-bar, .button, .cd-overlay, .has-children > a:hover::before, .has-children > a:hover::after, .go-back a:hover::before, .go-back a:hover::after, #submit, #place_order, .checkout-button, .woocommerce-thankyou-order-received, .add_to_cart_button, .confirm, .streamium-btns, .streamium-extra-meta', 'background-color', 'link_textcolor', '', ' !important', true, '#dd3333'); 
+           ?>
+
            <?php if (streamium_get_device('device') == 'desktop') :
               self::generate_css('.synopis-inner .content', 'font-size', 'streamium_synopsis_para', '', ' !important');
-       endif; ?>
+            endif; ?>
 
            <?php self::generate_css('.post-type-archive, .woocommerce-cart, .woocommerce-account, .woocommerce-checkout, .woocommerce-page', 'background-image', 'streamium_plans_bg', 'url(', ')'); ?>
            <?php self::generate_css('body', 'background-image', 'streamium_global_bg', 'url(', ') !important'); ?>
@@ -554,10 +574,10 @@ class Streamium_Customize
      * @return string Returns a single line of CSS with selectors and a property.
      * @since Streamium 1.0
      */
-    public static function generate_css($selector, $style, $mod_name, $prefix='', $postfix='', $echo=true)
+    public static function generate_css($selector, $style, $mod_name, $prefix='', $postfix='', $echo=true, $default='')
     {
         $return = '';
-        $mod = get_theme_mod($mod_name);
+        $mod = get_theme_mod($mod_name, $default);
         if (! empty($mod)) {
             $return = sprintf('%s { %s:%s; }',
             $selector,
