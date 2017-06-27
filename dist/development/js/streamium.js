@@ -5058,6 +5058,10 @@ jQuery(document).ready(function($){
 		toggleNav();
 	});
 
+	$('.streamium-drop-dropdown-content li a').on('click', function(event){
+		toggleNav();
+	});
+
 	//close meganavigation
 	$('.streamium-drop-dropdown .streamium-drop-close').on('click', function(event){
 		event.preventDefault();

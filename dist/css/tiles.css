@@ -26,6 +26,11 @@
   content: "\e900";
 }
 
+/* MAIN SLIDER */
+.streamium-slider {
+  overflow: hidden;
+}
+
 .static-row .col-xs-2, .static-row .col-xs-5ths, .static-row .col-xs-3, .static-row .col-xs-6 {
   padding-right: 2px;
   padding-left: 2px;

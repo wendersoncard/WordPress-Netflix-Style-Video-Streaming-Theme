@@ -147,15 +147,25 @@ function streamium_video_payment_callback(){
 		</div> 
 	<?php endif; ?>
 	<?php if (function_exists('is_protected_by_s2member')) :
-		$check = is_protected_by_s2member(get_the_ID());
-		if($check) : ?>
-		<div class="tile_payment_details">
-			<h2>Available on <?php 
-				$comma_separated = implode(",", $check);
-				echo "plan " . $comma_separated; 
-			?></h2>
-		</div>
-	<?php endif; endif;
+		$check = is_post_protected_by_s2member(get_the_ID());
+		if($check) : 
+			$ccaps = get_post_meta(get_the_ID(), 's2member_ccaps_req', true);
+			if(!empty($ccaps)):
+		?>
+			<div class="tile_payment_details">
+				<h2>Available on <br/><?php 
+					$comma_separated = implode(",", $ccaps);
+					echo $comma_separated; 
+				?> plan</h2>
+			</div> 
+			<?php else : ?>
+			<div class="tile_payment_details">
+				<h2>Available on <br/><?php 
+					$comma_separated = implode(",", $check);
+					echo "plan " . $comma_separated; 
+				?></h2>
+			</div>
+	<?php endif; endif; endif;
 
 }
 
