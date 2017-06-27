@@ -1,5 +1,9 @@
 <?php
 
+// You only need one membership level
+//define('MEMBERSHIP_LEVELS', 1);
+
+// Add a login button to the menu
 function streamium_add_login_logout_register_menu( $items, $args ) {
 
 	if ( $args->theme_location != 'streamium-header-menu' ) {
