@@ -5,6 +5,8 @@
 
 			<?php
 
+			$paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
+
 			switch (isset($_GET['date']) ? 'date' : 'all') {
 				case 'date':
 
@@ -12,8 +14,8 @@
 
 						$the_query = new WP_Query(array(
 						    'post_type' => array('movie', 'tv','sport','kid','stream'),
-						    'posts_per_page' => -1, 
-							'ignore_sticky_posts' => true, 
+						    'paged' => $paged,
+							'ignore_sticky_posts' => true,
 							'date_query' => array(
 							     array(
 							        'after'     => '1 day ago'
@@ -26,8 +28,8 @@
 
 						$the_query = new WP_Query(array(
 						    'post_type' => array('movie', 'tv','sport','kid','stream'),
-						    'posts_per_page' => -1, 
-							'ignore_sticky_posts' => true, 
+						    'paged' => $paged,
+							'ignore_sticky_posts' => true,
 							'date_query' => array(
 							     array(
 							        'after' => '1 week ago'
@@ -46,8 +48,8 @@
 							$day   = $date[2];
 							$the_query = new WP_Query(array(
 							    'post_type' => array('movie', 'tv','sport','kid','stream'),
-							    'posts_per_page' => -1, 
-								'ignore_sticky_posts' => true, 
+							    'paged' => $paged,
+								'ignore_sticky_posts' => true,
 								'date_query' => array(
 								    array(
 								      'year' => $year,
@@ -62,8 +64,8 @@
 
 							$the_query = new WP_Query(array(
 							    'post_type' => array('movie', 'tv','sport','kid','stream'),
-							    'posts_per_page' => -1, 
-								'ignore_sticky_posts' => true, 
+							    'paged' => $paged,
+								'ignore_sticky_posts' => true,
 								'date_query' => array(
 								    array(
 								      'year' => $_GET['date']
@@ -81,6 +83,8 @@
 
 					$the_query = new WP_Query(array(
 					    'post_type' => array('movie', 'tv','sport','kid','stream'), 
+					    'paged' => $paged,
+						'ignore_sticky_posts' => true,
 						's' => $s
 					)); 
 
@@ -142,14 +146,8 @@
 						$nonce = wp_create_nonce( 'streamium_likes_nonce' );
 						$trimexcerpt = !empty(get_the_excerpt()) ? get_the_excerpt() : get_the_content();
 
-						$class = "";
-						if($count % 5 == 0){
-							$class = "far-left";
-						}elseif($count % 4 == 0){
-							$class = "far-right";
-						} 
 						?>
-						<div class="<?php echo streamium_get_device('class'); ?> tile <?php echo $class; ?>" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>">
+						<div class="col-md-2 col-xs-6 tile" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>">
 
 							<div class="tile_inner" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
 
@@ -219,13 +217,15 @@
 					<?php $cat_count++; } ?>
 					<?php endwhile; ?>
 				</div><!--/.row-->
-				<div class="row">
-					<div class="col-sm-12">
-						<?php if (function_exists("streamium_pagination")) {
-						    streamium_pagination();
-						} ?>
-					</div>
-				</div><!--/.row-->
+				
+				<?php if (function_exists("streamium_pagination")) : ?>
+					<div class="row">
+						<div class="col-sm-12">
+				    		<?php streamium_pagination(); ?>
+				    	</div>
+					</div><!--/.row-->
+				<?php endif; ?>
+				
 			</div><!--/.container-->
 			<?php else : ?>
 			<div class="container-fluid">

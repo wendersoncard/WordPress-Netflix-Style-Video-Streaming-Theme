@@ -295,11 +295,12 @@ a {
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 1.4vw;
-    color: #999;
+    color: #fff;
     text-decoration: none;
     display: inline-block;
     min-width: 6em;
     font-style: normal;
+    font-weight: 900;
     line-height: normal;
     margin: 0 0 .5em;
     position: absolute;

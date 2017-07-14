@@ -191,7 +191,7 @@ function streamium_get_dynamic_content() {
 		    }
 
 		    $content = $post_object->post_content . $buildMeta . $like_text;
-		    if(streamium_get_device('device') != 'desktop'){
+		    if(wp_is_mobile()){
 		    	$content = (empty($post_object->post_excerpt) ? strip_tags($post_object->post_content) : $post_object->post_excerpt);
 		    }
 	    	$fullImage  = wp_get_attachment_image_src( get_post_thumbnail_id( $postId ), 'streamium-video-tile-expanded' ); 

@@ -151,31 +151,6 @@ function streamium_connection_checks() {
 
 add_action( 'wp_ajax_streamium_connection_checks', 'streamium_connection_checks' );
 
-
-/**
- * Is mobile check for theme styling
- *
- * @return bool
- * @author  @sameast
- */
-function streamium_extra_body_class( $classes ) {
-
- 	// include classes
- 	$detect = new Mobile_Detect;
-    if ( $detect->isTablet() ) {
- 		$classes[] = 'streamium-tablet';
-	}else if( $detect->isMobile() ){
-	 	$classes[] = 'streamium-mobile';
-	}else{
-		$classes[] = 'streamium-desktop';
-	}
-    return $classes;
-
-}
-
-add_filter( 'body_class','streamium_extra_body_class' );
-
-
 /**
  * Is mobile check for theme styling
  *
@@ -185,13 +160,10 @@ add_filter( 'body_class','streamium_extra_body_class' );
 function streamium_get_device($type){
 
 	// include classes
- 	$detect = new Mobile_Detect;
-    if ( $detect->isTablet() ) {
- 		$device = array('count' => 4, 'class' => 'col-xs-3', 'device' => 'tablet');
-	}else if( $detect->isMobile() ){
-	 	$device = array('count' => 2, 'class' => 'col-xs-6', 'device' => 'mobile');
+ 	if( wp_is_mobile() ){
+	 	$device = array('count' => 2);
 	}else{
-		$device = array('count' => 5, 'class' => 'col-xs-5ths', 'device' => 'desktop');
+		$device = array('count' => 6);
 	}
 	return $device[$type];
 

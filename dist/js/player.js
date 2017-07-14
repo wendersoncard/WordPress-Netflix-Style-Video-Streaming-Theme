@@ -85,7 +85,7 @@ jQuery(document).ready(function($) {
 
 	        });
 
-		}else{
+		}else{ 
 
 			// Self hosted
 	    	s3bubble("s3bubble-" + video_post_object.post_id).video({

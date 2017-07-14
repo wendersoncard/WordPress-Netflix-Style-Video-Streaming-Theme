@@ -6,6 +6,7 @@
 
 				$query = $wp_query->get_queried_object(); 
      			$tax = isset($query->taxonomy) ? $query->taxonomy : "";
+     			$paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
 
 				switch (isset($_GET['sort']) ? $_GET['sort'] : 'all') {
 					case 'reviewed':
@@ -20,7 +21,7 @@
 						add_filter( 'posts_orderby', 'streamium_search_orderby' );
 						$the_query = new WP_Query( 
 							array(
-								'posts_per_page' => -1, 
+								'paged' => $paged,
 								'ignore_sticky_posts' => true,
 							    'tax_query' => array(
 							        array(
@@ -45,7 +46,7 @@
 					   
 						$the_query = new WP_Query( 
 							array(
-								'posts_per_page' => -1, 
+								'paged' => $paged,
 								'ignore_sticky_posts' => true,
 							    'tax_query' => array(
 							        array(
@@ -70,7 +71,7 @@
 					    
 						$the_query = new WP_Query( 
 							array(
-								'posts_per_page' => -1, 
+								'paged' => $paged,
 								'ignore_sticky_posts' => true,
 							    'tax_query' => array(
 							        array(
@@ -90,7 +91,7 @@
 
 						$the_query = new WP_Query( 
 							array(
-								'posts_per_page' => -1, 
+								'paged' => $paged,
 								'ignore_sticky_posts' => true,
 							    'tax_query' => array(
 							        array(
@@ -141,14 +142,8 @@
 						$nonce = wp_create_nonce( 'streamium_likes_nonce' );
 						$trimexcerpt = !empty(get_the_excerpt()) ? get_the_excerpt() : get_the_content(); 
 
-						$class = "";
-						if($count % 5 == 0){
-							$class = "far-left";
-						}elseif($count % 4 == 0){
-							$class = "far-right";
-						}  
 						?>
-						<div class="<?php echo streamium_get_device('class'); ?> tile <?php echo $class; ?>" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>">
+						<div class="col-md-2 col-xs-6 tile" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>">
 							
 							<div class="tile_inner" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
 
@@ -218,13 +213,15 @@
 					<?php $cat_count++; } ?>
 					<?php endwhile; ?>
 				</div><!--/.row-->
-				<div class="row">
-					<div class="col-sm-12">
-						<?php if (function_exists("streamium_pagination")) {
-						    streamium_pagination();
-						} ?>
-					</div>
-				</div><!--/.row-->
+				
+				<?php if (function_exists("streamium_pagination")) : ?>
+					<div class="row">
+						<div class="col-sm-12">
+				    		<?php streamium_pagination(); ?>
+				    	</div>
+					</div><!--/.row-->
+				<?php endif; ?>
+					
 			</div><!--/.container-->
 			<?php else : ?>
 				<?php get_template_part( 'content', 'none' ); ?>

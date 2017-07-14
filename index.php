@@ -153,7 +153,7 @@
 							<div class="col-sm-12">
 								<div class="video-header">
 									<h3><?php _e($taxTitle, 'streamium'); ?></h3>
-									<?php if ($loop->post_count > 5) : ?><a class="see-all" href="<?php echo esc_url(home_url('/' . $taxUrls)); ?>">View all</a><?php endif; ?>
+									<?php if ($loop->post_count > 6) : ?><a class="see-all" href="<?php echo esc_url(home_url('/' . $taxUrls)); ?>">View all</a><?php endif; ?>
 								</div>
 							</div><!--/.col-sm-12-->
 						</div>
@@ -208,11 +208,11 @@
                                     endif;
                                     wp_reset_query();
                                 ?>
-																<?php if ($loop->post_count < 5) : ?>
-																	<?php for ($i=$loop->post_count; $i < 5; $i++) : ?>
-																		<div class="tile filler"><div class="tile_inner"></div></div>
-																	<?php endfor; ?>
-																<?php endif; ?>
+								<?php if ($loop->post_count < 6) : ?>
+									<?php for ($i=$loop->post_count; $i < 6; $i++) : ?>
+										<div class="tile filler"><div class="tile_inner"></div></div>
+									<?php endfor; ?>
+								<?php endif; ?>
 								</div><!--/.carousel-->
 							</div><!--/.col-sm-12-->
 						</div><!--/.row-->
@@ -296,7 +296,7 @@
 					<div class="col-sm-12">
 						<div class="video-header">
 							<h3><?php echo ucwords($typeTitle); ?> <i class="fa fa-chevron-right" aria-hidden="true"></i> <?php echo ucfirst($category->name); ?></h3>
-							<?php if ($loop->post_count > 5) : ?><a class="see-all" href="<?php echo esc_url(home_url()); ?>/<?php echo $taxUrl; ?>/<?php echo $category->slug; ?>">View all</a><?php endif; ?>
+							<?php if ($loop->post_count > 6) : ?><a class="see-all" href="<?php echo esc_url(home_url()); ?>/<?php echo $taxUrl; ?>/<?php echo $category->slug; ?>">View all</a><?php endif; ?>
 						</div>
 					</div><!--/.col-sm-12-->
 				</div>
@@ -333,7 +333,7 @@
 								            	<p><?php echo wp_trim_words($trimexcerpt, $num_words = 25, $more = '...'); ?></p>
 								            	<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="<?php echo $category->slug; ?>" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
 								          	</div>
-								      	</div>
+								      	</div> 
 								    </div>
 
 								    <?php do_action('streamium_video_extra_meta'); ?>
@@ -351,11 +351,11 @@
                             endif;
                             wp_reset_query();
                         ?>
-												<?php if ($loop->post_count < 5) : ?>
-													<?php for ($i=$loop->post_count; $i < 5; $i++) : ?>
-														<div class="tile filler"><div class="tile_inner"></div></div>
-													<?php endfor; ?>
-												<?php endif; ?>
+						<?php if ($loop->post_count < 6) : ?>
+							<?php for ($i=$loop->post_count; $i < 6; $i++) : ?>
+								<div class="tile filler"><div class="tile_inner"></div></div>
+							<?php endfor; ?>
+						<?php endif; ?>
 						</div><!--/.carousel-->
 					</div><!--/.col-sm-12-->
 				</div><!--/.row-->

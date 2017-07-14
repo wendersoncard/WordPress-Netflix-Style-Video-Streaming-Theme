@@ -17,7 +17,6 @@ require_once($incdir .'theme/resume.php');
 require_once($incdir .'theme/posts.php');
 require_once($incdir .'theme/uploader.php');
 require_once($incdir .'theme/helpers.php');
-require_once($incdir .'theme/mobileDetect.php');
 require_once($incdir .'theme/series.php');
 
 // Only include if s2member is installed

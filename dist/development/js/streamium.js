@@ -2587,22 +2587,12 @@ jQuery(document).ready(function($) {
 	$(".subscriptio_list_id a").contents().unwrap();
 	$(".product-thumbnail").remove();
 
-
-	var tileCount = 5;
+	var tileCount = 6;
 	var tileWidth = Math.round($('.container-fluid').width()/tileCount);
-	var numberItems = 5;
 	var growFactor = 2;
 	var moveDistance = ((tileWidth / 2)-2);
     var currentCat;
 	var view_height = Math.round(($(window).innerWidth()/21*9));
-
-	// Set the number of carousel items based on width
-	if ($("body.streamium-tablet")[0]){
-		numberItems = 4;
-	}
-	if ($("body.streamium-mobile")[0]){
-		numberItems = 2;
-	}
 
 	$('.streamium-slider .slick-slide').height(view_height);
 
@@ -2627,16 +2617,14 @@ jQuery(document).ready(function($) {
 	resizeVideoJS();
     window.onresize = resizeVideoJS;
 
-	var itemWidth = Math.round($('.container-fluid').width()/numberItems);
-
 	$('.carousels').each(function(i, obj) {
 
 		// setup a caro id for individual arrows
 		var sliderId = "#" + $(this).attr("id");
 
 	    $(sliderId).slick({
-			slidesToShow: 5,
-			slidesToScroll: 5,
+			slidesToShow: 6,
+			slidesToScroll: 6,
 			infinite: true,
 			adaptiveHeight: true,
 			responsive: [{
@@ -2671,7 +2659,7 @@ jQuery(document).ready(function($) {
 		$(this).on('setPosition', function (event, slick, currentSlide) {
 
 			$(this).find(".slick-active:first").addClass( "far-left" );
-			if(slick.slideCount > 5){ // Get the slide count
+			if(slick.slideCount > 6){ // Get the slide count
 				$(this).find(".slick-active:last").addClass( "far-right" );
 			}
 
@@ -2694,7 +2682,7 @@ jQuery(document).ready(function($) {
 	            $(this).find('.slick-prev').removeClass('hidden');
 	        }
 
-	    });
+	    });  
 
 	});
 
@@ -2714,130 +2702,7 @@ jQuery(document).ready(function($) {
 
     });
 
-	if($("body.streamium-desktop")[0]){
-
-		$('.tile_meta_more_info').on("click",function(event) {
-
-	    	event.preventDefault();
-
-	    	var cat = $(this).data('cat');
-	    	var post_id = $(this).data('id');
-	    	var nonce = $(this).data('nonce');
-
-	    	$.ajax({
-	            url: streamium_object.ajax_url,
-	            type: 'post',
-	            dataType: 'json',
-	            data: {
-	                action: 'streamium_get_dynamic_content',
-	                cat : cat,
-	                post_id: post_id,
-	                nonce: nonce
-	            },
-	            success: function(response) {
-
-	                if (response.error) {
-
-	                    swal({
-                            title: "Error",
-                            text: response.message,
-                            type: "info",
-                            showCancelButton: true,
-                            confirmButtonColor: "#d86c2d",
-                            confirmButtonText: "Ok, got it!",
-                            closeOnConfirm: true
-                        },
-                        function() {
-
-                        });
-
-	                    return;
-
-	                }
-
-	                currentCat = "." + response.cat;
-
-	                // Populate the expanded view
-			    	var twidth = $(currentCat).width();
-			    	var theight = Math.floor(twidth/21*8);
-			    	$(currentCat).find('h2.synopis').text(response.title);
-			    	$(currentCat).find('div.synopis').html(response.content);
-			    	$(currentCat).find('a.synopis').attr( "href", response.href);
-			    	$(currentCat).css("background-image", "url(" + response.bgimage + ")");
-
-			    	if(response.trailer === ""){
-			    		$(currentCat).find('a.synopis-video-trailer').hide();
-			    	}else{
-			    		$(currentCat).find('a.synopis-video-trailer').fadeIn().attr( "href", response.href + "?trailer=true");
-			    	}
-
-			    	var vmiddle = Math.round($('.cd-main-header').height());
-					var voff = Math.round($(currentCat).offset().top);
-			    	$('html, body').animate({scrollTop: (voff-vmiddle)}, 500);
-
-			        $(currentCat).animate({
-					    height: theight
-					}, 250, function() {
-
-						$(currentCat + ' .s3bubble-details-inner-content').animate({
-						    opacity: 1,
-						}, 500, function() {
-
-						});
-
-						// Initailise the tooltips
-						$('[data-toggle="tooltip"]').tooltip();
-
-					});
-
-	            }
-
-	        }); // end jquery
-
-		});
-
-		$('head').append('<style type="text/css">' +
-
-			'.shiftLeft { transform: translate3d(-' + moveDistance +'px, 0, 0);}' +
-			'.shiftRight { transform: translate3d(' + moveDistance +'px, 0, 0);}' +
-			'.shiftLeftFirst { transform: translate3d(' + (moveDistance*2) +'px, 0, 0);}' +
-			'.shiftRightFirst { transform: translate3d(-' + (moveDistance*2) +'px, 0, 0);}' +
-
-		'</style>');
-
-		$('.tile_inner').hover(function() {
-			if(!$(this).parent().hasClass('filler')) {
-				$(this).find('.streamium-extra-meta').hide();
-
-				if($(this).parent().hasClass("far-left")){
-					$(this).parent().nextAll().addClass( "shiftLeftFirst" );
-				}else if($(this).parent().hasClass("far-right")){
-					$(this).parent().prevAll().addClass( "shiftRightFirst" );
-				}else{
-					$(this).parent().nextAll().addClass( "shiftRight" );
-					$(this).parent().prevAll().addClass( "shiftLeft" );
-				}
-
-				$(this).css('transform', 'scale(2)');
-			}
-		}, function() {
-
-			$(this).find('.streamium-extra-meta').fadeIn();
-
-			if($(this).parent().hasClass("far-left")){
-				$(this).parent().nextAll().removeClass( "shiftLeftFirst" );
-			}else if($(this).parent().hasClass("far-right")){
-				$(this).parent().prevAll().removeClass( "shiftRightFirst" );
-			}else{
-				$(this).parent().nextAll().removeClass( "shiftRight" );
-				$(this).parent().prevAll().removeClass( "shiftLeft" );
-			}
-
-			$(this).css('transform', 'scale(1)');
-
-		});
-
-	}else{
+	if(isMobile.any()){
 
 		$('.tile').on("click",function(event) {
 
@@ -2926,6 +2791,137 @@ jQuery(document).ready(function($) {
 
 		// Run on mobile
 		$('.content .overlay').hide();
+  
+	}else{
+
+		$(".static-row div:first-child").addClass("far-left");
+		$(".static-row div:last-child").addClass("far-right");
+
+		$('.tile_meta_more_info').on("click",function(event) {
+
+	    	event.preventDefault();
+
+	    	var cat = $(this).data('cat');
+	    	var post_id = $(this).data('id');
+	    	var nonce = $(this).data('nonce');
+
+	    	$.ajax({
+	            url: streamium_object.ajax_url,
+	            type: 'post',
+	            dataType: 'json',
+	            data: {
+	                action: 'streamium_get_dynamic_content',
+	                cat : cat,
+	                post_id: post_id,
+	                nonce: nonce
+	            },
+	            success: function(response) {
+
+	                if (response.error) {
+
+	                    swal({
+                            title: "Error",
+                            text: response.message,
+                            type: "info",
+                            showCancelButton: true,
+                            confirmButtonColor: "#d86c2d",
+                            confirmButtonText: "Ok, got it!",
+                            closeOnConfirm: true
+                        },
+                        function() {
+
+                        });
+
+	                    return;
+
+	                }
+
+	                currentCat = "." + response.cat;
+
+	                // Populate the expanded view
+			    	var twidth = $(currentCat).width();
+			    	var theight = Math.floor(twidth/21*8);
+			    	$(currentCat).find('h2.synopis').text(response.title);
+			    	$(currentCat).find('div.synopis').html(response.content);
+			    	$(currentCat).find('a.synopis').attr( "href", response.href);
+			    	$(currentCat).css("background-image", "url(" + response.bgimage + ")");
+
+			    	if(response.trailer === ""){
+			    		$(currentCat).find('a.synopis-video-trailer').hide();
+			    	}else{
+			    		$(currentCat).find('a.synopis-video-trailer').fadeIn().attr( "href", response.href + "?trailer=true");
+			    	}
+
+			    	var vmiddle = Math.round($('.cd-main-header').height());
+					var voff = Math.round($(currentCat).offset().top);
+			    	$('html, body').animate({scrollTop: (voff-vmiddle)}, 500);
+
+			        $(currentCat).animate({
+					    height: theight
+					}, 250, function() {
+
+						$(currentCat + ' .s3bubble-details-inner-content').animate({
+						    opacity: 1,
+						}, 500, function() {
+
+						}); 
+
+						// Initailise the tooltips
+						$('[data-toggle="tooltip"]').tooltip();
+
+					});
+
+	            }
+
+	        }); // end jquery
+
+		});
+
+		$('head').append('<style type="text/css">' +
+
+			'.shiftLeft { transform: translate3d(-' + moveDistance +'px, 0, 0);}' +
+			'.shiftRight { transform: translate3d(' + moveDistance +'px, 0, 0);}' +
+			'.shiftLeftFirst { transform: translate3d(' + (moveDistance*2) +'px, 0, 0);}' +
+			'.shiftRightFirst { transform: translate3d(-' + (moveDistance*2) +'px, 0, 0);}' +
+
+		'</style>');
+
+		$('.tile_inner').hover(function() {
+
+			if(!$(this).parent().hasClass('filler')) {
+
+				$(this).addClass('remove-background');
+				$(this).find('.streamium-extra-meta').hide();
+
+				if($(this).parent().hasClass("far-left")){
+					$(this).parent().nextAll().addClass( "shiftLeftFirst" );
+				}else if($(this).parent().hasClass("far-right")){
+					$(this).parent().prevAll().addClass( "shiftRightFirst" );
+				}else{
+					$(this).parent().nextAll().addClass( "shiftRight" );
+					$(this).parent().prevAll().addClass( "shiftLeft" );
+				}
+
+				$(this).css('transform', 'scale(2)');
+
+			}
+		}, function() {
+
+			$(this).removeClass('remove-background');
+			$(this).find('.streamium-extra-meta').fadeIn();
+
+			if($(this).parent().hasClass("far-left")){
+				$(this).parent().nextAll().removeClass( "shiftLeftFirst" );
+			}else if($(this).parent().hasClass("far-right")){
+				$(this).parent().prevAll().removeClass( "shiftRightFirst" );
+			}else{
+				$(this).parent().nextAll().removeClass( "shiftRight" );
+				$(this).parent().prevAll().removeClass( "shiftLeft" );
+			}
+
+			$(this).css('transform', 'scale(1)');
+
+		});
 
 	}
 
@@ -4826,7 +4822,7 @@ jQuery(document).ready(function($) {
 
 	        });
 
-		}else{
+		}else{ 
 
 			// Self hosted
 	    	s3bubble("s3bubble-" + video_post_object.post_id).video({

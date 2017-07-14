@@ -36,6 +36,10 @@
   padding-left: 2px;
 }
 
+.remove-background {
+  background-image: none !important;
+}
+
 .carousels .slick-arrow {
   display: none;
   position: absolute;
@@ -120,6 +124,7 @@
   display: inline-block;
   font-size: 20px;
   cursor: pointer;
+  padding: 0px 2px;
 }
 
 .carousels .tile_payment_details {
@@ -161,7 +166,6 @@
   background: black;
   background-size: cover;
   background-position: center;
-  border: 2px solid #000;
 }
 
 .carousels .filler .tile_inner {

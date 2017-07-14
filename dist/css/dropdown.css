@@ -178,7 +178,7 @@
     /* use the .open-to-left class if you want to open the dropdown on the left */
     right: 0;
     left: auto;
-}
+}  
 
 .streamium-drop-dropdown.dropdown-is-active {
     opacity: 1;
@@ -207,6 +207,7 @@
     margin: 0;
     padding: 0;
     max-height: 400px;
+    list-style: none;
 }
 
 .streamium-drop-dropdown-content a,
@@ -217,6 +218,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    float: left;
 }
 
 .streamium-drop-dropdown-content li:first-of-type>a,
