@@ -578,21 +578,6 @@ a {
     margin-top: 2px;
 }
 
-.s3bubble-details-full-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 100%;
-    background-color: rgba(0,0,0,1) 40%;
-    background-image: -webkit-gradient(linear,right top,right bottom,color-stop(40%,rgba(0,0,0,1)),to(rgba(0,0,0,0)));
-    background-image: -webkit-linear-gradient(left,rgba(0,0,0,1) 40%,rgba(0,0,0,0));
-    background-image: -moz-linear-gradient(left,rgba(0,0,0,1) 40%,rgba(0,0,0,0));
-    background-image: -o-linear-gradient(left,rgba(0,0,0,1) 40%,rgba(0,0,0,0));
-    background-image: linear-gradient(to right,rgba(0,0,0,1) 40%,rgba(0,0,0,0));
-}
-
 .s3bubble-details-inner-content {
   opacity: 0;
 }

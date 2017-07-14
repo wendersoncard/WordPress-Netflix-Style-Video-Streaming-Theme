@@ -93,7 +93,7 @@ function custom_api_post() {
                         'tileUrlExpanded' => esc_url($imageExpanded[0]),
                         'link' => get_the_permalink(),
                         'title' => get_the_title(),
-                        'text' => wp_trim_words($trimexcerpt, $num_words = 25, $more = '...'),
+                        'text' => wp_trim_words($trimexcerpt, $num_words = 18, $more = '...'),
                         'paidTileText' => $paidTileText,
                         'progressBar' => (int)$progressBar,
                         'nonce' => $nonce

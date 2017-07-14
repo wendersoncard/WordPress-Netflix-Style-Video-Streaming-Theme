@@ -145,7 +145,7 @@
 						?>
 						<div class="col-md-2 col-xs-6 tile" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>">
 							
-							<div class="tile_inner" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
+							<div class="tile_inner tile_inner-php" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
 
 								<?php do_action('streamium_video_payment'); ?>
 
@@ -162,8 +162,8 @@
 						        		</a>
 						          		<div class="overlay-meta">
 						            		<h4><?php the_title(); ?></h4>
-						            		<p><?php echo wp_trim_words( $trimexcerpt, $num_words = 25, $more = '...' ); ?></p>
-						            		<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>" class="tile_meta_more_info hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
+						            		<p><?php echo wp_trim_words( $trimexcerpt, $num_words = 18, $more = '...' ); ?></p>
+						            		<a data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>" class="tile_meta_more_info php-arrow hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>
 						          		</div>
 							      	</div>
 							    </div>
