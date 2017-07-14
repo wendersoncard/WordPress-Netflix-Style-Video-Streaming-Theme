@@ -35,7 +35,7 @@
 		<div class="streamium-loading">Loading&#8230;</div>
 	<?php endif; ?>
 
-	<header class="cd-main-header fixed">
+	<header class="cd-main-header">
 
 		<?php if ( get_theme_mod( 'streamium_logo' ) ) : ?>
 

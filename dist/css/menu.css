@@ -48,6 +48,10 @@ Main components
     width: 100%;
 }
 
+.home .cd-main-header {
+  background: #0a0a0a;
+}
+
 .home .cd-main-header.fixed {
     position: fixed;
 }
@@ -647,6 +651,8 @@ Main components
   }
   .cd-primary-nav .cd-secondary-nav a {
     height: 30px;
+    width: 100%;
+    float: left;
     line-height: 30px;
     padding: 0 18% 0 0;
     color: #010101;

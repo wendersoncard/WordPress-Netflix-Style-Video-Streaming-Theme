@@ -1,5 +1,8 @@
 @media screen and (max-device-width: 700px) and (orientation: landscape){
   /* some CSS here */
+  .home .cd-main-header {
+    background: transparent;
+  }
   .container-fluid {
     padding: 0 10px;
   }

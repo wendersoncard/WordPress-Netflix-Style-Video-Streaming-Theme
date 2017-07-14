@@ -42,7 +42,7 @@
 								loop : true,
 								autoplay : true,
 								controls: false,
-								vpaid: false
+								vpaid: ""
 							}, 
 							meta: {
 							    skipButtons: false, 
@@ -62,6 +62,7 @@
 				</script>
 			<?php endif; ?>
 			<article class="content-overlay">
+				<div class="content-overlay-grad"></div>
 				<div class="container-fluid rel">
 					<div class="row rel">
 						<div class="col-sm-5 col-xs-5 rel">

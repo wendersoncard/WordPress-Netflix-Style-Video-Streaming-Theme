@@ -66,9 +66,14 @@ if (!function_exists('streamium_enqueue_scripts')) {
         /* Register scripts -----------------------------------------------------*/
         wp_enqueue_script('plupload');
         wp_enqueue_script('streamium-production', get_template_directory_uri() . '/production/js/streamium.min.js', array( 'jquery' ), s3bubble_cache_version(), true);
+
         wp_localize_script('streamium-production', 'streamium_object',
             array(
-                'ajax_url' => admin_url('admin-ajax.php')
+                'ajax_url' => admin_url('admin-ajax.php'),
+                'recently_watched_api_nonce' => wp_create_nonce("recently_watched_api_nonce"),
+                'custom_api_nonce' => wp_create_nonce("custom_api_nonce"),
+                'home_api_nonce' => wp_create_nonce("home_api_nonce"),
+                'tile_count' => 6
             )
         );
 

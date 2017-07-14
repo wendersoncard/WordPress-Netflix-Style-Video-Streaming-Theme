@@ -19,6 +19,11 @@ require_once($incdir .'theme/uploader.php');
 require_once($incdir .'theme/helpers.php');
 require_once($incdir .'theme/series.php');
 
+// Api
+require_once($incdir .'api/recent.php');
+require_once($incdir .'api/custom.php');
+require_once($incdir .'api/home.php');
+
 // Only include if s2member is installed
 if ( class_exists( 'WooCommerce' ) ) {
 	require_once($incdir .'theme/woocommerce.php');
