@@ -66,16 +66,22 @@ function sb_register_required_plugins() {
 /**
  * Make sure the self hosted plugin is not installed
  */
-function streamium_check_plugin_isnot_active_notice__error() {
+function streamium_check_for_active_plugins() {
 
-    $class = 'notice notice-error notice-demo-data is-dismissible';
-    $message = __( '!IMPORTANT you have the S3Bubble self hosted plugin installed this is not needed with this theme all functionality is built in please remove the S3Bubble AWS Self Hosted Plugin. ', 'streamium' );
+  function streamium_check_plugin_isnot_active_notice__error() {
 
-    printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ));
+      $class = 'notice notice-error notice-demo-data';
+      $message = __( '!IMPORTANT you have the S3Bubble self hosted plugin installed this is not needed with this theme all functionality is built in please remove the S3Bubble AWS Self Hosted Plugin. ', 'streamium' );
+
+      printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ));
+  }
+  if ( is_plugin_active( 's3bubble-amazon-web-services-oembed-media-streaming-support/s3bubble-oembed.php' ) ) {
+    add_action( 'admin_notices', 'streamium_check_plugin_isnot_active_notice__error' );
+  }
+
 }
-if ( is_plugin_active( 's3bubble-amazon-web-services-oembed-media-streaming-support/s3bubble-oembed.php' ) ) {
-  add_action( 'admin_notices', 'streamium_check_plugin_isnot_active_notice__error' );
-} 
+add_action( 'admin_init', 'streamium_check_for_active_plugins' );
+
 
 /*
 * Adds a notice to the admin to install demo data
