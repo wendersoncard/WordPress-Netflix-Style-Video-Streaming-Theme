@@ -74,9 +74,14 @@ function custom_api_post() {
                 // This has been removed
                 $trimexcerpt = !empty(get_the_excerpt()) ? get_the_excerpt() : get_the_content();
 
-                $paidTileText = false;
+                $paid = false;
                 if($loop->post->premium){
                     $paidTileText = str_replace(array("_"), " ", $loop->post->plans[0]);
+                    $paid = array(
+                        'service' => 'woo',
+                        'html' => '<div class="tile_payment_details"><h2>Available on <br/>' . $paidTileText . ' plan</h2></div>',
+                    );
+
                 }
                 if (function_exists('is_protected_by_s2member')) {
                     $check = is_post_protected_by_s2member(get_the_ID());
@@ -87,6 +92,10 @@ function custom_api_post() {
                         }else{
                             $paidTileText = implode(",", $check);
                         }
+                        $paid = array(
+                            'service' => 's2member',
+                            'html' => '<div class="tile_payment_details"><h2>Available on <br/>plan ' . $paidTileText . '</h2></div>',
+                        );
                     }
                 }
 
@@ -102,7 +111,7 @@ function custom_api_post() {
                     'link' => get_the_permalink(),
                     'title' => get_the_title(),
                     'text' => wp_trim_words($trimexcerpt, $num_words = 18, $more = '...'),
-                    'paidTileText' => $paidTileText,
+                    'paid' => $paid,
                     'progressBar' => (int)$progressBar,
                     'reviews' => get_streamium_likes(get_the_ID()),
                     'nonce' => wp_create_nonce('streamium_likes_nonce')
