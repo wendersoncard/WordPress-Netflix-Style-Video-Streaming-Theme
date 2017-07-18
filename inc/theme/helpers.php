@@ -63,6 +63,19 @@ function sb_register_required_plugins() {
     tgmpa( $plugins, $config );
 }
 
+/**
+ * Make sure the self hosted plugin is not installed
+ */
+function streamium_check_plugin_isnot_active_notice__error() {
+
+    $class = 'notice notice-error notice-demo-data is-dismissible';
+    $message = __( '!IMPORTANT you have the S3Bubble self hosted plugin installed this is not needed with this theme all functionality is built in please remove the S3Bubble AWS Self Hosted Plugin. ', 'streamium' );
+
+    printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ));
+}
+if ( is_plugin_active( 's3bubble-amazon-web-services-oembed-media-streaming-support/s3bubble-oembed.php' ) ) {
+  add_action( 'admin_notices', 'streamium_check_plugin_isnot_active_notice__error' );
+} 
 
 /*
 * Adds a notice to the admin to install demo data
@@ -72,7 +85,7 @@ function sb_register_required_plugins() {
 function streamium_dummy_xml_admin_notice__error() {
     $class = 'notice notice-info notice-demo-data is-dismissible';
     $pluginUrl = admin_url( 'plugin-install.php?s=WooCommerce&tab=search&type=term' );
-    $message = __( 'Get setup quickly by installing our demo data. ', 'sample-text-domain' );
+    $message = __( 'Get setup quickly by installing our demo data. ', 'streamium' );
 
     printf( '<div class="%1$s"><p>%2$s <a id="demo-data" href="%3$s">Install demo data</a></p></div>', esc_attr( $class ), esc_html( $message ), admin_url('themes.php?page=streamium_demo_installer'));
 }

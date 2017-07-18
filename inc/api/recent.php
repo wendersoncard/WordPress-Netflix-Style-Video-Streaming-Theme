@@ -23,6 +23,7 @@ function recently_watched_api_post() {
 
 	// Get params
 	$userId = get_current_user_id();
+    $dataPosts = [];
 
 	// globally loop through post types.
 	$args = array(
@@ -38,52 +39,58 @@ function recently_watched_api_post() {
     $loop = new WP_Query($args);
     if (is_user_logged_in() && $loop->post_count > 0) {
 
-    	// Setup empty array
-    	$data = [];
-
     	// Only run if user is logged in
         if ($loop->have_posts()):
             while ($loop->have_posts()) : $loop->the_post();
+
+                // Add some placeholder images
+                $image  = "http://via.placeholder.com/300x169";
+                $imageExpanded   = "http://via.placeholder.com/500x281";
+
                 if (has_post_thumbnail()) : // thumbnail check
-                $image   = wp_get_attachment_image_src(get_post_thumbnail_id(), 'streamium-video-tile');
-                $imageExpanded   = wp_get_attachment_image_src(get_post_thumbnail_id(), 'streamium-video-tile-expanded');
-                $nonce = wp_create_nonce('streamium_likes_nonce');
+
+                    $image  = wp_get_attachment_image_url(get_post_thumbnail_id(), 'streamium-video-tile');
+                    $imageExpanded   = wp_get_attachment_image_url(get_post_thumbnail_id(), 'streamium-video-tile-expanded');
+
+                endif;
+
+                // This has been removed
                 $trimexcerpt = !empty(get_the_excerpt()) ? get_the_excerpt() : get_the_content();
 
-                	$paidTileText = false;
-                	if($loop->post->premium){
-                		$paidTileText = str_replace(array("_"), " ", $loop->post->plans[0]);
-                	}
-                	if (function_exists('is_protected_by_s2member')) {
-                		$check = is_post_protected_by_s2member(get_the_ID());
-                		if($check) { 
-							$ccaps = get_post_meta(get_the_ID(), 's2member_ccaps_req', true);
-							if(!empty($ccaps)){
-								$paidTileText = implode(",", $ccaps);
-							}else{
-								$paidTileText = implode(",", $check);
-							}
-						}
-                	}
+                $paidTileText = false;
+                if($loop->post->premium){
+                    $paidTileText = str_replace(array("_"), " ", $loop->post->plans[0]);
+                }
+                if (function_exists('is_protected_by_s2member')) {
+                    $check = is_post_protected_by_s2member(get_the_ID());
+                    if($check) { 
+                        $ccaps = get_post_meta(get_the_ID(), 's2member_ccaps_req', true);
+                        if(!empty($ccaps)){
+                            $paidTileText = implode(",", $ccaps);
+                        }else{
+                            $paidTileText = implode(",", $check);
+                        }
+                    }
+                }
 
-                	$progressBar = false;
-                	if(get_theme_mod( 'streamium_enable_premium' )) {
-    					$progressBar = get_post_meta( get_the_ID(), 'user_' . $userId, true );
-                	}
-                	$data[] = array(
-                		'id' => get_the_ID(),
-                		'post' => $loop->post,
-                		'tileUrl' => esc_url($image[0]),
-                		'tileUrlExpanded' => esc_url($imageExpanded[0]),
-                		'link' => get_the_permalink(),
-                		'title' => get_the_title(),
-                		'text' => wp_trim_words($trimexcerpt, $num_words = 18, $more = '...'),
-                		'paidTileText' => $paidTileText,
-                		'progressBar' => (int)$progressBar,
-                		'nonce' => $nonce
-                	);
+                $progressBar = false;
+                if(get_theme_mod( 'streamium_enable_premium' )) {
+                    $progressBar = get_post_meta( get_the_ID(), 'user_' . $userId, true );
+                }
+                $dataPosts[] = array(
+                    'id' => get_the_ID(),
+                    'post' => $loop->post,
+                    'tileUrl' => esc_url($image),
+                    'tileUrlExpanded' => esc_url($imageExpanded),
+                    'link' => get_the_permalink(),
+                    'title' => get_the_title(),
+                    'text' => wp_trim_words($trimexcerpt, $num_words = 18, $more = '...'),
+                    'paidTileText' => $paidTileText,
+                    'progressBar' => (int)$progressBar,
+                    'reviews' => get_streamium_likes(get_the_ID()),
+                    'nonce' => wp_create_nonce('streamium_likes_nonce')
+                );
 
-        		endif;
             endwhile;
         endif;
         wp_reset_query();
@@ -91,7 +98,7 @@ function recently_watched_api_post() {
         echo json_encode(
 	    	array(
 	    		'error' => false,
-	    		'data' => $data,
+	    		'data' => $dataPosts,
                 'count' => (int)$loop->post_count,
 	    		'message' => 'User not logged in' 
 	    	)

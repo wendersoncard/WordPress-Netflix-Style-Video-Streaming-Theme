@@ -80,13 +80,22 @@
   .container-fluid {
     padding: 0 10px;
   }
+  .home .cd-main-header {
+    background: transparent;
+  }
   .synopis-inner h2 {
-    font-size: 5vw !important;
+    font-size: 4vw!important;
+    margin: 0;
+    padding: 10px 0 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 90%;
   }
   .synopis-inner div.content {
     font-size: 2.5vw !important;
     overflow-y: scroll;
-    padding: 10px 0;
+    padding: 0;
   }
   .content-overlay .play-icon-wrap-rel-ring {
     border: .6vw solid #fff;

@@ -294,10 +294,15 @@ a {
 }
 
 .streamium-featured-background {
-  width: 100%;
+  /*width: 100%;
   height: 100%;
   position: relative;
-  overflow: hidden;
+  overflow: hidden;*/
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .synopis-video-trailer {
@@ -318,7 +323,7 @@ a {
 .video-header {
     height: 40px;
     vertical-align: bottom;
-    margin: 3vw 0 0 0;
+    margin: 40px 0 0 0;
     position: relative;
 }
 
@@ -327,6 +332,9 @@ a {
 }
 
 .video-header h3 {
+    position: absolute;
+    bottom: 0px;
+    left: 1px;
     text-decoration: none;
     display: inline-block;
     max-width: 75%;
@@ -343,8 +351,6 @@ a {
     font-weight: 900;
     line-height: normal;
     margin: 0 0 .4em;
-    position: absolute;
-    bottom: 0px;
 }
 
 .video-header h3 i {
@@ -575,7 +581,7 @@ a {
     height: 0;
     overflow: hidden;
     background-repeat: no-repeat;
-    margin-top: 2px;
+    margin-top: 4px;
 }
 
 .s3bubble-details-inner-content {

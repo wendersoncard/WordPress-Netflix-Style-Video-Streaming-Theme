@@ -15,6 +15,7 @@ module.exports = function(grunt) {
             },
             dist1: {
                 src: [
+                    'dist/js/globals.js',
                     'dist/js/bootstrap.js',
                     'dist/js/fontawesome.js',
                     'dist/js/info.js',
@@ -23,6 +24,7 @@ module.exports = function(grunt) {
                     'dist/js/caro-recently.js',
                     'dist/js/caro-custom.js',
                     'dist/js/caro-home.js',
+                    'dist/js/caro-tax.js',
                     'dist/js/menu.js',
                     'dist/js/modal.js',
                     'dist/js/modernizr.js',
@@ -42,6 +44,7 @@ module.exports = function(grunt) {
                     'dist/css/info.css',
                     'dist/css/tiles.css',
                     'dist/css/programs.css',
+                    'dist/css/series.css',
                     'dist/css/menu.css',
                     'dist/css/modal.css',
                     'dist/css/reviews.css',

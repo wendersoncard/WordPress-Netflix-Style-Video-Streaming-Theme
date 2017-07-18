@@ -1,3 +1,218 @@
+/**
+ * Mobile checks throughout
+ * @public
+ */
+var isMobile = {
+    Android: function() {
+        return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry: function() {
+        return navigator.userAgent.match(/BlackBerry/i);
+    },
+    iOS: function() {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    Opera: function() {
+        return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows: function() {
+        return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
+    },
+    any: function() {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+    }
+};
+
+/**
+ * Globals streamium calls
+ * @public
+ */
+window.streamiumGlobals = {
+    tileCount: (isMobile.any()) ? 2 : 6,
+    slick: {
+        slidesToShow: streamium_object.tile_count,
+        slidesToScroll: streamium_object.tile_count,
+        infinite: true,
+        adaptiveHeight: true,
+        responsive: [{
+                breakpoint: 1024,
+                settings: {
+                    appendArrows: false,
+                    slidesToShow: 4,
+                    slidesToScroll: 4
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    appendArrows: false,
+                    dots: false
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    appendArrows: false,
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
+            }
+        ]
+    },
+    slickSeries: {
+        slidesToShow: (streamium_object.tile_count-1),
+        slidesToScroll: (streamium_object.tile_count-1),
+        infinite: true,
+        adaptiveHeight: true,
+        responsive: [{
+                breakpoint: 1024,
+                settings: {
+                    appendArrows: false,
+                    slidesToShow: 4,
+                    slidesToScroll: 4
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    appendArrows: false,
+                    dots: false
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    appendArrows: false,
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
+            }
+        ]
+    }
+};
+
+var isOdd = function(num) { 
+    return num % 2;
+}
+
+function limitWords(textToLimit, wordLimit) {
+    var finalText = "";
+
+    var text2 = textToLimit.replace(/\s+/g, ' ');
+
+    var text3 = text2.split(' ');
+
+    var numberOfWords = text3.length;
+
+    var i = 0;
+
+    if (numberOfWords > wordLimit) {
+        for (i = 0; i < wordLimit; i++)
+            finalText = finalText + " " + text3[i] + " ";
+
+        return finalText + "...";
+    } else return textToLimit;
+}
+
+function buildTilesTemplate(tiles,i,type){
+
+    // Paid
+    var html = "";
+    if(tiles[i].paid){
+        html = tiles[i].paid.html;
+    }
+
+    // Set left and right class fixes
+    var classPush = "";
+    if(i === 0){
+        classPush = "far-left";
+    }else if(i === (streamium_object.tile_count-1)){
+        classPush = "far-right";
+    } 
+
+    return '<div class="tile ' + classPush + '" data-id="' + tiles[i].id + '" data-nonce="' + tiles[i].nonce + '" data-cat="' + type + '">' +
+                    '<div class="tile_inner tile_inner-home" style="background-image: url(' + tiles[i].tileUrl + ');">' +
+                    html +
+                    '<div id="tile-white-selected-' + type + '-' + tiles[i].id + '" class="tile-white-selected"></div>' +
+                '<div class="content">' +
+                    '<div class="overlay" style="background-image: url(' + tiles[i].tileUrlExpanded + ');">' +
+                        '<div class="overlay-gradient"></div>' +
+                        '<a class="play-icon-wrap hidden-xs" href="' + tiles[i].link + '">' +
+                            '<div class="play-icon-wrap-rel">' +
+                                '<div class="play-icon-wrap-rel-ring"></div>' +
+                                '<span class="play-icon-wrap-rel-play">' +
+                                    '<i class="fa fa-play fa-1x" aria-hidden="true"></i>' +
+                                '</span>' +
+                            '</div>' +
+                        '</a>' +
+                    '<div class="overlay-meta hidden-xs">' +
+                        '<span class="top-meta-watched">' + ((tiles[i].progressBar > 0) ? tiles[i].progressBar + "% watched" : "") + '</span>' +
+                        '<h4>' + tiles[i].title + '</h4>' +
+                        '<p>' + tiles[i].text + '</p>' +
+                        '<span class="top-meta-reviews">' + tiles[i].reviews + '</span>' +
+                        '<a data-id="' + tiles[i].id + '" data-nonce="' + tiles[i].nonce + '" data-cat="' + type + '" class="tile_meta_more_info home-arrow hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+            //'<div class="progress tile_progress"><div class="progress-bar" role="progressbar" aria-valuenow="' + tiles[i].progressBar + '" aria-valuemin="0" aria-valuemax="100" style="width:' + tiles[i].progressBar + '%"></div></div>' +
+        '</div>' +
+    '</div>';
+
+}
+
+function buildExpandedTemplate(type){
+
+    return '<section class="s3bubble-details-full ' + type + '">' + 
+            '<div class="s3bubble-details-full-overlay"></div>' + 
+            '<div class="container-fluid s3bubble-details-inner-content">' + 
+                '<div class="row">' + 
+                    '<div class="col-sm-5 col-xs-5 rel">' + 
+                        '<div class="synopis-outer">' + 
+                            '<div class="synopis-middle">' + 
+                                '<div class="synopis-inner">' + 
+                                    '<h2 class="synopis"></h2>' + 
+                                    '<div class="synopis content"></div>' + 
+                                '</div>' + 
+                            '</div>' + 
+                        '</div>' + 
+                    '</div>' + 
+                    '<div class="col-sm-7 col-xs-7 rel">' + 
+                        '<a class="play-icon-wrap synopis" href="#">' + 
+                            '<div class="play-icon-wrap-rel">' + 
+                                '<div class="play-icon-wrap-rel-ring"></div>' + 
+                                '<span class="play-icon-wrap-rel-play">' + 
+                                    '<i class="fa fa-play fa-3x" aria-hidden="true"></i>' + 
+                                '</span>' + 
+                            '</div>' + 
+                        '</a>' + 
+                        '<a href="#" class="synopis-video-trailer streamium-btns hidden-xs">Watch Trailer</a>' + 
+                        '<a href="#" class="s3bubble-details-inner-close"><i class="fa fa-times" aria-hidden="true"></i></a>' + 
+                    '</div>' +
+                '</div>' +
+            '</div>' + 
+        '</section>' + 
+        '<section id="series-watched-' + type + '" class="series-watched"><div id="series-watched-caro-' + type + '" class="series-watched-caro"></div></div></section>';
+
+}
+
+function getData(data,callback){
+
+    // add the query object
+    data.query = streamium_object.query;
+
+    jQuery.ajax({
+        type: "post",
+        dataType: "json",
+        url: streamium_object.ajax_url,
+        data: data,
+        success: function(response) {
+
+            callback(response);
+
+        }
+    });
+
+}
 /*!
  * Bootstrap v3.3.6 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -2578,7 +2793,7 @@ jQuery(document).ready(function($) {
 	$(".subscriptio_list_id a").contents().unwrap();
 	$(".product-thumbnail").remove();
 
-	var tileCount = 6;
+	var tileCount = streamium_object.tile_count;
 	var tileWidth = Math.round($('.container-fluid').width()/tileCount);
 	var growFactor = 2;
 	var moveDistance = ((tileWidth / 2)-2);
@@ -2613,132 +2828,6 @@ jQuery(document).ready(function($) {
 
 	'</style>');
 
-	if(!isMobile.any()){
-
-        $('.tile_inner-php').hover(function() {
- 
-            if (!$(this).parent().hasClass('filler')) {
-
-                $(this).addClass('remove-background');
-                $(this).find('.streamium-extra-meta').hide();
-
-                if ($(this).parent().hasClass("far-left")) {
-                    $(this).parent().nextAll().addClass("shiftLeftFirst");
-                } else if ($(this).parent().hasClass("far-right")) {
-                    $(this).parent().prevAll().addClass("shiftRightFirst");
-                } else {
-                    $(this).parent().nextAll().addClass("shiftRight");
-                    $(this).parent().prevAll().addClass("shiftLeft");
-                }
-
-                $(this).css('transform', 'scale(2)');
-
-            }
-        }, function() {
-
-            $(this).removeClass('remove-background');
-            $(this).find('.streamium-extra-meta').fadeIn();
-
-            if ($(this).parent().hasClass("far-left")) {
-                $(this).parent().nextAll().removeClass("shiftLeftFirst");
-            } else if ($(this).parent().hasClass("far-right")) {
-                $(this).parent().prevAll().removeClass("shiftRightFirst");
-            } else {
-                $(this).parent().nextAll().removeClass("shiftRight");
-                $(this).parent().prevAll().removeClass("shiftLeft");
-            }
-
-            $(this).css('transform', 'scale(1)');
-
-        });
-
-    }
-
-    var clickClass = "php-arrow";
-    if(isMobile.any()){
-        clickClass = "tile";
-    }
-
-    $('.' + clickClass).on("click",function(event) {
-
-    	event.preventDefault();
-
-    	var cat = $(this).data('cat');
-    	var post_id = $(this).data('id');
-    	var nonce = $(this).data('nonce');
-
-    	$.ajax({
-            url: streamium_object.ajax_url,
-            type: 'post',
-            dataType: 'json',
-            data: {
-                action: 'streamium_get_dynamic_content',
-                cat : cat,
-                post_id: post_id,
-                nonce: nonce
-            },
-            success: function(response) {
-
-                if (response.error) {
-
-                    swal({
-                        title: "Error",
-                        text: response.message,
-                        type: "info",
-                        showCancelButton: true,
-                        confirmButtonColor: "#d86c2d",
-                        confirmButtonText: "Ok, got it!",
-                        closeOnConfirm: true
-                    },
-                    function() {
-
-                    });
-
-                    return;
-
-                }
-
-                currentCat = "." + response.cat;
-
-                // Populate the expanded view
-		    	var twidth = $(currentCat).width();
-		    	var theight = Math.floor(twidth/21*8);
-		    	$(currentCat).find('h2.synopis').text(response.title);
-		    	$(currentCat).find('div.synopis').html(response.content);
-		    	$(currentCat).find('a.synopis').attr( "href", response.href);
-		    	$(currentCat).css("background-image", "url(" + response.bgimage + ")");
-
-		    	if(response.trailer === ""){
-		    		$(currentCat).find('a.synopis-video-trailer').hide();
-		    	}else{
-		    		$(currentCat).find('a.synopis-video-trailer').fadeIn().attr( "href", response.href + "?trailer=true");
-		    	}
-
-		    	var vmiddle = Math.round($('.cd-main-header').height());
-				var voff = Math.round($(currentCat).offset().top);
-		    	$('html, body').animate({scrollTop: (voff-vmiddle)}, 500);
-
-		        $(currentCat).animate({
-				    height: theight
-				}, 250, function() {
-
-					$(currentCat + ' .s3bubble-details-inner-content').animate({
-					    opacity: 1,
-					}, 500, function() {
-
-					}); 
-
-					// Initailise the tooltips
-					$('[data-toggle="tooltip"]').tooltip();
-
-				});
-
-            }
-
-        }); // end jquery
-
-	});
-
 	function animateResults() {
 		var count = $('.carousels').length;
 		$('.carousels').each(function(index) {
@@ -2756,156 +2845,346 @@ jQuery(document).ready(function($) {
 
 jQuery(document).ready(function($) {
 
-    /**
-     * Mobile checks throughout
-     * @public
-     */
-    var isMobile = {
-        Android: function() {
-            return navigator.userAgent.match(/Android/i);
-        },
-        BlackBerry: function() {
-            return navigator.userAgent.match(/BlackBerry/i);
-        },
-        iOS: function() {
-            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-        },
-        Opera: function() {
-            return navigator.userAgent.match(/Opera Mini/i);
-        },
-        Windows: function() {
-            return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
-        },
-        any: function() {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+    var buildIt = function(response){
+
+        var tiles = response.data;
+        var count = response.count;
+        var type = "recent";
+
+        if (tiles.length > 0) {
+            
+            var tile = '';
+            for (i = 0; i < tiles.length; i++) { 
+
+                // buildTiles located in global.js
+                tile += buildTilesTemplate(tiles,i,type);
+
+            }
+
+            if(count < streamium_object.tile_count){
+                for (c = 0; c < ((streamium_object.tile_count)-count); c++) { 
+                    tile += '<div class="tile filler"><div class="tile_inner"></div></div>';
+                }
+            }
+
         }
-    };
 
-    $.ajax({
-        type: "post",
-        dataType: "json",
-        url: streamium_object.ajax_url,
-        data: {
-            action: "recently_watched_api_post",
-            nonce: streamium_object.recently_watched_api_nonce
-        },
-        success: function(response) {
-            if (response.error) {
+        $("#recently-watched").append('<section class="videos"><div class="container-fluid"><div class="row"><div class="col-sm-12"><div class="video-header"><h3>Recently Watched</h3></div></div></div><div class="row"><div class="col-sm-12"><div class="carousels" id="recently">' + tile + '</div></div></div></div></section>' + buildExpandedTemplate(type));
+        
+        var sliderCaro = $("#recently");
+        sliderCaro.slick(streamiumGlobals.slick);
 
-                console.log('Got this from the server: ' + response);
+        // hide all slides initally
+        sliderCaro.find('.slick-prev').addClass('hidden');
 
-            } else { 
+        sliderCaro.on('setPosition', function (event, slick, currentSlide) {
 
-                var tiles = response.data;
-                var count = response.count;
+            $(this).find(".slick-active:first").addClass( "far-left" );
+            if(slick.slideCount > 6){ // Get the slide count
+                $(this).find(".slick-active:last").addClass( "far-right" );
+            }
 
-                if (tiles.length > 0) {
-                    
-                    var tile = '';
-                    for (i = 0; i < tiles.length; i++) { 
+        });  
 
-                        var classPush = "";
-                        if(i === 0){
-                            classPush = "far-left";
-                        }else if(i === 5){
-                            classPush = "far-right";
-                        }
-                        tile += '<div class="tile ' + classPush + '" data-id="' + tiles[i].id + '" data-nonce="' + tiles[i].nonce + '" data-cat="recent">' +
-                            '<div class="tile_inner tile_inner-recently" style="background-image: url(' + tiles[i].tileUrl + ');">' +
-                            '<div class="content">' +
-                            '<div class="overlay" style="background-image: url(' + tiles[i].tileUrlExpanded + ');">' +
-                            '<div class="overlay-gradient"></div>' +
-                            '<a class="play-icon-wrap hidden-xs" href="' + tiles[i].link + '">' +
-                            '<div class="play-icon-wrap-rel">' +
-                            '<div class="play-icon-wrap-rel-ring"></div>' +
-                            '<span class="play-icon-wrap-rel-play">' +
-                            '<i class="fa fa-play fa-1x" aria-hidden="true"></i>' +
-                            '</span>' +
-                            '</div>' +
-                            '</a>' +
-                            '<div class="overlay-meta hidden-xs">' +
-                            '<h4>' + tiles[i].title + '</h4>' +
-                            '<p>' + tiles[i].text + '</p>' +
-                            '<a data-id="' + tiles[i].id + '" data-nonce="' + tiles[i].nonce + '" data-cat="recent" class="tile_meta_more_info recently-arrow hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>' +
-                            '</div>' +
-                            '</div>' +
-                            '</div>' +
-                            '</div>' +
-                            '<div class="progress tile_progress"><div class="progress-bar" role="progressbar" aria-valuenow="' + tiles[i].progressBar + '" aria-valuemin="0" aria-valuemax="100" style="width:' + tiles[i].progressBar + '%"></div></div>' +
-                            '</div>';
+        sliderCaro.on('afterChange', function (event, slick, currentSlide) {
+
+            $(this).find(".tile").removeClass( "far-left" ).removeClass( "far-right" );
+            $(this).find(".slick-active:first").addClass( "far-left" );
+            $(this).find(".slick-active:last").addClass( "far-right" );
+            if(currentSlide === 0) {
+                $(this).find('.slick-prev').addClass('hidden');
+            }
+            else {
+                $(this).find('.slick-prev').removeClass('hidden');
+            }
+
+        });
+
+        if(!isMobile.any()){
+
+            $('.tile_inner-recently').hover(function() {
+
+                if (!$(this).parent().hasClass('filler')) {
+
+                    $(this).addClass('remove-background');
+                    $(this).find('.streamium-extra-meta').hide();
+
+                    if ($(this).parent().hasClass("far-left")) {
+                        $(this).parent().nextAll().addClass("shiftLeftFirst");
+                    } else if ($(this).parent().hasClass("far-right")) {
+                        $(this).parent().prevAll().addClass("shiftRightFirst");
+                    } else {
+                        $(this).parent().nextAll().addClass("shiftRight");
+                        $(this).parent().prevAll().addClass("shiftLeft");
                     }
 
-                    if(count < streamium_object.tile_count){
-                        for (c = 0; c < ((streamium_object.tile_count)-count); c++) { 
-                            tile += '<div class="tile filler"><div class="tile_inner"></div></div>';
-                        }
-                    }
-  
+                    $(this).css('transform', 'scale(2)');
+
+                }
+            }, function() {
+
+                $(this).removeClass('remove-background');
+                $(this).find('.streamium-extra-meta').fadeIn();
+
+                if ($(this).parent().hasClass("far-left")) {
+                    $(this).parent().nextAll().removeClass("shiftLeftFirst");
+                } else if ($(this).parent().hasClass("far-right")) {
+                    $(this).parent().prevAll().removeClass("shiftRightFirst");
+                } else {
+                    $(this).parent().nextAll().removeClass("shiftRight");
+                    $(this).parent().prevAll().removeClass("shiftLeft");
                 }
 
-                var expand = '<section class="s3bubble-details-full recent">' + 
-                    '<div class="s3bubble-details-full-overlay"></div>' + 
-                    '<div class="container-fluid s3bubble-details-inner-content">' + 
-                        '<div class="row">' + 
-                            '<div class="col-sm-5 col-xs-5 rel">' + 
-                                '<div class="synopis-outer">' + 
-                                    '<div class="synopis-middle">' + 
-                                        '<div class="synopis-inner">' + 
-                                            '<h2 class="synopis hidden-xs"></h2>' + 
-                                            '<div class="synopis content"></div>' + 
-                                        '</div>' + 
-                                    '</div>' + 
-                                '</div>' + 
-                            '</div>' + 
-                            '<div class="col-sm-7 col-xs-7 rel">' + 
-                                '<a class="play-icon-wrap synopis" href="#">' + 
-                                    '<div class="play-icon-wrap-rel">' + 
-                                        '<div class="play-icon-wrap-rel-ring"></div>' + 
-                                        '<span class="play-icon-wrap-rel-play">' + 
-                                            '<i class="fa fa-play fa-3x" aria-hidden="true"></i>' + 
-                                        '</span>' + 
-                                    '</div>' + 
-                                '</a>' + 
-                                '<a href="#" class="synopis-video-trailer streamium-btns hidden-xs">Watch Trailer</a>' + 
-                                '<a href="#" class="s3bubble-details-inner-close"><i class="fa fa-times" aria-hidden="true"></i></a>' + 
-                            '</div>' + 
-                        '</div>' + 
-                    '</div>' + 
-                '</section>'; 
+                $(this).css('transform', 'scale(1)');
 
-                $("#recently-watched").append('<section class="videos"><div class="container-fluid"><div class="row"><div class="col-sm-12"><div class="video-header"><h3>Recently Watched</h3></div></div></div><div class="row"><div class="col-sm-12"><div class="carousels" id="recently">' + tile + '</div></div></div></div></section>' + expand);
-                
-                var sliderCaro = $("#recently");
-                sliderCaro.slick({
-                    slidesToShow: streamium_object.tile_count,
-                    slidesToScroll: streamium_object.tile_count,
-                    infinite: true,
-                    adaptiveHeight: true,
-                    responsive: [{
-                            breakpoint: 1024,
-                            settings: {
-                                appendArrows: false,
-                                slidesToShow: 4,
-                                slidesToScroll: 4
-                            }
+            });
+
+        }
+
+        var clickClass = "recently-arrow";
+        if(isMobile.any()){
+            clickClass = "tile";
+        }
+
+        $('.' + clickClass).on("click",function(event) {
+
+            event.preventDefault();
+
+            var cat = $(this).data('cat');
+            var post_id = $(this).data('id');
+            var nonce = $(this).data('nonce');
+
+            // Fadeout episodes
+            $('.series-watched').fadeOut();
+            $('.tile-white-selected').hide();
+            $('.tile-white-selected').removeClass('tile-white-is-selected');       
+ 
+            $.ajax({
+                url: streamium_object.ajax_url,
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    action: 'streamium_get_dynamic_content',
+                    cat : cat,
+                    post_id: post_id,
+                    nonce: nonce
+                },
+                success: function(response) {
+
+                    if (response.error) {
+
+                        swal({
+                            title: "Error",
+                            text: response.message,
+                            type: "info",
+                            showCancelButton: true,
+                            confirmButtonColor: "#d86c2d",
+                            confirmButtonText: "Ok, got it!",
+                            closeOnConfirm: true
                         },
-                        {
-                            breakpoint: 600,
-                            settings: {
-                                appendArrows: false,
-                                dots: false
-                            }
-                        },
-                        {
-                            breakpoint: 480,
-                            settings: {
-                                appendArrows: false,
-                                slidesToShow: 2,
-                                slidesToScroll: 2
-                            }
+                        function() {
+
+                        });
+
+                        return;
+
+                    }
+
+                    // Run some edits for mobile
+                    var content = response.content;
+                    if(isMobile.any()){
+                        content = limitWords(content, 15);
+                    } 
+
+                    // Set the current can to populate
+                    var currentCat = "." + response.cat;
+                    var currentCatId = "#series-watched-caro-" + response.cat;
+                    var currentCatWrapId = "#series-watched-" + response.cat;
+                    var seriesTitle = response.title;
+                    
+
+                    // Populate the expanded view
+                    var twidth = $(currentCat).width();
+                    var theight = Math.floor(twidth/21*8);
+                    $(currentCat).find('h2.synopis').text(response.title);
+                    $(currentCat).find('div.synopis').html(content);
+                    $(currentCat).find('a.synopis').attr( "href", response.href);
+                    $(currentCat).css("background-image", "url(" + response.bgimage + ")");
+
+                    if(response.trailer === ""){
+                        $(currentCat).find('a.synopis-video-trailer').hide();
+                    }else{
+                        $(currentCat).find('a.synopis-video-trailer').fadeIn().attr( "href", response.href + "?trailer=true");
+                    }
+
+                    var vmiddle = Math.round($('.cd-main-header').height());
+                    var voff = Math.round($(currentCat).offset().top);
+                    $('html, body').animate({scrollTop: (voff-vmiddle)}, 500);
+
+                    $(currentCat).animate({
+                        height: theight
+                    }, 250, function() {
+
+                        $(currentCat + ' .s3bubble-details-inner-content').animate({
+                            opacity: 1,
+                        }, 500, function() {
+                            
+                        });
+
+                        // Set the selected block
+                        $('#tile-white-selected-' + response.cat + '-' + post_id).show();
+                        $('#tile-white-selected-' + response.cat + '-' + post_id).addClass("tile-white-is-selected"); 
+
+                        // Initailise the tooltips
+                        $('[data-toggle="tooltip"]').tooltip();
+
+                    });
+
+                    var seriesContainer = $(currentCat).next().find('div.series-watched-caro');
+
+                    // Check for series
+                    getData({
+                        action: "streamium_get_dynamic_series_content",
+                        postId: post_id,
+                        nonce: streamium_object.home_api_nonce
+                    },function(response){
+
+                        if (response.error) { 
+                            console.log("Error: ",response.message);
+                            return;
                         }
-                    ]
+
+                        var series = response.data;
+                        var serie = '';
+
+                        if(Object.keys(series).length > 0) {
+
+                            for (var a = 0; a < Object.keys(series).length; a++) {
+
+                                var episodes = series[(a+1)];
+
+                                if(episodes.length > 0) {
+                                    
+                                    for (var i = 0; i < episodes.length; i++) { 
+                                        
+                                        serie += '<div class="tile"><div class="tile_inner" style="background-image: url(' + episodes[i].thumbnails + ');">' +
+                                            '<div class="overlay-gradient"></div>' +
+                                            '<a class="play-icon-wrap hidden-xs" href="' + episodes[i].link + '">' +
+                                            '<div class="play-icon-wrap-rel">' +
+                                            '<span class="play-icon-wrap-rel-play">' +
+                                            '<i class="fa fa-play fa-1x" aria-hidden="true"></i>' +
+                                            '</span>' +
+                                            '</div>' +
+                                            '</a>' +
+                                            '<h4><b>S' + episodes[i].seasons + ':E' + episodes[i].positions + '</b> ' + episodes[i].titles + '</h4>' +
+                                        '</div></div>';
+                                    }
+
+                                }
+
+                            }
+
+                        }
+
+                        $(currentCatWrapId).fadeIn();
+
+                        if ($(currentCatId).hasClass('slick-initialized') === false) {
+
+                            //$(currentCatWrapId).prepend('<h4>' + seriesTitle + ' Episodes</h4>');
+                            seriesContainer.html(serie);
+
+                            $(currentCatId).slick(streamiumGlobals.slickSeries);
+
+                        }
+
+                    }); // end series
+
+                }
+
+            }); // end jquery
+
+        });
+
+        $('.s3bubble-details-inner-close').on('click',function(event) {
+
+            event.preventDefault();
+            var div = $(this).parent().parent().parent();
+
+            $(".series-watched").fadeOut();
+            $(".tile-white-selected").hide();
+
+            div.animate({
+                opacity: 0,
+            }, 250, function() {
+                div.parent().animate({
+                    height: 0
+                }, 250, function() {
+
                 });
+            });
+
+        });
+
+    };
+
+    if(!streamium_object.is_tax){
+
+        console.log("recently_watched_api_post");
+        
+        getData({
+            action: "recently_watched_api_post",
+            nonce: streamium_object.recently_watched_api_nonce
+        },function(response){
+
+            if (response.error) { 
+                console.log("Error: ",response.message);
+                return;
+            }
+
+            buildIt(response);
+
+        });
+
+    }
+
+});
+jQuery(document).ready(function($) {
+
+    var buildIt = function(response){
+
+        var cats = response.data;
+        if (cats.length > 0) { 
+
+            for (a = 0; a < cats.length; a++) { 
+            
+                var catName = cats[a].meta.name;
+                var catSlug = cats[a].meta.catSlug;
+                var type = cats[a].meta.type;
+                var link = cats[a].meta.link;
+                var home = cats[a].meta.home;
+                var taxUrl = cats[a].meta.taxUrl;
+                var taxTitle = cats[a].meta.title;
+                var count = cats[a].meta.count;
+
+                var tiles = cats[a].data;
+                var tile = '';
+                for (i = 0; i < tiles.length; i++) { 
+
+                    // buildTiles located in global.js
+                    tile += buildTilesTemplate(tiles,i,type);
+
+                }
+
+                if(count < streamium_object.tile_count){
+                    for (c = 0; c < ((streamium_object.tile_count)-count); c++) { 
+                        tile += '<div class="tile filler"><div class="tile_inner"></div></div>';
+                    }
+                }
+
+                $("#custom-watched").append('<section class="videos"><div class="container-fluid"><div class="row"><div class="col-sm-12"><div class="video-header"><h3>' + taxTitle + '</h3><a class="see-all" href="' + link + '">View all</a></div></div></div><div class="row"><div class="col-sm-12"><div class="carousels" id="custom-slick-' + a + '">' + tile + '</div></div></div></div></section>' + buildExpandedTemplate(type));
+                
+                var sliderCaro = $("#custom-slick-" + a);
+                sliderCaro.slick(streamiumGlobals.slick);
 
                 // hide all slides initally
                 sliderCaro.find('.slick-prev').addClass('hidden');
@@ -2933,833 +3212,891 @@ jQuery(document).ready(function($) {
 
                 });
 
-                if(!isMobile.any()){
+            }
 
-                    $('.tile_inner-recently').hover(function() {
+        }
 
-                        if (!$(this).parent().hasClass('filler')) {
+        if(!isMobile.any()){ 
 
-                            $(this).addClass('remove-background');
-                            $(this).find('.streamium-extra-meta').hide();
+            $('.tile_inner-custom').hover(function() {
 
-                            if ($(this).parent().hasClass("far-left")) {
-                                $(this).parent().nextAll().addClass("shiftLeftFirst");
-                            } else if ($(this).parent().hasClass("far-right")) {
-                                $(this).parent().prevAll().addClass("shiftRightFirst");
-                            } else {
-                                $(this).parent().nextAll().addClass("shiftRight");
-                                $(this).parent().prevAll().addClass("shiftLeft");
-                            }
-
-                            $(this).css('transform', 'scale(2)');
-
-                        }
-                    }, function() {
-
-                        $(this).removeClass('remove-background');
-                        $(this).find('.streamium-extra-meta').fadeIn();
-
-                        if ($(this).parent().hasClass("far-left")) {
-                            $(this).parent().nextAll().removeClass("shiftLeftFirst");
-                        } else if ($(this).parent().hasClass("far-right")) {
-                            $(this).parent().prevAll().removeClass("shiftRightFirst");
-                        } else {
-                            $(this).parent().nextAll().removeClass("shiftRight");
-                            $(this).parent().prevAll().removeClass("shiftLeft");
-                        }
-
-                        $(this).css('transform', 'scale(1)');
-
-                    });
-
+                // Setup the hover
+                if (($(this).find('.tile-white-is-selected').length === 1)) {
+                    $(this).find('.content').hide();
+                    return;
+                }else{
+                    $(this).find('.content').show();
                 }
 
-                var clickClass = "recently-arrow";
-                if(isMobile.any()){
-                    clickClass = "tile";
+                if (!$(this).parent().hasClass('filler')) {
+
+                    $(this).addClass('remove-background');
+                    $(this).find('.streamium-extra-meta').hide();
+
+                    if ($(this).parent().hasClass("far-left")) {
+                        $(this).parent().nextAll().addClass("shiftLeftFirst");
+                    } else if ($(this).parent().hasClass("far-right")) {
+                        $(this).parent().prevAll().addClass("shiftRightFirst");
+                    } else {
+                        $(this).parent().nextAll().addClass("shiftRight");
+                        $(this).parent().prevAll().addClass("shiftLeft");
+                    }
+
+                    $(this).css('transform', 'scale(2)');
+
+                }
+            }, function() {
+
+                $(this).removeClass('remove-background');
+                $(this).find('.streamium-extra-meta').fadeIn();
+
+                if ($(this).parent().hasClass("far-left")) {
+                    $(this).parent().nextAll().removeClass("shiftLeftFirst");
+                } else if ($(this).parent().hasClass("far-right")) {
+                    $(this).parent().prevAll().removeClass("shiftRightFirst");
+                } else {
+                    $(this).parent().nextAll().removeClass("shiftRight");
+                    $(this).parent().prevAll().removeClass("shiftLeft");
                 }
 
-                $('.' + clickClass).on("click",function(event) {
+                $(this).css('transform', 'scale(1)');
 
-			    	event.preventDefault();
+            });
 
-			    	var cat = $(this).data('cat');
-			    	var post_id = $(this).data('id');
-			    	var nonce = $(this).data('nonce');
+        }
 
-			    	$.ajax({
-			            url: streamium_object.ajax_url,
-			            type: 'post',
-			            dataType: 'json',
-			            data: {
-			                action: 'streamium_get_dynamic_content',
-			                cat : cat,
-			                post_id: post_id,
-			                nonce: nonce
-			            },
-			            success: function(response) {
+        var clickClass = "custom-arrow";
+        if(isMobile.any()){
+            clickClass = "tile";
+        }
 
-			                if (response.error) {
+        $('.' + clickClass).on("click",function(event) {
 
-			                    swal({
-		                            title: "Error",
-		                            text: response.message,
-		                            type: "info",
-		                            showCancelButton: true,
-		                            confirmButtonColor: "#d86c2d",
-		                            confirmButtonText: "Ok, got it!",
-		                            closeOnConfirm: true
-		                        },
-		                        function() {
+            event.preventDefault();
 
-		                        });
+            var cat = $(this).data('cat');
+            var post_id = $(this).data('id');
+            var nonce = $(this).data('nonce');
 
-			                    return;
+            // Fadeout episodes
+            $('.series-watched').fadeOut();
+            $('.tile-white-selected').hide();
+            $('.tile-white-selected').removeClass('tile-white-is-selected');       
+ 
+            $.ajax({
+                url: streamium_object.ajax_url,
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    action: 'streamium_get_dynamic_content',
+                    cat : cat,
+                    post_id: post_id,
+                    nonce: nonce
+                },
+                success: function(response) {
 
-			                }
+                    if (response.error) {
 
-			                currentCat = "." + response.cat;
-
-			                // Populate the expanded view
-					    	var twidth = $(currentCat).width();
-					    	var theight = Math.floor(twidth/21*8);
-					    	$(currentCat).find('h2.synopis').text(response.title);
-					    	$(currentCat).find('div.synopis').html(response.content);
-					    	$(currentCat).find('a.synopis').attr( "href", response.href);
-					    	$(currentCat).css("background-image", "url(" + response.bgimage + ")");
-
-					    	if(response.trailer === ""){
-					    		$(currentCat).find('a.synopis-video-trailer').hide();
-					    	}else{
-					    		$(currentCat).find('a.synopis-video-trailer').fadeIn().attr( "href", response.href + "?trailer=true");
-					    	}
-
-					    	var vmiddle = Math.round($('.cd-main-header').height());
-							var voff = Math.round($(currentCat).offset().top);
-					    	$('html, body').animate({scrollTop: (voff-vmiddle)}, 500);
-
-					        $(currentCat).animate({
-							    height: theight
-							}, 250, function() {
-
-								$(currentCat + ' .s3bubble-details-inner-content').animate({
-								    opacity: 1,
-								}, 500, function() {
-
-								}); 
-
-								// Initailise the tooltips
-								$('[data-toggle="tooltip"]').tooltip();
-
-							});
-
-			            }
-
-			        }); // end jquery
-
-				});
-
-                $('.s3bubble-details-inner-close').on('click',function(event) {
-
-                    event.preventDefault();
-                    var div = $(this).parent().parent().parent();
-                    div.animate({
-                        opacity: 0,
-                    }, 250, function() {
-                        div.parent().animate({
-                            height: 0
-                        }, 250, function() {
+                        swal({
+                            title: "Error",
+                            text: response.message,
+                            type: "info",
+                            showCancelButton: true,
+                            confirmButtonColor: "#d86c2d",
+                            confirmButtonText: "Ok, got it!",
+                            closeOnConfirm: true
+                        },
+                        function() {
 
                         });
+
+                        return;
+
+                    }
+
+                    // Run some edits for mobile
+                    var content = response.content;
+                    if(isMobile.any()){
+                        content = limitWords(content, 15);
+                    } 
+
+                    // Set the current can to populate
+                    var currentCat = "." + response.cat;
+                    var currentCatId = "#series-watched-caro-" + response.cat;
+                    var currentCatWrapId = "#series-watched-" + response.cat;
+                    var seriesTitle = response.title;
+                    
+
+                    // Populate the expanded view
+                    var twidth = $(currentCat).width();
+                    var theight = Math.floor(twidth/21*8);
+                    $(currentCat).find('h2.synopis').text(response.title);
+                    $(currentCat).find('div.synopis').html(content);
+                    $(currentCat).find('a.synopis').attr( "href", response.href);
+                    $(currentCat).css("background-image", "url(" + response.bgimage + ")");
+
+                    if(response.trailer === ""){
+                        $(currentCat).find('a.synopis-video-trailer').hide();
+                    }else{
+                        $(currentCat).find('a.synopis-video-trailer').fadeIn().attr( "href", response.href + "?trailer=true");
+                    }
+
+                    var vmiddle = Math.round($('.cd-main-header').height());
+                    var voff = Math.round($(currentCat).offset().top);
+                    $('html, body').animate({scrollTop: (voff-vmiddle)}, 500);
+
+                    $(currentCat).animate({
+                        height: theight
+                    }, 250, function() {
+
+                        $(currentCat + ' .s3bubble-details-inner-content').animate({
+                            opacity: 1,
+                        }, 500, function() {
+                            
+                        });
+
+                        // Set the selected block
+                        $('#tile-white-selected-' + response.cat + '-' + post_id).show();
+                        $('#tile-white-selected-' + response.cat + '-' + post_id).addClass("tile-white-is-selected"); 
+
+                        // Initailise the tooltips
+                        $('[data-toggle="tooltip"]').tooltip();
+
                     });
 
+                    var seriesContainer = $(currentCat).next().find('div.series-watched-caro');
+
+                    // Check for series
+                    getData({
+                        action: "streamium_get_dynamic_series_content",
+                        postId: post_id,
+                        nonce: streamium_object.home_api_nonce
+                    },function(response){
+
+                        if (response.error) { 
+                            console.log("Error: ",response.message);
+                            return;
+                        }
+
+                        var series = response.data;
+                        var serie = '';
+
+                        if(Object.keys(series).length > 0) {
+
+                            for (var a = 0; a < Object.keys(series).length; a++) {
+
+                                var episodes = series[(a+1)];
+
+                                if(episodes.length > 0) {
+                                    
+                                    for (var i = 0; i < episodes.length; i++) { 
+                                        
+                                        serie += '<div class="tile"><div class="tile_inner" style="background-image: url(' + episodes[i].thumbnails + ');">' +
+                                            '<div class="overlay-gradient"></div>' +
+                                            '<a class="play-icon-wrap hidden-xs" href="' + episodes[i].link + '">' +
+                                            '<div class="play-icon-wrap-rel">' +
+                                            '<span class="play-icon-wrap-rel-play">' +
+                                            '<i class="fa fa-play fa-1x" aria-hidden="true"></i>' +
+                                            '</span>' +
+                                            '</div>' +
+                                            '</a>' +
+                                            '<h4><b>S' + episodes[i].seasons + ':E' + episodes[i].positions + '</b> ' + episodes[i].titles + '</h4>' +
+                                        '</div></div>';
+                                    }
+
+                                }
+
+                            }
+
+                        }
+
+                        $(currentCatWrapId).fadeIn();
+
+                        if ($(currentCatId).hasClass('slick-initialized') === false) {
+
+                            //$(currentCatWrapId).prepend('<h4>' + seriesTitle + ' Episodes</h4>');
+                            seriesContainer.html(serie);
+
+                            $(currentCatId).slick(streamiumGlobals.slickSeries);
+
+                        }
+
+                    }); // end series
+
+                }
+
+            }); // end jquery
+
+        });
+
+        $('.s3bubble-details-inner-close').on('click',function(event) {
+
+            event.preventDefault();
+            var div = $(this).parent().parent().parent();
+
+            $(".series-watched").fadeOut();
+            $(".tile-white-selected").hide();
+
+            div.animate({
+                opacity: 0,
+            }, 250, function() {
+                div.parent().animate({
+                    height: 0
+                }, 250, function() {
+
                 });
+            });
 
-            }
-        }
-    });
+        });
 
-});
-jQuery(document).ready(function($) {
-
-    /**
-     * Mobile checks throughout
-     * @public
-     */
-    var isMobile = {
-        Android: function() {
-            return navigator.userAgent.match(/Android/i);
-        },
-        BlackBerry: function() {
-            return navigator.userAgent.match(/BlackBerry/i);
-        },
-        iOS: function() {
-            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-        },
-        Opera: function() {
-            return navigator.userAgent.match(/Opera Mini/i);
-        },
-        Windows: function() {
-            return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
-        },
-        any: function() {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-        }
     };
 
-    $.ajax({
-        type: "post",
-        dataType: "json",
-        url: streamium_object.ajax_url,
-        data: {
+    if(!streamium_object.is_tax){
+        
+        getData({
             action: "custom_api_post",
             nonce: streamium_object.custom_api_nonce
-        },
-        success: function(response) {
-            
-            if (response.error) {
+        },function(response){
 
-                console.log('Got this from the server: ' + response);
-
-            } else { 
-
-                var cats = response.data;
-                if (cats.length > 0) {
-
-                    for (a = 0; a < cats.length; a++) { 
-                    
-                        var catName = cats[a].meta.name;
-                        var catSlug = cats[a].meta.catSlug;
-                        var type = cats[a].meta.type;
-                        var link = cats[a].meta.link;
-                        var home = cats[a].meta.home;
-                        var taxUrl = cats[a].meta.taxUrl;
-                        var taxTitle = cats[a].meta.title;
-                        var count = cats[a].meta.count;
-
-                        var tiles = cats[a].data;
-                        var tile = '';
-                        for (var i = tiles.length - 1; i >= 0; i--) {
-
-                            var classPush = "";
-                            if(i === 0){
-                                classPush = "far-left";
-                            }else if(i === 5){
-                                classPush = "far-right";
-                            }
-                            tile += '<div class="tile ' + classPush + '" data-id="' + tiles[i].id + '" data-nonce="' + tiles[i].nonce + '" data-cat="' + type + '">' +
-                                '<div class="tile_inner tile_inner-custom" style="background-image: url(' + tiles[i].tileUrl + ');">' +
-                                '<div class="content">' +
-                                '<div class="overlay" style="background-image: url(' + tiles[i].tileUrlExpanded + ');">' +
-                                '<div class="overlay-gradient"></div>' +
-                                '<a class="play-icon-wrap hidden-xs" href="' + tiles[i].link + '">' +
-                                '<div class="play-icon-wrap-rel">' +
-                                '<div class="play-icon-wrap-rel-ring"></div>' +
-                                '<span class="play-icon-wrap-rel-play">' +
-                                '<i class="fa fa-play fa-1x" aria-hidden="true"></i>' +
-                                '</span>' +
-                                '</div>' +
-                                '</a>' +
-                                '<div class="overlay-meta hidden-xs">' +
-                                '<h4>' + tiles[i].title + '</h4>' +
-                                '<p>' + tiles[i].text + '</p>' +
-                                '<a data-id="' + tiles[i].id + '" data-nonce="' + tiles[i].nonce + '" data-cat="' + type + '" class="tile_meta_more_info custom-arrow hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>' +
-                                '</div>' +
-                                '</div>' +
-                                '</div>' +
-                                '</div>' +
-                                '<div class="progress tile_progress"><div class="progress-bar" role="progressbar" aria-valuenow="' + tiles[i].progressBar + '" aria-valuemin="0" aria-valuemax="100" style="width:' + tiles[i].progressBar + '%"></div></div>' +
-                                '</div>';
-
-                        }
-
-                        if(count < streamium_object.tile_count){
-                            for (c = 0; c < ((streamium_object.tile_count)-count); c++) { 
-                                tile += '<div class="tile filler"><div class="tile_inner"></div></div>';
-                            }
-                        }
-
-                        var expand = '<section class="s3bubble-details-full ' + type + '">' + 
-                            '<div class="s3bubble-details-full-overlay"></div>' + 
-                            '<div class="container-fluid s3bubble-details-inner-content">' + 
-                                '<div class="row">' + 
-                                    '<div class="col-sm-5 col-xs-5 rel">' + 
-                                        '<div class="synopis-outer">' + 
-                                            '<div class="synopis-middle">' + 
-                                                '<div class="synopis-inner">' + 
-                                                    '<h2 class="synopis hidden-xs"></h2>' + 
-                                                    '<div class="synopis content"></div>' + 
-                                                '</div>' + 
-                                            '</div>' + 
-                                        '</div>' + 
-                                    '</div>' + 
-                                    '<div class="col-sm-7 col-xs-7 rel">' + 
-                                        '<a class="play-icon-wrap synopis" href="#">' + 
-                                            '<div class="play-icon-wrap-rel">' + 
-                                                '<div class="play-icon-wrap-rel-ring"></div>' + 
-                                                '<span class="play-icon-wrap-rel-play">' + 
-                                                    '<i class="fa fa-play fa-3x" aria-hidden="true"></i>' + 
-                                                '</span>' + 
-                                            '</div>' + 
-                                        '</a>' + 
-                                        '<a href="#" class="synopis-video-trailer streamium-btns hidden-xs">Watch Trailer</a>' + 
-                                        '<a href="#" class="s3bubble-details-inner-close"><i class="fa fa-times" aria-hidden="true"></i></a>' + 
-                                    '</div>' + 
-                                '</div>' + 
-                            '</div>' + 
-                        '</section>';
-
-                        $("#custom-watched").append('<section class="videos"><div class="container-fluid"><div class="row"><div class="col-sm-12"><div class="video-header"><h3>' + taxTitle + '</h3><a class="see-all" href="' + link + '">View all</a></div></div></div><div class="row"><div class="col-sm-12"><div class="carousels" id="custom-slick-' + a + '">' + tile + '</div></div></div></div></section>' + expand);
-                        
-                        var sliderCaro = $("#custom-slick-" + a);
-                        sliderCaro.slick({
-                            slidesToShow: streamium_object.tile_count,
-                            slidesToScroll: streamium_object.tile_count,
-                            infinite: true,
-                            adaptiveHeight: true,
-                            responsive: [{
-                                    breakpoint: 1024,
-                                    settings: {
-                                        appendArrows: false,
-                                        slidesToShow: 4,
-                                        slidesToScroll: 4
-                                    }
-                                },
-                                {
-                                    breakpoint: 600,
-                                    settings: {
-                                        appendArrows: false,
-                                        dots: false
-                                    }
-                                },
-                                {
-                                    breakpoint: 480,
-                                    settings: {
-                                        appendArrows: false,
-                                        slidesToShow: 2,
-                                        slidesToScroll: 2
-                                    }
-                                }
-                            ]
-                        });
-
-                        // hide all slides initally
-                        sliderCaro.find('.slick-prev').addClass('hidden');
-
-                        sliderCaro.on('setPosition', function (event, slick, currentSlide) {
-
-                            $(this).find(".slick-active:first").addClass( "far-left" );
-                            if(slick.slideCount > 6){ // Get the slide count
-                                $(this).find(".slick-active:last").addClass( "far-right" );
-                            }
-
-                        });  
-
-                        sliderCaro.on('afterChange', function (event, slick, currentSlide) {
-
-                            $(this).find(".tile").removeClass( "far-left" ).removeClass( "far-right" );
-                            $(this).find(".slick-active:first").addClass( "far-left" );
-                            $(this).find(".slick-active:last").addClass( "far-right" );
-                            if(currentSlide === 0) {
-                                $(this).find('.slick-prev').addClass('hidden');
-                            }
-                            else {
-                                $(this).find('.slick-prev').removeClass('hidden');
-                            }
-
-                        });
-
-                    }
-
-                }
-
-                if(!isMobile.any()){ 
-
-                    $('.tile_inner-custom').hover(function() {
-
-                        if (!$(this).parent().hasClass('filler')) {
-
-                            $(this).addClass('remove-background');
-                            $(this).find('.streamium-extra-meta').hide();
-
-                            if ($(this).parent().hasClass("far-left")) {
-                                $(this).parent().nextAll().addClass("shiftLeftFirst");
-                            } else if ($(this).parent().hasClass("far-right")) {
-                                $(this).parent().prevAll().addClass("shiftRightFirst");
-                            } else {
-                                $(this).parent().nextAll().addClass("shiftRight");
-                                $(this).parent().prevAll().addClass("shiftLeft");
-                            }
-
-                            $(this).css('transform', 'scale(2)');
-
-                        }
-                    }, function() {
-
-                        $(this).removeClass('remove-background');
-                        $(this).find('.streamium-extra-meta').fadeIn();
-
-                        if ($(this).parent().hasClass("far-left")) {
-                            $(this).parent().nextAll().removeClass("shiftLeftFirst");
-                        } else if ($(this).parent().hasClass("far-right")) {
-                            $(this).parent().prevAll().removeClass("shiftRightFirst");
-                        } else {
-                            $(this).parent().nextAll().removeClass("shiftRight");
-                            $(this).parent().prevAll().removeClass("shiftLeft");
-                        }
-
-                        $(this).css('transform', 'scale(1)');
-
-                    });
-
-                }
-
-                var clickClass = "custom-arrow";
-                if(isMobile.any()){
-                    clickClass = "tile";
-                }
-
-                $('.' + clickClass).on("click",function(event) {
-
-                	console.log("click");
-			    	event.preventDefault();
-
-			    	var cat = $(this).data('cat');
-			    	var post_id = $(this).data('id');
-			    	var nonce = $(this).data('nonce');
-
-			    	$.ajax({
-			            url: streamium_object.ajax_url,
-			            type: 'post',
-			            dataType: 'json',
-			            data: {
-			                action: 'streamium_get_dynamic_content',
-			                cat : cat,
-			                post_id: post_id,
-			                nonce: nonce
-			            },
-			            success: function(response) {
-
-			                if (response.error) {
-
-			                    swal({
-		                            title: "Error",
-		                            text: response.message,
-		                            type: "info",
-		                            showCancelButton: true,
-		                            confirmButtonColor: "#d86c2d",
-		                            confirmButtonText: "Ok, got it!",
-		                            closeOnConfirm: true
-		                        },
-		                        function() {
-
-		                        });
-
-			                    return;
-
-			                }
-
-			                currentCat = "." + response.cat;
-
-			                // Populate the expanded view
-					    	var twidth = $(currentCat).width();
-					    	var theight = Math.floor(twidth/21*8);
-					    	$(currentCat).find('h2.synopis').text(response.title);
-					    	$(currentCat).find('div.synopis').html(response.content);
-					    	$(currentCat).find('a.synopis').attr( "href", response.href);
-					    	$(currentCat).css("background-image", "url(" + response.bgimage + ")");
-
-					    	if(response.trailer === ""){
-					    		$(currentCat).find('a.synopis-video-trailer').hide();
-					    	}else{
-					    		$(currentCat).find('a.synopis-video-trailer').fadeIn().attr( "href", response.href + "?trailer=true");
-					    	}
-
-					    	var vmiddle = Math.round($('.cd-main-header').height());
-							var voff = Math.round($(currentCat).offset().top);
-					    	$('html, body').animate({scrollTop: (voff-vmiddle)}, 500);
-
-					        $(currentCat).animate({
-							    height: theight
-							}, 250, function() {
-
-								$(currentCat + ' .s3bubble-details-inner-content').animate({
-								    opacity: 1,
-								}, 500, function() {
-
-								}); 
-
-								// Initailise the tooltips
-								$('[data-toggle="tooltip"]').tooltip();
-
-							});
-
-			            }
-
-			        }); // end jquery
-
-				});
-
-                $('.s3bubble-details-inner-close').on('click',function(event) {
-
-                    event.preventDefault();
-                    var div = $(this).parent().parent().parent();
-                    div.animate({
-                        opacity: 0,
-                    }, 250, function() {
-                        div.parent().animate({
-                            height: 0
-                        }, 250, function() {
-
-                        });
-                    });
-
-                });
-
+            if (response.error) { 
+                console.log("Error: ",response.message);
+                return;
             }
-        }
-    });
+
+            buildIt(response);
+
+        });
+
+    }
 
 });
 jQuery(document).ready(function($) {
 
-    /**
-     * Mobile checks throughout
-     * @public
-     */
-    var isMobile = {
-        Android: function() {
-            return navigator.userAgent.match(/Android/i);
-        },
-        BlackBerry: function() {
-            return navigator.userAgent.match(/BlackBerry/i);
-        },
-        iOS: function() {
-            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-        },
-        Opera: function() {
-            return navigator.userAgent.match(/Opera Mini/i);
-        },
-        Windows: function() {
-            return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
-        },
-        any: function() {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-        }
-    };
+    var buildIt = function(response){
 
-    $.ajax({
-        type: "post",
-        dataType: "json",
-        url: streamium_object.ajax_url,
-        data: {
-            action: "home_api_post",
-            nonce: streamium_object.home_api_nonce
-        },
-        success: function(response) {
+        var cats = response.data;
+        if (cats.length > 0) {
 
-            if (response.error) {
+            for (a = 0; a < cats.length; a++) { 
+                
+                var catParent = cats[a].meta.title;
+                var catName = cats[a].meta.name;
+                var type = cats[a].meta.catSlug;
+                var link = cats[a].meta.link;
+                var home = cats[a].meta.home;
+                var count = cats[a].meta.count;
 
-                console.log('Got this from the server: ' + response);
+                var tiles = cats[a].data;
+                if(tiles.length > 0) {
 
-            } else { 
+                    var tile = '';
+                    for (var i = 0; i < tiles.length; i++) {
 
-                var cats = response.data;
-                if (cats.length > 0) {
-
-                    for (a = 0; a < cats.length; a++) { 
-                        
-                        var catParent = cats[a].meta.title;
-                        var catName = cats[a].meta.name;
-                        var catSlug = cats[a].meta.catSlug;
-                        var link = cats[a].meta.link;
-                        var home = cats[a].meta.home;
-                        var count = cats[a].meta.count;
-
-                        var tiles = cats[a].data;
-                        if(tiles.length > 0) {
-
-                            var tile = '';
-                            for (i = 0; i < tiles.length; i++) { 
-
-                                var classPush = "";
-                                if(i === 0){
-                                    classPush = "far-left";
-                                }else if(i === 5){
-                                    classPush = "far-right";
-                                }
-                                tile += '<div class="tile ' + classPush + '" data-id="' + tiles[i].id + '" data-nonce="' + tiles[i].nonce + '" data-cat="' + catSlug + '">' +
-                                    '<div class="tile_inner tile_inner-home" style="background-image: url(' + tiles[i].tileUrl + ');">' +
-                                    '<div class="content">' +
-                                    '<div class="overlay" style="background-image: url(' + tiles[i].tileUrlExpanded + ');">' +
-                                    '<div class="overlay-gradient"></div>' +
-                                    '<a class="play-icon-wrap hidden-xs" href="' + tiles[i].link + '">' +
-                                    '<div class="play-icon-wrap-rel">' +
-                                    '<div class="play-icon-wrap-rel-ring"></div>' +
-                                    '<span class="play-icon-wrap-rel-play">' +
-                                    '<i class="fa fa-play fa-1x" aria-hidden="true"></i>' +
-                                    '</span>' +
-                                    '</div>' +
-                                    '</a>' +
-                                    '<div class="overlay-meta hidden-xs">' +
-                                    '<h4>' + tiles[i].title + '</h4>' +
-                                    '<p>' + tiles[i].text + '</p>' +
-                                    '<a data-id="' + tiles[i].id + '" data-nonce="' + tiles[i].nonce + '" data-cat="' + catSlug + '" class="tile_meta_more_info home-arrow hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>' +
-                                    '</div>' +
-                                    '</div>' +
-                                    '</div>' +
-                                    '</div>' +
-                                    '<div class="progress tile_progress"><div class="progress-bar" role="progressbar" aria-valuenow="' + tiles[i].progressBar + '" aria-valuemin="0" aria-valuemax="100" style="width:' + tiles[i].progressBar + '%"></div></div>' +
-                                    '</div>';
-                            }
-
-                            if(count < streamium_object.tile_count){
-                                for (c = 0; c < ((streamium_object.tile_count)-count); c++) { 
-                                    tile += '<div class="tile filler"><div class="tile_inner"></div></div>';
-                                }
-                            }
-
-                            var expand = '<section class="s3bubble-details-full ' + catSlug + '">' + 
-                                '<div class="s3bubble-details-full-overlay"></div>' + 
-                                '<div class="container-fluid s3bubble-details-inner-content">' + 
-                                    '<div class="row">' + 
-                                        '<div class="col-sm-5 col-xs-5 rel">' + 
-                                            '<div class="synopis-outer">' + 
-                                                '<div class="synopis-middle">' + 
-                                                    '<div class="synopis-inner">' + 
-                                                        '<h2 class="synopis hidden-xs"></h2>' + 
-                                                        '<div class="synopis content"></div>' + 
-                                                    '</div>' + 
-                                                '</div>' + 
-                                            '</div>' + 
-                                        '</div>' + 
-                                        '<div class="col-sm-7 col-xs-7 rel">' + 
-                                            '<a class="play-icon-wrap synopis" href="#">' + 
-                                                '<div class="play-icon-wrap-rel">' + 
-                                                    '<div class="play-icon-wrap-rel-ring"></div>' + 
-                                                    '<span class="play-icon-wrap-rel-play">' + 
-                                                        '<i class="fa fa-play fa-3x" aria-hidden="true"></i>' + 
-                                                    '</span>' + 
-                                                '</div>' + 
-                                            '</a>' + 
-                                            '<a href="#" class="synopis-video-trailer streamium-btns hidden-xs">Watch Trailer</a>' + 
-                                            '<a href="#" class="s3bubble-details-inner-close"><i class="fa fa-times" aria-hidden="true"></i></a>' + 
-                                        '</div>' + 
-                                    '</div>' + 
-                                '</div>' + 
-                            '</section>';
-
-                            $("#home-watched").append('<section class="videos"><div class="container-fluid"><div class="row"><div class="col-sm-12"><div class="video-header"><h3>' + catParent + ' <i class="fa fa-chevron-right" aria-hidden="true"></i> ' + catName + '</h3><a class="see-all" href="' + link + '">View all</a></div></div></div><div class="row"><div class="col-sm-12"><div class="carousels" id="home-slick-' + a + '">' + tile + '</div></div></div></div></section>' + expand);
-                            
-                            var sliderCaro = $("#home-slick-" + a);
-                            sliderCaro.slick({
-                                slidesToShow: streamium_object.tile_count,
-                                slidesToScroll: streamium_object.tile_count,
-                                infinite: true,
-                                adaptiveHeight: true,
-                                responsive: [{
-                                        breakpoint: 1024,
-                                        settings: {
-                                            appendArrows: false,
-                                            slidesToShow: 4,
-                                            slidesToScroll: 4
-                                        }
-                                    },
-                                    {
-                                        breakpoint: 600,
-                                        settings: {
-                                            appendArrows: false,
-                                            dots: false
-                                        }
-                                    },
-                                    {
-                                        breakpoint: 480,
-                                        settings: {
-                                            appendArrows: false,
-                                            slidesToShow: 2,
-                                            slidesToScroll: 2
-                                        }
-                                    }
-                                ]
-                            });
-
-                            // hide all slides initally
-                            sliderCaro.find('.slick-prev').addClass('hidden');
-
-                            sliderCaro.on('setPosition', function (event, slick, currentSlide) {
-
-                                $(this).find(".slick-active:first").addClass( "far-left" );
-                                if(slick.slideCount > 6){ // Get the slide count
-                                    $(this).find(".slick-active:last").addClass( "far-right" );
-                                }
-
-                            });  
-
-                            sliderCaro.on('afterChange', function (event, slick, currentSlide) {
-
-                                $(this).find(".tile").removeClass( "far-left" ).removeClass( "far-right" );
-                                $(this).find(".slick-active:first").addClass( "far-left" );
-                                $(this).find(".slick-active:last").addClass( "far-right" );
-                                if(currentSlide === 0) {
-                                    $(this).find('.slick-prev').addClass('hidden');
-                                }
-                                else {
-                                    $(this).find('.slick-prev').removeClass('hidden');
-                                }
-
-                            });
-
-                        }  
+                        // buildTiles located in global.js
+                        tile += buildTilesTemplate(tiles,i,type);
 
                     }
 
-                } 
-
-                if(!isMobile.any()){
-
-                    $('.tile_inner-home').hover(function() {
-
-                        if (!$(this).parent().hasClass('filler')) {
-
-                            $(this).addClass('remove-background');
-                            $(this).find('.streamium-extra-meta').hide();
-
-                            if ($(this).parent().hasClass("far-left")) {
-                                $(this).parent().nextAll().addClass("shiftLeftFirst");
-                            } else if ($(this).parent().hasClass("far-right")) {
-                                $(this).parent().prevAll().addClass("shiftRightFirst");
-                            } else {
-                                $(this).parent().nextAll().addClass("shiftRight");
-                                $(this).parent().prevAll().addClass("shiftLeft");
-                            }
-
-                            $(this).css('transform', 'scale(2)');
-
+                    if(count < streamium_object.tile_count){
+                        for (c = 0; c < ((streamium_object.tile_count)-count); c++) { 
+                            tile += '<div class="tile filler"><div class="tile_inner"></div></div>';
                         }
-                    }, function() {
+                    }
 
-                        $(this).removeClass('remove-background');
-                        $(this).find('.streamium-extra-meta').fadeIn();
+                    $("#home-watched").append('<section class="videos"><div class="container-fluid"><div class="row"><div class="col-sm-12"><div class="video-header"><h3>' + catParent + ' <i class="fa fa-chevron-right" aria-hidden="true"></i> ' + catName + '</h3><a class="see-all" href="' + link + '">View all</a></div></div></div><div class="row"><div class="col-sm-12"><div class="carousels" id="home-slick-' + a + '">' + tile + '</div></div></div></div></section>' + buildExpandedTemplate(type));
+                    
+                    var sliderCaro = $("#home-slick-" + a);
+                    sliderCaro.slick(streamiumGlobals.slick);
 
-                        if ($(this).parent().hasClass("far-left")) {
-                            $(this).parent().nextAll().removeClass("shiftLeftFirst");
-                        } else if ($(this).parent().hasClass("far-right")) {
-                            $(this).parent().prevAll().removeClass("shiftRightFirst");
-                        } else {
-                            $(this).parent().nextAll().removeClass("shiftRight");
-                            $(this).parent().prevAll().removeClass("shiftLeft");
+                    // hide all slides initally
+                    sliderCaro.find('.slick-prev').addClass('hidden');
+
+                    sliderCaro.on('setPosition', function (event, slick, currentSlide) {
+
+                        $(this).find(".slick-active:first").addClass( "far-left" );
+                        if(slick.slideCount > 6){ // Get the slide count
+                            $(this).find(".slick-active:last").addClass( "far-right" );
                         }
 
-                        $(this).css('transform', 'scale(1)');
+                    });  
+
+                    sliderCaro.on('afterChange', function (event, slick, currentSlide) {
+
+                        $(this).find(".tile").removeClass( "far-left" ).removeClass( "far-right" );
+                        $(this).find(".slick-active:first").addClass( "far-left" );
+                        $(this).find(".slick-active:last").addClass( "far-right" );
+                        if(currentSlide === 0) {
+                            $(this).find('.slick-prev').addClass('hidden');
+                        }
+                        else {
+                            $(this).find('.slick-prev').removeClass('hidden');
+                        }
 
                     });
 
-                }
-
-                var clickClass = "home-arrow";
-                if(isMobile.any()){
-                    clickClass = "tile";
-                }
-
-                $('.' + clickClass).on("click",function(event) {
-
-			    	event.preventDefault();
-
-			    	var cat = $(this).data('cat');
-			    	var post_id = $(this).data('id');
-			    	var nonce = $(this).data('nonce');
-
-			    	$.ajax({
-			            url: streamium_object.ajax_url,
-			            type: 'post',
-			            dataType: 'json',
-			            data: {
-			                action: 'streamium_get_dynamic_content',
-			                cat : cat,
-			                post_id: post_id,
-			                nonce: nonce
-			            },
-			            success: function(response) {
-
-			                if (response.error) {
-
-			                    swal({
-		                            title: "Error",
-		                            text: response.message,
-		                            type: "info",
-		                            showCancelButton: true,
-		                            confirmButtonColor: "#d86c2d",
-		                            confirmButtonText: "Ok, got it!",
-		                            closeOnConfirm: true
-		                        },
-		                        function() {
-
-		                        });
-
-			                    return;
-
-			                }
-
-			                currentCat = "." + response.cat;
-
-			                // Populate the expanded view
-					    	var twidth = $(currentCat).width();
-					    	var theight = Math.floor(twidth/21*8);
-					    	$(currentCat).find('h2.synopis').text(response.title);
-					    	$(currentCat).find('div.synopis').html(response.content);
-					    	$(currentCat).find('a.synopis').attr( "href", response.href);
-					    	$(currentCat).css("background-image", "url(" + response.bgimage + ")");
-
-					    	if(response.trailer === ""){
-					    		$(currentCat).find('a.synopis-video-trailer').hide();
-					    	}else{
-					    		$(currentCat).find('a.synopis-video-trailer').fadeIn().attr( "href", response.href + "?trailer=true");
-					    	}
-
-					    	var vmiddle = Math.round($('.cd-main-header').height());
-							var voff = Math.round($(currentCat).offset().top);
-					    	$('html, body').animate({scrollTop: (voff-vmiddle)}, 500);
-
-					        $(currentCat).animate({
-							    height: theight
-							}, 250, function() {
-
-								$(currentCat + ' .s3bubble-details-inner-content').animate({
-								    opacity: 1,
-								}, 500, function() {
-
-								}); 
-
-								// Initailise the tooltips
-								$('[data-toggle="tooltip"]').tooltip();
-
-							});
-
-			            }
-
-			        }); // end jquery
-
-				});
-
-                $('.s3bubble-details-inner-close').on('click',function(event) {
-
-                    event.preventDefault();
-                    var div = $(this).parent().parent().parent();
-                    div.animate({
-                        opacity: 0,
-                    }, 250, function() {
-                        div.parent().animate({
-                            height: 0
-                        }, 250, function() {
-
-                        });
-                    });
-
-                });
+                }  
 
             }
+
+        } 
+
+        if(!isMobile.any()){
+
+            $('.tile_inner-home').hover(function() {
+
+                // Setup the hover
+                if (($(this).find('.tile-white-is-selected').length === 1)) {
+                    $(this).find('.content').hide();
+                    return;
+                }else{
+                    $(this).find('.content').show();
+                }
+
+                if (!$(this).parent().hasClass('filler')) {
+
+                    $(this).addClass('remove-background');
+                    $(this).find('.streamium-extra-meta').hide();
+
+                    if ($(this).parent().hasClass("far-left")) {
+                        $(this).parent().nextAll().addClass("shiftLeftFirst");
+                    } else if ($(this).parent().hasClass("far-right")) {
+                        $(this).parent().prevAll().addClass("shiftRightFirst");
+                    } else {
+                        $(this).parent().nextAll().addClass("shiftRight");
+                        $(this).parent().prevAll().addClass("shiftLeft");
+                    }
+
+                    $(this).css('transform', 'scale(2)');
+
+                }
+            }, function() {
+
+                $(this).removeClass('remove-background');
+                $(this).find('.streamium-extra-meta').fadeIn();
+
+                if ($(this).parent().hasClass("far-left")) {
+                    $(this).parent().nextAll().removeClass("shiftLeftFirst");
+                } else if ($(this).parent().hasClass("far-right")) {
+                    $(this).parent().prevAll().removeClass("shiftRightFirst");
+                } else {
+                    $(this).parent().nextAll().removeClass("shiftRight");
+                    $(this).parent().prevAll().removeClass("shiftLeft");
+                }
+
+                $(this).css('transform', 'scale(1)');
+
+            });
+
         }
-    });
+
+        var clickClass = "home-arrow";
+        if(isMobile.any()){
+            clickClass = "tile";
+        }
+
+        $('.' + clickClass).on("click",function(event) {
+
+            event.preventDefault();
+
+            var cat = $(this).data('cat');
+            var post_id = $(this).data('id');
+            var nonce = $(this).data('nonce');
+
+            // Fadeout episodes
+            $('.series-watched').fadeOut();
+            $('.tile-white-selected').hide();
+            $('.tile-white-selected').removeClass('tile-white-is-selected');       
+ 
+            $.ajax({
+                url: streamium_object.ajax_url,
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    action: 'streamium_get_dynamic_content',
+                    cat : cat,
+                    post_id: post_id,
+                    nonce: nonce
+                },
+                success: function(response) {
+
+                    if (response.error) {
+
+                        swal({
+                            title: "Error",
+                            text: response.message,
+                            type: "info",
+                            showCancelButton: true,
+                            confirmButtonColor: "#d86c2d",
+                            confirmButtonText: "Ok, got it!",
+                            closeOnConfirm: true
+                        },
+                        function() {
+
+                        });
+
+                        return;
+
+                    }
+
+                    // Run some edits for mobile
+                    var content = response.content;
+                    if(isMobile.any()){
+                        content = limitWords(content, 15);
+                    } 
+
+                    // Set the current can to populate
+                    var currentCat = "." + response.cat;
+                    var currentCatId = "#series-watched-caro-" + response.cat;
+                    var currentCatWrapId = "#series-watched-" + response.cat;
+                    var seriesTitle = response.title;
+                    
+
+                    // Populate the expanded view
+                    var twidth = $(currentCat).width();
+                    var theight = Math.floor(twidth/21*8);
+                    $(currentCat).find('h2.synopis').text(response.title);
+                    $(currentCat).find('div.synopis').html(content);
+                    $(currentCat).find('a.synopis').attr( "href", response.href);
+                    $(currentCat).css("background-image", "url(" + response.bgimage + ")");
+
+                    if(response.trailer === ""){
+                        $(currentCat).find('a.synopis-video-trailer').hide();
+                    }else{
+                        $(currentCat).find('a.synopis-video-trailer').fadeIn().attr( "href", response.href + "?trailer=true");
+                    }
+
+                    var vmiddle = Math.round($('.cd-main-header').height());
+                    var voff = Math.round($(currentCat).offset().top);
+                    $('html, body').animate({scrollTop: (voff-vmiddle)}, 500);
+
+                    $(currentCat).animate({
+                        height: theight
+                    }, 250, function() {
+
+                        $(currentCat + ' .s3bubble-details-inner-content').animate({
+                            opacity: 1,
+                        }, 500, function() {
+                            
+                        });
+
+                        // Set the selected block
+                        $('#tile-white-selected-' + response.cat + '-' + post_id).show();
+                        $('#tile-white-selected-' + response.cat + '-' + post_id).addClass("tile-white-is-selected"); 
+
+                        // Initailise the tooltips
+                        $('[data-toggle="tooltip"]').tooltip();
+
+                    });
+
+                    var seriesContainer = $(currentCat).next().find('div.series-watched-caro');
+
+                    // Check for series
+                    getData({
+                        action: "streamium_get_dynamic_series_content",
+                        postId: post_id,
+                        nonce: streamium_object.home_api_nonce
+                    },function(response){
+
+                        if (response.error) { 
+                            console.log("Error: ",response.message);
+                            return;
+                        }
+
+                        var series = response.data;
+                        var serie = '';
+
+                        if(Object.keys(series).length > 0) {
+
+                            for (var a = 0; a < Object.keys(series).length; a++) {
+
+                                var episodes = series[(a+1)];
+
+                                if(episodes.length > 0) {
+                                    
+                                    for (var i = 0; i < episodes.length; i++) { 
+                                        
+                                        serie += '<div class="tile"><div class="tile_inner" style="background-image: url(' + episodes[i].thumbnails + ');">' +
+                                            '<div class="overlay-gradient"></div>' +
+                                            '<a class="play-icon-wrap hidden-xs" href="' + episodes[i].link + '">' +
+                                            '<div class="play-icon-wrap-rel">' +
+                                            '<span class="play-icon-wrap-rel-play">' +
+                                            '<i class="fa fa-play fa-1x" aria-hidden="true"></i>' +
+                                            '</span>' +
+                                            '</div>' +
+                                            '</a>' +
+                                            '<h4><b>S' + episodes[i].seasons + ':E' + episodes[i].positions + '</b> ' + episodes[i].titles + '</h4>' +
+                                        '</div></div>';
+                                    }
+
+                                }
+
+                            }
+
+                        }
+
+                        $(currentCatWrapId).fadeIn();
+
+                        if ($(currentCatId).hasClass('slick-initialized') === false) {
+
+                            //$(currentCatWrapId).prepend('<h4>' + seriesTitle + ' Episodes</h4>');
+                            seriesContainer.html(serie);
+
+                            $(currentCatId).slick(streamiumGlobals.slickSeries);
+
+                        }
+
+                    }); // end series
+
+                }
+
+            }); // end jquery
+
+        });
+
+        $('.s3bubble-details-inner-close').on('click',function(event) {
+
+            event.preventDefault();
+            var div = $(this).parent().parent().parent();
+
+            $(".series-watched").fadeOut();
+            $(".tile-white-selected").hide();
+
+            div.animate({
+                opacity: 0,
+            }, 250, function() {
+                div.parent().animate({
+                    height: 0
+                }, 250, function() {
+
+                });
+            });
+
+        });
+
+    };
+
+    if(!streamium_object.is_tax){
+        
+        getData({
+            action: "home_api_post",
+            nonce: streamium_object.home_api_nonce
+        },function(response){
+
+            if (response.error) { 
+                console.log("Error: ",response.message);
+                return;
+            }
+
+            buildIt(response);
+
+        });
+
+    }
+
+});
+jQuery(document).ready(function($) {
+
+    var buildIt = function(response){
+
+        var tiles = response.data;
+        var count = response.count;
+
+        if(isMobile.any()){
+            streamium_object.tile_count = 2;
+        }
+
+        if (tiles.length > 0) {
+            
+            var tile = '';
+            var cat_count = 0;
+            for (i = 0; i < tiles.length; i++) {
+
+                var changeInd = (i+1);
+
+                if(i % streamium_object.tile_count === 0){
+                    tile += '<div class="container-fluid"><div class="row static-row ' + ((i === 0) ? 'static-row-first' : '') + '">';
+                    cat_count++;
+                }
+
+                // Paid
+                var html = "";
+                if(tiles[i].paid){
+                    html = tiles[i].paid.html;
+                } 
+
+                var classPush = "";
+                if(changeInd === 1 || i % (streamium_object.tile_count) === 0){
+                    classPush = "far-left";
+                }else if(changeInd % (streamium_object.tile_count) === 0){
+                    classPush = "far-right";
+                }
+
+                tile += '<div class="col-md-2 col-xs-6 tile ' + classPush + '" data-id="' + tiles[i].id + '" data-nonce="' + tiles[i].nonce + '" data-cat="tax-' + cat_count + '">' +
+                    '<div class="tile_inner tile_inner-recently" style="background-image: url(' + tiles[i].tileUrl + ');">' +
+                    html +
+                    '<div class="content">' +
+                    '<div class="overlay" style="background-image: url(' + tiles[i].tileUrlExpanded + ');">' +
+                    '<div class="overlay-gradient"></div>' +
+                    '<a class="play-icon-wrap hidden-xs" href="' + tiles[i].link + '">' +
+                    '<div class="play-icon-wrap-rel">' +
+                    '<div class="play-icon-wrap-rel-ring"></div>' +
+                    '<span class="play-icon-wrap-rel-play">' +
+                    '<i class="fa fa-play fa-1x" aria-hidden="true"></i>' +
+                    '</span>' +
+                    '</div>' +
+                    '</a>' +
+                    '<div class="overlay-meta hidden-xs">' +
+                    '<h4>' + tiles[i].title + '</h4>' +
+                    '<p>' + tiles[i].text + '</p>' +
+                    '<a data-id="' + tiles[i].id + '" data-nonce="' + tiles[i].nonce + '" data-cat="tax-' + cat_count + '" class="tile_meta_more_info recently-arrow hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="progress tile_progress"><div class="progress-bar" role="progressbar" aria-valuenow="' + tiles[i].progressBar + '" aria-valuemin="0" aria-valuemax="100" style="width:' + tiles[i].progressBar + '%"></div></div>' +
+                    '</div>';
+
+                var check = false;
+                if(isMobile.any()){
+                    if(isOdd(i)){
+                        check = true;
+                    }
+                }else{
+                    if(changeInd % (streamium_object.tile_count) === 0){
+                        check = true;
+                    }
+                }
+
+                if(check || i === (count-1)){
+                    tile += '</div></div><section class="s3bubble-details-full tax-' + cat_count + '">' + 
+                        '<div class="s3bubble-details-full-overlay"></div>' + 
+                        '<div class="container-fluid s3bubble-details-inner-content">' + 
+                            '<div class="row">' + 
+                                '<div class="col-sm-5 col-xs-5 rel">' + 
+                                    '<div class="synopis-outer">' + 
+                                        '<div class="synopis-middle">' + 
+                                            '<div class="synopis-inner">' + 
+                                                '<h2 class="synopis"></h2>' + 
+                                                '<div class="synopis content"></div>' + 
+                                            '</div>' + 
+                                        '</div>' + 
+                                    '</div>' + 
+                                '</div>' + 
+                                '<div class="col-sm-7 col-xs-7 rel">' + 
+                                    '<a class="play-icon-wrap synopis" href="#">' + 
+                                        '<div class="play-icon-wrap-rel">' + 
+                                            '<div class="play-icon-wrap-rel-ring"></div>' + 
+                                            '<span class="play-icon-wrap-rel-play">' + 
+                                                '<i class="fa fa-play fa-3x" aria-hidden="true"></i>' + 
+                                            '</span>' + 
+                                        '</div>' + 
+                                    '</a>' + 
+                                    '<a href="#" class="synopis-video-trailer streamium-btns hidden-xs">Watch Trailer</a>' + 
+                                    '<a href="#" class="s3bubble-details-inner-close"><i class="fa fa-times" aria-hidden="true"></i></a>' + 
+                                '</div>' + 
+                            '</div>' + 
+                        '</div>' + 
+                    '</section>';
+                }
+
+            }
+
+            /*if(count < streamium_object.tile_count){
+                for (c = 0; c < ((streamium_object.tile_count)-count); c++) { 
+                    tile += '<div class="tile filler"><div class="tile_inner"></div></div>';
+                }
+            }*/
+
+        }
+
+        $("#tax-watched").html(tile);
+
+        if(!isMobile.any()){
+
+            $('.tile_inner-recently').hover(function() {
+
+                if (!$(this).parent().hasClass('filler')) {
+
+                    $(this).addClass('remove-background');
+                    $(this).find('.streamium-extra-meta').hide();
+
+                    if ($(this).parent().hasClass("far-left")) {
+                        $(this).parent().nextAll().addClass("shiftLeftFirst");
+                    } else if ($(this).parent().hasClass("far-right")) {
+                        $(this).parent().prevAll().addClass("shiftRightFirst");
+                    } else {
+                        $(this).parent().nextAll().addClass("shiftRight");
+                        $(this).parent().prevAll().addClass("shiftLeft");
+                    }
+
+                    $(this).css('transform', 'scale(2)');
+
+                }
+            }, function() {
+
+                $(this).removeClass('remove-background');
+                $(this).find('.streamium-extra-meta').fadeIn();
+
+                if ($(this).parent().hasClass("far-left")) {
+                    $(this).parent().nextAll().removeClass("shiftLeftFirst");
+                } else if ($(this).parent().hasClass("far-right")) {
+                    $(this).parent().prevAll().removeClass("shiftRightFirst");
+                } else {
+                    $(this).parent().nextAll().removeClass("shiftRight");
+                    $(this).parent().prevAll().removeClass("shiftLeft");
+                }
+
+                $(this).css('transform', 'scale(1)');
+
+            });
+
+        }
+
+        var clickClass = "recently-arrow";
+        if(isMobile.any()){
+            clickClass = "tile";
+        }
+
+        $('.' + clickClass).on("click",function(event) {
+
+            event.preventDefault();
+
+            var cat = $(this).data('cat');
+            var post_id = $(this).data('id');
+            var nonce = $(this).data('nonce');
+
+            $.ajax({
+                url: streamium_object.ajax_url,
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    action: 'streamium_get_dynamic_content',
+                    cat : cat,
+                    post_id: post_id,
+                    nonce: nonce
+                },
+                success: function(response) {
+
+                    if (response.error) {
+
+                        swal({
+                            title: "Error",
+                            text: response.message,
+                            type: "info",
+                            showCancelButton: true,
+                            confirmButtonColor: "#d86c2d",
+                            confirmButtonText: "Ok, got it!",
+                            closeOnConfirm: true
+                        },
+                        function() {
+
+                        });
+
+                        return;
+
+                    }
+
+                    currentCat = "." + response.cat;
+
+                    // Populate the expanded view
+                    var twidth = $(currentCat).width();
+                    var theight = Math.floor(twidth/21*8);
+                    $(currentCat).find('h2.synopis').text(response.title);
+                    $(currentCat).find('div.synopis').html(response.content);
+                    $(currentCat).find('a.synopis').attr( "href", response.href);
+                    $(currentCat).css("background-image", "url(" + response.bgimage + ")");
+
+                    if(response.trailer === ""){
+                        $(currentCat).find('a.synopis-video-trailer').hide();
+                    }else{
+                        $(currentCat).find('a.synopis-video-trailer').fadeIn().attr( "href", response.href + "?trailer=true");
+                    }
+
+                    var vmiddle = Math.round($('.cd-main-header').height());
+                    var voff = Math.round($(currentCat).offset().top);
+                    $('html, body').animate({scrollTop: (voff-vmiddle)}, 500);
+
+                    $(currentCat).animate({
+                        height: theight
+                    }, 250, function() {
+
+                        $(currentCat + ' .s3bubble-details-inner-content').animate({
+                            opacity: 1,
+                        }, 500, function() {
+
+                        }); 
+
+                        // Initailise the tooltips
+                        $('[data-toggle="tooltip"]').tooltip();
+
+                    });
+
+                }
+
+            }); // end jquery
+
+        });
+
+        $('.s3bubble-details-inner-close').on('click',function(event) {
+
+            event.preventDefault();
+            var div = $(this).parent().parent().parent();
+            div.animate({
+                opacity: 0,
+            }, 250, function() {
+                div.parent().animate({
+                    height: 0
+                }, 250, function() {
+
+                });
+            });
+
+        });
+
+    };
+
+    if(streamium_object.is_tax){
+
+        getData({
+            action: "tax_api_post",
+            search: "all",
+            nonce: streamium_object.tax_api_nonce
+        },function(response){
+
+            if (response.error) { 
+                console.log("Error: ",response.message);
+                return;
+            }
+
+            buildIt(response);
+
+        });
+
+        $(".tax-search-filter").on("click",function(){
+
+            event.preventDefault();
+
+            // Get the search type
+            var query = $(this).data("type");
+
+            getData({
+                action: "tax_api_post",
+                search: query,
+                nonce: streamium_object.tax_api_nonce
+            },function(response){
+
+                if (response.error) { 
+                    console.log("Error: ",response.message);
+                    return;
+                }
+
+                buildIt(response);
+
+            });
+
+        });
+
+    }
 
 });
 jQuery(document).ready(function($){
@@ -5571,7 +5908,7 @@ jQuery(document).ready(function($) {
 				poster : video_post_object.poster,
 			},
 			options : {
-				fluid : (video_post_object.codes.length === 1) ? true : false,
+				fluid : true,
 				vpaid : video_post_object.vpaid
 			},
 			meta : {
@@ -5600,7 +5937,7 @@ jQuery(document).ready(function($) {
 					poster : video_post_object.poster,
 				},
 				options : {
-					fluid : (video_post_object.codes.length === 1) ? true : false
+					fluid : true
 				},
 				meta : {
 	                backButton: true,
@@ -5654,7 +5991,7 @@ jQuery(document).ready(function($) {
 					poster : video_post_object.poster,
 				},
 				options : {
-					fluid : (video_post_object.codes.length === 1) ? true : false,
+					fluid : true,
 					vpaid : video_post_object.vpaid
 				},
 				meta : {

@@ -19,14 +19,18 @@ function home_api_post() {
         );     
         die(); 
 
-    }    
-
-	// Get params
-	$userId = get_current_user_id();
+    }
 
     // Get options
     $setType = get_theme_mod('streamium_main_post_type', 'movie');
-    $setTax = get_theme_mod('streamium_main_tax', 'movies');
+    $setTax = get_theme_mod('streamium_main_tax', 'movies');    
+
+	// Get params
+	$userId = get_current_user_id();
+    if(isset($_REQUEST['query']) && $_REQUEST['query'] != ""){
+        $setTax = $_REQUEST['query']['taxonomies'][1];
+        $rewrite = (get_theme_mod( 'streamium_section_input_taxonomy_' . $setTax )) ? get_theme_mod( 'streamium_section_input_taxonomy_' . $setTax ) : $setTax; 
+    }
 
     $args = array(
       'parent' => 0,
@@ -38,6 +42,7 @@ function home_api_post() {
 
     foreach ($categories as $category) :
 
+        $dataPosts = [];
         $typeTitle =  get_theme_mod('streamium_section_input_posttype_' . $setType, $setType);
         $taxUrl =  get_theme_mod('streamium_section_input_taxonomy_' . $setTax, $setTax);
 
@@ -56,48 +61,56 @@ function home_api_post() {
 
         if ($loop->have_posts()):
 
-            $dataPosts = [];
             while ($loop->have_posts()) : $loop->the_post();
+                
+                // Add some placeholder images
+                $image  = "http://via.placeholder.com/300x169";
+                $imageExpanded   = "http://via.placeholder.com/500x281";
+
                 if (has_post_thumbnail()) : // thumbnail check
-                    $image  = wp_get_attachment_image_src(get_post_thumbnail_id(), 'streamium-video-tile');
-                    $imageExpanded   = wp_get_attachment_image_src(get_post_thumbnail_id(), 'streamium-video-tile-expanded');
-                    $nonce = wp_create_nonce('streamium_likes_nonce');
-                    $trimexcerpt = !empty(get_the_excerpt()) ? get_the_excerpt() : get_the_content();
 
-                    $paidTileText = false;
-                    if($loop->post->premium){
-                        $paidTileText = str_replace(array("_"), " ", $loop->post->plans[0]);
-                    }
-                    if (function_exists('is_protected_by_s2member')) {
-                        $check = is_post_protected_by_s2member(get_the_ID());
-                        if($check) { 
-                            $ccaps = get_post_meta(get_the_ID(), 's2member_ccaps_req', true);
-                            if(!empty($ccaps)){
-                                $paidTileText = implode(",", $ccaps);
-                            }else{
-                                $paidTileText = implode(",", $check);
-                            }
-                        }
-                    }
-
-                    $progressBar = false;
-                    if(get_theme_mod( 'streamium_enable_premium' )) {
-                        $progressBar = get_post_meta( get_the_ID(), 'user_' . $userId, true );
-                    }
-                    $dataPosts[] = array(
-                        'id' => get_the_ID(),
-                        'post' => $loop->post,
-                        'tileUrl' => esc_url($image[0]),
-                        'tileUrlExpanded' => esc_url($imageExpanded[0]),
-                        'link' => get_the_permalink(),
-                        'title' => get_the_title(),
-                        'text' => wp_trim_words($trimexcerpt, $num_words = 18, $more = '...'),
-                        'paidTileText' => $paidTileText,
-                        'progressBar' => (int)$progressBar,
-                        'nonce' => $nonce
-                    );
+                    $image  = wp_get_attachment_image_url(get_post_thumbnail_id(), 'streamium-video-tile');
+                    $imageExpanded   = wp_get_attachment_image_url(get_post_thumbnail_id(), 'streamium-video-tile-expanded');
 
                 endif;
+
+                // This has been removed
+                $trimexcerpt = !empty(get_the_excerpt()) ? get_the_excerpt() : get_the_content();
+
+                $paidTileText = false;
+                if($loop->post->premium){
+                    $paidTileText = str_replace(array("_"), " ", $loop->post->plans[0]);
+                }
+                if (function_exists('is_protected_by_s2member')) {
+                    $check = is_post_protected_by_s2member(get_the_ID());
+                    if($check) { 
+                        $ccaps = get_post_meta(get_the_ID(), 's2member_ccaps_req', true);
+                        if(!empty($ccaps)){
+                            $paidTileText = implode(",", $ccaps);
+                        }else{
+                            $paidTileText = implode(",", $check);
+                        }
+                    }
+                }
+
+                $progressBar = false;
+                if(get_theme_mod( 'streamium_enable_premium' )) {
+                    $progressBar = get_post_meta( get_the_ID(), 'user_' . $userId, true );
+                }
+                $dataPosts[] = array(
+                    'id' => get_the_ID(),
+                    'post' => $loop->post,
+                    'tileUrl' => esc_url($image),
+                    'tileUrlExpanded' => esc_url($imageExpanded),
+                    'link' => get_the_permalink(),
+                    'title' => get_the_title(),
+                    'text' => wp_trim_words($trimexcerpt, $num_words = 18, $more = '...'),
+                    'paidTileText' => $paidTileText,
+                    'progressBar' => (int)$progressBar,
+                    'reviews' => get_streamium_likes(get_the_ID()),
+                    'nonce' => wp_create_nonce('streamium_likes_nonce')
+                );
+
             endwhile;
         endif;
         wp_reset_query();

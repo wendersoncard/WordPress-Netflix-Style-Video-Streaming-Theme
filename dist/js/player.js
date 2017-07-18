@@ -12,7 +12,7 @@ jQuery(document).ready(function($) {
 				poster : video_post_object.poster,
 			},
 			options : {
-				fluid : (video_post_object.codes.length === 1) ? true : false,
+				fluid : true,
 				vpaid : video_post_object.vpaid
 			},
 			meta : {
@@ -41,7 +41,7 @@ jQuery(document).ready(function($) {
 					poster : video_post_object.poster,
 				},
 				options : {
-					fluid : (video_post_object.codes.length === 1) ? true : false
+					fluid : true
 				},
 				meta : {
 	                backButton: true,
@@ -95,7 +95,7 @@ jQuery(document).ready(function($) {
 					poster : video_post_object.poster,
 				},
 				options : {
-					fluid : (video_post_object.codes.length === 1) ? true : false,
+					fluid : true,
 					vpaid : video_post_object.vpaid
 				},
 				meta : {

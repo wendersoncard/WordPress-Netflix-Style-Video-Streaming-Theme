@@ -6,7 +6,7 @@
 
 		$args = array(
 		    'posts_per_page' => (int)get_theme_mod( 'streamium_global_options_homepage_desktop' ),
-		    'post_type' => array('movie', 'tv','sport','kid','stream'),
+		    'post_type' => $setType, //array('movie', 'tv','sport','kid','stream'),
 		    'meta_key' => 'streamium_slider_featured_checkbox_value',
 			'meta_value' => 'yes'
 		);
@@ -25,42 +25,11 @@
 		        $content = (wp_is_mobile()) ? get_the_excerpt() : get_the_content();
 		?>
 		<div style="background-image: url(<?php echo esc_url($image[0]); ?>);">
+		
 			<?php if ( ! empty( $streamiumFeaturedVideo ) && (!wp_is_mobile()) && ($sliderPostCount < 1)  && get_theme_mod( 'streamium_enable_premium' ) ) : ?>
-				<div class="streamium-featured-background" id="streamium-featured-background-<?php echo get_the_ID(); ?>"></div>
-				<script type="text/javascript">
-					document.addEventListener("DOMContentLoaded", function(event) { 
-
-						// Self hosted
-				    	s3bubble("streamium-featured-background-<?php echo get_the_ID(); ?>").video({
-				            codes : "<?php echo $streamiumFeaturedVideo; ?>",
-							source : {
-								poster: "<?php echo esc_url($image[0]); ?>"
-							},
-							options : {
-								background: true,
-								muted : true,
-								loop : true,
-								autoplay : true,
-								controls: false,
-								vpaid: ""
-							}, 
-							meta: {
-							    skipButtons: false, 
-							    showSocial: false, 
-							    backButton: false, 
-							    subTitle: "", 
-							    title: "", 
-							    para: ""
-							}
-				        }, function(player) {
-
-							player.play();
-
-				        });
-
-					});
-				</script>
+				<div id="streamium-featured-background-<?php echo get_the_ID(); ?>" class="s3bubble streamium-featured-background" data-setup='{"codes": "<?php echo $streamiumFeaturedVideo; ?>","options":{"background":true,"muted":true,"loop":true,"autoplay":true,"controls":false,"vpaid":""},"meta":{"skipButtons":false,"showSocial":false,"backButton":false,"subTitle": "","title": "","para": ""}}'></div>
 			<?php endif; ?>
+
 			<article class="content-overlay">
 				<div class="content-overlay-grad"></div>
 				<div class="container-fluid rel">

@@ -9,7 +9,7 @@ if (!function_exists('streamium_theme_setup')) {
 
         // Create aspects based on average
         $averageBrowserWidth = 1366;
-        $width = round($averageBrowserWidth/6); // sets up a average width based on tiles currently 5 
+        $width = round($averageBrowserWidth/s3bubble_tile_count()); // sets up a average width based on tiles currently 5 
         $height = round($width/16*9);
 
         add_theme_support('post-thumbnails');
@@ -52,12 +52,20 @@ function s3bubble_cache_version() {
     return 13;
 }
 
+function s3bubble_tile_count() {
+    return 6;
+}
+
 /*-----------------------------------------------------------------------------------*/
 /*	Register javascript and css
 /*-----------------------------------------------------------------------------------*/
 if (!function_exists('streamium_enqueue_scripts')) {
     function streamium_enqueue_scripts()
     {     
+
+        global $wp_query;
+        $query = $wp_query->get_queried_object(); 
+        //$tax = isset($query->taxonomies[1]) ? $query->taxonomies[1] : "";
 
         /* Register styles -----------------------------------------------------*/
         wp_enqueue_style('streamium-styles', get_stylesheet_uri());
@@ -73,7 +81,11 @@ if (!function_exists('streamium_enqueue_scripts')) {
                 'recently_watched_api_nonce' => wp_create_nonce("recently_watched_api_nonce"),
                 'custom_api_nonce' => wp_create_nonce("custom_api_nonce"),
                 'home_api_nonce' => wp_create_nonce("home_api_nonce"),
-                'tile_count' => 6
+                'tax_api_nonce' => wp_create_nonce("tax_api_nonce"),
+                'query' => $query,
+                'search' => isset($_GET['sort']) ? $_GET['sort'] : 'all',
+                'is_tax' => is_tax(),
+                'tile_count' => s3bubble_tile_count()
             )
         );
 
