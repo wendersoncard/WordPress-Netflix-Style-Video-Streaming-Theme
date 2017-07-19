@@ -22,7 +22,7 @@
 				$streamiumFeaturedVideo = get_post_meta( get_the_ID(), 'streamium_featured_video_meta_box_text', true );
 				$nonce = wp_create_nonce( 'streamium_likes_nonce' );
 		        $link = admin_url('admin-ajax.php?action=streamium_likes&post_id='.get_the_ID().'&nonce='.$nonce);
-		        $content = (wp_is_mobile()) ? get_the_excerpt() : get_the_content();
+		        $content = (wp_is_mobile()) ? wp_trim_words( get_the_content(), $num_words = 20, $more = '... ' ) : get_the_content();
 		?>
 
 		<?php if ( ! empty( $streamiumFeaturedVideo ) && (!wp_is_mobile()) && ($sliderPostCount < 1)  && get_theme_mod( 'streamium_enable_premium' ) ) : ?>
@@ -90,9 +90,9 @@
 									<div class="synopis-middle">
 										<div class="synopis-inner">
 											<h2><?php echo (isset($title) ? $title : __( 'No Title', 'streamium' )); ?></h2>
-											<div class="synopis content hidden-xs">
+											<div class="synopis content">
 												<?php echo $content; ?>
-												<ul>
+												<ul class="hidden-xs">
 													<?php do_action('synopis_multi_meta'); ?>
 												</ul>
 											</div>
