@@ -522,7 +522,7 @@ class Streamium_Customize
       <!--Customizer CSS-->
       <style type="text/css">
               @import url('<?php echo $fontUrl; ?>');
-              .h1, .h2, .h3, h1, h2, h3, h4, .cd-logo {
+              html, body {
                 font-family: '<?php echo $fontFamily; ?>', sans-serif !important;
               }
 
@@ -532,20 +532,19 @@ class Streamium_Customize
            <?php self::generate_css('.video-header h3, .see-all', 'color', 'streamium_carousel_heading_color', '', ' !important'); ?>
 
            /* link and background colors */
-           <?php self::generate_css('.page a, a:focus, a:hover, .cd-main-header .cd-logo, .play-icon-wrap i, .cd-primary-nav .cd-secondary-nav a:hover, .cd-primary-nav>li>a:hover, .cd-primary-nav .cd-nav-gallery .cd-nav-item h3, .cd-primary-nav .cd-nav-icons .cd-nav-item h3, .woocommerce-message:before, .woocommerce-info::before', 'color', 'link_textcolor', '', '', true, '#dd3333'); 
+           <?php self::generate_css('.page a, a:focus, a:hover, .cd-main-header .cd-logo, .play-icon-wrap i, .cd-primary-nav .cd-secondary-nav a:hover, .cd-primary-nav>li>a:hover, .cd-primary-nav .cd-nav-gallery .cd-nav-item h3, .cd-primary-nav .cd-nav-icons .cd-nav-item h3, .woocommerce-message:before, .woocommerce-info::before, .carousels .overlay .overlay-meta .top-meta-watched, .static-row .overlay .overlay-meta .top-meta-watched', 'color', 'link_textcolor', '', '', true, '#dd3333'); 
            ?>
 
            <?php self::generate_css('#place_order, .pagination a:hover, .pagination .current, .slick-dots li.slick-active button, .progress-bar, .button, .cd-overlay, .has-children > a:hover::before, .has-children > a:hover::after, .go-back a:hover::before, .go-back a:hover::after, #submit, #place_order, .checkout-button, .woocommerce-thankyou-order-received, .add_to_cart_button, .confirm, .streamium-btns, .streamium-extra-meta', 'background-color', 'link_textcolor', '', ' !important', true, '#dd3333'); 
            ?>
 
-           <?php if (streamium_get_device('device') == 'desktop') :
+           <?php if (!wp_is_mobile()) :
               self::generate_css('.synopis-inner .content', 'font-size', 'streamium_synopsis_para', '', ' !important');
             endif; ?>
 
            <?php self::generate_css('.post-type-archive, .woocommerce-cart, .woocommerce-account, .woocommerce-checkout, .woocommerce-page', 'background-image', 'streamium_plans_bg', 'url(', ')'); ?>
            <?php self::generate_css('body', 'background-image', 'streamium_global_bg', 'url(', ') !important'); ?>
 
-           <?php self::generate_css('.tile', 'border-color', 'link_textcolor', '', ' !important'); ?>
            <?php self::generate_css('.woocommerce-message, .woocommerce-info', 'border-top-color', 'link_textcolor', '', ' !important'); ?>
 
            /* Override media player brand colors */

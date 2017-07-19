@@ -63,6 +63,25 @@ function sb_register_required_plugins() {
     tgmpa( $plugins, $config );
 }
 
+/**
+ * Make sure the self hosted plugin is not installed
+ */
+function streamium_check_for_active_plugins() {
+
+  function streamium_check_plugin_isnot_active_notice__error() {
+
+      $class = 'notice notice-error notice-demo-data';
+      $message = __( '!IMPORTANT you have the S3Bubble self hosted plugin installed this is not needed with this theme all functionality is built in please remove the S3Bubble AWS Self Hosted Plugin. ', 'streamium' );
+
+      printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ));
+  }
+  if ( is_plugin_active( 's3bubble-amazon-web-services-oembed-media-streaming-support/s3bubble-oembed.php' ) ) {
+    add_action( 'admin_notices', 'streamium_check_plugin_isnot_active_notice__error' );
+  }
+
+}
+add_action( 'admin_init', 'streamium_check_for_active_plugins' );
+
 
 /*
 * Adds a notice to the admin to install demo data
@@ -72,7 +91,7 @@ function sb_register_required_plugins() {
 function streamium_dummy_xml_admin_notice__error() {
     $class = 'notice notice-info notice-demo-data is-dismissible';
     $pluginUrl = admin_url( 'plugin-install.php?s=WooCommerce&tab=search&type=term' );
-    $message = __( 'Get setup quickly by installing our demo data. ', 'sample-text-domain' );
+    $message = __( 'Get setup quickly by installing our demo data. ', 'streamium' );
 
     printf( '<div class="%1$s"><p>%2$s <a id="demo-data" href="%3$s">Install demo data</a></p></div>', esc_attr( $class ), esc_html( $message ), admin_url('themes.php?page=streamium_demo_installer'));
 }
@@ -151,31 +170,6 @@ function streamium_connection_checks() {
 
 add_action( 'wp_ajax_streamium_connection_checks', 'streamium_connection_checks' );
 
-
-/**
- * Is mobile check for theme styling
- *
- * @return bool
- * @author  @sameast
- */
-function streamium_extra_body_class( $classes ) {
-
- 	// include classes
- 	$detect = new Mobile_Detect;
-    if ( $detect->isTablet() ) {
- 		$classes[] = 'streamium-tablet';
-	}else if( $detect->isMobile() ){
-	 	$classes[] = 'streamium-mobile';
-	}else{
-		$classes[] = 'streamium-desktop';
-	}
-    return $classes;
-
-}
-
-add_filter( 'body_class','streamium_extra_body_class' );
-
-
 /**
  * Is mobile check for theme styling
  *
@@ -185,13 +179,10 @@ add_filter( 'body_class','streamium_extra_body_class' );
 function streamium_get_device($type){
 
 	// include classes
- 	$detect = new Mobile_Detect;
-    if ( $detect->isTablet() ) {
- 		$device = array('count' => 4, 'class' => 'col-xs-3', 'device' => 'tablet');
-	}else if( $detect->isMobile() ){
-	 	$device = array('count' => 2, 'class' => 'col-xs-6', 'device' => 'mobile');
+ 	if( wp_is_mobile() ){
+	 	$device = array('count' => 2);
 	}else{
-		$device = array('count' => 5, 'class' => 'col-xs-5ths', 'device' => 'desktop');
+		$device = array('count' => 6);
 	}
 	return $device[$type];
 

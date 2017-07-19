@@ -21,8 +21,13 @@
 		}
 
 		if (in_array($type, array('movie', 'tv','sport','kid'))) {
+
+			get_template_part( 'header', 'video');
+			get_template_part( 'templates/content', 'single' );
+			get_template_part( 'footer', 'video' );
+
 		    
-		    $episodes = get_post_meta(get_the_ID(), 'repeatable_fields' , true);
+		    /*$episodes = get_post_meta(get_the_ID(), 'repeatable_fields' , true);
 			if(!empty($episodes)) :
 
 				get_header();
@@ -35,7 +40,7 @@
 				get_template_part( 'templates/content', 'single' );
 				get_template_part( 'footer', 'video' );
 
-			endif;
+			endif;*/
 
 		}
 

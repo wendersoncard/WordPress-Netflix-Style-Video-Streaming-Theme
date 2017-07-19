@@ -1,4 +1,25 @@
 <?php get_header(); ?>
+
+	<header class="cd-main-header fixed">
+
+		<?php if ( get_theme_mod( 'streamium_logo' ) ) : ?>
+
+		    <a class="cd-logo" href="<?php echo esc_url( home_url('/') ); ?>"><img src='<?php echo esc_url( get_theme_mod( 'streamium_logo' ) ); ?>' alt='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>'></a>
+
+		<?php else : ?>
+
+		    <a class="cd-logo" href="<?php echo esc_url( home_url('/') ); ?>"><?php bloginfo( 'name' ); ?></a>
+
+		<?php endif; ?>
+
+		<ul class="cd-header-buttons">
+			<li><a class="cd-search-trigger" href="#cd-search"><?php _e( 'Search', 'streamium' ); ?><span></span></a></li>
+			<li><a class="cd-nav-trigger" href="#cd-primary-nav"><?php _e( 'Menu', 'streamium' ); ?><span></span></a></li>
+		</ul> <!-- cd-header-buttons -->
+		<?php get_search_form(); ?>
+		
+	</header>
+
 	<main class="cd-main-content">
 
 		<section class="categories">
@@ -104,14 +125,8 @@
 						$nonce = wp_create_nonce( 'streamium_likes_nonce' );
 						$trimexcerpt = !empty(get_the_excerpt()) ? get_the_excerpt() : get_the_content(); 
 
-						$class = "";
-						if($count % 6 == 0){
-							$class = "far-left";
-						}elseif($count % 5 == 0){
-							$class = "far-right";
-						}   
 						?>
-						<div class="<?php echo streamium_get_device('class'); ?> tile <?php echo $class; ?>" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>">
+						<div class="col-md-2 col-xs-6 tile" data-id="<?php the_ID(); ?>" data-nonce="<?php echo $nonce; ?>" data-cat="static-<?php echo $cat_count; ?>">
 							
 							<div class="tile_inner" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
 
@@ -175,13 +190,15 @@
 					<?php $cat_count++; } ?>
 					<?php endwhile; ?>
 				</div><!--/.row-->
-				<div class="row">
-					<div class="col-sm-12">
-						<?php if (function_exists("streamium_pagination")) {
-						    streamium_pagination();
-						} ?>
-					</div>
-				</div><!--/.row-->
+				
+				<?php if (function_exists("streamium_pagination")) : ?>
+					<div class="row">
+						<div class="col-sm-12">
+				    		<?php streamium_pagination(); ?>
+				    	</div>
+					</div><!--/.row-->
+				<?php endif; ?>
+
 			</div><!--/.container-->
 			<?php else : ?>
 				<?php get_template_part( 'content', 'none' ); ?>
@@ -189,5 +206,7 @@
 		</section><!--/.videos-->
 
 		<div class="main-spacer"></div>
+
+	</main><!--/.main content-->
 
 <?php get_footer(); ?>
