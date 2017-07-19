@@ -372,7 +372,7 @@ function getMovieData(data,callback){
                                 
                                 serie += '<div class="tile"><div class="tile_inner" style="background-image: url(' + episodes[i].thumbnails + ');">' +
                                     '<div class="overlay-gradient"></div>' +
-                                    '<a class="play-icon-wrap hidden-xs" href="' + episodes[i].link + '">' +
+                                    '<a class="play-icon-wrap hidden-xs" href="' + episodes[i].link + '?v=' + (episodes[i].positions-1) + '">' +
                                     '<div class="play-icon-wrap-rel">' +
                                     '<span class="play-icon-wrap-rel-play">' +
                                     '<i class="fa fa-play fa-1x" aria-hidden="true"></i>' +
@@ -3219,7 +3219,7 @@ jQuery(document).ready(function($) {
                     for (c = 0; c < ((streamium_object.tile_count)-count); c++) { 
                         tile += '<div class="tile filler"><div class="tile_inner"></div></div>';
                     }
-                }
+                } 
 
                 $("#custom-watched").append('<section class="videos"><div class="container-fluid"><div class="row"><div class="col-sm-12"><div class="video-header"><h3>' + taxTitle + '</h3><a class="see-all" href="' + link + '">View all</a></div></div></div><div class="carousels" id="custom-slick-' + a + '">' + tile + '</div></div></section>' + buildExpandedTemplate(type));
                 
@@ -5583,6 +5583,7 @@ jQuery(document).ready(function($) {
 			// Self hosted
 	    	s3bubble("s3bubble-" + video_post_object.post_id).video({
 	            codes : video_post_object.codes,
+	            setIndex : parseInt((video_post_object.skip)),
 				startTime : video_post_object.percentage,
 				source : {
 					poster : video_post_object.poster,
@@ -5628,18 +5629,6 @@ jQuery(document).ready(function($) {
 				    }); // end jquery 
 
 				}());
-
-				//player.play();
-				$('.episodes a').on('click',function(){
-
-					$("html, body").animate({ scrollTop: 0 }, "slow");
-					$('.episodes a').removeClass('selected');
-					var ind = $(this).data('code');
-					$(this).addClass('selected');
-					player.playlistSkip(ind);
-					return false;
-
-				});
 
 	        });
 

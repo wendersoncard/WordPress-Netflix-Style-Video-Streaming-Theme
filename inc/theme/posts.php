@@ -79,6 +79,7 @@ function streamium_single_video_scripts() {
                 'youtube' => $youtube,
                 'vpaid' => $globalAdvertisements,
                 'poster' => esc_url($poster[0]),
+                'skip' => isset($_GET['v']) ? $_GET['v'] : 0,
                 'nonce' => $nonce
             )
         ); 

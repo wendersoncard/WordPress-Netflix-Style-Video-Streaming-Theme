@@ -90,6 +90,7 @@ jQuery(document).ready(function($) {
 			// Self hosted
 	    	s3bubble("s3bubble-" + video_post_object.post_id).video({
 	            codes : video_post_object.codes,
+	            setIndex : parseInt((video_post_object.skip)),
 				startTime : video_post_object.percentage,
 				source : {
 					poster : video_post_object.poster,
@@ -135,18 +136,6 @@ jQuery(document).ready(function($) {
 				    }); // end jquery 
 
 				}());
-
-				//player.play();
-				$('.episodes a').on('click',function(){
-
-					$("html, body").animate({ scrollTop: 0 }, "slow");
-					$('.episodes a').removeClass('selected');
-					var ind = $(this).data('code');
-					$(this).addClass('selected');
-					player.playlistSkip(ind);
-					return false;
-
-				});
 
 	        });
 

@@ -29,7 +29,7 @@ jQuery(document).ready(function($) {
                     for (c = 0; c < ((streamium_object.tile_count)-count); c++) { 
                         tile += '<div class="tile filler"><div class="tile_inner"></div></div>';
                     }
-                }
+                } 
 
                 $("#custom-watched").append('<section class="videos"><div class="container-fluid"><div class="row"><div class="col-sm-12"><div class="video-header"><h3>' + taxTitle + '</h3><a class="see-all" href="' + link + '">View all</a></div></div></div><div class="carousels" id="custom-slick-' + a + '">' + tile + '</div></div></section>' + buildExpandedTemplate(type));
                 

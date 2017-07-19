@@ -372,7 +372,7 @@ function getMovieData(data,callback){
                                 
                                 serie += '<div class="tile"><div class="tile_inner" style="background-image: url(' + episodes[i].thumbnails + ');">' +
                                     '<div class="overlay-gradient"></div>' +
-                                    '<a class="play-icon-wrap hidden-xs" href="' + episodes[i].link + '">' +
+                                    '<a class="play-icon-wrap hidden-xs" href="' + episodes[i].link + '?v=' + (episodes[i].positions-1) + '">' +
                                     '<div class="play-icon-wrap-rel">' +
                                     '<span class="play-icon-wrap-rel-play">' +
                                     '<i class="fa fa-play fa-1x" aria-hidden="true"></i>' +
