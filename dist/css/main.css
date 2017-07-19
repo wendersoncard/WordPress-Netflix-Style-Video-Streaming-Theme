@@ -123,7 +123,7 @@ a {
 }
 
 .content-overlay-grad {
-    background: #000;
+    background: rgba(10, 10, 10, 0.8);
     width: 40%;
     position: absolute;
     top: 0;
@@ -133,11 +133,11 @@ a {
 .content-overlay-grad::before {
     content: '';
     position: absolute;
-    background-image: -webkit-gradient(linear,left top,right top,from(#000),to(transparent));
-    background-image: -webkit-linear-gradient(left,#000,transparent);
-    background-image: -moz-linear-gradient(left,#000,transparent);
-    background-image: -o-linear-gradient(left,#000,transparent);
-    background-image: linear-gradient(to right,#000,transparent);
+    background-image: -webkit-gradient(linear,left top,right top,from(rgba(10, 10, 10, 0.8)),to(transparent));
+    background-image: -webkit-linear-gradient(left,rgba(10, 10, 10, 0.8),transparent);
+    background-image: -moz-linear-gradient(left,rgba(10, 10, 10, 0.8),transparent);
+    background-image: -o-linear-gradient(left,rgba(10, 10, 10, 0.8),transparent);
+    background-image: linear-gradient(to right,rgba(10, 10, 10, 0.8),transparent);
     top: 0;
     bottom: 0;
     left: 100%;
@@ -145,7 +145,7 @@ a {
 }
 
 .s3bubble-details-full-overlay {
-    background: #000;
+    background: rgba(10, 10, 10, 1);
     width: 40%;
     position: absolute;
     top: 0;
@@ -155,11 +155,11 @@ a {
 .s3bubble-details-full-overlay::before {
     content: '';
     position: absolute;
-    background-image: -webkit-gradient(linear,left top,right top,from(#000),to(transparent));
-    background-image: -webkit-linear-gradient(left,#000,transparent);
-    background-image: -moz-linear-gradient(left,#000,transparent);
-    background-image: -o-linear-gradient(left,#000,transparent);
-    background-image: linear-gradient(to right,#000,transparent);
+    background-image: -webkit-gradient(linear,left top,right top,from(rgba(10, 10, 10, 1)),to(transparent));
+    background-image: -webkit-linear-gradient(left,rgba(10, 10, 10, 1),transparent);
+    background-image: -moz-linear-gradient(left,rgba(10, 10, 10, 1),transparent);
+    background-image: -o-linear-gradient(left,rgba(10, 10, 10, 1),transparent);
+    background-image: linear-gradient(to right,rgba(10, 10, 10, 1),transparent);
     top: 0;
     bottom: 0;
     left: 100%;
@@ -211,9 +211,7 @@ a {
 }
 
 .content-overlay .synopis-inner div.content {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     color: #999;
-    font-weight: 400;
     line-height: 1.35;
     width: 100%;
 }
@@ -359,7 +357,6 @@ a {
 
 .video-header .see-all {
     float: right;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     color: #999;
     font-weight: 400;
     line-height: 1.35;
@@ -621,7 +618,6 @@ a {
 }
 
 .s3bubble-details-full .synopis-inner div.content {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     color: #999;
     line-height: 1.3;
 }

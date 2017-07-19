@@ -49,7 +49,7 @@ add_action('after_setup_theme', 'streamium_theme_setup');
 /*  Needed when updating
 /*-----------------------------------------------------------------------------------*/
 function s3bubble_cache_version() {
-    return 13;
+    return 14;
 }
 
 function s3bubble_tile_count() {

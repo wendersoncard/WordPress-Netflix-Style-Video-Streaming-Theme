@@ -7293,7 +7293,7 @@ body::after {
   position: absolute;
   top: 0;
   height: 100%;
-  width: 40px;
+  width: 45px;
   margin: 0;
   z-index: 1;
   font-size: 0;
@@ -7820,6 +7820,17 @@ body::after {
     right: 10px;
 }
 
+.static-row .overlay .overlay-meta .top-meta-watched {
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    font-size: 1vw;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: block;
+}
+
 .static-row .overlay .overlay-meta h4 {
     margin: 0;
     font-size: 1.4vw;
@@ -7831,7 +7842,7 @@ body::after {
     width: 100%;
     overflow: hidden;
     text-align: center;
-}
+} 
 
 .static-row .overlay .overlay-meta p {
     display: none;
@@ -7839,6 +7850,20 @@ body::after {
     color: #fff;
     font-size: 1vw;
     line-height: 1.3;
+}
+
+.static-row .overlay .overlay-meta .top-meta-reviews {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    margin: 0;
+    font-size: .8vw;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: 1px solid;
+    padding: 3px 5px;
 }
 
 .static-row .overlay .overlay-meta a {
@@ -8092,10 +8117,6 @@ Main components
     height: 50px;
     z-index: 3;
     width: 100%;
-}
-
-.home .cd-main-header {
-    background: rgba(20, 20, 20, 0.7);
 }
 
 .home .cd-main-header.fixed {
@@ -11755,7 +11776,7 @@ a {
 }
 
 .content-overlay-grad {
-    background: #000;
+    background: rgba(10, 10, 10, 0.8);
     width: 40%;
     position: absolute;
     top: 0;
@@ -11765,11 +11786,11 @@ a {
 .content-overlay-grad::before {
     content: '';
     position: absolute;
-    background-image: -webkit-gradient(linear,left top,right top,from(#000),to(transparent));
-    background-image: -webkit-linear-gradient(left,#000,transparent);
-    background-image: -moz-linear-gradient(left,#000,transparent);
-    background-image: -o-linear-gradient(left,#000,transparent);
-    background-image: linear-gradient(to right,#000,transparent);
+    background-image: -webkit-gradient(linear,left top,right top,from(rgba(10, 10, 10, 0.8)),to(transparent));
+    background-image: -webkit-linear-gradient(left,rgba(10, 10, 10, 0.8),transparent);
+    background-image: -moz-linear-gradient(left,rgba(10, 10, 10, 0.8),transparent);
+    background-image: -o-linear-gradient(left,rgba(10, 10, 10, 0.8),transparent);
+    background-image: linear-gradient(to right,rgba(10, 10, 10, 0.8),transparent);
     top: 0;
     bottom: 0;
     left: 100%;
@@ -11777,7 +11798,7 @@ a {
 }
 
 .s3bubble-details-full-overlay {
-    background: #000;
+    background: rgba(10, 10, 10, 1);
     width: 40%;
     position: absolute;
     top: 0;
@@ -11787,11 +11808,11 @@ a {
 .s3bubble-details-full-overlay::before {
     content: '';
     position: absolute;
-    background-image: -webkit-gradient(linear,left top,right top,from(#000),to(transparent));
-    background-image: -webkit-linear-gradient(left,#000,transparent);
-    background-image: -moz-linear-gradient(left,#000,transparent);
-    background-image: -o-linear-gradient(left,#000,transparent);
-    background-image: linear-gradient(to right,#000,transparent);
+    background-image: -webkit-gradient(linear,left top,right top,from(rgba(10, 10, 10, 1)),to(transparent));
+    background-image: -webkit-linear-gradient(left,rgba(10, 10, 10, 1),transparent);
+    background-image: -moz-linear-gradient(left,rgba(10, 10, 10, 1),transparent);
+    background-image: -o-linear-gradient(left,rgba(10, 10, 10, 1),transparent);
+    background-image: linear-gradient(to right,rgba(10, 10, 10, 1),transparent);
     top: 0;
     bottom: 0;
     left: 100%;
@@ -11843,9 +11864,7 @@ a {
 }
 
 .content-overlay .synopis-inner div.content {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     color: #999;
-    font-weight: 400;
     line-height: 1.35;
     width: 100%;
 }
@@ -11991,7 +12010,6 @@ a {
 
 .video-header .see-all {
     float: right;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     color: #999;
     font-weight: 400;
     line-height: 1.35;
@@ -12253,7 +12271,6 @@ a {
 }
 
 .s3bubble-details-full .synopis-inner div.content {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     color: #999;
     line-height: 1.3;
 }
