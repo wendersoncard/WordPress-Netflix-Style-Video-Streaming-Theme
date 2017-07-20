@@ -402,7 +402,7 @@ function getMovieData(data,callback){
 
                     }
 
-                } 
+                }   
 
                 jQuery(currentCatWrapId).fadeIn();
                 jQuery(currentCat).append('<h4 class="series-watched-episode-title">' + seriesTitle + ' Episodes</h4>').fadeIn();
