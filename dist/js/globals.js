@@ -220,7 +220,8 @@ function buildExpandedTemplate(type){
                                     '<div class="synopis content"></div>' + 
                                 '</div>' + 
                             '</div>' + 
-                        '</div>' + 
+                        '</div>' +
+                        '<h4 class="series-watched-episode-title"></h4>' +  
                     '</div>' + 
                     '<div class="col-sm-7 col-xs-7 rel">' + 
                         '<a class="play-icon-wrap synopis" href="#">' + 
@@ -263,6 +264,9 @@ function getData(data,callback){
 
 function getMovieData(data,callback){
 
+    // Clear up
+    jQuery(".series-watched-episode-title").empty();
+
     jQuery.ajax({
         url: streamium_object.ajax_url,
         type: 'post',
@@ -301,7 +305,6 @@ function getMovieData(data,callback){
             var currentCatWrapId = "#series-watched-" + response.cat;
             var tileSelected = '#tile-white-selected-' + response.cat + '-' + data.post_id;
             var seriesTitle = response.title;
-            
  
             // Populate the expanded view
             var twidth = jQuery(currentCat).width();
@@ -310,7 +313,6 @@ function getMovieData(data,callback){
             jQuery(currentCat).find('div.synopis').html(content);
             jQuery(currentCat).find('a.synopis').attr( "href", response.href);
             jQuery(currentCat).css("background-image", "url(" + response.bgimage + ")");
-            jQuery(".series-watched-episode-title").remove();
 
             if(response.trailer === ""){
                 jQuery(currentCat).find('a.synopis-video-trailer').hide();
@@ -345,7 +347,7 @@ function getMovieData(data,callback){
             });
 
             var seriesContainer = jQuery(currentCat).next().find('div.series-watched-caro');
-
+ 
             // Check for series
             getData({
                 action: "streamium_get_dynamic_series_content",
@@ -356,7 +358,7 @@ function getMovieData(data,callback){
                 if (response.error) { 
                     console.log("Error: ",response.message);
                     return;
-                }
+                } 
 
                 var series = response.data;
                 var serie = '';
@@ -400,12 +402,12 @@ function getMovieData(data,callback){
 
                         }
 
-                    }
+                    } 
 
                 }   
 
                 jQuery(currentCatWrapId).fadeIn();
-                jQuery(currentCat).append('<h4 class="series-watched-episode-title">' + seriesTitle + ' Episodes</h4>').fadeIn();
+                jQuery(currentCat).find('h4.series-watched-episode-title').text(seriesTitle + ' Episodes');
 
                 if (jQuery(currentCatId).hasClass('slick-initialized') === false) {
 

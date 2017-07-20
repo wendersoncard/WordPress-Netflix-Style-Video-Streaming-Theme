@@ -5,8 +5,9 @@
 
 h4.series-watched-episode-title {
     position: absolute;
-    bottom: 0;
-    left: 45px;
+    bottom: 2px;
+    margin: 0;
+    font-size: 1.4vw;
 }
 
 .series-watched .tile-series {
