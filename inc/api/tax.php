@@ -125,7 +125,7 @@ function tax_api_post() {
     }
 
     // Setup empty array
-    $data = [];
+    $dataPosts = [];
 
     if ( $loop->have_posts() ) : 
 
@@ -135,9 +135,18 @@ function tax_api_post() {
 
         while ( $loop->have_posts() ) : $loop->the_post(); 
 
-            $image  = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile' );
-            $imageExpanded   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-video-tile-expanded' );
-            $nonce = wp_create_nonce( 'streamium_likes_nonce' );
+            // Add some placeholder images
+            $image  = "http://via.placeholder.com/300x169";
+            $imageExpanded   = "http://via.placeholder.com/500x281";
+
+            if (has_post_thumbnail()) : // thumbnail check
+
+                $image  = wp_get_attachment_image_url(get_post_thumbnail_id(), 'streamium-video-tile');
+                $imageExpanded   = wp_get_attachment_image_url(get_post_thumbnail_id(), 'streamium-video-tile-expanded');
+
+            endif;
+
+            // This has been removed
             $trimexcerpt = !empty(get_the_excerpt()) ? get_the_excerpt() : get_the_content();
 
             $paid = false;
@@ -197,7 +206,7 @@ function tax_api_post() {
     echo json_encode(
         array(
             'error' => false,
-            'data' => $data,
+            'data' => $dataPosts,
             'count' => (int)$loop->post_count,
             'message' => 'User not logged in' 
         )

@@ -7723,19 +7723,16 @@ body::after {
     position: absolute;
     right: 0;
     bottom: 0;
-    background: red;
-    padding: 0 10px;
-    margin: 0;
-    height: 20px;
-    line-height: 20px;
     display: block;
 }
 
 .static-row .tile_inner .streamium-extra-meta h5 {
     margin: 0;
-    line-height: 20px;
-    font-size: 10px;
+    line-height: 35px;
     text-transform: uppercase;
+    padding: 0px 10px;
+    font-size: 22px;
+    height: 35px;
 }
 
 
