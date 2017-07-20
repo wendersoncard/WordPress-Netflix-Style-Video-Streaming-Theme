@@ -153,8 +153,8 @@ function buildTilesTemplate(tiles,i,type){
                         '<a data-id="' + tiles[i].id + '" data-nonce="' + tiles[i].nonce + '" data-cat="' + type + '" class="tile_meta_more_info home-arrow hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>' +
                     '</div>' +
                 '</div>' +
+                '<div class="streamium-extra-meta">' + tiles[i].extraMeta + '</div>' +
             '</div>' +
-            //'<div class="progress tile_progress"><div class="progress-bar" role="progressbar" aria-valuenow="' + tiles[i].progressBar + '" aria-valuemin="0" aria-valuemax="100" style="width:' + tiles[i].progressBar + '%"></div></div>' +
         '</div>' +
     '</div>';
 
@@ -174,7 +174,7 @@ function buildStaticTilesTemplate(tiles,i,type,changeInd){
         classPush = "far-left";
     }else if(changeInd % (streamium_object.tile_count) === 0){
         classPush = "far-right";
-    }
+    } 
 
     return '<div class="col-md-2 col-xs-6 tile ' + classPush + '" data-id="' + tiles[i].id + '" data-nonce="' + tiles[i].nonce + '" data-cat="' + type + '">' +
                     '<div class="tile_inner tile_inner-home" style="background-image: url(' + tiles[i].tileUrl + ');">' +
@@ -190,7 +190,7 @@ function buildStaticTilesTemplate(tiles,i,type,changeInd){
                                     '<i class="fa fa-play fa-1x" aria-hidden="true"></i>' +
                                 '</span>' +
                             '</div>' +
-                        '</a>' +
+                        '</a>' + 
                     '<div class="overlay-meta hidden-xs">' +
                         '<span class="top-meta-watched">' + ((tiles[i].progressBar > 0) ? tiles[i].progressBar + "% watched" : "") + '</span>' +
                         '<h4>' + tiles[i].title + '</h4>' +
@@ -199,8 +199,8 @@ function buildStaticTilesTemplate(tiles,i,type,changeInd){
                         '<a data-id="' + tiles[i].id + '" data-nonce="' + tiles[i].nonce + '" data-cat="' + type + '" class="tile_meta_more_info home-arrow hidden-xs"><i class="icon-streamium" aria-hidden="true"></i></a>' +
                     '</div>' +
                 '</div>' +
+                '<div class="streamium-extra-meta">' + tiles[i].extraMeta + '</div>' +
             '</div>' +
-            //'<div class="progress tile_progress"><div class="progress-bar" role="progressbar" aria-valuenow="' + tiles[i].progressBar + '" aria-valuemin="0" aria-valuemax="100" style="width:' + tiles[i].progressBar + '%"></div></div>' +
         '</div>' +
     '</div>';
 
@@ -384,11 +384,12 @@ function getMovieData(data,callback){
                                     serie += '<div class="tile-series"><div class="tile_inner" style="background-image: url(' + episodes[i].thumbnails + ');">' +
                                         '<div class="overlay-gradient"></div>' +
                                         '<a class="play-icon-wrap" href="' + episodes[i].link + '?v=' + p + '">' +
-                                        '<div class="play-icon-wrap-rel">' +
-                                        '<span class="play-icon-wrap-rel-play">' +
-                                        '<i class="fa fa-play fa-1x" aria-hidden="true"></i>' +
-                                        '</span>' +
-                                        '</div>' + 
+                                            '<div class="play-icon-wrap-rel">' +
+                                                '<div class="play-icon-wrap-rel-ring"></div>' +
+                                                '<span class="play-icon-wrap-rel-play">' +
+                                                    '<i class="fa fa-play fa-1x" aria-hidden="true"></i>' +
+                                                '</span>' +
+                                            '</div>' + 
                                         '</a>' +
                                         '<h4><b>S' + episodes[i].seasons + ':E' + episodes[i].positions + '</b> ' + episodes[i].titles + '</h4>' +
                                     '</div></div>';
