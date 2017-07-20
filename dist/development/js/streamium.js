@@ -359,6 +359,7 @@ function getMovieData(data,callback){
 
                 var series = response.data;
                 var serie = '';
+                var id = 0; 
 
                 if(Object.keys(series).length > 0) {
 
@@ -369,10 +370,11 @@ function getMovieData(data,callback){
                         if(episodes.length > 0) {
                             
                             for (var i = 0; i < episodes.length; i++) { 
-                                
+                                 
+                                var p = id++;
                                 if(isMobile.any()){
 
-                                    serie += '<div class="tile-series"><a class="play-icon-wrap" href="' + episodes[i].link + '?v=' + (episodes[i].positions-1) + '"><div class="tile_inner" style="background-image: url(' + episodes[i].thumbnails + ');">' +
+                                    serie += '<div class="tile-series"><a class="play-icon-wrap" href="' + episodes[i].link + '?v=' + p + '"><div class="tile_inner" style="background-image: url(' + episodes[i].thumbnails + ');">' +
                                         '<div class="overlay-gradient"></div>' +
                                         '<h4><b>S' + episodes[i].seasons + ':E' + episodes[i].positions + '</b> ' + episodes[i].titles + '</h4>' +
                                     '</div></a></div>';
@@ -381,7 +383,7 @@ function getMovieData(data,callback){
 
                                     serie += '<div class="tile-series"><div class="tile_inner" style="background-image: url(' + episodes[i].thumbnails + ');">' +
                                         '<div class="overlay-gradient"></div>' +
-                                        '<a class="play-icon-wrap" href="' + episodes[i].link + '?v=' + (episodes[i].positions-1) + '">' +
+                                        '<a class="play-icon-wrap" href="' + episodes[i].link + '?v=' + p + '">' +
                                         '<div class="play-icon-wrap-rel">' +
                                         '<span class="play-icon-wrap-rel-play">' +
                                         '<i class="fa fa-play fa-1x" aria-hidden="true"></i>' +
