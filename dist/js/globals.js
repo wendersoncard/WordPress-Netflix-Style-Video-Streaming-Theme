@@ -370,17 +370,28 @@ function getMovieData(data,callback){
                             
                             for (var i = 0; i < episodes.length; i++) { 
                                 
-                                serie += '<div class="tile"><div class="tile_inner" style="background-image: url(' + episodes[i].thumbnails + ');">' +
-                                    '<div class="overlay-gradient"></div>' +
-                                    '<a class="play-icon-wrap" href="' + episodes[i].link + '?v=' + (episodes[i].positions-1) + '">' +
-                                    '<div class="play-icon-wrap-rel">' +
-                                    '<span class="play-icon-wrap-rel-play">' +
-                                    '<i class="fa fa-play fa-1x" aria-hidden="true"></i>' +
-                                    '</span>' +
-                                    '</div>' + 
-                                    '</a>' +
-                                    '<h4><b>S' + episodes[i].seasons + ':E' + episodes[i].positions + '</b> ' + episodes[i].titles + '</h4>' +
-                                '</div></div>';
+                                if(isMobile.any()){
+
+                                    serie += '<div class="tile-series"><a class="play-icon-wrap" href="' + episodes[i].link + '?v=' + (episodes[i].positions-1) + '"><div class="tile_inner" style="background-image: url(' + episodes[i].thumbnails + ');">' +
+                                        '<div class="overlay-gradient"></div>' +
+                                        '<h4><b>S' + episodes[i].seasons + ':E' + episodes[i].positions + '</b> ' + episodes[i].titles + '</h4>' +
+                                    '</div></a></div>';
+
+                                }else{
+
+                                    serie += '<div class="tile-series"><div class="tile_inner" style="background-image: url(' + episodes[i].thumbnails + ');">' +
+                                        '<div class="overlay-gradient"></div>' +
+                                        '<a class="play-icon-wrap" href="' + episodes[i].link + '?v=' + (episodes[i].positions-1) + '">' +
+                                        '<div class="play-icon-wrap-rel">' +
+                                        '<span class="play-icon-wrap-rel-play">' +
+                                        '<i class="fa fa-play fa-1x" aria-hidden="true"></i>' +
+                                        '</span>' +
+                                        '</div>' + 
+                                        '</a>' +
+                                        '<h4><b>S' + episodes[i].seasons + ':E' + episodes[i].positions + '</b> ' + episodes[i].titles + '</h4>' +
+                                    '</div></div>';
+
+                                }
                             }
 
                         }

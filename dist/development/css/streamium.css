@@ -7389,7 +7389,8 @@ body::after {
     -webkit-box-shadow: 0 4px 4px rgba(0,0,0,.2);
     -moz-box-shadow: 0 4px 4px rgba(0,0,0,.2);
     box-shadow: 0 4px 4px rgba(0,0,0,.2);
-}
+    z-index: 1;
+} 
   
 .carousels .tile .tile-white-selected::before {
     content: '';
@@ -7952,7 +7953,7 @@ body::after {
     line-height: 30px;
 }
 
-.series-watched .tile {
+.series-watched .tile-series {
     padding: 2px;
 } 
 
