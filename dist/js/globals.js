@@ -310,6 +310,7 @@ function getMovieData(data,callback){
             jQuery(currentCat).find('div.synopis').html(content);
             jQuery(currentCat).find('a.synopis').attr( "href", response.href);
             jQuery(currentCat).css("background-image", "url(" + response.bgimage + ")");
+            jQuery(".series-watched-episode-title").remove();
 
             if(response.trailer === ""){
                 jQuery(currentCat).find('a.synopis-video-trailer').hide();
@@ -401,15 +402,14 @@ function getMovieData(data,callback){
 
                     }
 
-                }
+                }   
 
                 jQuery(currentCatWrapId).fadeIn();
+                jQuery(currentCat).append('<h4 class="series-watched-episode-title">' + seriesTitle + ' Episodes</h4>').fadeIn();
 
                 if (jQuery(currentCatId).hasClass('slick-initialized') === false) {
 
-                    //jQuery(currentCatWrapId).prepend('<h4>' + seriesTitle + ' Episodes</h4>');
                     seriesContainer.html(serie);
-
                     jQuery(currentCatId).slick(streamiumGlobals.slickSeries);
 
                 }

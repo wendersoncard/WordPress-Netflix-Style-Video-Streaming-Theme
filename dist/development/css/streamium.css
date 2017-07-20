@@ -7944,10 +7944,10 @@ body::after {
     position: relative;
 }
 
-.series-watched h4 {
-    margin: 0px;
-    height: 30px;
-    line-height: 30px;
+h4.series-watched-episode-title {
+    position: absolute;
+    bottom: 0;
+    left: 45px;
 }
 
 .series-watched .tile-series {
@@ -7990,7 +7990,7 @@ body::after {
     margin-left: -2.5vw;
     width: 5vw;
     height: 5vw;
-    background-color: rgba(51,51,51,.8);
+    background-color: rgb(51,51,51);
     line-height: 5vw;
     color: #fff;
     cursor: pointer;
@@ -7998,6 +7998,15 @@ body::after {
     display: block;
     margin-top: -3vw;
     z-index: 999;
+    opacity: .6;
+    transition: opacity .5s ease-out;
+    -moz-transition: opacity .5s ease-out;
+    -webkit-transition: opacity .5s ease-out;
+    -o-transition: opacity .5s ease-out;
+}
+
+.series-watched .tile_inner .play-icon-wrap:hover { 
+    opacity: 1;
 }
 
 .series-watched .tile_inner .play-icon-wrap-rel {
@@ -8010,7 +8019,8 @@ body::after {
     position: absolute;
     width: 100%;
     height: 100%;
-    border-radius: 100%;
+    border-radius: 100%; 
+    border: 3px solid #fff;
 }
 
 .series-watched .tile_inner .play-icon-wrap-rel-play i {
@@ -8018,7 +8028,7 @@ body::after {
 }
 
 .series-watched .tile_inner .play-icon-wrap-rel-play i.fa-play {
-    margin-left: 10px;
+    margin-left: 8px;
 }
 
 .series-watched .tile_inner h4 {
