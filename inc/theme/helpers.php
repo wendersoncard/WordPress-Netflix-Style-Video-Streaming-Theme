@@ -255,3 +255,49 @@ function partition(Array $list, $p) {
     }
     return $partition;
 }
+
+/**
+ *
+ * @param Array $list
+ * @param int $p
+ * @return multitype:multitype:
+ * @link http://www.php.net/manual/en/function.array-chunk.php#75022
+ */
+function orderCodes($postId) {
+
+  $episodes = get_post_meta($postId, 'repeatable_fields' , true);
+
+  if(empty($episodes)){
+    return false;
+  }
+
+  // Order the list
+  $positions = array();
+  foreach ($episodes as $key => $row){
+      $positions[$key] = $row['positions'];
+  }
+  array_multisort($positions, SORT_ASC, $episodes);
+
+  // Sort the seasons
+  $result = array();
+  $codes = array();
+  foreach ($episodes as $v) {
+      $seasons = $v['seasons'];
+      if (!isset($result[$seasons])) $result[$seasons] = array();
+      $result[$seasons][] = $v;
+  }
+
+  $codes = [];
+  foreach (array_reverse($result) as $key => $flatten) {
+    foreach ($flatten as $key => $value) {
+      $codes[] = $value['codes'];
+    }
+  }
+
+  return array(
+    "seasons" => count($result),
+    "episodes" => count($codes),
+    "codes" => $codes
+  );
+
+}

@@ -12,6 +12,7 @@ jQuery(document).ready(function($) {
 				poster : video_post_object.poster,
 			},
 			options : {
+				autoplay : true,
 				fluid : true,
 				vpaid : video_post_object.vpaid
 			},
@@ -41,13 +42,14 @@ jQuery(document).ready(function($) {
 					poster : video_post_object.poster,
 				},
 				options : {
+					autoplay : true,
 					fluid : true
 				},
 				meta : {
 	                backButton: true,
 	                subTitle: video_post_object.subTitle,
 	                title: video_post_object.title,
-	                para: video_post_object.para
+	                para: ""//video_post_object.para
 	            },
 	        }, function(player) {
 
@@ -58,7 +60,7 @@ jQuery(document).ready(function($) {
 				    var percentage = current / duration * 100;
 				    window.percentage = Math.round(parseInt(percentage));
 
-				});
+				}); 
 
 				(function updateResumePercentage() {
 
@@ -96,6 +98,7 @@ jQuery(document).ready(function($) {
 					poster : video_post_object.poster,
 				},
 				options : {
+					autoplay : true,
 					fluid : true,
 					vpaid : video_post_object.vpaid
 				},
@@ -103,7 +106,7 @@ jQuery(document).ready(function($) {
 	                backButton: true,
 	                subTitle: video_post_object.subTitle,
 	                title: video_post_object.title,
-	                para: video_post_object.para
+	                para: ""//video_post_object.para
 	            },
 	        }, function(player) {
 

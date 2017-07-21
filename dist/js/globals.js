@@ -290,7 +290,7 @@ function getMovieData(data,callback){
                 });
 
                 return;
-
+ 
             }
 
             // Run some edits for mobile

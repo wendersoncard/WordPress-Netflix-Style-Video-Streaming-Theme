@@ -64,8 +64,6 @@ jQuery(document).ready(function($) {
 
     $('.' + clickClass).live( "click", function() {
 
-        event.preventDefault();
-
         var cat = $(this).data('cat');
         var post_id = $(this).data('id');
         var nonce = $(this).data('nonce');
@@ -83,6 +81,8 @@ jQuery(document).ready(function($) {
         },function(){
 
         });
+
+        return false;
 
     });
 
@@ -103,6 +103,8 @@ jQuery(document).ready(function($) {
 
             });
         });
+
+        return false;
 
     });
 

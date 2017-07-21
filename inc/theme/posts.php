@@ -43,12 +43,12 @@ function streamium_single_video_scripts() {
 		}
 
 		// Check if this post has programs
-		$episodes = get_post_meta(get_the_ID(), 'repeatable_fields' , true);
-		if(!empty($episodes)) {
-			foreach ($episodes as $key => $value) : 
-				$codes[] = $value['codes'];
-			endforeach;
+		$episodes = orderCodes(get_the_ID());
+		if($episodes) {
+
+			$codes = $episodes['codes'];
 			$resume = 0;
+		
 		}else{
 
 			if(!empty($youtubeCode)){
@@ -167,10 +167,10 @@ function streamium_get_dynamic_content() {
 			}
 
 			// If its a tv list episodes
-			$episodes = get_post_meta($postId, 'repeatable_fields' , true);
-			if(!empty($episodes)) {
+			$episodes = orderCodes($postId);
+			if($episodes) {
 
-				$buildMeta .= '<li class="synopis-meta-spacer">Epsodes: <a>' . count($episodes) . '</a></li>';
+				$buildMeta .= '<li class="synopis-meta-spacer">Seasons: ' . $episodes['seasons'] . ', Episodes: ' . $episodes['episodes'] .'</li>';
 
 			}
 
