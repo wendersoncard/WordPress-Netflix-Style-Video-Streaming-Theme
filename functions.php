@@ -82,9 +82,12 @@ if (!function_exists('streamium_enqueue_scripts')) {
                 'custom_api_nonce' => wp_create_nonce("custom_api_nonce"),
                 'home_api_nonce' => wp_create_nonce("home_api_nonce"),
                 'tax_api_nonce' => wp_create_nonce("tax_api_nonce"),
+                'search_api_nonce' => wp_create_nonce("search_api_nonce"),
                 'query' => $query,
-                'search' => isset($_GET['sort']) ? $_GET['sort'] : 'all',
+                'search' => isset($_GET) ? $_GET : false,
+                'is_home' => is_home(),
                 'is_tax' => is_tax(),
+                'is_search' => is_search(),
                 'tile_count' => s3bubble_tile_count()
             )
         );

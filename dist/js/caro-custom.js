@@ -68,7 +68,8 @@ jQuery(document).ready(function($) {
 
     };
 
-    if(!streamium_object.is_tax){
+    // Only run this on homepage
+    if(streamium_object.is_home){
         
         getData({
             action: "custom_api_post",

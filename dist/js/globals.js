@@ -246,6 +246,7 @@ function getData(data,callback){
 
     // add the query object
     data.query = streamium_object.query;
+    data.search = streamium_object.search;
 
     jQuery.ajax({
         type: "post",

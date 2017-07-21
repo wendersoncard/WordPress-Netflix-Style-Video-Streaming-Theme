@@ -116,7 +116,7 @@ function recently_watched_api_post() {
 	    		'error' => false,
 	    		'data' => $dataPosts,
                 'count' => (int)$loop->post_count,
-	    		'message' => 'User not logged in' 
+                'message' => 'Sucesfully returning results' 
 	    	)
 	    );
 
@@ -126,7 +126,7 @@ function recently_watched_api_post() {
     	echo json_encode(
 	    	array(
 	    		'error' => true,
-	    		'message' => 'User not logged in' 
+	    		'message' => 'Not taxs found' 
 	    	)
 	    );
 

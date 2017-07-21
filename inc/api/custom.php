@@ -148,7 +148,7 @@ function custom_api_post() {
         array(
             'error' => false,
             'data' => $data,
-            'message' => 'User not logged in' 
+            'message' => 'Sucesfully returning results'
         )
     );     
 

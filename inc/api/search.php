@@ -6,10 +6,10 @@
  * @return bool
  * @author  @sameast
  */
-function tax_api_post() {
+function search_api_post() {
 
     // Run a nonce check
-    if ( !wp_verify_nonce( $_REQUEST['nonce'], "tax_api_nonce")) {
+    if ( !wp_verify_nonce( $_REQUEST['nonce'], "search_api_nonce")) {
 
         echo json_encode(
             array(
@@ -23,105 +23,86 @@ function tax_api_post() {
 
     // Get params
     $userId = get_current_user_id();
-    $tax = isset($_REQUEST['query']['taxonomy']) ? $_REQUEST['query']['taxonomy'] : "";
-    $term_id = isset($_REQUEST['query']['term_id']) ? $_REQUEST['query']['term_id'] : "";
 
-    switch (isset($_REQUEST['search']) ? $_REQUEST['search'] : 'all') {
-        case 'reviewed':
+    //error_log(print_r($_REQUEST,true));
 
-            remove_all_filters('posts_fields');
-            remove_all_filters('posts_join');
-            remove_all_filters('posts_groupby');
-            remove_all_filters('posts_orderby');
-            add_filter( 'posts_fields', 'streamium_search_distinct' );
-            add_filter( 'posts_join','streamium_search_join');
-            add_filter( 'posts_groupby', 'streamium_search_groupby' );
-            add_filter( 'posts_orderby', 'streamium_search_orderby' );
-            $loop = new WP_Query( 
-                array(
-                    'posts_per_page'   => -1,
-                    //'ignore_sticky_posts' => true,
-                    'tax_query' => array(
+    if(isset($_REQUEST['search']['date'])){
+
+        $date = $_REQUEST['search']['date'];
+
+        if($_REQUEST['search']['date'] === 'day'){
+
+            $loop = new WP_Query(array(
+                'post_type' => array('movie', 'tv','sport','kid','stream'),
+                'posts_per_page'   => -1,
+                'date_query' => array(
+                     array(
+                        'after' => '1 day ago'
+                     ),
+                 ),
+        
+            ));
+
+        }else if($date === 'week'){
+
+            $loop = new WP_Query(array(
+                'post_type' => array('movie', 'tv','sport','kid','stream'),
+                'posts_per_page'   => -1,
+                'date_query' => array(
+                     array(
+                        'after' => '1 week ago'
+                     ),
+                 ),
+        
+            ));
+
+        }else{
+
+            if(strpos($date, '/') !== false) {
+
+                $date = explode('/', $date);
+                $year  = $date[0];
+                $month = $date[1];
+                $day   = $date[2];
+                $loop = new WP_Query(array(
+                    'post_type' => array('movie', 'tv','sport','kid','stream'),
+                    //'posts_per_page'   => -1,
+                    'date_query' => array(
                         array(
-                            'taxonomy'  => $tax,
-                            'field'     => 'term_id',
-                            'terms'     => $term_id,
-                        )
-                    ),
-                    'orderby' => 'date',
-                    'order'   => 'DESC', 
-                ) 
-            );
-
-            break;
-
-        case 'newest':
+                          'year' => $year,
+                          'month' => $month,
+                          //'day' => $day 
+                          ),
+                        ),
             
-            remove_all_filters('posts_fields');
-            remove_all_filters('posts_join');
-            remove_all_filters('posts_groupby');
-            remove_all_filters('posts_orderby');
-           
-            $loop = new WP_Query( 
-                array(
+                ));
+
+            }else{
+
+                $loop = new WP_Query(array(
+                    'post_type' => array('movie', 'tv','sport','kid','stream'),
                     'posts_per_page'   => -1,
-                    //'ignore_sticky_posts' => true,
-                    'tax_query' => array(
+                    'date_query' => array(
                         array(
-                            'taxonomy'  => $tax,
-                            'field'     => 'term_id',
-                            'terms'     => $term_id,
-                        )
-                    ),
-                    'orderby' => 'date',
-                    'order'   => 'DESC', 
-                ) 
-            );
-        
-            break;
-
-        case 'oldest':
-
-            remove_all_filters('posts_fields');
-            remove_all_filters('posts_join');
-            remove_all_filters('posts_groupby');
-            remove_all_filters('posts_orderby');
+                          'year' => $date
+                          ),
+                        ),
             
-            $loop = new WP_Query( 
-                array(
-                    'posts_per_page'   => -1,
-                    //'ignore_sticky_posts' => true,
-                    'tax_query' => array(
-                        array(
-                            'taxonomy'  => $tax,
-                            'field'     => 'term_id',
-                            'terms'     => $term_id,
-                        )
-                    ),
-                    'orderby' => 'date',
-                    'order'   => 'ASC', 
-                ) 
-            );
-        
-            break;
-        
-        default:
+                ));
 
-            $loop = new WP_Query( 
-                array(
-                    'posts_per_page'   => -1,
-                    //'ignore_sticky_posts' => true,
-                    'tax_query' => array(
-                        array(
-                            'taxonomy'  => $tax,
-                            'field'     => 'term_id',
-                            'terms'     => $term_id,
-                        )
-                    )
-                ) 
-            );
+            }
+        }
 
-            break;
+    }else{
+
+        $s = $_REQUEST['search']['s'];
+
+        $loop = new WP_Query(array(
+            'post_type' => array('movie', 'tv','sport','kid','stream'), 
+            'posts_per_page'   => -1,
+            's' => $s
+        )); 
+
     }
 
     // Setup empty array
@@ -207,7 +188,7 @@ function tax_api_post() {
                 'error' => false,
                 'data' => $dataPosts,
                 'count' => (int)$loop->post_count,
-                'message' => 'Sucesfully returning results'
+                'message' => 'Sucesfully returning results' 
             )
         );
 
@@ -220,12 +201,12 @@ function tax_api_post() {
                 'message' => 'No results found' 
             )
         );
-        
-    }     
+
+    }  
 
     die(); 
 
 }
 
-add_action( "wp_ajax_tax_api_post", "tax_api_post" );
-add_action( "wp_ajax_nopriv_tax_api_post", "tax_api_post" );
+add_action( "wp_ajax_search_api_post", "search_api_post" );
+add_action( "wp_ajax_nopriv_search_api_post", "search_api_post" );

@@ -24,6 +24,7 @@ require_once($incdir .'api/recent.php');
 require_once($incdir .'api/custom.php');
 require_once($incdir .'api/home.php');
 require_once($incdir .'api/tax.php');
+require_once($incdir .'api/search.php'); 
 
 // Only include if s2member is installed
 if ( class_exists( 'WooCommerce' ) ) {

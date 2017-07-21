@@ -25,6 +25,7 @@ module.exports = function(grunt) {
                     'dist/js/caro-custom.js',
                     'dist/js/caro-home.js',
                     'dist/js/caro-tax.js',
+                    'dist/js/caro-search.js',
                     'dist/js/menu.js',
                     'dist/js/modal.js',
                     'dist/js/modernizr.js',

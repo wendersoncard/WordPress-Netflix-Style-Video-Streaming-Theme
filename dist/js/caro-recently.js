@@ -57,7 +57,8 @@ jQuery(document).ready(function($) {
 
     };
 
-    if(!streamium_object.is_tax){
+    // Only run this on homepage
+    if(streamium_object.is_home){
 
         console.log("recently_watched_api_post");
         
