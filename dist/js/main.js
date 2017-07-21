@@ -59,10 +59,12 @@ jQuery(document).ready(function($) {
 
 	var clickClass = "home-arrow";
     if(isMobile.any()){
-        clickClass = "tile";
+        clickClass = "tile"; 
     }
 
-    $('.' + clickClass).live( "click", function() {
+    $('.' + clickClass).live( "click", function(event) {
+
+        event.preventDefault();
 
         var cat = $(this).data('cat');
         var post_id = $(this).data('id');
@@ -86,9 +88,10 @@ jQuery(document).ready(function($) {
 
     });
 
-    $('.s3bubble-details-inner-close').live( "click", function() {
+    $('.s3bubble-details-inner-close').live( "click", function(event) {
 
         event.preventDefault();
+
         var div = $(this).parent().parent().parent();
 
         $(".series-watched").fadeOut();
@@ -103,8 +106,6 @@ jQuery(document).ready(function($) {
 
             });
         });
-
-        return false;
 
     });
 

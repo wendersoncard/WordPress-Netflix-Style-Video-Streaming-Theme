@@ -66,7 +66,9 @@ jQuery(document).ready(function($) {
 
         });
 
-        $(".tax-search-filter").on("click",function(){
+        $(".tax-search-filter").on("click",function(event){
+
+            event.preventDefault();
 
             // Get the search type
             var query = $(this).data("type");
@@ -87,8 +89,6 @@ jQuery(document).ready(function($) {
                 buildIt(response);
 
             });
-
-            return false;
 
         });
 
