@@ -86,6 +86,7 @@ if (!function_exists('streamium_enqueue_scripts')) {
                 'query' => $query,
                 'search' => isset($_GET) ? $_GET : false,
                 'is_home' => is_home(),
+                'is_archive' => is_archive(),
                 'is_tax' => is_tax(),
                 'is_search' => is_search(),
                 'tile_count' => s3bubble_tile_count()

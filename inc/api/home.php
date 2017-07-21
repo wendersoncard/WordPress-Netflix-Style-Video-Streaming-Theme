@@ -23,13 +23,16 @@ function home_api_post() {
 
     // Get options
     $setType = get_theme_mod('streamium_main_post_type', 'movie');
-    $setTax = get_theme_mod('streamium_main_tax', 'movies');    
+    $setTax = get_theme_mod('streamium_main_tax', 'movies'); 
+
+    $typeTitle =  get_theme_mod('streamium_section_input_posttype_' . $setType, $setType);
+    $taxUrl =  get_theme_mod('streamium_section_input_taxonomy_' . $setTax, $setTax);   
 
 	// Get params
 	$userId = get_current_user_id();
     if(isset($_REQUEST['query']) && $_REQUEST['query'] != ""){
         $setTax = $_REQUEST['query']['taxonomies'][1];
-        $rewrite = (get_theme_mod( 'streamium_section_input_taxonomy_' . $setTax )) ? get_theme_mod( 'streamium_section_input_taxonomy_' . $setTax ) : $setTax; 
+        $typeTitle =  get_theme_mod('streamium_section_input_taxonomy_' . $setTax, $setTax); 
     }
 
     $args = array(
@@ -43,8 +46,6 @@ function home_api_post() {
     foreach ($categories as $category) :
 
         $dataPosts = [];
-        $typeTitle =  get_theme_mod('streamium_section_input_posttype_' . $setType, $setType);
-        $taxUrl =  get_theme_mod('streamium_section_input_taxonomy_' . $setTax, $setTax);
 
         $args = array(
                 'posts_per_page' => (int)get_theme_mod('streamium_global_options_homepage_desktop'),

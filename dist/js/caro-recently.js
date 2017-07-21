@@ -59,8 +59,6 @@ jQuery(document).ready(function($) {
 
     // Only run this on homepage
     if(streamium_object.is_home){
-
-        console.log("recently_watched_api_post");
         
         getData({
             action: "recently_watched_api_post",

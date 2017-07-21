@@ -71,7 +71,7 @@ jQuery(document).ready(function($) {
     };
 
     // Only run this on homepage
-    if(streamium_object.is_home){
+    if(streamium_object.is_home || streamium_object.is_archive){
         
         getData({
             action: "home_api_post",
