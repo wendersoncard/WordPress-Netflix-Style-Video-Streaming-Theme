@@ -30,26 +30,11 @@ var isMobile = {
 window.streamiumGlobals = {
     tileCount: (isMobile.any()) ? 2 : 6,
     slick: {
-        slidesToShow: streamium_object.tile_count,
-        slidesToScroll: streamium_object.tile_count,
-        infinite: true,
+        slidesToShow: parseInt(streamium_object.tile_count),
+        slidesToScroll: parseInt(streamium_object.tile_count),
+        infinite: false,
         adaptiveHeight: true,
         responsive: [{
-                breakpoint: 1024,
-                settings: {
-                    appendArrows: false,
-                    slidesToShow: 4,
-                    slidesToScroll: 4
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    appendArrows: false,
-                    dots: false
-                }
-            },
-            {
                 breakpoint: 480,
                 settings: {
                     appendArrows: false,
@@ -60,26 +45,11 @@ window.streamiumGlobals = {
         ]
     },
     slickSeries: {
-        slidesToShow: (streamium_object.tile_count-1),
-        slidesToScroll: (streamium_object.tile_count-1),
+        slidesToShow: parseInt(streamium_object.tile_count-1),
+        slidesToScroll: parseInt(streamium_object.tile_count-1),
         infinite: true,
         adaptiveHeight: true,
         responsive: [{
-                breakpoint: 1024,
-                settings: {
-                    appendArrows: false,
-                    slidesToShow: 4,
-                    slidesToScroll: 4
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    appendArrows: false,
-                    dots: false
-                }
-            },
-            {
                 breakpoint: 480,
                 settings: {
                     appendArrows: false,

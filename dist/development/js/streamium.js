@@ -30,26 +30,11 @@ var isMobile = {
 window.streamiumGlobals = {
     tileCount: (isMobile.any()) ? 2 : 6,
     slick: {
-        slidesToShow: streamium_object.tile_count,
-        slidesToScroll: streamium_object.tile_count,
-        infinite: true,
+        slidesToShow: parseInt(streamium_object.tile_count),
+        slidesToScroll: parseInt(streamium_object.tile_count),
+        infinite: false,
         adaptiveHeight: true,
         responsive: [{
-                breakpoint: 1024,
-                settings: {
-                    appendArrows: false,
-                    slidesToShow: 4,
-                    slidesToScroll: 4
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    appendArrows: false,
-                    dots: false
-                }
-            },
-            {
                 breakpoint: 480,
                 settings: {
                     appendArrows: false,
@@ -60,26 +45,11 @@ window.streamiumGlobals = {
         ]
     },
     slickSeries: {
-        slidesToShow: (streamium_object.tile_count-1),
-        slidesToScroll: (streamium_object.tile_count-1),
+        slidesToShow: parseInt(streamium_object.tile_count-1),
+        slidesToScroll: parseInt(streamium_object.tile_count-1),
         infinite: true,
         adaptiveHeight: true,
         responsive: [{
-                breakpoint: 1024,
-                settings: {
-                    appendArrows: false,
-                    slidesToShow: 4,
-                    slidesToScroll: 4
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    appendArrows: false,
-                    dots: false
-                }
-            },
-            {
                 breakpoint: 480,
                 settings: {
                     appendArrows: false,
@@ -3178,9 +3148,13 @@ jQuery(document).ready(function($) {
             $(this).find(".slick-active:last").addClass( "far-right" );
             if(currentSlide === 0) {
                 $(this).find('.slick-prev').addClass('hidden');
-            }
-            else {
+            }else {
                 $(this).find('.slick-prev').removeClass('hidden');
+            }
+            if(slick.currentSlide >= slick.slideCount - slick.options.slidesToShow){
+                $(this).find('.slick-next').addClass('hidden');
+            }else {
+                $(this).find('.slick-next').removeClass('hidden');
             }
 
         });
@@ -3264,9 +3238,13 @@ jQuery(document).ready(function($) {
                     $(this).find(".slick-active:last").addClass( "far-right" );
                     if(currentSlide === 0) {
                         $(this).find('.slick-prev').addClass('hidden');
-                    }
-                    else {
+                    }else {
                         $(this).find('.slick-prev').removeClass('hidden');
+                    }
+                    if(slick.currentSlide >= slick.slideCount - slick.options.slidesToShow){
+                        $(this).find('.slick-next').addClass('hidden');
+                    }else {
+                        $(this).find('.slick-next').removeClass('hidden');
                     }
 
                 });
@@ -3341,7 +3319,7 @@ jQuery(document).ready(function($) {
                     sliderCaro.on('setPosition', function (event, slick, currentSlide) {
 
                         $(this).find(".slick-active:first").addClass( "far-left" );
-                        if(slick.slideCount > 6){ // Get the slide count
+                        if(slick.slideCount > streamium_object.tile_count){ // Get the slide count
                             $(this).find(".slick-active:last").addClass( "far-right" );
                         }
 
@@ -3354,9 +3332,13 @@ jQuery(document).ready(function($) {
                         $(this).find(".slick-active:last").addClass( "far-right" );
                         if(currentSlide === 0) {
                             $(this).find('.slick-prev').addClass('hidden');
-                        }
-                        else {
+                        }else {
                             $(this).find('.slick-prev').removeClass('hidden');
+                        }
+                        if(slick.currentSlide >= slick.slideCount - slick.options.slidesToShow){
+                            $(this).find('.slick-next').addClass('hidden');
+                        }else {
+                            $(this).find('.slick-next').removeClass('hidden');
                         }
 
                     });

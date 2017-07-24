@@ -64,8 +64,7 @@ if (!function_exists('streamium_enqueue_scripts')) {
     {     
 
         global $wp_query;
-        $query = $wp_query->get_queried_object(); 
-        //$tax = isset($query->taxonomies[1]) ? $query->taxonomies[1] : "";
+        $query = $wp_query->get_queried_object();
 
         /* Register styles -----------------------------------------------------*/
         wp_enqueue_style('streamium-styles', get_stylesheet_uri());

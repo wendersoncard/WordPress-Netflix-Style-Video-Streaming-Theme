@@ -42,7 +42,7 @@ jQuery(document).ready(function($) {
                     sliderCaro.on('setPosition', function (event, slick, currentSlide) {
 
                         $(this).find(".slick-active:first").addClass( "far-left" );
-                        if(slick.slideCount > 6){ // Get the slide count
+                        if(slick.slideCount > streamium_object.tile_count){ // Get the slide count
                             $(this).find(".slick-active:last").addClass( "far-right" );
                         }
 
@@ -55,9 +55,13 @@ jQuery(document).ready(function($) {
                         $(this).find(".slick-active:last").addClass( "far-right" );
                         if(currentSlide === 0) {
                             $(this).find('.slick-prev').addClass('hidden');
-                        }
-                        else {
+                        }else {
                             $(this).find('.slick-prev').removeClass('hidden');
+                        }
+                        if(slick.currentSlide >= slick.slideCount - slick.options.slidesToShow){
+                            $(this).find('.slick-next').addClass('hidden');
+                        }else {
+                            $(this).find('.slick-next').removeClass('hidden');
                         }
 
                     });

@@ -77,7 +77,7 @@ function recently_watched_api_post() {
                         }
                         $paid = array(
                             'service' => 's2member',
-                            'html' => '<div class="tile_payment_details"><h2>Available on <br/>plan ' . $paidTileText . '</h2></div>',
+                            'html' => '<div class="tile_payment_details"><h2>Available on <br/>' . $paidTileText . ' plan</h2></div>',
                         );
                     }
                 }
@@ -86,7 +86,7 @@ function recently_watched_api_post() {
                 if(get_theme_mod( 'streamium_enable_premium' )) {
                     $progressBar = get_post_meta( get_the_ID(), 'user_' . $userId, true );
                 }
-                
+
                 $extraMeta = "";
                 $streamium_extra_meta = get_post_meta( get_the_ID(), 'streamium_extra_meta_meta_box_text', true );
                 if ( ! empty( $streamium_extra_meta ) ) {

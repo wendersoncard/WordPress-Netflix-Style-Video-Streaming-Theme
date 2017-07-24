@@ -20,7 +20,7 @@
 		
 	</header>
 
-	<main class="cd-main-content page-template">
+	<main class="cd-main-content page-template-light-background">
 		
 		<div class="main-spacer"></div>
 		

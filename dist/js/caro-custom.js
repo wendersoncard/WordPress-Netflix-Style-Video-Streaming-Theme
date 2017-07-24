@@ -55,9 +55,13 @@ jQuery(document).ready(function($) {
                     $(this).find(".slick-active:last").addClass( "far-right" );
                     if(currentSlide === 0) {
                         $(this).find('.slick-prev').addClass('hidden');
-                    }
-                    else {
+                    }else {
                         $(this).find('.slick-prev').removeClass('hidden');
+                    }
+                    if(slick.currentSlide >= slick.slideCount - slick.options.slidesToShow){
+                        $(this).find('.slick-next').addClass('hidden');
+                    }else {
+                        $(this).find('.slick-next').removeClass('hidden');
                     }
 
                 });

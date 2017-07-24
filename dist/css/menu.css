@@ -760,7 +760,7 @@ Main components
   content: '';
   position: absolute;
   top: 50%;
-  margin-top: -1px;
+  margin-top: 0px;
   display: inline-block;
   height: 2px;
   width: 10px;

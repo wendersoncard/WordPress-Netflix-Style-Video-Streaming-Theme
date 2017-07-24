@@ -88,9 +88,13 @@ a {
     background: rgba(0, 0, 0, 0.8);
 }
 
+.page-template-light-background {
+    background: #f3f3f3;
+}
+
 .main-spacer {
     width: 100%;
-    height: 120px;
+    height: 80px;
     display: block;
 }
 

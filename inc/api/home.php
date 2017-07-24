@@ -25,15 +25,17 @@ function home_api_post() {
     $setType = get_theme_mod('streamium_main_post_type', 'movie');
     $setTax = get_theme_mod('streamium_main_tax', 'movies'); 
 
-    $typeTitle =  get_theme_mod('streamium_section_input_posttype_' . $setType, $setType);
-    $taxUrl =  get_theme_mod('streamium_section_input_taxonomy_' . $setTax, $setTax);   
+    //error_log(print_r($_REQUEST,true));
 
 	// Get params
 	$userId = get_current_user_id();
     if(isset($_REQUEST['query']) && $_REQUEST['query'] != ""){
         $setTax = $_REQUEST['query']['taxonomies'][1];
-        $typeTitle =  get_theme_mod('streamium_section_input_taxonomy_' . $setTax, $setTax); 
+        $setType = $_REQUEST['query']['name'];
     }
+
+    $typeTitle =  get_theme_mod('streamium_section_input_posttype_' . $setType, $setType);
+    $taxUrl =  get_theme_mod('streamium_section_input_taxonomy_' . $setTax, $setTax);   
 
     $args = array(
       'parent' => 0,
@@ -98,7 +100,7 @@ function home_api_post() {
                         }
                         $paid = array(
                             'service' => 's2member',
-                            'html' => '<div class="tile_payment_details"><h2>Available on <br/>plan ' . $paidTileText . '</h2></div>',
+                            'html' => '<div class="tile_payment_details"><h2>Available on <br/>' . $paidTileText . ' plan</h2></div>',
                         );
                     }
                 }

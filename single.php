@@ -1,60 +1,50 @@
-<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+<?php get_header(); ?>
 
-	<?php
+	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-		$type = get_post_type( get_the_ID() ); 
+		<?php
 
-		if($type === "post"){
+			$type = get_post_type( get_the_ID() ); 
 
-			get_header();
-			get_template_part( 'templates/content', 'blog' );
-			get_footer();
+			if($type === "post"){
 
-		}
+				get_template_part( 'templates/content', 'blog' );
 
-		if($type === "stream"){
+			}
 
-			get_template_part( 'header', 'video');
-			get_template_part( 'templates/content', 'live' );
-			get_template_part( 'footer', 'video' );
-		
-		}
+			if($type === "stream"){
 
-		if (in_array($type, array('movie', 'tv','sport','kid'))) {
+				get_template_part( 'templates/content', 'live' );
+			
+			}
 
-			get_template_part( 'header', 'video');
-			get_template_part( 'templates/content', 'single' );
-			get_template_part( 'footer', 'video' );
+			if (in_array($type, array('movie', 'tv','sport','kid'))) {
 
-		    
-		    /*$episodes = get_post_meta(get_the_ID(), 'repeatable_fields' , true);
-			if(!empty($episodes)) :
-
-				get_header();
-				get_template_part( 'templates/content', 'multi' );
-				get_footer();
-
-			else :
-
-				get_template_part( 'header', 'video');
 				get_template_part( 'templates/content', 'single' );
-				get_template_part( 'footer', 'video' );
 
-			endif;*/
+			}
 
-		}
+			if (is_user_logged_in()) : 
+		   
+			   update_post_meta($post->ID,'recently_watched',current_time('mysql')); 
+			   update_post_meta($post->ID,'recently_watched_user_id',get_current_user_id());
 
-		if (is_user_logged_in()) : 
-	   
-		   update_post_meta($post->ID,'recently_watched',current_time('mysql')); 
-		   update_post_meta($post->ID,'recently_watched_user_id',get_current_user_id());
+			endif;
 
-		endif;
+		?>
 
-	?>
+	<?php endwhile; else : ?>
 
-<?php endwhile; else : ?>
+	 	<p><?php _e( 'Sorry, no posts matched your criteria.', 'streamium' ); ?></p>
 
- 	<p><?php _e( 'Sorry, no posts matched your criteria.', 'streamium' ); ?></p>
+	<?php endif; ?>
 
-<?php endif; ?>
+<?php 
+
+	if($type === "post"){
+		get_footer();
+	}else{
+		get_template_part( 'footer', 'video' );
+	}
+
+?>
