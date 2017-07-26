@@ -547,9 +547,6 @@ class Streamium_Customize
 
            <?php self::generate_css('.woocommerce-message, .woocommerce-info', 'border-top-color', 'link_textcolor', '', ' !important'); ?>
 
-           /* Override media player brand colors */
-           <?php self::generate_css('.vjs-play-progress, .vjs-volume-level', 'background-color', 'link_textcolor', '', ' !important'); ?>
-
            .streamium-list-reviews { background: #000 !important;}
            .streamium-list-reviews:hover { background: #fff !important; color: #000;}
 

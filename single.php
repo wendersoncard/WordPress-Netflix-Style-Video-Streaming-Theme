@@ -1,10 +1,17 @@
-<?php get_header(); ?>
+<?php 
+
+	$type = get_post_type( ); 
+	if($type === "post"){
+		get_header();
+	}else{
+		get_template_part( 'header', 'video' );
+	}
+
+?>
 
 	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
 		<?php
-
-			$type = get_post_type( get_the_ID() ); 
 
 			if($type === "post"){
 
