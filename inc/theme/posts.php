@@ -195,8 +195,20 @@ function streamium_get_dynamic_content() {
 		    }
  
 		    $content = strip_tags($post_object->post_content) . $buildMeta . $like_text;
-	    	$fullImage  = wp_get_attachment_image_src( get_post_thumbnail_id( $postId ), 'streamium-video-tile-expanded' ); 
 	    	$streamiumVideoTrailer = get_post_meta( $postId, 'streamium_video_trailer_meta_box_text', true );
+
+	    	$fullImage  = wp_get_attachment_image_url( get_post_thumbnail_id( $postId ), 'streamium-home-slider' );
+	    	// Allow a extra image to be added
+            if (class_exists('MultiPostThumbnails')) {                              
+                
+                if (MultiPostThumbnails::has_post_thumbnail( get_post_type( $postId ), 'large-landscape-image', $postId)) { 
+
+                    $image_id = MultiPostThumbnails::get_post_thumbnail_id( get_post_type( $postId ), 'large-landscape-image', $postId );  
+                    $fullImage = wp_get_attachment_image_url( $image_id,'streamium-home-slider' ); 
+
+                }                            
+             
+            }; // end if MultiPostThumbnails 
 
 	    	echo json_encode(
 		    	array(
@@ -204,7 +216,7 @@ function streamium_get_dynamic_content() {
 		    		'cat' => $cat,
 		    		'title' => $post_object->post_title,
 		    		'content' => $content,
-		    		'bgimage' =>  isset($fullImage) ? $fullImage[0] : "",
+		    		'bgimage' =>  isset($fullImage) ? $fullImage : "",
 		    		'trailer' => $streamiumVideoTrailer,
 		    		'href' => get_permalink($postId),
 		    		'post' => $post_object

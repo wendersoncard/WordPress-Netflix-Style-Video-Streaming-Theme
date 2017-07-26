@@ -39,6 +39,23 @@ function streamium_custom_post_types() {
 
 	foreach ($postTypes as $key => $value) {
 
+		// Define additional "post thumbnails". Relies on MultiPostThumbnails to work
+		if (class_exists('MultiPostThumbnails')) {
+		    new MultiPostThumbnails(array(
+		        'label' => 'Tile Expanded',
+		        'id' => 'tile-expanded-image',
+		        'post_type' => $value['type']
+		        )
+		    );
+		    new MultiPostThumbnails(array(
+		        'label' => 'Large Landscape',
+		        'id' => 'large-landscape-image',
+		        'post_type' => $value['type']
+		        )
+		    );     
+		 
+		};
+
     	// Check for modifications
     	$rewriteTax = get_theme_mod( 'streamium_section_input_taxonomy_' . $value['tax'], $value['tax'] );
     	$rewriteType = get_theme_mod( 'streamium_section_input_posttype_' . $value['type'], $value['type'] );

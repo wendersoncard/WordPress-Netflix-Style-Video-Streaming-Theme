@@ -25,12 +25,12 @@ function home_api_post() {
     $setType = get_theme_mod('streamium_main_post_type', 'movie');
     $setTax = get_theme_mod('streamium_main_tax', 'movies'); 
 
-    //error_log(print_r($_REQUEST,true));
-
 	// Get params
 	$userId = get_current_user_id();
     if(isset($_REQUEST['query']) && $_REQUEST['query'] != ""){
-        $setTax = $_REQUEST['query']['taxonomies'][1];
+        if(isset($_REQUEST['query']['taxonomies'])){
+            $setTax = $_REQUEST['query']['taxonomies'][1];
+        }
         $setType = $_REQUEST['query']['name'];
     }
 
@@ -76,6 +76,19 @@ function home_api_post() {
                     $imageExpanded   = wp_get_attachment_image_url(get_post_thumbnail_id(), 'streamium-video-tile-expanded');
 
                 endif;
+
+                // Allow a extra image to be added
+                if (class_exists('MultiPostThumbnails')) {                              
+                    
+                    if (MultiPostThumbnails::has_post_thumbnail(get_post_type( get_the_ID() ), 'tile-expanded-image')) { 
+                        
+                        $image_id = MultiPostThumbnails::get_post_thumbnail_id( get_post_type( get_the_ID() ), 'tile-expanded-image', get_the_ID() );  // use the MultiPostThumbnails to get the image ID
+                        $imageExpanded = wp_get_attachment_image_url( $image_id,'streamium-video-tile-expanded' ); // define full size src based on image ID
+
+                        //error_log(print_r($imageExpanded,true));
+                    }                            
+                 
+                }; // end if MultiPostThumbnails 
 
                 // This has been removed
                 $trimexcerpt = !empty(get_the_excerpt()) ? get_the_excerpt() : get_the_content();
