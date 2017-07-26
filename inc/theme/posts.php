@@ -79,7 +79,6 @@ function streamium_single_video_scripts() {
                 'youtube' => $youtube,
                 'vpaid' => $globalAdvertisements,
                 'poster' => esc_url($poster[0]),
-                'skip' => isset($_GET['v']) ? $_GET['v'] : 0,
                 'nonce' => $nonce
             )
         ); 
@@ -190,8 +189,11 @@ function streamium_get_dynamic_content() {
 							</div>';
 
 		    }
- 
-		    $content = strip_tags($post_object->post_content) . $buildMeta . $like_text;
+
+		    $content = $post_object->post_content . $buildMeta . $like_text;
+		    if(streamium_get_device('device') != 'desktop'){
+		    	$content = (empty($post_object->post_excerpt) ? strip_tags($post_object->post_content) : $post_object->post_excerpt);
+		    }
 	    	$fullImage  = wp_get_attachment_image_src( get_post_thumbnail_id( $postId ), 'streamium-video-tile-expanded' ); 
 	    	$streamiumVideoTrailer = get_post_meta( $postId, 'streamium_video_trailer_meta_box_text', true );
 
