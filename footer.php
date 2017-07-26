@@ -81,9 +81,11 @@
 									<ul class="is-hidden">
 										<li class="go-back"><a href="#0"><?php echo $category->name; ?></a></li>
 										<li class="see-all"><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>"><?php echo 'All ' . strtoupper($category->name); ?></a></li>
-										<?php $ChildCats = get_categories('child_of=' . $category->cat_ID); 
-								            foreach ($ChildCats as $ChildCat) { ?>
-											<li><a href="<?php echo esc_url(get_category_link( $ChildCat->term_id )); ?>"><?php echo ucwords($ChildCat->cat_name); ?></a></li>
+										<?php $ChildCats = get_term_children( $category->term_id, $tax);
+								            foreach ($ChildCats as $ChildCat) { 
+								            	$term = get_term($ChildCat);
+								        ?>
+											<li><a href="<?php echo esc_url(get_category_link( $term->term_id )); ?>"><?php echo ucwords($term->name); ?></a></li>
 								        <?php } ?>
 									</ul>
 								</li>
