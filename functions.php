@@ -14,10 +14,10 @@ if (!function_exists('streamium_theme_setup')) {
 
         add_theme_support('post-thumbnails');
         add_theme_support('automatic-feed-links');
-        add_image_size('streamium-video-tile', $width, $height, true); //, 285, 160
-        add_image_size('streamium-video-tile-expanded', ($width*2), ($height*2), true); //, 285, 160
-        add_image_size('streamium-video-tile-large-expanded', 960, 411, true); 
-        add_image_size('streamium-home-slider', 960, 540, true);
+        add_image_size('streamium-video-tile', $width, $height, false); //, 285, 160
+        add_image_size('streamium-video-tile-expanded', ($width*2), ($height*2), false); //, 285, 160
+        add_image_size('streamium-video-tile-large-expanded', 960, 411, false); 
+        add_image_size('streamium-home-slider', 960, 540, false);
         add_image_size('streamium-site-logo', 0, 56, true);
         add_theme_support('title-tag');
 
