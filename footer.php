@@ -157,7 +157,7 @@
 	<div class="streamium-review-panel from-right">
 		<header class="streamium-review-panel-header">
 			<h1>Reviews</h1>
-			<a href="#0" class="streamium-review-panel-close">Close</a>
+			<a href="#0" class="streamium-review-panel-close"><i class="fa fa-times" aria-hidden="true"></i></a>
 		</header>
 
 		<div class="streamium-review-panel-container">
