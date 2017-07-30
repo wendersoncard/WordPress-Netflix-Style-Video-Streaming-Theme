@@ -539,7 +539,7 @@ class Streamium_Customize
            ?>
 
            <?php if (!wp_is_mobile()) :
-              self::generate_css('.synopis-inner .content, .streamium-review-panel-content', 'font-size', 'streamium_synopsis_para', '', ' !important');
+              self::generate_css('.synopis-inner .content', 'font-size', 'streamium_synopsis_para', '', ' !important');
             endif; ?>
 
            <?php self::generate_css('.post-type-archive, .woocommerce-cart, .woocommerce-account, .woocommerce-checkout, .woocommerce-page', 'background-image', 'streamium_plans_bg', 'url(', ')'); ?>

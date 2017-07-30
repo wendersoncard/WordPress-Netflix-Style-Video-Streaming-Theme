@@ -210,7 +210,7 @@ function streamium_get_dynamic_content() {
             }; // end if MultiPostThumbnails 
 
             // Setup content
-            $content = wp_trim_words( strip_tags($post_object->post_content), 30, ' <a class="show-more-content" data-id="' . $postId . '">read more</a>' ) . $buildMeta . $like_text;
+            $content = wp_trim_words( strip_tags($post_object->post_content), 15, ' <a class="show-more-content" data-id="' . $postId . '">read more</a>' ) . $buildMeta . $like_text;
 
 	    	echo json_encode(
 		    	array(
