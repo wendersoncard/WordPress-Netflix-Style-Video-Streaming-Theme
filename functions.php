@@ -82,6 +82,7 @@ if (!function_exists('streamium_enqueue_scripts')) {
                 'home_api_nonce' => wp_create_nonce("home_api_nonce"),
                 'tax_api_nonce' => wp_create_nonce("tax_api_nonce"),
                 'search_api_nonce' => wp_create_nonce("search_api_nonce"),
+                'extra_api_nonce' => wp_create_nonce("extra_api_nonce"),
                 'query' => $query,
                 'search' => isset($_GET) ? $_GET : false,
                 'is_home' => is_home(),

@@ -48,7 +48,7 @@
 						$streamiumFeaturedVideo = get_post_meta( get_the_ID(), 'streamium_featured_video_meta_box_text', true );
 						$nonce = wp_create_nonce( 'streamium_likes_nonce' );
 				        $link = admin_url('admin-ajax.php?action=streamium_likes&post_id='.get_the_ID().'&nonce='.$nonce);
-				        $content = (wp_is_mobile()) ? get_the_excerpt() : get_the_content();
+				        $content = wp_trim_words( strip_tags(get_the_content()), 30, ' <a class="show-more-content" data-id="' . get_the_ID() . '">read more</a>' );
 
 				?>
 				<div class="slider-block" style="background-image: url(<?php echo esc_url($image[0]); ?>);">

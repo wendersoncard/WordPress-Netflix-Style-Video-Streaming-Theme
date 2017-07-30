@@ -194,7 +194,6 @@ function streamium_get_dynamic_content() {
 
 		    }
  
-		    $content = strip_tags($post_object->post_content) . $buildMeta . $like_text;
 	    	$streamiumVideoTrailer = get_post_meta( $postId, 'streamium_video_trailer_meta_box_text', true );
 
 	    	$fullImage  = wp_get_attachment_image_url( get_post_thumbnail_id( $postId ), 'streamium-video-tile-large-expanded' );
@@ -209,6 +208,10 @@ function streamium_get_dynamic_content() {
                 }                            
              
             }; // end if MultiPostThumbnails 
+
+            // Setup content
+
+            $content = wp_trim_words( strip_tags($post_object->post_content), 30, ' <a class="show-more-content" data-id="' . $postId . '">read more</a>' ) . $buildMeta . $like_text;
 
 	    	echo json_encode(
 		    	array(
@@ -248,6 +251,88 @@ function streamium_get_dynamic_content() {
 
 add_action( 'wp_ajax_nopriv_streamium_get_dynamic_content', 'streamium_get_dynamic_content' );
 add_action( 'wp_ajax_streamium_get_dynamic_content', 'streamium_get_dynamic_content' );
+
+
+/**
+ * Ajax post scipts for content
+ *
+ * @return bool
+ * @author  @sameast
+ */
+function streamium_get_more_content() {
+
+	global $wpdb;
+
+	// Get params
+	$postId = (int) $_REQUEST['postId'];
+
+	error_log(print_r($_REQUEST,true));
+ 
+    if ( ! wp_verify_nonce( $_REQUEST['nonce'], 'extra_api_nonce' ) || ! isset( $_REQUEST['nonce'] ) ) {
+       	
+       	echo json_encode(
+	    	array(
+	    		'error' => true,
+	    		'message' => 'We could not find this post.'
+	    	)
+	    );
+
+    }
+
+    if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+
+    	$post_object = get_post( $postId );
+
+    	if(!empty($post_object)){
+
+	    	$fullImage  = wp_get_attachment_image_url( get_post_thumbnail_id( $postId ), 'streamium-video-tile-large-expanded' );
+	    	// Allow a extra image to be added
+            if (class_exists('MultiPostThumbnails')) {                              
+                
+                if (MultiPostThumbnails::has_post_thumbnail( get_post_type( $postId ), 'large-landscape-image', $postId)) { 
+
+                    $image_id = MultiPostThumbnails::get_post_thumbnail_id( get_post_type( $postId ), 'large-landscape-image', $postId );  
+                    $fullImage = wp_get_attachment_image_url( $image_id,'streamium-video-tile-large-expanded' ); 
+
+                }                            
+             
+            }; // end if MultiPostThumbnails 
+
+	    	echo json_encode(
+		    	array(
+		    		'error' => false,
+		    		'title' => $post_object->post_title,
+		    		'content' => $post_object->post_content,
+		    		'bgimage' =>  isset($fullImage) ? $fullImage : "",
+		    		'href' => get_permalink($postId)
+		    	)
+		    );
+
+	    }else{
+
+	    	echo json_encode(
+		    	array(
+		    		'error' => true,
+		    		'message' => 'We could not find this post.'
+		    	)
+		    );
+
+	    }
+
+        die();
+
+    }
+    else {
+        
+        wp_redirect( get_permalink( $_REQUEST['post_id'] ) );
+        exit();
+
+    }
+
+}
+
+add_action( 'wp_ajax_nopriv_streamium_get_more_content', 'streamium_get_more_content' );
+add_action( 'wp_ajax_streamium_get_more_content', 'streamium_get_more_content' );
 
 function streamium_custom_post_types_general( $hook_suffix ){
 
