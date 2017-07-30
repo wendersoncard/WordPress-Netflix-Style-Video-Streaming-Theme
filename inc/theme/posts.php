@@ -210,7 +210,7 @@ function streamium_get_dynamic_content() {
             }; // end if MultiPostThumbnails 
 
             // Setup content
-            $content = wp_trim_words( strip_tags($post_object->post_content), 15, ' <a class="show-more-content" data-id="' . $postId . '">read more</a>' ) . $buildMeta . $like_text;
+            $content = strip_tags($post_object->post_content);
 
 	    	echo json_encode(
 		    	array(
@@ -218,6 +218,8 @@ function streamium_get_dynamic_content() {
 		    		'cat' => $cat,
 		    		'title' => $post_object->post_title,
 		    		'content' => $content,
+		    		'meta' => $buildMeta,
+		    		'reviews' => $like_text,
 		    		'bgimage' =>  isset($fullImage) ? $fullImage : "",
 		    		'trailer' => $streamiumVideoTrailer,
 		    		'href' => get_permalink($postId),
