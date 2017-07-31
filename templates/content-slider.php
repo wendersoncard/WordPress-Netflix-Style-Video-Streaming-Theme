@@ -35,7 +35,7 @@
 					<div class="content-overlay-grad"></div>
 					<div class="container-fluid rel">
 						<div class="row rel">
-							<div class="col-sm-5 col-xs-5 rel">
+							<div class="col-sm-6 col-xs-6 rel">
 								<div class="synopis-outer">
 									<div class="synopis-middle">
 										<div class="synopis-inner">
@@ -58,7 +58,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-sm-7 col-xs-7 rel">
+							<div class="col-sm-6 col-xs-6 rel">
 								<a class="play-icon-wrap" href="<?php the_permalink(); ?>">
 									<div class="play-icon-wrap-rel">
 										<div class="play-icon-wrap-rel-ring"></div>
