@@ -11,11 +11,18 @@ if (!function_exists('streamium_theme_setup')) {
         $averageBrowserWidth = 1366;
         $width = round($averageBrowserWidth/s3bubble_tile_count()); 
         $height = round($width/16*9);
-
+ 
         add_theme_support('post-thumbnails');
         add_theme_support('automatic-feed-links');
-        add_image_size('streamium-video-tile', $width, $height, false); //, 285, 160
-        add_image_size('streamium-video-tile-expanded', ($width*2), ($height*2), false); //, 285, 160
+
+        // Check for orientation and switch if needed
+        if(get_theme_mod( 'streamium_poster_orientation', '56.25' ) === '56.25'){
+            add_image_size('streamium-video-tile', ($width*2), ($height*2), false); //, 285, 160
+            add_image_size('streamium-video-tile-expanded', ($width*2), ($height*2), false); //, 285, 160
+        }else{
+            add_image_size('streamium-video-tile', ($height*2), ($width*2), false); //, 285, 160
+            add_image_size('streamium-video-tile-expanded', ($height*2), ($width*2), false); //, 285, 160
+        }
         add_image_size('streamium-video-tile-large-expanded', 9999, 411, false); 
         add_image_size('streamium-home-slider', 9999, 540, false);
         add_image_size('streamium-site-logo', 0, 56, true);
@@ -53,7 +60,7 @@ function s3bubble_cache_version() {
 }
 
 function s3bubble_tile_count() {
-    return 6;
+    return (int) get_theme_mod( 'streamium_tile_count', 6 );
 }
 
 /*-----------------------------------------------------------------------------------*/

@@ -185,6 +185,53 @@ class Streamium_Customize
           )
       );
 
+       $wp_customize->add_setting('streamium_poster_orientation', array(
+          'default'  => '56.25%'
+      ));
+
+       $wp_customize->add_control(
+          new WP_Customize_Control(
+              $wp_customize,
+              'streamium_poster_orientation',
+              array(
+                  'label'     => __('Poster Orientation', 'streamium'),
+                  'section'   => 'streamium_styles',
+                  'settings'  => 'streamium_poster_orientation',
+                  'type'      => 'select',
+                  'choices' => array(
+                      '150%'  => __('Portrait'),
+                      '56.25%'  => __('Landscape')
+                  )
+              )
+          )
+      );
+
+       $wp_customize->add_setting('streamium_tile_count', array(
+          'default'  => '6'
+      ));
+
+       $wp_customize->add_control(
+          new WP_Customize_Control(
+              $wp_customize,
+              'streamium_tile_count',
+              array(
+                  'label'     => __('Tile Count', 'streamium'),
+                  'section'   => 'streamium_styles',
+                  'settings'  => 'streamium_tile_count',
+                  'type'      => 'select',
+                  'choices' => array(
+                      '4'  => __('4'),
+                      '5'  => __('5'),
+                      '6'  => __('6'),
+                      '7'  => __('7'),
+                      '8'  => __('8'),
+                      '9'  => __('9'),
+                      '10'  => __('10')
+                  )
+              )
+          )
+      );
+
 
       // SITE IDENTITY SECTION
       $wp_customize->add_setting('streamium_main_post_type', array(
@@ -530,6 +577,8 @@ class Streamium_Customize
            <?php self::generate_css('.archive, .home, .search, .single', 'background-color', 'streamium_background_color', '', ' !important'); ?>
            <?php self::generate_css('.carousels .tile_inner', 'border-color', 'streamium_background_color', '', ' !important'); ?>
            <?php self::generate_css('.video-header h3, .see-all', 'color', 'streamium_carousel_heading_color', '', ' !important'); ?>
+
+           <?php self::generate_css('.tile_inner', 'padding-bottom', 'streamium_poster_orientation', '', ' !important'); ?>
 
            /* link and background colors */
            <?php self::generate_css('.page a, a:focus, a:hover, .cd-main-header .cd-logo, .play-icon-wrap i, .cd-primary-nav .cd-secondary-nav a:hover, .cd-primary-nav>li>a:hover, .cd-primary-nav .cd-nav-gallery .cd-nav-item h3, .cd-primary-nav .cd-nav-icons .cd-nav-item h3, .woocommerce-message:before, .woocommerce-info::before, .carousels .overlay .overlay-meta .top-meta-watched, .static-row .overlay .overlay-meta .top-meta-watched', 'color', 'link_textcolor', '', '', true, '#dd3333'); 
