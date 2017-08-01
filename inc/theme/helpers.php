@@ -41,10 +41,25 @@ function sb_register_required_plugins() {
         'required'  => false,
       ),
       array(
-        'name'      => 'Search Everything',
-        'slug'      => 'search-everything',
+        'name'      => 'WP Extended Search',
+        'slug'      => 'wp-extended-search',
         'required'  => false,
-  	  )
+  	  ),
+      array(
+        'name'      => 'Post Types Order',
+        'slug'      => 'post-types-order',
+        'required'  => false,
+      ),
+      array(
+        'name'      => 'Force Regenerate Thumbnails',
+        'slug'      => 'force-regenerate-thumbnails',
+        'required'  => false,
+      ), 
+      array(
+        'name'      => 's2member',
+        'slug'      => 's2member',
+        'required'  => false,
+      )
     );
 
     $config = array(
@@ -56,8 +71,7 @@ function sb_register_required_plugins() {
       'has_notices'  => true,
       'dismissable'  => true,
       'dismiss_msg'  => '',
-      'is_automatic' => false,
-      'message'      => 'To get the most out of Streamium we recommend that you install the following plugins',
+      'is_automatic' => false
     );
 
     tgmpa( $plugins, $config );
