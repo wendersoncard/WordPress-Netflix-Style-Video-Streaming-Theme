@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 	<?php if ( get_theme_mod( 'streamium_enable_loader' ) ) : ?>
-		<div class="streamium-loading">Loading&#8230;</div>
+		<div class="streamium-loading">&#8230;</div>
 	<?php endif; ?>
 
 	<header class="cd-main-header fixed">

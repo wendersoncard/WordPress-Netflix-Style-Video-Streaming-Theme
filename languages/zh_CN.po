@@ -1,17 +1,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Streamium\n"
-"POT-Creation-Date: 2017-08-01 10:31+0100\n"
-"PO-Revision-Date: 2017-08-01 10:32+0100\n"
+"POT-Creation-Date: 2017-08-01 10:36+0100\n"
+"PO-Revision-Date: 2017-08-01 10:37+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: en_GB\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.0.3\n"
 "X-Poedit-Basepath: ..\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: style.css\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -24,369 +24,434 @@ msgstr ""
 #: 404.php:16 archive.php:16 category.php:16 forum.php:16 index.php:20
 #: page.php:16 search.php:16 taxonomy.php:16 templates/content-blog.php:14
 #: templates/plans-template.php:20
+#, fuzzy
 msgid "Search"
-msgstr ""
+msgstr "占位符 搜索"
 
 #: 404.php:17 archive.php:17 category.php:17 footer.php:61 forum.php:17
 #: index.php:21 page.php:17 search.php:17 taxonomy.php:17
 #: templates/content-blog.php:15 templates/plans-template.php:21
+#, fuzzy
 msgid "Menu"
-msgstr ""
+msgstr "菜单"
 
 #: 404.php:31
+#, fuzzy
 msgid "Oops! That can&rsquo;t be found."
-msgstr ""
+msgstr "哎呀！未发现该页面。"
 
 #: 404.php:32
+#, fuzzy
 msgid "It looks like nothing was found at this location. Maybe try a search?"
-msgstr ""
+msgstr "在这个地方好像什么都没有找到。也许试着搜索?"
 
 #: category.php:44 taxonomy.php:30
-#, php-format
+#, fuzzy, php-format
 msgid "Viewing: %s"
-msgstr ""
+msgstr "查看：％s"
 
 #: footer.php:29
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "<ul id=\"cd-primary-nav\" class=\"cd-primary-nav is-fixed\"><li><a href=\"#"
 "\">%1$s</a></li></ul>"
 msgstr ""
+"<ul id=\"cd-primary-nav\" class=\"cd-primary-nav is-fixed\"><li> <a href=\"#"
+"\">％1个$ S</a> </li></ul>"
 
 #: footer.php:64
+#, fuzzy
 msgid "All "
-msgstr ""
+msgstr "所有 "
 
 #: forum.php:38 forum.php:50 page.php:38 page.php:50 single.php:45
 #: templates/plans-template.php:41
+#, fuzzy
 msgid "Sorry, no posts matched your criteria."
-msgstr ""
+msgstr "对不起，没有职位符合您的标准"
 
 #: functions.php:43
+#, fuzzy
 msgid "Video Tile"
-msgstr ""
+msgstr "视频平铺"
 
 #: functions.php:44
+#, fuzzy
 msgid "Video Tile Expanded"
-msgstr ""
+msgstr "视频图块展开"
 
 #: functions.php:45
+#, fuzzy
 msgid "Multi Video Thumb"
-msgstr ""
+msgstr "多视频缩略图"
 
 #: functions.php:46
+#, fuzzy
 msgid "Main Slider"
-msgstr ""
+msgstr "主滑块"
 
 #: functions.php:60
+#, fuzzy
 msgid "Page Sidebar"
-msgstr ""
+msgstr "页面侧边栏"
 
 #: functions.php:69
+#, fuzzy
 msgid "Post Sidebar"
-msgstr ""
+msgstr "文章边栏"
 
 #: functions.php:78
+#, fuzzy
 msgid "Forum Sidebar"
-msgstr ""
+msgstr "论坛侧边栏"
 
 #: functions.php:181 functions.php:193
+#, fuzzy
 msgid "Notice dismissed"
-msgstr ""
+msgstr "通知被驳回"
 
 #: inc/import/importer/parsers.php:42 inc/import/importer/parsers.php:63
 #: inc/theme/parsers.php:42 inc/theme/parsers.php:72 inc/theme/parsers.php:80
+#, fuzzy
 msgid "There was an error when reading this WXR file"
-msgstr ""
+msgstr "在读取WXR文件出现了错误"
 
 #: inc/import/importer/parsers.php:43 inc/theme/parsers.php:43
+#, fuzzy
 msgid ""
 "Details are shown above. The importer will now try again with a different "
 "parser..."
-msgstr ""
+msgstr "详情显示在上面。导入工具将使用不同的方式尝试..."
 
 #: inc/import/importer/parsers.php:67 inc/import/importer/parsers.php:72
 #: inc/import/importer/parsers.php:262 inc/import/importer/parsers.php:447
 #: inc/theme/parsers.php:84 inc/theme/parsers.php:89 inc/theme/parsers.php:306
 #: inc/theme/parsers.php:495
+#, fuzzy
 msgid ""
 "This does not appear to be a WXR file, missing/invalid WXR version number"
-msgstr ""
+msgstr "没有WXR文件，丢失/无效的WXR版本号"
 
 #: inc/import/importer/streamium-importer.php:208
+#, fuzzy
 msgid "Demo already imported"
-msgstr ""
+msgstr "演示数据已导入"
 
 #: inc/import/importer/streamium-importer.php:228
+#, fuzzy
 msgid "Import Again"
-msgstr ""
+msgstr "重新导入"
 
 #: inc/import/importer/streamium-importer.php:232
+#, fuzzy
 msgid "Import Demo Data"
-msgstr ""
+msgstr "导入演示数据"
 
 #: inc/import/importer/streamium-importer.php:438
+#, fuzzy
 msgid "Theme options Import file could not be found. Please try again."
-msgstr ""
+msgstr "主题选项导入文件无法找到。请重试。"
 
 #: inc/import/importer/streamium-importer.php:496
+#, fuzzy
 msgid "Widget Import file could not be found. Please try again."
-msgstr ""
+msgstr "窗口小部件导入文件可能不会被发现。请重试。"
 
 #: inc/import/importer/streamium-importer.php:569
+#, fuzzy
 msgid "Sidebar does not exist in theme (using Inactive)"
-msgstr ""
+msgstr "侧边栏的主题不存在（使用无效）"
 
 #: inc/import/importer/streamium-importer.php:591
+#, fuzzy
 msgid "Site does not support widget"
-msgstr ""
+msgstr "站点不支持小部件"
 
 #: inc/import/importer/streamium-importer.php:614
+#, fuzzy
 msgid "Widget already exists"
-msgstr ""
+msgstr "部件已存在"
 
 #: inc/import/importer/streamium-importer.php:663
+#, fuzzy
 msgid "Imported"
-msgstr ""
+msgstr "进口"
 
 #: inc/import/importer/streamium-importer.php:666
+#, fuzzy
 msgid "Imported to Inactive"
-msgstr ""
+msgstr "导入到非活动状态"
 
 #: inc/import/importer/streamium-importer.php:673
 #: templates/archive-slider.php:40 templates/content-slider.php:42
 #: templates/content-slider.php:92
+#, fuzzy
 msgid "No Title"
-msgstr ""
+msgstr "无标题"
 
 #: inc/import/importer/wordpress-importer.php:132
 #: inc/import/importer/wordpress-importer.php:141
 #: inc/import/importer/wordpress-importer.php:192
 #: inc/import/importer/wordpress-importer.php:196
 #: inc/import/importer/wordpress-importer.php:205
+#, fuzzy
 msgid "Sorry, there has been an error."
-msgstr ""
+msgstr "对不起，有一个错误。"
 
 #: inc/import/importer/wordpress-importer.php:133
+#, fuzzy
 msgid "The file does not exist, please try again."
-msgstr ""
+msgstr "文件不存在，请再试。"
 
 #: inc/import/importer/wordpress-importer.php:176
+#, fuzzy
 msgid "All done."
-msgstr ""
+msgstr "全部完成。"
 
 #: inc/import/importer/wordpress-importer.php:176
+#, fuzzy
 msgid "Have fun!"
-msgstr ""
+msgstr "成功！"
 
 #: inc/import/importer/wordpress-importer.php:177
+#, fuzzy
 msgid "Remember to update the passwords and roles of imported users."
-msgstr ""
+msgstr "记得更新密码和重要用户的角色。"
 
 #: inc/import/importer/wordpress-importer.php:197
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "The export file could not be found at <code>%s</code>. It is likely that "
 "this was caused by a permissions problem."
-msgstr ""
+msgstr "导出文件不在<code>%s</code>里。貌似是权限问题。"
 
 #: inc/import/importer/wordpress-importer.php:213
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "This WXR file (version %s) may not be supported by this version of the "
 "importer. Please consider updating."
-msgstr ""
+msgstr "WXR文件（版本%s）不被支持。请考虑更新。"
 
 #: inc/import/importer/wordpress-importer.php:238
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "Failed to import author %s. Their posts will be attributed to the current "
 "user."
-msgstr ""
+msgstr "失败导入作者%s。其文章归于当前用户。"
 
 #: inc/import/importer/wordpress-importer.php:264
+#, fuzzy
 msgid "Assign Authors"
-msgstr ""
+msgstr "指定作者"
 
 #: inc/import/importer/wordpress-importer.php:265
+#, fuzzy
 msgid ""
 "To make it easier for you to edit and save the imported content, you may "
 "want to reassign the author of the imported item to an existing user of this "
 "site. For example, you may want to import all the entries as <code>admin</"
 "code>s entries."
 msgstr ""
+"为了更加容易的编辑和导入内容，需要重新指定导入项目的作者到网站存在的用户。例"
+"如，你可以把导入的所有内容归于<code>admin</code>。"
 
 #: inc/import/importer/wordpress-importer.php:267
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "If a new user is created by WordPress, a new password will be randomly "
 "generated and the new user&#8217;s role will be set as %s. Manually changing "
 "the new user&#8217;s details will be necessary."
 msgstr ""
+"如果WP创建了新用户，新密码将随机产生，新用户&#8217;s的角色被设置为%s。手动修"
+"改新用户&#8217;s的详情是必要的。"
 
 #: inc/import/importer/wordpress-importer.php:277
+#, fuzzy
 msgid "Import Attachments"
-msgstr ""
+msgstr "导入附件"
 
 #: inc/import/importer/wordpress-importer.php:280
+#, fuzzy
 msgid "Download and import file attachments"
-msgstr ""
+msgstr "下载和导入文件附件"
 
 #: inc/import/importer/wordpress-importer.php:284
 #: woocommerce/single-product-reviews.php:82
+#, fuzzy
 msgid "Submit"
-msgstr ""
+msgstr "提交"
 
 #: inc/import/importer/wordpress-importer.php:297
+#, fuzzy
 msgid "Import author:"
-msgstr ""
+msgstr "导入作者："
 
 #: inc/import/importer/wordpress-importer.php:308
+#, fuzzy
 msgid "or create new user with login name:"
-msgstr ""
+msgstr "或使用登录名创建新用户："
 
 #: inc/import/importer/wordpress-importer.php:311
+#, fuzzy
 msgid "as a new user:"
-msgstr ""
+msgstr "作为一个新用户："
 
 #: inc/import/importer/wordpress-importer.php:319
+#, fuzzy
 msgid "assign posts to an existing user:"
-msgstr ""
+msgstr "指定文章给存在的用户："
 
 #: inc/import/importer/wordpress-importer.php:321
+#, fuzzy
 msgid "or assign posts to an existing user:"
-msgstr ""
+msgstr "或指定文章给存在的用户："
 
 #: inc/import/importer/wordpress-importer.php:322
+#, fuzzy
 msgid "- Select -"
-msgstr ""
+msgstr "- 选择 -"
 
 #: inc/import/importer/wordpress-importer.php:372
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "Failed to create new user for %s. Their posts will be attributed to the "
 "current user."
-msgstr ""
+msgstr "失败创建新用户%s。其文章将归于当前用户。"
 
 #: inc/import/importer/wordpress-importer.php:424
-#, php-format
+#, fuzzy, php-format
 msgid "Failed to import category %s"
-msgstr ""
+msgstr "失败导入分类%s"
 
 #: inc/import/importer/wordpress-importer.php:467
-#, php-format
+#, fuzzy, php-format
 msgid "Failed to import post tag %s"
-msgstr ""
+msgstr "失败导入文章标签%s"
 
 #: inc/import/importer/wordpress-importer.php:516
 #: inc/import/importer/wordpress-importer.php:738
-#, php-format
+#, fuzzy, php-format
 msgid "Failed to import %s %s"
-msgstr ""
+msgstr "失败导入%s %s"
 
 #: inc/import/importer/wordpress-importer.php:605
-#, php-format
+#, fuzzy, php-format
 msgid "Failed to import &#8220;%s&#8221;: Invalid post type %s"
-msgstr ""
+msgstr "失败导入&#8220;%s&#8221;:无效文章类型%s"
 
 #: inc/import/importer/wordpress-importer.php:642
-#, php-format
+#, fuzzy, php-format
 msgid "%s &#8220;%s&#8221; already exists."
-msgstr ""
+msgstr "%s &#8220;%s&#8221;已存在"
 
 #: inc/import/importer/wordpress-importer.php:704
-#, php-format
+#, fuzzy, php-format
 msgid "Failed to import %s &#8220;%s&#8221;"
-msgstr ""
+msgstr "失败导入%s &#8220;%s&#8221;"
 
 #: inc/import/importer/wordpress-importer.php:869
+#, fuzzy
 msgid "Menu item skipped due to missing menu slug"
-msgstr ""
+msgstr "菜单项目略过源于丢失菜单别名"
 
 #: inc/import/importer/wordpress-importer.php:876
-#, php-format
+#, fuzzy, php-format
 msgid "Menu item skipped due to invalid menu slug: %s"
-msgstr ""
+msgstr "菜单项目略过源于无效菜单别名：%s"
 
 #: inc/import/importer/wordpress-importer.php:939
+#, fuzzy
 msgid "Fetching attachments is not enabled"
-msgstr ""
+msgstr "获取附件没有启用"
 
 #: inc/import/importer/wordpress-importer.php:952
+#, fuzzy
 msgid "Invalid file type"
-msgstr ""
+msgstr "无效文章类型"
 
 #: inc/import/importer/wordpress-importer.php:996
+#, fuzzy
 msgid "Remote server did not respond"
-msgstr ""
+msgstr "远程服务器没有响应"
 
 #: inc/import/importer/wordpress-importer.php:1002
-#, php-format
+#, fuzzy, php-format
 msgid "Remote server returned error response %1$d %2$s"
-msgstr ""
+msgstr "远程服务返回了错误%1$d %2$s"
 
 #: inc/import/importer/wordpress-importer.php:1009
+#, fuzzy
 msgid "Remote file is incorrect size"
-msgstr ""
+msgstr "远程文件大小不对"
 
 #: inc/import/importer/wordpress-importer.php:1014
+#, fuzzy
 msgid "Zero size file downloaded"
-msgstr ""
+msgstr "下载的文件大小为0"
 
 #: inc/import/importer/wordpress-importer.php:1020
-#, php-format
+#, fuzzy, php-format
 msgid "Remote file is too large, limit is %s"
-msgstr ""
+msgstr "远程文件太多，限制是%s"
 
 #: inc/import/importer/wordpress-importer.php:1119
+#, fuzzy
 msgid "Import WordPress"
-msgstr ""
+msgstr "导入WordPress"
 
 #: inc/import/importer/wordpress-importer.php:1126
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "A new version of this importer is available. Please update to version %s to "
 "ensure compatibility with newer export files."
-msgstr ""
+msgstr "新版本的导入工具出来了，请更新到版本%s已保证最新导出文件的兼容性。"
 
 #: inc/import/importer/wordpress-importer.php:1141
+#, fuzzy
 msgid ""
 "Howdy! Upload your WordPress eXtended RSS (WXR) file and we&#8217;ll import "
 "the posts, pages, comments, custom fields, categories, and tags into this "
 "site."
 msgstr ""
+"亲！上传您的 WordPress eXtended RSS (WXR)文件和we&#8217;ll导入文章，标签，页"
+"面，评论，自定义栏目，分类和标签到网站。"
 
 #: inc/import/importer/wordpress-importer.php:1142
+#, fuzzy
 msgid "Choose a WXR (.xml) file to upload, then click Upload file and import."
-msgstr ""
+msgstr "选择要导入的WXR（.xml）文件，然后单击上传文件并导入。"
 
 #: inc/meta/meta-boxes.php:308
+#, fuzzy
 msgid "Show in the main feature slider"
-msgstr ""
+msgstr "显示在主要功能滑块中"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:334
+#, fuzzy
 msgid "Install Required Plugins"
-msgstr ""
+msgstr "需要安装插件"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:335
+#, fuzzy
 msgid "Install Plugins"
-msgstr ""
+msgstr "安装插件"
 
 #. translators: %s: plugin name.
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:337
-#, php-format
+#, fuzzy, php-format
 msgid "Installing Plugin: %s"
-msgstr ""
+msgstr "安装插件：%s"
 
 #. translators: %s: plugin name.
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:339
-#, php-format
+#, fuzzy, php-format
 msgid "Updating Plugin: %s"
-msgstr ""
+msgstr "插件更新中：%s"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:340
+#, fuzzy
 msgid "Something went wrong with the plugin API."
-msgstr ""
+msgstr "有点不对劲的插件API。"
 
 #. translators: 1: plugin name(s).
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:343
@@ -394,7 +459,6 @@ msgstr ""
 msgid "This theme requires the following plugin: %1$s."
 msgid_plural "This theme requires the following plugins: %1$s."
 msgstr[0] ""
-msgstr[1] ""
 
 #. translators: 1: plugin name(s).
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:349
@@ -402,7 +466,6 @@ msgstr[1] ""
 msgid "This theme recommends the following plugin: %1$s."
 msgid_plural "This theme recommends the following plugins: %1$s."
 msgstr[0] ""
-msgstr[1] ""
 
 #. translators: 1: plugin name(s).
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:355
@@ -414,7 +477,6 @@ msgid_plural ""
 "The following plugins need to be updated to their latest version to ensure "
 "maximum compatibility with this theme: %1$s."
 msgstr[0] ""
-msgstr[1] ""
 
 #. translators: 1: plugin name(s).
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:361
@@ -422,7 +484,6 @@ msgstr[1] ""
 msgid "There is an update available for: %1$s."
 msgid_plural "There are updates available for the following plugins: %1$s."
 msgstr[0] ""
-msgstr[1] ""
 
 #. translators: 1: plugin name(s).
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:367
@@ -430,7 +491,6 @@ msgstr[1] ""
 msgid "The following required plugin is currently inactive: %1$s."
 msgid_plural "The following required plugins are currently inactive: %1$s."
 msgstr[0] ""
-msgstr[1] ""
 
 #. translators: 1: plugin name(s).
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:373
@@ -438,176 +498,195 @@ msgstr[1] ""
 msgid "The following recommended plugin is currently inactive: %1$s."
 msgid_plural "The following recommended plugins are currently inactive: %1$s."
 msgstr[0] ""
-msgstr[1] ""
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:378
 msgid "Begin installing plugin"
 msgid_plural "Begin installing plugins"
 msgstr[0] ""
-msgstr[1] ""
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:383
 msgid "Begin updating plugin"
 msgid_plural "Begin updating plugins"
 msgstr[0] ""
-msgstr[1] ""
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:388
 msgid "Begin activating plugin"
 msgid_plural "Begin activating plugins"
 msgstr[0] ""
-msgstr[1] ""
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:392
+#, fuzzy
 msgid "Return to Required Plugins Installer"
-msgstr ""
+msgstr "返回所需的插件安装程序"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:393
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:920
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2626
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3673
+#, fuzzy
 msgid "Return to the Dashboard"
-msgstr ""
+msgstr "返回仪表板"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:394
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3252
+#, fuzzy
 msgid "Plugin activated successfully."
-msgstr ""
+msgstr "插件激活成功。"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:395
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3045
 msgid "The following plugin was activated successfully:"
 msgid_plural "The following plugins were activated successfully:"
 msgstr[0] ""
-msgstr[1] ""
 
 #. translators: 1: plugin name.
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:397
-#, php-format
+#, fuzzy, php-format
 msgid "No action taken. Plugin %1$s was already active."
-msgstr ""
+msgstr "不采取任何操作。插件%1$s已激活."
 
 #. translators: 1: plugin name.
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:399
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "Plugin not activated. A higher version of %s is needed for this theme. "
 "Please update the plugin."
-msgstr ""
+msgstr "插件未激活。此主题需要一个高版本的%s。请更新插件."
 
 #. translators: 1: dashboard link.
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:401
-#, php-format
+#, fuzzy, php-format
 msgid "All plugins installed and activated successfully. %1$s"
-msgstr ""
+msgstr "所有插件已成功安装并激活 %1$s"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:402
+#, fuzzy
 msgid "Dismiss this notice"
-msgstr ""
+msgstr "取消此通知"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:403
+#, fuzzy
 msgid ""
 "There are one or more required or recommended plugins to install, update or "
 "activate."
-msgstr ""
+msgstr "有一个或多个必装或推荐插件要安装、更新或激活."
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:404
+#, fuzzy
 msgid "Please contact the administrator of this site for help."
-msgstr ""
+msgstr "请联系本网站管理员获取帮助."
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:607
+#, fuzzy
 msgid "This plugin needs to be updated to be compatible with your theme."
-msgstr ""
+msgstr "此插件需要更新以与您的主题兼容"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:608
+#, fuzzy
 msgid "Update Required"
-msgstr ""
+msgstr "需要更新"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:725
+#, fuzzy
 msgid "Set the parent_slug config variable instead."
-msgstr ""
+msgstr "设置parent_slug config变量。"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:1027
+#, fuzzy
 msgid ""
 "The remote plugin package does not contain a folder with the desired slug "
 "and renaming did not work."
-msgstr ""
+msgstr "远程插件包不包含所需别名的文件夹且重命名不工作."
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:1027
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:1030
+#, fuzzy
 msgid ""
 "Please contact the plugin provider and ask them to package their plugin "
 "according to the WordPress guidelines."
-msgstr ""
+msgstr "请联系插件提供商，并要求他们根据WordPress指南打包他们的插件。"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:1030
+#, fuzzy
 msgid ""
 "The remote plugin package consists of more than one file, but the files are "
 "not packaged in a folder."
-msgstr ""
+msgstr "远程插件包由多个文件组成，但文件未打包在一个文件夹中。"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:1214
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3041
+#, fuzzy
 msgctxt "plugin A *and* plugin B"
 msgid "and"
-msgstr ""
+msgstr "和"
 
 #. translators: %s: version number
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2075
-#, php-format
+#, fuzzy, php-format
 msgid "TGMPA v%s"
-msgstr ""
+msgstr "TGMPA v%s"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2366
+#, fuzzy
 msgid "Required"
-msgstr ""
+msgstr "必填"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2369
+#, fuzzy
 msgid "Recommended"
-msgstr ""
+msgstr "推荐"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2385
+#, fuzzy
 msgid "WordPress Repository"
-msgstr ""
+msgstr "WordPress存储库"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2388
+#, fuzzy
 msgid "External Source"
-msgstr ""
+msgstr "外部来源"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2391
+#, fuzzy
 msgid "Pre-Packaged"
-msgstr ""
+msgstr "预包装"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2408
+#, fuzzy
 msgid "Not Installed"
-msgstr ""
+msgstr "没有安装"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2412
+#, fuzzy
 msgid "Installed But Not Activated"
-msgstr ""
+msgstr "已安装但未激活"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2414
+#, fuzzy
 msgid "Active"
-msgstr ""
+msgstr "激活"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2420
+#, fuzzy
 msgid "Required Update not Available"
-msgstr ""
+msgstr "不可用需要更新"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2423
+#, fuzzy
 msgid "Requires Update"
-msgstr ""
+msgstr "需要更新"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2426
+#, fuzzy
 msgid "Update recommended"
-msgstr ""
+msgstr "推荐更新"
 
 #. translators: 1: install status, 2: update status
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2435
-#, php-format
+#, fuzzy, php-format
 msgctxt "Install/Update Status"
 msgid "%1$s, %2$s"
-msgstr ""
+msgstr "%1$s, %2$s"
 
 #. translators: 1: number of plugins.
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2481
@@ -616,7 +695,6 @@ msgctxt "plugins"
 msgid "All <span class=\"count\">(%s)</span>"
 msgid_plural "All <span class=\"count\">(%s)</span>"
 msgstr[0] ""
-msgstr[1] ""
 
 #. translators: 1: number of plugins.
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2485
@@ -624,7 +702,6 @@ msgstr[1] ""
 msgid "To Install <span class=\"count\">(%s)</span>"
 msgid_plural "To Install <span class=\"count\">(%s)</span>"
 msgstr[0] ""
-msgstr[1] ""
 
 #. translators: 1: number of plugins.
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2489
@@ -632,7 +709,6 @@ msgstr[1] ""
 msgid "Update Available <span class=\"count\">(%s)</span>"
 msgid_plural "Update Available <span class=\"count\">(%s)</span>"
 msgstr[0] ""
-msgstr[1] ""
 
 #. translators: 1: number of plugins.
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2493
@@ -640,616 +716,743 @@ msgstr[1] ""
 msgid "To Activate <span class=\"count\">(%s)</span>"
 msgid_plural "To Activate <span class=\"count\">(%s)</span>"
 msgstr[0] ""
-msgstr[1] ""
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2575
+#, fuzzy
 msgctxt "as in: \"version nr unknown\""
 msgid "unknown"
-msgstr ""
+msgstr "未知错误"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2583
+#, fuzzy
 msgid "Installed version:"
-msgstr ""
+msgstr "已安装版本："
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2591
+#, fuzzy
 msgid "Minimum required version:"
-msgstr ""
+msgstr "最低要求版本："
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2603
+#, fuzzy
 msgid "Available version:"
-msgstr ""
+msgstr "可用版本："
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2626
+#, fuzzy
 msgid "No plugins to install, update or activate."
-msgstr ""
+msgstr "没有插件要安装、更新或激活."
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2640
+#, fuzzy
 msgid "Plugin"
-msgstr ""
+msgstr "插件"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2641
+#, fuzzy
 msgid "Source"
-msgstr ""
+msgstr "资源"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2642
+#, fuzzy
 msgid "Type"
-msgstr ""
+msgstr "样式"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2646
+#, fuzzy
 msgid "Version"
-msgstr ""
+msgstr "版本"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2647
 #: woocommerce/myaccount/my-orders.php:15
+#, fuzzy
 msgid "Status"
-msgstr ""
+msgstr "状态"
 
 #. translators: %2$s: plugin name in screen reader markup
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2696
-#, php-format
+#, fuzzy, php-format
 msgid "Install %2$s"
-msgstr ""
+msgstr "安装 %2$s"
 
 #. translators: %2$s: plugin name in screen reader markup
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2701
-#, php-format
+#, fuzzy, php-format
 msgid "Update %2$s"
-msgstr ""
+msgstr "更新 %2$s"
 
 #. translators: %2$s: plugin name in screen reader markup
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2707
-#, php-format
+#, fuzzy, php-format
 msgid "Activate %2$s"
-msgstr ""
+msgstr "激活 %2$s"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2777
+#, fuzzy
 msgid "Upgrade message from the plugin author:"
-msgstr ""
+msgstr "从插件作者升级消息："
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2810
+#, fuzzy
 msgid "Install"
-msgstr ""
+msgstr "安装"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2816
+#, fuzzy
 msgid "Update"
-msgstr ""
+msgstr "更新"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2819
+#, fuzzy
 msgid "Activate"
-msgstr ""
+msgstr "启用"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2850
+#, fuzzy
 msgid "No plugins were selected to be installed. No action taken."
-msgstr ""
+msgstr "没有选择要安装的插件，不采取任何操作."
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2852
+#, fuzzy
 msgid "No plugins were selected to be updated. No action taken."
-msgstr ""
+msgstr "未选择要更新的插件。 无动作。"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2893
+#, fuzzy
 msgid "No plugins are available to be installed at this time."
-msgstr ""
+msgstr "目前没有可以安装的插件。"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2895
+#, fuzzy
 msgid "No plugins are available to be updated at this time."
-msgstr ""
+msgstr "当前没有可用于更新的插件."
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3001
+#, fuzzy
 msgid "No plugins were selected to be activated. No action taken."
-msgstr ""
+msgstr "没有插件被选中被激活。 无动作。"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3027
+#, fuzzy
 msgid "No plugins are available to be activated at this time."
-msgstr ""
+msgstr "当前没有插件可以激活."
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3251
+#, fuzzy
 msgid "Plugin activation failed."
-msgstr ""
+msgstr "插件激活失败。"
 
 #. translators: 1: plugin name, 2: action number 3: total number of actions.
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3591
-#, php-format
+#, fuzzy, php-format
 msgid "Updating Plugin %1$s (%2$d/%3$d)"
-msgstr ""
+msgstr "更新插件 %1$s (%2$d/%3$d)"
 
 #. translators: 1: plugin name, 2: error message.
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3594
-#, php-format
+#, fuzzy, php-format
 msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
-msgstr ""
+msgstr "安装时发生错误 %1$s: <strong>%2$s</strong>."
 
 #. translators: 1: plugin name.
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3596
-#, php-format
+#, fuzzy, php-format
 msgid "The installation of %1$s failed."
-msgstr ""
+msgstr "安装%1$s失败."
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3600
+#, fuzzy
 msgid ""
 "The installation and activation process is starting. This process may take a "
 "while on some hosts, so please be patient."
 msgstr ""
+"安装和激活过程正在启动。 这个过程在某些主机上可能需要一段时间，所以请耐心等"
+"待。"
 
 #. translators: 1: plugin name.
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3602
-#, php-format
+#, fuzzy, php-format
 msgid "%1$s installed and activated successfully."
-msgstr ""
+msgstr "%1$s已安装并激活成功."
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3602
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3610
+#, fuzzy
 msgid "Show Details"
-msgstr ""
+msgstr "显示详细资料"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3602
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3610
+#, fuzzy
 msgid "Hide Details"
-msgstr ""
+msgstr "隐藏细节"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3603
+#, fuzzy
 msgid "All installations and activations have been completed."
-msgstr ""
+msgstr "所有安装和启动都已完成。"
 
 #. translators: 1: plugin name, 2: action number 3: total number of actions.
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3605
-#, php-format
+#, fuzzy, php-format
 msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
-msgstr ""
+msgstr "安装和激活插件 %1$s (%2$d/%3$d)"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3608
+#, fuzzy
 msgid ""
 "The installation process is starting. This process may take a while on some "
 "hosts, so please be patient."
 msgstr ""
+"安装过程正在启动。 这个过程在某些主机上可能需要一段时间，所以请耐心等待。"
 
 #. translators: 1: plugin name.
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3610
-#, php-format
+#, fuzzy, php-format
 msgid "%1$s installed successfully."
-msgstr ""
+msgstr "%1$s 安装成功."
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3611
+#, fuzzy
 msgid "All installations have been completed."
-msgstr ""
+msgstr "所有安装已经完成。"
 
 #. translators: 1: plugin name, 2: action number 3: total number of actions.
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3613
-#, php-format
+#, fuzzy, php-format
 msgid "Installing Plugin %1$s (%2$d/%3$d)"
-msgstr ""
+msgstr "安装插件%1$s (%2$d/%3$d)"
 
 #: inc/theme/customizer.php:32
+#, fuzzy
 msgid "Streamium Styles"
-msgstr ""
+msgstr "溪流风格"
 
 #: inc/theme/customizer.php:46
+#, fuzzy
 msgid "Remove tutorial footer notification"
-msgstr ""
+msgstr "删除教程页脚通知"
 
 #: inc/theme/customizer.php:58
+#, fuzzy
 msgid "Logo"
-msgstr ""
+msgstr "标志"
 
 #: inc/theme/customizer.php:67
+#, fuzzy
 msgid "Global Background"
-msgstr ""
+msgstr "全局背景"
 
 #: inc/theme/customizer.php:76
+#, fuzzy
 msgid "Background"
-msgstr ""
+msgstr "背景"
 
 #: inc/theme/customizer.php:95
+#, fuzzy
 msgid "Main Link Color"
-msgstr ""
+msgstr "主要链接颜色"
 
 #: inc/theme/customizer.php:116
+#, fuzzy
 msgid "Carousel Headings Color"
-msgstr ""
+msgstr "旋转木马标题颜色"
 
 #: inc/theme/customizer.php:137
+#, fuzzy
 msgid "Background Color"
-msgstr ""
+msgstr "背景颜色"
 
 #: inc/theme/customizer.php:169
+#, fuzzy
 msgid "Synopsis Paragraph Text"
-msgstr ""
+msgstr "概要段落文本"
 
 #: inc/theme/customizer.php:174
+#, fuzzy
 msgid "1.6vw"
-msgstr ""
+msgstr "1.6vw"
 
 #: inc/theme/customizer.php:175
+#, fuzzy
 msgid "1.5vw"
-msgstr ""
+msgstr "1.5vw"
 
 #: inc/theme/customizer.php:176
+#, fuzzy
 msgid "1.4vw"
-msgstr ""
+msgstr "1.4vw"
 
 #: inc/theme/customizer.php:177
+#, fuzzy
 msgid "1.3vw"
-msgstr ""
+msgstr "1.3vw"
 
 #: inc/theme/customizer.php:178
+#, fuzzy
 msgid "1.2vw"
-msgstr ""
+msgstr "1.2vw"
 
 #: inc/theme/customizer.php:179
+#, fuzzy
 msgid "1.1vw"
-msgstr ""
+msgstr "1.1vw"
 
 #: inc/theme/customizer.php:180
+#, fuzzy
 msgid "1vw"
-msgstr ""
+msgstr "1vw"
 
 #: inc/theme/customizer.php:181
+#, fuzzy
 msgid "0.9vw"
-msgstr ""
+msgstr "0.9vw"
 
 #: inc/theme/customizer.php:182
+#, fuzzy
 msgid "0.8vw"
-msgstr ""
+msgstr "0.8vw"
 
 #: inc/theme/customizer.php:197
+#, fuzzy
 msgid "Poster Orientation"
-msgstr ""
+msgstr "海报导向"
 
 #: inc/theme/customizer.php:202
+#, fuzzy
 msgid "Portrait"
-msgstr ""
+msgstr "竖条形"
 
 #: inc/theme/customizer.php:203
+#, fuzzy
 msgid "Landscape"
-msgstr ""
+msgstr "宽横图"
 
 #: inc/theme/customizer.php:218
+#, fuzzy
 msgid "Tile Count"
-msgstr ""
+msgstr "平铺计数"
 
 #: inc/theme/customizer.php:223
+#, fuzzy
 msgid "4"
-msgstr ""
+msgstr "4"
 
 #: inc/theme/customizer.php:224
+#, fuzzy
 msgid "5"
-msgstr ""
+msgstr "5"
 
 #: inc/theme/customizer.php:225 inc/theme/customizer.php:333
+#, fuzzy
 msgid "6"
-msgstr ""
+msgstr "6"
 
 #: inc/theme/customizer.php:226
+#, fuzzy
 msgid "7"
-msgstr ""
+msgstr "7"
 
 #: inc/theme/customizer.php:227
+#, fuzzy
 msgid "8"
-msgstr ""
+msgstr "8"
 
 #: inc/theme/customizer.php:228
+#, fuzzy
 msgid "9"
-msgstr ""
+msgstr "9"
 
 #: inc/theme/customizer.php:229
+#, fuzzy
 msgid "10"
-msgstr ""
+msgstr "10"
 
 #: inc/theme/customizer.php:268
+#, fuzzy
 msgid "Select the main post type to show on the homepage"
-msgstr ""
+msgstr "选择要在主页上显示的主要帖子类型"
 
 #: inc/theme/customizer.php:269
+#, fuzzy
 msgid "This is a custom radio input."
-msgstr ""
+msgstr "这是一个定制的无线电输入。"
 
 #: inc/theme/customizer.php:271
+#, fuzzy
 msgid "Movies"
-msgstr ""
+msgstr "电影"
 
 #: inc/theme/customizer.php:272
+#, fuzzy
 msgid "TV Programs"
-msgstr ""
+msgstr "电视节目"
 
 #: inc/theme/customizer.php:273
+#, fuzzy
 msgid "Sports"
-msgstr ""
+msgstr "体育"
 
 #: inc/theme/customizer.php:274
+#, fuzzy
 msgid "Kids"
-msgstr ""
+msgstr "儿童"
 
 #: inc/theme/customizer.php:275
+#, fuzzy
 msgid "Streams"
-msgstr ""
+msgstr "日志流"
 
 #: inc/theme/customizer.php:288
+#, fuzzy
 msgid "Enable Loading Indicator"
-msgstr ""
+msgstr "启用加载指示"
 
 #: inc/theme/customizer.php:327
+#, fuzzy
 msgid "Maximum carousel videos - Desktop"
-msgstr ""
+msgstr "最大旋转木马视频 - 桌面"
 
 #: inc/theme/customizer.php:332
+#, fuzzy
 msgid "-1"
-msgstr ""
+msgstr "-1"
 
 #: inc/theme/customizer.php:334
+#, fuzzy
 msgid "12"
-msgstr ""
+msgstr "12"
 
 #: inc/theme/customizer.php:335
+#, fuzzy
 msgid "18"
-msgstr ""
+msgstr "18"
 
 #: inc/theme/customizer.php:336
+#, fuzzy
 msgid "24"
-msgstr ""
+msgstr "24"
 
 #: inc/theme/customizer.php:337
+#, fuzzy
 msgid "30"
-msgstr ""
+msgstr "30"
 
 #: inc/theme/customizer.php:360
+#, fuzzy
 msgid " Options"
-msgstr ""
+msgstr "选项"
 
 #: inc/theme/customizer.php:385
+#, fuzzy
 msgid ""
 "!IMPORTANT this value cannot be the same name as the Post Type (only hyphens "
 "allowed NO spaces). Please make sure you save your permalinks after changing "
 "these values."
 msgstr ""
+"！重要说明此值不能与Post Type相同（只有连字符不允许有空格）。更改这些值后，请"
+"确保保存您的固定链接。"
 
 #: inc/theme/customizer.php:399
+#, fuzzy
 msgid ""
 "!IMPORTANT this value cannot be the same name as the Taxonomy (only hyphens "
 "allowed NO spaces). Please make sure you save your permalinks after changing "
 "these values."
 msgstr ""
+"！重要此值不能与分类法相同（只有连字符允许无空格）。更改这些值后，请确保保存"
+"您的固定链接。"
 
 #: inc/theme/customizer.php:414
+#, fuzzy
 msgid "Enable "
-msgstr ""
+msgstr "启用 "
 
 #: inc/theme/customizer.php:428
+#, fuzzy
 msgid "AWS Media Uploader"
-msgstr ""
+msgstr "媒体上传器"
 
 #: inc/theme/customizer.php:470
+#, fuzzy
 msgid "Only allow uploads from logged in users"
-msgstr ""
+msgstr "只允许登录用户上传"
 
 #: inc/theme/customizer.php:482
+#, fuzzy
 msgid "Global Advertisement"
-msgstr ""
+msgstr "全球广告"
 
 #: inc/theme/customizer.php:505
+#, fuzzy
 msgid "Global set advertisements for all videos"
-msgstr ""
+msgstr "为所有视频全球设置广告"
 
 #: inc/theme/helpers.php:13
+#, fuzzy
 msgid "Header Menu"
-msgstr ""
+msgstr "标题菜单"
 
 #: inc/theme/helpers.php:74
+#, fuzzy
 msgid ""
 "!IMPORTANT you have the S3Bubble self hosted plugin installed this is not "
 "needed with this theme all functionality is built in please remove the "
 "S3Bubble AWS Self Hosted Plugin. "
 msgstr ""
+"！重要的是，您已安装了S3Bubble自我托管插件，这不需要此主题所有功能内置，请删"
+"除S3Bubble AWS自托管插件。"
 
 #: inc/theme/helpers.php:94
+#, fuzzy
 msgid "Get setup quickly by installing our demo data. "
-msgstr ""
+msgstr "通过安装我们的演示数据快速设置。"
 
 #: inc/theme/helpers.php:112
+#, fuzzy
 msgid ""
 "Upgrade to Premium to unlock some great features. Ratings, Video Resume, "
 "Self hosted, Background Videos, Trailers and much more. "
 msgstr ""
+"升级到高级版解锁一些很棒的功能。评级，视频简历，自我介绍，背景视频，预告片等"
+"等。"
 
 #: inc/theme/multi-post-thumbnails.php:77
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "The 'label' and 'id' values of the 'args' parameter of '%s::%s()' are "
 "required"
-msgstr ""
+msgstr "'args'参数的'label'和'id'值 '%s::%s()' 被需要"
 
 #: inc/theme/multi-post-thumbnails.php:159
-#, php-format
+#, fuzzy, php-format
 msgid "Set as %3$s"
-msgstr ""
+msgstr "设置 %3$s"
 
 #: inc/theme/multi-post-thumbnails.php:393
 #: inc/theme/multi-post-thumbnails.php:394
-#, php-format
+#, fuzzy, php-format
 msgid "Set %s"
-msgstr ""
+msgstr "设置 %s"
 
 #: inc/theme/multi-post-thumbnails.php:410
-#, php-format
+#, fuzzy, php-format
 msgid "Remove %s"
-msgstr ""
+msgstr "移除 %s"
 
 #: inc/theme/ratings.php:19
+#, fuzzy
 msgid "Customer"
-msgstr ""
+msgstr "客户"
 
 #: inc/theme/ratings.php:20
+#, fuzzy
 msgid "Customers"
-msgstr ""
+msgstr "客户"
 
 #: inc/theme/ratings.php:112
+#, fuzzy
 msgid "No ratings avaliable."
-msgstr ""
+msgstr "没有评分可用。"
 
 #: inc/theme/ratings.php:195
+#, fuzzy
 msgid "User"
-msgstr ""
+msgstr "用户"
 
 #: inc/theme/ratings.php:196
+#, fuzzy
 msgid "Movie"
-msgstr ""
+msgstr "电影"
 
 #: inc/theme/ratings.php:197
+#, fuzzy
 msgid "Message"
-msgstr ""
+msgstr "信息"
 
 #: inc/theme/ratings.php:198
+#, fuzzy
 msgid "State"
-msgstr ""
+msgstr "国家"
 
 #: inc/theme/s2member.php:15 woocommerce/auth/form-grant-access.php:39
+#, fuzzy
 msgid "Logout"
-msgstr ""
+msgstr "登出"
 
 #: inc/theme/s2member.php:19 woocommerce/auth/form-login.php:44
 #: woocommerce/global/form-login.php:48 woocommerce/myaccount/form-login.php:71
+#, fuzzy
 msgid "Login"
-msgstr ""
+msgstr "登录"
 
 #: inc/theme/series.php:68
+#, fuzzy
 msgid " Categories"
-msgstr ""
+msgstr "分类"
 
 #: search.php:30
-#, php-format
+#, fuzzy, php-format
 msgid "Search Results for: %s"
-msgstr ""
+msgstr "%s的搜索结果"
 
 #: search.php:33 taxonomy.php:33
+#, fuzzy
 msgid "FILTER"
-msgstr ""
+msgstr "过滤"
 
 #: search.php:36
+#, fuzzy
 msgid "1 Day Ago"
-msgstr ""
+msgstr "1天前"
 
 #: search.php:37
+#, fuzzy
 msgid "1 Week Ago"
-msgstr ""
+msgstr "1周前"
 
 #: searchform.php:3
+#, fuzzy
 msgid "Search..."
-msgstr ""
+msgstr "搜索..."
 
 #: taxonomy.php:36
+#, fuzzy
 msgid "View All"
-msgstr ""
+msgstr "查看全部"
 
 #: taxonomy.php:37
+#, fuzzy
 msgid "Most Reviews"
-msgstr ""
+msgstr "最多的评论"
 
 #: taxonomy.php:38
+#, fuzzy
 msgid "Recently Added"
-msgstr ""
+msgstr "最近添加"
 
 #: taxonomy.php:39
+#, fuzzy
 msgid "Oldest First"
-msgstr ""
+msgstr "最旧的"
 
 #: templates/archive-slider.php:52 templates/content-slider.php:54
 #: templates/content-slider.php:104
+#, fuzzy
 msgid "Read reviews"
-msgstr ""
+msgstr "阅读评论"
 
 #: templates/archive-slider.php:69 templates/content-slider.php:71
 #: templates/content-slider.php:121
+#, fuzzy
 msgid "Watch Trailer"
-msgstr ""
+msgstr "观看预告片"
 
 #: templates/content-slider.php:139
+#, fuzzy
 msgid "S3Bubble Media Streaming"
-msgstr ""
+msgstr "S3Bubble媒体流"
 
 #: templates/content-slider.php:140
+#, fuzzy
 msgid ""
 "To display a image here go to your custom post and look for the metabox "
 "(Main Slider Video) and check it."
 msgstr ""
+"要在此处显示图像，请转到您的自定义帖子，并查找metabox（主滑块视频）并检查。"
 
 #: woocommerce/auth/form-grant-access.php:25 woocommerce/auth/form-login.php:27
-#, php-format
+#, fuzzy, php-format
 msgid "%s would like to connect to your store"
-msgstr ""
+msgstr "دۇككىنىڭزغا ئۇلىنىشنى خالايدۇ %s"
 
 #: woocommerce/auth/form-grant-access.php:29
-#, php-format
+#, fuzzy, php-format
 msgid "This will give \"%1$s\" %2$s access which will allow it to:"
-msgstr ""
+msgstr "%2نىڭ زىيارەت قىلىش دائىرىسى بېرىلىدۇ$s  \"%1$s\" بۇ"
 
 #: woocommerce/auth/form-grant-access.php:39
-#, php-format
+#, fuzzy, php-format
 msgid "Logged in as %s"
-msgstr ""
+msgstr "登入为 %s"
 
 #: woocommerce/auth/form-grant-access.php:43
+#, fuzzy
 msgid "Approve"
-msgstr ""
+msgstr "批准"
 
 #: woocommerce/auth/form-grant-access.php:44
+#, fuzzy
 msgid "Deny"
-msgstr ""
+msgstr "رەت قىلىش"
 
 #: woocommerce/auth/form-login.php:31
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "To connect to %1$s you need to be logged in. Log in to your store below, or "
 "<a href=\"%2$s\">cancel and return to %1$s</a>"
-msgstr ""
+msgstr "％1$您需要先登入。登入到您的以下商店，或％2$ scancel并返回%1$s%3$s"
 
 #: woocommerce/auth/form-login.php:35 woocommerce/myaccount/form-login.php:59
+#, fuzzy
 msgid "Username or email address"
-msgstr ""
+msgstr "用户名或电子邮件地址"
 
 #: woocommerce/auth/form-login.php:39 woocommerce/global/form-login.php:39
 #: woocommerce/myaccount/form-login.php:63
 #: woocommerce/myaccount/form-login.php:109
 #: woocommerce/myaccount/form-login.php:168
+#, fuzzy
 msgid "Password"
-msgstr ""
+msgstr "密码"
 
 #: woocommerce/auth/header.php:29
+#, fuzzy
 msgid "Application authentication request"
-msgstr ""
+msgstr "ئەمەلىي ھوقۇق بېرىش ئىلتىماسى"
 
 #: woocommerce/cart/cart-empty.php:28
+#, fuzzy
 msgid "Your cart is currently empty."
-msgstr ""
+msgstr "您的购物车目前是空的。"
 
 #: woocommerce/cart/cart-empty.php:36
+#, fuzzy
 msgid "Return to shop"
-msgstr ""
+msgstr "دۇكانغا قايتىش"
 
 #: woocommerce/cart/cart-shipping.php:48
+#, fuzzy
 msgid "Shipping costs will be calculated once you have provided your address."
-msgstr ""
+msgstr "您提供您的地址，来计算运费。"
 
 #: woocommerce/cart/cart-shipping.php:50
+#, fuzzy
 msgid ""
 "There are no shipping methods available. Please double check your address, "
 "or contact us if you need any help."
-msgstr ""
+msgstr "无法计算运费。请再次检查您的地址，或与我们联系。"
 
 #: woocommerce/cart/cart-totals.php:28
+#, fuzzy
 msgid "Cart totals"
-msgstr ""
+msgstr "購物車總計"
 
 #: woocommerce/cart/cart-totals.php:33 woocommerce/cart/cart-totals.php:34
 #: woocommerce/cart/mini-cart.php:84 woocommerce/checkout/review-order.php:59
+#, fuzzy
 msgid "Subtotal"
-msgstr ""
+msgstr "小计"
 
 #: woocommerce/cart/cart-totals.php:55 woocommerce/cart/cart-totals.php:56
+#, fuzzy
 msgid "Shipping"
-msgstr ""
+msgstr "快递"
 
 #: woocommerce/cart/cart-totals.php:71
-#, php-format
+#, fuzzy, php-format
 msgid "(estimated for %s)"
-msgstr ""
+msgstr "(مۆلچەر %s)"
 
 #: woocommerce/cart/cart-totals.php:92 woocommerce/cart/cart-totals.php:93
 #: woocommerce/cart/cart.php:38 woocommerce/cart/cart.php:119
@@ -1257,346 +1460,415 @@ msgstr ""
 #: woocommerce/checkout/review-order.php:106
 #: woocommerce/myaccount/my-orders.php:16
 #: woocommerce/order/order-details.php:38
+#, fuzzy
 msgid "Total"
-msgstr ""
+msgstr "合计"
 
 #: woocommerce/cart/cart.php:35 woocommerce/cart/cart.php:78
 #: woocommerce/checkout/form-pay.php:29
 #: woocommerce/checkout/review-order.php:26
 #: woocommerce/emails/email-order-details.php:36
 #: woocommerce/order/order-details.php:37
+#, fuzzy
 msgid "Product"
-msgstr ""
+msgstr "产品"
 
 #: woocommerce/cart/cart.php:36 woocommerce/cart/cart.php:96
 #: woocommerce/emails/email-order-details.php:38
+#, fuzzy
 msgid "Price"
-msgstr ""
+msgstr "价钱"
 
 #: woocommerce/cart/cart.php:37 woocommerce/cart/cart.php:102
 #: woocommerce/emails/email-order-details.php:37
+#, fuzzy
 msgid "Quantity"
-msgstr ""
+msgstr "数量"
 
 #: woocommerce/cart/cart.php:59 woocommerce/cart/mini-cart.php:51
+#, fuzzy
 msgid "Remove this item"
-msgstr ""
+msgstr "删除此项"
 
 #: woocommerce/cart/cart.php:91
+#, fuzzy
 msgid "Available on backorder"
-msgstr ""
+msgstr "可延期收货"
 
 #: woocommerce/cart/cart.php:137
+#, fuzzy
 msgid "Coupon:"
-msgstr ""
+msgstr "优惠券："
 
 #: woocommerce/cart/cart.php:137 woocommerce/checkout/form-coupon.php:36
+#, fuzzy
 msgid "Coupon code"
-msgstr ""
+msgstr "优惠券代码"
 
 #: woocommerce/cart/cart.php:137 woocommerce/checkout/form-coupon.php:40
+#, fuzzy
 msgid "Apply coupon"
-msgstr ""
+msgstr "使用优惠券"
 
 #: woocommerce/cart/cart.php:142
+#, fuzzy
 msgid "Update cart"
-msgstr ""
+msgstr "مال سېتىۋېلىش ھارۋىسىنى يېڭىلاش"
 
 #: woocommerce/cart/cross-sells.php:27
+#, fuzzy
 msgid "You may be interested in&hellip;"
-msgstr ""
+msgstr "你也许还对这些有兴趣&hellip;"
 
 #: woocommerce/cart/mini-cart.php:76
+#, fuzzy
 msgid "No products in the cart."
-msgstr ""
+msgstr "购物车里没有商品."
 
 #: woocommerce/cart/proceed-to-checkout-button.php:27
+#, fuzzy
 msgid "Proceed to checkout"
-msgstr ""
+msgstr "进行结算"
 
 #: woocommerce/cart/shipping-calculator.php:33
+#, fuzzy
 msgid "Calculate shipping"
-msgstr ""
+msgstr "كىرا ھەققىنى ھېسابلاش"
 
 #: woocommerce/cart/shipping-calculator.php:39
+#, fuzzy
 msgid "Select a country&hellip;"
-msgstr ""
+msgstr "选择一个国家 &hellip;"
 
 #: woocommerce/cart/shipping-calculator.php:56
 #: woocommerce/cart/shipping-calculator.php:62
 #: woocommerce/cart/shipping-calculator.php:74
+#, fuzzy
 msgid "State / County"
-msgstr ""
+msgstr "国家"
 
 #: woocommerce/cart/shipping-calculator.php:63
+#, fuzzy
 msgid "Select a state&hellip;"
-msgstr ""
+msgstr "选择国家"
 
 #: woocommerce/cart/shipping-calculator.php:83
+#, fuzzy
 msgid "City"
-msgstr ""
+msgstr "城市"
 
 #: woocommerce/cart/shipping-calculator.php:91
+#, fuzzy
 msgid "Postcode / ZIP"
-msgstr ""
+msgstr "邮政编码/邮编"
 
 #: woocommerce/cart/shipping-calculator.php:96
 #: woocommerce/checkout/payment.php:43
+#, fuzzy
 msgid "Update totals"
-msgstr ""
+msgstr "更新总数"
 
 #: woocommerce/checkout/cart-errors.php:27
+#, fuzzy
 msgid ""
 "There are some issues with the items in your cart (shown above). Please go "
 "back to the cart page and resolve these issues before checking out."
 msgstr ""
+"您的购物车中有一些问题(如上所示)。请回到购物车页面，在检查之前解决这些问题。"
 
 #: woocommerce/checkout/cart-errors.php:31
+#, fuzzy
 msgid "Return to cart"
-msgstr ""
+msgstr "مال سېتىۋېلىش ھارۋىسى قايتىش "
 
 #: woocommerce/checkout/form-billing.php:29
+#, fuzzy
 msgid "Billing &amp; Shipping"
-msgstr ""
+msgstr "帐单及送货"
 
 #: woocommerce/checkout/form-billing.php:33
+#, fuzzy
 msgid "Billing details"
-msgstr ""
+msgstr "结算明细"
 
 #: woocommerce/checkout/form-billing.php:54
+#, fuzzy
 msgid "Create an account?"
-msgstr ""
+msgstr "创建一个帐户吗？"
 
 #: woocommerce/checkout/form-checkout.php:29
+#, fuzzy
 msgid "You must be logged in to checkout."
-msgstr ""
+msgstr "您必须登录来结帐。"
 
 #: woocommerce/checkout/form-checkout.php:58
+#, fuzzy
 msgid "Your order"
-msgstr ""
+msgstr "你的订单"
 
 #: woocommerce/checkout/form-coupon.php:28
+#, fuzzy
 msgid "Have a coupon?"
-msgstr ""
+msgstr "有优惠券吗"
 
 #: woocommerce/checkout/form-coupon.php:28
+#, fuzzy
 msgid "Click here to enter your code"
-msgstr ""
+msgstr "点击这里输入您的代码"
 
 #: woocommerce/checkout/form-login.php:27
+#, fuzzy
 msgid "Returning customer?"
-msgstr ""
+msgstr "老客户？"
 
 #: woocommerce/checkout/form-login.php:28
+#, fuzzy
 msgid "Click here to login"
-msgstr ""
+msgstr "点击这里登录"
 
 #: woocommerce/checkout/form-login.php:33
+#, fuzzy
 msgid ""
 "If you have shopped with us before, please enter your details in the boxes "
 "below. If you are a new customer, please proceed to the Billing &amp; "
 "Shipping section."
 msgstr ""
+"如果您之前在我们网站购物过,请在下边框内输入详细资料.如果您是一个新顾客,请继续"
+"完成帐单&amp;配送部分。"
 
 #: woocommerce/checkout/form-pay.php:30
+#, fuzzy
 msgid "Qty"
-msgstr ""
+msgstr "数量"
 
 #: woocommerce/checkout/form-pay.php:31
+#, fuzzy
 msgid "Totals"
-msgstr ""
+msgstr "总计"
 
 #: woocommerce/checkout/form-pay.php:81
+#, fuzzy
 msgid ""
 "Sorry, it seems that there are no available payment methods for your "
 "location. Please contact us if you require assistance or wish to make "
 "alternate arrangements."
-msgstr ""
+msgstr "对不起，您所在的位置无法付款。请和我们联系。"
 
 #: woocommerce/checkout/form-shipping.php:29
+#, fuzzy
 msgid "Ship to a different address?"
-msgstr ""
+msgstr "快递到另一个地址吗？"
 
 #: woocommerce/checkout/form-shipping.php:56
 #: woocommerce/single-product/tabs/additional-information.php:25
+#, fuzzy
 msgid "Additional information"
-msgstr ""
+msgstr "详情"
 
 #: woocommerce/checkout/payment.php:35
+#, fuzzy
 msgid ""
 "Sorry, it seems that there are no available payment methods for your state. "
 "Please contact us if you require assistance or wish to make alternate "
 "arrangements."
 msgstr ""
+"Sorry, it seems that there are no available payment methods for your state. "
+"Please contact us if you require assistance or wish to make alternate "
+"arrangements."
 
 #: woocommerce/checkout/payment.php:35
+#, fuzzy
 msgid "Please fill in your details above to see available payment methods."
-msgstr ""
+msgstr "请填写您的详细资料以查看可用的快递装运方法."
 
 #: woocommerce/checkout/payment.php:42
+#, fuzzy
 msgid ""
 "Since your browser does not support JavaScript, or it is disabled, please "
 "ensure you click the <em>Update Totals</em> button before placing your "
 "order. You may be charged more than the amount stated above if you fail to "
 "do so."
 msgstr ""
+"由于您的浏览器不支持JavaScript，或者它是禁用的，请确保您在下单之前单击<em>更"
+"新总数</em>按钮。如果你不这样做，你可能会被收取超过上述金额的费用。"
 
 #: woocommerce/checkout/terms.php:17
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "I&rsquo;ve read and accept the <a href=\"%s\" target=\"_blank\">terms &amp; "
 "conditions</a>"
-msgstr ""
+msgstr "我已经阅读并接受 <a href=\"%s\"target=\"_blank\"> 条款和条件</a>"
 
 #: woocommerce/checkout/thankyou.php:30
+#, fuzzy
 msgid ""
 "Unfortunately your order cannot be processed as the originating bank/"
 "merchant has declined your transaction. Please attempt your purchase again."
 msgstr ""
+"不幸的是，您的订单无法处理，因为原始银行/商家已拒绝您的交易。 请尝试再次购"
+"买。"
 
 #: woocommerce/checkout/thankyou.php:33 woocommerce/myaccount/my-orders.php:75
 #: woocommerce/myaccount/orders.php:71
+#, fuzzy
 msgid "Pay"
-msgstr ""
+msgstr "支付"
 
 #: woocommerce/checkout/thankyou.php:35
+#, fuzzy
 msgid "My account"
-msgstr ""
+msgstr "我的帐户"
 
 #: woocommerce/checkout/thankyou.php:41 woocommerce/checkout/thankyou.php:78
+#, fuzzy
 msgid "Thank you. Your order has been received."
-msgstr ""
+msgstr "谢谢你！你的订单已收到。"
 
 #: woocommerce/checkout/thankyou.php:46
+#, fuzzy
 msgid "Order number:"
-msgstr ""
+msgstr "订单号："
 
 #: woocommerce/checkout/thankyou.php:51
+#, fuzzy
 msgid "Date:"
-msgstr ""
+msgstr "日期："
 
 #: woocommerce/checkout/thankyou.php:56
+#, fuzzy
 msgid "Total:"
-msgstr ""
+msgstr "总："
 
 #: woocommerce/checkout/thankyou.php:63
+#, fuzzy
 msgid "Payment method:"
-msgstr ""
+msgstr "付款方法："
 
 #: woocommerce/emails/admin-cancelled-order.php:28
 #: woocommerce/emails/plain/admin-cancelled-order.php:25
-#, php-format
+#, fuzzy, php-format
 msgid "The order #%1$d from %2$s has been cancelled. The order was as follows:"
-msgstr ""
+msgstr "订单 #%1$d 已被取消网站 %2$s .订单如下:"
 
 #: woocommerce/emails/admin-failed-order.php:28
 #: woocommerce/emails/plain/admin-failed-order.php:25
-#, php-format
+#, fuzzy, php-format
 msgid "Payment for order #%1$d from %2$s has failed. The order was as follows:"
-msgstr ""
+msgstr "訂單 #%1$d 由 %2$s 所訂的付款失敗. 訂單內容如下:"
 
 #: woocommerce/emails/admin-new-order.php:28
-#, php-format
+#, fuzzy, php-format
 msgid "You have received an order from %s. The order is as follows:"
-msgstr ""
+msgstr "你已收到来自 %s 的订单，订单如下："
 
 #: woocommerce/emails/customer-completed-order.php:28
 #: woocommerce/emails/plain/customer-completed-order.php:25
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "Hi there. Your recent order on %s has been completed. Your order details are "
 "shown below for your reference:"
-msgstr ""
+msgstr "您好。您在%s最新的订单已经完成。您的订单详情如下，供您参考："
 
 #: woocommerce/emails/customer-invoice.php:29
 #: woocommerce/emails/plain/customer-invoice.php:26
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "An order has been created for you on %1$s. To pay for this order please use "
 "the following link: %2$s"
-msgstr ""
+msgstr "在 %1$s 上有一筆訂單已經成立，請使用下列的連結: %2$s 來付款"
 
 #: woocommerce/emails/customer-invoice.php:29
+#, fuzzy
 msgid "pay"
-msgstr ""
+msgstr "付款"
 
 #: woocommerce/emails/customer-new-account.php:27
 #: woocommerce/emails/plain/customer-new-account.php:25
-#, php-format
+#, fuzzy, php-format
 msgid "Thanks for creating an account on %1$s. Your username is %2$s"
-msgstr ""
+msgstr "سىزنىڭ%1$sھېساپ ئاچقىنىڭىزغا رەھمەت，سىزنىڭ ئەزا ئىسمىڭىز%2$s"
 
 #: woocommerce/emails/customer-new-account.php:31
-#, php-format
+#, fuzzy, php-format
 msgid "Your password has been automatically generated: %s"
-msgstr ""
+msgstr "كومپىيورىې مەخپىي نومۇرىڭىزنى ئاپروماتىڭ ھاسىل قىلىندى: %s"
 
 #: woocommerce/emails/customer-new-account.php:35
 #: woocommerce/emails/plain/customer-new-account.php:30
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "You can access your account area to view your orders and change your "
 "password here: %s."
-msgstr ""
+msgstr "您可以访问您的帐户区域来查看您的订单, 并在这里更改您的密码: %s。"
 
 #: woocommerce/emails/customer-note.php:28
 #: woocommerce/emails/plain/customer-note.php:25
+#, fuzzy
 msgid "Hello, a note has just been added to your order:"
-msgstr ""
+msgstr "你好, 一条新备注已经添加到您的订单:"
 
 #: woocommerce/emails/customer-note.php:32
 #: woocommerce/emails/plain/customer-note.php:33
+#, fuzzy
 msgid "For your reference, your order details are shown below."
-msgstr ""
+msgstr "你的订单细节如下所示,供您参考."
 
 #: woocommerce/emails/customer-on-hold-order.php:28
 #: woocommerce/emails/plain/customer-on-hold-order.php:25
+#, fuzzy
 msgid ""
 "Your order is on-hold until we confirm payment has been received. Your order "
 "details are shown below for your reference:"
 msgstr ""
+"您的订单当前为待处理状态，我们需要时间确认您的付款。 您的订单详情如下，以供参"
+"考："
 
 #: woocommerce/emails/customer-processing-order.php:28
 #: woocommerce/emails/plain/customer-processing-order.php:25
+#, fuzzy
 msgid ""
 "Your order has been received and is now being processed. Your order details "
 "are shown below for your reference:"
-msgstr ""
+msgstr "您的订单已收到，正在处理中。您的订单详情如下，供您参考："
 
 #: woocommerce/emails/customer-refunded-order.php:30
-#, php-format
+#, fuzzy, php-format
 msgid "Hi there. Your order on %s has been partially refunded."
-msgstr ""
+msgstr "嘿,你好!在%s上您最近的订单已经完成,供您参考您的订单详情如下所示."
 
 #: woocommerce/emails/customer-refunded-order.php:32
-#, php-format
+#, fuzzy, php-format
 msgid "Hi there. Your order on %s has been refunded."
-msgstr ""
+msgstr "谢谢你! 您的订单 %s 已收到."
 
 #: woocommerce/emails/customer-reset-password.php:27
 #: woocommerce/emails/plain/customer-reset-password.php:25
+#, fuzzy
 msgid "Someone requested that the password be reset for the following account:"
-msgstr ""
+msgstr "有人要求为以下帐户重设密码："
 
 #: woocommerce/emails/customer-reset-password.php:28
 #: woocommerce/emails/plain/customer-reset-password.php:27
-#, php-format
+#, fuzzy, php-format
 msgid "Username: %s"
-msgstr ""
+msgstr "用户名: %s"
 
 #: woocommerce/emails/customer-reset-password.php:29
 #: woocommerce/emails/plain/customer-reset-password.php:28
+#, fuzzy
 msgid "If this was a mistake, just ignore this email and nothing will happen."
-msgstr ""
+msgstr "如果这是一个错误，只要忽略这封电子邮件，什么都不会发生。"
 
 #: woocommerce/emails/customer-reset-password.php:30
 #: woocommerce/emails/plain/customer-reset-password.php:29
+#, fuzzy
 msgid "To reset your password, visit the following address:"
-msgstr ""
+msgstr "要重置密码，请访问以下地址："
 
 #: woocommerce/emails/customer-reset-password.php:33
+#, fuzzy
 msgid "Click here to reset your password"
-msgstr ""
+msgstr "单击此处重新设置密码"
 
 #: woocommerce/emails/email-addresses.php:28
 #: woocommerce/emails/plain/email-addresses.php:23
@@ -1604,81 +1876,90 @@ msgstr ""
 #: woocommerce/myaccount/my-address.php:27
 #: woocommerce/myaccount/my-address.php:32
 #: woocommerce/order/order-details-customer.php:63
+#, fuzzy
 msgid "Billing address"
-msgstr ""
+msgstr "帐单地址"
 
 #: woocommerce/emails/email-addresses.php:34
 #: woocommerce/emails/plain/email-addresses.php:27
 #: woocommerce/myaccount/form-edit-address.php:23
 #: woocommerce/myaccount/my-address.php:28
 #: woocommerce/order/order-details-customer.php:75
+#, fuzzy
 msgid "Shipping address"
-msgstr ""
+msgstr "送货地址"
 
 #: woocommerce/emails/email-customer-details.php:27
 #: woocommerce/emails/plain/email-customer-details.php:25
 #: woocommerce/order/order-details-customer.php:26
+#, fuzzy
 msgid "Customer details"
-msgstr ""
+msgstr "客户详情"
 
 #: woocommerce/emails/email-order-details.php:28
 #: woocommerce/emails/email-order-details.php:30
-#, php-format
+#, fuzzy, php-format
 msgid "Order #%s"
-msgstr ""
+msgstr "订单 #%s"
 
 #: woocommerce/emails/email-order-items.php:34
+#, fuzzy
 msgid "Product image"
-msgstr ""
+msgstr "产品主图"
 
 #: woocommerce/emails/plain/admin-new-order.php:25
-#, php-format
+#, fuzzy, php-format
 msgid "You have received an order from %s."
-msgstr ""
+msgstr "你收到了一份来自 %s 的订单。"
 
 #: woocommerce/emails/plain/customer-new-account.php:28
-#, php-format
+#, fuzzy, php-format
 msgid "Your password is %s."
-msgstr ""
+msgstr "مەخمىي نومۇرۇڭىز%s."
 
 #: woocommerce/emails/plain/customer-refunded-order.php:25
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "Hi there. Your order on %s has been refunded. Your order details are shown "
 "below for your reference:"
-msgstr ""
+msgstr "嘿,你好!在%s上您最近的订单已经完成,供您参考您的订单详情如下所示:"
 
 #: woocommerce/emails/plain/email-order-details.php:25
-#, php-format
+#, fuzzy, php-format
 msgid "Order number: %s"
-msgstr ""
+msgstr ":ستىش مىقدارى%s"
 
 #: woocommerce/emails/plain/email-order-details.php:44
-#, php-format
+#, fuzzy, php-format
 msgid "View order: %s"
-msgstr ""
+msgstr "زاكاسنى كۆرۈش %s"
 
 #: woocommerce/global/form-login.php:35
 #: woocommerce/myaccount/form-lost-password.php:38
+#, fuzzy
 msgid "Username or email"
-msgstr ""
+msgstr "用户名或电子邮件"
 
 #: woocommerce/global/form-login.php:51 woocommerce/myaccount/form-login.php:73
+#, fuzzy
 msgid "Remember me"
-msgstr ""
+msgstr "记住我"
 
 #: woocommerce/global/form-login.php:55 woocommerce/myaccount/form-login.php:77
+#, fuzzy
 msgid "Lost your password?"
-msgstr ""
+msgstr "忘记密码？"
 
 #: woocommerce/global/quantity-input.php:32
+#, fuzzy
 msgctxt "Product quantity input tooltip"
 msgid "Qty"
-msgstr ""
+msgstr "数量"
 
 #: woocommerce/loop/no-products-found.php:24
+#, fuzzy
 msgid "No products were found matching your selection."
-msgstr ""
+msgstr "没有找到符合您选择的产品."
 
 #. translators: %d: total results
 #: woocommerce/loop/result-count.php:40
@@ -1686,7 +1967,6 @@ msgstr ""
 msgid "Showing the single result"
 msgid_plural "Showing all %d results"
 msgstr[0] ""
-msgstr[1] ""
 
 #. translators: 1: first result 2: last result 3: total results
 #: woocommerce/loop/result-count.php:43
@@ -1695,187 +1975,229 @@ msgctxt "with first and last result"
 msgid "Showing the single result"
 msgid_plural "Showing %1$d&ndash;%2$d of %3$d results"
 msgstr[0] ""
-msgstr[1] ""
 
 #: woocommerce/loop/sale-flash.php:28
 #: woocommerce/single-product/sale-flash.php:28
+#, fuzzy
 msgid "Sale!"
-msgstr ""
+msgstr "促销!"
 
 #: woocommerce/myaccount/dashboard.php:38
-#, php-format
+#, fuzzy, php-format
 msgid "<p>Hello %1$s (not %1$s? <a href=\"%2$s\">Sign out</a>)</p>"
-msgstr ""
+msgstr "ياخشىمۇسىز%1$s (ئەمەس%1$s? <a href=\"%2$s\">ئۆچۇرۇش</a>)"
 
 #: woocommerce/myaccount/dashboard.php:46
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "From your account dashboard you can view your <a href=\"%1$s\">recent "
 "orders</a>, manage your <a href=\"%2$s\">shipping and billing addresses</a> "
 "and <a href=\"%3$s\">edit your password and account details</a>."
 msgstr ""
+"从仪表盘可查看 <a href=\"%1$s\">最近订单</a>, 管理 <a href=\"%2$s\">配送和账"
+"单地址</a> 和 <a href=\"%3$s\">编辑密码和账户信息</a>."
 
 #: woocommerce/myaccount/downloads.php:62
+#, fuzzy
 msgid "&infin;"
-msgstr ""
+msgstr "&infin;"
 
 #: woocommerce/myaccount/downloads.php:68
+#, fuzzy
 msgid "Never"
-msgstr ""
+msgstr "从不"
 
 #: woocommerce/myaccount/downloads.php:76
+#, fuzzy
 msgid "Download"
-msgstr ""
+msgstr "下载"
 
 #: woocommerce/myaccount/downloads.php:98 woocommerce/myaccount/orders.php:122
+#, fuzzy
 msgid "Go shop"
-msgstr ""
+msgstr "去商店"
 
 #: woocommerce/myaccount/downloads.php:100
+#, fuzzy
 msgid "No downloads available yet."
-msgstr ""
+msgstr "尚未下载."
 
 #: woocommerce/myaccount/form-add-payment-method.php:53
 #: woocommerce/myaccount/payment-methods.php:79
+#, fuzzy
 msgid "Add payment method"
-msgstr ""
+msgstr "پۇل تۆلەش ئۇسۇلىنى قوشۇش"
 
 #: woocommerce/myaccount/form-add-payment-method.php:59
+#, fuzzy
 msgid ""
 "Sorry, it seems that there are no payment methods which support adding a new "
 "payment method. Please contact us if you require assistance or wish to make "
 "alternate arrangements."
 msgstr ""
+"对不起,似乎没有支付方法支持添加新的支付方法.如果您需要帮助或希望作出其他安"
+"排，请与我们联系."
 
 #: woocommerce/myaccount/form-edit-account.php:30
+#, fuzzy
 msgid "First name"
-msgstr ""
+msgstr "名字"
 
 #: woocommerce/myaccount/form-edit-account.php:34
+#, fuzzy
 msgid "Last name"
-msgstr ""
+msgstr "姓"
 
 #: woocommerce/myaccount/form-edit-account.php:40
 #: woocommerce/myaccount/form-login.php:102
 #: woocommerce/myaccount/form-login.php:161
+#, fuzzy
 msgid "Email address"
-msgstr ""
+msgstr "邮箱地址"
 
 #: woocommerce/myaccount/form-edit-account.php:45
+#, fuzzy
 msgid "Password change"
-msgstr ""
+msgstr "更改密码"
 
 #: woocommerce/myaccount/form-edit-account.php:48
+#, fuzzy
 msgid "Current password (leave blank to leave unchanged)"
-msgstr ""
+msgstr "当前密码（留空保持不变）"
 
 #: woocommerce/myaccount/form-edit-account.php:52
+#, fuzzy
 msgid "New password (leave blank to leave unchanged)"
-msgstr ""
+msgstr "新密码（留空不留）"
 
 #: woocommerce/myaccount/form-edit-account.php:56
+#, fuzzy
 msgid "Confirm new password"
-msgstr ""
+msgstr "确认新密码"
 
 #: woocommerce/myaccount/form-edit-account.php:66
+#, fuzzy
 msgid "Save changes"
-msgstr ""
+msgstr "保存修改"
 
 #: woocommerce/myaccount/form-edit-address.php:47
+#, fuzzy
 msgid "Save address"
-msgstr ""
+msgstr "保存修改"
 
 #: woocommerce/myaccount/form-login.php:95
 #: woocommerce/myaccount/form-login.php:154
+#, fuzzy
 msgid "Username"
-msgstr ""
+msgstr "用户名"
 
 #: woocommerce/myaccount/form-login.php:116
 #: woocommerce/myaccount/form-login.php:175
+#, fuzzy
 msgid "Anti-spam"
-msgstr ""
+msgstr "反垃圾邮件"
 
 #: woocommerce/myaccount/form-login.php:123
 #: woocommerce/myaccount/form-login.php:181
+#, fuzzy
 msgid "Register"
-msgstr ""
+msgstr "注册"
 
 #: woocommerce/myaccount/form-lost-password.php:35
+#, fuzzy
 msgid ""
 "Lost your password? Please enter your username or email address. You will "
 "receive a link to create a new password via email."
 msgstr ""
+"忘记了你的密码?请输入您的用户名或电子邮件地址。您将收到一个通过电子邮件创建新"
+"密码的链接."
 
 #: woocommerce/myaccount/form-lost-password.php:48
+#, fuzzy
 msgid "Reset password"
-msgstr ""
+msgstr "重设密码"
 
 #: woocommerce/myaccount/form-reset-password.php:35
+#, fuzzy
 msgid "Enter a new password below."
-msgstr ""
+msgstr "在下面输入新的密码。"
 
 #: woocommerce/myaccount/form-reset-password.php:38
+#, fuzzy
 msgid "New password"
-msgstr ""
+msgstr "新密码"
 
 #: woocommerce/myaccount/form-reset-password.php:42
+#, fuzzy
 msgid "Re-enter new password"
-msgstr ""
+msgstr "重新输入新密码"
 
 #: woocommerce/myaccount/form-reset-password.php:55
+#, fuzzy
 msgid "Save"
-msgstr ""
+msgstr "保存"
 
 #: woocommerce/myaccount/lost-password-confirmation.php:24
+#, fuzzy
 msgid "Password reset email has been sent."
-msgstr ""
+msgstr "密码重置电子邮件已发送."
 
 #: woocommerce/myaccount/lost-password-confirmation.php:35
+#, fuzzy
 msgid ""
 "A password reset email has been sent to the email address on file for your "
 "account, but may take several minutes to show up in your inbox. Please wait "
 "at least 10 minutes before attempting another reset."
 msgstr ""
+"密码重置电子邮件已被发送到您的帐户上的电子邮件地址，但可能需要几分钟来显示在"
+"您的收件箱. 请等待至少10分钟后再尝试重新设置."
 
 #: woocommerce/myaccount/my-address.php:41
+#, fuzzy
 msgid "The following addresses will be used on the checkout page by default."
-msgstr ""
+msgstr "默认情况下，将使用结帐页面的以下地址."
 
 #: woocommerce/myaccount/my-address.php:51
+#, fuzzy
 msgid "Edit"
-msgstr ""
+msgstr "编辑"
 
 #: woocommerce/myaccount/my-address.php:70
+#, fuzzy
 msgid "You have not set up this type of address yet."
-msgstr ""
+msgstr "你还没有建立这种地址."
 
 #: woocommerce/myaccount/my-downloads.php:30
+#, fuzzy
 msgid "Available downloads"
-msgstr ""
+msgstr "可以下载"
 
 #: woocommerce/myaccount/my-downloads.php:39
 #, php-format
 msgid "%s download remaining"
 msgid_plural "%s downloads remaining"
 msgstr[0] ""
-msgstr[1] ""
 
 #: woocommerce/myaccount/my-orders.php:13
+#, fuzzy
 msgid "Order"
-msgstr ""
+msgstr "排序"
 
 #: woocommerce/myaccount/my-orders.php:14
+#, fuzzy
 msgid "Date"
-msgstr ""
+msgstr "日期"
 
 #: woocommerce/myaccount/my-orders.php:30
+#, fuzzy
 msgid "Recent orders"
-msgstr ""
+msgstr "يېقىنقى زاكاسلار"
 
 #: woocommerce/myaccount/my-orders.php:55 woocommerce/myaccount/orders.php:51
+#, fuzzy
 msgctxt "hash before order number"
 msgid "#"
-msgstr ""
+msgstr "#"
 
 #. translators: 1: formatted order total 2: total order items
 #: woocommerce/myaccount/my-orders.php:67 woocommerce/myaccount/orders.php:63
@@ -1883,116 +2205,140 @@ msgstr ""
 msgid "%1$s for %2$s item"
 msgid_plural "%1$s for %2$s items"
 msgstr[0] ""
-msgstr[1] ""
 
 #: woocommerce/myaccount/my-orders.php:79 woocommerce/myaccount/orders.php:75
+#, fuzzy
 msgid "View"
-msgstr ""
+msgstr "查看"
 
 #: woocommerce/myaccount/my-orders.php:83 woocommerce/myaccount/orders.php:79
+#, fuzzy
 msgid "Cancel"
-msgstr ""
+msgstr "取消"
 
 #: woocommerce/myaccount/orders.php:110
+#, fuzzy
 msgid "Previous"
-msgstr ""
+msgstr "后退"
 
 #: woocommerce/myaccount/orders.php:114
+#, fuzzy
 msgid "Next"
-msgstr ""
+msgstr "前进"
 
 #: woocommerce/myaccount/orders.php:124
+#, fuzzy
 msgid "No order has been made yet."
-msgstr ""
+msgstr "还没有下订单."
 
 #. translators: 1: credit card type 2: last 4 digits
 #: woocommerce/myaccount/payment-methods.php:52
-#, php-format
+#, fuzzy, php-format
 msgid "%1$s ending in %2$s"
-msgstr ""
+msgstr "%1$s ئاخىرلاشتى %2$s"
 
 #: woocommerce/myaccount/payment-methods.php:73
+#, fuzzy
 msgid "No saved methods found."
-msgstr ""
+msgstr "未找到已保存的方法."
 
 #: woocommerce/myaccount/view-order.php:29 woocommerce/order/tracking.php:27
-#, php-format
+#, fuzzy, php-format
 msgid "Order #%1$s was placed on %2$s and is currently %3$s."
-msgstr ""
+msgstr "زاكاس #%1$s سۇنۇلۇپ بولدى %2$s نۆۋەتتىكى ھالىتى %3$s."
 
 #: woocommerce/myaccount/view-order.php:37 woocommerce/order/tracking.php:35
+#, fuzzy
 msgid "Order updates"
-msgstr ""
+msgstr "زاكاس يېڭىلاش"
 
 #: woocommerce/myaccount/view-order.php:43 woocommerce/order/tracking.php:41
+#, fuzzy
 msgid "l jS \\o\\f F Y, h:ia"
-msgstr ""
+msgstr "l jS \\o\\f F Y, h:ia"
 
 #: woocommerce/order/form-tracking.php:29
+#, fuzzy
 msgid ""
 "To track your order please enter your Order ID in the box below and press "
 "the \"Track\" button. This was given to you on your receipt and in the "
 "confirmation email you should have received."
 msgstr ""
+"要跟踪您的订单，请输入您的订单ID在下面的框，按“轨道”按钮. 这是给你在你的收据"
+"和确认电子邮件，你应该已经收到."
 
 #: woocommerce/order/form-tracking.php:31
+#, fuzzy
 msgid "Order ID"
-msgstr ""
+msgstr "订单编号"
 
 #: woocommerce/order/form-tracking.php:31
+#, fuzzy
 msgid "Found in your order confirmation email."
-msgstr ""
+msgstr "在你的订单确认邮件中找到."
 
 #: woocommerce/order/form-tracking.php:32
+#, fuzzy
 msgid "Billing email"
-msgstr ""
+msgstr "ھېسابات تالون ئېلخېتى"
 
 #: woocommerce/order/form-tracking.php:32
+#, fuzzy
 msgid "Email you used during checkout."
-msgstr ""
+msgstr "سىز ھېساب بوغقاندا ئىشلەتكەن ئېلخەت"
 
 #: woocommerce/order/form-tracking.php:35
+#, fuzzy
 msgid "Track"
-msgstr ""
+msgstr "زاكاسنى ئىز قوغلاش"
 
 #: woocommerce/order/order-again.php:25
+#, fuzzy
 msgid "Order again"
-msgstr ""
+msgstr "يەنە بىر قىتىم ئېلىش"
 
 #: woocommerce/order/order-details-customer.php:32
+#, fuzzy
 msgid "Note:"
-msgstr ""
+msgstr "注意："
 
 #: woocommerce/order/order-details-customer.php:39
+#, fuzzy
 msgid "Email:"
-msgstr ""
+msgstr "邮箱:"
 
 #: woocommerce/order/order-details-customer.php:46
+#, fuzzy
 msgid "Phone:"
-msgstr ""
+msgstr "电话:"
 
 #: woocommerce/order/order-details-customer.php:66
 #: woocommerce/order/order-details-customer.php:78
 #: woocommerce/single-product/meta.php:31
+#, fuzzy
 msgid "N/A"
-msgstr ""
+msgstr "未知"
 
 #: woocommerce/order/order-details.php:31
+#, fuzzy
 msgid "Order details"
-msgstr ""
+msgstr "订单详情"
 
 #: woocommerce/product-searchform.php:25
+#, fuzzy
 msgid "Search for:"
-msgstr ""
+msgstr "标签 搜索："
 
 #: woocommerce/product-searchform.php:26
+#, fuzzy
 msgid "Search products&hellip;"
-msgstr ""
+msgstr "مەھسۇلات ئىزدەش&hellip;"
 
 #: woocommerce/product-searchform.php:27
+#, fuzzy
 msgctxt "submit button"
 msgid "Search"
-msgstr ""
+msgstr "占位符 搜索"
 
 #. translators: 1: reviews count 2: product name
 #: woocommerce/single-product-reviews.php:34
@@ -2000,203 +2346,234 @@ msgstr ""
 msgid "%1$s review for %2$s"
 msgid_plural "%1$s reviews for %2$s"
 msgstr[0] ""
-msgstr[1] ""
 
 #: woocommerce/single-product-reviews.php:36
+#, fuzzy
 msgid "Reviews"
-msgstr ""
+msgstr "评测"
 
 #: woocommerce/single-product-reviews.php:58
+#, fuzzy
 msgid "There are no reviews yet."
-msgstr ""
+msgstr "目前还没有评论。"
 
 #: woocommerce/single-product-reviews.php:71
+#, fuzzy
 msgid "Add a review"
-msgstr ""
+msgstr "添加评论"
 
 #: woocommerce/single-product-reviews.php:71
-#, php-format
+#, fuzzy, php-format
 msgid "Be the first to review &ldquo;%s&rdquo;"
-msgstr ""
+msgstr "成为第一个评论&ldquo;%s&rdquo;的人;"
 
 #: woocommerce/single-product-reviews.php:72
-#, php-format
+#, fuzzy, php-format
 msgid "Leave a Reply to %s"
-msgstr ""
+msgstr "留言给 %s"
 
 #: woocommerce/single-product-reviews.php:77
+#, fuzzy
 msgid "Name"
-msgstr ""
+msgstr "姓名"
 
 #: woocommerce/single-product-reviews.php:79
+#, fuzzy
 msgid "Email"
-msgstr ""
+msgstr "电子邮件"
 
 #: woocommerce/single-product-reviews.php:88
-#, php-format
+#, fuzzy, php-format
 msgid "You must be <a href=\"%s\">logged in</a> to post a review."
-msgstr ""
+msgstr "ئاندىن باھا بېرەلەيسىز <a href=\"%s\">تىزىملاپ كىرىپ</a>سىز باشتا"
 
 #: woocommerce/single-product-reviews.php:92
+#, fuzzy
 msgid "Your rating"
-msgstr ""
+msgstr "您的评分"
 
 #: woocommerce/single-product-reviews.php:93
+#, fuzzy
 msgid "Rate&hellip;"
-msgstr ""
+msgstr "Rate&hellip;"
 
 #: woocommerce/single-product-reviews.php:94
+#, fuzzy
 msgid "Perfect"
-msgstr ""
+msgstr "完美"
 
 #: woocommerce/single-product-reviews.php:95
+#, fuzzy
 msgid "Good"
-msgstr ""
+msgstr "好"
 
 #: woocommerce/single-product-reviews.php:96
+#, fuzzy
 msgid "Average"
-msgstr ""
+msgstr "平均"
 
 #: woocommerce/single-product-reviews.php:97
+#, fuzzy
 msgid "Not that bad"
-msgstr ""
+msgstr "没那么糟"
 
 #: woocommerce/single-product-reviews.php:98
+#, fuzzy
 msgid "Very poor"
-msgstr ""
+msgstr "很差"
 
 #: woocommerce/single-product-reviews.php:102
+#, fuzzy
 msgid "Your review"
-msgstr ""
+msgstr "您的评价"
 
 #: woocommerce/single-product-reviews.php:111
+#, fuzzy
 msgid ""
 "Only logged in customers who have purchased this product may leave a review."
-msgstr ""
+msgstr "需要购买的用户才有评论权限。"
 
 #: woocommerce/single-product/add-to-cart/variable.php:32
+#, fuzzy
 msgid "This product is currently out of stock and unavailable."
-msgstr ""
+msgstr "该产品目前缺货。"
 
 #: woocommerce/single-product/add-to-cart/variable.php:43
+#, fuzzy
 msgid "Clear"
-msgstr ""
+msgstr "重置"
 
 #: woocommerce/single-product/add-to-cart/variation.php:31
+#, fuzzy
 msgid ""
 "Sorry, this product is unavailable. Please choose a different combination."
-msgstr ""
+msgstr "对不起，此产品不可用。 请选择不同的组合。"
 
 #: woocommerce/single-product/meta.php:31
+#, fuzzy
 msgid "SKU:"
-msgstr ""
+msgstr "SKU:"
 
 #: woocommerce/single-product/meta.php:35
 msgid "Category:"
 msgid_plural "Categories:"
 msgstr[0] ""
-msgstr[1] ""
 
 #: woocommerce/single-product/meta.php:37
 msgid "Tag:"
 msgid_plural "Tags:"
 msgstr[0] ""
-msgstr[1] ""
 
 #: woocommerce/single-product/photoswipe.php:51
+#, fuzzy
 msgid "Close (Esc)"
-msgstr ""
+msgstr "ئۆچۇرۇش(Esc)"
 
 #: woocommerce/single-product/photoswipe.php:53
+#, fuzzy
 msgid "Share"
-msgstr ""
+msgstr "分享"
 
 #: woocommerce/single-product/photoswipe.php:55
+#, fuzzy
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "切换全屏"
 
 #: woocommerce/single-product/photoswipe.php:57
+#, fuzzy
 msgid "Zoom in/out"
-msgstr ""
+msgstr "放大/缩小"
 
 #: woocommerce/single-product/photoswipe.php:74
+#, fuzzy
 msgid "Previous (arrow left)"
-msgstr ""
+msgstr "上一页(左箭头)"
 
 #: woocommerce/single-product/photoswipe.php:76
+#, fuzzy
 msgid "Next (arrow right)"
-msgstr ""
+msgstr "下一页(右箭头)"
 
 #: woocommerce/single-product/product-attributes.php:28
+#, fuzzy
 msgid "Weight"
-msgstr ""
+msgstr "ئېغىرلىقى"
 
 #: woocommerce/single-product/product-attributes.php:35
+#, fuzzy
 msgid "Dimensions"
-msgstr ""
+msgstr "规模"
 
 #: woocommerce/single-product/product-image.php:53
+#, fuzzy
 msgid "Awaiting product image"
-msgstr ""
+msgstr "等待产品形象"
 
 #: woocommerce/single-product/rating.php:41
-#, php-format
+#, fuzzy, php-format
 msgid "%1$s out of %2$s"
-msgstr ""
+msgstr "%1$s，共 %2$s"
 
 #: woocommerce/single-product/rating.php:49
 #, php-format
 msgid "based on %s customer rating"
 msgid_plural "based on %s customer ratings"
 msgstr[0] ""
-msgstr[1] ""
 
 #: woocommerce/single-product/rating.php:55
 #, php-format
 msgid "%s customer review"
 msgid_plural "%s customer reviews"
 msgstr[0] ""
-msgstr[1] ""
 
 #: woocommerce/single-product/related.php:27
+#, fuzzy
 msgid "Related products"
-msgstr ""
+msgstr "相关产品"
 
 #: woocommerce/single-product/review-meta.php:28
+#, fuzzy
 msgid "Your review is awaiting approval"
-msgstr ""
+msgstr "سىز قالدۇرغان باھا تەستىق كۈتىۋاتىدۇ"
 
 #: woocommerce/single-product/review-meta.php:36
+#, fuzzy
 msgid "verified owner"
-msgstr ""
+msgstr "验证所有者"
 
 #. translators: %s: rating
 #: woocommerce/single-product/review-rating.php:31
-#, php-format
+#, fuzzy, php-format
 msgid "%s out of 5"
-msgstr ""
+msgstr "%s 星，滿分5星"
 
 #: woocommerce/single-product/tabs/description.php:25
+#, fuzzy
 msgid "Description"
-msgstr ""
+msgstr "描述"
 
 #: woocommerce/single-product/up-sells.php:27
+#, fuzzy
 msgid "You may also like&hellip;"
-msgstr ""
+msgstr "你可能也喜欢&hellip;"
 
 #. Theme Name of the plugin/theme
+#, fuzzy
 msgid "Streamium"
-msgstr ""
+msgstr "的Streamium"
 
 #. Theme URI of the plugin/theme
+#, fuzzy
 msgid "https://s3bubble.com"
-msgstr ""
+msgstr "https://s3bubble.com"
 
 #. Description of the plugin/theme
+#, fuzzy
 msgid ""
 "S3Bubble brings a Netflix style theme with all the power to your fingertips"
-msgstr ""
+msgstr "S3Bubble带来了Netflix风格的主题，拥有所有的力量，让您的指尖"
 
 #. Author of the plugin/theme
+#, fuzzy
 msgid "Samuel East"
-msgstr ""
+msgstr "塞缪尔东"

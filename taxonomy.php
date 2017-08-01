@@ -30,13 +30,13 @@
 						<h3><?php printf( __( 'Viewing: %s', 'streamium' ), single_cat_title( '', false ) ); ?></h3>
 						<?php if(get_theme_mod( 'streamium_enable_premium' )) : ?>
 							<div class="streamium-drop-dropdown-wrapper open-to-left">
-								<a class="streamium-drop-dropdown-trigger" href="#0">FILTER</a>
+								<a class="streamium-drop-dropdown-trigger" href="#0"><?php _e( 'FILTER', 'streamium' ); ?></a>
 								<nav class="streamium-drop-dropdown">
 									<ul class="streamium-drop-dropdown-content">
-										<li><a class="tax-search-filter" data-type="all" href="?sort=all">View All</a></li>
-									    <li><a class="tax-search-filter" data-type="reviewed" href="?sort=reviewed">Most Reviews</a></li>
-									    <li><a class="tax-search-filter" data-type="newest" href="?sort=newest">Recently Added</a></li>
-									    <li><a class="tax-search-filter" data-type="oldest" href="?sort=oldest">Oldest First</a></li>
+										<li><a class="tax-search-filter" data-type="all" href="?sort=all"><?php _e( 'View All', 'streamium' ); ?></a></li>
+									    <li><a class="tax-search-filter" data-type="reviewed" href="?sort=reviewed"><?php _e( 'Most Reviews', 'streamium' ); ?></a></li>
+									    <li><a class="tax-search-filter" data-type="newest" href="?sort=newest"><?php _e( 'Recently Added', 'streamium' ); ?></a></li>
+									    <li><a class="tax-search-filter" data-type="oldest" href="?sort=oldest"><?php _e( 'Oldest First', 'streamium' ); ?></a></li>
 									</ul> <!-- .cd-dropdown-content -->
 								</nav> <!-- .cd-dropdown -->
 							</div> <!-- .cd-dropdown-wrapper -->

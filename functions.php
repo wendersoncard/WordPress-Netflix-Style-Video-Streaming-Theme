@@ -31,16 +31,19 @@ if (!function_exists('streamium_theme_setup')) {
         add_image_size('streamium-site-logo', 0, 56, true);
         add_theme_support('title-tag');
 
+        // Add translation support
+        load_theme_textdomain( 'streamium', get_template_directory() . '/languages' );
+
     }
 
     //* Add new image sizes to post or page editor
     function streamium_extra_image_sizes($sizes)
     {
         $streamiumThemeSizes = array(
-            'streamium-video-tile'    => __('Video Tile'),
-            'streamium-video-tile-expanded'   => __('Video Tile Expanded'),
-            'streamium-video-multi-thumb'   => __('Multi Video Thumb'),
-            'streamium-home-slider'   => __('Main Slider'),
+            'streamium-video-tile'    => __('Video Tile', 'streamium'),
+            'streamium-video-tile-expanded'   => __('Video Tile Expanded', 'streamium'),
+            'streamium-video-multi-thumb'   => __('Multi Video Thumb', 'streamium'),
+            'streamium-home-slider'   => __('Main Slider', 'streamium'),
         );
         $sizes = array_merge($sizes, $streamiumThemeSizes);
 
@@ -54,7 +57,7 @@ if (!function_exists('streamium_theme_setup')) {
 
     if ( function_exists('register_sidebar') ) { 
         register_sidebar(array( 
-            'name' => 'Page Sidebar', 
+            'name' => __('Page Sidebar', 'streamium'), 
             'id' => 'page-sidebar', 
             'description' => 'Appears as the sidebar on a page',
             'before_widget' => '<div id="%1$s" class="widget %2$s">', 
@@ -63,7 +66,7 @@ if (!function_exists('streamium_theme_setup')) {
             'after_title' => '</h4>'
         ));
         register_sidebar(array( 
-            'name' => 'Post Sidebar', 
+            'name' => __('Post Sidebar', 'streamium'), 
             'id' => 'post-sidebar', 
             'description' => 'Appears as the sidebar on a post',
             'before_widget' => '<div id="%1$s" class="widget %2$s">', 
@@ -72,7 +75,7 @@ if (!function_exists('streamium_theme_setup')) {
             'after_title' => '</h4>'
         ));
         register_sidebar(array( 
-            'name' => 'Forum Sidebar', 
+            'name' => __('Forum Sidebar', 'streamium'), 
             'id' => 'forum-sidebar', 
             'description' => 'Appears as the sidebar on a forum',
             'before_widget' => '<div id="%1$s" class="widget %2$s">', 
@@ -175,7 +178,7 @@ if (!function_exists('streamium_enqueue_admin_scripts')) {
 function dismiss_premium_notice()
 {
     update_option('notice_premium', 0);
-    echo json_encode(array('success' => true, 'message' => __('Notice dismissed')));
+    echo json_encode(array('success' => true, 'message' => __('Notice dismissed','streamium')));
     die();
 }
 
@@ -187,7 +190,7 @@ add_action('wp_ajax_nopriv_ajaxnopremium', 'dismiss_premium_notice');
 function dismiss_demo_data_notice()
 {
     update_option('notice_demo_data', 0);
-    echo json_encode(array('success' => true, 'message' => __('Notice dismissed')));
+    echo json_encode(array('success' => true, 'message' => __('Notice dismissed','streamium')));
     die();
 }
 

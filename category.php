@@ -28,79 +28,13 @@
 				$category = $wp_query->get_queried_object();
 				$paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
 
-				switch (isset($_GET['sort']) ? $_GET['sort'] : 'all') {
-					case 'reviewed':
-
-						remove_all_filters('posts_fields');
-					    remove_all_filters('posts_join');
-					    remove_all_filters('posts_groupby');
-					    remove_all_filters('posts_orderby');
-					    add_filter( 'posts_fields', 'streamium_search_distinct' );
-						add_filter( 'posts_join','streamium_search_join');
-						add_filter( 'posts_groupby', 'streamium_search_groupby' );
-						add_filter( 'posts_orderby', 'streamium_search_orderby' );
-						$the_query = new WP_Query( 
-							array(
-							    'cat' => $category->cat_ID, 
-								'paged' => $paged,
-								'ignore_sticky_posts' => true,
-								'orderby' => 'date',
-								'order'   => 'DESC', 
-							) 
-						);
-
-						break;
-
-					case 'newest':
-						
-						remove_all_filters('posts_fields');
-					    remove_all_filters('posts_join');
-					    remove_all_filters('posts_groupby');
-					    remove_all_filters('posts_orderby');
-					   
-						$the_query = new WP_Query( 
-							array(
-							    'cat' => $category->cat_ID, 
-								'paged' => $paged,
-								'ignore_sticky_posts' => true,
-								'orderby' => 'date',
-								'order'   => 'DESC', 
-							) 
-						);
-					
-						break;
-
-					case 'oldest':
-
-						remove_all_filters('posts_fields');
-					    remove_all_filters('posts_join');
-					    remove_all_filters('posts_groupby');
-					    remove_all_filters('posts_orderby');
-					    
-						$the_query = new WP_Query( 
-							array(
-							    'cat' => $category->cat_ID, 
-								'paged' => $paged,
-								'ignore_sticky_posts' => true,
-								'orderby' => 'date',
-								'order'   => 'ASC', 
-							) 
-						);
-					
-						break;
-					
-					default:
-
-						$the_query = new WP_Query( 
-							array(
-							    'cat' => $category->cat_ID,
-								'paged' => $paged,
-								'ignore_sticky_posts' => true
-							) 
-						);
-
-						break;
-				}
+				$the_query = new WP_Query( 
+					array(
+					    'cat' => $category->cat_ID,
+						'paged' => $paged,
+						'ignore_sticky_posts' => true
+					) 
+				);
 				
 				if ( $the_query->have_posts() ) : 
 			?>
