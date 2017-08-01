@@ -17,12 +17,15 @@ if (!function_exists('streamium_theme_setup')) {
 
         // Check for orientation and switch if needed
         if(get_theme_mod( 'streamium_poster_orientation', '56.25' ) === '56.25'){
-            add_image_size('streamium-video-tile', ($width*2), ($height*2), false); //, 285, 160
-            add_image_size('streamium-video-tile-expanded', ($width*2), ($height*2), false); //, 285, 160
+            // Landscape
+            add_image_size('streamium-video-tile', ($width*2), ($height*2), false); 
+            add_image_size('streamium-video-tile-expanded', ($width*2), ($height*2), false);
         }else{
-            add_image_size('streamium-video-tile', ($height*2), ($width*2), false); //, 285, 160
-            add_image_size('streamium-video-tile-expanded', ($height*2), ($width*2), false); //, 285, 160
+            // Portrait
+            add_image_size('streamium-video-tile', ($height*2), ($width*2), false); 
+            add_image_size('streamium-video-tile-expanded', ($height*2), ($width*2), false); 
         }
+        
         add_image_size('streamium-video-tile-large-expanded', 9999, 411, false); 
         add_image_size('streamium-home-slider', 9999, 540, false);
         add_image_size('streamium-site-logo', 0, 56, true);
@@ -48,6 +51,37 @@ if (!function_exists('streamium_theme_setup')) {
     add_option('notice_demo_data', 1);
 
     add_filter('image_size_names_choose', 'streamium_extra_image_sizes');
+
+    if ( function_exists('register_sidebar') ) { 
+        register_sidebar(array( 
+            'name' => 'Page Sidebar', 
+            'id' => 'page-sidebar', 
+            'description' => 'Appears as the sidebar on a page',
+            'before_widget' => '<div id="%1$s" class="widget %2$s">', 
+            'after_widget' => '</div>', 
+            'before_title' => '<h4 class="widgettitle">', 
+            'after_title' => '</h4>'
+        ));
+        register_sidebar(array( 
+            'name' => 'Post Sidebar', 
+            'id' => 'post-sidebar', 
+            'description' => 'Appears as the sidebar on a post',
+            'before_widget' => '<div id="%1$s" class="widget %2$s">', 
+            'after_widget' => '</div>', 
+            'before_title' => '<h4 class="widgettitle">', 
+            'after_title' => '</h4>'
+        ));
+        register_sidebar(array( 
+            'name' => 'Forum Sidebar', 
+            'id' => 'forum-sidebar', 
+            'description' => 'Appears as the sidebar on a forum',
+            'before_widget' => '<div id="%1$s" class="widget %2$s">', 
+            'after_widget' => '</div>', 
+            'before_title' => '<h4 class="widgettitle">', 
+            'after_title' => '</h4>'
+        ));  
+    }
+
 }
 
 add_action('after_setup_theme', 'streamium_theme_setup');

@@ -1,10 +1,16 @@
+<?php 
+/*
+Template Name: Full Blank Page
+*/
+get_header(); ?>
+
 	<header class="cd-main-header fixed">
 
 		<?php if ( get_theme_mod( 'streamium_logo' ) ) : ?>
 
 		    <a class="cd-logo" href="<?php echo esc_url( home_url('/') ); ?>"><img src='<?php echo esc_url( get_theme_mod( 'streamium_logo' ) ); ?>' alt='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>'></a>
 
-		<?php else : ?> 
+		<?php else : ?>
 
 		    <a class="cd-logo" href="<?php echo esc_url( home_url('/') ); ?>"><?php bloginfo( 'name' ); ?></a>
 
@@ -14,6 +20,7 @@
 			<li><a class="cd-search-trigger" href="#cd-search"><?php _e( 'Search', 'streamium' ); ?><span></span></a></li>
 			<li><a class="cd-nav-trigger" href="#cd-primary-nav"><?php _e( 'Menu', 'streamium' ); ?><span></span></a></li>
 		</ul> <!-- cd-header-buttons -->
+		
 		<?php get_search_form(); ?>
 		
 	</header>
@@ -24,29 +31,22 @@
 		
 		<div class="container">
 			<div class="row">
+				<div class="col-sm-12 col-xs-12">
+					<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-				<?php if ( ! is_active_sidebar( 'post-sidebar' ) ) : ?>
-					<div class="col-sm-12 col-xs-12">
-						
-						<h3><?php the_title(); ?></h3>
-						<?php the_content(); ?>	
+					 	<?php the_content(); ?>					 
 
-					</div>
-				<?php else : ?>
-					<div class="col-sm-9 col-xs-12">
-						
-						<h3><?php the_title(); ?></h3>
-						<?php the_content(); ?>	
+					<?php endwhile; else : ?>
 
-					</div>
-					<div class="col-sm-3 col-xs-12">
-						<?php dynamic_sidebar('post-sidebar'); ?>
-					</div>
-				<?php endif; ?>
+					 	<p><?php _e( 'Sorry, no posts matched your criteria.', 'streamium' ); ?></p>
 
+					<?php endif; ?>
+				</div>
 			</div>
 		</div>
 
 		<div class="main-spacer"></div>
 
 	</main><!--/.main content-->
+	
+ <?php get_footer(); ?>

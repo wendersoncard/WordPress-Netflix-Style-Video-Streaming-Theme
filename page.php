@@ -26,17 +26,36 @@
 		
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-12 col-xs-12">
-					<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-					 	<?php the_content(); ?>					 
+				<?php if ( ! is_active_sidebar( 'page-sidebar' ) ) : ?>
+					<div class="col-sm-12 col-xs-12">
+						<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-					<?php endwhile; else : ?>
+						 	<?php the_content(); ?>					 
 
-					 	<p><?php _e( 'Sorry, no posts matched your criteria.', 'streamium' ); ?></p>
+						<?php endwhile; else : ?>
 
-					<?php endif; ?>
-				</div>
+						 	<p><?php _e( 'Sorry, no posts matched your criteria.', 'streamium' ); ?></p>
+
+						<?php endif; ?>
+					</div>
+				<?php else : ?>
+					<div class="col-sm-9 col-xs-12">
+						<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+
+						 	<?php the_content(); ?>					 
+
+						<?php endwhile; else : ?>
+
+						 	<p><?php _e( 'Sorry, no posts matched your criteria.', 'streamium' ); ?></p>
+
+						<?php endif; ?>
+					</div>
+					<div class="col-sm-3 col-xs-12">
+						<?php dynamic_sidebar('page-sidebar'); ?>
+					</div>
+				<?php endif; ?>
+
 			</div>
 		</div>
 

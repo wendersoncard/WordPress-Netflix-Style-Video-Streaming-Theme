@@ -1,10 +1,12 @@
+<?php get_header(); ?>
+
 	<header class="cd-main-header fixed">
 
 		<?php if ( get_theme_mod( 'streamium_logo' ) ) : ?>
 
 		    <a class="cd-logo" href="<?php echo esc_url( home_url('/') ); ?>"><img src='<?php echo esc_url( get_theme_mod( 'streamium_logo' ) ); ?>' alt='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>'></a>
 
-		<?php else : ?> 
+		<?php else : ?>
 
 		    <a class="cd-logo" href="<?php echo esc_url( home_url('/') ); ?>"><?php bloginfo( 'name' ); ?></a>
 
@@ -25,28 +27,40 @@
 		<div class="container">
 			<div class="row">
 
-				<?php if ( ! is_active_sidebar( 'post-sidebar' ) ) : ?>
+				<?php if ( ! is_active_sidebar( 'forum-sidebar' ) ) : ?>
 					<div class="col-sm-12 col-xs-12">
-						
-						<h3><?php the_title(); ?></h3>
-						<?php the_content(); ?>	
+						<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
+						 	<?php the_content(); ?>					 
+
+						<?php endwhile; else : ?>
+
+						 	<p><?php _e( 'Sorry, no posts matched your criteria.', 'streamium' ); ?></p>
+
+						<?php endif; ?>
 					</div>
 				<?php else : ?>
 					<div class="col-sm-9 col-xs-12">
-						
-						<h3><?php the_title(); ?></h3>
-						<?php the_content(); ?>	
+						<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
+						 	<?php the_content(); ?>					 
+
+						<?php endwhile; else : ?>
+
+						 	<p><?php _e( 'Sorry, no posts matched your criteria.', 'streamium' ); ?></p>
+
+						<?php endif; ?>
 					</div>
 					<div class="col-sm-3 col-xs-12">
-						<?php dynamic_sidebar('post-sidebar'); ?>
+						<?php dynamic_sidebar('forum-sidebar'); ?>
 					</div>
 				<?php endif; ?>
-
+				
 			</div>
 		</div>
 
 		<div class="main-spacer"></div>
 
 	</main><!--/.main content-->
+	
+ <?php get_footer(); ?>
