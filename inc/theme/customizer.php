@@ -171,15 +171,15 @@ class Streamium_Customize
                   'settings'  => 'streamium_synopsis_para',
                   'type'      => 'select',
                   'choices' => array(
-                      '1.6vw'  => __('1.6vw'),
-                      '1.5vw'  => __('1.5vw'),
-                      '1.4vw'  => __('1.4vw'),
-                      '1.3vw'  => __('1.3vw'),
-                      '1.2vw'  => __('1.2vw'),
-                      '1.1vw'  => __('1.1vw'),
-                      '1vw'    => __('1vw'),
-                      '0.9.vw' => __('0.9vw'),
-                      '0.8.vw' => __('0.8vw')
+                      '1.6vw'  => '1.6vw',
+                      '1.5vw'  => '1.5vw',
+                      '1.4vw'  => '1.4vw',
+                      '1.3vw'  => '1.3vw',
+                      '1.2vw'  => '1.2vw',
+                      '1.1vw'  => '1.1vw',
+                      '1vw'    => '1vw',
+                      '0.9.vw' => '0.9vw',
+                      '0.8.vw' => '0.8vw'
                   )
               )
           )
@@ -199,8 +199,8 @@ class Streamium_Customize
                   'settings'  => 'streamium_poster_orientation',
                   'type'      => 'select',
                   'choices' => array(
-                      '150%'  => __('Portrait'),
-                      '56.25%'  => __('Landscape')
+                      '150%'  => __('Portrait', 'streamium'),
+                      '56.25%'  => __('Landscape', 'streamium')
                   )
               )
           )
@@ -220,13 +220,13 @@ class Streamium_Customize
                   'settings'  => 'streamium_tile_count',
                   'type'      => 'select',
                   'choices' => array(
-                      '4'  => __('4'),
-                      '5'  => __('5'),
-                      '6'  => __('6'),
-                      '7'  => __('7'),
-                      '8'  => __('8'),
-                      '9'  => __('9'),
-                      '10'  => __('10')
+                      '4'  => '4',
+                      '5'  => '5',
+                      '6'  => '6',
+                      '7'  => '7',
+                      '8'  => '8',
+                      '9'  => '9',
+                      '10' => '10'
                   )
               )
           )

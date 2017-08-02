@@ -1,17 +1,17 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Streamium\n"
-"POT-Creation-Date: 2017-08-01 10:33+0100\n"
-"PO-Revision-Date: 2017-08-01 10:36+0100\n"
+"Project-Id-Version: Streamium S3Bubble Theme\n"
+"POT-Creation-Date: 2017-08-02 23:24+0100\n"
+"PO-Revision-Date: 2017-08-02 23:25+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: ca\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.0.3\n"
 "X-Poedit-Basepath: ..\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: style.css\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -24,459 +24,427 @@ msgstr ""
 #: 404.php:16 archive.php:16 category.php:16 forum.php:16 index.php:20
 #: page.php:16 search.php:16 taxonomy.php:16 templates/content-blog.php:14
 #: templates/plans-template.php:20
-#, fuzzy
 msgid "Search"
-msgstr "Cercar"
+msgstr "Pesquisar"
 
 #: 404.php:17 archive.php:17 category.php:17 footer.php:61 forum.php:17
 #: index.php:21 page.php:17 search.php:17 taxonomy.php:17
 #: templates/content-blog.php:15 templates/plans-template.php:21
-#, fuzzy
 msgid "Menu"
 msgstr "Menu"
 
 #: 404.php:31
-#, fuzzy
-msgid "Oops! That can&rsquo;t be found."
-msgstr "Oooh! No hem trobat la pàgina."
+msgid "Oops! That can&rsquo;t be found"
+msgstr "Oops! Não foi possível encontrar esta página"
 
 #: 404.php:32
-#, fuzzy
 msgid "It looks like nothing was found at this location. Maybe try a search?"
-msgstr ""
-"Sembla que no s’ha trobat res aquí. Pots provar una cerca per paraules?"
+msgstr "Parece que nada foi encontrado neste local. Talvez tente uma pesquisa?"
 
 #: category.php:44 taxonomy.php:30
-#, fuzzy, php-format
+#, php-format
 msgid "Viewing: %s"
-msgstr "Visualització:%s"
+msgstr "Visualizando %s"
 
 #: footer.php:29
-#, fuzzy, php-format
 msgid ""
-"<ul id=\"cd-primary-nav\" class=\"cd-primary-nav is-fixed\"><li><a href=\"#"
-"\">%1$s</a></li></ul>"
+"!To display a menu here go to Apperance and menus create a menu and select "
+"(Display location Header Menu)"
 msgstr ""
-"<ul id=\"cd-primary-nav\" class=\"cd-primary-nav is-fixed\"><li> <a href=\"#"
-"\">%1$s</a> </li></ul>"
+"! Para exibir um menu aqui ir para menus e Apperance criar um menu e "
+"selecione (localização de Exibir Menu de cabeçalho)"
 
-#: footer.php:64
-#, fuzzy
-msgid "All "
-msgstr "Tots "
+#: footer.php:64 taxonomy.php:36
+msgid "View All"
+msgstr "Ver Todos"
+
+#: footer.php:83 footer.php:123
+msgid "All"
+msgstr "Todos"
+
+#: footer.php:159 woocommerce/single-product-reviews.php:36
+msgid "Reviews"
+msgstr "Avaliações"
+
+#: footer.php:170
+msgid "Please follow this guide for help with installation"
+msgstr ""
+
+#: footer.php:170
+msgid "Video Series"
+msgstr "Séries de vídeo"
+
+#: footer.php:170
+msgid "You can remove this alert in Appearance -> Customizer -> Streamium<"
+msgstr ""
 
 #: forum.php:38 forum.php:50 page.php:38 page.php:50 single.php:45
 #: templates/plans-template.php:41
-#, fuzzy
 msgid "Sorry, no posts matched your criteria."
-msgstr "Disculpa, no s’ha trobat cap entrada."
-
-#: functions.php:43
-#, fuzzy
-msgid "Video Tile"
-msgstr "Taula de vídeo"
+msgstr "Desculpe, não há artigos no seu critério."
 
 #: functions.php:44
-#, fuzzy
-msgid "Video Tile Expanded"
-msgstr "S'ha ampliat la fitxa de vídeo"
-
-#: functions.php:45
-#, fuzzy
-msgid "Multi Video Thumb"
-msgstr "Polze multimèdia"
-
-#: functions.php:46
-#, fuzzy
-msgid "Main Slider"
-msgstr "Control lliscant principal"
-
-#: functions.php:60
-#, fuzzy
 msgid "Page Sidebar"
-msgstr "Pàgina Barra Lateral Esquerra"
+msgstr "Barra lateral da página"
 
-#: functions.php:69
-#, fuzzy
+#: functions.php:53
 msgid "Post Sidebar"
-msgstr "Barra lateral de publicació"
+msgstr "Barra Lateral do Post"
 
-#: functions.php:78
-#, fuzzy
+#: functions.php:62
 msgid "Forum Sidebar"
-msgstr "Barra de fòrum"
+msgstr "Sidebar do Fórum"
 
-#: functions.php:181 functions.php:193
-#, fuzzy
+#: functions.php:82
+msgid "Video Tile"
+msgstr "A telha"
+
+#: functions.php:83
+msgid "Video Tile Expanded"
+msgstr "Contagem de telhas"
+
+#: functions.php:84
+msgid "Video Tile Large Expanded"
+msgstr "A telha grande expandida"
+
+#: functions.php:85
+msgid "Multi Video Thumb"
+msgstr "Polegar multi vídeo"
+
+#: functions.php:86
+msgid "Main Slider"
+msgstr "Slider Principal"
+
+#: functions.php:138
+msgid "read more"
+msgstr "leia mais"
+
+#: functions.php:183 functions.php:195
 msgid "Notice dismissed"
-msgstr "Avís acomiadat"
+msgstr "Aviso dispensado"
 
 #: inc/import/importer/parsers.php:42 inc/import/importer/parsers.php:63
 #: inc/theme/parsers.php:42 inc/theme/parsers.php:72 inc/theme/parsers.php:80
-#, fuzzy
 msgid "There was an error when reading this WXR file"
-msgstr "S'ha produït un error en llegir aquest fitxer WXR"
+msgstr "Ocorreu um erro ao ler este arquivo WXR"
 
 #: inc/import/importer/parsers.php:43 inc/theme/parsers.php:43
-#, fuzzy
 msgid ""
 "Details are shown above. The importer will now try again with a different "
 "parser..."
 msgstr ""
-"Els detalls es mostren a dalt. L'importador tractarà ara de nou amb un "
-"analitzador diferent ..."
+"Os detalhes são mostrados acima. O importador tentará novamente com um "
+"analisador diferente..."
 
 #: inc/import/importer/parsers.php:67 inc/import/importer/parsers.php:72
 #: inc/import/importer/parsers.php:262 inc/import/importer/parsers.php:447
 #: inc/theme/parsers.php:84 inc/theme/parsers.php:89 inc/theme/parsers.php:306
 #: inc/theme/parsers.php:495
-#, fuzzy
 msgid ""
 "This does not appear to be a WXR file, missing/invalid WXR version number"
 msgstr ""
-"Això no sembla ser un arxiu WXR, nombre de versió WXR desconegut o invàlid"
+"Isso não parece ser um arquivo WXR, número de versão WXR ausente ou inválido"
 
 #: inc/import/importer/streamium-importer.php:208
-#, fuzzy
 msgid "Demo already imported"
-msgstr "S'ha importat la demostració"
+msgstr "Demo já importado"
 
 #: inc/import/importer/streamium-importer.php:228
-#, fuzzy
 msgid "Import Again"
-msgstr "Importa una altra vegada"
+msgstr "Importar novamente"
 
 #: inc/import/importer/streamium-importer.php:232
-#, fuzzy
 msgid "Import Demo Data"
-msgstr "Importar dades de demostració"
+msgstr "Importar dados de demonstração"
 
 #: inc/import/importer/streamium-importer.php:438
-#, fuzzy
 msgid "Theme options Import file could not be found. Please try again."
 msgstr ""
-"Opcions de tema No s'ha pogut trobar el fitxer d'importació. Siusplau torna-"
-"ho a provar."
+"Opções de tema O arquivo de importação não foi encontrado. Por favor, tente "
+"novamente."
 
 #: inc/import/importer/streamium-importer.php:496
-#, fuzzy
 msgid "Widget Import file could not be found. Please try again."
 msgstr ""
-"No s'ha pogut trobar el fitxer d'importació d'un widget. Siusplau torna-ho a "
-"provar."
+"O arquivo de importação de widgets não pôde ser encontrado. Por favor, tente "
+"novamente."
 
 #: inc/import/importer/streamium-importer.php:569
-#, fuzzy
 msgid "Sidebar does not exist in theme (using Inactive)"
-msgstr "La barra lateral no existeix en el tema (usant Inactive)"
+msgstr "Sidebar não existe no tema (usando Inativo)"
 
 #: inc/import/importer/streamium-importer.php:591
-#, fuzzy
 msgid "Site does not support widget"
-msgstr "El lloc no suporta el Widget"
+msgstr "O site não suporta widget"
 
 #: inc/import/importer/streamium-importer.php:614
-#, fuzzy
 msgid "Widget already exists"
-msgstr "Aquest widget ja existeix"
+msgstr "O Widget já existe"
 
 #: inc/import/importer/streamium-importer.php:663
-#, fuzzy
 msgid "Imported"
-msgstr "Importat"
+msgstr "Importado"
 
 #: inc/import/importer/streamium-importer.php:666
-#, fuzzy
 msgid "Imported to Inactive"
-msgstr "Importat a Inactiu"
+msgstr "Importado para Inativo"
 
 #: inc/import/importer/streamium-importer.php:673
 #: templates/archive-slider.php:40 templates/content-slider.php:42
 #: templates/content-slider.php:92
-#, fuzzy
 msgid "No Title"
-msgstr "Sense Títol"
+msgstr "Sem Título"
 
 #: inc/import/importer/wordpress-importer.php:132
 #: inc/import/importer/wordpress-importer.php:141
 #: inc/import/importer/wordpress-importer.php:192
 #: inc/import/importer/wordpress-importer.php:196
 #: inc/import/importer/wordpress-importer.php:205
-#, fuzzy
 msgid "Sorry, there has been an error."
-msgstr "Disculpeu, s'ha produït un error."
+msgstr "Desculpe, ocorreu um erro."
 
 #: inc/import/importer/wordpress-importer.php:133
-#, fuzzy
 msgid "The file does not exist, please try again."
-msgstr "El fitxer no existeix, si us plau intenti-ho de nou."
+msgstr "O arquivo não existe, tente novamente."
 
 #: inc/import/importer/wordpress-importer.php:176
-#, fuzzy
 msgid "All done."
-msgstr "Tot fet."
+msgstr "Tudo feito."
 
 #: inc/import/importer/wordpress-importer.php:176
-#, fuzzy
 msgid "Have fun!"
-msgstr "Gaudeix!"
+msgstr "Diverta-se!"
 
 #: inc/import/importer/wordpress-importer.php:177
-#, fuzzy
 msgid "Remember to update the passwords and roles of imported users."
-msgstr "Recorda actualitzar les contrasenyes i rols dels Usuaris importats."
+msgstr "Lembre-se de atualizar as senhas e os papéis dos usuários importados."
 
 #: inc/import/importer/wordpress-importer.php:197
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "The export file could not be found at <code>%s</code>. It is likely that "
 "this was caused by a permissions problem."
 msgstr ""
-"No s'ha trobat el fitxer d'exportació a <code>%s</code> . És probable que "
-"això sigui causat per un problema de permisos."
+"O arquivo de exportação não pôde ser encontrado em <code>%s</code>. É "
+"provável que isso tenha sido causado por um problema de permissões."
 
 #: inc/import/importer/wordpress-importer.php:213
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "This WXR file (version %s) may not be supported by this version of the "
 "importer. Please consider updating."
 msgstr ""
-"És possible que aquesta versió de l'importador no suporti aquest fitxer WXR "
-"(versió%s). Tingueu en compte l'actualització."
+"Este arquivo WXR (versão %s) pode não ser suportado por esta versão do "
+"importador. Considere a atualização."
 
 #: inc/import/importer/wordpress-importer.php:238
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "Failed to import author %s. Their posts will be attributed to the current "
 "user."
 msgstr ""
-"No s'ha pogut importar autor%s. Els seus articles s'atribuiran a l'usuari "
-"actual."
+"Falha ao importar o autor %s. Suas postagens serão atribuídas ao usuário "
+"atual."
 
 #: inc/import/importer/wordpress-importer.php:264
-#, fuzzy
 msgid "Assign Authors"
-msgstr "Assigna autors"
+msgstr "Atribuir Autores"
 
 #: inc/import/importer/wordpress-importer.php:265
-#, fuzzy
 msgid ""
 "To make it easier for you to edit and save the imported content, you may "
 "want to reassign the author of the imported item to an existing user of this "
 "site. For example, you may want to import all the entries as <code>admin</"
 "code>s entries."
 msgstr ""
-"Per fer-ho més fàcil per tu per editar i guardar el contingut importat, és "
-"possible que vulguis reassignar l’autor de l’article importat a un usuari "
-"existent d’aquest lloc. Per exemple, és possible que vulguis importar totes "
-"les entrades com <code>admin</code> entrades."
+"Para tornar mais fácil para você editar e salvar o conteúdo importado, você "
+"pode reatribuir o autor do item importado a um usuário existente deste site. "
+"Por exemplo, você pode querer importar todas as entradas como entradas de "
+"<code> admin </code> s."
 
 #: inc/import/importer/wordpress-importer.php:267
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "If a new user is created by WordPress, a new password will be randomly "
 "generated and the new user&#8217;s role will be set as %s. Manually changing "
 "the new user&#8217;s details will be necessary."
 msgstr ""
-"Si es crea un nou usuari de WordPress, una nova contrasenya serà "
-"aleatòriament generada i el rol del nou usuari &#8217; s'establirà com a %s. "
-"Serà necessari modificar manualment els detalls del nou usuari &#8217;."
+"Se um novo usuário for criado pelo WordPress, uma nova senha será gerada "
+"aleatoriamente e a função do novo usuário será definida como %s. É "
+"necessário alterar manualmente os detalhes do novo usuário."
 
 #: inc/import/importer/wordpress-importer.php:277
-#, fuzzy
 msgid "Import Attachments"
-msgstr "Importa els adjunts"
+msgstr "Importar Anexos"
 
 #: inc/import/importer/wordpress-importer.php:280
-#, fuzzy
 msgid "Download and import file attachments"
-msgstr "Descarrega i importa els arxius adjunts"
+msgstr "Baixe e importe arquivos anexos"
 
 #: inc/import/importer/wordpress-importer.php:284
 #: woocommerce/single-product-reviews.php:82
-#, fuzzy
 msgid "Submit"
-msgstr "Enviar"
+msgstr "Adicionar Local"
 
 #: inc/import/importer/wordpress-importer.php:297
-#, fuzzy
 msgid "Import author:"
-msgstr "Importació de l'autor:"
+msgstr "Importar autor:"
 
 #: inc/import/importer/wordpress-importer.php:308
-#, fuzzy
 msgid "or create new user with login name:"
-msgstr "o crea un nou usuari amb el nom:"
+msgstr "ou criar novo usuário com o nome de login:"
 
 #: inc/import/importer/wordpress-importer.php:311
-#, fuzzy
 msgid "as a new user:"
-msgstr "com un nou usuari:"
+msgstr "como um novo usuário:"
 
 #: inc/import/importer/wordpress-importer.php:319
-#, fuzzy
 msgid "assign posts to an existing user:"
-msgstr "assigna els articles a un usuari existent:"
+msgstr "atribuir artigos a um usuário existente:"
 
 #: inc/import/importer/wordpress-importer.php:321
-#, fuzzy
 msgid "or assign posts to an existing user:"
-msgstr "o assigna els articles a un usuari existent:"
+msgstr "ou atribuir postagens a um usuário existente:"
 
 #: inc/import/importer/wordpress-importer.php:322
-#, fuzzy
 msgid "- Select -"
-msgstr "-Selecciona-"
+msgstr "- Selecione -"
 
 #: inc/import/importer/wordpress-importer.php:372
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "Failed to create new user for %s. Their posts will be attributed to the "
 "current user."
 msgstr ""
-"Error al crear un nou usuari per %s. Els seus articles s'assignaran a "
-"l'usuari actual."
+"Falha ao criar um novo usuário para %s. Suas postagens serão atribuídas ao "
+"usuário atual."
 
 #: inc/import/importer/wordpress-importer.php:424
-#, fuzzy, php-format
+#, php-format
 msgid "Failed to import category %s"
-msgstr "Ha fallat la importació de la categoria %s"
+msgstr "Falha ao importar categoria %s"
 
 #: inc/import/importer/wordpress-importer.php:467
-#, fuzzy, php-format
+#, php-format
 msgid "Failed to import post tag %s"
-msgstr "Ha fallat la importació de l'etiqueta %s"
+msgstr "Falha ao importar post tag %s"
 
 #: inc/import/importer/wordpress-importer.php:516
 #: inc/import/importer/wordpress-importer.php:738
-#, fuzzy, php-format
+#, php-format
 msgid "Failed to import %s %s"
-msgstr "Ha fallat la importació de %s %s"
+msgstr "Falha ao importar %s %s"
 
 #: inc/import/importer/wordpress-importer.php:605
-#, fuzzy, php-format
+#, php-format
 msgid "Failed to import &#8220;%s&#8221;: Invalid post type %s"
-msgstr "No s'ha pogut importar &#8220; %s &#8221;: tipus d'entrada invàlida %s"
+msgstr "Falha ao importar &#8220;%s&#8221;: Tipo de publicação inválido %s"
 
 #: inc/import/importer/wordpress-importer.php:642
-#, fuzzy, php-format
+#, php-format
 msgid "%s &#8220;%s&#8221; already exists."
-msgstr "%s &#8220;%s&#8221; ja existeix."
+msgstr "%s &#8220;%s&#8221; já existe."
 
 #: inc/import/importer/wordpress-importer.php:704
-#, fuzzy, php-format
+#, php-format
 msgid "Failed to import %s &#8220;%s&#8221;"
-msgstr "Ha fallat la importació %s &#8220;%s&#8221;"
+msgstr "Falha ao importar  %s &#8220;%s&#8221;"
 
 #: inc/import/importer/wordpress-importer.php:869
-#, fuzzy
 msgid "Menu item skipped due to missing menu slug"
-msgstr "Ítem de menú ignorat per la falta d'un slug de menú"
+msgstr "Item de menu ignorado devido à falta de um slug"
 
 #: inc/import/importer/wordpress-importer.php:876
-#, fuzzy, php-format
+#, php-format
 msgid "Menu item skipped due to invalid menu slug: %s"
-msgstr "Ítem de menú ignorat per la invalidesa d'un slug de menú: %s"
+msgstr "Item de menu ignorado devido o slug do menu inválido: %s"
 
 #: inc/import/importer/wordpress-importer.php:939
-#, fuzzy
 msgid "Fetching attachments is not enabled"
-msgstr "L'obtenció de fitxers adjunts no està habilitada"
+msgstr "A busca de anexos não está habilitada"
 
 #: inc/import/importer/wordpress-importer.php:952
-#, fuzzy
 msgid "Invalid file type"
-msgstr "Tipus d' arxiu no valid"
+msgstr "Tipo de arquivo inválido"
 
 #: inc/import/importer/wordpress-importer.php:996
-#, fuzzy
 msgid "Remote server did not respond"
-msgstr "El servidor remot no respòn"
+msgstr "O servidor remoto não responde"
 
 #: inc/import/importer/wordpress-importer.php:1002
-#, fuzzy, php-format
+#, php-format
 msgid "Remote server returned error response %1$d %2$s"
-msgstr "El servidor remot ha retornat una resposta d'error %1$d %2$s"
+msgstr "O servidor remote retornou o erro %1$d %2$s"
 
 #: inc/import/importer/wordpress-importer.php:1009
-#, fuzzy
 msgid "Remote file is incorrect size"
-msgstr "L'arxiu remot te una mida incorrecta"
+msgstr "O tamanho do arquivo remoto está incorreto"
 
 #: inc/import/importer/wordpress-importer.php:1014
-#, fuzzy
 msgid "Zero size file downloaded"
-msgstr "Arxiu descarregat de mida zero"
+msgstr "Arquivo de tamanho zero baixado"
 
 #: inc/import/importer/wordpress-importer.php:1020
-#, fuzzy, php-format
+#, php-format
 msgid "Remote file is too large, limit is %s"
-msgstr "L'arxiu és massa gran, el límit és%s"
+msgstr "O arquivo remoto é muito grande, o limite é %s"
 
 #: inc/import/importer/wordpress-importer.php:1119
-#, fuzzy
 msgid "Import WordPress"
-msgstr "Repositori de WordPress"
+msgstr "Importar WordPress"
 
 #: inc/import/importer/wordpress-importer.php:1126
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "A new version of this importer is available. Please update to version %s to "
 "ensure compatibility with newer export files."
 msgstr ""
-"Una nova versió d'aquest importador està disponible. Si us plau, actualitzeu "
-"a la versió%s per a assegurar la compatibilitat amb els arxius d'exportació "
-"més nous."
+"Uma nova versão deste importador está disponível. Por favor, atualize para a "
+"versão %s para garantir a compatibilidade com novos arquivos de exportação."
 
 #: inc/import/importer/wordpress-importer.php:1141
-#, fuzzy
 msgid ""
 "Howdy! Upload your WordPress eXtended RSS (WXR) file and we&#8217;ll import "
 "the posts, pages, comments, custom fields, categories, and tags into this "
 "site."
 msgstr ""
-"Hola! Puja el teu WordPress eXtended arxiu RSS (WXR) i anem a importar els "
-"missatges, pàgines, comentaris, camps personalitzats, categories i etiquetes "
-"en aquest lloc."
+"Oi! Carregue o seu arquivo WordPress eXtended RSS (WXR) e&#8217;  "
+"importaremos as postagens, páginas, comentários, campos, categorias e tags "
+"personalizados neste site."
 
 #: inc/import/importer/wordpress-importer.php:1142
-#, fuzzy
 msgid "Choose a WXR (.xml) file to upload, then click Upload file and import."
 msgstr ""
-"Tria un arxiu WXR (.xml) per carregar i, a continuació, fes clic al fitxer "
-"de càrrega d'importació."
+"Escolha um arquivo WXR (.xml) para carregar e, em seguida, clique em "
+"Carregar arquivo e importar."
 
 #: inc/meta/meta-boxes.php:308
-#, fuzzy
 msgid "Show in the main feature slider"
-msgstr "Mostra al control lliscant de la característica principal"
+msgstr "Mostrar o controle deslizante principal característica"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:334
-#, fuzzy
 msgid "Install Required Plugins"
-msgstr "Instal·leu les extensions necessàries"
+msgstr "Instalação de plugins necessária"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:335
-#, fuzzy
 msgid "Install Plugins"
-msgstr "Instal·la les extensions"
+msgstr "Instalar Plugins"
 
 #. translators: %s: plugin name.
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:337
-#, fuzzy, php-format
+#, php-format
 msgid "Installing Plugin: %s"
-msgstr "S'està instal·lant l'extensió: %s"
+msgstr "Instalando Plugins: %s"
 
 #. translators: %s: plugin name.
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:339
-#, fuzzy, php-format
+#, php-format
 msgid "Updating Plugin: %s"
-msgstr "S'està actualitzant l'extensió: %s"
+msgstr "Atualizando Plugin: %s"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:340
-#, fuzzy
 msgid "Something went wrong with the plugin API."
-msgstr "S'ha produït un error amb l'API de l'extensió."
+msgstr "Algo deu errado com a API do plugin."
 
 #. translators: 1: plugin name(s).
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:343
@@ -549,23 +517,20 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:392
-#, fuzzy
 msgid "Return to Required Plugins Installer"
-msgstr "Torneu a l'instal·lador de le extensions necessàries"
+msgstr "Voltar para instalador de Plugins necessários"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:393
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:920
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2626
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3673
-#, fuzzy
 msgid "Return to the Dashboard"
-msgstr "Torna al Tauler"
+msgstr "Retornar ao Painel de Controle"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:394
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3252
-#, fuzzy
 msgid "Plugin activated successfully."
-msgstr "Plugin activat correctament."
+msgstr "Plugin ativado com sucesso."
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:395
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3045
@@ -576,162 +541,138 @@ msgstr[1] ""
 
 #. translators: 1: plugin name.
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:397
-#, fuzzy, php-format
+#, php-format
 msgid "No action taken. Plugin %1$s was already active."
-msgstr "No s'ha pres cap acció. L'extensió %1$s ja estava activa."
+msgstr "Nenhuma ação tomada. O plugin %1$s já estava ativo."
 
 #. translators: 1: plugin name.
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:399
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "Plugin not activated. A higher version of %s is needed for this theme. "
 "Please update the plugin."
 msgstr ""
-"L'extensió no està activada. És necessària una versió superior de % s per a "
-"aquest tema. Actualitzeu l'extensió."
+"Plugin não ativado. Uma versão atualizada do% s é necessária para este tema. "
+"Por favor, atualize o plugin novamente."
 
 #. translators: 1: dashboard link.
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:401
-#, fuzzy, php-format
+#, php-format
 msgid "All plugins installed and activated successfully. %1$s"
-msgstr "Tots els plugins instal·lats i activats amb èxit. %1$s"
+msgstr "Todos os plugins foram instalados e ativados com sucesso. %1$s"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:402
-#, fuzzy
 msgid "Dismiss this notice"
-msgstr "Descarta aquest avís"
+msgstr "Descartar essa notificação"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:403
-#, fuzzy
 msgid ""
 "There are one or more required or recommended plugins to install, update or "
 "activate."
 msgstr ""
-"Hi ha una o més extensions necessàries o recomanades per instal·lar, "
-"actualitzar o activar."
+"Há um ou mais plugins necessários ou recomendados para instalar, atualizar "
+"ou ativar."
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:404
-#, fuzzy
 msgid "Please contact the administrator of this site for help."
-msgstr ""
-"Poseu-vos en contacte amb l'administrador d'aquest lloc per obtenir ajuda."
+msgstr "Entre em contato com o administrador deste site para obter ajuda."
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:607
-#, fuzzy
 msgid "This plugin needs to be updated to be compatible with your theme."
-msgstr ""
-"És necessària l'actualització d'aquesta extensió per ser compatible amb el "
-"vostre tema."
+msgstr "Este plugin precisa ser atualizado para ser compatível com seu tema."
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:608
-#, fuzzy
 msgid "Update Required"
-msgstr "Actualització requerida"
+msgstr "Atualização necessária"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:725
-#, fuzzy
 msgid "Set the parent_slug config variable instead."
-msgstr "Establiu la variable de configuració parent_slug."
+msgstr "Defina a variável de configuração pai_slug em vez disso."
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:1027
-#, fuzzy
 msgid ""
 "The remote plugin package does not contain a folder with the desired slug "
 "and renaming did not work."
 msgstr ""
-"El paquet remot de l'extensió no conté una carpeta amb el resum apropiat i "
-"no ha funcionat el canvi de nom."
+"O pacote de plug-in remoto não contém uma pasta com o slug desejado e a "
+"renomeação não funcionou."
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:1027
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:1030
-#, fuzzy
 msgid ""
 "Please contact the plugin provider and ask them to package their plugin "
 "according to the WordPress guidelines."
 msgstr ""
-"Poseu-vos en contacte amb el proveïdor de l'extensió i demaneu-los que "
-"empaquetin la seva extensió segons les directrius de WordPress."
+"Entre em contato com o provedor de plugins e peça-lhes para empacotar seu "
+"plugin de acordo com as diretrizes do WordPress."
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:1030
-#, fuzzy
 msgid ""
 "The remote plugin package consists of more than one file, but the files are "
 "not packaged in a folder."
 msgstr ""
-"El paquet remot de l'extensió està format per més d'un fitxer, però els "
-"fitxers no estan empaquetats en una carpeta."
+"O pacote de plugin remoto consiste em mais de um arquivo, mas os arquivos "
+"não estão empacotados em uma pasta."
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:1214
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3041
-#, fuzzy
 msgctxt "plugin A *and* plugin B"
 msgid "and"
-msgstr "i"
+msgstr "e para esta"
 
 #. translators: %s: version number
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2075
-#, fuzzy, php-format
+#, php-format
 msgid "TGMPA v%s"
 msgstr "TGMPA v%s"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2366
-#, fuzzy
 msgid "Required"
-msgstr "Necessari"
+msgstr "Necessário"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2369
-#, fuzzy
 msgid "Recommended"
-msgstr "Recomanat"
+msgstr "Recomendado"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2385
-#, fuzzy
 msgid "WordPress Repository"
-msgstr "Repositori del WordPress"
+msgstr "Repositório do WordPress"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2388
-#, fuzzy
 msgid "External Source"
-msgstr "Font Externa"
+msgstr "Fonte externa"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2391
-#, fuzzy
 msgid "Pre-Packaged"
-msgstr "Pre-empaquetat"
+msgstr "Pré-embalados"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2408
-#, fuzzy
 msgid "Not Installed"
-msgstr "No instal·lat"
+msgstr "Não instalado"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2412
-#, fuzzy
 msgid "Installed But Not Activated"
-msgstr "Instal·lat però no activat"
+msgstr "Instalado, mas não ativado"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2414
-#, fuzzy
 msgid "Active"
-msgstr "Activa"
+msgstr "Ativo"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2420
-#, fuzzy
 msgid "Required Update not Available"
-msgstr "L'actualització necessària no està disponible"
+msgstr "Atualização necessária não disponível"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2423
-#, fuzzy
 msgid "Requires Update"
-msgstr "Necessita actualització"
+msgstr "Requer atualização"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2426
-#, fuzzy
 msgid "Update recommended"
-msgstr "Actualització recomanada"
+msgstr "Atualização recomendada"
 
 #. translators: 1: install status, 2: update status
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2435
-#, fuzzy, php-format
+#, php-format
 msgctxt "Install/Update Status"
 msgid "%1$s, %2$s"
 msgstr "%1$s, %2$s"
@@ -770,763 +711,608 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2575
-#, fuzzy
 msgctxt "as in: \"version nr unknown\""
 msgid "unknown"
-msgstr "desconegut"
+msgstr "desconhecido"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2583
-#, fuzzy
 msgid "Installed version:"
-msgstr "Versió instal·lada:"
+msgstr "Versão instalada:"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2591
-#, fuzzy
 msgid "Minimum required version:"
-msgstr "Versió mínima necessària:"
+msgstr "Versão mínima necessária:"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2603
-#, fuzzy
 msgid "Available version:"
-msgstr "Versió disponible:"
+msgstr "Versão disponível:"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2626
-#, fuzzy
 msgid "No plugins to install, update or activate."
-msgstr "No hi ha extensions per instal·lar, actualitzar o activar."
+msgstr "Sem plugins para instalar, atualizar ou ativar."
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2640
-#, fuzzy
 msgid "Plugin"
 msgstr "Plugin"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2641
-#, fuzzy
 msgid "Source"
-msgstr "Font"
+msgstr "Fonte"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2642
-#, fuzzy
 msgid "Type"
-msgstr "Tipus"
+msgstr "Tipo"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2646
-#, fuzzy
 msgid "Version"
-msgstr "Versió"
+msgstr "Versão"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2647
 #: woocommerce/myaccount/my-orders.php:15
-#, fuzzy
 msgid "Status"
-msgstr "Estat"
+msgstr "Status"
 
 #. translators: %2$s: plugin name in screen reader markup
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2696
-#, fuzzy, php-format
+#, php-format
 msgid "Install %2$s"
-msgstr "Instal·la %2$s"
+msgstr "Instalar %2$s"
 
 #. translators: %2$s: plugin name in screen reader markup
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2701
-#, fuzzy, php-format
+#, php-format
 msgid "Update %2$s"
-msgstr "Actualitza %2$s"
+msgstr "Atualização %2$s"
 
 #. translators: %2$s: plugin name in screen reader markup
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2707
-#, fuzzy, php-format
+#, php-format
 msgid "Activate %2$s"
-msgstr "Activa %2$s"
+msgstr "Ativado %2$s"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2777
-#, fuzzy
 msgid "Upgrade message from the plugin author:"
-msgstr "Missatge d'actualització de l'autor del l'extensió:"
+msgstr "Atualizar mensagem do autor do plugin:"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2810
-#, fuzzy
 msgid "Install"
-msgstr "Instal·la"
+msgstr "Instalar"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2816
-#, fuzzy
 msgid "Update"
-msgstr "Actualitza"
+msgstr "Atualização"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2819
-#, fuzzy
 msgid "Activate"
-msgstr "Activa"
+msgstr "Ativado"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2850
-#, fuzzy
 msgid "No plugins were selected to be installed. No action taken."
 msgstr ""
-"No s'ha seleccionat cap extensió per instal·lar-se. No es realitzarà cap "
-"acció."
+"Não foram selecionados plugins para serem instalados. Nenhuma ação tomada."
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2852
-#, fuzzy
 msgid "No plugins were selected to be updated. No action taken."
 msgstr ""
-"No s'ha seleccionat cap extensió per actualitzar-se. No es realitzarà cap "
-"acció."
+"Não foram selecionados plugins para serem atualizados. Nenhuma ação tomada."
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2893
-#, fuzzy
 msgid "No plugins are available to be installed at this time."
-msgstr ""
-"En aquest moment, no hi ha extensions disponibles per a ser instal·lades."
+msgstr "Não há plugins disponíveis para serem instalado neste momento."
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:2895
-#, fuzzy
 msgid "No plugins are available to be updated at this time."
-msgstr ""
-"En aquest moment, no hi ha extensions disponibles per a ser actualitzades."
+msgstr "Não há plugins disponíveis para serem atualizado neste momento."
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3001
-#, fuzzy
 msgid "No plugins were selected to be activated. No action taken."
-msgstr ""
-"No s'ha seleccionat cap extensió per activar-se. No es realitzarà cap acció."
+msgstr "Nenhum plugins foi selecionado para ser ativado. Nenhuma ação tomada."
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3027
-#, fuzzy
 msgid "No plugins are available to be activated at this time."
-msgstr "No hi ha extensions disponibles per a ser activades en aquest moment."
+msgstr "Não há plugins disponíveis para serem ativados neste momento."
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3251
-#, fuzzy
 msgid "Plugin activation failed."
-msgstr "No s'ha pogut activar l'extensió."
+msgstr "Falha na ativação do plugin."
 
 #. translators: 1: plugin name, 2: action number 3: total number of actions.
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3591
-#, fuzzy, php-format
+#, php-format
 msgid "Updating Plugin %1$s (%2$d/%3$d)"
-msgstr "S'està actualitzant l'extensió %1$s (%2$d/%3$d)"
+msgstr "Atualizando plugin %1$s (%2$d/%3$d)"
 
 #. translators: 1: plugin name, 2: error message.
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3594
-#, fuzzy, php-format
+#, php-format
 msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
-msgstr ""
-"S'ha produït un error durant la instal·lació de %1$s: <strong>%2$s</strong>."
+msgstr "Ocorreu um erro ao instalar %1$s: <forte>%2$s</forte>."
 
 #. translators: 1: plugin name.
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3596
-#, fuzzy, php-format
+#, php-format
 msgid "The installation of %1$s failed."
-msgstr "Ha fallat la instal·lació de %1$s."
+msgstr "A instalação de %1$s falhou."
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3600
-#, fuzzy
 msgid ""
 "The installation and activation process is starting. This process may take a "
 "while on some hosts, so please be patient."
 msgstr ""
-"S'ha iniciat el procés d'instal·lació i activació. Aquest procés pot trigar "
-"una estona en alguns allotjaments, així que tingueu paciència."
+"O processo de instalação e ativação está começando. Esse processo pode "
+"demorar um pouco em alguns hosts, então seja paciente."
 
 #. translators: 1: plugin name.
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3602
-#, fuzzy, php-format
+#, php-format
 msgid "%1$s installed and activated successfully."
-msgstr "%1$s instal·lat i activat correctament."
+msgstr "%1$s instalado e ativado com sucesso."
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3602
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3610
-#, fuzzy
 msgid "Show Details"
-msgstr "Mostra els detalls"
+msgstr "Mostrar Detalhes"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3602
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3610
-#, fuzzy
 msgid "Hide Details"
-msgstr "Amaga els detalls"
+msgstr "Ocultar Detalhes"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3603
-#, fuzzy
 msgid "All installations and activations have been completed."
-msgstr "S'han completat totes les instal·lacions i activacions."
+msgstr "Todas as instalações e ativações foram concluídas."
 
 #. translators: 1: plugin name, 2: action number 3: total number of actions.
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3605
-#, fuzzy, php-format
+#, php-format
 msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
-msgstr "S'està instal·lant i activant l'extensió %1$s (%2$d/%3$d)"
+msgstr "Instalando e Ativando o Plugin %1$s (%2$d/%3$d)"
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3608
-#, fuzzy
 msgid ""
 "The installation process is starting. This process may take a while on some "
 "hosts, so please be patient."
 msgstr ""
-"S'ha iniciat el procés d'instal·lació. Aquest procés pot trigar una estona "
-"en alguns allotjaments, així que tingueu paciència."
+"O processo de instalação está começando. Esse processo pode demorar um pouco "
+"em alguns hosts, então seja paciente."
 
 #. translators: 1: plugin name.
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3610
-#, fuzzy, php-format
+#, php-format
 msgid "%1$s installed successfully."
-msgstr "%1$s s'ha instal·lat amb èxit."
+msgstr "%1$s Instalado com sucesso."
 
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3611
-#, fuzzy
 msgid "All installations have been completed."
-msgstr "S'han completat totes les instal·lacions."
+msgstr "Todas as instalações foram concluídas."
 
 #. translators: 1: plugin name, 2: action number 3: total number of actions.
 #: inc/recommended-plugins/class-tgm-plugin-activation.php:3613
-#, fuzzy, php-format
+#, php-format
 msgid "Installing Plugin %1$s (%2$d/%3$d)"
-msgstr "S'està instal·lant l'extensió %1$s (%2$d/%3$d)"
+msgstr "Instalando o Plugin %1$s (%2$d/%3$d)"
 
 #: inc/theme/customizer.php:32
-#, fuzzy
 msgid "Streamium Styles"
-msgstr "Estils de Streamium"
+msgstr "Streamium estilos"
 
 #: inc/theme/customizer.php:46
-#, fuzzy
 msgid "Remove tutorial footer notification"
-msgstr "Elimina la notificació del peu de pàgina de tutorial"
+msgstr "Remover a notificação de rodapé tutorial"
 
 #: inc/theme/customizer.php:58
-#, fuzzy
 msgid "Logo"
-msgstr "Logotip"
+msgstr "Logotipo"
 
 #: inc/theme/customizer.php:67
-#, fuzzy
 msgid "Global Background"
-msgstr "Fons global"
+msgstr "Cor de Fundo"
 
 #: inc/theme/customizer.php:76
-#, fuzzy
 msgid "Background"
-msgstr "Fons"
+msgstr "Cor de Fundo"
 
 #: inc/theme/customizer.php:95
-#, fuzzy
 msgid "Main Link Color"
-msgstr "Color d'enllaç"
+msgstr "Cor do fundo"
 
 #: inc/theme/customizer.php:116
-#, fuzzy
 msgid "Carousel Headings Color"
-msgstr "Carrusel Títols Color"
+msgstr "Cor do fundo"
 
 #: inc/theme/customizer.php:137
-#, fuzzy
 msgid "Background Color"
-msgstr "Color de Fons"
+msgstr "Cor do fundo"
 
 #: inc/theme/customizer.php:169
-#, fuzzy
 msgid "Synopsis Paragraph Text"
-msgstr "Sinopsi Text del paràgraf"
-
-#: inc/theme/customizer.php:174
-#, fuzzy
-msgid "1.6vw"
-msgstr "1.6vw"
-
-#: inc/theme/customizer.php:175
-#, fuzzy
-msgid "1.5vw"
-msgstr "1.5vw"
-
-#: inc/theme/customizer.php:176
-#, fuzzy
-msgid "1.4vw"
-msgstr "1.4vw"
-
-#: inc/theme/customizer.php:177
-#, fuzzy
-msgid "1.3vw"
-msgstr "1.3vw"
-
-#: inc/theme/customizer.php:178
-#, fuzzy
-msgid "1.2vw"
-msgstr "1.2vw"
-
-#: inc/theme/customizer.php:179
-#, fuzzy
-msgid "1.1vw"
-msgstr "1.1vw"
-
-#: inc/theme/customizer.php:180
-#, fuzzy
-msgid "1vw"
-msgstr "1vw"
-
-#: inc/theme/customizer.php:181
-#, fuzzy
-msgid "0.9vw"
-msgstr "0.9vw"
-
-#: inc/theme/customizer.php:182
-#, fuzzy
-msgid "0.8vw"
-msgstr "0.8vw"
+msgstr "Sinopse de texto de parágrafo"
 
 #: inc/theme/customizer.php:197
-#, fuzzy
 msgid "Poster Orientation"
-msgstr "Orientació del pòster"
+msgstr "Cartaz de orientação"
 
 #: inc/theme/customizer.php:202
-#, fuzzy
 msgid "Portrait"
-msgstr "Vertical"
+msgstr "Retrato"
 
 #: inc/theme/customizer.php:203
-#, fuzzy
 msgid "Landscape"
-msgstr "Horitzontal"
+msgstr "Paisagem"
 
 #: inc/theme/customizer.php:218
-#, fuzzy
 msgid "Tile Count"
-msgstr "Compte de rajoles"
+msgstr "Contagem de telhas"
 
-#: inc/theme/customizer.php:223
-#, fuzzy
-msgid "4"
-msgstr "4"
+#: inc/theme/customizer.php:268
+msgid "Select the main post type to show on the homepage"
+msgstr "Selecione o tipo de post principal para mostrar na página inicial"
 
-#: inc/theme/customizer.php:224
-#, fuzzy
-msgid "5"
-msgstr "5"
+#: inc/theme/customizer.php:269
+msgid "This is a custom radio input."
+msgstr "Esta é uma entrada de rádio personalizada."
 
-#: inc/theme/customizer.php:225 inc/theme/customizer.php:333
-#, fuzzy
+#: inc/theme/customizer.php:271
+msgid "Movies"
+msgstr "Filmes"
+
+#: inc/theme/customizer.php:272
+msgid "TV Programs"
+msgstr "Programa de televisão"
+
+#: inc/theme/customizer.php:273
+msgid "Sports"
+msgstr "Esportes"
+
+#: inc/theme/customizer.php:274
+msgid "Kids"
+msgstr "Escola infantil"
+
+#: inc/theme/customizer.php:275
+msgid "Streams"
+msgstr "Fluxos"
+
+#: inc/theme/customizer.php:288
+msgid "Enable Loading Indicator"
+msgstr "Habilitar"
+
+#: inc/theme/customizer.php:327
+msgid "Maximum carousel videos - Desktop"
+msgstr "Vídeos de carrossel máxima - Desktop"
+
+#: inc/theme/customizer.php:332
+msgid "-1"
+msgstr "-1"
+
+#: inc/theme/customizer.php:333
 msgid "6"
 msgstr "6"
 
-#: inc/theme/customizer.php:226
-#, fuzzy
-msgid "7"
-msgstr "7"
-
-#: inc/theme/customizer.php:227
-#, fuzzy
-msgid "8"
-msgstr "8"
-
-#: inc/theme/customizer.php:228
-#, fuzzy
-msgid "9"
-msgstr "9"
-
-#: inc/theme/customizer.php:229
-#, fuzzy
-msgid "10"
-msgstr "10"
-
-#: inc/theme/customizer.php:268
-#, fuzzy
-msgid "Select the main post type to show on the homepage"
-msgstr ""
-"Seleccioneu el tipus de publicació principal que es mostrarà a la pàgina "
-"d'inici"
-
-#: inc/theme/customizer.php:269
-#, fuzzy
-msgid "This is a custom radio input."
-msgstr "Aquesta és una entrada de ràdio personalitzada."
-
-#: inc/theme/customizer.php:271
-#, fuzzy
-msgid "Movies"
-msgstr "Pel·lícules"
-
-#: inc/theme/customizer.php:272
-#, fuzzy
-msgid "TV Programs"
-msgstr "Programes de TV"
-
-#: inc/theme/customizer.php:273
-#, fuzzy
-msgid "Sports"
-msgstr "Esports"
-
-#: inc/theme/customizer.php:274
-#, fuzzy
-msgid "Kids"
-msgstr "Nens"
-
-#: inc/theme/customizer.php:275
-#, fuzzy
-msgid "Streams"
-msgstr "Corrents"
-
-#: inc/theme/customizer.php:288
-#, fuzzy
-msgid "Enable Loading Indicator"
-msgstr "Activa l'indicador de càrrega"
-
-#: inc/theme/customizer.php:327
-#, fuzzy
-msgid "Maximum carousel videos - Desktop"
-msgstr "Màxim videos del carrusel - Escriptori"
-
-#: inc/theme/customizer.php:332
-#, fuzzy
-msgid "-1"
-msgstr "1"
-
 #: inc/theme/customizer.php:334
-#, fuzzy
 msgid "12"
 msgstr "12"
 
 #: inc/theme/customizer.php:335
-#, fuzzy
 msgid "18"
 msgstr "18"
 
 #: inc/theme/customizer.php:336
-#, fuzzy
 msgid "24"
 msgstr "24"
 
 #: inc/theme/customizer.php:337
-#, fuzzy
 msgid "30"
 msgstr "30"
 
 #: inc/theme/customizer.php:360
-#, fuzzy
 msgid " Options"
-msgstr "Opcions"
+msgstr " Opções para"
 
 #: inc/theme/customizer.php:385
-#, fuzzy
 msgid ""
 "!IMPORTANT this value cannot be the same name as the Post Type (only hyphens "
 "allowed NO spaces). Please make sure you save your permalinks after changing "
 "these values."
 msgstr ""
-"! IMPORTANT aquest valor no pot tenir el mateix nom que el Tipus de "
-"publicació (només guions permesos NO espais). Assegureu-vos que deseu els "
-"enllaços permanents després de canviar aquests valors."
+"! IMPORTANTE esse valor não pode ser o mesmo nome como o tipo de Post "
+"(somente hífens permitidos sem espaços). Por favor, certifique-se de que "
+"salvar seu permalinks depois de alterar esses valores."
 
 #: inc/theme/customizer.php:399
-#, fuzzy
 msgid ""
 "!IMPORTANT this value cannot be the same name as the Taxonomy (only hyphens "
 "allowed NO spaces). Please make sure you save your permalinks after changing "
 "these values."
 msgstr ""
-"! IMPORTANT aquest valor no pot tenir el mateix nom que la Taxonomia (només "
-"guions permesos NO espais). Assegureu-vos que deseu els enllaços permanents "
-"després de canviar aquests valors."
+"! IMPORTANTE esse valor não pode ser o mesmo nome que a taxonomia (hifens "
+"apenas permitidos sem espaços). Por favor, certifique-se de que salvar seu "
+"permalinks depois de alterar esses valores."
 
 #: inc/theme/customizer.php:414
-#, fuzzy
 msgid "Enable "
-msgstr "Activar"
+msgstr "Habilitar "
 
 #: inc/theme/customizer.php:428
-#, fuzzy
 msgid "AWS Media Uploader"
-msgstr "Carregador de mitjans AWS"
+msgstr "AWS Media Uploader"
 
 #: inc/theme/customizer.php:470
-#, fuzzy
 msgid "Only allow uploads from logged in users"
-msgstr "Permet només que les càrregues no hagin iniciat la sessió als usuaris"
+msgstr "Só permitir uploads de usuários registrados em"
 
 #: inc/theme/customizer.php:482
-#, fuzzy
 msgid "Global Advertisement"
-msgstr "Publicitat global"
+msgstr "Anúncio global"
 
 #: inc/theme/customizer.php:505
-#, fuzzy
 msgid "Global set advertisements for all videos"
-msgstr "Anuncis del conjunt global de tots els vídeos"
+msgstr "Anúncios conjunto globais para todos os vídeos"
 
 #: inc/theme/helpers.php:13
-#, fuzzy
 msgid "Header Menu"
-msgstr "Menú de capçalera"
+msgstr "Menu do Cabeçalho"
 
-#: inc/theme/helpers.php:74
-#, fuzzy
+#: inc/theme/helpers.php:88
 msgid ""
 "!IMPORTANT you have the S3Bubble self hosted plugin installed this is not "
 "needed with this theme all functionality is built in please remove the "
-"S3Bubble AWS Self Hosted Plugin. "
+"S3Bubble AWS Self Hosted Plugin"
 msgstr ""
-"¡IMPORTANT té el connector allotjat per a S3Bubble instal·lat, això no és "
-"necessari amb aquest tema en què es construeix tota la funcionalitat, si us "
-"plau elimineu el complement S3Bubble AWS Self Hosted Plugin."
+"! IMPORTANTE que você tem o S3Bubble auto hospedado plugin instalado isto "
+"não é necessário com este tema que toda a funcionalidade é construída em por "
+"favor, remova o S3Bubble AWS Self Hosted Plugin"
 
-#: inc/theme/helpers.php:94
-#, fuzzy
-msgid "Get setup quickly by installing our demo data. "
+#: inc/theme/helpers.php:108
+msgid "Get setup quickly by installing our demo data"
 msgstr ""
-"Configureu-vos ràpidament instal·lant les nostres dades de demostració."
+"Começar a configuração rapidamente instalando nossos dados de demonstração"
 
-#: inc/theme/helpers.php:112
-#, fuzzy
+#: inc/theme/helpers.php:126
 msgid ""
 "Upgrade to Premium to unlock some great features. Ratings, Video Resume, "
-"Self hosted, Background Videos, Trailers and much more. "
+"Self hosted, Background Videos, Trailers and much more"
 msgstr ""
-"Actualització a Premium per desbloquejar algunes funcions excel·lents. "
-"Classificacions, Resums de vídeo, Self Hosted, Vídeos de fons, Trailers i "
-"molt més."
+"Upgrade para Premium para desbloquear algumas características grandes. "
+"Classificações, vídeo currículo, auto hospedado, fundo vídeos, Trailers e "
+"muito mais"
 
 #: inc/theme/multi-post-thumbnails.php:77
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "The 'label' and 'id' values of the 'args' parameter of '%s::%s()' are "
 "required"
 msgstr ""
-"Els valors 'label' i 'id' del paràmetre 'args' de '%s ::%s ()' són "
-"obligatoris"
+"Os 'label' e 'ID' valores do 'args' parâmetro de '%s::%s()' são obrigatórios"
 
 #: inc/theme/multi-post-thumbnails.php:159
-#, fuzzy, php-format
+#, php-format
 msgid "Set as %3$s"
-msgstr "Estableix com%3$s"
+msgstr "Definir como %3$s"
 
 #: inc/theme/multi-post-thumbnails.php:393
 #: inc/theme/multi-post-thumbnails.php:394
-#, fuzzy, php-format
+#, php-format
 msgid "Set %s"
-msgstr "Ajusta %s"
+msgstr "Set %s"
 
 #: inc/theme/multi-post-thumbnails.php:410
-#, fuzzy, php-format
+#, php-format
 msgid "Remove %s"
-msgstr "Eliminar %s"
+msgstr "Remover %s"
 
 #: inc/theme/ratings.php:19
-#, fuzzy
 msgid "Customer"
-msgstr "Client"
+msgstr "Cliente"
 
 #: inc/theme/ratings.php:20
-#, fuzzy
 msgid "Customers"
-msgstr "Clients"
+msgstr "Clientes"
 
 #: inc/theme/ratings.php:112
-#, fuzzy
 msgid "No ratings avaliable."
-msgstr "No hi ha cap valoració disponible."
+msgstr "Nenhuma classificação disponível."
 
 #: inc/theme/ratings.php:195
-#, fuzzy
 msgid "User"
-msgstr "Usuari"
+msgstr "Usuário"
 
 #: inc/theme/ratings.php:196
-#, fuzzy
 msgid "Movie"
-msgstr "Pel·lícula"
+msgstr "Filme"
 
 #: inc/theme/ratings.php:197
-#, fuzzy
 msgid "Message"
-msgstr "Missatge"
+msgstr "Mensagem"
 
 #: inc/theme/ratings.php:198
-#, fuzzy
 msgid "State"
-msgstr "Estat"
+msgstr "Estado"
+
+#: inc/theme/ratings.php:481
+msgid "You must be logged in to like or dislike"
+msgstr "Você precisa estar logado para finalizar a compra."
+
+#: inc/theme/ratings.php:500
+msgid "You have already reviewed this video"
+msgstr ""
+
+#: inc/theme/ratings.php:631
+msgid "You must be logged in to view reviews"
+msgstr "Você precisa estar logado para finalizar a compra."
+
+#: inc/theme/ratings.php:675
+msgid "Successfully added your rating"
+msgstr ""
+
+#: inc/theme/ratings.php:686
+msgid "No reviews"
+msgstr "Nenhuma revisão"
+
+#: inc/theme/ratings.php:720
+msgid "Like"
+msgstr ""
+
+#: inc/theme/ratings.php:720
+msgid "Likes"
+msgstr ""
 
 #: inc/theme/s2member.php:15 woocommerce/auth/form-grant-access.php:39
-#, fuzzy
 msgid "Logout"
-msgstr "Sortir"
+msgstr "Sair"
 
 #: inc/theme/s2member.php:19 woocommerce/auth/form-login.php:44
 #: woocommerce/global/form-login.php:48 woocommerce/myaccount/form-login.php:71
-#, fuzzy
 msgid "Login"
-msgstr "Accedeix"
+msgstr "Entrar"
 
 #: inc/theme/series.php:68
-#, fuzzy
 msgid " Categories"
-msgstr "Categories"
+msgstr " Categorias"
 
 #: search.php:30
-#, fuzzy, php-format
+#, php-format
 msgid "Search Results for: %s"
-msgstr "Cercar resultats per: %s"
+msgstr "Resultados da pesquisa: %s"
 
 #: search.php:33 taxonomy.php:33
-#, fuzzy
 msgid "FILTER"
-msgstr "Filtre"
+msgstr "FILTER"
 
 #: search.php:36
-#, fuzzy
 msgid "1 Day Ago"
-msgstr "1 dia d'anada"
+msgstr "1 dia atrás"
 
 #: search.php:37
-#, fuzzy
 msgid "1 Week Ago"
-msgstr "Fa una setmana"
+msgstr "1 semana atrás"
 
 #: searchform.php:3
-#, fuzzy
 msgid "Search..."
-msgstr "Cercar..."
-
-#: taxonomy.php:36
-#, fuzzy
-msgid "View All"
-msgstr "Veure tots"
+msgstr "Pesquisar…"
 
 #: taxonomy.php:37
-#, fuzzy
 msgid "Most Reviews"
-msgstr "La majoria de les revisions"
+msgstr "Recentes Avaliações"
 
 #: taxonomy.php:38
-#, fuzzy
 msgid "Recently Added"
-msgstr "Afegit recentment"
+msgstr "Adicionado Recentemente"
 
 #: taxonomy.php:39
-#, fuzzy
 msgid "Oldest First"
-msgstr "Mostra primer la més antiga"
+msgstr "Antigos primeiro"
 
 #: templates/archive-slider.php:52 templates/content-slider.php:54
 #: templates/content-slider.php:104
-#, fuzzy
 msgid "Read reviews"
-msgstr "Llegiu ressenyes"
+msgstr "Ler comentários"
 
 #: templates/archive-slider.php:69 templates/content-slider.php:71
 #: templates/content-slider.php:121
-#, fuzzy
 msgid "Watch Trailer"
-msgstr "Veure tráiler"
+msgstr "Assista ao Trailer"
+
+#: templates/content-slider.php:52 templates/content-slider.php:102
+msgid "CLICK TO LIKE!"
+msgstr ""
 
 #: templates/content-slider.php:139
-#, fuzzy
 msgid "S3Bubble Media Streaming"
-msgstr "S3Bubble Media Streaming"
+msgstr "AWS Media Uploader"
 
 #: templates/content-slider.php:140
-#, fuzzy
 msgid ""
 "To display a image here go to your custom post and look for the metabox "
 "(Main Slider Video) and check it."
 msgstr ""
-"Per mostrar una imatge, aneu a la vostra publicació personalitzada i busqueu "
-"el metabox (Main Slider Video) i consulteu-la."
+"Para exibir uma imagem aqui vai seu costume postar e procure o metabox (Main "
+"Slider vídeo) e verificar isso."
 
 #: woocommerce/auth/form-grant-access.php:25 woocommerce/auth/form-login.php:27
-#, fuzzy, php-format
+#, php-format
 msgid "%s would like to connect to your store"
-msgstr "%s li agradaria connectar-se a la seva botiga"
+msgstr "%s quer se Conectar com sua Loja"
 
 #: woocommerce/auth/form-grant-access.php:29
-#, fuzzy, php-format
+#, php-format
 msgid "This will give \"%1$s\" %2$s access which will allow it to:"
-msgstr "Això li donarà accés  \"%s\" <strong>%s</strong> que li permetrà:"
+msgstr "Isto vai dar \"%s\" <strong>%s</strong>de acesso que lhe permitirá:"
 
 #: woocommerce/auth/form-grant-access.php:39
-#, fuzzy, php-format
+#, php-format
 msgid "Logged in as %s"
-msgstr "Identificat com a %s"
+msgstr "Conectado(a) como: %s"
 
 #: woocommerce/auth/form-grant-access.php:43
-#, fuzzy
 msgid "Approve"
 msgstr "Aprovar"
 
 #: woocommerce/auth/form-grant-access.php:44
-#, fuzzy
 msgid "Deny"
-msgstr "Denegar"
+msgstr "Excluir"
 
 #: woocommerce/auth/form-login.php:31
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "To connect to %1$s you need to be logged in. Log in to your store below, or "
 "<a href=\"%2$s\">cancel and return to %1$s</a>"
 msgstr ""
-"Per connectar-se a %1$s necessita estar identificat. Inicieu sessió a la "
-"botiga a continuació, o %2$scancel·lar i tornar a%1$s%3$s"
+"Para se conectar com %1$s você precisa estar logado. Entre na central de "
+"doações abaixo ou <a href=\"%2$s\">cancele e retorne para %1$s</a>"
 
 #: woocommerce/auth/form-login.php:35 woocommerce/myaccount/form-login.php:59
-#, fuzzy
 msgid "Username or email address"
-msgstr "Nom d’usuari o correu electrònic"
+msgstr "Digite o seu usuário ou e-mail"
 
 #: woocommerce/auth/form-login.php:39 woocommerce/global/form-login.php:39
 #: woocommerce/myaccount/form-login.php:63
 #: woocommerce/myaccount/form-login.php:109
 #: woocommerce/myaccount/form-login.php:168
-#, fuzzy
 msgid "Password"
-msgstr "Contrasenya"
+msgstr "Senha"
 
 #: woocommerce/auth/header.php:29
-#, fuzzy
 msgid "Application authentication request"
-msgstr "Mètode d'autenticació no vàlid"
+msgstr "Requisição de Autenticação de Aplicação"
 
 #: woocommerce/cart/cart-empty.php:28
-#, fuzzy
 msgid "Your cart is currently empty."
-msgstr "La cistella és buida."
+msgstr "O seu carrinho está vazio."
 
 #: woocommerce/cart/cart-empty.php:36
-#, fuzzy
 msgid "Return to shop"
-msgstr "Tornar a la botiga"
+msgstr "Retornar para a <a href=\"/loja\">Loja</a>"
 
 #: woocommerce/cart/cart-shipping.php:48
-#, fuzzy
 msgid "Shipping costs will be calculated once you have provided your address."
 msgstr ""
-"Les despeses d'enviament es calcularan una cop proporcioni la seva adreça."
+"Os custos de frete serão calculados quando você fornecer o seu endereço."
 
 #: woocommerce/cart/cart-shipping.php:50
-#, fuzzy
 msgid ""
 "There are no shipping methods available. Please double check your address, "
 "or contact us if you need any help."
-msgstr "Entra una adreça per veure els mètodes d’enviament disponibles."
+msgstr ""
+"Não há métodos de envio disponíveis. Por favor, verifique seu endereço ou "
+"entre em contato conosco se precisar de ajuda."
 
 #: woocommerce/cart/cart-totals.php:28
-#, fuzzy
 msgid "Cart totals"
-msgstr "Totals"
+msgstr "Total"
 
 #: woocommerce/cart/cart-totals.php:33 woocommerce/cart/cart-totals.php:34
 #: woocommerce/cart/mini-cart.php:84 woocommerce/checkout/review-order.php:59
-#, fuzzy
 msgid "Subtotal"
 msgstr "Subtotal"
 
 #: woocommerce/cart/cart-totals.php:55 woocommerce/cart/cart-totals.php:56
-#, fuzzy
 msgid "Shipping"
-msgstr "Enviament"
+msgstr "Entrega"
 
 #: woocommerce/cart/cart-totals.php:71
-#, fuzzy, php-format
+#, php-format
 msgid "(estimated for %s)"
-msgstr "estimat per a %s"
+msgstr "(estimado para %s)"
 
 #: woocommerce/cart/cart-totals.php:92 woocommerce/cart/cart-totals.php:93
 #: woocommerce/cart/cart.php:38 woocommerce/cart/cart.php:119
@@ -1534,7 +1320,6 @@ msgstr "estimat per a %s"
 #: woocommerce/checkout/review-order.php:106
 #: woocommerce/myaccount/my-orders.php:16
 #: woocommerce/order/order-details.php:38
-#, fuzzy
 msgid "Total"
 msgstr "Total"
 
@@ -1543,430 +1328,367 @@ msgstr "Total"
 #: woocommerce/checkout/review-order.php:26
 #: woocommerce/emails/email-order-details.php:36
 #: woocommerce/order/order-details.php:37
-#, fuzzy
 msgid "Product"
-msgstr "Producte"
+msgstr "Produto"
 
 #: woocommerce/cart/cart.php:36 woocommerce/cart/cart.php:96
 #: woocommerce/emails/email-order-details.php:38
-#, fuzzy
 msgid "Price"
-msgstr "Preu"
+msgstr "Preço"
 
 #: woocommerce/cart/cart.php:37 woocommerce/cart/cart.php:102
 #: woocommerce/emails/email-order-details.php:37
-#, fuzzy
 msgid "Quantity"
-msgstr "Quantitat"
+msgstr "Quantidade"
 
 #: woocommerce/cart/cart.php:59 woocommerce/cart/mini-cart.php:51
-#, fuzzy
 msgid "Remove this item"
-msgstr "Eliminar aquest producte"
+msgstr "Remover este Item"
 
 #: woocommerce/cart/cart.php:91
-#, fuzzy
 msgid "Available on backorder"
-msgstr "Disponible com a reserva"
+msgstr "Disponível por encomenda"
 
 #: woocommerce/cart/cart.php:137
-#, fuzzy
 msgid "Coupon:"
-msgstr "Cupó:"
+msgstr "Cupom:"
 
 #: woocommerce/cart/cart.php:137 woocommerce/checkout/form-coupon.php:36
-#, fuzzy
 msgid "Coupon code"
-msgstr "Codi del cupó"
+msgstr "Código do Cupom"
 
 #: woocommerce/cart/cart.php:137 woocommerce/checkout/form-coupon.php:40
-#, fuzzy
 msgid "Apply coupon"
-msgstr "Aplicar cupó"
+msgstr "Aplicar cupom"
 
 #: woocommerce/cart/cart.php:142
-#, fuzzy
 msgid "Update cart"
-msgstr "Actualitzar cistella"
+msgstr "Atualizar carrinho"
 
 #: woocommerce/cart/cross-sells.php:27
-#, fuzzy
 msgid "You may be interested in&hellip;"
-msgstr "Pot estar interessat en&hellip;"
+msgstr "Você pode se interessar por&hellip;"
 
 #: woocommerce/cart/mini-cart.php:76
-#, fuzzy
 msgid "No products in the cart."
-msgstr "No hi ha productes al cistell."
+msgstr "Não há produtos no carrinho."
 
 #: woocommerce/cart/proceed-to-checkout-button.php:27
-#, fuzzy
 msgid "Proceed to checkout"
-msgstr "Finalitzar comanda"
+msgstr "Finalizar Pedido"
 
 #: woocommerce/cart/shipping-calculator.php:33
-#, fuzzy
 msgid "Calculate shipping"
-msgstr "Calcular enviament"
+msgstr "Calcular frete"
 
 #: woocommerce/cart/shipping-calculator.php:39
-#, fuzzy
 msgid "Select a country&hellip;"
-msgstr "Seleccioneu un país&hellip;"
+msgstr "Selecione um pais&hellip;"
 
 #: woocommerce/cart/shipping-calculator.php:56
 #: woocommerce/cart/shipping-calculator.php:62
 #: woocommerce/cart/shipping-calculator.php:74
-#, fuzzy
 msgid "State / County"
-msgstr "Estat / Comunitat"
+msgstr "Estado"
 
 #: woocommerce/cart/shipping-calculator.php:63
-#, fuzzy
 msgid "Select a state&hellip;"
-msgstr "Selecciona una província&hellip;"
+msgstr "Selecione o Estado&hellip;"
 
 #: woocommerce/cart/shipping-calculator.php:83
-#, fuzzy
 msgid "City"
-msgstr "Ciutat"
+msgstr "Cidade"
 
 #: woocommerce/cart/shipping-calculator.php:91
-#, fuzzy
 msgid "Postcode / ZIP"
-msgstr "Codi postal"
+msgstr "CEP"
 
 #: woocommerce/cart/shipping-calculator.php:96
 #: woocommerce/checkout/payment.php:43
-#, fuzzy
 msgid "Update totals"
-msgstr "Actualitzar totals"
+msgstr "Atualizar total"
 
 #: woocommerce/checkout/cart-errors.php:27
-#, fuzzy
 msgid ""
 "There are some issues with the items in your cart (shown above). Please go "
 "back to the cart page and resolve these issues before checking out."
 msgstr ""
-"Hi ha alguns inconvenients amb els articles de la vostre cistella (es "
-"mostren a dalt). Si us plau, comproveu-ho bé abans de finalitzar la compra."
+"Há algums problemas com os items do seu carrinho (ver acima). Por favor "
+"volte à página do carirnho e reveja antes de continuar para o checkout."
 
 #: woocommerce/checkout/cart-errors.php:31
-#, fuzzy
 msgid "Return to cart"
-msgstr "Tornar al Carret"
+msgstr "Retornar para o Carrinho"
 
 #: woocommerce/checkout/form-billing.php:29
-#, fuzzy
 msgid "Billing &amp; Shipping"
-msgstr "Facturació i Enviament"
+msgstr "Pagamento &amp; Entrega"
 
 #: woocommerce/checkout/form-billing.php:33
-#, fuzzy
 msgid "Billing details"
-msgstr "Dades"
+msgstr "Dados para faturamento"
 
 #: woocommerce/checkout/form-billing.php:54
-#, fuzzy
 msgid "Create an account?"
-msgstr "Crear un compte?"
+msgstr "Criar conta?"
 
 #: woocommerce/checkout/form-checkout.php:29
-#, fuzzy
 msgid "You must be logged in to checkout."
-msgstr "Ha d’estar registrat per passar per fer el pagament."
+msgstr "Você precisa estar logado para finalizar a compra."
 
 #: woocommerce/checkout/form-checkout.php:58
-#, fuzzy
 msgid "Your order"
-msgstr "La teva comanda"
+msgstr "A sua encomenda"
 
 #: woocommerce/checkout/form-coupon.php:28
-#, fuzzy
 msgid "Have a coupon?"
-msgstr "Teniu un cupó?"
+msgstr "Tem um coupon?"
 
 #: woocommerce/checkout/form-coupon.php:28
-#, fuzzy
 msgid "Click here to enter your code"
-msgstr "Clic aquí per introduir el cupó"
+msgstr "Clique aqui para introduzir o seu código"
 
 #: woocommerce/checkout/form-login.php:27
-#, fuzzy
 msgid "Returning customer?"
-msgstr "Ets client?"
+msgstr "Cliente com conta?"
 
 #: woocommerce/checkout/form-login.php:28
-#, fuzzy
 msgid "Click here to login"
-msgstr "Iniciar Sessió"
+msgstr "Clique aqui para fazer login"
 
 #: woocommerce/checkout/form-login.php:33
-#, fuzzy
 msgid ""
 "If you have shopped with us before, please enter your details in the boxes "
 "below. If you are a new customer, please proceed to the Billing &amp; "
 "Shipping section."
 msgstr ""
-"Si ja sou clients nostres, si us plau, introduïu el vostre usuari i "
-"contrasenya a continuació. Si és la primera vegada que compreu aquí, ompliu "
-"els camps corresponents a l'adreça de facturació i d'enviament."
+"Se você já comprou aqui antes, informe seus dados nos campos abaixo. Se é a "
+"primeira vez que faz uma compra em nosso site, por favor, siga para a seção "
+"de \"Detalhes de Cobrança\" para realizarmos seu cadastro."
 
 #: woocommerce/checkout/form-pay.php:30
-#, fuzzy
 msgid "Qty"
-msgstr "Quant"
+msgstr "Qtd"
 
 #: woocommerce/checkout/form-pay.php:31
-#, fuzzy
 msgid "Totals"
-msgstr "Totals"
+msgstr "Totais"
 
 #: woocommerce/checkout/form-pay.php:81
-#, fuzzy
 msgid ""
 "Sorry, it seems that there are no available payment methods for your "
 "location. Please contact us if you require assistance or wish to make "
 "alternate arrangements."
 msgstr ""
-"Ho sentim, sembla que no hi ha mètodes de pagament disponibles per a la seva "
-"ubicació. Poseu-vos en contacte amb nosaltres si necessiteu ajuda o si "
-"desitgeu fer arranjaments alternatius."
+"Desculpe, parece que não existem métodos de pagamento disponíveis para a sua "
+"localização. Entre em contato conosco se precisar de assistência ou se "
+"desejar fazer outros pedidos."
 
 #: woocommerce/checkout/form-shipping.php:29
-#, fuzzy
 msgid "Ship to a different address?"
-msgstr "Enviar a una adreça diferent?"
+msgstr "Enviar para um endereço diferente?"
 
 #: woocommerce/checkout/form-shipping.php:56
 #: woocommerce/single-product/tabs/additional-information.php:25
-#, fuzzy
 msgid "Additional information"
-msgstr "Informació adicional"
+msgstr "Informações Adicionais"
 
 #: woocommerce/checkout/payment.php:35
-#, fuzzy
 msgid ""
 "Sorry, it seems that there are no available payment methods for your state. "
 "Please contact us if you require assistance or wish to make alternate "
 "arrangements."
 msgstr ""
-"Ho sentim, sembla que no hi ha mètodes de pagament disponibles per al seu "
-"estat. Poseu-vos en contacte amb nosaltres si necessiteu ajuda o si desitgeu "
-"fer arranjaments alternatius."
+"Desculpe, parece que não existem métodos de pagamento disponíveis para sua "
+"região. Entre em contato conosco."
 
 #: woocommerce/checkout/payment.php:35
-#, fuzzy
 msgid "Please fill in your details above to see available payment methods."
-msgstr ""
-"Si us plau, ompli les seves dades a dalt per veure els mètodes de pagament "
-"disponibles."
+msgstr "Please fill in your details above to see available payment options."
 
 #: woocommerce/checkout/payment.php:42
-#, fuzzy
 msgid ""
 "Since your browser does not support JavaScript, or it is disabled, please "
 "ensure you click the <em>Update Totals</em> button before placing your "
 "order. You may be charged more than the amount stated above if you fail to "
 "do so."
 msgstr ""
-"A causa de que el seu navegador no suporta JavaScript, o no funciona, si us "
-"plau, assegureu-vos de fer clic al botó <em>Actualitzar totals</em> abans de "
-"realitzar la seva comanda. Se li pot cobrar més de la quantitat indicada a "
-"dalt si no ho fa."
+"Seu navegador não suporta JavaScript ou ele está desativado, por favor "
+"clique no botão <em>Atualizar</em> antes de finalizar sua doação. Você pode "
+"ser cobrado mais do que a quantia indicada acima, se você deixar de clicar."
 
 #: woocommerce/checkout/terms.php:17
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "I&rsquo;ve read and accept the <a href=\"%s\" target=\"_blank\">terms &amp; "
 "conditions</a>"
 msgstr ""
-"He llegit i accepto els <a href=\"%s\" target=\"_blank\">termes i condicions "
-"d'ús.</a>"
+"Li e aceito os <a href=\"%s\" target=\"_blank\">terms &amp; conditions</a>"
 
 #: woocommerce/checkout/thankyou.php:30
-#, fuzzy
 msgid ""
 "Unfortunately your order cannot be processed as the originating bank/"
 "merchant has declined your transaction. Please attempt your purchase again."
 msgstr ""
-"Per desgràcia, la seva comanda no pot ser processada ja que el banc d'origen "
-"ha declinat la seva transacció. Si us plau intenti de nou la seva compra."
+"Infelizmente o seu pedido não pôde ser processado, pois o banco ou a loja de "
+"origem rejeitou a sua transação. Por favor, tente comprar novamente."
 
 #: woocommerce/checkout/thankyou.php:33 woocommerce/myaccount/my-orders.php:75
 #: woocommerce/myaccount/orders.php:71
-#, fuzzy
 msgid "Pay"
 msgstr "Pagar"
 
 #: woocommerce/checkout/thankyou.php:35
-#, fuzzy
 msgid "My account"
-msgstr "El meu compte"
+msgstr "Minha conta"
 
 #: woocommerce/checkout/thankyou.php:41 woocommerce/checkout/thankyou.php:78
-#, fuzzy
 msgid "Thank you. Your order has been received."
-msgstr "Gràcies. La seva comanda ha estat rebuda."
+msgstr "Obrigado. A sua encomenda foi recebida."
 
 #: woocommerce/checkout/thankyou.php:46
-#, fuzzy
 msgid "Order number:"
-msgstr "Número de comanda:"
+msgstr "Número do orçamento:"
 
 #: woocommerce/checkout/thankyou.php:51
-#, fuzzy
 msgid "Date:"
 msgstr "Data:"
 
 #: woocommerce/checkout/thankyou.php:56
-#, fuzzy
 msgid "Total:"
 msgstr "Total:"
 
 #: woocommerce/checkout/thankyou.php:63
-#, fuzzy
 msgid "Payment method:"
-msgstr "Forma de pagament:"
+msgstr "Método de pagamento:"
 
 #: woocommerce/emails/admin-cancelled-order.php:28
 #: woocommerce/emails/plain/admin-cancelled-order.php:25
-#, fuzzy, php-format
+#, php-format
 msgid "The order #%1$d from %2$s has been cancelled. The order was as follows:"
-msgstr "La comanda #%d de %s ha sigut cancel·lada. La comanda era la següent:"
+msgstr ""
+"O pedido #%1$d de %2$s foi marcado como 'Pedido Cancelado'. O pedido "
+"continha os seguintes itens:"
 
 #: woocommerce/emails/admin-failed-order.php:28
 #: woocommerce/emails/plain/admin-failed-order.php:25
-#, fuzzy, php-format
+#, php-format
 msgid "Payment for order #%1$d from %2$s has failed. The order was as follows:"
 msgstr ""
-"El pagament de la comanda #%d de %s ha fallat. La comanda era la següent:"
+"O pagamento para a doação#%1$d de %2$s falhou. A doação foi a seguinte:"
 
 #: woocommerce/emails/admin-new-order.php:28
-#, fuzzy, php-format
+#, php-format
 msgid "You have received an order from %s. The order is as follows:"
-msgstr "Ha rebut una comanda de %s. La comanda és la següent:"
+msgstr "Você recebeu um pedido de %s. O pedido é o seguinte:"
 
 #: woocommerce/emails/customer-completed-order.php:28
 #: woocommerce/emails/plain/customer-completed-order.php:25
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "Hi there. Your recent order on %s has been completed. Your order details are "
 "shown below for your reference:"
 msgstr ""
-"La teva comanda %s S'ha completat. Aquí pots veure'n els detalls per tenir-"
-"ne constància:"
+"Olá. Sua doação recente em %s foi concluída. Os detalhes serão exibidos "
+"abaixo para sua conferência:"
 
 #: woocommerce/emails/customer-invoice.php:29
 #: woocommerce/emails/plain/customer-invoice.php:26
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "An order has been created for you on %1$s. To pay for this order please use "
 "the following link: %2$s"
 msgstr ""
-"S'ha creat  una comanda per a tu a %s. Per pagar per aquesta comanda si us "
-"plau, utilitza el següent enllaç: %s"
+"Uma fatura foi criada para você em %s. Para pagar essa fatura, por favor, "
+"use o seguinte link: %s"
 
 #: woocommerce/emails/customer-invoice.php:29
-#, fuzzy
 msgid "pay"
-msgstr "Pagar "
+msgstr "pague"
 
 #: woocommerce/emails/customer-new-account.php:27
 #: woocommerce/emails/plain/customer-new-account.php:25
-#, fuzzy, php-format
+#, php-format
 msgid "Thanks for creating an account on %1$s. Your username is %2$s"
-msgstr ""
-"Gràcies per crear un compte a %s. El seu nom d'usuari és <strong>%s</strong>."
+msgstr "Obrigado por criar uma conta na %1$s. O seu nome de utilizador é %2$s"
 
 #: woocommerce/emails/customer-new-account.php:31
-#, fuzzy, php-format
+#, php-format
 msgid "Your password has been automatically generated: %s"
-msgstr "La teva contrasenya s'ha generat automàticament: <strong>%s</strong>"
+msgstr "Sua senha foi gerada automaticamente: <strong>%s</strong>"
 
 #: woocommerce/emails/customer-new-account.php:35
 #: woocommerce/emails/plain/customer-new-account.php:30
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "You can access your account area to view your orders and change your "
 "password here: %s."
 msgstr ""
-"Podeu accedir a l'àrea d'usuari per veure les vostres comandes i canviar la "
-"contrasenya aquí: <a href=\"%s\">%s</a>."
+"Você pode acessar o painel da sua conta para ver suas doações e mudar sua "
+"senha aqui: %s."
 
 #: woocommerce/emails/customer-note.php:28
 #: woocommerce/emails/plain/customer-note.php:25
-#, fuzzy
 msgid "Hello, a note has just been added to your order:"
-msgstr "Hola, s'acaba d'afegir una nota a la teva comanda:"
+msgstr "Olá, uma nota foi adicionada a sua doação:"
 
 #: woocommerce/emails/customer-note.php:32
 #: woocommerce/emails/plain/customer-note.php:33
-#, fuzzy
 msgid "For your reference, your order details are shown below."
-msgstr ""
-"Per a la teva referència, els detalls de la comanda es mostren a continuació."
+msgstr "Seus detalhes do pedido são mostrados abaixo para sua referência."
 
 #: woocommerce/emails/customer-on-hold-order.php:28
 #: woocommerce/emails/plain/customer-on-hold-order.php:25
-#, fuzzy
 msgid ""
 "Your order is on-hold until we confirm payment has been received. Your order "
 "details are shown below for your reference:"
 msgstr ""
-"La vostra comanda és retinguda fins que confirmem que s'ha rebut el "
-"pagament. Els detalls de la comanda es mostren a continuació per a la seva "
-"referència:"
+"O seu pedido ficará em espera até a confirmação do pagamento. Os detalhes "
+"estão listados abaixo para sua referência:"
 
 #: woocommerce/emails/customer-processing-order.php:28
 #: woocommerce/emails/plain/customer-processing-order.php:25
-#, fuzzy
 msgid ""
 "Your order has been received and is now being processed. Your order details "
 "are shown below for your reference:"
 msgstr ""
-"S'ha rebut la teva comanda i s'està processant. A continuació t’en mostrem "
-"les dades perquè en tinguis referència:"
+"Sua doação foi recebida e está sendo processada. Os detalhes da doação serão "
+"exibidos abaixo para sua conferência:"
 
 #: woocommerce/emails/customer-refunded-order.php:30
-#, fuzzy, php-format
+#, php-format
 msgid "Hi there. Your order on %s has been partially refunded."
-msgstr "Hola. La seva comanda a %s ha estat parcialment reemborsada."
+msgstr "Olá. O seu doaöäao em %s foi reembolsada."
 
 #: woocommerce/emails/customer-refunded-order.php:32
-#, fuzzy, php-format
+#, php-format
 msgid "Hi there. Your order on %s has been refunded."
-msgstr "Hola. La seva comanda a %s ha estat reemborsada."
+msgstr "Olá. Seu resgate %s foi reembolsado."
 
 #: woocommerce/emails/customer-reset-password.php:27
 #: woocommerce/emails/plain/customer-reset-password.php:25
-#, fuzzy
 msgid "Someone requested that the password be reset for the following account:"
-msgstr "Algú ha demanat que la contrasenya es restableixi al següent compte:"
+msgstr "Alguém pediu que a senha fosse redefinida para a seguinte conta:"
 
 #: woocommerce/emails/customer-reset-password.php:28
 #: woocommerce/emails/plain/customer-reset-password.php:27
-#, fuzzy, php-format
+#, php-format
 msgid "Username: %s"
-msgstr "Nom d'usuari: %s"
+msgstr "Usuário: %s"
 
 #: woocommerce/emails/customer-reset-password.php:29
 #: woocommerce/emails/plain/customer-reset-password.php:28
-#, fuzzy
 msgid "If this was a mistake, just ignore this email and nothing will happen."
-msgstr ""
-"Si això va ser un error, simplement ignorar aquest missatge i no passarà res."
+msgstr "Se isso foi um erro, apenas ignore este email e nada acontecerá."
 
 #: woocommerce/emails/customer-reset-password.php:30
 #: woocommerce/emails/plain/customer-reset-password.php:29
-#, fuzzy
 msgid "To reset your password, visit the following address:"
-msgstr "Per restablir la teva contrasenya, visita l'adreça següent:"
+msgstr "Para redefinir sua senha, clique no link abaixo:"
 
 #: woocommerce/emails/customer-reset-password.php:33
-#, fuzzy
 msgid "Click here to reset your password"
-msgstr "Feu clic aquí per restablir la contrasenya"
+msgstr "Clique aqui para Redefinir sua Senha"
 
 #: woocommerce/emails/email-addresses.php:28
 #: woocommerce/emails/plain/email-addresses.php:23
@@ -1974,92 +1696,83 @@ msgstr "Feu clic aquí per restablir la contrasenya"
 #: woocommerce/myaccount/my-address.php:27
 #: woocommerce/myaccount/my-address.php:32
 #: woocommerce/order/order-details-customer.php:63
-#, fuzzy
 msgid "Billing address"
-msgstr "Adreça de facturació"
+msgstr "Endereço de cobrança"
 
 #: woocommerce/emails/email-addresses.php:34
 #: woocommerce/emails/plain/email-addresses.php:27
 #: woocommerce/myaccount/form-edit-address.php:23
 #: woocommerce/myaccount/my-address.php:28
 #: woocommerce/order/order-details-customer.php:75
-#, fuzzy
 msgid "Shipping address"
-msgstr "Adreça d’enviament"
+msgstr "Morada de envio"
 
 #: woocommerce/emails/email-customer-details.php:27
 #: woocommerce/emails/plain/email-customer-details.php:25
 #: woocommerce/order/order-details-customer.php:26
-#, fuzzy
 msgid "Customer details"
-msgstr "Dades del client"
+msgstr "Detalhes do cliente"
 
 #: woocommerce/emails/email-order-details.php:28
 #: woocommerce/emails/email-order-details.php:30
-#, fuzzy, php-format
+#, php-format
 msgid "Order #%s"
-msgstr "Comanda #%s"
+msgstr "Ordem #%s"
 
 #: woocommerce/emails/email-order-items.php:34
-#, fuzzy
 msgid "Product image"
-msgstr "Imatge de producte"
+msgstr "Imagem do produto"
 
 #: woocommerce/emails/plain/admin-new-order.php:25
-#, fuzzy, php-format
+#, php-format
 msgid "You have received an order from %s."
-msgstr "Ha rebut una comanda de %s."
+msgstr "Você acabou de receber um pedido de %s."
 
 #: woocommerce/emails/plain/customer-new-account.php:28
-#, fuzzy, php-format
+#, php-format
 msgid "Your password is %s."
-msgstr "La teva contrasenya és  <strong>%s</strong>."
+msgstr "Sua senha é <strong>%s</strong>."
 
 #: woocommerce/emails/plain/customer-refunded-order.php:25
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "Hi there. Your order on %s has been refunded. Your order details are shown "
 "below for your reference:"
 msgstr ""
-"Hola. La seva comanda a %s ha estat reemborsada. Els detalls de la comanda "
-"es mostren a continuació per la seva referència:"
+"Olá. Seu pedido em % s foi reembolsado. Seus detalhes do pedido são "
+"mostrados abaixo para sua referência:"
 
 #: woocommerce/emails/plain/email-order-details.php:25
-#, fuzzy, php-format
+#, php-format
 msgid "Order number: %s"
-msgstr "Número de comanda: %s"
+msgstr "Número da doação: %s"
 
 #: woocommerce/emails/plain/email-order-details.php:44
-#, fuzzy, php-format
+#, php-format
 msgid "View order: %s"
-msgstr "Veure comanda: %s"
+msgstr "Ver doação: %s"
 
 #: woocommerce/global/form-login.php:35
 #: woocommerce/myaccount/form-lost-password.php:38
-#, fuzzy
 msgid "Username or email"
-msgstr "Nom d’usuari o correu electrònic"
+msgstr "Nome de usuário ou email"
 
 #: woocommerce/global/form-login.php:51 woocommerce/myaccount/form-login.php:73
-#, fuzzy
 msgid "Remember me"
-msgstr "Recorda’m"
+msgstr "Lembrar-me"
 
 #: woocommerce/global/form-login.php:55 woocommerce/myaccount/form-login.php:77
-#, fuzzy
 msgid "Lost your password?"
-msgstr "Has perdut la teva contrasenya?"
+msgstr "Perdeu sua senha?"
 
 #: woocommerce/global/quantity-input.php:32
-#, fuzzy
 msgctxt "Product quantity input tooltip"
 msgid "Qty"
-msgstr "Quant"
+msgstr "Qtd"
 
 #: woocommerce/loop/no-products-found.php:24
-#, fuzzy
 msgid "No products were found matching your selection."
-msgstr "No s'han trobat productes amb aquests criteris."
+msgstr "Nenhum produto foi encontrado para a sua seleção."
 
 #. translators: %d: total results
 #: woocommerce/loop/result-count.php:40
@@ -2080,207 +1793,174 @@ msgstr[1] ""
 
 #: woocommerce/loop/sale-flash.php:28
 #: woocommerce/single-product/sale-flash.php:28
-#, fuzzy
 msgid "Sale!"
 msgstr "Oferta!"
 
 #: woocommerce/myaccount/dashboard.php:38
-#, fuzzy, php-format
+#, php-format
 msgid "<p>Hello %1$s (not %1$s? <a href=\"%2$s\">Sign out</a>)</p>"
-msgstr ""
-"Hola <strong>%1$s</strong> (no ets en %1$s? <a href=\"%2$s\">Tanca sessió</"
-"a>)."
+msgstr "<h2>Olá %1$s</h2>(não %1$s? <a href=“%2$s”>Sair</a>)"
 
 #: woocommerce/myaccount/dashboard.php:46
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "From your account dashboard you can view your <a href=\"%1$s\">recent "
 "orders</a>, manage your <a href=\"%2$s\">shipping and billing addresses</a> "
 "and <a href=\"%3$s\">edit your password and account details</a>."
 msgstr ""
-"Des de la vostra àrea d'usuari podeu veure les vostres comandes, gestionar "
-"les adreces de facturació i d'enviament i <a href=\"%s\">modificar la "
-"contrasenya i els detalls del vostre compte</a>."
+"A partir do painel de controle de sua conta, você pode ver suas <a href="
+"\"%1$s\"> doações recentes</a>, gerenciar suas <a href=\"%2$s\">endereços de "
+"entrega e cobrança</a>, e <a href=\"%3$s\">edite sua senha e detalhes da "
+"conta</a>."
 
 #: woocommerce/myaccount/downloads.php:62
-#, fuzzy
 msgid "&infin;"
-msgstr "∞"
+msgstr "&infin;"
 
 #: woocommerce/myaccount/downloads.php:68
-#, fuzzy
 msgid "Never"
-msgstr "Mai"
+msgstr "Nunca"
 
 #: woocommerce/myaccount/downloads.php:76
-#, fuzzy
 msgid "Download"
-msgstr "Descarrega"
+msgstr "Download"
 
 #: woocommerce/myaccount/downloads.php:98 woocommerce/myaccount/orders.php:122
-#, fuzzy
 msgid "Go shop"
-msgstr "Anar a la tenda"
+msgstr "Ir à loja"
 
 #: woocommerce/myaccount/downloads.php:100
-#, fuzzy
 msgid "No downloads available yet."
-msgstr "No hi ha descàrregues disponibles."
+msgstr "Nenhum download disponível no momento."
 
 #: woocommerce/myaccount/form-add-payment-method.php:53
 #: woocommerce/myaccount/payment-methods.php:79
-#, fuzzy
 msgid "Add payment method"
-msgstr "Afegir mètode de pagament"
+msgstr "Adicionar método de pagamento"
 
 #: woocommerce/myaccount/form-add-payment-method.php:59
-#, fuzzy
 msgid ""
 "Sorry, it seems that there are no payment methods which support adding a new "
 "payment method. Please contact us if you require assistance or wish to make "
 "alternate arrangements."
 msgstr ""
-"Ho sentim, sembla que no existeixen mètodes de pagament que admetin afegir "
-"un nou mètode de pagament. Poseu-vos en contacte amb nosaltres si necessiteu "
-"ajuda o si desitja fer arranjaments alternatius."
+"Desculpe, mas parece que não existem métodos de pagamento. Entre em contato "
+"com suporte para adicionar novos métodos de pagamento, para receber ajuda ou "
+"negociar uma forma de pagamento alternativa."
 
 #: woocommerce/myaccount/form-edit-account.php:30
-#, fuzzy
 msgid "First name"
-msgstr "Nom"
+msgstr "Nome do Comprador"
 
 #: woocommerce/myaccount/form-edit-account.php:34
-#, fuzzy
 msgid "Last name"
-msgstr "Cognoms"
+msgstr "Sobrenome"
 
 #: woocommerce/myaccount/form-edit-account.php:40
 #: woocommerce/myaccount/form-login.php:102
 #: woocommerce/myaccount/form-login.php:161
-#, fuzzy
 msgid "Email address"
-msgstr "Adreça de correu electrònic"
+msgstr "Endereço de e-mail"
 
 #: woocommerce/myaccount/form-edit-account.php:45
-#, fuzzy
 msgid "Password change"
-msgstr "Canvi de contrasenya"
+msgstr "Alterar palavra-passe"
 
 #: woocommerce/myaccount/form-edit-account.php:48
-#, fuzzy
 msgid "Current password (leave blank to leave unchanged)"
-msgstr "Constrasenya actual (deixeu-la en blanc si no la voleu canviar)"
+msgstr "Senha atual (deixe em branco para não modificar)"
 
 #: woocommerce/myaccount/form-edit-account.php:52
-#, fuzzy
 msgid "New password (leave blank to leave unchanged)"
-msgstr "Nova constrasenya (deixeu-la en blanc si no la voleu canviar)"
+msgstr "Nova palavra-passe (deixe em branco para não mudar)"
 
 #: woocommerce/myaccount/form-edit-account.php:56
-#, fuzzy
 msgid "Confirm new password"
-msgstr "Confirmeu la nova contrasenya"
+msgstr "Confirmar nova senha"
 
 #: woocommerce/myaccount/form-edit-account.php:66
-#, fuzzy
 msgid "Save changes"
-msgstr "Desa els canvis"
+msgstr "Salvar alterações"
 
 #: woocommerce/myaccount/form-edit-address.php:47
-#, fuzzy
 msgid "Save address"
-msgstr "Guardar adreça"
+msgstr "Salvar Endereços"
 
 #: woocommerce/myaccount/form-login.php:95
 #: woocommerce/myaccount/form-login.php:154
-#, fuzzy
 msgid "Username"
-msgstr "Nom d'usuari"
+msgstr "Nome de usuário"
 
 #: woocommerce/myaccount/form-login.php:116
 #: woocommerce/myaccount/form-login.php:175
-#, fuzzy
 msgid "Anti-spam"
-msgstr "Anti-spam"
+msgstr "Anti-Spam"
 
 #: woocommerce/myaccount/form-login.php:123
 #: woocommerce/myaccount/form-login.php:181
-#, fuzzy
 msgid "Register"
-msgstr "Registre"
+msgstr "Registrar"
 
 #: woocommerce/myaccount/form-lost-password.php:35
-#, fuzzy
 msgid ""
 "Lost your password? Please enter your username or email address. You will "
 "receive a link to create a new password via email."
 msgstr ""
-"Heu oblidat la contrasenya? Si us plau, introdueix el nom d’usuari o "
-"l’adreça de correu electrònic. Rebràs un enllaç al correu electrònic per "
-"crear una contrasenya nova."
+"Perdeu sua senha? Digite seu nome de usuário ou endereço de e-mail. Você "
+"receberá um link para criar uma nova senha via e-mail."
 
 #: woocommerce/myaccount/form-lost-password.php:48
-#, fuzzy
 msgid "Reset password"
-msgstr "Restablir la contrasenya"
+msgstr "Redefinir palavra-passe"
 
 #: woocommerce/myaccount/form-reset-password.php:35
-#, fuzzy
 msgid "Enter a new password below."
-msgstr "Introduïu una contrasenya nova a continuació."
+msgstr "Digite uma Nova Senha abaixo."
 
 #: woocommerce/myaccount/form-reset-password.php:38
-#, fuzzy
 msgid "New password"
-msgstr "Nova contrasenya"
+msgstr "Nova senha"
 
 #: woocommerce/myaccount/form-reset-password.php:42
-#, fuzzy
 msgid "Re-enter new password"
-msgstr "﻿Torneu a introduir la contrasenya"
+msgstr "Coloque a senha novamente"
 
 #: woocommerce/myaccount/form-reset-password.php:55
-#, fuzzy
 msgid "Save"
-msgstr "Desar"
+msgstr "Salvar"
 
 #: woocommerce/myaccount/lost-password-confirmation.php:24
-#, fuzzy
 msgid "Password reset email has been sent."
-msgstr "El missatge de restabliment de contrasenya ha estat enviat."
+msgstr "Foi enviado um e-mail de redefinição de senha."
 
 #: woocommerce/myaccount/lost-password-confirmation.php:35
-#, fuzzy
 msgid ""
 "A password reset email has been sent to the email address on file for your "
 "account, but may take several minutes to show up in your inbox. Please wait "
 "at least 10 minutes before attempting another reset."
 msgstr ""
-"Un missatge de restabliment de contrasenya ha estat enviat a l'adreça de "
-"correu electrònic en arxiu pel seu compte, però pot trigar diversos minuts a "
-"aparèixer a la safata d'entrada. Si us plau, espereu com a mínim 10 minuts "
-"abans d'intentar-ho de nou."
+"Foi enviado um e-mail de redefinição de senha para o endereço de e-mail da "
+"sua conta, mas poderá demorar alguns minutos para aparecer na sua caixa de "
+"entrada. Por favor, aguarde pelo menos 10 minutos antes de tentar outra "
+"redefinição de senha."
 
 #: woocommerce/myaccount/my-address.php:41
-#, fuzzy
 msgid "The following addresses will be used on the checkout page by default."
 msgstr ""
-"Les següents adreces s’utilitzaran per defecte en la pàgina de pagament."
+"Os endereços a seguir serão usados na página de finalização de pedidos por "
+"padrão."
 
 #: woocommerce/myaccount/my-address.php:51
-#, fuzzy
 msgid "Edit"
-msgstr "Edita"
+msgstr "Editar"
 
 #: woocommerce/myaccount/my-address.php:70
-#, fuzzy
 msgid "You have not set up this type of address yet."
-msgstr "No hi ha definida cap adreça."
+msgstr "Você ainda não configurou um endereço."
 
 #: woocommerce/myaccount/my-downloads.php:30
-#, fuzzy
 msgid "Available downloads"
-msgstr "Descàrregues disponibles"
+msgstr "Transferências disponíveis"
 
 #: woocommerce/myaccount/my-downloads.php:39
 #, php-format
@@ -2290,22 +1970,18 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: woocommerce/myaccount/my-orders.php:13
-#, fuzzy
 msgid "Order"
-msgstr "Ordre"
+msgstr "Ordem"
 
 #: woocommerce/myaccount/my-orders.php:14
-#, fuzzy
 msgid "Date"
 msgstr "Data"
 
 #: woocommerce/myaccount/my-orders.php:30
-#, fuzzy
 msgid "Recent orders"
-msgstr "Comandes recents"
+msgstr "Doações recentes"
 
 #: woocommerce/myaccount/my-orders.php:55 woocommerce/myaccount/orders.php:51
-#, fuzzy
 msgctxt "hash before order number"
 msgid "#"
 msgstr "#"
@@ -2319,140 +1995,115 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: woocommerce/myaccount/my-orders.php:79 woocommerce/myaccount/orders.php:75
-#, fuzzy
 msgid "View"
-msgstr "Vistes"
+msgstr "Visualização"
 
 #: woocommerce/myaccount/my-orders.php:83 woocommerce/myaccount/orders.php:79
-#, fuzzy
 msgid "Cancel"
-msgstr "Cancel·la"
+msgstr "Cancelar"
 
 #: woocommerce/myaccount/orders.php:110
-#, fuzzy
 msgid "Previous"
 msgstr "Anterior"
 
 #: woocommerce/myaccount/orders.php:114
-#, fuzzy
 msgid "Next"
-msgstr "Següent"
+msgstr "Próxima"
 
 #: woocommerce/myaccount/orders.php:124
-#, fuzzy
 msgid "No order has been made yet."
-msgstr "La vostra contrasenya ha estat restablerta."
+msgstr "Nenhum pedido foi feito até o momento."
 
 #. translators: 1: credit card type 2: last 4 digits
 #: woocommerce/myaccount/payment-methods.php:52
-#, fuzzy, php-format
+#, php-format
 msgid "%1$s ending in %2$s"
-msgstr "%1$s acaben en%2$s"
+msgstr "%1$s, %2$s"
 
 #: woocommerce/myaccount/payment-methods.php:73
-#, fuzzy
 msgid "No saved methods found."
-msgstr "No hi ha coincidències"
+msgstr "Nenhum método de pagamento salvo, foi encontrado."
 
 #: woocommerce/myaccount/view-order.php:29 woocommerce/order/tracking.php:27
-#, fuzzy, php-format
+#, php-format
 msgid "Order #%1$s was placed on %2$s and is currently %3$s."
-msgstr "La Comanda #%1$s es va realitzar el <%2$s i actualment està %3$s."
+msgstr "O pedido #%1$s foi realizado em %2$s e atualmente está %3$s."
 
 #: woocommerce/myaccount/view-order.php:37 woocommerce/order/tracking.php:35
-#, fuzzy
 msgid "Order updates"
-msgstr "Actualitzacions de la comanda"
+msgstr "Atualizações da doação"
 
 #: woocommerce/myaccount/view-order.php:43 woocommerce/order/tracking.php:41
-#, fuzzy
 msgid "l jS \\o\\f F Y, h:ia"
-msgstr "l j F Y, H:i"
+msgstr "l j \\d\\e F \\d\\e Y, h:ia"
 
 #: woocommerce/order/form-tracking.php:29
-#, fuzzy
 msgid ""
 "To track your order please enter your Order ID in the box below and press "
 "the \"Track\" button. This was given to you on your receipt and in the "
 "confirmation email you should have received."
 msgstr ""
-"Per al seguiment de la seva comanda, si us plau, introdueixi l'ID de la seva "
-"comanda en el quadre de sota i premi el botó \"Seguiment\". Li vem remetre "
-"en el seu rebut , i en la confirmació de correu electrònic que hauria "
-"d'haver rebut."
+"Para rastrear o seu pedido, por favor informe o número do pedido abaixo e "
+"pressione o botão \"Rastrear\"."
 
 #: woocommerce/order/form-tracking.php:31
-#, fuzzy
 msgid "Order ID"
-msgstr "ID Comanda"
+msgstr "ID"
 
 #: woocommerce/order/form-tracking.php:31
-#, fuzzy
 msgid "Found in your order confirmation email."
-msgstr "Es troba en l'email de confirmació de comanda."
+msgstr "Encontre no seu e-mail de confirmação do pedido."
 
 #: woocommerce/order/form-tracking.php:32
-#, fuzzy
 msgid "Billing email"
-msgstr "Correu electrònic de facturació"
+msgstr "E-mail"
 
 #: woocommerce/order/form-tracking.php:32
-#, fuzzy
 msgid "Email you used during checkout."
-msgstr "Correu electrònic que va utilitzar durant el pagament."
+msgstr "E-mail utilizado durante a finalização da compra."
 
 #: woocommerce/order/form-tracking.php:35
-#, fuzzy
 msgid "Track"
-msgstr "Seguiment"
+msgstr "Rastrear"
 
 #: woocommerce/order/order-again.php:25
-#, fuzzy
 msgid "Order again"
-msgstr "Torna-ho a encomanar"
+msgstr "Doar novamente"
 
 #: woocommerce/order/order-details-customer.php:32
-#, fuzzy
 msgid "Note:"
 msgstr "Nota:"
 
 #: woocommerce/order/order-details-customer.php:39
-#, fuzzy
 msgid "Email:"
-msgstr "Email:"
+msgstr "E-mail:"
 
 #: woocommerce/order/order-details-customer.php:46
-#, fuzzy
 msgid "Phone:"
-msgstr "Telèfon:"
+msgstr "Fone:"
 
 #: woocommerce/order/order-details-customer.php:66
 #: woocommerce/order/order-details-customer.php:78
 #: woocommerce/single-product/meta.php:31
-#, fuzzy
 msgid "N/A"
-msgstr "No disponible"
+msgstr "N/A"
 
 #: woocommerce/order/order-details.php:31
-#, fuzzy
 msgid "Order details"
-msgstr "Detalls de la comanda"
+msgstr "Detalhes do Pedido"
 
 #: woocommerce/product-searchform.php:25
-#, fuzzy
 msgid "Search for:"
-msgstr "Cercar:"
+msgstr "Buscar por:"
 
 #: woocommerce/product-searchform.php:26
-#, fuzzy
 msgid "Search products&hellip;"
-msgstr "Cercar Productes..."
+msgstr "Pesquisar Produtos&hellip;"
 
 #: woocommerce/product-searchform.php:27
-#, fuzzy
 msgctxt "submit button"
 msgid "Search"
-msgstr "Cercar"
+msgstr "Pesquisar"
 
 #. translators: 1: reviews count 2: product name
 #: woocommerce/single-product-reviews.php:34
@@ -2462,116 +2113,95 @@ msgid_plural "%1$s reviews for %2$s"
 msgstr[0] ""
 msgstr[1] ""
 
-#: woocommerce/single-product-reviews.php:36
-#, fuzzy
-msgid "Reviews"
-msgstr "Revisions"
-
 #: woocommerce/single-product-reviews.php:58
-#, fuzzy
 msgid "There are no reviews yet."
-msgstr "No hi ha comentaris encara"
+msgstr "Não há avaliações ainda."
 
 #: woocommerce/single-product-reviews.php:71
-#, fuzzy
 msgid "Add a review"
-msgstr "Afegir una valoració"
+msgstr "Adicionar um avaliação"
 
 #: woocommerce/single-product-reviews.php:71
-#, fuzzy, php-format
+#, php-format
 msgid "Be the first to review &ldquo;%s&rdquo;"
-msgstr "Sigues el primer a valorar &ldquo;%s&rdquo;"
+msgstr "Seja o primeiro a avaliar &ldquo;%s&rdquo;"
 
 #: woocommerce/single-product-reviews.php:72
-#, fuzzy, php-format
+#, php-format
 msgid "Leave a Reply to %s"
-msgstr "Deixar un comentari a %s"
+msgstr "Deixar uma resposta para  %s"
 
 #: woocommerce/single-product-reviews.php:77
-#, fuzzy
 msgid "Name"
-msgstr "Nom"
+msgstr "Nome"
 
 #: woocommerce/single-product-reviews.php:79
-#, fuzzy
 msgid "Email"
-msgstr "Correu electrònic"
+msgstr "Email"
 
 #: woocommerce/single-product-reviews.php:88
-#, fuzzy, php-format
+#, php-format
 msgid "You must be <a href=\"%s\">logged in</a> to post a review."
-msgstr "Heu d'estar <a href=\"%s\">registrat</a> per escriure una valoració."
+msgstr ""
+"Você deve estar <a href=\"%s\"> autenticado </a> para fazer um comentário."
 
 #: woocommerce/single-product-reviews.php:92
-#, fuzzy
 msgid "Your rating"
-msgstr "La seva valoració"
+msgstr "Sua avaliação"
 
 #: woocommerce/single-product-reviews.php:93
-#, fuzzy
 msgid "Rate&hellip;"
-msgstr "Valora&hellip;"
+msgstr "Avaliação&hellip;"
 
 #: woocommerce/single-product-reviews.php:94
-#, fuzzy
 msgid "Perfect"
-msgstr "Perfecte"
+msgstr "Ótimo"
 
 #: woocommerce/single-product-reviews.php:95
-#, fuzzy
 msgid "Good"
-msgstr "Bé"
+msgstr "Bom"
 
 #: woocommerce/single-product-reviews.php:96
-#, fuzzy
 msgid "Average"
-msgstr "Mitjana"
+msgstr "Médio"
 
 #: woocommerce/single-product-reviews.php:97
-#, fuzzy
 msgid "Not that bad"
-msgstr "No està tan malament"
+msgstr "Nada mal"
 
 #: woocommerce/single-product-reviews.php:98
-#, fuzzy
 msgid "Very poor"
-msgstr "Molt pobrepressure tendency"
+msgstr "Péssimo"
 
 #: woocommerce/single-product-reviews.php:102
-#, fuzzy
 msgid "Your review"
-msgstr "La vostra opinió"
+msgstr "Sua revisão"
 
 #: woocommerce/single-product-reviews.php:111
-#, fuzzy
 msgid ""
 "Only logged in customers who have purchased this product may leave a review."
 msgstr ""
-"Només els clients registrats que han comprat aquest producte poden "
-"escriure’n una crítica."
+"Somente usuários logados que compraram este produto podem deixar um "
+"comentário."
 
 #: woocommerce/single-product/add-to-cart/variable.php:32
-#, fuzzy
 msgid "This product is currently out of stock and unavailable."
-msgstr "Aquest producte està esgotat actualment."
+msgstr "Este produto está fora de estoque e indisponível."
 
 #: woocommerce/single-product/add-to-cart/variable.php:43
-#, fuzzy
 msgid "Clear"
-msgstr "Esborrar"
+msgstr "Limpar"
 
 #: woocommerce/single-product/add-to-cart/variation.php:31
-#, fuzzy
 msgid ""
 "Sorry, this product is unavailable. Please choose a different combination."
 msgstr ""
-"Malauradament, aquest producte no està disponible. Si us plau seleccioni una "
-"combinació diferent."
+"Desculpe, este produto não está disponível. Por favor escolha uma combinação "
+"diferente."
 
 #: woocommerce/single-product/meta.php:31
-#, fuzzy
 msgid "SKU:"
-msgstr "Ref:"
+msgstr "SKU:"
 
 #: woocommerce/single-product/meta.php:35
 msgid "Category:"
@@ -2586,54 +2216,45 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: woocommerce/single-product/photoswipe.php:51
-#, fuzzy
 msgid "Close (Esc)"
-msgstr "Tanca (Esc)"
+msgstr "Fechar (Esc)"
 
 #: woocommerce/single-product/photoswipe.php:53
-#, fuzzy
 msgid "Share"
-msgstr "Compartir"
+msgstr "Compartilhar"
 
 #: woocommerce/single-product/photoswipe.php:55
-#, fuzzy
 msgid "Toggle fullscreen"
-msgstr "Mode pantalla completa"
+msgstr "Tela Cheia"
 
 #: woocommerce/single-product/photoswipe.php:57
-#, fuzzy
 msgid "Zoom in/out"
-msgstr "Apropa i allunya"
+msgstr "Ampliar/ reduzir"
 
 #: woocommerce/single-product/photoswipe.php:74
-#, fuzzy
 msgid "Previous (arrow left)"
-msgstr "Anterior (fletxa esquerra)"
+msgstr "Anterior"
 
 #: woocommerce/single-product/photoswipe.php:76
-#, fuzzy
 msgid "Next (arrow right)"
-msgstr "Següent (fletxa dreta)"
+msgstr "Próximo (seta para direita)"
 
 #: woocommerce/single-product/product-attributes.php:28
-#, fuzzy
 msgid "Weight"
-msgstr "Pes"
+msgstr "Peso"
 
 #: woocommerce/single-product/product-attributes.php:35
-#, fuzzy
 msgid "Dimensions"
-msgstr "Dimensions"
+msgstr "Dimensões"
 
 #: woocommerce/single-product/product-image.php:53
-#, fuzzy
 msgid "Awaiting product image"
-msgstr "la imatge del producte en espera"
+msgstr "Aguardando imagem do produto"
 
 #: woocommerce/single-product/rating.php:41
-#, fuzzy, php-format
+#, php-format
 msgid "%1$s out of %2$s"
-msgstr "PAS %1$s DE %2$s"
+msgstr "%1$s, %2$s"
 
 #: woocommerce/single-product/rating.php:49
 #, php-format
@@ -2650,54 +2271,45 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: woocommerce/single-product/related.php:27
-#, fuzzy
 msgid "Related products"
-msgstr "Sortides Relacionades"
+msgstr "Produtos relacionados"
 
 #: woocommerce/single-product/review-meta.php:28
-#, fuzzy
 msgid "Your review is awaiting approval"
-msgstr "La seva opinió està esperant l'aprovació"
+msgstr "Sua avaliação está aguardando aprovação"
 
 #: woocommerce/single-product/review-meta.php:36
-#, fuzzy
 msgid "verified owner"
-msgstr "Propietari verificat"
+msgstr "proprietário verificado"
 
 #. translators: %s: rating
 #: woocommerce/single-product/review-rating.php:31
-#, fuzzy, php-format
+#, php-format
 msgid "%s out of 5"
 msgstr "%s de 5"
 
 #: woocommerce/single-product/tabs/description.php:25
-#, fuzzy
 msgid "Description"
-msgstr "Descripció"
+msgstr "Descrição"
 
 #: woocommerce/single-product/up-sells.php:27
-#, fuzzy
 msgid "You may also like&hellip;"
-msgstr "També et pot interessar&ajuda"
+msgstr "Você também pode gostar de&hellip;"
 
 #. Theme Name of the plugin/theme
-#, fuzzy
-msgid "Streamium"
-msgstr "Streamium"
+msgid "Streamium S3Bubble Theme"
+msgstr "Tema Streamium S3Bubble"
 
 #. Theme URI of the plugin/theme
-#, fuzzy
 msgid "https://s3bubble.com"
-msgstr "Https://s3bubble.com"
+msgstr "https://s3bubble.com"
 
 #. Description of the plugin/theme
-#, fuzzy
 msgid ""
 "S3Bubble brings a Netflix style theme with all the power to your fingertips"
 msgstr ""
-"S3Bubble ofereix un tema d'estil de Netflix amb tot el poder al teu abast"
+"S3Bubble traz um tema de estilo de Netflix com todo o poder ao seu alcance"
 
 #. Author of the plugin/theme
-#, fuzzy
 msgid "Samuel East"
 msgstr "Samuel East"

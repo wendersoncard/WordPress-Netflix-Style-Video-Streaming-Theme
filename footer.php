@@ -26,7 +26,7 @@
 				
 			else :  
 				
-				printf(__( '<ul id="cd-primary-nav" class="cd-primary-nav is-fixed"><li><a href="#">%1$s</a></li></ul>', 'streamium' ), '!To display a menu here go to Apperance and menus create a menu and select (Display location Header Menu).');
+				printf('<ul id="cd-primary-nav" class="cd-primary-nav is-fixed"><li><a href="#">%1$s</a></li></ul>', __( '!To display a menu here go to Apperance and menus create a menu and select (Display location Header Menu)', 'streamium' ));
 
 			endif;
 
@@ -61,7 +61,7 @@
 							<a href="#0"><?php _e( 'Menu', 'streamium' ); ?></a>
 						</li>
 						<li class="see-all">
-							<a href="<?php echo esc_url( home_url('/' . $typeUrls) ); ?>"><?php _e( "All " . strtoupper($typeUrls), 'streamium' ); ?></a>
+							<a href="<?php echo esc_url( home_url('/' . $typeUrls) ); ?>"><?php _e( 'View All', 'streamium' ); ?></a>
 						</li>
 
 						<?php 
@@ -80,7 +80,7 @@
 						        <li class="has-children"><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>"><?php echo $category->name; ?></a>
 									<ul class="is-hidden">
 										<li class="go-back"><a href="#0"><?php echo $category->name; ?></a></li>
-										<li class="see-all"><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>"><?php echo 'All ' . strtoupper($category->name); ?></a></li>
+										<li class="see-all"><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>"><?php echo __( 'All', 'streamium' ) . ' ' . strtoupper($category->name); ?></a></li>
 										<?php $ChildCats = get_term_children( $category->term_id, $tax);
 								            foreach ($ChildCats as $ChildCat) { 
 								            	$term = get_term($ChildCat);
@@ -119,8 +119,8 @@
 												<a href="#0"><?php echo ucwords($category->name); ?></a>
 
 												<ul class="is-hidden">
-													<li class="go-back"><a href="#0">Accessories</a></li>
-													<li class="see-all"><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>">All <?php echo ucwords($category->name); ?></a></li>
+													<li class="go-back"><a href="#0"></a></li>
+													<li class="see-all"><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>"><?php _e( 'All', 'streamium' ); ?> <?php echo ucwords($category->name); ?></a></li>
 													<?php foreach ($children as $key => $value) { 
 											            	$term = get_term($value);
 											            ?>
@@ -156,7 +156,7 @@
 
 	<div class="streamium-review-panel from-right">
 		<header class="streamium-review-panel-header">
-			<h1>Reviews</h1>
+			<h1><?php _e( 'Reviews', 'streamium' ); ?></h1>
 			<a href="#0" class="streamium-review-panel-close"><i class="fa fa-times" aria-hidden="true"></i></a>
 		</header>
 
@@ -167,7 +167,7 @@
 		</div> <!-- streamium-review-panel-container -->
 	</div> <!-- streamium-review-panel -->
 	<?php if ( !get_theme_mod( 'tutorial_btn' ) ) : ?>
-		<div class="streamium-install-instructions"><h2>Please follow this guide for help with installation <a href="https://s3bubble.com/wp_themes/streamium-netflix-style-wordpress-theme/" target="_blank">Video Series</a></h2><p>You can remove this alert in Appearance -> Customizer -> Streamium</p></div>
+		<div class="streamium-install-instructions"><h2><?php _e( 'Please follow this guide for help with installation', 'streamium' ); ?> <a href="https://s3bubble.com/wp_themes/streamium-netflix-style-wordpress-theme/" target="_blank"><?php _e( 'Video Series', 'streamium' ); ?></a></h2><p><?php _e( 'You can remove this alert in Appearance -> Customizer -> Streamium<', 'streamium' ); ?>/p></div>
 	<?php endif; ?>
 	<?php wp_footer(); ?>
 </body>

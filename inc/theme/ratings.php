@@ -16,8 +16,8 @@ class Streamium_Ratings_List extends WP_List_Table {
 	public function __construct() {
 
 		parent::__construct( [
-			'singular' => __( 'Customer', 'sp' ), //singular name of the listed records
-			'plural'   => __( 'Customers', 'sp' ), //plural name of the listed records
+			'singular' => __( 'Customer', 'streamium' ), //singular name of the listed records
+			'plural'   => __( 'Customers', 'streamium' ), //plural name of the listed records
 			'ajax'     => false //should this table support ajax?
 
 		] );
@@ -109,7 +109,7 @@ class Streamium_Ratings_List extends WP_List_Table {
 
 	/** Text displayed when no ratings data is available */
 	public function no_items() {
-	  _e( 'No ratings avaliable.', 'sp' );
+	  _e( 'No ratings avaliable.', 'streamium' );
 	}
 
 	/**
@@ -192,10 +192,10 @@ class Streamium_Ratings_List extends WP_List_Table {
 	function get_columns() {
 	  $columns = [
 	    'cb'      => '<input type="checkbox" />',
-	    'user_id'    => __( 'User', 'sp' ),
-	    'post_id'    => __( 'Movie', 'sp' ),
-	    'message' => __( 'Message', 'sp' ),
-	    'state'    => __( 'State', 'sp' )
+	    'user_id'    => __( 'User', 'streamium' ),
+	    'post_id'    => __( 'Movie', 'streamium' ),
+	    'message' => __( 'Message', 'streamium' ),
+	    'state'    => __( 'State', 'streamium' )
 	  ];
 
 	  return $columns;
@@ -478,7 +478,7 @@ function streamium_likes() {
     	echo json_encode(
 	    	array(
 	    		'error' => true,
-	    		'message' => 'You must be logged in to like or dislike' 
+	    		'message' => __( 'You must be logged in to like or dislike', 'streamium' ) 
 	    	)
 	    );
 
@@ -497,7 +497,7 @@ function streamium_likes() {
     	if ( null !== $checkIfExists ) {
 
     		$errors = true;
-    		$errorMessage = "You have already reviewed this video";
+    		$errorMessage = __( 'You have already reviewed this video', 'streamium' );
 
     	}else{
 
@@ -628,7 +628,7 @@ function streamium_get_reviews() {
     	echo json_encode(
 	    	array(
 	    		'error' => true,
-	    		'message' => 'You must be logged in to view reviews' 
+	    		'message' => __( 'You must be logged in to view reviews', 'streamium' )
 	    	)
 	    );
 
@@ -672,7 +672,7 @@ function streamium_get_reviews() {
 		    		'error' => false,
 		    		'title' => get_the_title($postId),
 		    		'data' => $buildGetReviews,
-		    		'message' => 'Successfully added your rating' 
+		    		'message' => __( 'Successfully added your rating', 'streamium' ) 
 		    	)
 		    );
 
@@ -683,7 +683,7 @@ function streamium_get_reviews() {
 			echo json_encode(
 		    	array(
 		    		'error' => true,
-		    		'message' => 'No reviews' 
+		    		'message' => __( 'No reviews', 'streamium' ) 
 		    	)
 		    );
 
@@ -717,6 +717,6 @@ function get_streamium_likes($post_id) {
 	global $wpdb;
 	$table_name = $wpdb->prefix . 'streamium_reviews';
     $getReviews = $wpdb->get_var("SELECT COUNT(*) FROM $table_name WHERE post_id = $post_id AND state = 1");
-    return ((int) $getReviews === 1) ? $getReviews . " Like" : $getReviews . " Likes";
+    return ((int) $getReviews === 1) ? $getReviews . " " . __( 'Like', 'streamium' ) : $getReviews . " " . __( 'Likes', 'streamium' );
 
 }
