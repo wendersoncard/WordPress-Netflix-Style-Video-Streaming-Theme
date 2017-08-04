@@ -129,7 +129,7 @@ function streamium_get_dynamic_content() {
   
 			// Tags
 			$posttags = get_the_tags($postId);
-			$staring = 'Staring: ';
+			$staring = __( 'Cast', 'streamium' )  . ': ';
 			if ($posttags) {
 				$numItems = count($posttags);
 				$i = 0;
@@ -173,12 +173,12 @@ function streamium_get_dynamic_content() {
 			$episodes = orderCodes($postId);
 			if($episodes) {
 
-				$buildMeta .= '<li class="synopis-meta-spacer">Seasons: ' . $episodes['seasons'] . ', Episodes: ' . $episodes['episodes'] .'</li>';
+				$buildMeta .= '<li class="synopis-meta-spacer">' .  __( 'Seasons', 'streamium' ) . ': ' . $episodes['seasons'] . ', Episodes: ' . $episodes['episodes'] .'</li>';
 
 			}
 
 			// Release date
-			$buildMeta .= '<li class="synopis-meta-spacer">Released: <a href="/?s=all&date=' . get_the_date('Y/m/d', $postId) . '">' . get_the_date('l, F j, Y', $postId) . '</a></li></ul>';
+			$buildMeta .= '<li class="synopis-meta-spacer">' .  __( 'Released', 'streamium' ) . ': <a href="/?s=all&date=' . get_the_date('Y/m/d', $postId) . '">' . get_the_date('l, F j, Y', $postId) . '</a></li></ul>';
             
             // Only allow like/reviews for premium users
 			if ( get_theme_mod( 'streamium_enable_premium' ) ) {
@@ -188,8 +188,8 @@ function streamium_get_dynamic_content() {
 		    	$link = admin_url('admin-ajax.php?action=streamium_likes&post_id='. $postId .'&nonce='.$nonce);
 
 		        $like_text = '<div class="synopis-premium-meta hidden-xs">
-		        				<a id="like-count-' . $postId . '" class="streamium-review-like-btn streamium-btns streamium-reviews-btns" data-toggle="tooltip" title="CLICK TO LIKE!" data-id="' . $postId . '" data-nonce="' . $nonce . '">' . get_streamium_likes($postId) . '</a>
-		        				<a class="streamium-list-reviews streamium-btns streamium-reviews-btns" data-id="' . $postId . '" data-nonce="' . $nonce . '">Read reviews</a>
+		        				<a id="like-count-' . $postId . '" class="streamium-review-like-btn streamium-btns streamium-reviews-btns" data-toggle="tooltip" title="' .  __( 'CLICK TO LIKE!', 'streamium' ) . '" data-id="' . $postId . '" data-nonce="' . $nonce . '">' . get_streamium_likes($postId) . '</a>
+		        				<a class="streamium-list-reviews streamium-btns streamium-reviews-btns" data-id="' . $postId . '" data-nonce="' . $nonce . '">' .  __( 'Read reviews', 'streamium' ) . '</a>
 							</div>';
 
 		    }

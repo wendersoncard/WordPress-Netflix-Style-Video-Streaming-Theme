@@ -148,7 +148,7 @@ function search_api_post() {
                     $paidTileText = str_replace(array("_"), " ", $loop->post->plans[0]);
                     $paid = array(
                         'service' => 'woo',
-                        'html' => '<div class="tile_payment_details"><h2>Available on <br/>' . $paidTileText . ' plan</h2></div>',
+                        'html' => '<div class="tile_payment_details"><h2>' .  __( 'Available on', 'streamium' ) . ' <br/>' . $paidTileText . ' ' .  __( 'plan', 'streamium' ) . '</h2></div>',
                     );
 
                 }
@@ -163,7 +163,7 @@ function search_api_post() {
                         }
                         $paid = array(
                             'service' => 's2member',
-                            'html' => '<div class="tile_payment_details"><h2>Available on <br/>' . $paidTileText . ' plan</h2></div>',
+                            'html' => '<div class="tile_payment_details"><h2>' .  __( 'Available on', 'streamium' ) . ' <br/>' . $paidTileText . ' ' .  __( 'plan', 'streamium' ) . '</h2></div>',
                         );
                     }
                 }

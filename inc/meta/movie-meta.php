@@ -3,7 +3,7 @@
 function synopis_meta_starring( ) {
    // do stuff here
 	$posttags = get_the_tags();
-	$staring = "Staring: ";
+	$staring = __( 'Cast', 'streamium' ) . ": ";
 	if ($posttags) {
 		$numItems = count($posttags);
 		$i = 0;
@@ -26,7 +26,7 @@ add_action( 'synopis_meta', 'synopis_meta_starring', 1, 0 );
 function synopis_meta_genre( ) {
 
 	$categories = get_the_category();
-	$genres = "Genres: ";
+	$genres = __( 'Genres', 'streamium' ) . ": ";
 	if ($categories) {
 		$numItems = count($categories);
 		$i = 0;
@@ -47,7 +47,7 @@ add_action( 'synopis_meta', 'synopis_meta_genre', 2, 0 );
 
 function synopis_meta_release( ) {
 
-	echo '<li class="synopis-meta-spacer">Released: <a href="/?s=all&date=' . get_the_date('Y/m/d') . '">' . get_the_date() . '</a></li>';
+	echo '<li class="synopis-meta-spacer">' . __( 'Released', 'streamium' ) . ': <a href="/?s=all&date=' . get_the_date('Y/m/d') . '">' . get_the_date() . '</a></li>';
 
 }
 
@@ -56,7 +56,7 @@ add_action( 'synopis_meta', 'synopis_meta_release', 3, 0 );
 function synopis_multi_meta_starring( ) {
    // do stuff here
 	$posttags = get_the_tags();
-	$staring = "Staring: ";
+	$staring = __( 'Cast', 'streamium' ) . ": ";
 	if ($posttags) {
 		$numItems = count($posttags);
 		$i = 0;
@@ -109,7 +109,7 @@ add_action( 'synopis_multi_meta', 'synopis_multi_meta_genre', 2, 0 );
 
 function synopis_multi_meta_release(){
 
-	echo '<li class="synopis-meta-spacer">Released: <a href="/?s=all&date=' . get_the_date('Y/m/d') . '">' . get_the_date() . '</a></li>';
+	echo '<li class="synopis-meta-spacer">' . __( 'Released', 'streamium' ) . ': <a href="/?s=all&date=' . get_the_date('Y/m/d') . '">' . get_the_date() . '</a></li>';
 
 }
 
