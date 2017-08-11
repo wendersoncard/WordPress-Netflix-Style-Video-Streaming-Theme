@@ -12,7 +12,7 @@ S3Bubble is excited to introduce Streamium. This Theme is ideal for any budding 
 
 ## Installation & Setup
 
-[Full Video Overview Tutorials](https://www.youtube.com/playlist?list=PLC2Z78VyD-JDIkxLv9ryCFX7LzXDD6QM2)
+[Full Video Setup Tutorials](https://www.youtube.com/playlist?list=PLC2Z78VyD-JDIkxLv9ryCFX7LzXDD6QM2)
 
 ## Change Log
 
