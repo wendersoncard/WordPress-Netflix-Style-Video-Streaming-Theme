@@ -24,6 +24,10 @@ https://www.youtube.com/watch?v=-eEpuVGwdC4
 
 https://www.youtube.com/watch?v=FUqN-b1MSrc
 
+## Most Common Issues
+
+https://www.youtube.com/watch?v=yhm3jY-KhwI
+
 ## Change Log
 
 * Review and rating functionality added
@@ -49,4 +53,6 @@ https://www.youtube.com/watch?v=FUqN-b1MSrc
 
 ## License
 
-Copyright (c) S3Bubble Ltd licensed under General Public License (GPL)
+© S3Bubble and Streamium, 2017. Unauthorized use and/or duplication of this material without express and written permission from this site’s author and/or 
+owner is strictly prohibited. Excerpts and links may be used, provided that full and clear credit is given to S3Bubble and Streamium with appropriate 
+and specific direction to the original content.
