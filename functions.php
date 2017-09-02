@@ -123,9 +123,9 @@ if (!function_exists('streamium_enqueue_scripts')) {
         wp_enqueue_style('streamium-production', get_template_directory_uri() . '/production/css/streamium.min.css', array(), s3bubble_cache_version());
         
         // Remove custom payment overlay 
-        $custom_css = ".tile_payment_details{display: none !important;}";
         if(get_theme_mod( 'streamium_remove_payment_overlay', false )){
-             wp_add_inline_style( 'streamium-styles', $custom_css );
+            $custom_css = ".tile_payment_details{display: none !important;}";
+            wp_add_inline_style( 'streamium-styles', $custom_css );
         }
 
         /* Register scripts -----------------------------------------------------*/

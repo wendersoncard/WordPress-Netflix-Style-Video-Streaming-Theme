@@ -6,7 +6,7 @@
 
 		$args = array(
 		    'posts_per_page' => (int)get_theme_mod( 'streamium_global_options_homepage_desktop' ),
-		    'post_type' => $setType, //array('movie', 'tv','sport','kid','stream'),
+		    'post_type' => array('movie', 'tv','sport','kid','stream'), // $setType
 		    'meta_key' => 'streamium_slider_featured_checkbox_value',
 			'meta_value' => 'yes'
 		);
@@ -134,7 +134,7 @@
 			endwhile; 
 		else: 
 		?>
-		<div style="background:url(<?php echo esc_url(get_template_directory_uri()); ?>/dist/frontend/assets/tech-2-mobile.jpg);" class="slider-block">
+		<div class="slider-block">
 			<div class="slider-no-content">
 				<h2><?php _e( 'S3Bubble Media Streaming', 'streamium' ); ?></h2>
 				<p><?php _e( 'To display a image here go to your custom post and look for the metabox (Main Slider Video) and check it.', 'streamium' ); ?></p>
