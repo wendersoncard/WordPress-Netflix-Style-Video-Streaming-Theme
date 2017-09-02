@@ -128,6 +128,11 @@ if (!function_exists('streamium_enqueue_scripts')) {
             wp_add_inline_style( 'streamium-styles', $custom_css );
         }
 
+        // Webview only style for native app
+        if ($_SERVER['HTTP_X_REQUESTED_WITH'] === "com.streamweb") {
+            wp_enqueue_style('streamium-webview', get_template_directory_uri() . '/production/css/webview.min.css', array(), s3bubble_cache_version());
+        }
+
         /* Register scripts -----------------------------------------------------*/
         wp_enqueue_script('plupload');
         wp_enqueue_script('streamium-production', get_template_directory_uri() . '/production/js/streamium.min.js', array( 'jquery' ), s3bubble_cache_version(), true);

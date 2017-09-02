@@ -19,6 +19,7 @@ require_once($incdir .'theme/posts.php');
 require_once($incdir .'theme/uploader.php');
 require_once($incdir .'theme/helpers.php');
 require_once($incdir .'theme/series.php'); 
+require_once($incdir .'theme/signed.php'); 
 
 // Api
 require_once($incdir .'api/recent.php');
