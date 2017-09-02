@@ -503,6 +503,41 @@ class Streamium_Customize
 
       // END AWS MEDIA SECTION
 
+       // AWS SIGNED COOKIES SECTION
+      $wp_customize->add_section('streamium_aws_signed_cookies_section' , array(
+          'title'     => __('AWS Signed Cookies', 'streamium'),
+          'description' => 'Secure your website with signed cookies',
+          'priority'  => 1020
+      ));
+      
+      // Only allow uploads from logged in users
+      $wp_customize->add_setting('streamium_enable_signed_cookies', array(
+          'default' => false
+      ));
+      $wp_customize->add_control(
+          new WP_Customize_Control(
+              $wp_customize,
+              'streamium_enable_signed_cookies',
+              array(
+                  'label'     => __('Enable signed cookies', 'streamium'),
+                  'section'   => 'streamium_aws_signed_cookies_section',
+                  'settings'  => 'streamium_enable_signed_cookies',
+                  'type'      => 'checkbox',
+              )
+          )
+      );
+
+      $wp_customize->add_setting('streamium_aws_signed_cookies_cname');
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_aws_signed_cookies_cname',
+        array(
+          'label' => 'CNAME Subdomain',
+          'section' => 'streamium_aws_signed_cookies_section',
+          'settings' => 'streamium_aws_signed_cookies_cname',
+        ))
+      );
+
+      // AWS SIGNED COOKIES SECTION
+
        // START ADVERTISEMENT SECTION
       $wp_customize->add_section('streamium_advertisement_section', array(
           'title'     => __('Global Advertisement', 'streamium'),
