@@ -423,6 +423,32 @@ class Streamium_Customize
 
        // END CUSTOM POST TYPE SECTION
 
+       // PAYMENT SETUP SECTION
+      $wp_customize->add_section('streamium_payment_setups_section' , array(
+          'title'     => __('Payment Setup Options', 'streamium'),
+          'description' => 'Here are some useful settings for different payment setups',
+          'priority'  => 1020
+      ));
+      
+      // Only allow uploads from logged in users
+      $wp_customize->add_setting('streamium_remove_payment_overlay', array(
+          'default' => false
+      ));
+      $wp_customize->add_control(
+          new WP_Customize_Control(
+              $wp_customize,
+              'streamium_remove_payment_overlay',
+              array(
+                  'label'     => __('Remove payment details overlay', 'streamium'),
+                  'section'   => 'streamium_payment_setups_section',
+                  'settings'  => 'streamium_remove_payment_overlay',
+                  'type'      => 'checkbox',
+              )
+          )
+      );
+
+      // END PAYMENT SETUP SECTION
+
        // AWS MEDIA SECTION
       $wp_customize->add_section('streamium_aws_media_uploader_section' , array(
           'title'     => __('AWS Media Uploader', 'streamium'),

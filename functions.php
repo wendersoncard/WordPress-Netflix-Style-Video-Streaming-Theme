@@ -1,8 +1,15 @@
 <?php
 
+
 /*-----------------------------------------------------------------------------------*/
 /*	Theme set up
 /*-----------------------------------------------------------------------------------*/
+
+// Output the theme version
+function s3bubble_streamium_theme_version() {
+    return "1.4";
+}
+
 if (!function_exists('streamium_theme_setup')) {
     function streamium_theme_setup()
     {
@@ -94,7 +101,7 @@ function streamium_extra_image_sizes($sizes)
 /*  Needed when updating
 /*-----------------------------------------------------------------------------------*/
 function s3bubble_cache_version() {
-    return 15;
+    return 16;
 }
 
 function s3bubble_tile_count() {
@@ -114,6 +121,12 @@ if (!function_exists('streamium_enqueue_scripts')) {
         /* Register styles -----------------------------------------------------*/
         wp_enqueue_style('streamium-styles', get_stylesheet_uri());
         wp_enqueue_style('streamium-production', get_template_directory_uri() . '/production/css/streamium.min.css', array(), s3bubble_cache_version());
+        
+        // Remove custom payment overlay 
+        $custom_css = ".tile_payment_details{display: none !important;}";
+        if(get_theme_mod( 'streamium_remove_payment_overlay', false )){
+             wp_add_inline_style( 'streamium-styles', $custom_css );
+        }
 
         /* Register scripts -----------------------------------------------------*/
         wp_enqueue_script('plupload');
