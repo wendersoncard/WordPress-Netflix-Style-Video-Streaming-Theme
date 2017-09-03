@@ -129,8 +129,10 @@ if (!function_exists('streamium_enqueue_scripts')) {
         }
 
         // Webview only style for native app
-        if ($_SERVER['HTTP_X_REQUESTED_WITH'] === "com.streamweb") {
+        if(isset($_COOKIE["webview"])) {
             wp_enqueue_style('streamium-webview', get_template_directory_uri() . '/production/css/webview.min.css', array(), s3bubble_cache_version());
+        }else{
+            unset($_COOKIE['webview']);
         }
 
         /* Register scripts -----------------------------------------------------*/
@@ -169,6 +171,15 @@ if (!function_exists('streamium_enqueue_scripts')) {
 
     add_action('wp_enqueue_scripts', 'streamium_enqueue_scripts');
 }
+
+function streamium_check_webview() {
+
+    if (isset($_GET['webview'])) {
+        setcookie('webview', true);
+    }
+
+}
+add_action( 'init', 'streamium_check_webview' );
 
 if (!function_exists('streamium_enqueue_admin_scripts')) {
 
