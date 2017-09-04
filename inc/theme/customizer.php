@@ -536,6 +536,21 @@ class Streamium_Customize
         ))
       );
 
+      $wp_customize->add_setting('streamium_aws_signed_cookies_key_pair');
+
+      $pemInfo = "!Important your pem file does not exist please upload your pem file to your wp-content/pem folder.";
+      if (file_exists(WP_CONTENT_DIR . '/pem/pk-' .  get_theme_mod( 'streamium_aws_signed_cookies_key_pair' ) . '.pem')) {
+        $pemInfo = "Awesome your pem file exists and is in the correct folder.";
+      } 
+      $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'streamium_aws_signed_cookies_key-pair',
+        array(
+          'label' => 'Key Pair Id',
+          'description' => $pemInfo,
+          'section' => 'streamium_aws_signed_cookies_section',
+          'settings' => 'streamium_aws_signed_cookies_key_pair'
+        ))
+      );
+
       // AWS SIGNED COOKIES SECTION
 
        // START ADVERTISEMENT SECTION
