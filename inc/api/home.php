@@ -90,9 +90,6 @@ function home_api_post() {
                  
                 }; // end if MultiPostThumbnails 
 
-                // This has been removed
-                $trimexcerpt = !empty(get_the_excerpt()) ? get_the_excerpt() : get_the_content();
-
                 $paid = false;
                 if($loop->post->premium){
                     $paidTileText = str_replace(array("_"), " ", $loop->post->plans[0]);
@@ -135,7 +132,7 @@ function home_api_post() {
                     'tileUrlExpanded' => esc_url($imageExpanded),
                     'link' => get_the_permalink(),
                     'title' => get_the_title(),
-                    'text' => wp_trim_words($trimexcerpt, $num_words = 18, $more = '...'),
+                    'text' => wp_trim_words(get_the_content(), $num_words = 18, $more = '...'),
                     'paid' => $paid,
                     'progressBar' => (int)$progressBar,
                     'extraMeta' => $extraMeta,
