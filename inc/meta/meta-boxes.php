@@ -9,7 +9,7 @@
 function streamium_video_code_meta_box_add(){
 
     add_meta_box( 'streamium-meta-box-movie', 'Main Video', 'streamium_meta_box_movie', array('movie', 'tv','sport','kid'), 'side', 'high' );
-    add_meta_box( 'streamium-meta-box-youtube', 'Youtube Video Full Url', 'streamium_meta_box_youtube', array('movie', 'tv','sport','kid'), 'side', 'high' ); 
+    add_meta_box( 'streamium-meta-box-youtube', 'Youtube/Vimeo Full Url', 'streamium_meta_box_youtube', array('movie', 'tv','sport','kid'), 'side', 'high' ); 
     add_meta_box( 'streamium-meta-box-trailer', 'Video Trailer', 'streamium_meta_box_trailer', array('movie', 'tv','sport','kid'), 'side', 'high' );
     add_meta_box( 'streamium-meta-box-bgvideo', 'Main Slider BG Video', 'streamium_meta_box_bgvideo', array('movie', 'tv','sport','kid'), 'side', 'high' );
     add_meta_box( 'streamium-meta-box-main-slider', 'Main Slider Video', 'streamium_meta_box_main_slider', array('movie', 'tv','sport','kid','stream'), 'side', 'high' );
@@ -42,8 +42,8 @@ function streamium_meta_box_youtube(){
     wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
 
     ?>
+    <img style="width: 100%;" src="<?php echo get_template_directory_uri(); ?>/production/img/vy.png" />
     <p class="streamium-meta-box-wrapper">
-
         <input type="text" name="s3bubble_video_youtube_code_meta_box_text" class="form-control" id="s3bubble_video_youtube_code_meta_box_text" value="<?php echo $text; ?>" />
         
     </p>
