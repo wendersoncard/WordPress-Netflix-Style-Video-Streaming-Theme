@@ -205,6 +205,12 @@ if (!function_exists('streamium_enqueue_admin_scripts')) {
     add_action('admin_enqueue_scripts', 'streamium_enqueue_admin_scripts');
 }
 
+// Fix to flush urls
+function streamium_flush_rewrite_rules(){
+    flush_rewrite_rules();
+}
+add_action( 'admin_init', 'streamium_flush_rewrite_rules' );
+
 // Dismiss premium notice with ajax
 function dismiss_premium_notice()
 {

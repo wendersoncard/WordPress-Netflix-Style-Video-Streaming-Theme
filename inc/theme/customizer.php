@@ -592,7 +592,7 @@ class Streamium_Customize
       function streamium_sanitize_customizer_text($value)
       {
           if ($value != "") {
-              return strtolower(sanitize_text_field($value));
+              return strtolower(sanitize_text_field(str_replace(' ' , '-', $value)));
           }
       }
    }
