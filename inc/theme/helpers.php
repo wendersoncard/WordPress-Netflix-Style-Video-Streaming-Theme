@@ -306,7 +306,7 @@ function orderCodes($postId) {
   }
 
   return array(
-    "seasons" => count($result),
+    "seasons" => count($firstSort),
     "episodes" => count($codes),
     "codes" => $codes
   );
