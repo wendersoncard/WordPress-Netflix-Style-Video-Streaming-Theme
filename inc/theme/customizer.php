@@ -650,11 +650,11 @@ class Streamium_Customize
               }
 
            /* Theme colors */
-           <?php self::generate_css('.archive, .home, .search, .single', 'background-color', 'streamium_background_color', '', ' !important'); ?>
+           <?php self::generate_css('.archive, .home, .search, .single', 'background-color', 'streamium_background_color', '', ' !important', true, '#141414'); ?>
            <?php self::generate_css('.carousels .tile_inner', 'border-color', 'streamium_background_color', '', ' !important'); ?>
-           <?php self::generate_css('.video-header h3, .see-all', 'color', 'streamium_carousel_heading_color', '', ' !important'); ?>
+           <?php self::generate_css('.video-header h3, .see-all, .slick-arrow, h4.series-watched-episode-title', 'color', 'streamium_carousel_heading_color', '', '  !important', true, '#f2f2f2'); ?>
 
-           <?php self::generate_css('.tile_inner', 'padding-bottom', 'streamium_poster_orientation', '', ' !important'); ?>
+           <?php self::generate_css('.tile_inner', 'padding-bottom', 'streamium_poster_orientation', '', ' !important', true, '56.25%'); ?>
 
            /* link and background colors */
            <?php self::generate_css('a, .page a, a:focus, a:hover, .cd-main-header .cd-logo, .play-icon-wrap i, .cd-primary-nav .cd-secondary-nav a:hover, .cd-primary-nav>li>a:hover, .cd-primary-nav .cd-nav-gallery .cd-nav-item h3, .cd-primary-nav .cd-nav-icons .cd-nav-item h3, .woocommerce-message:before, .woocommerce-info::before, .carousels .overlay .overlay-meta .top-meta-watched, .static-row .overlay .overlay-meta .top-meta-watched', 'color', 'link_textcolor', '', '', true, '#dd3333'); 
@@ -664,13 +664,13 @@ class Streamium_Customize
            ?>
 
            <?php if (!wp_is_mobile()) :
-              self::generate_css('.synopis-inner .content', 'font-size', 'streamium_synopsis_para', '', ' !important');
+              self::generate_css('.synopis-inner .content', 'font-size', 'streamium_synopsis_para', '', ' !important', true, '1.3vw'); 
             endif; ?>
 
            <?php self::generate_css('.post-type-archive, .woocommerce-cart, .woocommerce-account, .woocommerce-checkout, .woocommerce-page', 'background-image', 'streamium_plans_bg', 'url(', ')'); ?>
            <?php self::generate_css('body', 'background-image', 'streamium_global_bg', 'url(', ') !important'); ?>
 
-           <?php self::generate_css('.woocommerce-message, .woocommerce-info', 'border-top-color', 'link_textcolor', '', ' !important'); ?>
+           <?php self::generate_css('.woocommerce-message, .woocommerce-info', 'border-top-color', 'link_textcolor', '', ' !important', true, '#dd3333');  ?>
 
            .streamium-list-reviews { background: #000 !important;}
            .streamium-list-reviews:hover { background: #fff !important; color: #000;}

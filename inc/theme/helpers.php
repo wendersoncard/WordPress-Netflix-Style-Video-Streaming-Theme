@@ -270,6 +270,16 @@ function partition(Array $list, $p) {
     return $partition;
 }
 
+
+function streamGroupSeasons($array, $key) {
+    $return = array();
+    foreach($array as $val) {
+        $return[$val[$key]][] = $val;
+    }
+    ksort($return);
+    return $return;
+}
+
 /**
  *
  * @param Array $list
@@ -285,24 +295,11 @@ function orderCodes($postId) {
     return false;
   }
 
-  // Order the list
-  $positions = array();
-  foreach ($episodes as $key => $row){
-      $positions[$key] = $row['positions'];
-  }
-  array_multisort($positions, SORT_ASC, $episodes);
-
-  // Sort the seasons
-  $result = array();
-  $codes = array();
-  foreach ($episodes as $v) {
-      $seasons = $v['seasons'];
-      if (!isset($result[$seasons])) $result[$seasons] = array();
-      $result[$seasons][] = $v;
-  }
+  // Group by seasons
+  $firstSort = streamGroupSeasons($episodes,'seasons');
 
   $codes = [];
-  foreach (array_reverse($result) as $key => $flatten) {
+  foreach ($firstSort as $key => $flatten) {
     foreach ($flatten as $key => $value) {
       $codes[] = $value['codes'];
     }

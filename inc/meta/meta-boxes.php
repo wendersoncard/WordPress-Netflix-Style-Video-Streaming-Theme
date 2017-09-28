@@ -180,14 +180,11 @@ function streamium_repeatable_meta_box_display() {
 
         if ( $repeatable_fields ) :
 
-        // Order the list
-        $positions = array();
-        foreach ($repeatable_fields as $key => $row){
-            $positions[$key] = $row['positions'];
-        }
-        array_multisort($positions, SORT_ASC, $repeatable_fields);
+        foreach ( streamGroupSeasons($repeatable_fields,'seasons') as $seasons ) {
 
-        foreach ( $repeatable_fields as $field ) {
+            foreach ( $seasons as $field ) {
+
+            
     ?>
         <li class="streamium-repeater-list">
             <div class="streamium-repeater-left">
@@ -226,7 +223,7 @@ function streamium_repeatable_meta_box_display() {
                 <a class="button streamium-repeater-remove-row" href="#">Remove</a>
             </div>
         </li>
-    <?php } else : ?>
+    <?php } } else : ?>
         <li class="streamium-repeater-list">
             <div class="streamium-repeater-left">
                 <p>
