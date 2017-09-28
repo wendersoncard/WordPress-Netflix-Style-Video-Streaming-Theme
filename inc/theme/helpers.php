@@ -1,7 +1,16 @@
 <?php
 
-// remove admin bar
-add_filter('show_admin_bar', '__return_false');
+/**
+ * Changes the tile count
+ *
+ * @return null
+ * @author  @sameast
+ */
+if ( ! function_exists ( 's3bubble_tile_count' ) ) {
+    function s3bubble_tile_count() {
+        return (int) get_theme_mod( 'streamium_tile_count', 6 );
+    }
+}
 
 /**
  * Adds the main menu
@@ -25,9 +34,31 @@ function streamium_remove_ul( $menu ){
 }
 add_filter( 'wp_nav_menu', 'streamium_remove_ul' );
 
+/**
+ * Webview only style for native app
+ *
+ * @return null
+ * @author  @sameast
+ */
+if ( ! function_exists ( 'streamium_check_webview' ) ) {
+    function streamium_check_webview() {
+
+        if (isset($_GET['webview']) || isset($_COOKIE["webview"])) {
+            
+            setcookie('webview', true);
+            wp_enqueue_style('streamium-webview', get_template_directory_uri() . '/production/css/webview.min.css', array(), s3bubble_cache_version());
+
+        }else{
+            unset($_COOKIE['webview']);
+        }
+
+    }
+    add_action( 'init', 'streamium_check_webview' );
+}
+
 /*
 * Recommended plugins managment and notifications
-* @author jonathansmith
+* @author sameast
 * @none
 */
 require_once get_template_directory() . '/inc/recommended-plugins/class-tgm-plugin-activation.php';
@@ -99,7 +130,7 @@ add_action( 'admin_init', 'streamium_check_for_active_plugins' );
 
 /*
 * Adds a notice to the admin to install demo data
-* @author jonathansmith
+* @author sameast
 * @none
 */
 function streamium_dummy_xml_admin_notice__error() {
@@ -130,6 +161,54 @@ function premium_admin_notice__error() {
 
 if(!get_theme_mod( 'streamium_enable_premium' ) && get_option('notice_premium') == 1) {
 	add_action( 'admin_notices', 'premium_admin_notice__error' );
+}
+
+/**
+ * Dismiss premium notice with ajax
+ *
+ * @return null
+ * @author  @sameast
+ */
+if ( ! function_exists ( 'dismiss_premium_notice' ) ) {
+    function dismiss_premium_notice(){
+        update_option('notice_premium', 0);
+        echo json_encode(array('success' => true, 'message' => __('Notice dismissed', 'streamium' )));
+        die();
+    }
+    // Enable the user with no privileges to run dismiss_premium_notice() in AJAX
+    add_action('wp_ajax_ajaxnopremium', 'dismiss_premium_notice');
+    add_action('wp_ajax_nopriv_ajaxnopremium', 'dismiss_premium_notice');
+}
+
+/**
+ * Dismiss demo data notice with ajax
+ *
+ * @return null
+ * @author  @sameast
+ */
+if ( ! function_exists ( 'dismiss_demo_data_notice' ) ) {
+    function dismiss_demo_data_notice()
+    {
+        update_option('notice_demo_data', 0);
+        echo json_encode(array('success' => true, 'message' => __('Notice dismissed','streamium')));
+        die();
+    }
+    // Enable the user with no privileges to run dismiss_demo_data_notice() in AJAX
+    add_action('wp_ajax_ajaxnodemo', 'dismiss_demo_data_notice');
+    add_action('wp_ajax_nopriv_ajaxnodemo', 'dismiss_demo_data_notice');
+}
+
+/**
+ * Fix to flush urls
+ *
+ * @return null
+ * @author  @sameast
+ */
+if ( ! function_exists ( 'streamium_flush_rewrite_rules' ) ) {
+    function streamium_flush_rewrite_rules(){
+        flush_rewrite_rules();
+    }
+    add_action( 'admin_init', 'streamium_flush_rewrite_rules' );
 }
 
 /**
@@ -270,7 +349,12 @@ function partition(Array $list, $p) {
     return $partition;
 }
 
-
+/**
+ *
+ * @param Array $list
+ * @param int $p
+ * @return streamGroupSeasons:
+ */
 function streamGroupSeasons($array, $key) {
     $return = array();
     foreach($array as $val) {
@@ -285,7 +369,6 @@ function streamGroupSeasons($array, $key) {
  * @param Array $list
  * @param int $p
  * @return multitype:multitype:
- * @link http://www.php.net/manual/en/function.array-chunk.php#75022
  */
 function orderCodes($postId) {
 

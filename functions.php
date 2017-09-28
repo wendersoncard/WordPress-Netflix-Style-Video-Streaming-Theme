@@ -1,18 +1,33 @@
 <?php
 
+/**
+ * Remove admin bar
+ *
+ * @return null
+ * @author  @sameast
+ */
+add_filter('show_admin_bar', '__return_false');
 
-/*-----------------------------------------------------------------------------------*/
-/*	Theme set up
-/*-----------------------------------------------------------------------------------*/
-
-// Output the theme version
-function s3bubble_streamium_theme_version() {
-    return "1.4";
+/**
+ * Clears the cache
+ *
+ * @return null
+ * @author  @sameast
+ */
+if ( ! function_exists ( 's3bubble_cache_version' ) ) {
+    function s3bubble_cache_version() {
+        return 17;
+    }
 }
 
+/**
+ * Setup the theme
+ *
+ * @return null
+ * @author  @sameast
+ */
 if (!function_exists('streamium_theme_setup')) {
-    function streamium_theme_setup()
-    {
+    function streamium_theme_setup() {
  
         // Add translation support
         load_theme_textdomain( 'streamium', get_template_directory() . '/languages' );
@@ -43,8 +58,6 @@ if (!function_exists('streamium_theme_setup')) {
 
         add_option('notice_premium', 1);
         add_option('notice_demo_data', 1);
-
-        add_filter('image_size_names_choose', 'streamium_extra_image_sizes');
 
         if ( function_exists('register_sidebar') ) { 
             register_sidebar(array( 
@@ -77,43 +90,39 @@ if (!function_exists('streamium_theme_setup')) {
         }
 
     }
-
+    add_action('after_setup_theme', 'streamium_theme_setup');
 }
 
-add_action('after_setup_theme', 'streamium_theme_setup');
+/**
+ * Add new image sizes to post or page editor
+ *
+ * @return null
+ * @author  @sameast
+ */
+if ( ! function_exists ( 'streamium_extra_image_sizes' ) ) {
+    function streamium_extra_image_sizes($sizes){
+        $streamiumThemeSizes = array(
+            'streamium-video-tile'    => __('Video Tile', 'streamium'),
+            'streamium-video-tile-expanded'   => __('Video Tile Expanded', 'streamium'),
+            'streamium-video-tile-large-expanded'   => __('Video Tile Large Expanded', 'streamium'),
+            'streamium-video-multi-thumb'   => __('Multi Video Thumb', 'streamium'),
+            'streamium-home-slider'   => __('Main Slider', 'streamium'),
+        );
+        $sizes = array_merge($sizes, $streamiumThemeSizes);
 
-//* Add new image sizes to post or page editor
-function streamium_extra_image_sizes($sizes)
-{
-    $streamiumThemeSizes = array(
-        'streamium-video-tile'    => __('Video Tile', 'streamium'),
-        'streamium-video-tile-expanded'   => __('Video Tile Expanded', 'streamium'),
-        'streamium-video-tile-large-expanded'   => __('Video Tile Large Expanded', 'streamium'),
-        'streamium-video-multi-thumb'   => __('Multi Video Thumb', 'streamium'),
-        'streamium-home-slider'   => __('Main Slider', 'streamium'),
-    );
-    $sizes = array_merge($sizes, $streamiumThemeSizes);
-
-    return $sizes;
+        return $sizes;
+    }
+    add_filter('image_size_names_choose', 'streamium_extra_image_sizes');
 }
 
-/*-----------------------------------------------------------------------------------*/
-/*  Needed when updating
-/*-----------------------------------------------------------------------------------*/
-function s3bubble_cache_version() {
-    return 16;
-}
-
-function s3bubble_tile_count() {
-    return (int) get_theme_mod( 'streamium_tile_count', 6 );
-}
-
-/*-----------------------------------------------------------------------------------*/
-/*	Register javascript and css
-/*-----------------------------------------------------------------------------------*/
+/**
+ * Include the main js and css files
+ *
+ * @return null
+ * @author  @sameast
+ */
 if (!function_exists('streamium_enqueue_scripts')) {
-    function streamium_enqueue_scripts()
-    {     
+    function streamium_enqueue_scripts() {     
 
         global $wp_query;
         $query = $wp_query->get_queried_object();
@@ -152,42 +161,22 @@ if (!function_exists('streamium_enqueue_scripts')) {
             )
         );
  
-        // Local
+        // Include main s3bubble js framework
         wp_enqueue_style('streamium-s3bubble-cdn', get_template_directory_uri() . '/production/css/s3bubble.min.css', array(), s3bubble_cache_version());
         wp_enqueue_script('streamium-s3bubble-cdn', get_template_directory_uri() . '/production/js/s3bubble.min.js', '', s3bubble_cache_version(), true);
-
-        // Live
-        //wp_enqueue_style('streamium-s3bubble-cdn', '//s3.amazonaws.com/aws-hosted/s3bubble.min.css');
-        //wp_enqueue_script('streamium-s3bubble-cdn', '//s3.amazonaws.com/aws-hosted/s3bubble.min.js', '', '1.2', true);
 
     }
 
     add_action('wp_enqueue_scripts', 'streamium_enqueue_scripts');
 }
 
-// Webview only style for native app
-function streamium_check_webview() {
-
-    if (isset($_GET['webview']) || isset($_COOKIE["webview"])) {
-        
-        setcookie('webview', true);
-        wp_enqueue_style('streamium-webview', get_template_directory_uri() . '/production/css/webview.min.css', array(), s3bubble_cache_version());
-
-    }else{
-        unset($_COOKIE['webview']);
-    }
-
-}
-add_action( 'init', 'streamium_check_webview' );
-
+/**
+ * Include the scripts for the meta boxes
+ *
+ * @return null
+ * @author  @sameast
+ */
 if (!function_exists('streamium_enqueue_admin_scripts')) {
-
-    /**
-     * Include the scripts for the meta boxes
-     *
-     * @return null
-     * @author  @sameast
-     */
     function streamium_enqueue_admin_scripts()
     {
         $streamium_connected_website = get_option("streamium_connected_website");
@@ -204,36 +193,6 @@ if (!function_exists('streamium_enqueue_admin_scripts')) {
 
     add_action('admin_enqueue_scripts', 'streamium_enqueue_admin_scripts');
 }
-
-// Fix to flush urls
-function streamium_flush_rewrite_rules(){
-    flush_rewrite_rules();
-}
-add_action( 'admin_init', 'streamium_flush_rewrite_rules' );
-
-// Dismiss premium notice with ajax
-function dismiss_premium_notice()
-{
-    update_option('notice_premium', 0);
-    echo json_encode(array('success' => true, 'message' => __('Notice dismissed', 'streamium' )));
-    die();
-}
-
-// Enable the user with no privileges to run dismiss_premium_notice() in AJAX
-add_action('wp_ajax_ajaxnopremium', 'dismiss_premium_notice');
-add_action('wp_ajax_nopriv_ajaxnopremium', 'dismiss_premium_notice');
-
-// Dismiss demo data notice with ajax
-function dismiss_demo_data_notice()
-{
-    update_option('notice_demo_data', 0);
-    echo json_encode(array('success' => true, 'message' => __('Notice dismissed','streamium')));
-    die();
-}
-
-// Enable the user with no privileges to run dismiss_demo_data_notice() in AJAX
-add_action('wp_ajax_ajaxnodemo', 'dismiss_demo_data_notice');
-add_action('wp_ajax_nopriv_ajaxnodemo', 'dismiss_demo_data_notice');
 
 /*-----------------------------------------------------------------------------------*/
 /*  Include the Streamium Framework
