@@ -67,12 +67,12 @@ function home_api_post() {
             while ($loop->have_posts()) : $loop->the_post();
                 
                 // Add some placeholder images
-                $image  = "http://via.placeholder.com/300x169";
-                $imageExpanded   = "http://via.placeholder.com/500x281";
+                $image  = "https://via.placeholder.com/300x169";
+                $imageExpanded   = "https://via.placeholder.com/500x281";
 
                 if (has_post_thumbnail()) : // thumbnail check
 
-                    $image  = wp_get_attachment_image_url(get_post_thumbnail_id(), 'streamium-video-tile');
+                    $image  = wp_get_attachment_image_url(get_post_thumbnail_id(), 'streamium-video-tile') . '?=vdsvsdv';
                     $imageExpanded   = wp_get_attachment_image_url(get_post_thumbnail_id(), 'streamium-video-tile-expanded');
 
                 endif;

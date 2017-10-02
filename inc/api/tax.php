@@ -136,8 +136,8 @@ function tax_api_post() {
         while ( $loop->have_posts() ) : $loop->the_post(); 
 
             // Add some placeholder images
-            $image  = "http://via.placeholder.com/300x169";
-            $imageExpanded   = "http://via.placeholder.com/500x281";
+            $image  = "https://via.placeholder.com/300x169";
+            $imageExpanded   = "https://via.placeholder.com/500x281";
 
             if (has_post_thumbnail()) : // thumbnail check
 
