@@ -15,14 +15,18 @@
 			</div><!--/.row-->
 		</div><!--/.container-->
 	</footer>
-	<div class="cd-overlay"></div>
 
 	<nav class="cd-nav">
 		<ul id="cd-primary-nav" class="cd-primary-nav is-fixed">
 
 			<?php if ( has_nav_menu( 'streamium-header-menu', 'streamium' ) ) :
-				
-				wp_nav_menu( array( 'container' => false, 'theme_location' => 'streamium-header-menu' ) );
+
+				echo str_replace('sub-menu', 'sub-menu is-hidden', wp_nav_menu( array(
+				    'echo' => false,
+				    'container' => false, 
+				    'theme_location' => 'streamium-header-menu',
+				  ) )
+				);
 				
 			else :  
 				
@@ -54,9 +58,9 @@
 
 				?>
 
-					<li class="has-children">
+					<li class="menu-item-has-children">
 					<a href="<?php echo esc_url( home_url('/') ); ?>"><?php _e( $taxTitle, 'streamium' ); ?></a>
-					<ul class="cd-secondary-nav is-hidden">
+					<ul class="sub-menu is-hidden">
 						<li class="go-back">
 							<a href="#0"><?php _e( 'Menu', 'streamium' ); ?></a>
 						</li>
@@ -77,7 +81,7 @@
 						            'hide_empty' => false
 						        ) );
 						        if($children) { ?>
-						        <li class="has-children"><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>"><?php echo $category->name; ?></a>
+						        <li class="menu-item-has-children"><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>"><?php echo $category->name; ?></a>
 									<ul class="is-hidden">
 										<li class="go-back"><a href="#0"><?php echo $category->name; ?></a></li>
 										<li class="see-all"><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>"><?php echo __( 'All', 'streamium' ) . ' ' . strtoupper($category->name); ?></a></li>
@@ -98,7 +102,7 @@
 
 							foreach ( partition($categories, 4)  as $key => $parentCategory ) { ?>
 
-						    	<li class="has-children">
+						    	<li class="menu-item-has-children">
 							    	
 									<ul class="is-hidden">
 
@@ -115,7 +119,7 @@
 										
 										?>
 
-											<li class="has-children" id="<?php echo $category->slug; ?>">
+											<li class="menu-item-has-children" id="<?php echo $category->slug; ?>">
 												<a href="#0"><?php echo ucwords($category->name); ?></a>
 
 												<ul class="is-hidden">
@@ -150,6 +154,16 @@
 				endforeach;
 
 			?>
+
+			<?php if (function_exists('is_protected_by_s2member')) { if ( is_user_logged_in() ) { ?>
+ 
+		 		<li><a class="s2member-auth" href="<?php echo wp_logout_url(); ?>"><?php _e( 'Logout', 'streamium' ); ?></a></li>
+		 
+		 	<?php } else { ?>
+		 	
+		 		<li><a class="s2member-auth" href="<?php echo wp_login_url(); ?>"><?php _e( 'Login', 'streamium' ); ?></a></li>
+
+		 	<?php } } ?>
 			
 		</ul> <!-- primary-nav -->
 	</nav> <!-- cd-nav -->

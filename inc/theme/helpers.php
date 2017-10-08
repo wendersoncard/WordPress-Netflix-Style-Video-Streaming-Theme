@@ -398,7 +398,7 @@ function orderCodes($postId) {
 
 /**
  *
- * @param  Filte to fix Wordpress not using https for urls
+ * @param  Filter to fix Wordpress not using https for urls
  * @param int $p
  * @return filter
  */
@@ -425,3 +425,20 @@ function ssl_post_thumbnail_urls($url, $post_id) {
   return $protocol.'://'.$uri;
 }
 add_filter('wp_get_attachment_url', 'ssl_post_thumbnail_urls', 10, 2);
+
+/**
+ *
+ * @param  Add a body class for fixed nav
+ * @param int $p
+ * @return filter
+ */
+function streamium_body_class( $classes ) {
+
+    // Add fixed nav class for home only
+    if(is_home() ){
+      //$classes[] = 'nav-is-fixed';
+    }
+
+    return $classes;
+}
+add_action( 'body_class', 'streamium_body_class');

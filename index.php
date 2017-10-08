@@ -4,7 +4,7 @@
 		<div class="streamium-loading">&#8230;</div>
 	<?php endif; ?>
 
-	<header class="cd-main-header fixed">
+	<header class="cd-main-header">
 
 		<?php if ( get_theme_mod( 'streamium_logo' ) ) : ?>
 
@@ -35,6 +35,8 @@
 		<div id="home-watched"></div>
 
 		<div class="main-spacer"></div>
+
+		<div class="cd-overlay"></div>
 		
 	</main><!--/.main content-->
 

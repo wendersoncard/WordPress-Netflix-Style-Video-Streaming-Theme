@@ -141,6 +141,8 @@
 
 		<div class="main-spacer"></div>
 
+		<div class="cd-overlay"></div>
+
 	</main><!--/.main content-->
 
 <?php get_footer(); ?>
