@@ -659,7 +659,7 @@ class Streamium_Customize
            <?php /*self::generate_css('.cd-main-header .cd-logo, .play-icon-wrap i, .cd-primary-nav .cd-secondary-nav a:hover, .cd-primary-nav>li>a:hover, .cd-primary-nav .cd-nav-gallery .cd-nav-item h3, .cd-primary-nav .cd-nav-icons .cd-nav-item h3, .woocommerce-message:before, .woocommerce-info::before, .carousels .overlay .overlay-meta .top-meta-watched, .static-row .overlay .overlay-meta .top-meta-watched', 'color', 'link_textcolor', '', '', true, '#dd3333'); */
            ?>
 
-           <?php self::generate_css('.woocommerce-page a, .page a', 'color', 'link_textcolor', '', '', true, '#dd3333');
+           <?php self::generate_css('.woocommerce-page .cd-main-content a, .page .cd-main-content a', 'color', 'link_textcolor', '', '', true, '#dd3333');
            ?>
 
            <?php self::generate_css('.cd-main-header .cd-logo, .play-icon-wrap i, .tile_meta_more_info', 'color', 'link_textcolor', '', '', true, '#dd3333');
