@@ -26,8 +26,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	    exit;
 	}
 endif; */
-
-get_header( 'shop' ); ?>
+ 
+get_header(); ?>
 
 	<?php
 		/**
@@ -115,4 +115,4 @@ get_header( 'shop' ); ?>
 		do_action( 'woocommerce_after_main_content' );
 	?>
 
-<?php get_footer( 'shop' ); ?>
+<?php get_footer(); ?>

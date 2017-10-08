@@ -650,7 +650,6 @@ class Streamium_Customize
               }
 
            /* Theme colors */
-           <?php self::generate_css('.archive, .home, .search, .single', 'background-color', 'streamium_background_color', '', ' !important', true, '#141414'); ?>
            <?php self::generate_css('.carousels .tile_inner', 'border-color', 'streamium_background_color', '', ' !important'); ?>
            <?php self::generate_css('.video-header h3, .see-all, .slick-arrow, h4.series-watched-episode-title', 'color', 'streamium_carousel_heading_color', '', '  !important', true, '#f2f2f2'); ?>
 
@@ -658,6 +657,9 @@ class Streamium_Customize
 
            /* link and background colors */
            <?php /*self::generate_css('.cd-main-header .cd-logo, .play-icon-wrap i, .cd-primary-nav .cd-secondary-nav a:hover, .cd-primary-nav>li>a:hover, .cd-primary-nav .cd-nav-gallery .cd-nav-item h3, .cd-primary-nav .cd-nav-icons .cd-nav-item h3, .woocommerce-message:before, .woocommerce-info::before, .carousels .overlay .overlay-meta .top-meta-watched, .static-row .overlay .overlay-meta .top-meta-watched', 'color', 'link_textcolor', '', '', true, '#dd3333'); */
+           ?>
+
+           <?php self::generate_css('.woocommerce-page a, .page a', 'color', 'link_textcolor', '', '', true, '#dd3333');
            ?>
 
            <?php self::generate_css('.cd-main-header .cd-logo, .play-icon-wrap i, .tile_meta_more_info', 'color', 'link_textcolor', '', '', true, '#dd3333');

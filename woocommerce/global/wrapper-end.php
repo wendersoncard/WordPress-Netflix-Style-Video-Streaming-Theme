@@ -24,4 +24,3 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 </div>
 	</div>
-		<div class="main-spacer"></div>

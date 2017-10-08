@@ -194,6 +194,14 @@ if (!function_exists('streamium_enqueue_admin_scripts')) {
     add_action('admin_enqueue_scripts', 'streamium_enqueue_admin_scripts');
 }
 
+function show_template() {
+    if( is_super_admin() ){
+        global $template;
+        print_r($template);
+    } 
+}
+//add_action('wp_footer', 'show_template');
+
 /*-----------------------------------------------------------------------------------*/
 /*  Include the Streamium Framework
 /*-----------------------------------------------------------------------------------*/
