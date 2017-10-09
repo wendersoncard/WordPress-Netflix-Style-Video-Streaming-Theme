@@ -30,7 +30,7 @@
 						<?php endif; ?>
 					</div>
 					<div class="col-sm-3 col-xs-12">
-						<?php dynamic_sidebar('page-sidebar'); ?>
+						<?php get_sidebar(); ?>
 					</div>
 				<?php endif; ?>
  
