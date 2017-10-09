@@ -135,3 +135,20 @@ if (class_exists('WooCommerce_Membership_Post')) {
   }
 
 }
+
+/*
+* Add login logout link for Woo
+* @author sameast
+* @none
+*/ 
+function streamium_woo_auth_menu( $items, $args ) {
+    if (is_user_logged_in() && $args->theme_location == 'streamium-header-menu') {
+            $items .= '<li><a class="s2member-auth" href="'. wp_logout_url( get_permalink( wc_get_page_id( 'myaccount' ) ) ) .'">Log Out</a></li>';
+    }
+    elseif (!is_user_logged_in() && $args->theme_location == 'streamium-header-menu') {
+            $items .= '<li><a class="s2member-auth" href="' . get_permalink( wc_get_page_id( 'myaccount' ) ) . '">Log In</a></li>';
+    }
+    return $items;
+}
+
+add_filter( 'wp_nav_menu_items', 'streamium_woo_auth_menu', 10, 2 );

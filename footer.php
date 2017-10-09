@@ -19,20 +19,7 @@
 	<nav class="cd-nav">
 		<ul id="cd-primary-nav" class="cd-primary-nav is-fixed">
 
-			<?php if ( has_nav_menu( 'streamium-header-menu', 'streamium' ) ) :
-
-				echo str_replace('sub-menu', 'sub-menu is-hidden', wp_nav_menu( array(
-				    'echo' => false,
-				    'container' => false, 
-				    'theme_location' => 'streamium-header-menu',
-				  ) )
-				);
-				
-			else :  
-				
-				printf('<ul id="cd-primary-nav" class="cd-primary-nav is-fixed"><li><a href="#">%1$s</a></li></ul>', __( '!To display a menu here go to Apperance and menus create a menu and select (Display location Header Menu)', 'streamium' ));
-
-			endif;
+			<?php 
 
 			$postTypes = array(
 				array('tax' => 'movies','type' => 'movie','menu' => 'Movies'),
@@ -153,17 +140,22 @@
 				endif;
 				endforeach;
 
+				if ( has_nav_menu( 'streamium-header-menu', 'streamium' ) ) :
+
+					echo str_replace('sub-menu', 'sub-menu is-hidden', wp_nav_menu( array(
+					    'echo' => false,
+					    'container' => false, 
+					    'theme_location' => 'streamium-header-menu',
+					  ) )
+					);
+					
+				else :  
+					
+					printf('<ul id="cd-primary-nav" class="cd-primary-nav is-fixed"><li><a href="#">%1$s</a></li></ul>', __( '!To display a menu here go to Apperance and menus create a menu and select (Display location Header Menu)', 'streamium' ));
+
+				endif;
+
 			?>
-
-			<?php if (function_exists('is_protected_by_s2member')) { if ( is_user_logged_in() ) { ?>
- 
-		 		<li><a class="s2member-auth" href="<?php echo wp_logout_url(); ?>"><?php _e( 'Logout', 'streamium' ); ?></a></li>
-		 
-		 	<?php } else { ?>
-		 	
-		 		<li><a class="s2member-auth" href="<?php echo wp_login_url(); ?>"><?php _e( 'Login', 'streamium' ); ?></a></li>
-
-		 	<?php } } ?>
 			
 		</ul> <!-- primary-nav -->
 	</nav> <!-- cd-nav -->
