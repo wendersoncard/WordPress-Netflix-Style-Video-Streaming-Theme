@@ -2,7 +2,7 @@
 
 	<main class="cd-main-content streamium-page">
 		
-		<div class="container">
+		<div class="container-fluid">
 			<div class="row">
 
 				<?php if ( ! is_active_sidebar( 'forum-sidebar' ) ) : ?>
