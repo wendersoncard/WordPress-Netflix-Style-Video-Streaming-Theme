@@ -42,7 +42,7 @@
 											<h2><?php echo (isset($title) ? $title : __( 'No Title', 'streamium' )); ?></h2>
 											<div class="synopis content">
 												<?php echo $content; ?>
-												<ul>
+												<ul class="hidden-xs">
 													<?php do_action('synopis_multi_meta'); ?>
 												</ul>
 											</div>
