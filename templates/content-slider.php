@@ -40,7 +40,7 @@
 									<div class="synopis-middle">
 										<div class="synopis-inner">
 											<h2><?php echo (isset($title) ? $title : __( 'No Title', 'streamium' )); ?></h2>
-											<div class="synopis content hidden-xs">
+											<div class="synopis content">
 												<?php echo $content; ?>
 												<ul>
 													<?php do_action('synopis_multi_meta'); ?>
@@ -63,7 +63,7 @@
 									<div class="play-icon-wrap-rel">
 										<div class="play-icon-wrap-rel-ring"></div>
 										<span class="play-icon-wrap-rel-play">
-											<i class="fa fa-play fa-3x" aria-hidden="true"></i>
+											<i class="fa fa-play fa-3x brand-color" aria-hidden="true"></i>
 							        	</span>
 						        	</div>
 					        	</a>
@@ -113,7 +113,7 @@
 									<div class="play-icon-wrap-rel">
 										<div class="play-icon-wrap-rel-ring"></div>
 										<span class="play-icon-wrap-rel-play">
-											<i class="fa fa-play fa-3x" aria-hidden="true"></i>
+											<i class="fa fa-play fa-3x brand-color" aria-hidden="true"></i>
 							        	</span>
 						        	</div>
 					        	</a>
