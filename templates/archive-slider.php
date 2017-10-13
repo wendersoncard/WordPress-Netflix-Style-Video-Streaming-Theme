@@ -41,7 +41,7 @@
 		        $content = wp_trim_words( strip_tags(get_the_content()), 15, ' <a class="show-more-content" data-id="' . get_the_ID() . '">' . __( 'read more', 'streamium' ) . '</a>' );
 
 		?>
-		<div class="slider-block" style="background-image: url(<?php echo esc_url($image[0]); ?>);">
+		<div class="slider-block" style="background-image: url(<?php echo esc_url($image); ?>);">
 			<article class="content-overlay">
 				<div class="content-overlay-grad"></div>
 				<div class="container-fluid rel">
