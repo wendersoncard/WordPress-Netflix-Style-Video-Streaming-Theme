@@ -78,6 +78,7 @@ function streamium_single_video_scripts() {
                 'brand_sliders' => get_theme_mod( 'link_textcolor', 'red' ),
                 'brand_control' => get_theme_mod( 'streamium_background_color', 'black' ),
                 'brand_icons' => get_theme_mod( 'streamium_carousel_heading_color', 'white' ),
+                'brand_social' => get_theme_mod( 'streamium_enable_video_social', false ),
                 'stream' => $stream,
                 'youtube' => $youtube,
                 'vpaid' => $globalAdvertisements,

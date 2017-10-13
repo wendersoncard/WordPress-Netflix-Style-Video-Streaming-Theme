@@ -6,12 +6,15 @@ function streamium_s2member_auth_menu( $items, $args ) {
 		return $items;
  	}
  	if ( is_user_logged_in() ) {
- 		$items .= '<li><a class="s2member-auth" href="' . wp_logout_url() . '">' . __( 'Log Out' ) . '</a></li>';
+ 		$items .= '<li><a class="streamium-auth" href="' . wp_logout_url() . '">' . __( 'Log Out' ) . '</a></li>';
  	} else {
- 		$items .= '<li><a class="s2member-auth" href="' . wp_login_url() . '">' . __( 'Log In' ) . '</a></li>';
+ 		$items .= '<li><a class="streamium-auth" href="' . wp_login_url() . '">' . __( 'Log In' ) . '</a></li>';
  	}
  	return $items;
 
 }
- 
-add_filter( 'wp_nav_menu_items', 'streamium_s2member_auth_menu', 10, 2 );
+
+// Can be disabled in the site identity shown by default
+if ( !get_theme_mod( 'streamium_disable_login' ) ) {
+    add_filter( 'wp_nav_menu_items', 'streamium_s2member_auth_menu', 10, 2 );
+}

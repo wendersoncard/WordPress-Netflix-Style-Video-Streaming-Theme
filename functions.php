@@ -16,7 +16,7 @@ add_filter('show_admin_bar', '__return_false');
  */
 if ( ! function_exists ( 's3bubble_cache_version' ) ) {
     function s3bubble_cache_version() {
-        return 17;
+        return 18;
     }
 }
 
@@ -51,8 +51,8 @@ if (!function_exists('streamium_theme_setup')) {
             add_image_size('streamium-video-tile-expanded', ($height*2), ($width*2), false); 
         }
         
-        add_image_size('streamium-video-tile-large-expanded', 9999, 411, false); 
-        add_image_size('streamium-home-slider', 9999, 540, false);
+        add_image_size('streamium-video-tile-large-expanded', 9999, 585, false); 
+        add_image_size('streamium-home-slider', 9999, 585, false); 
         add_image_size('streamium-site-logo', 0, 56, true);
         add_theme_support('title-tag');
 

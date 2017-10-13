@@ -31,9 +31,15 @@
 </head> 
 <body <?php body_class(); ?>>
 
-	<?php if ( get_theme_mod( 'streamium_enable_loader' ) ) : ?>
+	<?php 
+		if ( get_theme_mod( 'streamium_enable_loader' ) ) : 
+			if(is_home() || is_archive() || is_tax() || is_search()) :
+	?>
 		<div class="streamium-loading">&#8230;</div>
-	<?php endif; ?>
+	<?php 
+			endif; 
+		endif; 
+	?>
 
 	<header class="cd-main-header fixed">
 

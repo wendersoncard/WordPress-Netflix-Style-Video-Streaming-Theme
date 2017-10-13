@@ -62,7 +62,6 @@ function recently_watched_api_post() {
                         $image_id = MultiPostThumbnails::get_post_thumbnail_id( get_post_type( get_the_ID() ), 'tile-expanded-image', get_the_ID() );  // use the MultiPostThumbnails to get the image ID
                         $imageExpanded = wp_get_attachment_image_url( $image_id,'streamium-video-tile-expanded' ); // define full size src based on image ID
 
-                        //error_log(print_r($imageExpanded,true));
                     }                            
                  
                 }; // end if MultiPostThumbnails
@@ -126,7 +125,7 @@ function recently_watched_api_post() {
 	    		'error' => false,
 	    		'data' => $dataPosts,
                 'count' => (int)$loop->post_count,
-                'message' => 'Sucesfully returning results' 
+                'message' => 'Successfully returning results' 
 	    	)
 	    );
 
@@ -135,7 +134,9 @@ function recently_watched_api_post() {
     	// user is not logged in
     	echo json_encode(
 	    	array(
-	    		'error' => true,
+	    		'error' => false,
+                'data' => $dataPosts,
+                'count' => 0,
 	    		'message' => 'Not taxs found' 
 	    	)
 	    );

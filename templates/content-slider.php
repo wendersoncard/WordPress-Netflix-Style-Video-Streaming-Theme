@@ -16,7 +16,20 @@
 		if($loop->have_posts()):
 			while ( $loop->have_posts() ) : $loop->the_post();
 
-			    $image   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-home-slider' ); 
+			    $image   = wp_get_attachment_image_url( get_post_thumbnail_id(), 'streamium-home-slider' );
+
+			    // Allow a extra image to be added
+	            if (class_exists('MultiPostThumbnails')) {                              
+	                
+	                if (MultiPostThumbnails::has_post_thumbnail( get_post_type( get_the_ID() ), 'large-landscape-image', get_the_ID())) { 
+
+	                    $image_id = MultiPostThumbnails::get_post_thumbnail_id( get_post_type( get_the_ID() ), 'large-landscape-image', get_the_ID() );  
+	                    $image = wp_get_attachment_image_url( $image_id,'streamium-video-tile-large-expanded' ); 
+
+	                }                            
+	             
+	            }; // end if MultiPostThumbnails 
+
 				$title   = wp_trim_words( get_the_title(), $num_words = 10, $more = '... ' );
 				$streamiumVideoTrailer = get_post_meta( get_the_ID(), 'streamium_video_trailer_meta_box_text', true );
 				$streamiumFeaturedVideo = get_post_meta( get_the_ID(), 'streamium_featured_video_meta_box_text', true );
@@ -79,7 +92,7 @@
 
 		<?php else : ?>
 
-			<div style="background-image: url(<?php echo esc_url($image[0]); ?>);">
+			<div style="background-image: url(<?php echo esc_url($image); ?>);">
 
 				<article class="content-overlay">
 					<div class="content-overlay-grad"></div>

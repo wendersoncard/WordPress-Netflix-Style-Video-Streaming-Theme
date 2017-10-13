@@ -85,11 +85,6 @@ function sb_register_required_plugins() {
         'name'      => 'Force Regenerate Thumbnails',
         'slug'      => 'force-regenerate-thumbnails',
         'required'  => false,
-      ), 
-      array(
-        'name'      => 's2member',
-        'slug'      => 's2member',
-        'required'  => false,
       )
     );
 

@@ -158,7 +158,7 @@ function custom_api_post() {
         array(
             'error' => false,
             'data' => $data,
-            'message' => 'Sucesfully returning results'
+            'message' => 'Successfully returning results'
         )
     );     
 

@@ -72,7 +72,7 @@ function home_api_post() {
 
                 if (has_post_thumbnail()) : // thumbnail check
 
-                    $image  = wp_get_attachment_image_url(get_post_thumbnail_id(), 'streamium-video-tile') . '?=vdsvsdv';
+                    $image  = wp_get_attachment_image_url(get_post_thumbnail_id(), 'streamium-video-tile');
                     $imageExpanded   = wp_get_attachment_image_url(get_post_thumbnail_id(), 'streamium-video-tile-expanded');
 
                 endif;
@@ -84,8 +84,6 @@ function home_api_post() {
                         
                         $image_id = MultiPostThumbnails::get_post_thumbnail_id( get_post_type( get_the_ID() ), 'tile-expanded-image', get_the_ID() );  // use the MultiPostThumbnails to get the image ID
                         $imageExpanded = wp_get_attachment_image_url( $image_id,'streamium-video-tile-expanded' ); // define full size src based on image ID
-
-                        //error_log(print_r($imageExpanded,true));
                     }                            
                  
                 }; // end if MultiPostThumbnails 
@@ -162,7 +160,7 @@ function home_api_post() {
         array(
             'error' => false,
             'data' => $data,
-            'message' => 'Sucesfully returning results'
+            'message' => 'Successfully returning results'
         )
     );     
 

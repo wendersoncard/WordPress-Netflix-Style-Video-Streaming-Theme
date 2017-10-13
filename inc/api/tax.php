@@ -217,7 +217,7 @@ function tax_api_post() {
                 'error' => false,
                 'data' => $dataPosts,
                 'count' => (int)$loop->post_count,
-                'message' => 'Sucesfully returning results'
+                'message' => 'Successfully returning results'
             )
         );
 
