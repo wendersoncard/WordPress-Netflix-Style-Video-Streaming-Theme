@@ -89,7 +89,16 @@
 		<?php
 		    $sliderPostCount++; 
 			endwhile; 
-		else : 
+		else : ?>
+
+			<div class="slider-block">
+				<div class="slider-no-content">
+					<h2><?php _e( 'S3Bubble Media Streaming', 'streamium' ); ?></h2>
+					<p><?php _e( 'To display a image here go to your custom post and look for the metabox (Main Slider Video) and check it.', 'streamium' ); ?></p>
+				</div><!--/.content-overlay-->
+			</div>
+			
+	<?php
 		endif;
 		wp_reset_query(); 
 	?>
