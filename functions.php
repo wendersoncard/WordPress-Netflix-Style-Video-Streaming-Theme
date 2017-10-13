@@ -157,7 +157,8 @@ if (!function_exists('streamium_enqueue_scripts')) {
                 'is_tax' => is_tax(),
                 'is_search' => is_search(),
                 'tile_count' => s3bubble_tile_count(),
-                'read_more' => __('read more', 'streamium')
+                'read_more' => __('read more', 'streamium'),
+                'autoplay_slider' => get_theme_mod( 'streamium_autoplay_home_slider', false ),
             )
         );
  

@@ -253,6 +253,24 @@ class Streamium_Customize
           )
       );
 
+      // Autoplay slider
+      $wp_customize->add_setting('streamium_autoplay_home_slider', array(
+                'default'    => false
+            ));
+
+      $wp_customize->add_control(
+          new WP_Customize_Control(
+              $wp_customize,
+              'streamium_autoplay_home_slider',
+              array(
+                  'label'     => __('Autoplay Home Slider', 'streamium'),
+                  'section'   => 'title_tagline',
+                  'settings'  => 'streamium_autoplay_home_slider',
+                  'type'      => 'checkbox',
+              )
+          )
+      );
+
       // Enable the social on videos
       $wp_customize->add_setting('streamium_enable_video_social', array(
                 'default'    => false
