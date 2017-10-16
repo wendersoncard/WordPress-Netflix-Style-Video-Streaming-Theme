@@ -95,10 +95,10 @@ function search_api_post() {
 
     }else{
 
-        $s = $_REQUEST['search']['s'];
+        $s = sanitize_text_field($_REQUEST['search']['s']);
 
         $loop = new WP_Query(array(
-            'post_type' => array('movie', 'tv','sport','kid','stream'), 
+            'post_type' => array('movie', 'tv','sport','kid','stream'),
             'posts_per_page'   => -1,
             's' => $s
         )); 
