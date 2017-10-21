@@ -728,7 +728,7 @@ class Streamium_Customize
            ?>
 
            /* style buttons */
-           <?php self::generate_css('#place_order, .pagination a:hover, .pagination .current, .slick-dots li.slick-active button, .progress-bar, .button, .cd-overlay, .has-children > a:hover::before, .has-children > a:hover::after, .go-back a:hover::before, .go-back a:hover::after, #submit, #place_order, .checkout-button, .woocommerce-thankyou-order-received, .add_to_cart_button, .confirm, .streamium-btns, .streamium-extra-meta, .streamium-auth', 'background-color', 'link_textcolor', '', ' !important', true, '#dd3333'); 
+           <?php self::generate_css('#place_order, .pagination a:hover, .pagination .current, .slick-dots li.slick-active button, .progress-bar, .button, .cd-overlay, .has-children > a:hover::before, .has-children > a:hover::after, .go-back a:hover::before, .go-back a:hover::after, #submit, #place_order, .checkout-button, .woocommerce-thankyou-order-received, .add_to_cart_button, .confirm, .streamium-btns, .streamium-extra-meta, .streamium-auth, .onsale', 'background-color', 'link_textcolor', '', ' !important', true, '#dd3333'); 
            ?>
 
            <?php if ( get_theme_mod( 'streamium_disable_reviews' ) ) : echo '.synopis-premium-meta { display:none !important; }'; endif; // Disable reviews ?>

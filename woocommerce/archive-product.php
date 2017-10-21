@@ -19,13 +19,6 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
-
-
-/*if ( is_user_logged_in() ) : 
-	if ( wp_redirect( '/my-account/' ) ) {
-	    exit;
-	}
-endif; */
  
 get_header(); ?>
 
@@ -40,6 +33,9 @@ get_header(); ?>
 		do_action( 'woocommerce_before_main_content' );
 	?>
 
+	<div id="grid">
+		<!-- width of .grid-sizer used for columnWidth -->
+ 		<div class="grid-sizer"></div>
 		<?php if ( have_posts() ) : ?>
 
 
@@ -67,7 +63,7 @@ get_header(); ?>
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
-			<div class="<?php echo $planClass; ?>">
+			<div class="grid-item">
 					<div class="streamium-plans">
 				<?php
 					/**
@@ -83,6 +79,8 @@ get_header(); ?>
 			</div>
 
 			<?php endwhile; // end of the loop. ?>
+
+			</div> <!-- end the row -->
 
 			<?php
 				/**
@@ -114,5 +112,28 @@ get_header(); ?>
 		 */
 		do_action( 'woocommerce_after_main_content' );
 	?>
+
+	<script type="text/javascript">
+
+		jQuery(document).ready(function($) {
+			var $grid = $('#grid');
+
+		    $grid.isotope({
+		      	itemSelector: '.grid-item',
+		      	percentPosition: true,
+		      	initLayout: false
+		    });
+		    
+		    $grid.on( 'layoutComplete',
+			  function( event, laidOutItems ) {
+			    $('.woocommerce span.onsale').fadeIn();
+			  }
+			);
+
+		    $grid.isotope();
+
+		});
+
+	</script>
 
 <?php get_footer(); ?>
