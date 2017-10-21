@@ -103,10 +103,21 @@ get_header(); ?>
 		    
 		    $grid.on( 'layoutComplete',
 			  function( event, laidOutItems ) {
+
+			  	if(laidOutItems.length === 1){
+			  		$('.grid-item').css({
+			  			position: "relative"
+			  		});
+			  	}
+
 			    $('.woocommerce span.onsale').fadeIn();
 			  }
 			);
 
+		    setTimeout(function(){
+		    	$('.grid-item').addClass('init');
+		    },500);
+		   
 		    $grid.isotope();
 
 		});
