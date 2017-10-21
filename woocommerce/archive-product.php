@@ -38,29 +38,6 @@ get_header(); ?>
  		<div class="grid-sizer"></div>
 		<?php if ( have_posts() ) : ?>
 
-
-			<?php
-
-				switch ($wp_query->post_count) {
-					case 1:
-						$planClass = "col-sm-4 col-xs-12 col-md-offset-4"; 
-						break;
-					case 2:
-						$planClass = "col-sm-6 col-xs-12"; 
-						break;
-					case 3:
-						$planClass = "col-sm-4 col-xs-12"; 
-						break;
-					case 4:
-						$planClass = "col-sm-3 col-xs-12"; 
-						break;
-					default:
-						$planClass = "col-sm-4 col-xs-12"; 
-						break;
-				}
-			
-			?>
-
 			<?php while ( have_posts() ) : the_post(); ?>
 
 			<div class="grid-item">
