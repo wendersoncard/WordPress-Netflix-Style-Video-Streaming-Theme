@@ -63,9 +63,10 @@ if (!function_exists('streamium_theme_setup')) {
             register_sidebar(array( 
                 'name' => __('Page Sidebar', 'streamium'), 
                 'id' => 'page-sidebar', 
+                'class' => 'list-group',
                 'description' => 'Appears as the sidebar on a page',
                 'before_widget' => '<div id="%1$s" class="widget %2$s">', 
-                'after_widget' => '</div>', 
+                'after_widget' => '</div>',  
                 'before_title' => '<h4 class="widgettitle">', 
                 'after_title' => '</h4>'
             ));
@@ -150,11 +151,13 @@ if (!function_exists('streamium_enqueue_scripts')) {
                 'tax_api_nonce' => wp_create_nonce("tax_api_nonce"),
                 'search_api_nonce' => wp_create_nonce("search_api_nonce"),
                 'extra_api_nonce' => wp_create_nonce("extra_api_nonce"),
+                'tag_api_nonce' => wp_create_nonce("tag_api_nonce"),
                 'query' => $query,
                 'search' => isset($_GET) ? $_GET : false,
                 'is_home' => is_home(),
                 'is_archive' => is_archive(),
                 'is_tax' => is_tax(),
+                'is_tag' => is_tag(),
                 'is_search' => is_search(),
                 'tile_count' => s3bubble_tile_count(),
                 'read_more' => __('read more', 'streamium'),

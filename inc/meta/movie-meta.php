@@ -9,7 +9,7 @@ function synopis_meta_starring( ) {
 		$i = 0;
 	  	foreach($posttags as $tag) {
 
-		  	$staring .= '<a href="/?s=' . esc_html( $tag->name ) . '">' . ucwords($tag->name) . '</a>';
+		  	$staring .= '<a href="' . esc_url(get_tag_link ($tag->term_id)) . '">' . ucwords($tag->name) . '</a>';
 		  	if(++$i !== $numItems) {
 	    		$staring .= ', ';
 	  		}
@@ -62,7 +62,7 @@ function synopis_multi_meta_starring( ) {
 		$i = 0;
 	  	foreach($posttags as $tag) {
 
-		  	$staring .= '<a href="/?s=' . esc_html( $tag->name ) . '">' . ucwords($tag->name) . '</a>';
+		  	$staring .= '<a href="' . esc_url(get_tag_link ($tag->term_id)) . '">' . ucwords($tag->name) . '</a>';
 		  	if(++$i !== $numItems) {
 	    		$staring .= ', ';
 	  		}
