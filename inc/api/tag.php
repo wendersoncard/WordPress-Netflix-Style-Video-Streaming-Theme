@@ -32,7 +32,7 @@ function tag_api_post() {
     );
 
     $loop = new WP_Query($args);
-    if (is_user_logged_in() && $loop->post_count > 0) {
+    if ($loop->post_count > 0) {
 
     	// Only run if user is logged in
         if ($loop->have_posts()):
