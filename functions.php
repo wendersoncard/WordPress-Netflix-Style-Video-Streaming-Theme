@@ -16,7 +16,7 @@ add_filter('show_admin_bar', '__return_false');
  */
 if ( ! function_exists ( 's3bubble_cache_version' ) ) {
     function s3bubble_cache_version() {
-        return 21;
+        return 22;
     }
 }
 
