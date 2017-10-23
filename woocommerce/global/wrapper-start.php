@@ -21,4 +21,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <main class="cd-main-content streamium-page">
-<div class="container-fluid">
+	<div class="container-fluid">
