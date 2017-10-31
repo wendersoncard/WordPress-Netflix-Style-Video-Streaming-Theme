@@ -437,3 +437,17 @@ function streamium_body_class( $classes ) {
     return $classes;
 }
 add_action( 'body_class', 'streamium_body_class');
+
+/**
+ *
+ * @param Checks for ssl returns https if needed
+ * @param int $p
+ * @return filter
+ */
+function get_theme_mod_ssl($mod_name){
+    if (is_ssl()) {
+      return str_replace(array('http:', 'https:'), '', get_theme_mod($mod_name));
+    }else{
+      return get_theme_mod($mod_name);
+    }
+}
