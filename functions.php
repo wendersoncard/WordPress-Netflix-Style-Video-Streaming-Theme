@@ -162,6 +162,17 @@ if (!function_exists('streamium_enqueue_scripts')) {
                 'tile_count' => s3bubble_tile_count(),
                 'read_more' => __('read more', 'streamium'),
                 'autoplay_slider' => get_theme_mod( 'streamium_autoplay_home_slider', false ),
+                'continue_watching' => __('Continue Watching', 'streamium'),
+                'view_all' => __('View all', 'streamium'),
+                'swal_error' => __('Error', 'streamium'),
+                'swal_success' => __('Success', 'streamium'),
+                'swal_ok' => __('Ok', 'streamium'),
+                'swal_cancel' => __('Cancel', 'streamium'),
+                'swal_ok_got_it' => __('Ok, got it!', 'streamium'),
+                'swal_glad_you_liked_it' => __('Great Glad You Liked It', 'streamium'),
+                'swal_tell_us_why' => __('Please tell us why', 'streamium'),
+                'swal_write_something' => __('Write something', 'streamium'),
+                'swal_enter_chars' => __('Please enter over 100 characters!', 'streamium'),
             )
         );
  
