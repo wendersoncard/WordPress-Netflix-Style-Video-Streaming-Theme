@@ -43,7 +43,7 @@ function streamium_single_video_scripts() {
 		}
 
 		$title = $post->post_title;
-		$excerpt = trim(stripslashes(strip_tags($post->post_excerpt)));
+		$excerpt = wp_trim_words( strip_tags($post->post_excerpt), $num_words = 21, $more = null ); 
 		$count = 0;
 		$back = false;
 
@@ -61,7 +61,7 @@ function streamium_single_video_scripts() {
 
 			// Grab synopsis
 			$title = $episodes[$id]['titles'];
-			$excerpt = trim(stripslashes(strip_tags($episodes[$id]['descriptions'])));
+			$excerpt = wp_trim_words( strip_tags($episodes[$id]['descriptions']), $num_words = 21, $more = null );
 			$resume = 0;
 			$count = count($episodes);
 			$back = get_site_url();
