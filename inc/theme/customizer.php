@@ -255,8 +255,8 @@ class Streamium_Customize
 
       // Autoplay slider
       $wp_customize->add_setting('streamium_autoplay_home_slider', array(
-                'default'    => false
-            ));
+          'default'    => false
+      ));
 
       $wp_customize->add_control(
           new WP_Customize_Control(
@@ -266,6 +266,24 @@ class Streamium_Customize
                   'label'     => __('Autoplay Home Slider', 'streamium'),
                   'section'   => 'title_tagline',
                   'settings'  => 'streamium_autoplay_home_slider',
+                  'type'      => 'checkbox',
+              )
+          )
+      );
+      
+      // Disable the right click for developer
+      $wp_customize->add_setting('streamium_enable_right_click', array(
+          'default'    => false
+      ));
+
+      $wp_customize->add_control(
+          new WP_Customize_Control(
+              $wp_customize,
+              'streamium_enable_right_click',
+              array(
+                  'label'     => __('Enable The Video Right CLick', 'streamium'),
+                  'section'   => 'title_tagline',
+                  'settings'  => 'streamium_enable_right_click',
                   'type'      => 'checkbox',
               )
           )

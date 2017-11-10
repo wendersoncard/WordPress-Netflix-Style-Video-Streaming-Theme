@@ -379,7 +379,9 @@ function orderCodes($postId) {
   $codes = [];
   foreach ($firstSort as $key => $flatten) {
     foreach ($flatten as $key => $value) {
-      $codes[] = $value['codes'];
+      
+      $codes[] = (isset($value['service']) && $value['service'] != '') ? $value['service'] : $value['codes'];
+
     }
   }
 

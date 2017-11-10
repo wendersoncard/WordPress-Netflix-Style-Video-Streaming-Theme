@@ -21,7 +21,7 @@ function streamium_video_code_meta_box_add(){
     add_meta_box( 'streamium-meta-box-live-streams', 'Live Streams', 'streamium_meta_box_live_streams', array('stream'), 'side', 'high' );
 
     // Global extra meta
-    add_meta_box( 'streamium-meta-box-extra-meta', 'Extra Video Tile Meta', 'streamium_meta_box_extra_meta', array('movie', 'tv','sport','kid','stream'), 'side', 'high' );
+    add_meta_box( 'streamium-meta-box-extra-meta', 'Extra Video Tile Meta', 'streamium_meta_box_extra_meta', array('movie', 'tv','sport','kid','stream'), 'normal', 'high' );
 
 }
 
@@ -40,11 +40,13 @@ function streamium_meta_box_youtube(){
     $values = get_post_custom( $post->ID );
     $text = isset( $values['s3bubble_video_youtube_code_meta_box_text'] ) ? $values['s3bubble_video_youtube_code_meta_box_text'][0] : '';
     wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
-
+    //<img style="width: 100%;" src="/production/img/vy.png" />
     ?>
-    <img style="width: 100%;" src="<?php echo get_template_directory_uri(); ?>/production/img/vy.png" />
+    
+
     <p class="streamium-meta-box-wrapper">
-        <input type="text" name="s3bubble_video_youtube_code_meta_box_text" class="form-control" id="s3bubble_video_youtube_code_meta_box_text" value="<?php echo $text; ?>" />
+        <input type="text" name="s3bubble_video_youtube_code_meta_box_text" class="form-control
+        " id="s3bubble_video_youtube_code_meta_box_text" value="<?php echo $text; ?>" />
         
     </p>
 
@@ -183,7 +185,6 @@ function streamium_repeatable_meta_box_display() {
         foreach ( streamGroupSeasons($repeatable_fields,'seasons') as $seasons ) {
 
             foreach ( $seasons as $field ) {
-
             
     ?>
         <li class="streamium-repeater-list">
@@ -191,7 +192,7 @@ function streamium_repeatable_meta_box_display() {
                 <p>
                     <label>Video Image</label>
                     <input type="hidden" class="widefat" name="thumbnails[]" value="<?php if($field['thumbnails'] != '') echo esc_attr( $field['thumbnails'] ); ?>" />
-                    <img src="<?php if($field['thumbnails'] != '') echo esc_attr( $field['thumbnails'] ); ?>" />
+                    <img src="<?php if(isset($field['thumbnails']) && $field['thumbnails'] != '') echo esc_attr( $field['thumbnails'] ); ?>" />
                     <input class="streamium_upl_button button" type="button" value="Upload Image" />
                 </p> 
             </div>
@@ -204,7 +205,7 @@ function streamium_repeatable_meta_box_display() {
                 </p>
                 <p>
                     <label>Video List Position</label>
-                    <input type="text" class="widefat" name="positions[]" onkeypress="return event.charCode >= 48 && event.charCode <= 57" value="<?php if($field['positions'] != '') echo esc_attr( $field['positions'] ); ?>" />
+                    <input type="text" class="widefat" name="positions[]" onkeypress="return event.charCode >= 48 && event.charCode <= 57" value="<?php if(isset($field['positions']) && $field['positions'] != '') echo esc_attr( $field['positions'] ); ?>" />
                 </p>
                 <p>
                     <label>Video Code</label>
@@ -213,12 +214,16 @@ function streamium_repeatable_meta_box_display() {
                     </select>
                 </p>
                 <p>
+                    <label>Alternative Service Url</label>
+                    <input type="text" class="widefat" name="service[]" value="<?php if(isset($field['service']) && $field['service'] != '') echo esc_attr( $field['service'] ); ?>" />
+                </p>
+                <p>
                     <label>Video Title</label>
-                    <input type="text" class="widefat" name="titles[]" value="<?php if($field['titles'] != '') echo esc_attr( $field['titles'] ); ?>" />
+                    <input type="text" class="widefat" name="titles[]" value="<?php if(isset($field['titles']) && $field['titles'] != '') echo esc_attr( $field['titles'] ); ?>" />
                 </p>
                 <p>
                     <label>Video Description</label>
-                    <textarea rows="4" cols="50" class="widefat" name="descriptions[]" value=""><?php if ($field['descriptions'] != '') echo esc_attr( $field['descriptions'] ); else echo ''; ?></textarea>
+                    <textarea rows="4" cols="50" class="widefat" name="descriptions[]" value=""><?php if (isset($field['descriptions']) && $field['descriptions'] != '') echo esc_attr( $field['descriptions'] ); else echo ''; ?></textarea>
                 </p>
                 <a class="button streamium-repeater-remove-row" href="#">Remove</a>
             </div>
@@ -258,6 +263,10 @@ function streamium_repeatable_meta_box_display() {
                 <p>
                     <label>Video Code</label>
                     <select class="streamium-theme-episode-select chosen-select" style="width: 50px !important;" tabindex="1" name="codes[]"></select>
+                </p>
+                <p>
+                    <label>Alternative Service Url</label>
+                    <input type="text" class="widefat" name="service[]" />
                 </p>
                 <p>
                     <label>Video Title</label>
@@ -435,6 +444,7 @@ function streamium_post_meta_box_save( $post_id )
         $positions    = isset($_POST['positions']) ? $_POST['positions'] : "";
         $titles       = isset($_POST['titles']) ? $_POST['titles'] : "";
         $codes        = isset($_POST['codes']) ? $_POST['codes'] : "";
+        $service        = isset($_POST['service']) ? $_POST['service'] : "";
         $descriptions = isset($_POST['descriptions']) ? $_POST['descriptions'] : "";
         
         $count = count( $titles );
@@ -447,6 +457,7 @@ function streamium_post_meta_box_save( $post_id )
             $new[$i]['positions'] = trim(stripslashes( strip_tags( $positions[$i] ) ));
             $new[$i]['titles'] = trim(stripslashes( strip_tags( $titles[$i] ) ));
             $new[$i]['codes'] = $codes[$i];
+            $new[$i]['service'] = $service[$i];
             $new[$i]['descriptions'] = trim(stripslashes( $descriptions[$i] ));
 
           endif;

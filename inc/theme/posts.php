@@ -42,13 +42,30 @@ function streamium_single_video_scripts() {
 			$resume = 0;
 		}
 
-		// Check if this post has programs
-		$episodes = orderCodes(get_the_ID());
-		if($episodes) {
+		$title = $post->post_title;
+		$excerpt = trim(stripslashes(strip_tags($post->post_excerpt)));
+		$count = 0;
+		$back = false;
 
-			$codes = $episodes['codes'];
+		// Check if this post has programs
+		$episodes = get_post_meta(get_the_ID(), 'repeatable_fields' , true);
+		$id = isset($_GET['v']) ? $_GET['v'] : 0;
+		if( $episodes ){
+
+			if(!empty($episodes[$id]['service'])){
+				$youtube = true;
+				$codes[] = $episodes[$id]['service'];
+			}else{
+				$codes[] = $episodes[$id]['codes'];
+			}
+
+			// Grab synopsis
+			$title = $episodes[$id]['titles'];
+			$excerpt = trim(stripslashes(strip_tags($episodes[$id]['descriptions'])));
 			$resume = 0;
-		
+			$count = count($episodes);
+			$back = get_site_url();
+
 		}else{
 
 			if(!empty($youtubeCode)){
@@ -57,7 +74,7 @@ function streamium_single_video_scripts() {
 			}else{
 				$codes[] = $s3videoid;
 			}
-			
+
 		}
 		
 		// Check if global adverts are setup
@@ -70,9 +87,12 @@ function streamium_single_video_scripts() {
         wp_localize_script( 'streamium-production', 'video_post_object', 
             array( 
                 'post_id' => $post->ID,
+                'index' => $id,
+                'count' => $count,
+                'back' => $back,
                 'subTitle' => "You're watching",
-                'title' => $post->post_title,
-                'para' => trim(stripslashes(strip_tags($post->post_excerpt))),
+                'title' => $title,
+                'para' => $excerpt,
                 'percentage' => $resume,
                 'codes' => $codes,
                 'brand_sliders' => get_theme_mod( 'link_textcolor', 'red' ),
@@ -83,7 +103,6 @@ function streamium_single_video_scripts() {
                 'youtube' => $youtube,
                 'vpaid' => $globalAdvertisements,
                 'poster' => esc_url($poster[0]),
-                'skip' => isset($_GET['v']) ? $_GET['v'] : 0,
                 'nonce' => $nonce
             )
         ); 
