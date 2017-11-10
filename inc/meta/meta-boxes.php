@@ -45,9 +45,7 @@ function streamium_meta_box_youtube(){
     
 
     <p class="streamium-meta-box-wrapper">
-        <input type="text" name="s3bubble_video_youtube_code_meta_box_text" class="form-control
-        " id="s3bubble_video_youtube_code_meta_box_text" value="<?php echo $text; ?>" />
-        
+        <input type="text" name="s3bubble_video_youtube_code_meta_box_text" class="widefat" id="s3bubble_video_youtube_code_meta_box_text" value="<?php echo $text; ?>" />
     </p>
 
     <?php    
@@ -77,7 +75,7 @@ function streamium_meta_box_movie(){
 
         <?php 
 
-          echo !empty($text) ? "<div class='streamium-current-url'>Main video code: " . $text . "</div>" : "<div class='streamium-current-url-info'>No video selected. Please select a video to show as your main movie.</div>";
+          echo !empty($text) ? "<div class='streamium-current-url'>Main video code: " . $text . "</div>" : "<div class='streamium-current-url-info'>Please select a video to show as the main movie.</div>";
 
         ?>
     </p>
@@ -110,7 +108,7 @@ function streamium_meta_box_trailer(){
                 <option value="">Remove Current Video</option>
             </select>
 
-            <?php echo !empty($text) ? "<div class='streamium-current-url'>Premium video code: " . $text . "</div>" : "<div class='streamium-current-url-info'>No video selected. Select a trailer to allow your users to preview a video first via the watch trailer button.</div>"; ?>
+            <?php echo !empty($text) ? "<div class='streamium-current-url'>Premium video code: " . $text . "</div>" : "<div class='streamium-current-url-info'>Select a trailer to allow your users to preview a video first via the watch trailer button.</div>"; ?>
           
         <?php else : ?>
           
@@ -146,7 +144,7 @@ function streamium_meta_box_bgvideo(){
                 <option value="">Remove Current Video</option>
             </select>
 
-            <?php echo !empty($text) ? "<div class='streamium-current-url'>Premium video code: " . $text . "</div>" : "<div class='streamium-current-url-info'>No video selected. This will display a background video on the homepage slider if your post is set to Sticky.</div>"; ?>
+            <?php echo !empty($text) ? "<div class='streamium-current-url'>Premium video code: " . $text . "</div>" : "<div class='streamium-current-url-info'>This will display a background video on the homepage slider.</div>"; ?>
           
         <?php else : ?>
           
@@ -208,14 +206,14 @@ function streamium_repeatable_meta_box_display() {
                     <input type="text" class="widefat" name="positions[]" onkeypress="return event.charCode >= 48 && event.charCode <= 57" value="<?php if(isset($field['positions']) && $field['positions'] != '') echo esc_attr( $field['positions'] ); ?>" />
                 </p>
                 <p>
-                    <label>Video Code</label>
+                    <label>S3Bubble AWS Video</label>
                     <select class="streamium-theme-episode-select chosen-select" tabindex="1" name="codes[]">
                         <option value="<?php echo $field['codes']; ?>">Select Video <?php echo $field['codes']; ?></option>
                     </select>
                 </p>
                 <p>
-                    <label>Alternative Service Url</label>
-                    <input type="text" class="widefat" name="service[]" value="<?php if(isset($field['service']) && $field['service'] != '') echo esc_attr( $field['service'] ); ?>" />
+                    <label>Alternative Service Url (This will overwrite the S3Bubble AWS video)</label>
+                    <input type="text" class="widefat" name="service[]" value="<?php if(isset($field['service']) && $field['service'] != '') echo esc_attr( $field['service'] ); ?>" placeholder="Enter a full vimeo or youtube url" />
                 </p>
                 <p>
                     <label>Video Title</label>
@@ -265,16 +263,16 @@ function streamium_repeatable_meta_box_display() {
                     <select class="streamium-theme-episode-select chosen-select" style="width: 50px !important;" tabindex="1" name="codes[]"></select>
                 </p>
                 <p>
-                    <label>Alternative Service Url</label>
-                    <input type="text" class="widefat" name="service[]" />
+                    <label>Alternative Service Url (This will overwrite the S3Bubble AWS video)</label>
+                    <input type="text" class="widefat" name="service[]" placeholder="Enter a full vimeo or youtube url" />
                 </p>
-                <p>
+                <p> 
                     <label>Video Title</label>
-                    <input type="text" class="widefat" name="titles[]" />
+                    <input type="text" class="widefat" name="titles[]" placeholder="Enter video title" />
                 </p>
                 <p>
                     <label>Video Description</label>
-                    <textarea rows="4" cols="50" class="widefat" name="descriptions[]" value=""></textarea>
+                    <textarea rows="4" cols="50" class="widefat" name="descriptions[]" placeholder="Enter video description"></textarea>
                 </p>
                 <a class="button streamium-repeater-remove-row" href="#">Remove</a>
             </div>
@@ -362,7 +360,7 @@ function streamium_meta_box_extra_meta() {
     ?>
     <p class="streamium-meta-box-wrapper">
 
-        <input type="text" name="streamium_extra_meta_meta_box_text" class="form-control" id="streamium_extra_meta_meta_box_text" value="<?php echo $text; ?>" />
+        <input type="text" name="streamium_extra_meta_meta_box_text" class="widefat" id="streamium_extra_meta_meta_box_text" value="<?php echo $text; ?>" />
 
     </p>
 
