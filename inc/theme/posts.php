@@ -18,7 +18,6 @@ function streamium_single_video_scripts() {
     	$youtube = false;
     	$youtubeCode = get_post_meta( $post->ID, 's3bubble_video_youtube_code_meta_box_text', true );
     	$stream = get_post_meta( $post->ID, 'streamium_live_stream_meta_box_text', true );
-    	$streamiumVideoTrailer = get_post_meta( $post->ID, 'streamium_video_trailer_meta_box_text', true );
     	$poster   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-home-slider' ); 
     	
     	if(is_user_logged_in()){
@@ -36,18 +35,12 @@ function streamium_single_video_scripts() {
 		// Check for resume
 		$resume = !empty($percentageWatched) ? $percentageWatched : 0;
 
-		// Check for a video trailer
-		if(isset($_GET['trailer']) && isset($streamiumVideoTrailer)){
-			$codes[] = $streamiumVideoTrailer;
-			$resume = 0;
-		}
-
 		$title = $post->post_title;
 		$excerpt = wp_trim_words( strip_tags($post->post_excerpt), $num_words = 21, $more = null ); 
 		$count = 0;
 		$back = false;
 
-		// Check if this post has programs
+		// Not a trailer continue logic
 		$episodes = get_post_meta(get_the_ID(), 'repeatable_fields' , true);
 		$id = isset($_GET['v']) ? $_GET['v'] : 0;
 		if( $episodes ){
@@ -76,7 +69,7 @@ function streamium_single_video_scripts() {
 			}
 
 		}
-		
+
 		// Check if global adverts are setup
 		$globalAdvertisements = "";
 		if(get_theme_mod( 'streamium_advertisement_enabled' )){
@@ -232,6 +225,9 @@ function streamium_get_dynamic_content() {
             // Setup content
             $content = strip_tags($post_object->post_content);
 
+            // Watch preview
+            $streamiumVideoTrailer = get_post_meta( $postId, 'streamium_video_trailer_meta_box_text', true );
+
 	    	echo json_encode(
 		    	array(
 		    		'error' => false,
@@ -243,6 +239,7 @@ function streamium_get_dynamic_content() {
 		    		'bgimage' =>  isset($fullImage) ? $fullImage : "",
 		    		'trailer' => $streamiumVideoTrailer,
 		    		'href' => get_permalink($postId),
+		    		'preview' => $streamiumVideoTrailer,
 		    		'post' => $post_object
 		    	)
 		    );
