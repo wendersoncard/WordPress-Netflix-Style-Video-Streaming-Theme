@@ -30,10 +30,6 @@
 
 </head> 
 <body <?php body_class(); ?>>
-<<<<<<< HEAD
-	
-	<!--<div class="streamium-loading">Loading&#8230;</div>-->
-=======
 
 	<?php 
 		if ( get_theme_mod( 'streamium_enable_loader' ) && is_home() ) : 
@@ -42,17 +38,12 @@
 	<?php
 		endif; 
 	?>
->>>>>>> version2
 
 	<header class="cd-main-header fixed">
 
 		<?php if ( get_theme_mod( 'streamium_logo' ) ) : ?>
 
-<<<<<<< HEAD
-		    <a class="cd-logo" href="<?php echo esc_url( home_url('/') ); ?>"><img src='<?php echo esc_url( get_theme_mod( 'streamium_logo' ) ); ?>' alt='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>'></a>
-=======
 		    <a class="cd-logo" href="<?php echo esc_url( home_url('/') ); ?>"><img src='<?php echo esc_url( get_theme_mod_ssl( 'streamium_logo' ) ); ?>' alt='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>'></a>
->>>>>>> version2
 
 		<?php else : ?>
 
@@ -60,8 +51,6 @@
 
 		<?php endif; ?>
 
-<<<<<<< HEAD
-=======
 		<nav class="cd-nav">
 			<ul id="cd-primary-nav" class="cd-primary-nav is-fixed">
 
@@ -206,7 +195,6 @@
 			</ul> <!-- primary-nav -->
 		</nav> <!-- cd-nav -->
 
->>>>>>> version2
 		<ul class="cd-header-buttons">
 			<li><a class="cd-search-trigger" href="#cd-search"><?php _e( 'Search', 'streamium' ); ?><span></span></a></li>
 			<li><a class="cd-nav-trigger" href="#cd-primary-nav"><?php _e( 'Menu', 'streamium' ); ?><span></span></a></li>

@@ -148,10 +148,10 @@ function streamium_get_dynamic_content() {
 				  	if(++$i !== $numItems) {
 			    		$staring .= ', ';
 			  		}
-
+ 
 			    }
 			    $buildMeta .= '<li class="synopis-meta-spacer">' . $staring . '</li>';
-			} 
+			}
 			
 			// Cats
 			$query = get_post_taxonomies( $postId );
@@ -202,16 +202,7 @@ function streamium_get_dynamic_content() {
 							</div>';
 
 		    }
-<<<<<<< HEAD
-
-		    $content = $post_object->post_content . $buildMeta . $like_text;
-		    if(streamium_get_device('device') != 'desktop'){
-		    	$content = (empty($post_object->post_excerpt) ? strip_tags($post_object->post_content) : $post_object->post_excerpt);
-		    }
-	    	$fullImage  = wp_get_attachment_image_src( get_post_thumbnail_id( $postId ), 'streamium-video-tile-expanded' ); 
-=======
  
->>>>>>> version2
 	    	$streamiumVideoTrailer = get_post_meta( $postId, 'streamium_video_trailer_meta_box_text', true );
 
 	    	$fullImage  = wp_get_attachment_image_url( get_post_thumbnail_id( $postId ), 'streamium-video-tile-large-expanded' );

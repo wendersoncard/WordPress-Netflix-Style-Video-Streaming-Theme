@@ -34,11 +34,7 @@ if (!function_exists('streamium_theme_setup')) {
 
         // Create aspects based on average
         $averageBrowserWidth = 1366;
-<<<<<<< HEAD
-        $width = round($averageBrowserWidth/5); // sets up a average width based on tiles currently 5 
-=======
         $width = round($averageBrowserWidth/s3bubble_tile_count()); 
->>>>>>> version2
         $height = round($width/16*9);
  
         add_theme_support('post-thumbnails');
@@ -120,20 +116,6 @@ if ( ! function_exists ( 'streamium_extra_image_sizes' ) ) {
     add_filter('image_size_names_choose', 'streamium_extra_image_sizes');
 }
 
-<<<<<<< HEAD
-add_action('after_setup_theme', 'streamium_theme_setup');
-
-/*-----------------------------------------------------------------------------------*/
-/*	Register javascript and css
-/*-----------------------------------------------------------------------------------*/
-if (!function_exists('streamium_enqueue_scripts')) {
-    function streamium_enqueue_scripts()
-    {
-
-        /* Register styles -----------------------------------------------------*/
-        wp_enqueue_style('streamium-styles', get_stylesheet_uri());
-        wp_enqueue_style('streamium-production', get_template_directory_uri() . '/production/css/streamium.min.css');
-=======
 /**
  * Include the main js and css files
  *
@@ -155,16 +137,13 @@ if (!function_exists('streamium_enqueue_scripts')) {
             $custom_css = ".tile_payment_details{display: none !important;}";
             wp_add_inline_style( 'streamium-styles', $custom_css );
         }
->>>>>>> version2
 
         /* Register scripts -----------------------------------------------------*/
         wp_enqueue_script('plupload');
-        wp_enqueue_script('streamium-production', get_template_directory_uri() . '/production/js/streamium.min.js', array( 'jquery' ), '1.1', true);
+        wp_enqueue_script('streamium-production', get_template_directory_uri() . '/production/js/streamium.min.js', array( 'jquery' ), s3bubble_cache_version(), true);
+
         wp_localize_script('streamium-production', 'streamium_object',
             array(
-<<<<<<< HEAD
-                'ajax_url' => admin_url('admin-ajax.php')
-=======
                 'ajax_url' => admin_url('admin-ajax.php'),
                 'recently_watched_api_nonce' => wp_create_nonce("recently_watched_api_nonce"),
                 'custom_api_nonce' => wp_create_nonce("custom_api_nonce"),
@@ -198,7 +177,6 @@ if (!function_exists('streamium_enqueue_scripts')) {
                 'brand_control' => get_theme_mod( 'streamium_background_color', 'black' ),
                 'brand_icons' => get_theme_mod( 'streamium_carousel_heading_color', 'white' ),
                 'brand_social' => get_theme_mod( 'streamium_enable_video_social', false ),
->>>>>>> version2
             )
         );
  
@@ -206,16 +184,6 @@ if (!function_exists('streamium_enqueue_scripts')) {
         wp_enqueue_style('streamium-s3bubble-cdn', get_template_directory_uri() . '/production/css/s3bubble.min.css', array(), s3bubble_cache_version());
         wp_enqueue_script('streamium-s3bubble-cdn', get_template_directory_uri() . '/production/js/s3bubble.min.js', '', s3bubble_cache_version(), true);
 
-<<<<<<< HEAD
-        // Local
-        //wp_enqueue_style('streamium-s3bubble-cdn', 'http://local.hosted.com/assets/hosted/s3bubble.min.css');
-        //wp_enqueue_script( 'streamium-s3bubble-cdn', 'http://local.hosted.com/assets/hosted/s3bubble.min.js', array( 'jquery'),'1.1', true );
-
-        // Live
-        wp_enqueue_style('streamium-s3bubble-cdn', '//s3.amazonaws.com/aws-hosted/s3bubble.min.css');
-        wp_enqueue_script('streamium-s3bubble-cdn', '//s3.amazonaws.com/aws-hosted/s3bubble.min.js', '', '1.1', true);
-=======
->>>>>>> version2
     }
 
     add_action('wp_enqueue_scripts', 'streamium_enqueue_scripts');
@@ -233,7 +201,7 @@ if (!function_exists('streamium_enqueue_admin_scripts')) {
         $streamium_connected_website = get_option("streamium_connected_website");
         $streamium_connected_nonce = wp_create_nonce('streamium_connected_nonce');
         wp_enqueue_style('streamium-admin', get_template_directory_uri() . '/production/css/admin.min.css', array());
-        wp_enqueue_script('streamium-admin', get_template_directory_uri() . '/production/js/admin.min.js', array( 'jquery'), '1.1', true);
+        wp_enqueue_script('streamium-admin', get_template_directory_uri() . '/production/js/admin.min.js', array( 'jquery'), '1.2', true);
         wp_localize_script('streamium-admin', 'streamium_meta_object', array(
         'ajax_url' => admin_url('admin-ajax.php'),
         'api' => 'https://s3bubbleapi.com', // https://s3bubbleapi.com http://local.hosted.com leave of the trailing slash

@@ -19,12 +19,6 @@
 
 			}
 
-<<<<<<< HEAD
-		if (in_array($type, array('movie', 'tv','sport','kid'))) {
-		    
-		    $episodes = get_post_meta(get_the_ID(), 'repeatable_fields' , true);
-			if(!empty($episodes)) :
-=======
 			if($type === "stream"){
 
 				get_template_part( 'templates/content', 'live' );
@@ -32,7 +26,6 @@
 			}
 
 			if (in_array($type, array('movie', 'tv','sport','kid'))) {
->>>>>>> version2
 
 				get_template_part( 'templates/content', 'single' );
 
