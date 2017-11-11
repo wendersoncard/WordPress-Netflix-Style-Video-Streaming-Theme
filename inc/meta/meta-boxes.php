@@ -77,6 +77,7 @@ function streamium_meta_box_trailer(){
     $values = get_post_custom( $post->ID );
     $text = isset( $values['streamium_video_trailer_meta_box_text'] ) ? $values['streamium_video_trailer_meta_box_text'][0] : '';
     $service = isset( $values['s3bubble_video_trailer_youtube_code_meta_box_text'] ) ? $values['s3bubble_video_trailer_youtube_code_meta_box_text'][0] : '';
+    $button = isset( $values['s3bubble_video_trailer_button_text_meta_box_text'] ) ? $values['s3bubble_video_trailer_button_text_meta_box_text'][0] : 'Watch Trailer';
 
     // We'll use this nonce field later on when saving.
     wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
@@ -93,6 +94,11 @@ function streamium_meta_box_trailer(){
         <p class="streamium-meta-box-wrapper">
             <label>Youtube/Vimeo/Dailymotion Direct Link</label>
             <input type="text" name="s3bubble_video_trailer_youtube_code_meta_box_text" class="widefat" id="s3bubble_video_trailer_youtube_code_meta_box_text" value="<?php echo $service; ?>" placeholder="Enter service url" />
+        </p>
+
+        <p class="streamium-meta-box-wrapper">
+            <label>Change Button Text</label>
+            <input type="text" name="s3bubble_video_trailer_button_text_meta_box_text" class="widefat" id="s3bubble_video_trailer_button_text_meta_box_text" value="<?php echo $button; ?>" placeholder="Enter button text" />
         </p>
 
     <?php else : ?>
@@ -388,6 +394,12 @@ function streamium_post_meta_box_save( $post_id )
         if( isset( $_POST['s3bubble_video_trailer_youtube_code_meta_box_text'] ) ){
 
             update_post_meta( $post_id, 's3bubble_video_trailer_youtube_code_meta_box_text', $_POST['s3bubble_video_trailer_youtube_code_meta_box_text'] );
+
+        }
+
+        if( isset( $_POST['s3bubble_video_trailer_button_text_meta_box_text'] ) ){
+
+            update_post_meta( $post_id, 's3bubble_video_trailer_button_text_meta_box_text', $_POST['s3bubble_video_trailer_button_text_meta_box_text'] );
 
         }
 

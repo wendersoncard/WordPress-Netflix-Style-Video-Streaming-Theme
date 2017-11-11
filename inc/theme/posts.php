@@ -227,6 +227,13 @@ function streamium_get_dynamic_content() {
             	 $streamiumVideoTrailer = get_post_meta( $postId, 's3bubble_video_trailer_youtube_code_meta_box_text', true );
             }
 
+
+            // Trailer button text
+            $streamiumVideoTrailerBtnText = __( 'Watch Trailer', 'streamium' );
+            if(get_post_meta( $postId, 's3bubble_video_trailer_button_text_meta_box_text', true )){
+            	 $streamiumVideoTrailerBtnText = get_post_meta( $postId, 's3bubble_video_trailer_button_text_meta_box_text', true );
+            }
+
 	    	echo json_encode(
 		    	array(
 		    		'error' => false,
@@ -239,6 +246,7 @@ function streamium_get_dynamic_content() {
 		    		'trailer' => $streamiumVideoTrailer,
 		    		'href' => get_permalink($postId),
 		    		'preview' => $streamiumVideoTrailer,
+		    		'trailer_btn_text' => $streamiumVideoTrailerBtnText,
 		    		'post' => $post_object
 		    	)
 		    );
@@ -374,3 +382,32 @@ function streamium_custom_post_types_general( $hook_suffix ){
 }
 
 add_action( 'admin_enqueue_scripts', 'streamium_custom_post_types_general');
+
+
+// ONLY MOVIE CUSTOM TYPE POSTS
+add_filter('manage_posts_columns', 'streamium_columns_main_slider', 1);
+add_action('manage_posts_custom_column', 'streamium_columns_main_slider_content', 10, 2);
+ 
+// CREATE TWO FUNCTIONS TO HANDLE THE COLUMN
+function streamium_columns_main_slider($columns) { 
+    
+    $new = array();
+  	foreach($columns as $key => $title) {
+    	if ($key=='author') // Put the Thumbnail column before the Author column
+      	$new['main_slider'] = 'Main Slider';
+    	$new[$key] = $title;
+  	}
+  	return $new;
+  	
+
+}
+function streamium_columns_main_slider_content($column_name, $post_ID) {
+
+    if ($column_name == 'main_slider') {
+
+        $main_slider = get_post_meta( $post_ID, 'streamium_slider_featured_checkbox_value', true );
+        echo '<b>' . ucfirst($main_slider) . '</b>';
+
+    }
+
+}

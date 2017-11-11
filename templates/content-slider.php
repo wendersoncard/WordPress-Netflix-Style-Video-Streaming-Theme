@@ -35,10 +35,18 @@
 				$nonce = wp_create_nonce( 'streamium_likes_nonce' );
 		        $link = admin_url('admin-ajax.php?action=streamium_likes&post_id='.get_the_ID().'&nonce='.$nonce);
 		        $content = wp_trim_words( strip_tags(get_the_content()), 15, ' <a class="show-more-content" data-id="' . get_the_ID() . '">' . __( 'read more', 'streamium' ) . '</a>' );
+
+		        
 		        // Watch preview
 	            $streamiumVideoTrailer = get_post_meta( get_the_ID(), 'streamium_video_trailer_meta_box_text', true );
 	            if(get_post_meta( get_the_ID(), 's3bubble_video_trailer_youtube_code_meta_box_text', true )){
 	            	 $streamiumVideoTrailer = get_post_meta( get_the_ID(), 's3bubble_video_trailer_youtube_code_meta_box_text', true );
+	            }
+
+	            // Trailer button text
+	            $streamiumVideoTrailerBtnText = __( 'Watch Trailer', 'streamium' );
+	            if(get_post_meta( get_the_ID(), 's3bubble_video_trailer_button_text_meta_box_text', true )){
+	            	 $streamiumVideoTrailerBtnText = get_post_meta( get_the_ID(), 's3bubble_video_trailer_button_text_meta_box_text', true );
 	            }
 
 		?>
@@ -86,7 +94,7 @@
 						        	</div>
 					        	</a>
 					        	<?php if ( ! empty( $streamiumVideoTrailer ) && get_theme_mod( 'streamium_enable_premium' ) ) : ?>
-						        	<a class="synopis-video-trailer synopis-video-trailer-content streamium-btns hidden-xs" href="#" data-code="<?php echo $streamiumVideoTrailer; ?>"><?php _e( 'Watch Trailer', 'streamium' ); ?></a>
+						        	<a class="synopis-video-trailer synopis-video-trailer-content streamium-btns hidden-xs" href="#" data-code="<?php echo $streamiumVideoTrailer; ?>"><?php echo $streamiumVideoTrailerBtnText; ?></a>
 						        <?php endif; ?>
 							</div>
 						</div>
@@ -136,7 +144,7 @@
 						        	</div>
 					        	</a>
 					        	<?php if ( ! empty( $streamiumVideoTrailer ) && get_theme_mod( 'streamium_enable_premium' ) ) : ?>
-						        	<a class="synopis-video-trailer synopis-video-trailer-content streamium-btns hidden-xs" href="#" data-code="<?php echo $streamiumVideoTrailer; ?>"><?php _e( 'Watch Trailer', 'streamium' ); ?></a>
+						        	<a class="synopis-video-trailer synopis-video-trailer-content streamium-btns hidden-xs" href="#" data-code="<?php echo $streamiumVideoTrailer; ?>"><?php echo $streamiumVideoTrailerBtnText; ?></a>
 						        <?php endif; ?>
 							</div>
 						</div>
