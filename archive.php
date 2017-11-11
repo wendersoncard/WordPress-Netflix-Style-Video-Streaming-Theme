@@ -1,12 +1,11 @@
 <?php get_header(); ?>
-	<main class="cd-main-content">
-		<section class="streamium-slider">
-			<?php 
- 				
- 				$query = $wp_query->get_queried_object(); 
- 				$tax = isset($query->taxonomies[1]) ? $query->taxonomies[1] : "";
- 				$rewrite = (get_theme_mod( 'streamium_section_input_taxonomy_' . $tax )) ? get_theme_mod( 'streamium_section_input_taxonomy_' . $tax ) : $tax; 
+<<<<<<< HEAD
+=======
 
+>>>>>>> version2
+	<main class="cd-main-content">
+
+<<<<<<< HEAD
 				$args = array(
 					'post_status' => 'publish',
 					'posts_per_page' => -1,
@@ -82,9 +81,13 @@
 				wp_reset_query(); 
 			?>
 		</section><!--/.hero-->
+=======
+		<?php get_template_part('templates/archive', 'slider'); ?>
+>>>>>>> version2
 
 		<?php 
 
+<<<<<<< HEAD
 		  	$categories = get_terms( $tax, array('hide_empty' => false) );
 		  	foreach ($categories as $category) : 
 
@@ -207,5 +210,8 @@
 		?>
 
 		<div class="main-spacer"></div>
+=======
+	</main><!--/.main content-->
+>>>>>>> version2
 
 <?php get_footer(); ?>

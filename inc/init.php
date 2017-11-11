@@ -7,6 +7,7 @@ $incdir = get_template_directory() . '/inc/';
 /*	Load Theme Specific Helpers
 /*-----------------------------------------------------------------------------------*/
 
+require_once($incdir .'theme/multi-post-thumbnails.php');
 require_once($incdir .'meta/meta-boxes.php');
 require_once($incdir .'meta/recently-watched.php');
 require_once($incdir .'meta/movie-meta.php');
@@ -17,9 +18,23 @@ require_once($incdir .'theme/resume.php');
 require_once($incdir .'theme/posts.php');
 require_once($incdir .'theme/uploader.php');
 require_once($incdir .'theme/helpers.php');
+<<<<<<< HEAD
 require_once($incdir .'theme/mobileDetect.php');
 require_once($incdir .'theme/series.php');
 
+=======
+require_once($incdir .'theme/series.php'); 
+require_once($incdir .'theme/signed.php'); 
+
+// Api
+require_once($incdir .'api/recent.php');
+require_once($incdir .'api/custom.php');
+require_once($incdir .'api/home.php');
+require_once($incdir .'api/tax.php');
+require_once($incdir .'api/search.php');
+require_once($incdir .'api/tag.php'); 
+
+>>>>>>> version2
 // Only include if s2member is installed
 if ( class_exists( 'WooCommerce' ) ) {
 	require_once($incdir .'theme/woocommerce.php');

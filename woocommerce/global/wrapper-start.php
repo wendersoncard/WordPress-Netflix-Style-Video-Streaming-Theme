@@ -20,7 +20,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 ?>
-<main class="cd-main-content">
-	<div class="main-spacer"></div>
-		<div class="container">
-			<div class="row">
+<main class="cd-main-content streamium-page">
+	<div class="container-fluid">

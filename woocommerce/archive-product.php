@@ -19,15 +19,8 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
-
-
-/*if ( is_user_logged_in() ) : 
-	if ( wp_redirect( '/my-account/' ) ) {
-	    exit;
-	}
-endif; */
-
-get_header( 'shop' ); ?>
+ 
+get_header(); ?>
 
 	<?php
 		/**
@@ -40,34 +33,14 @@ get_header( 'shop' ); ?>
 		do_action( 'woocommerce_before_main_content' );
 	?>
 
+	<div id="grid">
+		<!-- width of .grid-sizer used for columnWidth -->
+ 		<div class="grid-sizer"></div>
 		<?php if ( have_posts() ) : ?>
-
-
-			<?php
-
-				switch ($wp_query->post_count) {
-					case 1:
-						$planClass = "col-sm-4 col-xs-12 col-md-offset-4"; 
-						break;
-					case 2:
-						$planClass = "col-sm-6 col-xs-12"; 
-						break;
-					case 3:
-						$planClass = "col-sm-4 col-xs-12"; 
-						break;
-					case 4:
-						$planClass = "col-sm-3 col-xs-12"; 
-						break;
-					default:
-						$planClass = "col-sm-4 col-xs-12"; 
-						break;
-				}
-			
-			?>
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
-			<div class="<?php echo $planClass; ?>">
+			<div class="grid-item">
 					<div class="streamium-plans">
 				<?php
 					/**
@@ -83,6 +56,8 @@ get_header( 'shop' ); ?>
 			</div>
 
 			<?php endwhile; // end of the loop. ?>
+
+			</div> <!-- end the row -->
 
 			<?php
 				/**
@@ -115,4 +90,38 @@ get_header( 'shop' ); ?>
 		do_action( 'woocommerce_after_main_content' );
 	?>
 
-<?php get_footer( 'shop' ); ?>
+	<script type="text/javascript">
+
+		jQuery(document).ready(function($) {
+			var $grid = $('#grid');
+
+		    $grid.isotope({
+		      	itemSelector: '.grid-item',
+		      	percentPosition: true,
+		      	initLayout: false
+		    });
+		    
+		    $grid.on( 'layoutComplete',
+			  function( event, laidOutItems ) {
+
+			  	if(laidOutItems.length === 1){
+			  		$('.grid-item').css({
+			  			position: "relative"
+			  		});
+			  	}
+
+			    $('.woocommerce span.onsale').fadeIn();
+			  }
+			);
+
+		    setTimeout(function(){
+		    	$('.grid-item').addClass('init');
+		    },500);
+		   
+		    $grid.isotope();
+
+		});
+
+	</script>
+
+<?php get_footer(); ?>

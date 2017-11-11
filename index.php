@@ -1,5 +1,6 @@
 <?php get_header();
 
+<<<<<<< HEAD
     $setType = get_theme_mod('streamium_main_post_type', 'movie');
     $setTax = get_theme_mod('streamium_main_tax', 'movies');
 
@@ -125,6 +126,9 @@
             array('tax' => 'kids','type' => 'kid','menu' => 'Kids'),
             array('tax' => 'streams','type' => 'stream','menu' => 'Streams')
         );
+=======
+	<main class="cd-main-content">
+>>>>>>> version2
 
         foreach ($postTypes as $key => $value) : ?>
 
@@ -391,6 +395,7 @@
 			</div><!--/.container-->
 		</section><!--/.videos-->
 
+<<<<<<< HEAD
 		<?php
             endforeach;
         ?>
@@ -404,5 +409,10 @@
 				</div>
 			</div>
 		</section><!--/.videos-->
+=======
+		<div id="home-watched"></div>
+		
+	</main><!--/.main content-->
+>>>>>>> version2
 
 <?php get_footer(); ?>

@@ -34,6 +34,7 @@ class Streamium_Customize
           'description' => 'Here you can set the Streamium styles',
       ));
 
+<<<<<<< HEAD
       // Remove tutorial block
       $wp_customize->add_setting('tutorial_btn', array(
           'default' => false
@@ -51,6 +52,8 @@ class Streamium_Customize
           )
       );
 
+=======
+>>>>>>> version2
       // Logo block
       $wp_customize->add_setting('streamium_logo');
 
@@ -171,15 +174,62 @@ class Streamium_Customize
                   'settings'  => 'streamium_synopsis_para',
                   'type'      => 'select',
                   'choices' => array(
-                      '1.6vw'  => __('1.6vw'),
-                      '1.5vw'  => __('1.5vw'),
-                      '1.4vw'  => __('1.4vw'),
-                      '1.3vw'  => __('1.3vw'),
-                      '1.2vw'  => __('1.2vw'),
-                      '1.1vw'  => __('1.1vw'),
-                      '1vw'    => __('1vw'),
-                      '0.9.vw' => __('0.9vw'),
-                      '0.8.vw' => __('0.8vw')
+                      '1.6vw'  => '1.6vw',
+                      '1.5vw'  => '1.5vw',
+                      '1.4vw'  => '1.4vw',
+                      '1.3vw'  => '1.3vw',
+                      '1.2vw'  => '1.2vw',
+                      '1.1vw'  => '1.1vw',
+                      '1vw'    => '1vw',
+                      '0.9.vw' => '0.9vw',
+                      '0.8.vw' => '0.8vw'
+                  )
+              )
+          )
+      );
+
+       $wp_customize->add_setting('streamium_poster_orientation', array(
+          'default'  => '56.25%'
+      ));
+
+       $wp_customize->add_control(
+          new WP_Customize_Control(
+              $wp_customize,
+              'streamium_poster_orientation',
+              array(
+                  'label'     => __('Poster Orientation', 'streamium'),
+                  'section'   => 'streamium_styles',
+                  'settings'  => 'streamium_poster_orientation',
+                  'type'      => 'select',
+                  'choices' => array(
+                      '150%'  => __('Portrait', 'streamium'),
+                      '56.25%'  => __('Landscape', 'streamium')
+                  )
+              )
+          )
+      );
+
+       $wp_customize->add_setting('streamium_tile_count', array(
+          'default'  => '6'
+      ));
+
+       $wp_customize->add_control(
+          new WP_Customize_Control(
+              $wp_customize,
+              'streamium_tile_count',
+              array(
+                  'label'     => __('Tile Count', 'streamium'),
+                  'section'   => 'streamium_styles',
+                  'settings'  => 'streamium_tile_count',
+                  'type'      => 'select',
+                  'choices' => array(
+                      '4'  => '4',
+                      '5'  => '5',
+                      '6'  => '6',
+                      '7'  => '7',
+                      '8'  => '8',
+                      '9'  => '9',
+                      '10' => '10'
                   )
               )
           )
@@ -188,32 +238,8 @@ class Streamium_Customize
 
       // SITE IDENTITY SECTION
       $wp_customize->add_setting('streamium_main_post_type', array(
-        'default' => 'movie',
-        'sanitize_callback' => 'streamium_sanitize_customizer_main_tax',
+        'default' => 'movie'
       ));
-
-       function streamium_sanitize_customizer_main_tax($value)
-       {
-           switch ($value) {
-            case 'movie':
-              set_theme_mod("streamium_main_tax", "movies");
-              break;
-            case 'tv':
-              set_theme_mod("streamium_main_tax", "programs");
-              break;
-            case 'sport':
-              set_theme_mod("streamium_main_tax", "sports");
-              break;
-            case 'kid':
-              set_theme_mod("streamium_main_tax", "kids");
-              break;
-            case 'stream':
-              set_theme_mod("streamium_main_tax", "streams");
-              break;
-          }
-
-           return $value;
-       }
 
        $wp_customize->add_control('streamium_main_post_type', array(
         'type' => 'radio',
@@ -229,6 +255,134 @@ class Streamium_Customize
         ),
       ));
 
+<<<<<<< HEAD
+=======
+      // Enable the loading indicator
+      $wp_customize->add_setting('streamium_enable_loader', array(
+                'default'    => false
+            ));
+
+      $wp_customize->add_control(
+          new WP_Customize_Control(
+              $wp_customize,
+              'streamium_enable_loader',
+              array(
+                  'label'     => __('Enable Loading Indicator', 'streamium'),
+                  'section'   => 'title_tagline',
+                  'settings'  => 'streamium_enable_loader',
+                  'type'      => 'checkbox',
+              )
+          )
+      );
+
+      // Autoplay slider
+      $wp_customize->add_setting('streamium_autoplay_home_slider', array(
+          'default'    => false
+      ));
+
+      $wp_customize->add_control(
+          new WP_Customize_Control(
+              $wp_customize,
+              'streamium_autoplay_home_slider',
+              array(
+                  'label'     => __('Autoplay Home Slider', 'streamium'),
+                  'section'   => 'title_tagline',
+                  'settings'  => 'streamium_autoplay_home_slider',
+                  'type'      => 'checkbox',
+              )
+          )
+      );
+      
+      // Disable the right click for developer
+      $wp_customize->add_setting('streamium_enable_right_click', array(
+          'default'    => false
+      ));
+
+      $wp_customize->add_control(
+          new WP_Customize_Control(
+              $wp_customize,
+              'streamium_enable_right_click',
+              array(
+                  'label'     => __('Enable The Video Right CLick', 'streamium'),
+                  'section'   => 'title_tagline',
+                  'settings'  => 'streamium_enable_right_click',
+                  'type'      => 'checkbox',
+              )
+          )
+      );
+
+      // Enable the social on videos
+      $wp_customize->add_setting('streamium_enable_video_social', array(
+                'default'    => false
+            ));
+
+      $wp_customize->add_control(
+          new WP_Customize_Control(
+              $wp_customize,
+              'streamium_enable_video_social',
+              array(
+                  'label'     => __('Enable Social Links On All Players', 'streamium'),
+                  'section'   => 'title_tagline',
+                  'settings'  => 'streamium_enable_video_social',
+                  'type'      => 'checkbox',
+              )
+          )
+      );
+
+       // Remove tutorial block
+      $wp_customize->add_setting('tutorial_btn', array(
+          'default' => false
+      ));
+       $wp_customize->add_control(
+          new WP_Customize_Control(
+              $wp_customize,
+              'tutorial_btn',
+              array(
+                  'label'     => __('Remove Footer Notification', 'streamium'),
+                  'section'   => 'title_tagline',
+                  'settings'  => 'tutorial_btn',
+                  'type'      => 'checkbox',
+              )
+          )
+      );
+
+       // Disable login
+       $wp_customize->add_setting('streamium_disable_login', array(
+                'default'    => false
+            ));
+
+       $wp_customize->add_control(
+          new WP_Customize_Control(
+              $wp_customize,
+              'streamium_disable_login',
+              array(
+                  'label'     => __('Disable Login Button', 'streamium'),
+                  'section'   => 'title_tagline',
+                  'settings'  => 'streamium_disable_login',
+                  'type'      => 'checkbox',
+              )
+          )
+       );
+
+       // Disable reviews
+       $wp_customize->add_setting('streamium_disable_reviews', array(
+                'default'    => false
+            ));
+
+       $wp_customize->add_control(
+          new WP_Customize_Control(
+              $wp_customize,
+              'streamium_disable_reviews',
+              array(
+                  'label'     => __('Disable Reviews', 'streamium'),
+                  'section'   => 'title_tagline',
+                  'settings'  => 'streamium_disable_reviews',
+                  'type'      => 'checkbox',
+              )
+          )
+       );
+
+>>>>>>> version2
        $wp_customize->add_setting('streamium_remove_powered_by_s3bubble');
 
        $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'streamium_remove_powered_by_s3bubble',
@@ -359,6 +513,50 @@ class Streamium_Customize
 
        // END CUSTOM POST TYPE SECTION
 
+       // PAYMENT SETUP SECTION
+      $wp_customize->add_section('streamium_payment_setups_section' , array(
+          'title'     => __('Payment Setup Options', 'streamium'),
+          'description' => 'Here are some useful settings for different payment setups',
+          'priority'  => 1020
+      ));
+      
+      // Only allow uploads from logged in users
+      $wp_customize->add_setting('streamium_remove_payment_overlay', array(
+          'default' => false
+      ));
+      $wp_customize->add_control(
+          new WP_Customize_Control(
+              $wp_customize,
+              'streamium_remove_payment_overlay',
+              array(
+                  'label'     => __('Remove payment details overlay', 'streamium'),
+                  'section'   => 'streamium_payment_setups_section',
+                  'settings'  => 'streamium_remove_payment_overlay',
+                  'type'      => 'checkbox',
+              )
+          )
+      );
+
+      // END PAYMENT SETUP SECTION
+
+      // GOOGLE ANALYTICS SECTION SECTION
+      $wp_customize->add_section('streamium_google_analytics_section' , array(
+          'title'     => __('Google Analytics', 'streamium'),
+          'description' => 'Simply enter your Google Analytic Tracking Code below Example: ',
+          'priority'  => 1020
+      ));
+      $wp_customize->add_setting('streamium_google_analytics_section_code');
+
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_google_analytics_section_code',
+        array(
+          'label' => 'GOOGLE UA CODE',
+          'section' => 'streamium_google_analytics_section',
+          'settings' => 'streamium_google_analytics_section_code'
+        ))
+      );
+
+      // END GOOGLE ANALYTICS SECTION
+
        // AWS MEDIA SECTION
       $wp_customize->add_section('streamium_aws_media_uploader_section' , array(
           'title'     => __('AWS Media Uploader', 'streamium'),
@@ -413,6 +611,56 @@ class Streamium_Customize
 
       // END AWS MEDIA SECTION
 
+       // AWS SIGNED COOKIES SECTION
+      $wp_customize->add_section('streamium_aws_signed_cookies_section' , array(
+          'title'     => __('AWS Signed Cookies', 'streamium'),
+          'description' => 'Secure your website with signed cookies',
+          'priority'  => 1020
+      ));
+      
+      // Only allow uploads from logged in users
+      $wp_customize->add_setting('streamium_enable_signed_cookies', array(
+          'default' => false
+      ));
+      $wp_customize->add_control(
+          new WP_Customize_Control(
+              $wp_customize,
+              'streamium_enable_signed_cookies',
+              array(
+                  'label'     => __('Enable signed cookies', 'streamium'),
+                  'section'   => 'streamium_aws_signed_cookies_section',
+                  'settings'  => 'streamium_enable_signed_cookies',
+                  'type'      => 'checkbox',
+              )
+          )
+      );
+
+      $wp_customize->add_setting('streamium_aws_signed_cookies_cname');
+      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_aws_signed_cookies_cname',
+        array(
+          'label' => 'CNAME Subdomain',
+          'section' => 'streamium_aws_signed_cookies_section',
+          'settings' => 'streamium_aws_signed_cookies_cname',
+        ))
+      );
+
+      $wp_customize->add_setting('streamium_aws_signed_cookies_key_pair');
+
+      $pemInfo = "!Important your pem file does not exist please upload your pem file to your wp-content/pem folder.";
+      if (file_exists(WP_CONTENT_DIR . '/pem/pk-' .  get_theme_mod( 'streamium_aws_signed_cookies_key_pair' ) . '.pem')) {
+        $pemInfo = "Awesome your pem file exists and is in the correct folder.";
+      } 
+      $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'streamium_aws_signed_cookies_key-pair',
+        array(
+          'label' => 'Key Pair Id',
+          'description' => $pemInfo,
+          'section' => 'streamium_aws_signed_cookies_section',
+          'settings' => 'streamium_aws_signed_cookies_key_pair'
+        ))
+      );
+
+      // AWS SIGNED COOKIES SECTION
+
        // START ADVERTISEMENT SECTION
       $wp_customize->add_section('streamium_advertisement_section', array(
           'title'     => __('Global Advertisement', 'streamium'),
@@ -452,7 +700,7 @@ class Streamium_Customize
       function streamium_sanitize_customizer_text($value)
       {
           if ($value != "") {
-              return strtolower(sanitize_text_field($value));
+              return strtolower(sanitize_text_field(str_replace(' ' , '-', $value)));
           }
       }
    }
@@ -510,10 +758,10 @@ class Streamium_Customize
               }
 
            /* Theme colors */
-           <?php self::generate_css('.archive, .home, .search, .single', 'background-color', 'streamium_background_color', '', ' !important'); ?>
            <?php self::generate_css('.carousels .tile_inner', 'border-color', 'streamium_background_color', '', ' !important'); ?>
-           <?php self::generate_css('.video-header h3, .see-all', 'color', 'streamium_carousel_heading_color', '', ' !important'); ?>
+           <?php self::generate_css('.video-header h3, .see-all, .slick-arrow, h4.series-watched-episode-title', 'color', 'streamium_carousel_heading_color', '', '  !important', true, '#f2f2f2'); ?>
 
+<<<<<<< HEAD
            /* link and background colors */
            <?php self::generate_css('.page a, a:focus, a:hover, .cd-main-header .cd-logo, .play-icon-wrap i, .cd-primary-nav .cd-secondary-nav a:hover, .cd-primary-nav>li>a:hover, .cd-primary-nav .cd-nav-gallery .cd-nav-item h3, .cd-primary-nav .cd-nav-icons .cd-nav-item h3, .woocommerce-message:before, .woocommerce-info::before', 'color', 'link_textcolor'); ?>
 
@@ -521,15 +769,37 @@ class Streamium_Customize
            <?php if (streamium_get_device('device') == 'desktop') :
               self::generate_css('.synopis-inner .content', 'font-size', 'streamium_synopsis_para', '', ' !important');
        endif; ?>
+=======
+           /* landsacpe or portrait */
+           <?php self::generate_css('.tile_inner', 'padding-bottom', 'streamium_poster_orientation', '', ' !important', true, '56.25%'); ?>
+
+           /* style links */
+           <?php self::generate_css('.woocommerce-page .cd-main-content a, .page .cd-main-content a, .bbpress .cd-main-content a, .brand-color', 'color', 'link_textcolor', '', '', true, '#dd3333');
+           ?>
+
+           /* style buttons */
+           <?php self::generate_css('#place_order, .pagination a:hover, .pagination .current, .slick-dots li.slick-active button, .progress-bar, .button, .cd-overlay, .has-children > a:hover::before, .has-children > a:hover::after, .go-back a:hover::before, .go-back a:hover::after, #submit, #place_order, .checkout-button, .woocommerce-thankyou-order-received, .add_to_cart_button, .confirm, .streamium-btns, .streamium-extra-meta, .streamium-auth, .onsale', 'background-color', 'link_textcolor', '', ' !important', true, '#dd3333'); 
+           ?>
+
+           <?php if ( get_theme_mod( 'streamium_disable_reviews' ) ) : echo '.synopis-premium-meta { display:none !important; }'; endif; // Disable reviews ?>
+
+           <?php if (!wp_is_mobile()) :
+              self::generate_css('.synopis-inner .content', 'font-size', 'streamium_synopsis_para', '', ' !important', true, '1.3vw'); 
+            endif; ?>
+>>>>>>> version2
 
            <?php self::generate_css('.post-type-archive, .woocommerce-cart, .woocommerce-account, .woocommerce-checkout, .woocommerce-page', 'background-image', 'streamium_plans_bg', 'url(', ')'); ?>
            <?php self::generate_css('body', 'background-image', 'streamium_global_bg', 'url(', ') !important'); ?>
 
+<<<<<<< HEAD
            <?php self::generate_css('.tile', 'border-color', 'link_textcolor', '', ' !important'); ?>
            <?php self::generate_css('.woocommerce-message, .woocommerce-info', 'border-top-color', 'link_textcolor', '', ' !important'); ?>
 
            /* Override media player brand colors */
            <?php self::generate_css('button.vjs-play-control.vjs-control.vjs-button.vjs-paused, .vjs-play-progress, .vjs-volume-level', 'background-color', 'link_textcolor', '', ' !important'); ?>
+=======
+           <?php self::generate_css('.woocommerce-message, .woocommerce-info', 'border-top-color', 'link_textcolor', '', ' !important', true, '#dd3333');  ?>
+>>>>>>> version2
 
            .streamium-list-reviews { background: #000 !important;}
            .streamium-list-reviews:hover { background: #fff !important; color: #000;}
@@ -585,3 +855,33 @@ add_action('customize_register', array( 'Streamium_Customize' , 'register' ));
 
 // Output custom CSS to live site
 add_action('wp_head', array( 'Streamium_Customize' , 'header_output' ));
+
+/**
+ * This makes sure the post type and tax is in sync
+ *
+ * @return null
+ * @author  @sameast
+ */
+function streamium_customizer_save(){
+
+  $setType = get_theme_mod( 'streamium_main_post_type', 'movie');
+    switch ($setType) {
+      case 'movie':
+        set_theme_mod("streamium_main_tax", "movies");
+        break;
+      case 'tv':
+        set_theme_mod("streamium_main_tax", "programs");
+        break;
+      case 'sport':
+        set_theme_mod("streamium_main_tax", "sports");
+        break;
+      case 'kid':
+        set_theme_mod("streamium_main_tax", "kids");
+        break;
+      case 'stream':
+        set_theme_mod("streamium_main_tax", "streams");
+        break;
+    }
+    
+}
+add_action( 'customize_save_after', 'streamium_customizer_save' );

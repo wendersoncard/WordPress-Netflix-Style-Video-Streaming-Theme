@@ -9,9 +9,11 @@
 function streamium_video_code_meta_box_add(){
 
     add_meta_box( 'streamium-meta-box-movie', 'Main Video', 'streamium_meta_box_movie', array('movie', 'tv','sport','kid'), 'side', 'high' );
-    add_meta_box( 'streamium-meta-box-youtube', 'Youtube Video Full Url', 'streamium_meta_box_youtube', array('movie', 'tv','sport','kid'), 'side', 'high' ); 
-    add_meta_box( 'streamium-meta-box-trailer', 'Video Trailer', 'streamium_meta_box_trailer', array('movie', 'tv','sport','kid'), 'side', 'high' );
+
+    add_meta_box( 'streamium-meta-box-trailer', 'Video Trailer/Preview', 'streamium_meta_box_trailer', array('movie', 'tv','sport','kid'), 'side', 'high' );
+
     add_meta_box( 'streamium-meta-box-bgvideo', 'Main Slider BG Video', 'streamium_meta_box_bgvideo', array('movie', 'tv','sport','kid'), 'side', 'high' );
+
     add_meta_box( 'streamium-meta-box-main-slider', 'Main Slider Video', 'streamium_meta_box_main_slider', array('movie', 'tv','sport','kid','stream'), 'side', 'high' );
 
     // Repeater for premium
@@ -21,36 +23,11 @@ function streamium_video_code_meta_box_add(){
     add_meta_box( 'streamium-meta-box-live-streams', 'Live Streams', 'streamium_meta_box_live_streams', array('stream'), 'side', 'high' );
 
     // Global extra meta
-    add_meta_box( 'streamium-meta-box-extra-meta', 'Extra Video Tile Meta', 'streamium_meta_box_extra_meta', array('movie', 'tv','sport','kid','stream'), 'side', 'high' );
+    add_meta_box( 'streamium-meta-box-extra-meta', 'Extra Video Tile Meta', 'streamium_meta_box_extra_meta', array('movie', 'tv','sport','kid','stream'), 'normal', 'high' );
 
 }
 
 add_action( 'add_meta_boxes', 'streamium_video_code_meta_box_add' );
-
-/**
- * Sets up the meta box content for the main video
- *
- * @return null
- * @author  @sameast
- */
-function streamium_meta_box_youtube(){
-
-    // $post is already set, and contains an object: the WordPress post
-    global $post;
-    $values = get_post_custom( $post->ID );
-    $text = isset( $values['s3bubble_video_youtube_code_meta_box_text'] ) ? $values['s3bubble_video_youtube_code_meta_box_text'][0] : '';
-    wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
-
-    ?>
-    <p class="streamium-meta-box-wrapper">
-
-        <input type="text" name="s3bubble_video_youtube_code_meta_box_text" class="form-control" id="s3bubble_video_youtube_code_meta_box_text" value="<?php echo $text; ?>" />
-        
-    </p>
-
-    <?php    
-
-}
 
 /**
  * Sets up the meta box content for the main video
@@ -64,20 +41,23 @@ function streamium_meta_box_movie(){
     global $post;
     $values = get_post_custom( $post->ID );
     $text = isset( $values['s3bubble_video_code_meta_box_text'] ) ? $values['s3bubble_video_code_meta_box_text'][0] : '';
+    $service = isset( $values['s3bubble_video_youtube_code_meta_box_text'] ) ? $values['s3bubble_video_youtube_code_meta_box_text'][0] : '';
+
     wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
+
+    
 
     ?>
     <p class="streamium-meta-box-wrapper">
+        <label>AWS Video</label>
         <select class="streamium-theme-main-video-select-group chosen-select" tabindex="1" name="s3bubble_video_code_meta_box_text" id="s3bubble_video_code_meta_box_text">
-            <option value="<?php echo $text; ?>">Select Main Video</option>
+            <option value="<?php echo $text; ?>"><?php echo (empty($text)) ? 'Select Main Video' : $text; ?></option>
             <option value="">Remove Current Video</option>
         </select>
-
-        <?php 
-
-          echo !empty($text) ? "<div class='streamium-current-url'>Main video code: " . $text . "</div>" : "<div class='streamium-current-url-info'>No video selected. Please select a video to show as your main movie.</div>";
-
-        ?>
+    </p>
+    <p class="streamium-meta-box-wrapper">
+        <label>Youtube/Vimeo/Dailymotion Direct Link</label>
+        <input type="text" name="s3bubble_video_youtube_code_meta_box_text" class="widefat" id="s3bubble_video_youtube_code_meta_box_text" value="<?php echo $service; ?>" placeholder="Enter service url" />
     </p>
 
     <?php    
@@ -96,27 +76,36 @@ function streamium_meta_box_trailer(){
     global $post;
     $values = get_post_custom( $post->ID );
     $text = isset( $values['streamium_video_trailer_meta_box_text'] ) ? $values['streamium_video_trailer_meta_box_text'][0] : '';
+    $service = isset( $values['s3bubble_video_trailer_youtube_code_meta_box_text'] ) ? $values['s3bubble_video_trailer_youtube_code_meta_box_text'][0] : '';
+    $button = isset( $values['s3bubble_video_trailer_button_text_meta_box_text'] ) ? $values['s3bubble_video_trailer_button_text_meta_box_text'][0] : 'Watch Trailer';
+
     // We'll use this nonce field later on when saving.
     wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
     ?>
-    <p class="streamium-meta-box-wrapper">
+    <?php if(get_theme_mod( 'streamium_enable_premium' )) : ?>
 
-        <?php if(get_theme_mod( 'streamium_enable_premium' )) : ?>
-
+        <p class="streamium-meta-box-wrapper">
             <select class="streamium-theme-video-trailer-select-group chosen-select" tabindex="1" name="streamium_video_trailer_meta_box_text" id="streamium_video_trailer_meta_box_text">
-                <option value="<?php echo $text; ?>">Select Video Trailer</option>
+                <option value="<?php echo $text; ?>"><?php echo (empty($text)) ? 'Select Video Trailer' : $text; ?></option>
                 <option value="">Remove Current Video</option>
             </select>
+        </p>
 
-            <?php echo !empty($text) ? "<div class='streamium-current-url'>Premium video code: " . $text . "</div>" : "<div class='streamium-current-url-info'>No video selected. Select a trailer to allow your users to preview a video first via the watch trailer button.</div>"; ?>
-          
-        <?php else : ?>
+        <p class="streamium-meta-box-wrapper">
+            <label>Youtube/Vimeo/Dailymotion Direct Link</label>
+            <input type="text" name="s3bubble_video_trailer_youtube_code_meta_box_text" class="widefat" id="s3bubble_video_trailer_youtube_code_meta_box_text" value="<?php echo $service; ?>" placeholder="Enter service url" />
+        </p>
+
+        <p class="streamium-meta-box-wrapper">
+            <label>Change Button Text</label>
+            <input type="text" name="s3bubble_video_trailer_button_text_meta_box_text" class="widefat" id="s3bubble_video_trailer_button_text_meta_box_text" value="<?php echo $button; ?>" placeholder="Enter button text" />
+        </p>
+
+    <?php else : ?>
           
             <div class='streamium-current-url-info'>This is only available with the Premium package. <a href="https://s3bubble.com/pricing/" target="_blank">Upgrade</a></div>
           
-        <?php endif; ?>
-
-    </p>
+    <?php endif; ?>
 
     <?php    
 
@@ -144,7 +133,7 @@ function streamium_meta_box_bgvideo(){
                 <option value="">Remove Current Video</option>
             </select>
 
-            <?php echo !empty($text) ? "<div class='streamium-current-url'>Premium video code: " . $text . "</div>" : "<div class='streamium-current-url-info'>No video selected. This will display a background video on the homepage slider if your post is set to Sticky.</div>"; ?>
+            <?php echo !empty($text) ? "<div class='streamium-current-url'>Premium video code: " . $text . "</div>" : "<div class='streamium-current-url-info'>This will display a background video on the homepage slider.</div>"; ?>
           
         <?php else : ?>
           
@@ -180,21 +169,17 @@ function streamium_repeatable_meta_box_display() {
 
         if ( $repeatable_fields ) :
 
-        // Order the list
-        $positions = array();
-        foreach ($repeatable_fields as $key => $row){
-            $positions[$key] = $row['positions'];
-        }
-        array_multisort($positions, SORT_ASC, $repeatable_fields);
+        foreach ( streamGroupSeasons($repeatable_fields,'seasons') as $seasons ) {
 
-        foreach ( $repeatable_fields as $field ) {
+            foreach ( $seasons as $field ) {
+            
     ?>
         <li class="streamium-repeater-list">
             <div class="streamium-repeater-left">
                 <p>
                     <label>Video Image</label>
                     <input type="hidden" class="widefat" name="thumbnails[]" value="<?php if($field['thumbnails'] != '') echo esc_attr( $field['thumbnails'] ); ?>" />
-                    <img src="<?php if($field['thumbnails'] != '') echo esc_attr( $field['thumbnails'] ); ?>" />
+                    <img src="<?php if(isset($field['thumbnails']) && $field['thumbnails'] != '') echo esc_attr( $field['thumbnails'] ); ?>" />
                     <input class="streamium_upl_button button" type="button" value="Upload Image" />
                 </p> 
             </div>
@@ -207,26 +192,30 @@ function streamium_repeatable_meta_box_display() {
                 </p>
                 <p>
                     <label>Video List Position</label>
-                    <input type="text" class="widefat" name="positions[]" onkeypress="return event.charCode >= 48 && event.charCode <= 57" value="<?php if($field['positions'] != '') echo esc_attr( $field['positions'] ); ?>" />
+                    <input type="text" class="widefat" name="positions[]" onkeypress="return event.charCode >= 48 && event.charCode <= 57" value="<?php if(isset($field['positions']) && $field['positions'] != '') echo esc_attr( $field['positions'] ); ?>" />
                 </p>
                 <p>
-                    <label>Video Code</label>
+                    <label>S3Bubble AWS Video</label>
                     <select class="streamium-theme-episode-select chosen-select" tabindex="1" name="codes[]">
                         <option value="<?php echo $field['codes']; ?>">Select Video <?php echo $field['codes']; ?></option>
                     </select>
                 </p>
                 <p>
+                    <label>Alternative Service Url (This will overwrite the S3Bubble AWS video)</label>
+                    <input type="text" class="widefat" name="service[]" value="<?php if(isset($field['service']) && $field['service'] != '') echo esc_attr( $field['service'] ); ?>" placeholder="Enter a full vimeo or youtube url" />
+                </p>
+                <p>
                     <label>Video Title</label>
-                    <input type="text" class="widefat" name="titles[]" value="<?php if($field['titles'] != '') echo esc_attr( $field['titles'] ); ?>" />
+                    <input type="text" class="widefat" name="titles[]" value="<?php if(isset($field['titles']) && $field['titles'] != '') echo esc_attr( $field['titles'] ); ?>" />
                 </p>
                 <p>
                     <label>Video Description</label>
-                    <textarea rows="4" cols="50" class="widefat" name="descriptions[]" value=""><?php if ($field['descriptions'] != '') echo esc_attr( $field['descriptions'] ); else echo ''; ?></textarea>
+                    <textarea rows="4" cols="50" class="widefat" name="descriptions[]" value=""><?php if (isset($field['descriptions']) && $field['descriptions'] != '') echo esc_attr( $field['descriptions'] ); else echo ''; ?></textarea>
                 </p>
                 <a class="button streamium-repeater-remove-row" href="#">Remove</a>
             </div>
         </li>
-    <?php } else : ?>
+    <?php } } else : ?>
         <li class="streamium-repeater-list">
             <div class="streamium-repeater-left">
                 <p>
@@ -263,12 +252,16 @@ function streamium_repeatable_meta_box_display() {
                     <select class="streamium-theme-episode-select chosen-select" style="width: 50px !important;" tabindex="1" name="codes[]"></select>
                 </p>
                 <p>
+                    <label>Alternative Service Url (This will overwrite the S3Bubble AWS video)</label>
+                    <input type="text" class="widefat" name="service[]" placeholder="Enter a full vimeo or youtube url" />
+                </p>
+                <p> 
                     <label>Video Title</label>
-                    <input type="text" class="widefat" name="titles[]" />
+                    <input type="text" class="widefat" name="titles[]" placeholder="Enter video title" />
                 </p>
                 <p>
                     <label>Video Description</label>
-                    <textarea rows="4" cols="50" class="widefat" name="descriptions[]" value=""></textarea>
+                    <textarea rows="4" cols="50" class="widefat" name="descriptions[]" placeholder="Enter video description"></textarea>
                 </p>
                 <a class="button streamium-repeater-remove-row" href="#">Remove</a>
             </div>
@@ -356,7 +349,7 @@ function streamium_meta_box_extra_meta() {
     ?>
     <p class="streamium-meta-box-wrapper">
 
-        <input type="text" name="streamium_extra_meta_meta_box_text" class="form-control" id="streamium_extra_meta_meta_box_text" value="<?php echo $text; ?>" />
+        <input type="text" name="streamium_extra_meta_meta_box_text" class="widefat" id="streamium_extra_meta_meta_box_text" value="<?php echo $text; ?>" />
 
     </p>
 
@@ -389,16 +382,28 @@ function streamium_post_meta_box_save( $post_id )
       
     }
 
-    // Save the trailer
-    if( isset( $_POST['streamium_video_trailer_meta_box_text'] ) ){
+    // Save the trailer or preview
+    if(get_theme_mod( 'streamium_enable_premium' )){ 
+    
+        if( isset( $_POST['streamium_video_trailer_meta_box_text'] ) ){
 
-      if(get_theme_mod( 'streamium_enable_premium' )){ 
-        
-        update_post_meta( $post_id, 'streamium_video_trailer_meta_box_text', $_POST['streamium_video_trailer_meta_box_text'] );
+            update_post_meta( $post_id, 'streamium_video_trailer_meta_box_text', $_POST['streamium_video_trailer_meta_box_text'] );
 
-      }
+        }
 
-    }
+        if( isset( $_POST['s3bubble_video_trailer_youtube_code_meta_box_text'] ) ){
+
+            update_post_meta( $post_id, 's3bubble_video_trailer_youtube_code_meta_box_text', $_POST['s3bubble_video_trailer_youtube_code_meta_box_text'] );
+
+        }
+
+        if( isset( $_POST['s3bubble_video_trailer_button_text_meta_box_text'] ) ){
+
+            update_post_meta( $post_id, 's3bubble_video_trailer_button_text_meta_box_text', $_POST['s3bubble_video_trailer_button_text_meta_box_text'] );
+
+        }
+
+    }    
 
     // Save the featured video
     if( isset( $_POST['streamium_featured_video_meta_box_text'] ) ){
@@ -438,6 +443,7 @@ function streamium_post_meta_box_save( $post_id )
         $positions    = isset($_POST['positions']) ? $_POST['positions'] : "";
         $titles       = isset($_POST['titles']) ? $_POST['titles'] : "";
         $codes        = isset($_POST['codes']) ? $_POST['codes'] : "";
+        $service        = isset($_POST['service']) ? $_POST['service'] : "";
         $descriptions = isset($_POST['descriptions']) ? $_POST['descriptions'] : "";
         
         $count = count( $titles );
@@ -450,6 +456,7 @@ function streamium_post_meta_box_save( $post_id )
             $new[$i]['positions'] = trim(stripslashes( strip_tags( $positions[$i] ) ));
             $new[$i]['titles'] = trim(stripslashes( strip_tags( $titles[$i] ) ));
             $new[$i]['codes'] = $codes[$i];
+            $new[$i]['service'] = $service[$i];
             $new[$i]['descriptions'] = trim(stripslashes( $descriptions[$i] ));
 
           endif;

@@ -1,8 +1,13 @@
 <?php get_header(); ?>
+<<<<<<< HEAD
+=======
+
+>>>>>>> version2
 	<main class="cd-main-content">
 		
 		<section class="categories">
 
+<<<<<<< HEAD
 			<?php
 
 			switch (isset($_GET['date']) ? 'date' : 'all') {
@@ -88,24 +93,26 @@
 
 			} 
 			?>
+=======
+>>>>>>> version2
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-sm-12 video-header-archive">
 						<h3 class="pull-left"><?php printf( __( 'Search Results for: %s', 'streamium' ), get_search_query() ); ?></h3>
 						<?php if(get_theme_mod( 'streamium_enable_premium' )) : ?>
 							<div class="streamium-drop-dropdown-wrapper open-to-left">
-								<a class="streamium-drop-dropdown-trigger" href="#0">FILTER</a>
+								<a class="streamium-drop-dropdown-trigger" href="#0"><?php _e( 'FILTER', 'streamium' ); ?></a>
 								<nav class="streamium-drop-dropdown">
 									<ul class="streamium-drop-dropdown-content">
-										<li><a href="?s=all&date=day">1 Day Ago</a></li>
-									  	<li><a href="?s=all&date=week">1 Week Ago</a></li>
+										<li><a class="search-search-filter" data-type="day" href="?s=all&date=day"><?php _e( '1 Day Ago', 'streamium' ); ?></a></li>
+									  	<li><a class="search-search-filter" data-type="week" href="?s=all&date=week"><?php _e( '1 Week Ago', 'streamium' ); ?></a></li>
 									  	<?php
 									  		$begin = new DateTime( '2015-01-01' );
 											$end = new DateTime();
 											$interval = DateInterval::createFromDateString('1 year');
 											$period = new DatePeriod($begin, $interval, $end);
 											foreach ( array_reverse(iterator_to_array($period)) as $dt ) : ?>
-												<li><a href="?s=all&date=<?php echo $dt->format( "Y" ); ?>"><?php echo $dt->format( "Y" ); ?></a></li>
+												<li><a class="search-search-filter" data-type="<?php echo $dt->format( "Y" ); ?>" href="?s=all&date=<?php echo $dt->format( "Y" ); ?>"><?php echo $dt->format( "Y" ); ?></a></li>
 										<?php 
 											endforeach; 
 										?>
@@ -115,7 +122,7 @@
 											$interval = DateInterval::createFromDateString('1 month');
 											$period = new DatePeriod($begin, $interval, $end);
 											foreach ( array_reverse(iterator_to_array($period)) as $dt ) : ?>
-												<li><a href="?s=all&date=<?php echo $dt->format( "Y/m/d" ); ?>"><?php echo $dt->format( "M Y" ); ?></a></li>
+												<li><a class="search-search-filter" data-type="<?php echo $dt->format( "Y/m/d" ); ?>" href="?s=all&date=<?php echo $dt->format( "Y/m/d" ); ?>"><?php echo $dt->format( "M Y" ); ?></a></li>
 										<?php 
 											endforeach; 
 										?>
@@ -126,6 +133,7 @@
 					</div><!--/.col-sm-12-->
 				</div><!--/.row-->
 			</div><!--/.container-->
+<<<<<<< HEAD
 			<?php if ( $the_query->have_posts() ) : ?> 
 			<div class="container-fluid">
 				<div class="row static-row static-row-first">
@@ -173,9 +181,12 @@
 						          		</div>
 							      	</div>
 							    </div>
+=======
+>>>>>>> version2
 
-							    <?php do_action('streamium_video_extra_meta'); ?>
+			<div id="search-watched"></div>
 
+<<<<<<< HEAD
 							</div>
 
 							<?php do_action('synopis_video_progress'); ?>
@@ -239,5 +250,10 @@
 		</section><!--/.videos-->
 
 		<div class="main-spacer"></div>
+=======
+		</section><!--/.videos-->
+
+	</main><!--/.main content-->
+>>>>>>> version2
 		
 <?php get_footer(); ?>

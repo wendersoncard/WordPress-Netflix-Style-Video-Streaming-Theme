@@ -18,7 +18,6 @@ function streamium_single_video_scripts() {
     	$youtube = false;
     	$youtubeCode = get_post_meta( $post->ID, 's3bubble_video_youtube_code_meta_box_text', true );
     	$stream = get_post_meta( $post->ID, 'streamium_live_stream_meta_box_text', true );
-    	$streamiumVideoTrailer = get_post_meta( $post->ID, 'streamium_video_trailer_meta_box_text', true );
     	$poster   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-home-slider' ); 
     	
     	if(is_user_logged_in()){
@@ -36,19 +35,30 @@ function streamium_single_video_scripts() {
 		// Check for resume
 		$resume = !empty($percentageWatched) ? $percentageWatched : 0;
 
-		// Check for a video trailer
-		if(isset($_GET['trailer']) && isset($streamiumVideoTrailer)){
-			$codes[] = $streamiumVideoTrailer;
-			$resume = 0;
-		}
+		$title = $post->post_title;
+		$excerpt = wp_trim_words( strip_tags($post->post_excerpt), $num_words = 21, $more = null ); 
+		$count = 0;
+		$back = false;
 
-		// Check if this post has programs
+		// Not a trailer continue logic
 		$episodes = get_post_meta(get_the_ID(), 'repeatable_fields' , true);
-		if(!empty($episodes)) {
-			foreach ($episodes as $key => $value) : 
-				$codes[] = $value['codes'];
-			endforeach;
+		$id = isset($_GET['v']) ? $_GET['v'] : 0;
+		if( $episodes ){
+
+			if(!empty($episodes[$id]['service'])){
+				$youtube = true;
+				$codes[] = $episodes[$id]['service'];
+			}else{
+				$codes[] = $episodes[$id]['codes'];
+			}
+
+			// Grab synopsis
+			$title = $episodes[$id]['titles'];
+			$excerpt = wp_trim_words( strip_tags($episodes[$id]['descriptions']), $num_words = 21, $more = null );
 			$resume = 0;
+			$count = count($episodes);
+			$back = get_site_url();
+
 		}else{
 
 			if(!empty($youtubeCode)){
@@ -57,9 +67,9 @@ function streamium_single_video_scripts() {
 			}else{
 				$codes[] = $s3videoid;
 			}
-			
+
 		}
-		
+
 		// Check if global adverts are setup
 		$globalAdvertisements = "";
 		if(get_theme_mod( 'streamium_advertisement_enabled' )){
@@ -70,9 +80,12 @@ function streamium_single_video_scripts() {
         wp_localize_script( 'streamium-production', 'video_post_object', 
             array( 
                 'post_id' => $post->ID,
+                'index' => $id,
+                'count' => $count,
+                'back' => $back,
                 'subTitle' => "You're watching",
-                'title' => $post->post_title,
-                'para' => trim(stripslashes(strip_tags($post->post_excerpt))),
+                'title' => $title,
+                'para' => $excerpt,
                 'percentage' => $resume,
                 'codes' => $codes,
                 'stream' => $stream,
@@ -125,13 +138,13 @@ function streamium_get_dynamic_content() {
   
 			// Tags
 			$posttags = get_the_tags($postId);
-			$staring = 'Staring: ';
+			$staring = __( 'Cast', 'streamium' )  . ': ';
 			if ($posttags) {
 				$numItems = count($posttags);
 				$i = 0;
 			  	foreach($posttags as $tag) {
 
-				  	$staring .= '<a href="/?s=' . esc_html( $tag->name ) . '">' . ucwords($tag->name) . '</a>';
+				  	$staring .= '<a href="' . esc_url(get_tag_link ($tag->term_id)) . '">' . ucwords($tag->name) . '</a>';
 				  	if(++$i !== $numItems) {
 			    		$staring .= ', ';
 			  		}
@@ -166,15 +179,15 @@ function streamium_get_dynamic_content() {
 			}
 
 			// If its a tv list episodes
-			$episodes = get_post_meta($postId, 'repeatable_fields' , true);
-			if(!empty($episodes)) {
+			$episodes = orderCodes($postId);
+			if($episodes) {
 
-				$buildMeta .= '<li class="synopis-meta-spacer">Epsodes: <a>' . count($episodes) . '</a></li>';
+				$buildMeta .= '<li class="synopis-meta-spacer">' .  __( 'Seasons', 'streamium' ) . ': ' . $episodes['seasons'] . ', Episodes: ' . $episodes['episodes'] .'</li>';
 
 			}
 
 			// Release date
-			$buildMeta .= '<li class="synopis-meta-spacer">Released: <a href="/?s=all&date=' . get_the_date('Y/m/d', $postId) . '">' . get_the_date('l, F j, Y', $postId) . '</a></li></ul>';
+			$buildMeta .= '<li class="synopis-meta-spacer">' .  __( 'Released', 'streamium' ) . ': <a href="/?s=all&date=' . get_the_date('Y/m/d', $postId) . '">' . get_the_date('l, F j, Y', $postId) . '</a></li></ul>';
             
             // Only allow like/reviews for premium users
 			if ( get_theme_mod( 'streamium_enable_premium' ) ) {
@@ -184,18 +197,51 @@ function streamium_get_dynamic_content() {
 		    	$link = admin_url('admin-ajax.php?action=streamium_likes&post_id='. $postId .'&nonce='.$nonce);
 
 		        $like_text = '<div class="synopis-premium-meta hidden-xs">
-		        				<a id="like-count-' . $postId . '" class="streamium-review-like-btn streamium-btns streamium-reviews-btns" data-toggle="tooltip" title="CLICK TO LIKE!" data-id="' . $postId . '" data-nonce="' . $nonce . '">' . get_streamium_likes($postId) . '</a>
-		        				<a class="streamium-list-reviews streamium-btns streamium-reviews-btns" data-id="' . $postId . '" data-nonce="' . $nonce . '">Read reviews</a>
+		        				<a id="like-count-' . $postId . '" class="streamium-review-like-btn streamium-btns streamium-reviews-btns" data-toggle="tooltip" title="' .  __( 'CLICK TO LIKE!', 'streamium' ) . '" data-id="' . $postId . '" data-nonce="' . $nonce . '">' . get_streamium_likes($postId) . '</a>
+		        				<a class="streamium-list-reviews streamium-btns streamium-reviews-btns" data-id="' . $postId . '" data-nonce="' . $nonce . '">' .  __( 'Read reviews', 'streamium' ) . '</a>
 							</div>';
 
 		    }
+<<<<<<< HEAD
 
 		    $content = $post_object->post_content . $buildMeta . $like_text;
 		    if(streamium_get_device('device') != 'desktop'){
 		    	$content = (empty($post_object->post_excerpt) ? strip_tags($post_object->post_content) : $post_object->post_excerpt);
 		    }
 	    	$fullImage  = wp_get_attachment_image_src( get_post_thumbnail_id( $postId ), 'streamium-video-tile-expanded' ); 
+=======
+ 
+>>>>>>> version2
 	    	$streamiumVideoTrailer = get_post_meta( $postId, 'streamium_video_trailer_meta_box_text', true );
+
+	    	$fullImage  = wp_get_attachment_image_url( get_post_thumbnail_id( $postId ), 'streamium-video-tile-large-expanded' );
+	    	// Allow a extra image to be added
+            if (class_exists('MultiPostThumbnails')) {                              
+                
+                if (MultiPostThumbnails::has_post_thumbnail( get_post_type( $postId ), 'large-landscape-image', $postId)) { 
+
+                    $image_id = MultiPostThumbnails::get_post_thumbnail_id( get_post_type( $postId ), 'large-landscape-image', $postId );  
+                    $fullImage = wp_get_attachment_image_url( $image_id,'streamium-video-tile-large-expanded' ); 
+
+                }                            
+             
+            }; // end if MultiPostThumbnails 
+
+            // Setup content
+            $content = strip_tags($post_object->post_content);
+
+            // Watch preview
+            $streamiumVideoTrailer = get_post_meta( $postId, 'streamium_video_trailer_meta_box_text', true );
+            if(get_post_meta( $postId, 's3bubble_video_trailer_youtube_code_meta_box_text', true )){
+            	 $streamiumVideoTrailer = get_post_meta( $postId, 's3bubble_video_trailer_youtube_code_meta_box_text', true );
+            }
+
+
+            // Trailer button text
+            $streamiumVideoTrailerBtnText = __( 'Watch Trailer', 'streamium' );
+            if(get_post_meta( $postId, 's3bubble_video_trailer_button_text_meta_box_text', true )){
+            	 $streamiumVideoTrailerBtnText = get_post_meta( $postId, 's3bubble_video_trailer_button_text_meta_box_text', true );
+            }
 
 	    	echo json_encode(
 		    	array(
@@ -203,9 +249,13 @@ function streamium_get_dynamic_content() {
 		    		'cat' => $cat,
 		    		'title' => $post_object->post_title,
 		    		'content' => $content,
-		    		'bgimage' =>  isset($fullImage) ? $fullImage[0] : "",
+		    		'meta' => $buildMeta,
+		    		'reviews' => $like_text,
+		    		'bgimage' =>  isset($fullImage) ? $fullImage : "",
 		    		'trailer' => $streamiumVideoTrailer,
 		    		'href' => get_permalink($postId),
+		    		'preview' => $streamiumVideoTrailer,
+		    		'trailer_btn_text' => $streamiumVideoTrailerBtnText,
 		    		'post' => $post_object
 		    	)
 		    );
@@ -236,6 +286,88 @@ function streamium_get_dynamic_content() {
 add_action( 'wp_ajax_nopriv_streamium_get_dynamic_content', 'streamium_get_dynamic_content' );
 add_action( 'wp_ajax_streamium_get_dynamic_content', 'streamium_get_dynamic_content' );
 
+
+/**
+ * Ajax post scipts for content
+ *
+ * @return bool
+ * @author  @sameast
+ */
+function streamium_get_more_content() {
+
+	global $wpdb;
+
+	// Get params
+	$postId = (int) $_REQUEST['postId'];
+
+	error_log(print_r($_REQUEST,true));
+ 
+    if ( ! wp_verify_nonce( $_REQUEST['nonce'], 'extra_api_nonce' ) || ! isset( $_REQUEST['nonce'] ) ) {
+       	
+       	echo json_encode(
+	    	array(
+	    		'error' => true,
+	    		'message' => 'We could not find this post.'
+	    	)
+	    );
+
+    }
+
+    if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+
+    	$post_object = get_post( $postId );
+
+    	if(!empty($post_object)){
+
+	    	$fullImage  = wp_get_attachment_image_url( get_post_thumbnail_id( $postId ), 'streamium-video-tile-large-expanded' );
+	    	// Allow a extra image to be added
+            if (class_exists('MultiPostThumbnails')) {                              
+                
+                if (MultiPostThumbnails::has_post_thumbnail( get_post_type( $postId ), 'large-landscape-image', $postId)) { 
+
+                    $image_id = MultiPostThumbnails::get_post_thumbnail_id( get_post_type( $postId ), 'large-landscape-image', $postId );  
+                    $fullImage = wp_get_attachment_image_url( $image_id,'streamium-video-tile-large-expanded' ); 
+
+                }                            
+             
+            }; // end if MultiPostThumbnails 
+
+	    	echo json_encode(
+		    	array(
+		    		'error' => false,
+		    		'title' => $post_object->post_title,
+		    		'content' => $post_object->post_content,
+		    		'bgimage' =>  isset($fullImage) ? $fullImage : "",
+		    		'href' => get_permalink($postId)
+		    	)
+		    );
+
+	    }else{
+
+	    	echo json_encode(
+		    	array(
+		    		'error' => true,
+		    		'message' => 'We could not find this post.'
+		    	)
+		    );
+
+	    }
+
+        die();
+
+    }
+    else {
+        
+        wp_redirect( get_permalink( $_REQUEST['post_id'] ) );
+        exit();
+
+    }
+
+}
+
+add_action( 'wp_ajax_nopriv_streamium_get_more_content', 'streamium_get_more_content' );
+add_action( 'wp_ajax_streamium_get_more_content', 'streamium_get_more_content' );
+
 function streamium_custom_post_types_general( $hook_suffix ){
 
     if( in_array($hook_suffix, array('post.php', 'post-new.php') ) ){
@@ -259,3 +391,32 @@ function streamium_custom_post_types_general( $hook_suffix ){
 }
 
 add_action( 'admin_enqueue_scripts', 'streamium_custom_post_types_general');
+
+
+// ONLY MOVIE CUSTOM TYPE POSTS
+add_filter('manage_posts_columns', 'streamium_columns_main_slider', 1);
+add_action('manage_posts_custom_column', 'streamium_columns_main_slider_content', 10, 2);
+ 
+// CREATE TWO FUNCTIONS TO HANDLE THE COLUMN
+function streamium_columns_main_slider($columns) { 
+    
+    $new = array();
+  	foreach($columns as $key => $title) {
+    	if ($key=='author') // Put the Thumbnail column before the Author column
+      	$new['main_slider'] = 'Main Slider';
+    	$new[$key] = $title;
+  	}
+  	return $new;
+  	
+
+}
+function streamium_columns_main_slider_content($column_name, $post_ID) {
+
+    if ($column_name == 'main_slider') {
+
+        $main_slider = get_post_meta( $post_ID, 'streamium_slider_featured_checkbox_value', true );
+        echo '<b>' . ucfirst($main_slider) . '</b>';
+
+    }
+
+}
