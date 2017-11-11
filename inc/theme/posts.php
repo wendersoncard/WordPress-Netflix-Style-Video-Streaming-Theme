@@ -88,10 +88,6 @@ function streamium_single_video_scripts() {
                 'para' => $excerpt,
                 'percentage' => $resume,
                 'codes' => $codes,
-                'brand_sliders' => get_theme_mod( 'link_textcolor', 'red' ),
-                'brand_control' => get_theme_mod( 'streamium_background_color', 'black' ),
-                'brand_icons' => get_theme_mod( 'streamium_carousel_heading_color', 'white' ),
-                'brand_social' => get_theme_mod( 'streamium_enable_video_social', false ),
                 'stream' => $stream,
                 'youtube' => $youtube,
                 'vpaid' => $globalAdvertisements,
@@ -227,6 +223,9 @@ function streamium_get_dynamic_content() {
 
             // Watch preview
             $streamiumVideoTrailer = get_post_meta( $postId, 'streamium_video_trailer_meta_box_text', true );
+            if(get_post_meta( $postId, 's3bubble_video_trailer_youtube_code_meta_box_text', true )){
+            	 $streamiumVideoTrailer = get_post_meta( $postId, 's3bubble_video_trailer_youtube_code_meta_box_text', true );
+            }
 
 	    	echo json_encode(
 		    	array(

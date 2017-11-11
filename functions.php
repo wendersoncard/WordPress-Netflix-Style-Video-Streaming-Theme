@@ -173,6 +173,10 @@ if (!function_exists('streamium_enqueue_scripts')) {
                 'swal_tell_us_why' => __('Please tell us why', 'streamium'),
                 'swal_write_something' => __('Write something', 'streamium'),
                 'swal_enter_chars' => __('Please enter over 100 characters!', 'streamium'),
+                'brand_sliders' => get_theme_mod( 'link_textcolor', 'red' ),
+                'brand_control' => get_theme_mod( 'streamium_background_color', 'black' ),
+                'brand_icons' => get_theme_mod( 'streamium_carousel_heading_color', 'white' ),
+                'brand_social' => get_theme_mod( 'streamium_enable_video_social', false ),
             )
         );
  

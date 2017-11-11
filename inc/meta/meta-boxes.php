@@ -10,7 +10,7 @@ function streamium_video_code_meta_box_add(){
 
     add_meta_box( 'streamium-meta-box-movie', 'Main Video', 'streamium_meta_box_movie', array('movie', 'tv','sport','kid'), 'side', 'high' );
 
-    add_meta_box( 'streamium-meta-box-trailer', 'Video Trailer', 'streamium_meta_box_trailer', array('movie', 'tv','sport','kid'), 'side', 'high' );
+    add_meta_box( 'streamium-meta-box-trailer', 'Video Trailer/Preview', 'streamium_meta_box_trailer', array('movie', 'tv','sport','kid'), 'side', 'high' );
 
     add_meta_box( 'streamium-meta-box-bgvideo', 'Main Slider BG Video', 'streamium_meta_box_bgvideo', array('movie', 'tv','sport','kid'), 'side', 'high' );
 
@@ -41,10 +41,11 @@ function streamium_meta_box_movie(){
     global $post;
     $values = get_post_custom( $post->ID );
     $text = isset( $values['s3bubble_video_code_meta_box_text'] ) ? $values['s3bubble_video_code_meta_box_text'][0] : '';
+    $service = isset( $values['s3bubble_video_youtube_code_meta_box_text'] ) ? $values['s3bubble_video_youtube_code_meta_box_text'][0] : '';
+
     wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
 
-    $service = isset( $values['s3bubble_video_youtube_code_meta_box_text'] ) ? $values['s3bubble_video_youtube_code_meta_box_text'][0] : '';
-    wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
+    
 
     ?>
     <p class="streamium-meta-box-wrapper">
@@ -75,25 +76,30 @@ function streamium_meta_box_trailer(){
     global $post;
     $values = get_post_custom( $post->ID );
     $text = isset( $values['streamium_video_trailer_meta_box_text'] ) ? $values['streamium_video_trailer_meta_box_text'][0] : '';
+    $service = isset( $values['s3bubble_video_trailer_youtube_code_meta_box_text'] ) ? $values['s3bubble_video_trailer_youtube_code_meta_box_text'][0] : '';
+
     // We'll use this nonce field later on when saving.
     wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
     ?>
-    <p class="streamium-meta-box-wrapper">
+    <?php if(get_theme_mod( 'streamium_enable_premium' )) : ?>
 
-        <?php if(get_theme_mod( 'streamium_enable_premium' )) : ?>
-
+        <p class="streamium-meta-box-wrapper">
             <select class="streamium-theme-video-trailer-select-group chosen-select" tabindex="1" name="streamium_video_trailer_meta_box_text" id="streamium_video_trailer_meta_box_text">
                 <option value="<?php echo $text; ?>"><?php echo (empty($text)) ? 'Select Video Trailer' : $text; ?></option>
                 <option value="">Remove Current Video</option>
             </select>
+        </p>
 
-        <?php else : ?>
+        <p class="streamium-meta-box-wrapper">
+            <label>Youtube/Vimeo/Dailymotion Direct Link</label>
+            <input type="text" name="s3bubble_video_trailer_youtube_code_meta_box_text" class="widefat" id="s3bubble_video_trailer_youtube_code_meta_box_text" value="<?php echo $service; ?>" placeholder="Enter service url" />
+        </p>
+
+    <?php else : ?>
           
             <div class='streamium-current-url-info'>This is only available with the Premium package. <a href="https://s3bubble.com/pricing/" target="_blank">Upgrade</a></div>
           
-        <?php endif; ?>
-
-    </p>
+    <?php endif; ?>
 
     <?php    
 
@@ -370,16 +376,22 @@ function streamium_post_meta_box_save( $post_id )
       
     }
 
-    // Save the trailer
-    if( isset( $_POST['streamium_video_trailer_meta_box_text'] ) ){
+    // Save the trailer or preview
+    if(get_theme_mod( 'streamium_enable_premium' )){ 
+    
+        if( isset( $_POST['streamium_video_trailer_meta_box_text'] ) ){
 
-      if(get_theme_mod( 'streamium_enable_premium' )){ 
-        
-        update_post_meta( $post_id, 'streamium_video_trailer_meta_box_text', $_POST['streamium_video_trailer_meta_box_text'] );
+            update_post_meta( $post_id, 'streamium_video_trailer_meta_box_text', $_POST['streamium_video_trailer_meta_box_text'] );
 
-      }
+        }
 
-    }
+        if( isset( $_POST['s3bubble_video_trailer_youtube_code_meta_box_text'] ) ){
+
+            update_post_meta( $post_id, 's3bubble_video_trailer_youtube_code_meta_box_text', $_POST['s3bubble_video_trailer_youtube_code_meta_box_text'] );
+
+        }
+
+    }    
 
     // Save the featured video
     if( isset( $_POST['streamium_featured_video_meta_box_text'] ) ){
