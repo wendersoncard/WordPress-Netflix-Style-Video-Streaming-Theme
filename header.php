@@ -103,21 +103,21 @@
 							            'hide_empty' => false
 							        ) );
 							        if($children) { ?>
-							        <li class="menu-item-has-children"><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>"><?php echo $category->name; ?></a>
+							        <li class="menu-item-has-children"><a href="<?php echo esc_url(get_term_link( $category->term_id )); ?>"><?php echo $category->name; ?></a>
 										<ul class="is-hidden">
 											<li class="go-back"><a href="#0"><?php echo $category->name; ?></a></li>
-											<li class="see-all"><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>"><?php echo __( 'All', 'streamium' ) . ' ' . strtoupper($category->name); ?></a></li>
+											<li class="see-all"><a href="<?php echo esc_url(get_term_link( $category->term_id )); ?>"><?php echo __( 'All', 'streamium' ) . ' ' . strtoupper($category->name); ?></a></li>
 											<?php $ChildCats = get_term_children( $category->term_id, $tax);
 									            foreach ($ChildCats as $ChildCat) { 
 									            	$term = get_term($ChildCat);
 									        ?>
-												<li><a href="<?php echo esc_url(get_category_link( $term->term_id )); ?>"><?php echo ucwords($term->name); ?></a></li>
+												<li><a href="<?php echo esc_url(get_term_link( $term->term_id )); ?>"><?php echo ucwords($term->name); ?></a></li>
 									        <?php } ?>
 										</ul>
 									</li>
 
 								<?php } else { ?>
-									<li><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>"><?php echo ucwords($category->name); ?></a></li>
+									<li><a href="<?php echo esc_url(get_term_link( $category->term_id )); ?>"><?php echo ucwords($category->name); ?></a></li>
 								<?php } } ?>
 
 							<?php else: 
@@ -146,18 +146,18 @@
 
 													<ul class="is-hidden">
 														<li class="go-back"><a href="#0"></a></li>
-														<li class="see-all"><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>"><?php _e( 'All', 'streamium' ); ?> <?php echo ucwords($category->name); ?></a></li>
+														<li class="see-all"><a href="<?php echo esc_url(get_term_link( $category->term_id )); ?>"><?php _e( 'All', 'streamium' ); ?> <?php echo ucwords($category->name); ?></a></li>
 														<?php foreach ($children as $key => $value) { 
 												            	$term = get_term($value);
 												            ?>
-															<li><a href="<?php echo esc_url(get_category_link( $term->term_id )); ?>"><?php echo ucwords($term->name); ?></a></li>
+															<li><a href="<?php echo esc_url(get_term_link( $term->term_id )); ?>"><?php echo ucwords($term->name); ?></a></li>
 												        <?php } ?>
 													</ul>
 												</li>
 
 											<?php else : ?>
 
-												<li><a href="<?php echo esc_url(get_category_link( $category->term_id )); ?>"><?php echo ucwords($category->name); ?></a></li>
+												<li><a href="<?php echo esc_url(get_term_link( $category->term_id )); ?>"><?php echo ucwords($category->name); ?></a></li>
 
 											<?php endif; ?>
 			
