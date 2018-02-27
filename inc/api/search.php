@@ -35,6 +35,7 @@ function search_api_post() {
             $loop = new WP_Query(array(
                 'post_type' => array('movie', 'tv','sport','kid','stream'),
                 'posts_per_page'   => -1,
+                'post_status' => 'publish',
                 'date_query' => array(
                      array(
                         'after' => '1 day ago'
@@ -48,6 +49,7 @@ function search_api_post() {
             $loop = new WP_Query(array(
                 'post_type' => array('movie', 'tv','sport','kid','stream'),
                 'posts_per_page'   => -1,
+                'post_status' => 'publish',
                 'date_query' => array(
                      array(
                         'after' => '1 week ago'
@@ -66,7 +68,8 @@ function search_api_post() {
                 $day   = $date[2];
                 $loop = new WP_Query(array(
                     'post_type' => array('movie', 'tv','sport','kid','stream'),
-                    //'posts_per_page'   => -1,
+                    'posts_per_page'   => -1,
+                    'post_status' => 'publish',
                     'date_query' => array(
                         array(
                           'year' => $year,
@@ -82,6 +85,7 @@ function search_api_post() {
                 $loop = new WP_Query(array(
                     'post_type' => array('movie', 'tv','sport','kid','stream'),
                     'posts_per_page'   => -1,
+                    'post_status' => 'publish',
                     'date_query' => array(
                         array(
                           'year' => $date
@@ -99,6 +103,7 @@ function search_api_post() {
         $loop = new WP_Query(array(
             'post_type' => array('movie', 'tv','sport','kid','stream'), 
             'posts_per_page'   => -1,
+            'post_status' => 'publish',
             's' => $s
         )); 
 
