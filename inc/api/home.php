@@ -46,6 +46,8 @@ function home_api_post() {
     );
     $categories = get_terms($setTax, $args);*/
 
+	$categories = apply_filters('streamium_home_api_post_categories', $categories);
+
     $data = [];
 
     // Chunk the cats to not return all
