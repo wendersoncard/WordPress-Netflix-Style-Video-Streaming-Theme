@@ -352,7 +352,7 @@ class Streamium_Customize
               $wp_customize,
               'streamium_disable_reviews',
               array(
-                  'label'     => __('Disable Reviews', 'streamium'),
+                  'label'     => __('Disable Reviews/Likes', 'streamium'),
                   'section'   => 'title_tagline',
                   'settings'  => 'streamium_disable_reviews',
                   'type'      => 'checkbox',
@@ -749,7 +749,7 @@ class Streamium_Customize
            <?php self::generate_css('#place_order, .pagination a:hover, .pagination .current, .slick-dots li.slick-active button, .progress-bar, .button, .cd-overlay, .has-children > a:hover::before, .has-children > a:hover::after, .go-back a:hover::before, .go-back a:hover::after, #submit, #place_order, .checkout-button, .woocommerce-thankyou-order-received, .add_to_cart_button, .confirm, .streamium-btns, .streamium-extra-meta, .streamium-auth, .onsale', 'background-color', 'link_textcolor', '', ' !important', true, '#dd3333'); 
            ?>
 
-           <?php if ( get_theme_mod( 'streamium_disable_reviews' ) ) : echo '.synopis-premium-meta { display:none !important; }'; endif; // Disable reviews ?>
+           <?php if ( get_theme_mod( 'streamium_disable_reviews' ) ) : echo '.synopis-premium-meta, .top-meta-reviews { display:none !important; }'; endif; // Disable reviews ?>
 
            <?php if (!wp_is_mobile()) :
               self::generate_css('.synopis-inner .content', 'font-size', 'streamium_synopsis_para', '', ' !important', true, '1.3vw'); 
