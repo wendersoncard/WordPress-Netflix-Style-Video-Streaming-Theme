@@ -25,6 +25,7 @@ require_once($incdir .'theme/signed.php');
 require_once($incdir .'api/recent.php');
 require_once($incdir .'api/custom.php');
 require_once($incdir .'api/home.php');
+require_once($incdir .'api/cats.php');
 require_once($incdir .'api/tax.php');
 require_once($incdir .'api/search.php');
 require_once($incdir .'api/tag.php'); 

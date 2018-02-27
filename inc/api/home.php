@@ -21,6 +21,9 @@ function home_api_post() {
 
     }
 
+    // Cat id
+    $ind = $_REQUEST['index'];
+
     // Get options
     $setType = get_theme_mod('streamium_main_post_type', 'movie');
     $setTax = get_theme_mod('streamium_main_tax', 'movies'); 
@@ -37,15 +40,41 @@ function home_api_post() {
     $typeTitle =  get_theme_mod('streamium_section_input_posttype_' . $setType, $setType);
     $taxUrl =  get_theme_mod('streamium_section_input_taxonomy_' . $setTax, $setTax);   
 
-    $args = array(
+    /*$args = array(
       'parent' => 0,
       'hide_empty' => true
     );
-    $categories = get_terms($setTax, $args);
+    $categories = get_terms($setTax, $args);*/
 
     $data = [];
 
-    foreach ($categories as $category) :
+    // Chunk the cats to not return all
+    $cats = get_categories(array(
+               'taxonomy' => 'movies',
+               'orderby' => 'name',
+               'order'   => 'ASC'
+           ));
+    $categories = [];
+    foreach ($cats as $key => $value) {
+        $categories[] = $value;
+    }
+    $categories = array_chunk($categories, 10);
+
+    if(!isset($categories[$ind])){
+
+        echo json_encode(
+            array(
+                'error' => true,
+                'message' => 'Finished'
+            )
+        );     
+
+        die(); 
+
+    }
+
+
+    foreach ($categories[$ind] as $category) :
 
         $dataPosts = [];
 
