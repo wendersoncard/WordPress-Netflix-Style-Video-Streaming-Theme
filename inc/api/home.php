@@ -37,22 +37,18 @@ function home_api_post() {
         $setType = $_REQUEST['query']['name'];
     }
 
+    // Get the set taxs
     $typeTitle =  get_theme_mod('streamium_section_input_posttype_' . $setType, $setType);
     $taxUrl =  get_theme_mod('streamium_section_input_taxonomy_' . $setTax, $setTax);   
 
-    /*$args = array(
-      'parent' => 0,
-      'hide_empty' => true
-    );
-    $categories = get_terms($setTax, $args);*/
-
+    // Get post cats
 	$categories = apply_filters('streamium_home_api_post_categories', $categories);
 
     $data = [];
 
     // Chunk the cats to not return all
     $cats = get_categories(array(
-               'taxonomy' => 'movies',
+               'taxonomy' => $setTax,
                'orderby' => 'name',
                'order'   => 'ASC'
            ));
@@ -75,7 +71,7 @@ function home_api_post() {
 
     }
 
-
+    // Loop through cats and return the movies
     foreach ($categories[$ind] as $category) :
 
         $dataPosts = [];
