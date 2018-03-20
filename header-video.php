@@ -51,7 +51,7 @@
 				
 
 	 		}
-echo   '<meta name="twitter:card" value="summary" />
+echo   '<meta name="twitter:card" value="summary_large_image" />
 	<meta name="twitter:url" value="' . $twitter_url . '" />
 	<meta name="twitter:title" value="' . $twitter_title . '" />
 	<meta name="twitter:description" value="'. $twitter_desc .'" />
