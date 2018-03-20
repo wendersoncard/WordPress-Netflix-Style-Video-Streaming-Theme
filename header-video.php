@@ -24,6 +24,36 @@
 
 	<!-- Trackback -->
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
+
+	<?php
+		if(get_theme_mod( 'streamium_social_twitter_enabled' )){
+
+			$twitter_url    = get_permalink();
+	 		$twitter_title  = get_the_title();
+	 		$twitter_desc   = get_the_content();
+	 		$twitter_thumbs = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_ID()), full );
+	 		$twitter_name   = get_theme_mod( 'streamium_social_twitter_handler', '@s3bubble' );
+            
+            // Check if video is in a series
+	 		if(isset($_GET['v'])){
+
+	            $id             = $_GET['v'];
+	 			$episodes       = get_post_meta(get_the_ID(), 'repeatable_fields' , true);
+	 			$twitter_url    = get_permalink() . '?v=' . $id;
+				$twitter_title  = $episodes[$id]['titles'];
+				$twitter_desc   = wp_trim_words( strip_tags($episodes[$id]['descriptions']), $num_words = 21, $more = null );
+				$twitter_thumbs = $episodes[$id]['thumbnails'];
+
+	 		}
+	?><!-- Twitter cards -->
+	<meta name="twitter:card" value="summary" />
+	<meta name="twitter:url" value="<?php echo $twitter_url; ?>" />
+	<meta name="twitter:title" value="<?php echo $twitter_title; ?>" />
+	<meta name="twitter:description" value="<?php echo $twitter_desc; ?>" />
+	<meta name="twitter:image" value="<?php echo $twitter_thumbs; ?>" />
+	<meta name="twitter:site" value="<?php echo $twitter_name; ?>" />
+	<meta name="twitter:creator" value="<?php echo $twitter_name; ?>" />
+	<? } ?>
 	
 	<!-- Wordpress Scripts -->
 	<?php wp_head(); ?>

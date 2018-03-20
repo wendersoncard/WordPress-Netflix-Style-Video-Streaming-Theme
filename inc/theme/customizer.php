@@ -671,7 +671,42 @@ class Streamium_Customize
           )
       );
 
-       // END ADVERTISEMENT SECTION
+      // END ADVERTISEMENT SECTION
+
+      // START SOCIAL SECTION
+      $wp_customize->add_section('streamium_social_section', array(
+          'title'     => __('Social Cards', 'streamium'),
+          'description' => 'Here you can enable twitter cards for all your videos including series you can validate Twitter using https://cards-dev.twitter.com/validator',
+          'priority'  => 1020
+      ));
+
+       $wp_customize->add_setting('streamium_social_twitter_handler');
+
+       $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'streamium_social_twitter_handler',
+        array(
+          'label' => 'Twitter handler: example @S3Bubble',
+          'section' => 'streamium_social_section',
+          'settings' => 'streamium_social_twitter_handler'
+        ))
+      );
+
+      $wp_customize->add_setting('streamium_social_twitter_enabled', array(
+          'default' => false
+      ));
+       $wp_customize->add_control(
+          new WP_Customize_Control(
+              $wp_customize,
+              'streamium_social_twitter_enabled',
+              array(
+                  'label'     => __('Enable Twitter cards for videos', 'streamium'),
+                  'section'   => 'streamium_social_section',
+                  'settings'  => 'streamium_social_twitter_enabled',
+                  'type'      => 'checkbox',
+              )
+          )
+      );
+
+       // END SOCIAL SECTION
 
        // Validation functions
       function streamium_sanitize_customizer_text($value)
