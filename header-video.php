@@ -26,7 +26,7 @@
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
 	<?php
-		if(get_theme_mod( 'streamium_social_twitter_enabled' )){
+		if(get_theme_mod( 'streamium_social_twitter_enabled', false )){
 
 			$twitter_url    = get_permalink();
 	 		$twitter_title  = get_the_title();
@@ -45,15 +45,16 @@
 				$twitter_thumbs = $episodes[$id]['thumbnails'];
 
 	 		}
-	?><!-- Twitter cards -->
-	<meta name="twitter:card" value="summary" />
-	<meta name="twitter:url" value="<?php echo $twitter_url; ?>" />
-	<meta name="twitter:title" value="<?php echo $twitter_title; ?>" />
-	<meta name="twitter:description" value="<?php echo $twitter_desc; ?>" />
-	<meta name="twitter:image" value="<?php echo $twitter_thumbs; ?>" />
-	<meta name="twitter:site" value="<?php echo $twitter_name; ?>" />
-	<meta name="twitter:creator" value="<?php echo $twitter_name; ?>" />
-	<? } ?>
+	 		echo   '<meta name="twitter:card" value="summary" />
+	 				<meta name="twitter:url" value="' . $twitter_url . '" />
+	 				<meta name="twitter:title" value="' . $twitter_title . '" />
+					<meta name="twitter:description" value="'. $twitter_desc .'" />
+					<meta name="twitter:image" value="'. $twitter_thumbs .'" />
+					<meta name="twitter:site" value="' . $twitter_name . '" />
+					<meta name="twitter:creator" value="' . $twitter_name .'" />';
+
+	 	}
+	?>
 	
 	<!-- Wordpress Scripts -->
 	<?php wp_head(); ?>
