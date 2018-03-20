@@ -706,6 +706,32 @@ class Streamium_Customize
           )
       );
 
+       $wp_customize->add_setting('streamium_social_facebook_handler');
+
+       $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'streamium_social_facebook_handler',
+        array(
+          'label' => 'Facebook url: example https://www.facebook.com/s3bubble',
+          'section' => 'streamium_social_section',
+          'settings' => 'streamium_social_facebook_handler'
+        ))
+      );
+
+      $wp_customize->add_setting('streamium_social_facebook_enabled', array(
+          'default' => false
+      ));
+       $wp_customize->add_control(
+          new WP_Customize_Control(
+              $wp_customize,
+              'streamium_social_facebook_enabled',
+              array(
+                  'label'     => __('Enable Facebook cards for videos', 'streamium'),
+                  'section'   => 'streamium_social_section',
+                  'settings'  => 'streamium_social_facebook_enabled',
+                  'type'      => 'checkbox',
+              )
+          )
+      );
+
        // END SOCIAL SECTION
 
        // Validation functions
