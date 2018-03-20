@@ -34,7 +34,7 @@
 			$twitter_url    = get_permalink();
 	 		$twitter_title  = get_the_title();
 	 		$twitter_desc   = get_the_content();
-	 		$twitter_thumbs = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_ID()), full );
+	 		$twitter_thumbs = wp_get_attachment_url( get_post_thumbnail_id() );
 	 		$twitter_name   = get_theme_mod( 'streamium_social_twitter_handler', '@s3bubble' );
 	 		$twitter_site   = get_bloginfo( 'name' );
             
@@ -67,7 +67,7 @@ echo   '<meta name="twitter:card" value="summary" />
 			$facebook_url    = get_permalink();
 	 		$facebook_title  = get_the_title();
 	 		$facebook_desc   = get_the_content();
-	 		$facebook_thumbs = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_ID()), full );
+	 		$facebook_thumbs = wp_get_attachment_url( get_post_thumbnail_id() );
 	 		$facebook_name   = get_theme_mod( 'streamium_social_facebook_handler', 'https://www.facebook.com/s3bubble' );
 	 		$facebook_site   = get_bloginfo( 'name' );
             
