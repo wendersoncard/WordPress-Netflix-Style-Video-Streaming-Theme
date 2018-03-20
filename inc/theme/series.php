@@ -170,3 +170,41 @@ function streamium_get_dynamic_series_content() {
 
 add_action( 'wp_ajax_nopriv_streamium_get_dynamic_series_content', 'streamium_get_dynamic_series_content' );
 add_action( 'wp_ajax_streamium_get_dynamic_series_content', 'streamium_get_dynamic_series_content' );
+
+/**
+ * Ajax remove series from list
+ *
+ * @return bool
+ * @author  @sameast
+ */
+function streamium_admin_series_remove_video() {
+
+	global $wpdb;
+
+	// Get params
+	$postId = (int) $_REQUEST['postId'];
+	$index  = (int) $_REQUEST['index'];	
+
+	$data = get_post_meta($postId, 'repeatable_fields', true);
+
+	// Delete current meta data
+	delete_post_meta( $postId, 'repeatable_fields', $data );
+
+	// Delete index
+	unset($data[$index]);
+
+	update_post_meta( $postId, 'repeatable_fields', $data );
+
+	// Return sucessfully state
+	echo json_encode(
+    	array(
+    		'error' => false,
+    		'message' => 'Successfully remove series video.'
+    	)
+    );
+
+    die();
+
+}
+
+add_action( 'wp_ajax_streamium_admin_series_remove_video', 'streamium_admin_series_remove_video' );

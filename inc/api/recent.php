@@ -17,7 +17,7 @@ function recently_watched_api_post() {
                 'message' => 'No naughty business please' 
             )
         );     
-        die(); 
+        die();
 
     }   
 

@@ -109,7 +109,13 @@ add_action( 'synopis_multi_meta', 'synopis_multi_meta_genre', 2, 0 );
 
 function synopis_multi_meta_release(){
 
-	echo '<li class="synopis-meta-spacer">' . __( 'Released', 'streamium' ) . ': <a href="/?s=all&date=' . get_the_date('Y/m/d') . '">' . get_the_date() . '</a></li>';
+	// Release date
+	$streamiumOverrideReleaseDate = get_post_meta( get_the_ID(), 'streamium_release_date_meta_box_text', true );
+	if(!empty($streamiumOverrideReleaseDate)){
+		echo '<li class="synopis-meta-spacer">' . __( 'Released', 'streamium' ) . ': ' . $streamiumOverrideReleaseDate . '</li>';
+	}else{
+		echo '<li class="synopis-meta-spacer">' . __( 'Released', 'streamium' ) . ': <a href="/?s=all&date=' . get_the_date('Y/m/d') . '">' . get_the_date() . '</a></li>';
+	}	
 
 }
 

@@ -187,7 +187,13 @@ function streamium_get_dynamic_content() {
 			}
 
 			// Release date
-			$buildMeta .= '<li class="synopis-meta-spacer">' .  __( 'Released', 'streamium' ) . ': <a href="/?s=all&date=' . get_the_date('Y/m/d', $postId) . '">' . get_the_date('l, F j, Y', $postId) . '</a></li></ul>';
+			$streamiumOverrideReleaseDate = get_post_meta( $postId, 'streamium_release_date_meta_box_text', true );
+			if(!empty($streamiumOverrideReleaseDate)){
+				$buildMeta .= '<li class="synopis-meta-spacer">' .  __( 'Released', 'streamium' ) . ': ' . $streamiumOverrideReleaseDate . '</li></ul>';
+			}else{
+				$buildMeta .= '<li class="synopis-meta-spacer">' .  __( 'Released', 'streamium' ) . ': <a href="/?s=all&date=' . get_the_date('Y/m/d', $postId) . '">' . get_the_date('l, F j, Y', $postId) . '</a></li></ul>';
+			}
+			
             
             // Only allow like/reviews for premium users
 			if ( get_theme_mod( 'streamium_enable_premium' ) ) {
@@ -368,7 +374,7 @@ function streamium_custom_post_types_general( $hook_suffix ){
         if( is_object( $screen ) && in_array($screen->post_type, array('movie', 'tv','sport','kid'))){
 
             // Register, enqueue scripts and styles here
-            wp_enqueue_script( 'streamium-admin-custom-post-type-general', get_template_directory_uri() . '/production/js/custom.post.type.general.min.js', array( 'jquery' ),'1.1', true );
+            wp_enqueue_script( 'streamium-admin-custom-post-type-general', get_template_directory_uri() . '/production/js/custom.post.type.general.min.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-datepicker' ),'1.1', true );
 
         }
 
@@ -406,7 +412,37 @@ function streamium_columns_main_slider_content($column_name, $post_ID) {
     if ($column_name == 'main_slider') {
 
         $main_slider = get_post_meta( $post_ID, 'streamium_slider_featured_checkbox_value', true );
-        echo '<b>' . ucfirst($main_slider) . '</b>';
+        echo '<span class="post-state s3bubble-brand-color">' . ucfirst($main_slider) . '</span>';
+
+    }
+
+}
+
+// ONLY MOVIE CUSTOM TYPE POSTS
+add_filter('manage_posts_columns', 'streamium_columns_series_video_count', 1);
+add_action('manage_posts_custom_column', 'streamium_columns_series_video_count_content', 10, 2);
+ 
+// CREATE TWO FUNCTIONS TO HANDLE THE COLUMN
+function streamium_columns_series_video_count($columns) { 
+    
+    $new = array();
+  	foreach($columns as $key => $title) {
+    	if ($key=='author') // Put the Thumbnail column before the Author column
+      	$new['series_video_count'] = 'Series Video Count';
+    	$new[$key] = $title;
+  	}
+  	return $new;
+  	
+
+}
+function streamium_columns_series_video_count_content($column_name, $post_ID) {
+
+    if ($column_name == 'series_video_count') {
+
+    	$series_video_count = get_post_meta($post_ID, 'repeatable_fields', true);
+    	if(!empty($series_video_count)){
+    		echo '<span class="post-state s3bubble-brand-color">' . count($series_video_count) . '</span>';
+    	}
 
     }
 
