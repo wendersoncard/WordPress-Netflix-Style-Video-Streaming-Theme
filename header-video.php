@@ -88,7 +88,7 @@ echo   '<meta property="og:locale" content="en_US"/>
 	<meta property="og:description" content="'. $facebook_desc .'"/>
 	<meta property="og:url" content="' . $facebook_url . '"/>
 	<meta property="og:site_name" content="' . $facebook_site . '"/>
-	<meta property="article:publisher" content="https://www.facebook.com/s3bubble"/>
+	<meta property="article:publisher" content="' . $facebook_name . '"/>
 	<meta property="article:tag" content="' . $facebook_title . '"/>
 	<meta property="og:image" content="' . $facebook_thumbs . '"/>
 	<meta property="og:image:secure_url" content="' . $facebook_thumbs . '"/>
