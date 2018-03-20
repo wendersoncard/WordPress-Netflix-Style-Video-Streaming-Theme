@@ -33,7 +33,7 @@
 
 			$twitter_url    = get_permalink();
 	 		$twitter_title  = get_the_title();
-	 		$twitter_desc   = get_the_content();
+	 		$twitter_desc   = get_post_field('post_content', get_the_ID());
 	 		$twitter_thumbs = wp_get_attachment_url( get_post_thumbnail_id() );
 	 		$twitter_name   = get_theme_mod( 'streamium_social_twitter_handler', '@s3bubble' );
 	 		$twitter_site   = get_bloginfo( 'name' );
@@ -66,7 +66,7 @@ echo   '<meta name="twitter:card" value="summary" />
 
 			$facebook_url    = get_permalink();
 	 		$facebook_title  = get_the_title();
-	 		$facebook_desc   = get_the_content();
+	 		$facebook_desc   = get_post_field('post_content', get_the_ID());
 	 		$facebook_thumbs = wp_get_attachment_url( get_post_thumbnail_id() );
 	 		$facebook_name   = get_theme_mod( 'streamium_social_facebook_handler', 'https://www.facebook.com/s3bubble' );
 	 		$facebook_site   = get_bloginfo( 'name' );
@@ -74,8 +74,8 @@ echo   '<meta name="twitter:card" value="summary" />
             // Check if video is in a series
 	 		if(isset($_GET['v'])){
 
-	            $id             = $_GET['v'];
-	 			$episodes       = get_post_meta(get_the_ID(), 'repeatable_fields' , true);
+	            $id              = $_GET['v'];
+	 			$episodes        = get_post_meta(get_the_ID(), 'repeatable_fields' , true);
 	 			$facebook_url    = get_permalink() . '?v=' . $id;
 				$facebook_title  = $episodes[$id]['titles'];
 				$facebook_desc   = wp_trim_words( strip_tags($episodes[$id]['descriptions']), $num_words = 21, $more = null );
