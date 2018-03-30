@@ -732,6 +732,14 @@ class Streamium_Customize
           )
       );
 
+      $wp_customize->add_setting('streamium_social_default_image');
+
+       $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'streamium_social_default_image', array(
+          'label'    => __('Default Image', 'streamium'),
+          'section'  => 'streamium_social_section',
+          'settings' => 'streamium_social_default_image',
+      )));
+
        // END SOCIAL SECTION
 
        // Validation functions
