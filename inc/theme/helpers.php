@@ -447,9 +447,15 @@ add_action( 'body_class', 'streamium_body_class');
  * @return filter
  */
 function get_theme_mod_ssl($mod_name){
+    
     if (is_ssl()) {
-      return str_replace(array('http:', 'https:'), '', get_theme_mod($mod_name));
+    
+      return preg_replace("/^http:/i", "https:", get_theme_mod($mod_name));
+    
     }else{
+    
       return get_theme_mod($mod_name);
+    
     }
+    
 }
