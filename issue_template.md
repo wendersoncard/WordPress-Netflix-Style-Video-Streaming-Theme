@@ -21,6 +21,9 @@ If there are any errors at all, please include them here.
 ## Additional Information
 Please include any additional information necessary here. Including the following:
 
+### versions
+#### Streamium Theme
+what version of the theme are you using?
 #### browsers
 what browser are affected?
 #### OSes
