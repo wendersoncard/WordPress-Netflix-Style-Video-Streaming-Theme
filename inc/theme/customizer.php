@@ -360,6 +360,24 @@ class Streamium_Customize
           )
        );
 
+       // Enable video ratings
+      $wp_customize->add_setting('streamium_enable_ratings', array(
+                'default'    => false
+            ));
+
+      $wp_customize->add_control(
+          new WP_Customize_Control(
+              $wp_customize,
+              'streamium_enable_ratings',
+              array(
+                  'label'     => __('Enable Video Ratings', 'streamium'),
+                  'section'   => 'title_tagline',
+                  'settings'  => 'streamium_enable_ratings',
+                  'type'      => 'checkbox',
+              )
+          )
+      );
+
        $wp_customize->add_setting('streamium_remove_powered_by_s3bubble');
 
        $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'streamium_remove_powered_by_s3bubble',

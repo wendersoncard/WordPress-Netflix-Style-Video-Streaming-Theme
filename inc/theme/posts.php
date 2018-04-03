@@ -189,11 +189,23 @@ function streamium_get_dynamic_content() {
 			// Release date
 			$streamiumOverrideReleaseDate = get_post_meta( $postId, 'streamium_release_date_meta_box_text', true );
 			if(!empty($streamiumOverrideReleaseDate)){
-				$buildMeta .= '<li class="synopis-meta-spacer">' .  __( 'Released', 'streamium' ) . ': ' . $streamiumOverrideReleaseDate . '</li></ul>';
+				$buildMeta .= '<li class="synopis-meta-spacer">' .  __( 'Released', 'streamium' ) . ': ' . $streamiumOverrideReleaseDate . '</li>';
 			}else{
-				$buildMeta .= '<li class="synopis-meta-spacer">' .  __( 'Released', 'streamium' ) . ': <a href="/?s=all&date=' . get_the_date('Y/m/d', $postId) . '">' . get_the_date('l, F j, Y', $postId) . '</a></li></ul>';
+				$buildMeta .= '<li class="synopis-meta-spacer">' .  __( 'Released', 'streamium' ) . ': <a href="/?s=all&date=' . get_the_date('Y/m/d', $postId) . '">' . get_the_date('l, F j, Y', $postId) . '</a></li>';
 			}
 			
+			// Add ratings option in customizer
+			if(get_theme_mod( 'streamium_enable_ratings' )) {
+
+				$streamium_ratings = get_post_meta( $postId, 'streamium_ratings_meta_box_text', true );
+				if ( ! empty( $streamium_ratings ) ) {
+					$buildMeta .= '<li class="synopis-meta-spacer">' . __( 'Rating', 'streamium' ) . ': ' . $streamium_ratings . '</a></li>';
+				}
+
+			}
+
+			// Close the meta tag
+			$buildMeta .= '</ul>';
             
             // Only allow like/reviews for premium users
 			if ( get_theme_mod( 'streamium_enable_premium' ) ) {
@@ -225,7 +237,7 @@ function streamium_get_dynamic_content() {
             }; // end if MultiPostThumbnails 
 
             // Setup content
-            $content = strip_tags($post_object->post_content);
+            $content = wp_trim_words( strip_tags($post_object->post_content), 15, ' <a class="show-more-content" data-id="' . $postId . '">' . __( 'read more', 'streamium' ) . '</a>' ); 
 
             // Watch preview
             $streamiumVideoTrailer = get_post_meta( $postId, 'streamium_video_trailer_meta_box_text', true );

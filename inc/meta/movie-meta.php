@@ -121,6 +121,19 @@ function synopis_multi_meta_release(){
 
 add_action( 'synopis_multi_meta', 'synopis_multi_meta_release', 3, 0 );
 
+function synopis_meta_ratings( ) {
+
+	$streamium_ratings = get_post_meta( get_the_ID(), 'streamium_ratings_meta_box_text', true );
+	if ( ! empty( $streamium_ratings ) ) {
+		echo '<li class="synopis-meta-spacer">' . __( 'Rating', 'streamium' ) . ': ' . $streamium_ratings . '</a></li>';
+	}
+
+}
+
+if(get_theme_mod( 'streamium_enable_ratings' )) {
+	add_action( 'synopis_multi_meta', 'synopis_meta_ratings', 4, 0 );
+}
+
 function synopis_video_progressbar(){
 
 	if(is_user_logged_in() && get_theme_mod( 'streamium_enable_premium' )) {

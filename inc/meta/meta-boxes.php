@@ -28,6 +28,8 @@ function streamium_video_code_meta_box_add(){
     // Global extra meta
     add_meta_box( 'streamium-meta-box-extra-meta', 'Extra Video Tile Meta', 'streamium_meta_box_extra_meta', array('movie', 'tv','sport','kid','stream'), 'side', 'high' );
 
+    // Video Ratings meta
+    add_meta_box( 'streamium-meta-box-ratings', 'Set Video Rating (PG|R|G|PG-13|NC-17)', 'streamium_meta_box_ratings', array('movie', 'tv','sport','kid','stream'), 'side', 'high' );
        
 
 }
@@ -312,6 +314,29 @@ function streamium_meta_box_extra_meta() {
 }
 
 /**
+ * Add video ratings PG etc
+ *
+ * @return null
+ * @author  @sameast
+ */
+function streamium_meta_box_ratings() {
+  
+    global $post;
+    $values = get_post_custom( $post->ID );
+    $text = isset( $values['streamium_ratings_meta_box_text'] ) ? $values['streamium_ratings_meta_box_text'][0] : '';
+    wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
+    ?>
+    <p class="streamium-meta-box-wrapper">
+
+        <input type="text" name="streamium_ratings_meta_box_text" class="widefat" id="streamium_ratings_meta_box_text" value="<?php echo $text; ?>" />
+
+    </p>
+
+    <?php 
+
+}
+
+/**
  * Overide release date
  *
  * @return null
@@ -462,6 +487,13 @@ function streamium_post_meta_box_save( $post_id )
     if( isset( $_POST['streamium_extra_meta_meta_box_text'] ) ){
         
         update_post_meta( $post_id, 'streamium_extra_meta_meta_box_text', $_POST['streamium_extra_meta_meta_box_text'] );
+
+    }
+
+    // Save video ratings
+    if( isset( $_POST['streamium_ratings_meta_box_text'] ) ){
+        
+        update_post_meta( $post_id, 'streamium_ratings_meta_box_text', $_POST['streamium_ratings_meta_box_text'] );
 
     }
 
