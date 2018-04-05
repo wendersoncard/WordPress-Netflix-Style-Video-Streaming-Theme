@@ -92,30 +92,35 @@ function recently_watched_api_post() {
                     }
                 }
 
-                $progressBar = false;
-                if(get_theme_mod( 'streamium_enable_premium' )) {
-                    $progressBar = get_post_meta( get_the_ID(), 'user_' . $userId, true );
-                }
-
                 $extraMeta = "";
                 $streamium_extra_meta = get_post_meta( get_the_ID(), 'streamium_extra_meta_meta_box_text', true );
                 if ( ! empty( $streamium_extra_meta ) ) {
                     $extraMeta = '<h5>' . $streamium_extra_meta . '</h5>';
                 }
-                $dataPosts[] = array(
-                    'id' => get_the_ID(),
-                    'post' => $loop->post,
-                    'tileUrl' => esc_url($image),
-                    'tileUrlExpanded' => esc_url($imageExpanded),
-                    'link' => get_the_permalink(),
-                    'title' => get_the_title(),
-                    'text' => wp_trim_words(get_the_content(), $num_words = 18, $more = '...'),
-                    'paid' => $paid,
-                    'progressBar' => (int)$progressBar,
-                    'extraMeta' => $extraMeta,
-                    'reviews' => get_streamium_likes(get_the_ID()),
-                    'nonce' => wp_create_nonce('streamium_likes_nonce')
-                );
+
+                $progressBar = false;
+                if(get_theme_mod( 'streamium_enable_premium' )) {
+                    $progressBar = get_post_meta( get_the_ID(), 'user_' . $userId, true );
+                }
+
+                if($progressBar < 95){
+
+                    $dataPosts[] = array(
+                        'id' => get_the_ID(),
+                        'post' => $loop->post,
+                        'tileUrl' => esc_url($image),
+                        'tileUrlExpanded' => esc_url($imageExpanded),
+                        'link' => get_the_permalink(),
+                        'title' => get_the_title(),
+                        'text' => wp_trim_words(get_the_content(), $num_words = 18, $more = '...'),
+                        'paid' => $paid,
+                        'progressBar' => (int)$progressBar,
+                        'extraMeta' => $extraMeta,
+                        'reviews' => get_streamium_likes(get_the_ID()),
+                        'nonce' => wp_create_nonce('streamium_likes_nonce')
+                    );
+
+                }
 
             endwhile;
         endif;
