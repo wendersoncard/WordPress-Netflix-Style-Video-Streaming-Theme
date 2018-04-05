@@ -26,7 +26,7 @@ class StreamiumSignedCookies {
 	public function get_custom_policy_stream_name($cname, $expires) {
 
 		$protocol = isset($_SERVER["HTTPS"]) ? 'https' : 'http';
-		$video_path = $protocol . '://' . $cname . '.' . $_SERVER['HTTP_HOST'] . '/*';
+		$video_path = 'https://' . $cname . '/*';
 		$policy = <<<POLICY
 {
 "Statement": [
@@ -45,10 +45,10 @@ POLICY;
 		$encoded_policy = $this->encode($policy);
 		$encoded_signature = $this->encode($this->sign($policy)); 
 
-		setcookie('CloudFront-Policy', $encoded_policy, 0, "", $_SERVER['HTTP_HOST']);
-		setcookie('CloudFront-Signature', $encoded_signature, 0, "", $_SERVER['HTTP_HOST']);
-		setcookie('CloudFront-Key-Pair-Id', $this->key_pair_id, 0, "", $_SERVER['HTTP_HOST']);
-
+		setcookie('CloudFront-Policy', $encoded_policy, 0, "/", $_SERVER['HTTP_HOST']);
+		setcookie('CloudFront-Signature', $encoded_signature, 0, "/", $_SERVER['HTTP_HOST']);
+		setcookie('CloudFront-Key-Pair-Id', $this->key_pair_id, 0, "/", $_SERVER['HTTP_HOST']);
+ 
 	}
 
 }
