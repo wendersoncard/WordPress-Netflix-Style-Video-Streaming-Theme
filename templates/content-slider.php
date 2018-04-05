@@ -54,7 +54,7 @@
 
 		<?php if ( ! empty( $streamiumFeaturedVideo ) && (!wp_is_mobile()) && ($sliderPostCount < 1)  && get_theme_mod( 'streamium_enable_premium' ) ) : ?>
 
-			<div>
+			<div class="streamium-slider-div">
 				
 				<div id="streamium-featured-background-<?php echo get_the_ID(); ?>" class="s3bubble streamium-featured-background" data-setup='{"codes": "<?php echo $streamiumFeaturedVideo; ?>","source":{"poster":"https://s3.amazonaws.com/s3bubble-cdn/theme-images/streamium-video-blank.png"},"options":{"background":true,"muted":true,"loop":true,"autoplay":true,"controls":false,"vpaid":""},"meta":{"skipButtons":false,"showSocial":false,"backButton":false,"subTitle": "","title": "","para": ""}}'></div>
 
@@ -106,7 +106,7 @@
 
 		<?php else : ?>
 
-			<div style="background-image: url(<?php echo esc_url($image); ?>);">
+			<div class="streamium-slider-div" style="background-image: url(<?php echo esc_url($image); ?>);">
 
 				<article class="content-overlay">
 					<div class="content-overlay-grad"></div>
@@ -161,7 +161,7 @@
 			endwhile; 
 		else: 
 		?>
-		<div class="slider-block">
+		<div class="streamium-slider-div">
 			<div class="slider-no-content">
 				<h2><?php _e( 'S3Bubble Media Streaming', 'streamium' ); ?></h2>
 				<p><?php _e( 'To display a image here go to your custom post and look for the metabox (Main Slider Video) and check it.', 'streamium' ); ?></p>

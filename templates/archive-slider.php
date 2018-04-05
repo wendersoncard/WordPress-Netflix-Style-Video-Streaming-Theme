@@ -54,7 +54,7 @@
 	            
 
 		?>
-		<div class="slider-block" style="background-image: url(<?php echo esc_url($image); ?>);">
+		<div class="streamium-slider-div" style="background-image: url(<?php echo esc_url($image); ?>);">
 			<article class="content-overlay">
 				<div class="content-overlay-grad"></div>
 				<div class="container-fluid rel">
@@ -104,7 +104,7 @@
 			endwhile; 
 		else : ?>
 
-			<div class="slider-block">
+			<div class="streamium-slider-div">
 				<div class="slider-no-content">
 					<h2><?php _e( 'S3Bubble Media Streaming', 'streamium' ); ?></h2>
 					<p><?php _e( 'To display a image here go to your custom post and look for the metabox (Main Slider Video) and check it.', 'streamium' ); ?></p>
