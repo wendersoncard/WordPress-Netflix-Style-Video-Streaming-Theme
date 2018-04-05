@@ -28,6 +28,7 @@ function tag_api_post() {
     $s = sanitize_text_field($_REQUEST['query']['slug']);
     $args = array(
         'post_type' => array('movie', 'tv','sport','kid','stream'),
+        'post_status' => 'publish',
         'tag_slug__in' => $s
     );
 

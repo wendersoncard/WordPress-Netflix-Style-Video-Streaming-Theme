@@ -39,6 +39,7 @@ function cats_api_post() {
 
     $args = array(
         'posts_per_page' => (int)get_theme_mod('streamium_global_options_homepage_desktop'),
+        'post_status' => 'publish',
         'tax_query' => array(
                 array(
                         'taxonomy'  => $setTax,

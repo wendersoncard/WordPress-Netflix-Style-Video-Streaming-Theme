@@ -29,6 +29,7 @@ function recently_watched_api_post() {
 	$args = array(
         'posts_per_page' => (int)get_theme_mod('streamium_global_options_homepage_desktop'),
         'post_type' => array('movie', 'tv','sport','kid','stream'),
+        'post_status' => 'publish',
         'meta_query' => array(
             array(
                 'key' => 'recently_watched_user_id',

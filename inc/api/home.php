@@ -78,7 +78,8 @@ function home_api_post() {
 
         $args = array(
                 'posts_per_page' => (int)get_theme_mod('streamium_global_options_homepage_desktop'),
-                'tax_query' => array(
+                'post_status' => 'publish', 
+                'tax_query' => array( 
                         array(
                                 'taxonomy'  => $setTax,
                                 'field'     => 'term_id',

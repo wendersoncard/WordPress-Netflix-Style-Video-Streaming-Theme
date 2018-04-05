@@ -40,6 +40,7 @@ function tax_api_post() {
             $loop = new WP_Query( 
                 array(
                     'posts_per_page'   => -1,
+                    'post_status' => 'publish',
                     //'ignore_sticky_posts' => true,
                     'tax_query' => array(
                         array(
@@ -65,6 +66,7 @@ function tax_api_post() {
             $loop = new WP_Query( 
                 array(
                     'posts_per_page'   => -1,
+                    'post_status' => 'publish',
                     //'ignore_sticky_posts' => true,
                     'tax_query' => array(
                         array(
@@ -90,6 +92,7 @@ function tax_api_post() {
             $loop = new WP_Query( 
                 array(
                     'posts_per_page'   => -1,
+                    'post_status' => 'publish',
                     //'ignore_sticky_posts' => true,
                     'tax_query' => array(
                         array(
@@ -110,6 +113,7 @@ function tax_api_post() {
             $loop = new WP_Query( 
                 array(
                     'posts_per_page'   => -1,
+                    'post_status' => 'publish',
                     //'ignore_sticky_posts' => true,
                     'tax_query' => array(
                         array(
