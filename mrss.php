@@ -19,12 +19,8 @@
     	"providerName" => "S3Bubble AWS Media Streaming",
 	    "lastUpdated" => $datetime->format('c'),
 	    "language" => "en",
-	   /*"categories" => [
-		    "name" => "S3Bubble Videos",
-		    "query" => "s3bubble",
-		    "order" => "most_popular"
-		],
-	    "playlists" => [],*/
+	    "categories" => ["action","adventure"],
+	    /*"playlists" => [],*/
 	    "movies" => [],
 	    "series" => [],
 	    "shortFormVideos" =>  [],
