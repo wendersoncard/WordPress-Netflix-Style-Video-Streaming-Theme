@@ -16,7 +16,7 @@
     	"providerName" => "S3Bubble AWS Media Streaming",
 	    "lastUpdated" => "2015-11-11T22:21:37+00:00",
 	    "language" => "en",
-	    "categories" => [],
+	    "categories" => ['movies'],
 	    "playlists" => [],
 	    "movies" => [],
 	    "series" => [],
@@ -70,7 +70,7 @@
 				  	],
 				  	"duration" => 1290
 				],
-			    "genres" => $genres,
+			    "genres" => ['action'], //$genres,
 			    "thumbnail" => $thumbnail,
 			    "releaseDate" => $releaseDate,
 			    "shortDescription" => $shortDescription,
