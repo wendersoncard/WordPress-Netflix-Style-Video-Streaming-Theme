@@ -38,10 +38,21 @@
         	$taxonomy_names = get_post_taxonomies( );
         	$categories = get_the_terms( $id, $taxonomy_names[1] );
         	$genres = [];
-    		foreach ($categories as $key => $value) {
-	    		$genres[] = strtolower($value->name);
+        	if ($categories) {
+	    		foreach ($categories as $key => $value) {
+		    		$genres[] = strtolower($value->name);
+		    	}
 	    	}    	
- 	
+ 			
+
+ 			$posttags = get_the_tags();
+ 			$tags = [];
+			if ($posttags) {
+			  	foreach($posttags as $tag) {
+			    	$tags[] = strtolower($tag->name); 
+			  	}
+			}
+
         	$json['movies'][] = [
         		"id" => $id,
 			    "title" => $title,
@@ -64,12 +75,7 @@
 			    "releaseDate" => $releaseDate,
 			    "shortDescription" => $shortDescription,
 			    "longDescription" => $longDescription,
-			    "tags" => [
-			        "amazing",
-			        "drama",
-			        "comedy",
-			        "horror"
-			    ]
+			    "tags" => $tags
         	];
 
         endwhile;
