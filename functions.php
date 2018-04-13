@@ -56,7 +56,7 @@ if (!function_exists('streamium_theme_setup')) {
         add_image_size('streamium-site-logo', 0, 60, true);
         
         // Roku images
-        add_image_size('streamium-roku-thumbnail', 960, 540, false); 
+        add_image_size('streamium-roku-thumbnail', 816, 459, false); 
 
         add_theme_support('title-tag');
 
