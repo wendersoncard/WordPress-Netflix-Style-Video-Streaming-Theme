@@ -81,7 +81,7 @@
 				  	],
 				  	"duration" => 1290
 				],
-			    //"genres" => ['action'], //$genres,
+			    "genres" => "adventure", //$genres,
 			    "thumbnail" => $thumbnail,
 			    "releaseDate" => $releaseDate,
 			    "shortDescription" => $shortDescription,
