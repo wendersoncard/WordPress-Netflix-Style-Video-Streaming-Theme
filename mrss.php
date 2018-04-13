@@ -41,7 +41,7 @@
         	$longDescription  = strip_tags(get_the_content());
         	$releaseDate      = get_the_time('c');
 
-    	 	$thumbnail   = 'c' . wp_get_attachment_image_url( get_post_thumbnail_id(), 'streamium-roku-thumbnail' );
+    	 	$thumbnail   = wp_get_attachment_image_url( get_post_thumbnail_id(), 'streamium-roku-thumbnail' );
 
 		    // Allow a extra image to be added
             if (class_exists('MultiPostThumbnails')) {                              
@@ -49,9 +49,9 @@
                 if (MultiPostThumbnails::has_post_thumbnail( get_post_type( get_the_ID() ), 'large-landscape-image', get_the_ID())) { 
 
                     $thumbnail_id = MultiPostThumbnails::get_post_thumbnail_id( get_post_type( get_the_ID() ), 'large-landscape-image', get_the_ID() );  
-                    $thumbnail = 'd' . wp_get_attachment_image_url( $thumbnail_id,'streamium-roku-thumbnail' ); 
+                    $thumbnail = wp_get_attachment_image_url( $thumbnail_id,'streamium-roku-thumbnail' ); 
 
-                }                            
+                }                             
              
             }; // end if MultiPostThumbnails 
 
