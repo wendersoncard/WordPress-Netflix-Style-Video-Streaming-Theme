@@ -64,16 +64,7 @@
 		    	}
 	    	}    	
  			
-
- 			$posttags = get_the_tags();
- 			$tags = [];
-			if ($posttags) {
-			  	foreach($posttags as $tag) {
-			    	$tags[] = strtolower($tag->name); 
-			  	}
-			}
-
-        	$json['movies'][] = [
+ 			$data = [
         		"id" => (string) $id,
 			    "title" => $title,
 			    "content" => [
@@ -94,9 +85,22 @@
 			    "thumbnail" => $thumbnail,
 			    "releaseDate" => $releaseDate,
 			    "shortDescription" => $shortDescription,
-			    "longDescription" => $longDescription,
-			    "tags" => $tags
+			    "longDescription" => $longDescription
         	];
+
+        	
+
+        	$posttags = get_the_tags();
+ 			$tags = [];
+			if ($posttags) {
+			  	foreach($posttags as $tag) {
+			    	$tags[] = strtolower($tag->name); 
+			  	}
+			  	$data['tags'] = $tags;
+			}
+
+			$json['movies'][] = $data;
+
 
         endwhile;
     endif;
