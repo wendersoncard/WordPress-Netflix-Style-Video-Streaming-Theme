@@ -12,9 +12,12 @@
     );
     $loop = new WP_Query($args);
 
+    // Latest build update
+    $datetime = new DateTime();
+
     $json = [
     	"providerName" => "S3Bubble AWS Media Streaming",
-	    "lastUpdated" => date(DATE_RFC2822),
+	    "lastUpdated" => $datetime->format('c'),
 	    "language" => "en",
 	    "categories" => ['action'],
 	    "playlists" => [],
