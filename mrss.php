@@ -32,7 +32,7 @@
         	$title            = wp_trim_words( get_the_title(), $num_words = 10, $more = '... ' );
         	$shortDescription = wp_trim_words( strip_tags(get_the_content()), $num_words = 20, $more = '... ' );
         	$longDescription  = strip_tags(get_the_content());
-        	$releaseDate      = get_the_time('F jS, Y');
+        	$releaseDate      = get_the_time('c');
         	$thumbnail        = wp_get_attachment_image_url( get_post_thumbnail_id(), 'streamium-video-tile-expanded' );
 
         	$taxonomy_names = get_post_taxonomies( );
@@ -54,7 +54,7 @@
 			}
 
         	$json['movies'][] = [
-        		"id" => $id,
+        		"id" => (string) $id,
 			    "title" => $title,
 			    "content" => [
 				  	"dateAdded" => $releaseDate,
