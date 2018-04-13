@@ -14,9 +14,9 @@
 
     $json = [
     	"providerName" => "S3Bubble AWS Media Streaming",
-	    "lastUpdated" => "2015-11-11T22:21:37+00:00",
+	    "lastUpdated" => date(DATE_RFC2822),
 	    "language" => "en",
-	    "categories" => ['movies'],
+	    "categories" => ['action'],
 	    "playlists" => [],
 	    "movies" => [],
 	    "series" => [],
@@ -29,11 +29,11 @@
         while ($loop->have_posts()) : $loop->the_post();
 
         	$id               = get_the_ID();
-        	$title            = wp_trim_words( get_the_title(), $num_words = 10, $more = '... ' );
+        	$title            = wp_trim_words( strip_tags(get_the_title()), $num_words = 10, $more = '... ' );
         	$shortDescription = wp_trim_words( strip_tags(get_the_content()), $num_words = 20, $more = '... ' );
         	$longDescription  = strip_tags(get_the_content());
         	$releaseDate      = get_the_time('c');
-        	$thumbnail        = wp_get_attachment_image_url( get_post_thumbnail_id(), 'streamium-video-tile-expanded' );
+        	$thumbnail        = wp_get_attachment_image_url( get_post_thumbnail_id(), 'streamium-roku-thumbnail' );
 
         	$taxonomy_names = get_post_taxonomies( );
         	$categories = get_the_terms( $id, $taxonomy_names[1] );
