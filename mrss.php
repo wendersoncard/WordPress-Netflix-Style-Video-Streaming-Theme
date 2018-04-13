@@ -60,7 +60,7 @@
 				  	"dateAdded" => $releaseDate,
 				  	"videos" => [
 						[
-						  "url"=> "https://s3bubble-documentation.s3.amazonaws.com/samtest.mp4",
+						  "url"=> "https://s3bubble-documentation.s3.amazonaws.com/test.mp4",
 						  "quality"=> "FHD",
 						  "videoType"=> "MP4"
 						]
