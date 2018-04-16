@@ -78,7 +78,7 @@
 				  	"duration" => 1290
 				],
 			    "genres" => ["action"], //$genres,
-			    "tags": ["No Category"],
+			    "tags" => ["No Category"],
 			    "thumbnail" => $thumbnail,
 			    "releaseDate" => $releaseDate,
 			    "shortDescription" => $shortDescription,
