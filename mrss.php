@@ -15,18 +15,6 @@
     // Latest build update
     $datetime = new DateTime();
 
-    $json = [
-    	"providerName" => "S3Bubble AWS Media Streaming",
-	    "lastUpdated" => $datetime->format('c'),
-	    "language" => "en-US",
-	    /*"categories" => [], 
-	    "playlists" => [],*/
-	    "movies" => []
-	    //"series" => [],
-	    //"shortFormVideos" =>  [],
-	    //"tvSpecials" => []
-    ];
-
     $genresList = [	"action",
 					"adventure",
 					"animals",
@@ -58,8 +46,29 @@
 					"special",
 					"sports",
 					"thriller",
-					"technology"
+					"technology",
+					"british"
 				];
+	$cats = [];
+	foreach ($genresList as $key => $value) {
+		$cats[] = [
+			"name" => ucfirst($value),
+		    "query" => strtolower($value),
+		    "order" => "most_popular"
+		];
+	}
+
+    $json = [
+    	"providerName" => "S3Bubble AWS Media Streaming",
+	    "lastUpdated" => $datetime->format('c'),
+	    "language" => "en-US",
+	    "categories" => $cats, 
+	    /*"playlists" => [],*/
+	    "movies" => []
+	    //"series" => [],
+	    //"shortFormVideos" =>  [],
+	    //"tvSpecials" => []
+    ];
 
 	// Only run if user is logged in
     if ($loop->have_posts()):
