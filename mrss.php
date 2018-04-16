@@ -19,12 +19,8 @@
     	"providerName" => "S3Bubble AWS Media Streaming",
 	    "lastUpdated" => $datetime->format('c'),
 	    "language" => "en",
-	    "categories" => [[
-		    "name" => "Action",
-		    "query" => "action AND adventure",
-		    "order" => "most_popular"
-		]], 
-	    /*"playlists" => [],*/
+	    /*"categories" => [], 
+	    "playlists" => [],*/
 	    "movies" => [],
 	    "series" => [],
 	    "shortFormVideos" =>  [],
@@ -81,7 +77,8 @@
 				  	],
 				  	"duration" => 1290
 				],
-			    "genres" => ["action","adventure"], //$genres,
+			    "genres" => ["action"], //$genres,
+			    "tags": ["No Category"],
 			    "thumbnail" => $thumbnail,
 			    "releaseDate" => $releaseDate,
 			    "shortDescription" => $shortDescription,
