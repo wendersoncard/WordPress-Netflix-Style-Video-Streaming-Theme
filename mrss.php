@@ -92,7 +92,7 @@
 			  	foreach($posttags as $tag) {
 			    	$tags[] = strtolower($tag->name); 
 			  	}
-			  	$data['tags'] = $tags;
+			  	//$data['tags'] = $tags;
 			}
 
 			$json['movies'][] = $data;
