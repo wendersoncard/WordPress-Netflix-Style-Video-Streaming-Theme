@@ -27,6 +27,40 @@
 	    //"tvSpecials" => []
     ];
 
+    $genresList = [	"action",
+					"adventure",
+					"animals",
+					"animated",
+					"anime",
+					"children",
+					"comedy",
+					"crime",
+					"documentary",
+					"drama",
+					"educational",
+					"fantasy",
+					"faith",
+					"food",
+					"fashion",
+					"gaming",
+					"health",
+					"history",
+					"horror",
+					"miniseries",
+					"mystery",
+					"nature",
+					"news",
+					"reality",
+					"romance",
+					"science",
+					"science fiction",
+					"sitcom",
+					"special",
+					"sports",
+					"thriller",
+					"technology"
+				];
+
 	// Only run if user is logged in
     if ($loop->have_posts()):
         while ($loop->have_posts()) : $loop->the_post();
@@ -36,15 +70,14 @@
         	$shortDescription = wp_trim_words( strip_tags(get_the_content()), $num_words = 20, $more = '... ' );
         	$longDescription  = strip_tags(get_the_content());
         	$releaseDate      = get_the_time('c');
-
-    	 	$thumbnail   = wp_get_attachment_image_url( get_post_thumbnail_id(), 'streamium-roku-thumbnail' );
+    	 	$thumbnail        = false;
 
 		    // Allow a extra image to be added
             if (class_exists('MultiPostThumbnails')) {                              
                 
-                if (MultiPostThumbnails::has_post_thumbnail( get_post_type( get_the_ID() ), 'large-landscape-image', get_the_ID())) { 
+                if (MultiPostThumbnails::has_post_thumbnail( get_post_type( get_the_ID() ), 'roku-thumbnail-image', get_the_ID())) { 
 
-                    $thumbnail_id = MultiPostThumbnails::get_post_thumbnail_id( get_post_type( get_the_ID() ), 'large-landscape-image', get_the_ID() );  
+                    $thumbnail_id = MultiPostThumbnails::get_post_thumbnail_id( get_post_type( get_the_ID() ), 'roku-thumbnail-image', get_the_ID() );  
                     $thumbnail = wp_get_attachment_image_url( $thumbnail_id,'streamium-roku-thumbnail' ); 
 
                 }                             
@@ -77,8 +110,8 @@
 				  	],
 				  	"duration" => 1290
 				],
-			    "genres" => ["action"], //$genres,
-			    "tags" => ["action"],
+			    "genres" => $genres, // ["action"], //
+			    "tags" => $genres, //["action"],
 			    "thumbnail" => $thumbnail,
 			    "releaseDate" => $releaseDate,
 			    "shortDescription" => $shortDescription,
@@ -96,7 +129,13 @@
 			  	//$data['tags'] = $tags;
 			}
 
-			$json['movies'][] = $data;
+			// Only run if image is added
+			if($thumbnail){
+
+				$json['movies'][] = $data;
+
+			}
+			
 
 
         endwhile;

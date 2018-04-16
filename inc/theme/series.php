@@ -52,6 +52,13 @@ function streamium_custom_post_types() {
 		        'id' => 'large-landscape-image',
 		        'post_type' => $value['type']
 		        )
+		    );
+
+		    new MultiPostThumbnails(array(
+		        'label' => 'Roku Thumbnail 16:9 at least (800x450)',
+		        'id' => 'roku-thumbnail-image',
+		        'post_type' => $value['type']
+		        )
 		    );     
 		 
 		};
