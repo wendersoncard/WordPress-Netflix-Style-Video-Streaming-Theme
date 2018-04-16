@@ -19,7 +19,11 @@
     	"providerName" => "S3Bubble AWS Media Streaming",
 	    "lastUpdated" => $datetime->format('c'),
 	    "language" => "en",
-	    "categories" => [], 
+	    "categories" => [[
+		    "name" => "Action",
+		    "query" => "action AND adventure",
+		    "order" => "most_popular"
+		]], 
 	    /*"playlists" => [],*/
 	    "movies" => [],
 	    "series" => [],
@@ -92,7 +96,7 @@
 			  	foreach($posttags as $tag) {
 			    	$tags[] = strtolower($tag->name); 
 			  	}
-			  	//$data['tags'] = $tags;
+			  	$data['tags'] = $tags;
 			}
 
 			$json['movies'][] = $data;
