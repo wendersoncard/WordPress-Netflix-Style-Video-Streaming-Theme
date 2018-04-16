@@ -18,13 +18,13 @@
     $json = [
     	"providerName" => "S3Bubble AWS Media Streaming",
 	    "lastUpdated" => $datetime->format('c'),
-	    "language" => "en",
+	    "language" => "en-US",
 	    /*"categories" => [], 
 	    "playlists" => [],*/
-	    "movies" => [],
-	    "series" => [],
-	    "shortFormVideos" =>  [],
-	    "tvSpecials" => []
+	    "movies" => []
+	    //"series" => [],
+	    //"shortFormVideos" =>  [],
+	    //"tvSpecials" => []
     ];
 
 	// Only run if user is logged in
@@ -78,7 +78,7 @@
 				  	"duration" => 1290
 				],
 			    "genres" => ["action"], //$genres,
-			    "tags" => ["No Category"],
+			    "tags" => ["action"],
 			    "thumbnail" => $thumbnail,
 			    "releaseDate" => $releaseDate,
 			    "shortDescription" => $shortDescription,
