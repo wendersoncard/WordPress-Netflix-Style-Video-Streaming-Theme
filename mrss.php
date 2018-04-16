@@ -46,8 +46,7 @@
 					"special",
 					"sports",
 					"thriller",
-					"technology",
-					"british"
+					"technology"
 				];
 	$cats = [];
 	foreach ($genresList as $key => $value) {
