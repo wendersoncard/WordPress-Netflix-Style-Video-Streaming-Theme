@@ -62,8 +62,8 @@
     	"providerName" => "S3Bubble AWS Media Streaming",
 	    "lastUpdated" => $datetime->format('c'),
 	    "language" => "en-US",
-	    "categories" => $cats, 
-	    /*"playlists" => [],*/
+	    /*"categories" => $cats, 
+	    "playlists" => [],*/
 	    "movies" => []
 	    //"series" => [],
 	    //"shortFormVideos" =>  [],
@@ -96,9 +96,13 @@
         	$taxonomy_names = get_post_taxonomies( );
         	$categories = get_the_terms( $id, $taxonomy_names[1] );
         	$genres = [];
+        	$cats = [];
         	if ($categories) {
 	    		foreach ($categories as $key => $value) {
-		    		$genres[] = strtolower($value->name);
+	    			if (in_array(strtolower($value->name), $genresList)) {
+			    		$genres[] = strtolower($value->name);
+			    	}
+			    	$cats[] = strtolower($value->name);
 		    	}
 	    	}    	
  			
@@ -120,7 +124,7 @@
 				  	"duration" => 1290
 				],
 			    "genres" => $genres, // ["action"], //
-			    "tags" => $genres, //["action"],
+			    "tags" => $cats, //["action"],
 			    "thumbnail" => $thumbnail,
 			    "releaseDate" => $releaseDate,
 			    "shortDescription" => $shortDescription,
