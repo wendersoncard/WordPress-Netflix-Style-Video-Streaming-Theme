@@ -19,6 +19,9 @@ function streamium_video_code_meta_box_add(){
     // Repeater for premium
     add_meta_box( 'streamium-repeatable-fields', 'Multiple Videos - Seasons/Episodes', 'streamium_repeatable_meta_box_display', array('movie', 'tv','sport','kid'), 'normal', 'high');
 
+    // Roku direct publisher
+    add_meta_box( 'streamium-meta-box-roku', 'Roku Direct Publisher Integration', 'streamium_meta_box_roku', array('movie', 'tv','sport','kid'), 'normal', 'high' );
+
     // live stream meta
     add_meta_box( 'streamium-meta-box-live-streams', 'Live Streams', 'streamium_meta_box_live_streams', array('stream'), 'side', 'high' );
 
@@ -65,6 +68,64 @@ function streamium_meta_box_movie(){
     <p class="streamium-meta-box-wrapper">
         <label>Youtube/Vimeo/Dailymotion Direct Link</label>
         <input type="text" name="s3bubble_video_youtube_code_meta_box_text" class="widefat" id="s3bubble_video_youtube_code_meta_box_text" value="<?php echo $service; ?>" placeholder="Enter service url" />
+    </p>
+
+    <?php    
+
+}
+
+
+/**
+ * Sets up the meta box content for Roku
+ *
+ * @return null
+ * @author  @sameast
+ */
+function streamium_meta_box_roku(){
+
+    // $post is already set, and contains an object: the WordPress post
+    global $post;
+    $values = get_post_custom( $post->ID );
+    $code = isset( $values['s3bubble_video_code_meta_box_text'] ) ? $values['s3bubble_video_code_meta_box_text'][0] : '';
+    $url = isset( $values['s3bubble_roku_url_meta_box_text'] ) ? $values['s3bubble_roku_url_meta_box_text'][0] : '';
+    $quality = isset( $values['s3bubble_roku_quality_meta_box_text'] ) ? $values['s3bubble_roku_quality_meta_box_text'][0] : '';
+    $videoType = isset( $values['s3bubble_roku_videotype_meta_box_text'] ) ? $values['s3bubble_roku_videotype_meta_box_text'][0] : '';
+    $duration = isset( $values['s3bubble_roku_duration_meta_box_text'] ) ? $values['s3bubble_roku_duration_meta_box_text'][0] : '';
+
+    wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
+
+    ?>
+    <p class="streamium-meta-box-wrapper">
+        <label>Video Url</label>
+        <input type="url" name="s3bubble_roku_url_meta_box_text" class="widefat" id="s3bubble_roku_url_meta_box_text" value="<?php echo $url; ?>" placeholder="Enter video url" />
+    </p>
+    <p class="streamium-meta-box-wrapper">
+        <label>Video Quality</label>
+        <select tabindex="1" name="s3bubble_roku_quality_meta_box_text" id="s3bubble_roku_quality_meta_box_text">
+            <option value="<?php echo $quality; ?>"><?php echo (empty($quality)) ? 'Select Video Quality' : $quality; ?></option>
+            <option value="HD">HD – 720p</option>
+            <option value="FHD">FHD – 1080p</option>
+            <option value="UHD">UHD – 4K</option>
+        </select>
+    </p>
+     <p class="streamium-meta-box-wrapper">
+        <label>Video Type</label>
+        <select tabindex="1" name="s3bubble_roku_videotype_meta_box_text" id="s3bubble_roku_videotype_meta_box_text">
+            <option value="<?php echo $videoType; ?>"><?php echo (empty($videoType)) ? 'Select Video Type' : $videoType; ?></option>
+            <option value="HLS">HLS</option>
+            <option value="SMOOTH">SMOOTH</option>
+            <option value="DASH">DASH</option>
+            <option value="MP4">MP4</option>
+            <option value="MOV">MOV</option>
+            <option value="M4V">M4V</option>
+        </select>
+    </p>
+    <p class="streamium-meta-box-wrapper">
+        <label>Video Duration (Runtime in seconds)</label>
+        <input type="text" name="s3bubble_roku_duration_meta_box_text" class="widefat" id="s3bubble_roku_duration_meta_box_text" value="<?php echo $duration; ?>" placeholder="Enter video duration" />
+    </p>
+    <p class="streamium-meta-box-wrapper">
+        <a id="streamium-add-roku-data" class="button button-primary button-large" href="#" data-code="<?php echo (empty($code)) ? '' : $code; ?>">Generate Roku Data</a>
     </p>
 
     <?php    
@@ -380,6 +441,28 @@ function streamium_post_meta_box_save( $post_id )
     if( isset( $_POST['s3bubble_video_code_meta_box_text'] ) ){
 
       update_post_meta( $post_id, 's3bubble_video_code_meta_box_text', $_POST['s3bubble_video_code_meta_box_text'] );
+      
+    }
+
+    // ROKU VIDEO DATA
+    if( isset( $_POST['s3bubble_roku_url_meta_box_text'] ) ){
+
+      update_post_meta( $post_id, 's3bubble_roku_url_meta_box_text', $_POST['s3bubble_roku_url_meta_box_text'] );
+      
+    }
+    if( isset( $_POST['s3bubble_roku_quality_meta_box_text'] ) ){
+
+      update_post_meta( $post_id, 's3bubble_roku_quality_meta_box_text', $_POST['s3bubble_roku_quality_meta_box_text'] );
+      
+    }
+    if( isset( $_POST['s3bubble_roku_videotype_meta_box_text'] ) ){
+
+      update_post_meta( $post_id, 's3bubble_roku_videotype_meta_box_text', $_POST['s3bubble_roku_videotype_meta_box_text'] );
+      
+    }
+    if( isset( $_POST['s3bubble_roku_duration_meta_box_text'] ) ){
+
+      update_post_meta( $post_id, 's3bubble_roku_duration_meta_box_text', $_POST['s3bubble_roku_duration_meta_box_text'] );
       
     }
 

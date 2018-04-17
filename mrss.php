@@ -74,11 +74,17 @@
         while ($loop->have_posts()) : $loop->the_post();
 
         	$id               = get_the_ID();
-        	$title            = wp_trim_words( strip_tags(get_the_title()), $num_words = 10, $more = '... ' );
+        	$title            = substr( strip_tags(get_the_title()), 0, 200);
         	$shortDescription = wp_trim_words( strip_tags(get_the_content()), $num_words = 20, $more = '... ' );
         	$longDescription  = strip_tags(get_the_content());
         	$releaseDate      = get_the_time('c');
     	 	$thumbnail        = false;
+
+    	 	// Roku meta box data
+    	 	$videoUrl      = get_post_meta( $post->ID, 's3bubble_roku_url_meta_box_text', true );
+    	 	$videoQuality  = get_post_meta( $post->ID, 's3bubble_roku_quality_meta_box_text', true );
+    	 	$VideoType     = get_post_meta( $post->ID, 's3bubble_roku_videotype_meta_box_text', true );
+    	 	$videoDuration = get_post_meta( $post->ID, 's3bubble_roku_duration_meta_box_text', true );
 
 		    // Allow a extra image to be added
             if (class_exists('MultiPostThumbnails')) {                              
@@ -112,15 +118,15 @@
 				  	"dateAdded" => $releaseDate,
 				  	"videos" => [
 						[
-						  "url"=> "https://s3bubble-documentation.s3.amazonaws.com/test.mp4",
-						  "quality"=> "FHD",
-						  "videoType"=> "MP4"
+						  "url"=> $videoUrl,
+						  "quality"=> $videoQuality,
+						  "videoType"=> $VideoType
 						]
 				  	],
 				  	"trickPlayFiles" => [
 	
 				  	],
-				  	"duration" => 1290
+				  	"duration" => $videoDuration
 				],
 			    "genres" => $genres, // ["action"], //
 			    "tags" => $cats, //["action"],
@@ -142,7 +148,7 @@
 			}
 
 			// Only run if image is added
-			if($thumbnail){
+			if($thumbnail && $videoUrl && $videoQuality && $VideoType && $videoDuration){
 
 				$json['movies'][] = $data;
 
