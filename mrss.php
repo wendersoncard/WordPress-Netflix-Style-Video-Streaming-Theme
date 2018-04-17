@@ -126,7 +126,7 @@
 				  	"trickPlayFiles" => [
 	
 				  	],
-				  	"duration" => $videoDuration
+				  	"duration" => (int)$videoDuration
 				],
 			    "genres" => $genres, // ["action"], //
 			    "tags" => $cats, //["action"],
