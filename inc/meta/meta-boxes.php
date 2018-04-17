@@ -127,6 +127,12 @@ function streamium_meta_box_roku(){
     <p class="streamium-meta-box-wrapper">
         <a id="streamium-add-roku-data" class="button button-primary button-large" href="#" data-code="<?php echo (empty($code)) ? '' : $code; ?>">Generate Roku Data</a>
     </p>
+    <p class="streamium-meta-box-wrapper">
+        Make sure you update your Roku feed here. 
+        <a href="https://developer.roku.com/en-gb/developer" target="_blank">https://developer.roku.com/en-gb/developer</a>
+    </p>
+
+    
 
     <?php    
 
