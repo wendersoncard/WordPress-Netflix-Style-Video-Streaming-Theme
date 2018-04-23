@@ -383,7 +383,7 @@ function streamium_custom_post_types_general( $hook_suffix ){
         
         $screen = get_current_screen();
 
-        if( is_object( $screen ) && in_array($screen->post_type, array('movie', 'tv','sport','kid'))){
+        if( is_object( $screen ) && in_array($screen->post_type, array('movie', 'tv', 'sport', 'kid'))){
 
             // Register, enqueue scripts and styles here
             wp_enqueue_script( 'streamium-admin-custom-post-type-general', get_template_directory_uri() . '/production/js/custom.post.type.general.min.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-datepicker' ),'1.1', true );

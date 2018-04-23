@@ -20,7 +20,9 @@ function streamium_video_code_meta_box_add(){
     add_meta_box( 'streamium-repeatable-fields', 'Multiple Videos - Seasons/Episodes', 'streamium_repeatable_meta_box_display', array('movie', 'tv','sport','kid'), 'normal', 'high');
 
     // Roku direct publisher
-    add_meta_box( 'streamium-meta-box-roku', 'Roku Direct Publisher Integration', 'streamium_meta_box_roku', array('movie', 'tv','sport','kid'), 'normal', 'high' );
+    add_meta_box( 'streamium-meta-box-roku', 'Roku Direct Publisher Integration', 'streamium_meta_box_roku', array('movie','tv','sport','kid'), 'normal', 'high' );
+
+    add_meta_box( 'streamium-meta-box-roku-stream', 'Roku Direct Publisher Integration', 'streamium_meta_box_roku_stream', array('stream'), 'normal', 'high' );
 
     // live stream meta
     add_meta_box( 'streamium-meta-box-live-streams', 'Live Streams', 'streamium_meta_box_live_streams', array('stream'), 'side', 'high' );
@@ -354,6 +356,69 @@ function streamium_meta_box_live_streams() {
     </p>
 
     <?php 
+
+}
+
+/**
+ * Sets up the meta box content for Roku Live Streaming
+ *
+ * @return null
+ * @author  @sameast
+ */
+function streamium_meta_box_roku_stream(){
+
+    // $post is already set, and contains an object: the WordPress post
+    global $post;
+    $values = get_post_custom( $post->ID );
+    $code = isset( $values['streamium_live_stream_meta_box_text'] ) ? $values['streamium_live_stream_meta_box_text'][0] : '';
+    $url = isset( $values['s3bubble_roku_url_meta_box_text'] ) ? $values['s3bubble_roku_url_meta_box_text'][0] : '';
+    $quality = isset( $values['s3bubble_roku_quality_meta_box_text'] ) ? $values['s3bubble_roku_quality_meta_box_text'][0] : '';
+    $videoType = isset( $values['s3bubble_roku_videotype_meta_box_text'] ) ? $values['s3bubble_roku_videotype_meta_box_text'][0] : '';
+    $duration = isset( $values['s3bubble_roku_duration_meta_box_text'] ) ? $values['s3bubble_roku_duration_meta_box_text'][0] : '';
+
+    wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
+
+    ?>
+    <p class="streamium-meta-box-wrapper">
+        <label>Video Url</label>
+        <input type="url" name="s3bubble_roku_url_meta_box_text" class="widefat" id="s3bubble_roku_url_meta_box_text" value="<?php echo $url; ?>" placeholder="Enter video url" />
+    </p>
+    <p class="streamium-meta-box-wrapper">
+        <label>Video Quality</label>
+        <select tabindex="1" name="s3bubble_roku_quality_meta_box_text" id="s3bubble_roku_quality_meta_box_text">
+            <option value="<?php echo $quality; ?>"><?php echo (empty($quality)) ? 'Select Video Quality' : $quality; ?></option>
+            <option value="HD">HD – 720p</option>
+            <option value="FHD">FHD – 1080p</option>
+            <option value="UHD">UHD – 4K</option>
+        </select>
+    </p>
+     <p class="streamium-meta-box-wrapper">
+        <label>Video Type</label>
+        <select tabindex="1" name="s3bubble_roku_videotype_meta_box_text" id="s3bubble_roku_videotype_meta_box_text">
+            <option value="<?php echo $videoType; ?>"><?php echo (empty($videoType)) ? 'Select Video Type' : $videoType; ?></option>
+            <option value="HLS">HLS</option>
+            <option value="SMOOTH">SMOOTH</option>
+            <option value="DASH">DASH</option>
+            <option value="MP4">MP4</option>
+            <option value="MOV">MOV</option>
+            <option value="M4V">M4V</option>
+        </select>
+    </p>
+    <p class="streamium-meta-box-wrapper">
+        <label>Video Duration (Runtime in seconds)</label>
+        <input type="text" name="s3bubble_roku_duration_meta_box_text" class="widefat" id="s3bubble_roku_duration_meta_box_text" value="<?php echo $duration; ?>" placeholder="Enter video duration" />
+    </p>
+    <p class="streamium-meta-box-wrapper">
+        <a id="streamium-add-roku-data-stream" class="button button-primary button-large" href="#" data-code="<?php echo (empty($code)) ? '' : $code; ?>">Generate Roku Data</a>
+    </p>
+    <p class="streamium-meta-box-wrapper">
+        Make sure you update your Roku feed here. 
+        <a href="https://developer.roku.com/en-gb/developer" target="_blank">https://developer.roku.com/en-gb/developer</a>
+    </p>
+
+    
+
+    <?php    
 
 }
 

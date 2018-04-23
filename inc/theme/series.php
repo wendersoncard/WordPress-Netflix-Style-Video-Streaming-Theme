@@ -101,6 +101,9 @@ function streamium_custom_post_types() {
 			'menu_icon'           => 'https://s3.amazonaws.com/s3bubble-cdn/theme-images/s3bubblelogo.png',
 			'menu_position'       => 5,
 			'taxonomies'          => array(  'post_tag', $value['tax'] ),
+			//'show_in_rest'       => true,
+  			//'rest_base'          => $value['tax'],
+  			//'rest_controller_class' => 'WP_REST_Posts_Controller',
 			//'supports'			  => array('title', 'editor', 'thumbnail', 'excerpt'),
 			'rewrite'			  => array(
 										'slug' => $rewriteType, 
