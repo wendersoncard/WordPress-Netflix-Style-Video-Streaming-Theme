@@ -215,7 +215,12 @@
 				  	"shortDescription" => "Wondrous series seasons."
 				];
 
-				$json['series'][] = $data;
+				// Only return if the series has episodes with roku data generated
+				if(count($episodeObject) > 0){
+					
+					$json['series'][] = $data;
+
+				}
 	
 			}else{
 
