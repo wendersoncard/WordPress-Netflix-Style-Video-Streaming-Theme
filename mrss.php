@@ -181,10 +181,11 @@
 				  	"id" => (string) $id,
 				  	"title" => $title,
 				  	"seasons" => $seasonEpisodes,
-				  	"genres" => ["comedy"], // ["action"], //
+				  	"genres" => $genres, // ["action"], //
 				  	"thumbnail" => $thumbnail,
 				  	"releaseDate" => get_the_date('Y-m-d'),
-				    "shortDescription" => $shortDescription
+				    "shortDescription" => $shortDescription,
+				    "longDescription" => $longDescription
 				];
 
 				// Only return if the series has episodes with roku data generated
