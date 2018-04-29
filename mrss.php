@@ -140,7 +140,7 @@
 		        	$episodeObject = [];
 		        	foreach ($value as $key2 => $value2) {
 
-		        		$videoData = [
+		        		/*$videoData = [
 			        		"id" => (string) $id . $value[0]['seasons'] . $value[0]['positions'],
 						    "title" => $value2['titles'],
 						    "content" => [
@@ -163,14 +163,29 @@
 						    "releaseDate" => $releaseDate,
 						    "shortDescription" => $value2['descriptions'],
 						    "longDescription" => $value2['descriptions']
-			        	];
+			        	];*/
+
+			        	$videoData2 = [
+						  	"dateAdded" => $releaseDate,
+						  	"videos" => [
+								[
+								  "url"=> $value2['roku_url'],
+								  "quality"=> $value2['roku_quality'],
+								  "videoType"=> $value2['roku_type']
+								]
+						  	],
+						  	"trickPlayFiles" => [
+			
+						  	],
+						  	"duration" => (int)$value2['roku_duration']
+						];
 
 			        	if($value2['thumbnails'] && $value2['roku_url'] && $value2['roku_quality'] && $value2['roku_type'] && $value2['roku_duration']){
 
 			        		$episodeObject[] = [
 							  	"id" => (string) $id . $value[0]['seasons'] . $value[0]['positions'],
 							  	"title" => $value2['titles'],
-							  	"content" => $videoData,
+							  	"content" => $videoData2,
 							  	"thumbnail" => $value2['thumbnails'],
 							  	"episodeNumber" => ($key2+1),
 							  	"shortDescription" => $value2['descriptions']
