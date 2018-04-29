@@ -141,16 +141,13 @@
 		        	foreach ($value as $key2 => $value2) {
 
 			        	$videoData2 = [
-						  	"dateAdded" => get_the_date('Y-m-d'),
+						  	"dateAdded" => get_the_time('c'),
 						  	"videos" => [
 								[
 								  "url"=> $value2['roku_url'],
 								  "quality"=> $value2['roku_quality'],
 								  "videoType"=> $value2['roku_type']
 								]
-						  	],
-						  	"trickPlayFiles" => [
-			
 						  	],
 						  	"duration" => (int)$value2['roku_duration']
 						];
@@ -184,12 +181,10 @@
 				  	"id" => (string) $id,
 				  	"title" => $title,
 				  	"seasons" => $seasonEpisodes,
-				  	"genres" => $genres, // ["action"], //
-				    "tags" => $cats, //["action"],
+				  	"genres" => ["comedy"], // ["action"], //
 				  	"thumbnail" => $thumbnail,
 				  	"releaseDate" => get_the_date('Y-m-d'),
-				    "shortDescription" => $shortDescription,
-				    "longDescription" => $longDescription
+				    "shortDescription" => $shortDescription
 				];
 
 				// Only return if the series has episodes with roku data generated
