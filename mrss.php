@@ -162,9 +162,10 @@
 							  	"title" => $value2['titles'],
 							  	"content" => $videoData2,
 							  	"thumbnail" => $value2['thumbnails'],
-							  	"episodeNumber" => ($key2+1),
+							  	"episodeNumber" => (int) ($key2+1),
+							  	"releaseDate" => get_the_date('Y-m-d'),
 							  	"shortDescription" => $value2['descriptions'],
-							  	"releaseDate" => get_the_date('Y-m-d')
+							  	"longDescription" => $value2['descriptions']
 							];
 
 						}
@@ -172,8 +173,9 @@
 		        	}
 
 					$seasonEpisodes[] = array(
-						'seasonNumber' => $key, 
+						'seasonNumber' => (int) $key, 
 						'episodes' => $episodeObject, 
+						"thumbnail" => $thumbnail,
 					);
 
 				}
@@ -182,14 +184,12 @@
 				  	"id" => (string) $id,
 				  	"title" => $title,
 				  	"seasons" => $seasonEpisodes,
-				  	"genres" => [
-				    	"educational",
-				    	"science fiction",
-				    	"thriller",
-				  	],
+				  	"genres" => $genres, // ["action"], //
+				    "tags" => $cats, //["action"],
 				  	"thumbnail" => $thumbnail,
-				  	"shortDescription" => "Wondrous series seasons.",
-				  	"releaseDate" => get_the_date('Y-m-d')
+				  	"releaseDate" => get_the_date('Y-m-d'),
+				    "shortDescription" => $shortDescription,
+				    "longDescription" => $longDescription
 				];
 
 				// Only return if the series has episodes with roku data generated
