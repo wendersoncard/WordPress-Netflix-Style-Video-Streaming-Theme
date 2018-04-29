@@ -188,7 +188,8 @@
 				    	"thriller",
 				  	],
 				  	"thumbnail" => $thumbnail,
-				  	"shortDescription" => "Wondrous series seasons."
+				  	"shortDescription" => "Wondrous series seasons.",
+				  	"releaseDate" => get_the_date('Y-m-d')
 				];
 
 				// Only return if the series has episodes with roku data generated
