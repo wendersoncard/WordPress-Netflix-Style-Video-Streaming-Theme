@@ -166,7 +166,7 @@
 			        	];*/
 
 			        	$videoData2 = [
-						  	"dateAdded" => $releaseDate,
+						  	"dateAdded" => get_the_date('Y-m-d'),
 						  	"videos" => [
 								[
 								  "url"=> $value2['roku_url'],
