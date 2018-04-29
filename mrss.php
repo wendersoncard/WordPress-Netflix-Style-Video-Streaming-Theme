@@ -182,6 +182,7 @@
 				  	"title" => $title,
 				  	"seasons" => $seasonEpisodes,
 				  	"genres" => $genres, // ["action"], //
+				    "tags" => $cats, //["action"],
 				  	"thumbnail" => $thumbnail,
 				  	"releaseDate" => get_the_date('Y-m-d'),
 				    "shortDescription" => $shortDescription,
