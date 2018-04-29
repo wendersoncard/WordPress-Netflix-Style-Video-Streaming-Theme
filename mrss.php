@@ -181,8 +181,8 @@
 				  	"id" => (string) $id,
 				  	"title" => $title,
 				  	"seasons" => $seasonEpisodes,
-				  	"genres" => $genres, // ["action"], //
-				    "tags" => $cats, //["action"],
+				  	"genres" => $genres, 
+				    "tags" => $cats, 
 				  	"thumbnail" => $thumbnail,
 				  	"releaseDate" => get_the_date('Y-m-d'),
 				    "shortDescription" => $shortDescription,
@@ -216,8 +216,8 @@
 					  	],
 					  	"duration" => (int)$videoDuration
 					],
-				    "genres" => $genres, // ["action"], //
-				    "tags" => $cats, //["action"],
+				    "genres" => $genres, 
+				    "tags" => $cats, 
 				    "thumbnail" => $thumbnail,
 				    "releaseDate" => $releaseDate,
 				    "shortDescription" => $shortDescription,
