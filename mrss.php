@@ -63,8 +63,8 @@
 	    "language" => "en-US",
 	    /*"categories" => $cats, 
 	    "playlists" => [],*/
-	    "movies" => []
-	    //"series" => [],
+	    "movies" => [],
+	    "series" => [],
 	    //"shortFormVideos" =>  [],
 	    //"tvSpecials" => []
     ];
@@ -110,51 +110,134 @@
 			    	$cats[] = strtolower($value->name);
 		    	}
 	    	}    	
- 			
- 			$data = [
-        		"id" => (string) $id,
-			    "title" => $title,
-			    "content" => [
-				  	"dateAdded" => $releaseDate,
-				  	"videos" => [
-						[
-						  "url"=> $videoUrl,
-						  "quality"=> $videoQuality,
-						  "videoType"=> $VideoType
-						]
+
+			// Check for series
+			$episodes = get_post_meta(get_the_ID(), 'repeatable_fields' , true);
+
+			if(!empty($episodes)){
+
+				// This is a series
+
+				// Order the list
+				$positions = array();
+				foreach ($episodes as $key => $row){
+				    $positions[$key] = $row['positions'];
+				}
+				array_multisort($positions, SORT_ASC, $episodes);
+
+				// Sort the seasons
+				$result = array();
+				foreach ($episodes as $v) {
+				    $seasons = $v['seasons'];
+				    if (!isset($result[$seasons])) $result[$seasons] = array();
+				    $v['link'] = get_permalink($postId);
+				    $result[$seasons][] = $v;
+				}
+
+				$seasonEpisodes = [];
+				foreach ($result as $key => $value) {
+
+		        	$episodeObject = [];
+		        	foreach ($value as $key2 => $value2) {
+
+		        		$videoData = [
+			        		"id" => (string) $id . $value[0]['seasons'] . $value[0]['positions'],
+						    "title" => $value2['titles'],
+						    "content" => [
+							  	"dateAdded" => $releaseDate,
+							  	"videos" => [
+									[
+									  "url"=> $value2['roku_url'],
+									  "quality"=> $value2['roku_quality'],
+									  "videoType"=> $value2['roku_type']
+									]
+							  	],
+							  	"trickPlayFiles" => [
+				
+							  	],
+							  	"duration" => (int)$value2['roku_duration']
+							],
+						    "genres" => $genres, // ["action"], //
+						    "tags" => $cats, //["action"],
+						    "thumbnail" => $value2['thumbnails'],
+						    "releaseDate" => $releaseDate,
+						    "shortDescription" => $value2['descriptions'],
+						    "longDescription" => $value2['descriptions']
+			        	];
+
+			        	if($value2['thumbnails'] && $value2['roku_url'] && $value2['roku_quality'] && $value2['roku_type'] && $value2['roku_duration']){
+
+			        		$episodeObject[] = [
+							  	"id" => (string) $id . $value[0]['seasons'] . $value[0]['positions'],
+							  	"title" => $value2['titles'],
+							  	"content" => $videoData,
+							  	"thumbnail" => $value2['thumbnails'],
+							  	"episodeNumber" => ($key2+1),
+							  	"shortDescription" => $value2['descriptions']
+							];
+
+						}
+
+		        	}
+
+					$seasonEpisodes[] = array(
+						'seasonNumber' => $key, 
+						'episodes' => $episodeObject, 
+					);
+
+				}
+
+				$data = [
+				  	"id" => (string) $id,
+				  	"title" => $title,
+				  	"seasons" => $seasonEpisodes,
+				  	"genres" => [
+				    	"educational",
+				    	"science fiction",
+				    	"thriller",
 				  	],
-				  	"trickPlayFiles" => [
+				  	"thumbnail" => $thumbnail,
+				  	"shortDescription" => "Wondrous series seasons."
+				];
+
+				$json['series'][] = $data;
 	
-				  	],
-				  	"duration" => (int)$videoDuration
-				],
-			    "genres" => $genres, // ["action"], //
-			    "tags" => $cats, //["action"],
-			    "thumbnail" => $thumbnail,
-			    "releaseDate" => $releaseDate,
-			    "shortDescription" => $shortDescription,
-			    "longDescription" => $longDescription
-        	];
+			}else{
 
-        	
+				// Not a series
+				$data = [
+	        		"id" => (string) $id,
+				    "title" => $title,
+				    "content" => [
+					  	"dateAdded" => $releaseDate,
+					  	"videos" => [
+							[
+							  "url"=> $videoUrl,
+							  "quality"=> $videoQuality,
+							  "videoType"=> $VideoType
+							]
+					  	],
+					  	"trickPlayFiles" => [
+		
+					  	],
+					  	"duration" => (int)$videoDuration
+					],
+				    "genres" => $genres, // ["action"], //
+				    "tags" => $cats, //["action"],
+				    "thumbnail" => $thumbnail,
+				    "releaseDate" => $releaseDate,
+				    "shortDescription" => $shortDescription,
+				    "longDescription" => $longDescription
+	        	];
 
-        	$posttags = get_the_tags();
- 			$tags = [];
-			if ($posttags) {
-			  	foreach($posttags as $tag) {
-			    	$tags[] = strtolower($tag->name); 
-			  	}
-			  	//$data['tags'] = $tags;
+				// Only run if image is added
+				if($thumbnail && $videoUrl && $videoQuality && $VideoType && $videoDuration){
+
+					$json['movies'][] = $data;
+
+				}
+
 			}
-
-			// Only run if image is added
-			if($thumbnail && $videoUrl && $videoQuality && $VideoType && $videoDuration){
-
-				$json['movies'][] = $data;
-
-			}
-			
-
 
         endwhile;
     endif;

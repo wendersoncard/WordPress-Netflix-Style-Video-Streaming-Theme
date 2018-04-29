@@ -248,6 +248,14 @@ function streamium_repeatable_meta_box_display() {
         foreach ( streamGroupSeasons($repeatable_fields,'seasons') as $seasons ) {
 
             foreach ( $seasons as $key => $field ) {
+
+                // Roku data
+                $roku_url      = (isset($field['roku_url']) && $field['roku_url'] != '') ? esc_attr($field['roku_url']) : '';
+                $roku_quality  = (isset($field['roku_quality']) && $field['roku_quality'] != '') ? esc_attr( $field['roku_quality']) : '';
+                $roku_type     = (isset($field['roku_type']) && $field['roku_type'] != '') ? esc_attr( $field['roku_type']) : '';
+                $roku_duration = (isset($field['roku_duration']) && $field['roku_duration'] != '') ? esc_attr( $field['roku_duration']) : '';
+
+                $unique = $field['seasons'] . $key;
             
     ?>
         <li class="streamium-repeater-list">
@@ -288,7 +296,46 @@ function streamium_repeatable_meta_box_display() {
                     <label>Video Description</label>
                     <textarea rows="4" cols="50" class="widefat" name="descriptions[]" value=""><?php if (isset($field['descriptions']) && $field['descriptions'] != '') echo esc_attr( $field['descriptions'] ); else echo ''; ?></textarea>
                 </p>
-                <a class="button streamium-repeater-remove-row" href="#" data-pid="<?php echo $post->ID; ?>" data-index="<?php echo $key; ?>">Remove</a>
+                <a class="button button-large streamium-repeater-remove-row" href="#" data-pid="<?php echo $post->ID; ?>" data-index="<?php echo $unique; ?>">Remove</a>
+
+                <a id="streamium-repeater-add-roku-data" class="button button-primary button-large" href="#">Add Roku Data</a>
+
+                <div class="streamium-meta-box-series-roku-wrapper">
+                    <h4>Generate or Update Roku data below</h4>
+                    <p>
+                        <label>Video Url</label>
+                        <input type="url" name="roku_url[]" class="widefat" id="series_roku_url_<?php echo $unique; ?>" value="<?php echo $roku_url; ?>" placeholder="Enter video url" />
+                    </p>
+                    <p>
+                        <label>Video Quality</label>
+                        <select tabindex="1" name="roku_quality[]" id="series_roku_quality_<?php echo $unique; ?>">
+                            <option value="<?php echo $roku_quality; ?>"><?php echo (empty($roku_quality)) ? 'Select Video Quality' : $roku_quality; ?></option>
+                            <option value="HD">HD – 720p</option>
+                            <option value="FHD">FHD – 1080p</option>
+                            <option value="UHD">UHD – 4K</option>
+                        </select>
+                    </p>
+                     <p>
+                        <label>Video Type</label>
+                        <select tabindex="1" name="roku_type[]" id="series_roku_type_<?php echo $unique; ?>">
+                            <option value="<?php echo $roku_type; ?>"><?php echo (empty($roku_type)) ? 'Select Video Type' : $roku_type; ?></option>
+                            <option value="HLS">HLS</option>
+                            <option value="SMOOTH">SMOOTH</option>
+                            <option value="DASH">DASH</option>
+                            <option value="MP4">MP4</option>
+                            <option value="MOV">MOV</option>
+                            <option value="M4V">M4V</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label>Video Duration (Runtime in seconds)</label>
+                        <input type="text" name="roku_duration[]" class="widefat" id="series_roku_duration_<?php echo $unique; ?>" value="<?php echo $roku_duration; ?>" placeholder="Enter video duration" />
+                    </p>
+
+                    <a id="streamium-repeater-generate-roku-data" class="button button-primary button-large" href="#" data-key="<?php echo $unique; ?>" data-code="<?php echo (empty($field['codes'])) ? '' : $field['codes']; ?>">Generate Roku Data</a>
+
+                </div>
+
             </div>
         </li>
     <?php } } endif; ?>
@@ -600,6 +647,10 @@ function streamium_post_meta_box_save( $post_id )
         $codes        = isset($_POST['codes']) ? $_POST['codes'] : "";
         $service      = isset($_POST['service']) ? $_POST['service'] : "";
         $descriptions = isset($_POST['descriptions']) ? $_POST['descriptions'] : "";
+        $roku_url     = isset($_POST['roku_url']) ? $_POST['roku_url'] : "";
+        $roku_quality = isset($_POST['roku_quality']) ? $_POST['roku_quality'] : "";
+        $roku_type    = isset($_POST['roku_type']) ? $_POST['roku_type'] : "";
+        $roku_duration= isset($_POST['roku_duration']) ? $_POST['roku_duration'] : "";
         
         $count = count( $titles );
         
@@ -613,6 +664,12 @@ function streamium_post_meta_box_save( $post_id )
             $new[$i]['codes'] = $codes[$i];
             $new[$i]['service'] = $service[$i];
             $new[$i]['descriptions'] = trim(stripslashes( $descriptions[$i] ));
+
+            // Roku data if present
+            $new[$i]['roku_url']      = trim(stripslashes( $roku_url[$i] ));
+            $new[$i]['roku_quality']  = trim(stripslashes( $roku_quality[$i] ));
+            $new[$i]['roku_type']     = trim(stripslashes( $roku_type[$i] ));
+            $new[$i]['roku_duration'] = trim(stripslashes( $roku_duration[$i] ));
 
           endif;
         }
