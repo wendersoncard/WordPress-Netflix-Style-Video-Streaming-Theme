@@ -158,7 +158,7 @@
 			        	if($value2['thumbnails'] && $value2['roku_url'] && $value2['roku_quality'] && $value2['roku_type'] && $value2['roku_duration']){
  
 			        		$episodeObject[] = [
-							  	"id" => (string) $id . $value[0]['seasons'] . $value[0]['positions'],
+							  	"id" => (string) $id . $value[0]['seasons'] . $value[0]['positions'] . $key2,
 							  	"title" => $value2['titles'],
 							  	"content" => $videoData2,
 							  	"thumbnail" => $value2['thumbnails'],
