@@ -3,10 +3,7 @@
 $incdir = get_template_directory() . '/inc/';
 
 
-/*-----------------------------------------------------------------------------------*/
-/*	Load Theme Specific Helpers
-/*-----------------------------------------------------------------------------------*/
-
+// THEME:
 require_once($incdir .'theme/multi-post-thumbnails.php');
 require_once($incdir .'meta/meta-boxes.php');
 require_once($incdir .'meta/recently-watched.php');
@@ -21,15 +18,17 @@ require_once($incdir .'theme/helpers.php');
 require_once($incdir .'theme/series.php'); 
 require_once($incdir .'theme/signed.php'); 
 require_once($incdir .'theme/social.php');
+require_once($incdir .'theme/custom-post-types.php');
+require_once($incdir .'theme/api.php');   
 
-// Api
+// AJAX CALLS:
 require_once($incdir .'api/recent.php');
 require_once($incdir .'api/custom.php');
 require_once($incdir .'api/home.php');
 require_once($incdir .'api/cats.php');
 require_once($incdir .'api/tax.php');
 require_once($incdir .'api/search.php');
-require_once($incdir .'api/tag.php'); 
+require_once($incdir .'api/tag.php');
 
 // Only include if s2member is installed
 if ( class_exists( 'WooCommerce' ) ) {
