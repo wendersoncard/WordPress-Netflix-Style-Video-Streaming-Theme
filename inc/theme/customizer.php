@@ -502,73 +502,119 @@ class Streamium_Customize
         );
         // SITE IDENTITY SECTION: <= 
 
-        // START CUSTOM POST TYPE SECTION =>
-       $postTypes = array(
-            array('tax' => 'movies','type' => 'movie','menu' => 'Movies'),
-            array('tax' => 'programs','type' => 'tv','menu' => 'TV Programs'),
-            array('tax' => 'sports','type' => 'sport','menu' => 'Sport'),
-            array('tax' => 'kids','type' => 'kid','menu' => 'Kids'),
-            array('tax' => 'streams','type' => 'stream','menu' => 'Streams')
+        // CUSTOM POST TYPE SECTION =>
+        $postTypes = array(
+            array(
+                'tax' => 'movies',
+                'type' => 'movie',
+                'menu' => 'Movies'
+            ),
+            array(
+                'tax' => 'programs',
+                'type' => 'tv',
+                'menu' => 'TV Programs'
+            ),
+            array(
+                'tax' => 'sports',
+                'type' => 'sport',
+                'menu' => 'Sport'
+            ),
+            array(
+                'tax' => 'kids',
+                'type' => 'kid',
+                'menu' => 'Kids'
+            ),
+            array(
+                'tax' => 'streams',
+                'type' => 'stream',
+                'menu' => 'Streams'
+            )
         );
 
-       foreach ($postTypes as $key => $value) :
+        foreach ($postTypes as $key => $value) :
 
             $tax = $value['tax'];
-       $type = $value['type'];
-       $menu = $value['menu'];
+            $type = $value['type'];
+            $menu = $value['menu'];
 
-            // MOVIE SECTION
-            $wp_customize->add_section('streamium_section_' . $type, array(
-                'title'     => __($menu . ' Options', 'streamium'),
-                'description' => 'These options can be changed to create custom post types',
-                'priority'  => 1019
-            ));
-
-       $wp_customize->add_setting('streamium_section_input_menu_text_' . $type, array(
-                'default'    => $menu
-            ));
-
-       $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'streamium_section_input_menu_text_' . $type,
-              array(
-                'label' => 'Change Top Menu Text',
-                'section' => 'streamium_section_' . $type,
-                'settings' => 'streamium_section_input_menu_text_' . $type
-              ))
+            $wp_customize->add_section(
+                'streamium_section_' . $type, 
+                array(
+                    'title'       => __($menu . ' Options', 'streamium'),
+                    'description' => 'These options can be changed to create custom post types',
+                    'priority'    => 1019
+                )
             );
 
-       $wp_customize->add_setting('streamium_section_input_taxonomy_' . $tax, array(
-                'default'    => $tax,
-                'sanitize_callback' => 'streamium_sanitize_customizer_text',
-            ));
-
-       $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'streamium_section_input_taxonomy_' . $tax,
-              array(
-                'label' => 'Change Taxonomy',
-                'description' => __('!IMPORTANT this value cannot be the same name as the Post Type (only hyphens allowed NO spaces). Please make sure you save your permalinks after changing these values.'),
-                'section' => 'streamium_section_' . $type,
-                'settings' => 'streamium_section_input_taxonomy_' . $tax
-              ))
+            $wp_customize->add_setting(
+                'streamium_section_input_menu_text_' . $type, 
+                array(
+                    'default'    => $menu
+                )
             );
 
-       $wp_customize->add_setting('streamium_section_input_posttype_' . $type, array(
-                'default'    => $type,
-                'sanitize_callback' => 'streamium_sanitize_customizer_text',
-            ));
-
-       $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'streamium_section_input_posttype_' . $type,
-              array(
-                'label' => 'Change Post Type',
-                'description' => __('!IMPORTANT this value cannot be the same name as the Taxonomy (only hyphens allowed NO spaces). Please make sure you save your permalinks after changing these values.'),
-                'section' => 'streamium_section_' . $type,
-                'settings' => 'streamium_section_input_posttype_' . $type
-              ))
+            $wp_customize->add_control(
+                new WP_Customize_Control(
+                    $wp_customize, 
+                    'streamium_section_input_menu_text_' . $type,
+                    array(
+                        'label' => 'Change Top Menu Text',
+                        'section' => 'streamium_section_' . $type,
+                        'settings' => 'streamium_section_input_menu_text_' . $type
+                    )
+                )
             );
 
-       $wp_customize->add_setting('streamium_section_checkbox_enable_' . $tax, array(
-                'default'    => false
-            ));
+            $wp_customize->add_setting(
+                'streamium_section_input_taxonomy_' . $tax, 
+                array(
+                    'default'    => $tax,
+                    'sanitize_callback' => 'streamium_sanitize_customizer_text',
+                )
+            );
 
-       $wp_customize->add_control(
+            $wp_customize->add_control(
+                new WP_Customize_Control(
+                    $wp_customize, 
+                    'streamium_section_input_taxonomy_' . $tax,
+                    array(
+                        'label' => 'Change Taxonomy',
+                        'description' => __('!IMPORTANT this value cannot be the same name as the Post Type (only hyphens allowed NO spaces). Please make sure you save your permalinks after changing these values.'),
+                        'section' => 'streamium_section_' . $type,
+                        'settings' => 'streamium_section_input_taxonomy_' . $tax
+                    )
+                )
+            );
+
+            $wp_customize->add_setting(
+                'streamium_section_input_posttype_' . $type, 
+                array(
+                    'default'    => $type,
+                    'sanitize_callback' => 'streamium_sanitize_customizer_text',
+                )
+            );
+
+            $wp_customize->add_control(
+                new WP_Customize_Control(
+                    $wp_customize, 
+                    'streamium_section_input_posttype_' . $type,
+                    array(
+                        'label' => 'Change Post Type',
+                        'description' => __('!IMPORTANT this value cannot be the same name as the Taxonomy (only hyphens allowed NO spaces). Please make sure you save your permalinks after changing these values.'),
+                        'section' => 'streamium_section_' . $type,
+                        'settings' => 'streamium_section_input_posttype_' . $type
+                    )
+                )
+            );
+
+            $wp_customize->add_setting(
+                'streamium_section_checkbox_enable_' . $tax, 
+                array(
+                    'default'    => false
+                )
+            );
+
+            $wp_customize->add_control(
                 new WP_Customize_Control(
                     $wp_customize,
                     'streamium_section_checkbox_enable_' . $tax,
@@ -581,283 +627,386 @@ class Streamium_Customize
                 )
             );
 
-       endforeach;
+        endforeach;
+        // CUSTOM POST TYPE SECTION <=
 
-       // END CUSTOM POST TYPE SECTION
-
-       // PAYMENT SETUP SECTION
-      $wp_customize->add_section('streamium_payment_setups_section' , array(
-          'title'     => __('Payment Setup Options', 'streamium'),
-          'description' => 'Here are some useful settings for different payment setups',
-          'priority'  => 1020
-      ));
+        // PAYMENT SETUP SECTION => 
+        $wp_customize->add_section(
+            'streamium_payment_setups_section' , 
+            array(
+                'title'     => __('Payment Setup Options', 'streamium'),
+                'description' => 'Here are some useful settings for different payment setups',
+                'priority'  => 1020
+            )
+        );
       
-      // Only allow uploads from logged in users
-      $wp_customize->add_setting('streamium_remove_payment_overlay', array(
-          'default' => false
-      ));
-      $wp_customize->add_control(
-          new WP_Customize_Control(
-              $wp_customize,
-              'streamium_remove_payment_overlay',
-              array(
-                  'label'     => __('Remove payment details overlay', 'streamium'),
-                  'section'   => 'streamium_payment_setups_section',
-                  'settings'  => 'streamium_remove_payment_overlay',
-                  'type'      => 'checkbox',
-              )
-          )
-      );
+        $wp_customize->add_setting(
+            'streamium_remove_payment_overlay', 
+            array(
+                'default' => false
+            )
+        );
+        
+        $wp_customize->add_control(
+            new WP_Customize_Control(
+                $wp_customize,
+                'streamium_remove_payment_overlay',
+                array(
+                    'label'     => __('Remove payment details overlay', 'streamium'),
+                    'section'   => 'streamium_payment_setups_section',
+                    'settings'  => 'streamium_remove_payment_overlay',
+                    'type'      => 'checkbox',
+                )
+            )
+        );
+        // PAYMENT SETUP SECTION <=
 
-      // END PAYMENT SETUP SECTION
+        // GOOGLE ANALYTICS SECTION SECTION => 
+        $wp_customize->add_section(
+            'streamium_google_analytics_section' , 
+            array(
+                'title'     => __('Google Analytics', 'streamium'),
+                'description' => 'Simply enter your Google Analytic Tracking Code below Example: ',
+                'priority'  => 1020
+            )
+        );
 
-      // GOOGLE ANALYTICS SECTION SECTION
-      $wp_customize->add_section('streamium_google_analytics_section' , array(
-          'title'     => __('Google Analytics', 'streamium'),
-          'description' => 'Simply enter your Google Analytic Tracking Code below Example: ',
-          'priority'  => 1020
-      ));
-      $wp_customize->add_setting('streamium_google_analytics_section_code');
+        $wp_customize->add_setting(
+            'streamium_google_analytics_section_code'
+        );
 
-      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_google_analytics_section_code',
-        array(
-          'label' => 'GOOGLE UA CODE',
-          'section' => 'streamium_google_analytics_section',
-          'settings' => 'streamium_google_analytics_section_code'
-        ))
-      );
+        $wp_customize->add_control( 
+            new WP_Customize_Control( 
+                $wp_customize, 
+                'streamium_google_analytics_section_code',
+                array(
+                    'label' => 'GOOGLE UA CODE',
+                    'section' => 'streamium_google_analytics_section',
+                    'settings' => 'streamium_google_analytics_section_code'
+                )
+            )
+        );
+        // GOOGLE ANALYTICS SECTION <=
 
-      // END GOOGLE ANALYTICS SECTION
+        // AWS MEDIA SECTION => 
+        $wp_customize->add_section(
+            'streamium_aws_media_uploader_section' , 
+            array(
+                'title'     => __('AWS Media Uploader', 'streamium'),
+                'description' => 'For infomation on how to setup the uploader with S3Bubble please watch this video<br><a href="https://www.youtube.com/watch?v=FUqN-b1MSrc" target="_blank">AWS direct uploader setup</a>.<p><br/></p>Example shortcode: <pre class="streamium-pre">[streamium_uploader folder="userid" bucket="Enter your bucket here" filetypes="mp4,m4v,mov" filesize="1gb"]</pre>',
+                    'priority'  => 1020
+            )
+        );
 
-       // AWS MEDIA SECTION
-      $wp_customize->add_section('streamium_aws_media_uploader_section' , array(
-          'title'     => __('AWS Media Uploader', 'streamium'),
-          'description' => 'For infomation on how to setup the uploader with S3Bubble please watch this video<br><a href="https://www.youtube.com/watch?v=FUqN-b1MSrc" target="_blank">AWS direct uploader setup</a>.<p><br/></p>Example shortcode: <pre class="streamium-pre">[streamium_uploader folder="userid" bucket="Enter your bucket here" filetypes="mp4,m4v,mov" filesize="1gb"]</pre>',
-          'priority'  => 1020
-      ));
-      $wp_customize->add_setting('streamium_aws_media_uploader_access_key');
+        $wp_customize->add_setting(
+            'streamium_aws_media_uploader_access_key'
+        );
 
-      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_aws_media_uploader_access_key',
-        array(
-          'label' => 'AWS Access Key',
-          'section' => 'streamium_aws_media_uploader_section',
-          'settings' => 'streamium_aws_media_uploader_access_key',
-          'type' => 'password',
-          'input_attrs' => array( 'id' => 'streamium_aws_media_uploader_access_key' )
-        ))
-      );
-      $wp_customize->add_setting('streamium_aws_media_uploader_secret_key');
-      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_aws_media_uploader_secret_key',
-        array(
-          'label' => 'AWS Secret Key',
-          'section' => 'streamium_aws_media_uploader_section',
-          'settings' => 'streamium_aws_media_uploader_secret_key',
-          'type' => 'password',
-          'input_attrs' => array( 'id' => 'streamium_aws_media_uploader_secret_key' )
-        ))
-      );
-      $wp_customize->add_setting('streamium_aws_media_uploader_notification_email');
-      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_aws_media_uploader_notification_email',
-        array(
-          'label' => 'Notification Email',
-          'section' => 'streamium_aws_media_uploader_section',
-          'settings' => 'streamium_aws_media_uploader_notification_email',
-        ))
-      );
-      // Only allow uploads from logged in users
-      $wp_customize->add_setting('streamium_aws_media_uploader_login', array(
-          'default' => false
-      ));
-      $wp_customize->add_control(
-          new WP_Customize_Control(
-              $wp_customize,
-              'streamium_aws_media_uploader_login',
-              array(
-                  'label'     => __('Only allow uploads from logged in users', 'streamium'),
-                  'section'   => 'streamium_aws_media_uploader_section',
-                  'settings'  => 'streamium_aws_media_uploader_login',
-                  'type'      => 'checkbox',
-              )
-          )
-      );
+        $wp_customize->add_control( 
+            new WP_Customize_Control( 
+                $wp_customize, 
+                'streamium_aws_media_uploader_access_key',
+                array(
+                    'label' => 'AWS Access Key',
+                    'section' => 'streamium_aws_media_uploader_section',
+                    'settings' => 'streamium_aws_media_uploader_access_key',
+                    'type' => 'password',
+                    'input_attrs' => array( 'id' => 'streamium_aws_media_uploader_access_key' )
+                )
+            )
+        );
 
-      // END AWS MEDIA SECTION
+        $wp_customize->add_setting(
+            'streamium_aws_media_uploader_secret_key'
+        );
 
-       // AWS SIGNED COOKIES SECTION
-      $wp_customize->add_section('streamium_aws_signed_cookies_section' , array(
-          'title'     => __('AWS Signed Cookies', 'streamium'),
-          'description' => 'Secure your website with signed cookies',
-          'priority'  => 1020
-      ));
+        $wp_customize->add_control( 
+            new WP_Customize_Control( 
+                $wp_customize, 
+                'streamium_aws_media_uploader_secret_key',
+                array(
+                    'label' => 'AWS Secret Key',
+                    'section' => 'streamium_aws_media_uploader_section',
+                    'settings' => 'streamium_aws_media_uploader_secret_key',
+                    'type' => 'password',
+                    'input_attrs' => array( 'id' => 'streamium_aws_media_uploader_secret_key' )
+                )
+            )
+        );
+
+        $wp_customize->add_setting(
+            'streamium_aws_media_uploader_notification_email'
+        );
+
+        $wp_customize->add_control( 
+            new WP_Customize_Control( 
+                $wp_customize, 
+                'streamium_aws_media_uploader_notification_email',
+                array(
+                    'label' => 'Notification Email',
+                    'section' => 'streamium_aws_media_uploader_section',
+                    'settings' => 'streamium_aws_media_uploader_notification_email',
+                )
+            )
+        );
+
+        $wp_customize->add_setting(
+            'streamium_aws_media_uploader_login', 
+            array(
+                'default' => false
+            )
+        );
+
+        $wp_customize->add_control(
+            new WP_Customize_Control(
+                $wp_customize,
+                'streamium_aws_media_uploader_login',
+                array(
+                    'label'     => __('Only allow uploads from logged in users', 'streamium'),
+                    'section'   => 'streamium_aws_media_uploader_section',
+                    'settings'  => 'streamium_aws_media_uploader_login',
+                    'type'      => 'checkbox',
+                )
+            )
+        );
+        // AWS MEDIA SECTION <=
+
+        // AWS SIGNED COOKIES SECTION =>
+        $wp_customize->add_section(
+            'streamium_aws_signed_cookies_section' , 
+            array(
+                'title'     => __('AWS Signed Cookies', 'streamium'),
+                'description' => 'Secure your website with signed cookies',
+                'priority'  => 1020
+            )
+        );
       
-      // Only allow uploads from logged in users
-      $wp_customize->add_setting('streamium_enable_signed_cookies', array(
-          'default' => false
-      ));
-      $wp_customize->add_control(
-          new WP_Customize_Control(
-              $wp_customize,
-              'streamium_enable_signed_cookies',
-              array(
-                  'label'     => __('Enable signed cookies', 'streamium'),
-                  'section'   => 'streamium_aws_signed_cookies_section',
-                  'settings'  => 'streamium_enable_signed_cookies',
-                  'type'      => 'checkbox',
-              )
-          )
-      );
+        $wp_customize->add_setting(
+            'streamium_enable_signed_cookies', 
+            array(
+                'default' => false
+            )
+        );
 
-      $wp_customize->add_setting('streamium_aws_signed_cookies_cname');
-      $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'streamium_aws_signed_cookies_cname',
-        array(
-          'label' => 'CNAME Subdomain',
-          'section' => 'streamium_aws_signed_cookies_section',
-          'settings' => 'streamium_aws_signed_cookies_cname',
-        ))
-      );
+        $wp_customize->add_control(
+            new WP_Customize_Control(
+                $wp_customize,
+                'streamium_enable_signed_cookies',
+                array(
+                    'label'     => __('Enable signed cookies', 'streamium'),
+                    'section'   => 'streamium_aws_signed_cookies_section',
+                    'settings'  => 'streamium_enable_signed_cookies',
+                    'type'      => 'checkbox',
+                )
+            )
+        );
 
-      $wp_customize->add_setting('streamium_aws_signed_cookies_key_pair');
+        $wp_customize->add_setting(
+            'streamium_aws_signed_cookies_cname'
+        );
+        
+        $wp_customize->add_control( 
+            new WP_Customize_Control( 
+                $wp_customize, 
+                'streamium_aws_signed_cookies_cname',
+                array(
+                    'label' => 'CNAME Subdomain',
+                    'section' => 'streamium_aws_signed_cookies_section',
+                    'settings' => 'streamium_aws_signed_cookies_cname',
+                )
+            )
+        );
 
-      $pemInfo = "!Important your pem file does not exist please upload your pem file to your wp-content/pem folder.";
-      if (file_exists(WP_CONTENT_DIR . '/pem/pk-' .  get_theme_mod( 'streamium_aws_signed_cookies_key_pair' ) . '.pem')) {
-        $pemInfo = "Awesome your pem file exists and is in the correct folder.";
-      } 
-      $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'streamium_aws_signed_cookies_key-pair',
-        array(
-          'label' => 'Key Pair Id',
-          'description' => $pemInfo,
-          'section' => 'streamium_aws_signed_cookies_section',
-          'settings' => 'streamium_aws_signed_cookies_key_pair'
-        ))
-      );
+        $wp_customize->add_setting(
+            'streamium_aws_signed_cookies_key_pair'
+        );
 
-      // AWS SIGNED COOKIES SECTION
+        $pemInfo = "!Important your pem file does not exist please upload your pem file to your wp-content/pem folder.";
+        if (file_exists(WP_CONTENT_DIR . '/pem/pk-' .  get_theme_mod( 'streamium_aws_signed_cookies_key_pair' ) . '.pem')) {
+            $pemInfo = "Awesome your pem file exists and is in the correct folder.";
+        }
 
-       // START ADVERTISEMENT SECTION
-      $wp_customize->add_section('streamium_advertisement_section', array(
-          'title'     => __('Global Advertisement', 'streamium'),
-          'description' => 'Here you can set a global vpaid advertisement url. !Important this does not work with YouTube',
-          'priority'  => 1020
-      ));
+        $wp_customize->add_control(
+            new WP_Customize_Control(
+                $wp_customize, 
+                'streamium_aws_signed_cookies_key-pair',
+                array(
+                    'label' => 'Key Pair Id',
+                    'description' => $pemInfo,
+                    'section' => 'streamium_aws_signed_cookies_section',
+                    'settings' => 'streamium_aws_signed_cookies_key_pair'
+                )
+            )
+        );
+        // AWS SIGNED COOKIES SECTION <=
 
-       $wp_customize->add_setting('streamium_advertisement_vpaid_url');
+        // ADVERTISEMENT SECTION =>
+        $wp_customize->add_section(
+            'streamium_advertisement_section', 
+            array(
+                'title'     => __('Global Advertisement', 'streamium'),
+                'description' => 'Here you can set a global vpaid advertisement url. !Important this does not work with YouTube',
+                'priority'  => 1020
+            )
+        );
 
-       $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'streamium_advertisement_vpaid_url',
-        array(
-          'label' => 'VPaid url',
-          'section' => 'streamium_advertisement_section',
-          'settings' => 'streamium_advertisement_vpaid_url'
-        ))
-      );
+        $wp_customize->add_setting(
+            'streamium_advertisement_vpaid_url'
+        );
 
-      $wp_customize->add_setting('streamium_advertisement_enabled', array(
-          'default' => false
-      ));
-       $wp_customize->add_control(
-          new WP_Customize_Control(
-              $wp_customize,
-              'streamium_advertisement_enabled',
-              array(
-                  'label'     => __('Global set advertisements for all videos', 'streamium'),
-                  'section'   => 'streamium_advertisement_section',
-                  'settings'  => 'streamium_advertisement_enabled',
-                  'type'      => 'checkbox',
-              )
-          )
-      );
+        $wp_customize->add_control(
+            new WP_Customize_Control(
+                $wp_customize, 
+                'streamium_advertisement_vpaid_url',
+                array(
+                    'label' => 'VPaid url',
+                    'section' => 'streamium_advertisement_section',
+                    'settings' => 'streamium_advertisement_vpaid_url'
+                )
+            )
+        );
 
-      // END ADVERTISEMENT SECTION
+        $wp_customize->add_setting(
+            'streamium_advertisement_enabled', 
+            array(
+                'default' => false
+            )
+        );
 
-      // START SOCIAL SECTION
-      $wp_customize->add_section('streamium_social_section', array(
-          'title'     => __('Social Cards', 'streamium'),
-          'description' => 'Here you can enable twitter cards for all your videos including series you can validate Twitter using https://cards-dev.twitter.com/validator',
-          'priority'  => 1020
-      ));
+        $wp_customize->add_control(
+            new WP_Customize_Control(
+                $wp_customize,
+                'streamium_advertisement_enabled',
+                array(
+                    'label'     => __('Global set advertisements for all videos', 'streamium'),
+                    'section'   => 'streamium_advertisement_section',
+                    'settings'  => 'streamium_advertisement_enabled',
+                    'type'      => 'checkbox',
+                )
+            )
+        );
+        // ADVERTISEMENT SECTION <=
 
-       $wp_customize->add_setting('streamium_social_twitter_handler');
+        // START SOCIAL SECTION =>
+        $wp_customize->add_section(
+            'streamium_social_section', 
+            array(
+                'title'     => __('Social Cards', 'streamium'),
+                'description' => 'Here you can enable twitter cards for all your videos including series you can validate Twitter using https://cards-dev.twitter.com/validator',
+                'priority'  => 1020
+            )
+        );
 
-       $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'streamium_social_twitter_handler',
-        array(
-          'label' => 'Twitter handler: example @S3Bubble',
-          'section' => 'streamium_social_section',
-          'settings' => 'streamium_social_twitter_handler'
-        ))
-      );
+        $wp_customize->add_setting(
+            'streamium_social_twitter_handler'
+        );
 
-      $wp_customize->add_setting('streamium_social_twitter_enabled', array(
-          'default' => false
-      ));
-       $wp_customize->add_control(
-          new WP_Customize_Control(
-              $wp_customize,
-              'streamium_social_twitter_enabled',
-              array(
-                  'label'     => __('Enable Twitter cards for videos', 'streamium'),
-                  'section'   => 'streamium_social_section',
-                  'settings'  => 'streamium_social_twitter_enabled',
-                  'type'      => 'checkbox',
-              )
-          )
-      );
+        $wp_customize->add_control(
+            new WP_Customize_Control(
+                $wp_customize, 
+                'streamium_social_twitter_handler',
+                array(
+                    'label' => 'Twitter handler: example @S3Bubble',
+                    'section' => 'streamium_social_section',
+                    'settings' => 'streamium_social_twitter_handler'
+                )
+            )
+        );
 
-       $wp_customize->add_setting('streamium_social_facebook_handler');
+        $wp_customize->add_setting(
+            'streamium_social_twitter_enabled', 
+            array(
+                'default' => false
+            )
+        );
 
-       $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'streamium_social_facebook_handler',
-        array(
-          'label' => 'Facebook url: example https://www.facebook.com/s3bubble',
-          'section' => 'streamium_social_section',
-          'settings' => 'streamium_social_facebook_handler'
-        ))
-      );
+        $wp_customize->add_control(
+            new WP_Customize_Control(
+                $wp_customize,
+                'streamium_social_twitter_enabled',
+                array(
+                    'label'     => __('Enable Twitter cards for videos', 'streamium'),
+                    'section'   => 'streamium_social_section',
+                    'settings'  => 'streamium_social_twitter_enabled',
+                    'type'      => 'checkbox',
+                )
+            )
+        );
 
-      $wp_customize->add_setting('streamium_social_facebook_enabled', array(
-          'default' => false
-      ));
-       $wp_customize->add_control(
-          new WP_Customize_Control(
-              $wp_customize,
-              'streamium_social_facebook_enabled',
-              array(
-                  'label'     => __('Enable Facebook cards for videos', 'streamium'),
-                  'section'   => 'streamium_social_section',
-                  'settings'  => 'streamium_social_facebook_enabled',
-                  'type'      => 'checkbox',
-              )
-          )
-      );
+        $wp_customize->add_setting(
+            'streamium_social_facebook_handler'
+        );
 
-      $wp_customize->add_setting('streamium_social_default_image');
+        $wp_customize->add_control(
+            new WP_Customize_Control(
+                $wp_customize, 
+                'streamium_social_facebook_handler',
+                array(
+                    'label' => 'Facebook url: example https://www.facebook.com/s3bubble',
+                    'section' => 'streamium_social_section',
+                    'settings' => 'streamium_social_facebook_handler'
+                )
+            )
+        );
 
-       $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'streamium_social_default_image', array(
-          'label'    => __('Default Image', 'streamium'),
-          'section'  => 'streamium_social_section',
-          'settings' => 'streamium_social_default_image',
-      )));
+        $wp_customize->add_setting(
+            'streamium_social_facebook_enabled', 
+            array(
+                'default' => false
+            )
+        );
 
-       // END SOCIAL SECTION
+        $wp_customize->add_control(
+            new WP_Customize_Control(
+                $wp_customize,
+                'streamium_social_facebook_enabled',
+                array(
+                    'label'     => __('Enable Facebook cards for videos', 'streamium'),
+                    'section'   => 'streamium_social_section',
+                    'settings'  => 'streamium_social_facebook_enabled',
+                    'type'      => 'checkbox',
+                )
+            )
+        );
 
-       // Validation functions
-      function streamium_sanitize_customizer_text($value)
-      {
-          if ($value != "") {
-              return strtolower(sanitize_text_field(str_replace(' ' , '-', $value)));
-          }
-      }
-   }
+        $wp_customize->add_setting(
+            'streamium_social_default_image'
+        );
 
-   /**
-    * This will output the custom WordPress settings to the live theme's WP head.
-    *
-    * Used by hook: 'wp_head'
-    *
-    * @see add_action('wp_head',$func)
-    * @since Streamium 1.0
+        $wp_customize->add_control(
+            new WP_Customize_Image_Control(
+                $wp_customize, 
+                'streamium_social_default_image', 
+                array(
+                    'label'    => __('Default Image', 'streamium'),
+                    'section'  => 'streamium_social_section',
+                    'settings' => 'streamium_social_default_image',
+                )
+            )
+        );
+        // SOCIAL SECTION <=
+
+        // Validation functions
+        function streamium_sanitize_customizer_text($value){
+
+            if($value != "") {
+                return strtolower(sanitize_text_field(str_replace(' ' , '-', $value)));
+            }
+
+        }
+
+    }
+
+    /**
+        * This will output the custom WordPress settings to the live theme's WP head.
+        *
+        * Used by hook: 'wp_head'
+        *
+        * @see add_action('wp_head',$func)
+        * @since Streamium 1.0
     */
-   public static function header_output()
-   {
+    public static function header_output(){
 
-        // Added backward compatibility
         $fontFamily = get_theme_mod('streamium_google_font') ? get_theme_mod('streamium_google_font') : "Roboto";
 
         if (filter_var($fontFamily, FILTER_VALIDATE_URL)) {
@@ -867,11 +1016,9 @@ class Streamium_Customize
 
             if(isset($parts['query'])){
 
-                // grab the query param
                 parse_str($parts['query'], $query);
-
-                // Some font have a : seperator
                 $fontFamily = isset($query['family']) ? $query['family'] : "";
+
                 if (strpos($fontFamily, ':') !== false) {
                     $fontFamily = substr($fontFamily, 0, strrpos($fontFamily, ':'));
                 }
@@ -890,9 +1037,9 @@ class Streamium_Customize
 
         }
 
-    ?>
-      <!--Customizer CSS-->
-      <style type="text/css">
+        ?>
+        <!--Customizer CSS-->
+        <style type="text/css">
               @import url('<?php echo $fontUrl; ?>');
               html, body {
                 font-family: '<?php echo $fontFamily; ?>', sans-serif !important;
@@ -927,11 +1074,11 @@ class Streamium_Customize
            .streamium-list-reviews { background: #000 !important;}
            .streamium-list-reviews:hover { background: #fff !important; color: #000;}
 
-      </style>
-      <!--/Customizer CSS-->
-      <?php
+        </style>
+        <!--/Customizer CSS-->
+        <?php
 
-   }
+    }
 
     /**
      * This will generate a line of CSS for use in header output. If the setting
@@ -987,24 +1134,29 @@ add_action('wp_head', array( 'Streamium_Customize' , 'header_output' ));
  */
 function streamium_customizer_save(){
 
-  $setType = get_theme_mod( 'streamium_main_post_type', 'movie');
+    $setType = get_theme_mod(
+        'streamium_main_post_type', 
+        'movie'
+    );
+    
     switch ($setType) {
-      case 'movie':
-        set_theme_mod("streamium_main_tax", "movies");
+        case 'movie':
+            set_theme_mod("streamium_main_tax", "movies");
         break;
-      case 'tv':
-        set_theme_mod("streamium_main_tax", "programs");
+        case 'tv':
+            set_theme_mod("streamium_main_tax", "programs");
         break;
-      case 'sport':
-        set_theme_mod("streamium_main_tax", "sports");
+        case 'sport':
+            set_theme_mod("streamium_main_tax", "sports");
         break;
-      case 'kid':
-        set_theme_mod("streamium_main_tax", "kids");
+        case 'kid':
+            set_theme_mod("streamium_main_tax", "kids");
         break;
-      case 'stream':
-        set_theme_mod("streamium_main_tax", "streams");
+        case 'stream':
+            set_theme_mod("streamium_main_tax", "streams");
         break;
     }
     
 }
+
 add_action( 'customize_save_after', 'streamium_customizer_save' );
