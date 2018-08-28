@@ -277,197 +277,232 @@ class Streamium_Customize
             )
         );
 
-      // Enable the loading indicator
-      $wp_customize->add_setting('streamium_enable_loader', array(
+        $wp_customize->add_setting(
+            'streamium_enable_loader', 
+            array(
                 'default'    => false
-            ));
+            )
+        );
 
-      $wp_customize->add_control(
-          new WP_Customize_Control(
-              $wp_customize,
-              'streamium_enable_loader',
-              array(
-                  'label'     => __('Enable Loading Indicator', 'streamium'),
-                  'section'   => 'title_tagline',
-                  'settings'  => 'streamium_enable_loader',
-                  'type'      => 'checkbox',
-              )
-          )
-      );
+        $wp_customize->add_control(
+            new WP_Customize_Control(
+                $wp_customize,
+                'streamium_enable_loader',
+                array(
+                    'label'     => __('Enable Loading Indicator', 'streamium'),
+                    'section'   => 'title_tagline',
+                    'settings'  => 'streamium_enable_loader',
+                    'type'      => 'checkbox',
+                )
+            )
+        );
 
-      // Autoplay slider
-      $wp_customize->add_setting('streamium_autoplay_home_slider', array(
-          'default'    => false
-      ));
+        $wp_customize->add_setting(
+            'streamium_autoplay_home_slider', 
+            array(
+                'default'    => false
+            )
+        );
 
-      $wp_customize->add_control(
-          new WP_Customize_Control(
-              $wp_customize,
-              'streamium_autoplay_home_slider',
-              array(
-                  'label'     => __('Autoplay Home Slider', 'streamium'),
-                  'section'   => 'title_tagline',
-                  'settings'  => 'streamium_autoplay_home_slider',
-                  'type'      => 'checkbox',
-              )
-          )
-      );
+        $wp_customize->add_control(
+            new WP_Customize_Control(
+                $wp_customize,
+                'streamium_autoplay_home_slider',
+                array(
+                    'label'     => __('Autoplay Home Slider', 'streamium'),
+                    'section'   => 'title_tagline',
+                    'settings'  => 'streamium_autoplay_home_slider',
+                    'type'      => 'checkbox',
+                )
+            )
+        );
       
-      // Disable the right click for developer
-      $wp_customize->add_setting('streamium_enable_right_click', array(
-          'default'    => false
-      ));
-
-      $wp_customize->add_control(
-          new WP_Customize_Control(
-              $wp_customize,
-              'streamium_enable_right_click',
-              array(
-                  'label'     => __('Enable The Video Right CLick', 'streamium'),
-                  'section'   => 'title_tagline',
-                  'settings'  => 'streamium_enable_right_click',
-                  'type'      => 'checkbox',
-              )
-          )
-      );
-
-      // Enable the social on videos
-      $wp_customize->add_setting('streamium_enable_video_social', array(
+        $wp_customize->add_setting(
+            'streamium_enable_right_click', 
+            array(
                 'default'    => false
-            ));
+            )
+        );
 
-      $wp_customize->add_control(
-          new WP_Customize_Control(
-              $wp_customize,
-              'streamium_enable_video_social',
-              array(
-                  'label'     => __('Enable Social Links On All Players', 'streamium'),
-                  'section'   => 'title_tagline',
-                  'settings'  => 'streamium_enable_video_social',
-                  'type'      => 'checkbox',
-              )
-          )
-      );
+        $wp_customize->add_control(
+            new WP_Customize_Control(
+                $wp_customize,
+                'streamium_enable_right_click',
+                array(
+                    'label'     => __('Enable The Video Right CLick', 'streamium'),
+                    'section'   => 'title_tagline',
+                    'settings'  => 'streamium_enable_right_click',
+                    'type'      => 'checkbox',
+                )
+            )
+        );
 
-       // Remove tutorial block
-      $wp_customize->add_setting('tutorial_btn', array(
-          'default' => false
-      ));
-       $wp_customize->add_control(
-          new WP_Customize_Control(
-              $wp_customize,
-              'tutorial_btn',
-              array(
-                  'label'     => __('Remove Footer Notification', 'streamium'),
-                  'section'   => 'title_tagline',
-                  'settings'  => 'tutorial_btn',
-                  'type'      => 'checkbox',
-              )
-          )
-      );
-
-       // Disable login
-       $wp_customize->add_setting('streamium_disable_login', array(
+        $wp_customize->add_setting(
+            'streamium_enable_video_social', 
+            array(
                 'default'    => false
-            ));
+            )
+        );
 
-       $wp_customize->add_control(
-          new WP_Customize_Control(
-              $wp_customize,
-              'streamium_disable_login',
-              array(
-                  'label'     => __('Disable Login Button', 'streamium'),
-                  'section'   => 'title_tagline',
-                  'settings'  => 'streamium_disable_login',
-                  'type'      => 'checkbox',
-              )
-          )
-       );
+        $wp_customize->add_control(
+            new WP_Customize_Control(
+                $wp_customize,
+                'streamium_enable_video_social',
+                array(
+                    'label'     => __('Enable Social Links On All Players', 'streamium'),
+                    'section'   => 'title_tagline',
+                    'settings'  => 'streamium_enable_video_social',
+                    'type'      => 'checkbox',
+                )
+            )
+        );
 
-       // Disable reviews
-       $wp_customize->add_setting('streamium_disable_reviews', array(
+        $wp_customize->add_setting(
+            'tutorial_btn', 
+            array(
+                'default' => false
+            )
+        );
+
+        $wp_customize->add_control(
+            new WP_Customize_Control(
+                $wp_customize,
+                'tutorial_btn',
+                array(
+                    'label'     => __('Remove Footer Notification', 'streamium'),
+                    'section'   => 'title_tagline',
+                    'settings'  => 'tutorial_btn',
+                    'type'      => 'checkbox',
+                )
+            )
+        );
+
+        $wp_customize->add_setting(
+            'streamium_disable_login', 
+            array(
                 'default'    => false
-            ));
+            )
+        );
 
-       $wp_customize->add_control(
-          new WP_Customize_Control(
-              $wp_customize,
-              'streamium_disable_reviews',
-              array(
-                  'label'     => __('Disable Reviews/Likes', 'streamium'),
-                  'section'   => 'title_tagline',
-                  'settings'  => 'streamium_disable_reviews',
-                  'type'      => 'checkbox',
-              )
-          )
-       );
+        $wp_customize->add_control(
+            new WP_Customize_Control(
+                $wp_customize,
+                'streamium_disable_login',
+                array(
+                    'label'     => __('Disable Login Button', 'streamium'),
+                    'section'   => 'title_tagline',
+                    'settings'  => 'streamium_disable_login',
+                    'type'      => 'checkbox',
+                )
+            )
+        );
 
-       // Enable video ratings
-      $wp_customize->add_setting('streamium_enable_ratings', array(
+        $wp_customize->add_setting(
+            'streamium_disable_reviews', 
+            array(
                 'default'    => false
-            ));
+            )
+        );
 
-      $wp_customize->add_control(
-          new WP_Customize_Control(
-              $wp_customize,
-              'streamium_enable_ratings',
-              array(
-                  'label'     => __('Enable Video Ratings', 'streamium'),
-                  'section'   => 'title_tagline',
-                  'settings'  => 'streamium_enable_ratings',
-                  'type'      => 'checkbox',
-              )
-          )
-      );
+        $wp_customize->add_control(
+            new WP_Customize_Control(
+                $wp_customize,
+                'streamium_disable_reviews',
+                array(
+                    'label'     => __('Disable Reviews/Likes', 'streamium'),
+                    'section'   => 'title_tagline',
+                    'settings'  => 'streamium_disable_reviews',
+                    'type'      => 'checkbox',
+                )
+            )
+        );
 
-       $wp_customize->add_setting('streamium_remove_powered_by_s3bubble');
+        $wp_customize->add_setting(
+            'streamium_enable_ratings', 
+            array(
+                'default'    => false
+            )
+        );
 
-       $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'streamium_remove_powered_by_s3bubble',
-        array(
-          'label' => 'Replace Powered By S3Bubble Text',
-          'section' => 'title_tagline',
-          'settings' => 'streamium_remove_powered_by_s3bubble',
-        ))
-      );
+        $wp_customize->add_control(
+            new WP_Customize_Control(
+                $wp_customize,
+                'streamium_enable_ratings',
+                array(
+                    'label'     => __('Enable Video Ratings', 'streamium'),
+                    'section'   => 'title_tagline',
+                    'settings'  => 'streamium_enable_ratings',
+                    'type'      => 'checkbox',
+                )
+            )
+        );
 
-       $wp_customize->add_setting('streamium_genre_text');
+        $wp_customize->add_setting(
+            'streamium_remove_powered_by_s3bubble'
+        );
 
-       $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'streamium_genre_text',
-        array(
-          'label' => 'Replace Genre Text',
-          'section' => 'title_tagline',
-          'settings' => 'streamium_genre_text',
-        ))
-      );
+        $wp_customize->add_control(
+            new WP_Customize_Control(
+                $wp_customize, 
+                'streamium_remove_powered_by_s3bubble',
+                array(
+                    'label' => 'Replace Powered By S3Bubble Text',
+                    'section' => 'title_tagline',
+                    'settings' => 'streamium_remove_powered_by_s3bubble',
+                )
+            )
+        );
 
-       $wp_customize->remove_control('display_header_text');
+        $wp_customize->add_setting(
+            'streamium_genre_text'
+        );
 
-       $wp_customize->add_setting('streamium_global_options_homepage_desktop', array(
-          'default'  => '-1'
-      ));
+        $wp_customize->add_control(
+            new WP_Customize_Control(
+                $wp_customize, 
+                'streamium_genre_text',
+                array(
+                    'label' => 'Replace Genre Text',
+                    'section' => 'title_tagline',
+                    'settings' => 'streamium_genre_text',
+                )
+            )
+        );
 
-       $wp_customize->add_control(
-          new WP_Customize_Control(
-              $wp_customize,
-              'streamium_global_options_homepage_desktop',
-              array(
-                  'label'     => __('Maximum carousel videos - Desktop', 'streamium'),
-                  'section'   => 'title_tagline',
-                  'settings'  => 'streamium_global_options_homepage_desktop',
-                  'type'      => 'select',
-                  'choices' => array(
-                      '-1'  => __('-1'),
-                      '6'   => __('6'),
-                      '12'  => __('12'),
-                      '18'  => __('18'),
-                      '24'  => __('24'),
-                      '30'  => __('30')
-                  )
-              )
-          )
-      );
+        $wp_customize->remove_control(
+            'display_header_text'
+        );
 
-       // START CUSTOM POST TYPE SECTION
+        $wp_customize->add_setting(
+            'streamium_global_options_homepage_desktop', 
+            array(
+                'default'  => '-1'
+            )
+        );
+
+        $wp_customize->add_control(
+            new WP_Customize_Control(
+                $wp_customize,
+                'streamium_global_options_homepage_desktop',
+                array(
+                    'label'     => __('Maximum carousel videos - Desktop', 'streamium'),
+                    'section'   => 'title_tagline',
+                    'settings'  => 'streamium_global_options_homepage_desktop',
+                    'type'      => 'select',
+                    'choices' => array(
+                        '-1'  => __('-1'),
+                        '6'   => __('6'),
+                        '12'  => __('12'),
+                        '18'  => __('18'),
+                        '24'  => __('24'),
+                        '30'  => __('30')
+                    )
+                )
+            )
+        );
+        // SITE IDENTITY SECTION: <= 
+
+        // START CUSTOM POST TYPE SECTION =>
        $postTypes = array(
             array('tax' => 'movies','type' => 'movie','menu' => 'Movies'),
             array('tax' => 'programs','type' => 'tv','menu' => 'TV Programs'),
