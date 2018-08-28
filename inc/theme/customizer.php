@@ -1,239 +1,281 @@
 <?php
 
 /**
- * Add option to the WordPress theme customizer
+ * Add cutom options to the WordPress theme customizer
  *
  * @return null
- * @author  @sameast
+ * @author  @s3bubble
  */
 class Streamium_Customize
 {
 
-   /**
-    * This hooks into 'customize_register' (available as of WP 3.4) and allows
-    * you to add new sections and controls to the Theme Customize screen.
-    *
-    * Note: To enable instant preview, we have to actually write a bit of custom
-    * javascript. See live_preview() for more.
-    *
-    * @see add_action('customize_register',$func)
-    * @param \WP_Customize_Manager $wp_customize
-    * @link http://ottopress.com/2012/how-to-leverage-the-theme-customizer-in-your-own-themes/
-    * @since Streamium 1.0
+    /**
+        * This hooks into 'customize_register' (available as of WP 3.4) and allows
+        * you to add new sections and controls to the Theme Customize screen.
+        *
+        * Note: To enable instant preview, we have to actually write a bit of custom
+        * javascript. See live_preview() for more.
+        *
+        * @see add_action('customize_register',$func)
+        * @param \WP_Customize_Manager $wp_customize
+        * @link http://ottopress.com/2012/how-to-leverage-the-theme-customizer-in-your-own-themes/
+        * @since Streamium 1.0
     */
-   public static function register($wp_customize)
-   {
+    public static function register($wp_customize){
 
-      // Remove options
-      $wp_customize->remove_section('colors');
+        // Remove options
+        $wp_customize->remove_section(
+            'colors'
+        );
 
-      // STREAMIUM STYLES SECTION
-      $wp_customize->add_section('streamium_styles', array(
-          'title'       => __('Streamium Styles', 'streamium'),
-          'priority'    => 30,
-          'description' => 'Here you can set the Streamium styles',
-      ));
+        // STREAMIUM STYLES SECTION: => 
+        $wp_customize->add_section(
+            'streamium_styles', 
+            array(
+                'title'       => __('Streamium Styles', 'streamium'),
+                'priority'    => 30,
+                'description' => 'Here you can set the Streamium styles',
+            )
+        );
 
-      // Logo block
-      $wp_customize->add_setting('streamium_logo');
+        $wp_customize->add_setting(
+            'streamium_logo'
+        );
+        $wp_customize->add_control(
+            new WP_Customize_Image_Control(
+                $wp_customize, 
+                'streamium_logo', 
+                array(
+                    'label'    => __('Logo', 'streamium'),
+                    'section'  => 'streamium_styles',
+                    'settings' => 'streamium_logo',
+                )
+            )
+        );
 
-       $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'streamium_logo', array(
-          'label'    => __('Logo', 'streamium'),
-          'section'  => 'streamium_styles',
-          'settings' => 'streamium_logo',
-      )));
+        $wp_customize->add_setting(
+            'streamium_global_bg'
+        );
+        $wp_customize->add_control(
+            new WP_Customize_Image_Control(
+                $wp_customize, 
+                'streamium_global_bg', 
+                array(
+                    'label'    => __('Global Background', 'streamium'),
+                    'section'  => 'streamium_styles',
+                    'settings' => 'streamium_global_bg',
+                )
+            )
+        );
 
-      // Full background block
-      $wp_customize->add_setting('streamium_global_bg');
+        $wp_customize->add_setting(
+            'streamium_plans_bg'
+        );
+        $wp_customize->add_control(
+            new WP_Customize_Image_Control(
+                $wp_customize, 
+                'streamium_plans_bg', 
+                array(
+                    'label'    => __('Background', 'streamium'),
+                    'section'  => 'streamium_styles',
+                    'settings' => 'streamium_plans_bg',
+                )
+            )
+        );
 
-       $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'streamium_global_bg', array(
-          'label'    => __('Global Background', 'streamium'),
-          'section'  => 'streamium_styles',
-          'settings' => 'streamium_global_bg',
-      )));
+        $wp_customize->add_setting(
+            'link_textcolor', 
+            array(
+                'default'     => '#dd3333',
+                'sanitize_callback' => 'sanitize_hex_color'
+            )
+        );
 
-      // Full background block
-      $wp_customize->add_setting('streamium_plans_bg');
+        $wp_customize->add_control(
+            new WP_Customize_Color_Control(
+                $wp_customize,
+                'link_textcolor',
+                array(
+                    'label'    => __('Main Link Color', 'streamium'),
+                    'section'  => 'streamium_styles',
+                    'settings' => 'link_textcolor'
+                )
+            )
+        );
 
-       $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'streamium_plans_bg', array(
-          'label'    => __('Background', 'streamium'),
-          'section'  => 'streamium_styles',
-          'settings' => 'streamium_plans_bg',
-      )));
+        $wp_customize->add_setting(
+            'streamium_carousel_heading_color',
+            array(
+                'default'           => '#f2f2f2',
+                'sanitize_callback' => 'sanitize_hex_color'
+            )
+        );
 
-      // Link text color
-      $wp_customize->add_setting(
-          'link_textcolor',
-          array(
-              'default'     => '#dd3333',
-              'sanitize_callback' => 'sanitize_hex_color'
-          )
-      );
+        $wp_customize->add_control(
+            new WP_Customize_Color_Control(
+                $wp_customize,
+                'streamium_carousel_heading_color',
+                array(
+                    'label'    => __('Carousel Headings Color', 'streamium'),
+                    'section'  => 'streamium_styles',
+                    'settings' => 'streamium_carousel_heading_color'
+                )
+            )
+        );
+
+        $wp_customize->add_setting(
+            'streamium_background_color',
+            array(
+                'default'     => '#141414',
+                'sanitize_callback' => 'sanitize_hex_color'
+            )
+        );
+
+        $wp_customize->add_control(
+            new WP_Customize_Color_Control(
+                $wp_customize,
+                'streamium_background_color',
+                array(
+                    'label'      => __('Background Color', 'streamium'),
+                    'section'    => 'streamium_styles',
+                    'settings'   => 'streamium_background_color'
+                )
+            )
+        );
+
+        $wp_customize->add_setting(
+            'streamium_google_font', 
+            array(
+                'default'  => 'Roboto'
+            )
+        );
+
+        $wp_customize->add_control(
+            new WP_Customize_Control(
+                $wp_customize, 
+                'streamium_google_font',
+                array(
+                    'label' => 'Header Font',
+                    'description' => '<a href="https://fonts.google.com/" target="_blank">Preview fonts on Google</a>',
+                    'section' => 'streamium_styles',
+                    'settings' => 'streamium_google_font',
+                    'type'      => 'select',
+                    'choices'   => self::get_google_fonts()
+                )
+            )
+        );
+
+        $wp_customize->add_setting(
+            'streamium_synopsis_para', 
+            array(
+                'default'  => '1.3vw'
+            )
+        );
+
+        $wp_customize->add_control(
+            new WP_Customize_Control(
+                $wp_customize,
+                'streamium_synopsis_para',
+                array(
+                    'label'     => __('Synopsis Paragraph Text', 'streamium'),
+                    'section'   => 'streamium_styles',
+                    'settings'  => 'streamium_synopsis_para',
+                    'type'      => 'select',
+                    'choices' => array(
+                        '1.6vw'  => '1.6vw',
+                        '1.5vw'  => '1.5vw',
+                        '1.4vw'  => '1.4vw',
+                        '1.3vw'  => '1.3vw',
+                        '1.2vw'  => '1.2vw',
+                        '1.1vw'  => '1.1vw',
+                        '1vw'    => '1vw',
+                        '0.9.vw' => '0.9vw',
+                        '0.8.vw' => '0.8vw'
+                    )
+                )
+            )
+        );
+
+        $wp_customize->add_setting(
+            'streamium_poster_orientation', 
+            array(
+                'default'  => '56.25%'
+            )
+        );
+
+        $wp_customize->add_control(
+            new WP_Customize_Control(
+                $wp_customize,
+                'streamium_poster_orientation',
+                array(
+                    'label'     => __('Poster Orientation', 'streamium'),
+                    'section'   => 'streamium_styles',
+                    'settings'  => 'streamium_poster_orientation',
+                    'type'      => 'select',
+                    'choices' => array(
+                        '150%'  => __('Portrait', 'streamium'),
+                        '56.25%'  => __('Landscape', 'streamium')
+                    )
+                )
+            )
+        );
+
+        $wp_customize->add_setting(
+            'streamium_tile_count', 
+            array(
+                'default'  => '6'
+            )
+        );
 
        $wp_customize->add_control(
-          new WP_Customize_Color_Control(
-              $wp_customize,
-              'link_textcolor',
-              array(
-                  'label'      => __('Main Link Color', 'streamium'),
-                  'section'    => 'streamium_styles',
-                  'settings'   => 'link_textcolor'
-              )
-          )
-      );
+            new WP_Customize_Control(
+                $wp_customize,
+                'streamium_tile_count',
+                array(
+                    'label'     => __('Tile Count', 'streamium'),
+                    'section'   => 'streamium_styles',
+                    'settings'  => 'streamium_tile_count',
+                    'type'      => 'select',
+                    'choices' => array(
+                        '4'  => '4',
+                        '5'  => '5',
+                        '6'  => '6',
+                        '7'  => '7',
+                        '8'  => '8',
+                        '9'  => '9',
+                        '10' => '10'
+                    )
+                )
+            )
+        );
 
-      // Caro heading text color
-      $wp_customize->add_setting(
-          'streamium_carousel_heading_color',
-          array(
-              'default'     => '#f2f2f2',
-              'sanitize_callback' => 'sanitize_hex_color'
-          )
-      );
-
-       $wp_customize->add_control(
-          new WP_Customize_Color_Control(
-              $wp_customize,
-              'streamium_carousel_heading_color',
-              array(
-                  'label'      => __('Carousel Headings Color', 'streamium'),
-                  'section'    => 'streamium_styles',
-                  'settings'   => 'streamium_carousel_heading_color'
-              )
-          )
-      );
-
-      // Main background color
-      $wp_customize->add_setting(
-          'streamium_background_color',
-          array(
-              'default'     => '#141414',
-              'sanitize_callback' => 'sanitize_hex_color'
-          )
-      );
-
-       $wp_customize->add_control(
-          new WP_Customize_Color_Control(
-              $wp_customize,
-              'streamium_background_color',
-              array(
-                  'label'      => __('Background Color', 'streamium'),
-                  'section'    => 'streamium_styles',
-                  'settings'   => 'streamium_background_color'
-              )
-          )
-      );
-
-      // Use google font
-      $wp_customize->add_setting('streamium_google_font', array(
-         'default'  => 'Roboto'
-     ));
-
-       $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'streamium_google_font',
-        array(
-          'label' => 'Header Font',
-          'description' => '<a href="https://fonts.google.com/" target="_blank">Preview fonts on Google</a>',
-          'section' => 'streamium_styles',
-          'settings' => 'streamium_google_font',
-          'type'      => 'select',
-          'choices'   => self::get_google_fonts()
-        ))
-      );
-
-       $wp_customize->add_setting('streamium_synopsis_para', array(
-          'default'  => '1.3vw'
-      ));
-
-       $wp_customize->add_control(
-          new WP_Customize_Control(
-              $wp_customize,
-              'streamium_synopsis_para',
-              array(
-                  'label'     => __('Synopsis Paragraph Text', 'streamium'),
-                  'section'   => 'streamium_styles',
-                  'settings'  => 'streamium_synopsis_para',
-                  'type'      => 'select',
-                  'choices' => array(
-                      '1.6vw'  => '1.6vw',
-                      '1.5vw'  => '1.5vw',
-                      '1.4vw'  => '1.4vw',
-                      '1.3vw'  => '1.3vw',
-                      '1.2vw'  => '1.2vw',
-                      '1.1vw'  => '1.1vw',
-                      '1vw'    => '1vw',
-                      '0.9.vw' => '0.9vw',
-                      '0.8.vw' => '0.8vw'
-                  )
-              )
-          )
-      );
-
-       $wp_customize->add_setting('streamium_poster_orientation', array(
-          'default'  => '56.25%'
-      ));
-
-       $wp_customize->add_control(
-          new WP_Customize_Control(
-              $wp_customize,
-              'streamium_poster_orientation',
-              array(
-                  'label'     => __('Poster Orientation', 'streamium'),
-                  'section'   => 'streamium_styles',
-                  'settings'  => 'streamium_poster_orientation',
-                  'type'      => 'select',
-                  'choices' => array(
-                      '150%'  => __('Portrait', 'streamium'),
-                      '56.25%'  => __('Landscape', 'streamium')
-                  )
-              )
-          )
-      );
-
-       $wp_customize->add_setting('streamium_tile_count', array(
-          'default'  => '6'
-      ));
-
-       $wp_customize->add_control(
-          new WP_Customize_Control(
-              $wp_customize,
-              'streamium_tile_count',
-              array(
-                  'label'     => __('Tile Count', 'streamium'),
-                  'section'   => 'streamium_styles',
-                  'settings'  => 'streamium_tile_count',
-                  'type'      => 'select',
-                  'choices' => array(
-                      '4'  => '4',
-                      '5'  => '5',
-                      '6'  => '6',
-                      '7'  => '7',
-                      '8'  => '8',
-                      '9'  => '9',
-                      '10' => '10'
-                  )
-              )
-          )
-      );
+        // STREAMIUM STYLES SECTION: <= 
 
 
-      // SITE IDENTITY SECTION
-      $wp_customize->add_setting('streamium_main_post_type', array(
-        'default' => 'movie'
-      ));
+        // SITE IDENTITY SECTION: => 
+        $wp_customize->add_setting(
+            'streamium_main_post_type', 
+            array(
+                'default' => 'movie'
+            )
+        );
 
-       $wp_customize->add_control('streamium_main_post_type', array(
-        'type' => 'radio',
-        'section' => 'title_tagline', // Add a default or your own section
-        'label' => __('Select the main post type to show on the homepage'),
-        'description' => __('This is a custom radio input.'),
-        'choices' => array(
-          'movie' => __('Movies'),
-          'tv' => __('TV Programs'),
-          'sport' => __('Sports'),
-          'kid' => __('Kids'),
-          'stream' => __('Streams')
-        ),
-      ));
+        $wp_customize->add_control(
+            'streamium_main_post_type', 
+            array(
+                'type' => 'radio',
+                'section' => 'title_tagline', // Add a default or your own section
+                'label' => __('Select the main post type to show on the homepage'),
+                'description' => __('This is a custom radio input.'),
+                'choices' => array(
+                    'movie' => __('Movies'),
+                    'tv' => __('TV Programs'),
+                    'sport' => __('Sports'),
+                    'kid' => __('Kids'),
+                    'stream' => __('Streams')
+                ),
+            )
+        );
 
       // Enable the loading indicator
       $wp_customize->add_setting('streamium_enable_loader', array(
