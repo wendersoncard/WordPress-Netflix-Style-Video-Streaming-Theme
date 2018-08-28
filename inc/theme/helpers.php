@@ -459,3 +459,29 @@ function get_theme_mod_ssl($mod_name){
     }
     
 }
+
+/**
+ *
+ * @param Checks for ssl returns https if needed
+ * @param int $p
+ * @return filter
+ */
+function streamium_sort_episodes($episodes){
+    
+    $positions = array();
+    foreach ($episodes as $key => $row){
+        $positions[$key] = $row['positions'];
+    }
+    array_multisort($positions, SORT_ASC, $episodes);
+
+    $response = array();
+    foreach ($episodes as $v) {
+        $seasons = $v['seasons'];
+        if (!isset($response[$seasons])) $response[$seasons] = array();
+        $v['link'] = get_permalink($postId);
+        $response[$seasons][] = $v;
+    }
+    
+    return $response;
+    
+}

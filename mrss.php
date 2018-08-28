@@ -1,8 +1,34 @@
 <?php 
 
 	/*
-	 Template Name: Mrss Template
-	 */
+	 	Template Name: Mrss Template
+	*/
+
+	// CHECK FOR PREMIUM:
+	if(!get_theme_mod(
+		'streamium_enable_premium' 
+	)){
+
+		echo 'Only avaiable with premium...';
+		die();
+
+	}
+
+	// CHECK FOR RESTRICTION:
+	if(
+		!empty(get_theme_mod('streamium_mrss_key'))
+	){
+
+		// CHECK:
+		$key = $_GET['key'];
+		if($key != get_theme_mod('streamium_mrss_key')){
+			
+			echo 'This url has restrictions enabled...';
+			die();
+
+		}
+
+	}
 
 	// globally loop through post types.
 	$args = array(
@@ -10,44 +36,47 @@
         'post_type' => array('movie', 'tv','sport','kid','stream'),
         'post_status' => 'publish'
     );
+
     $loop = new WP_Query($args);
 
     // Latest build update
     $datetime = new DateTime();
 
-    $genresList = [	"action",
-					"adventure",
-					"animals",
-					"animated",
-					"anime",
-					"children",
-					"comedy",
-					"crime",
-					"documentary",
-					"drama",
-					"educational",
-					"fantasy",
-					"faith",
-					"food",
-					"fashion",
-					"gaming",
-					"health",
-					"history",
-					"horror",
-					"miniseries",
-					"mystery",
-					"nature",
-					"news",
-					"reality",
-					"romance",
-					"science",
-					"science fiction",
-					"sitcom",
-					"special",
-					"sports",
-					"thriller",
-					"technology"
-				];
+    $genresList = [
+    	"action",
+		"adventure",
+		"animals",
+		"animated",
+		"anime",
+		"children",
+		"comedy",
+		"crime",
+		"documentary",
+		"drama",
+		"educational",
+		"fantasy",
+		"faith",
+		"food",
+		"fashion",
+		"gaming",
+		"health",
+		"history",
+		"horror",
+		"miniseries",
+		"mystery",
+		"nature",
+		"news",
+		"reality",
+		"romance",
+		"science",
+		"science fiction",
+		"sitcom",
+		"special",
+		"sports",
+		"thriller",
+		"technology"
+	];
+
 	$cats = [];
 	foreach ($genresList as $key => $value) {
 		$cats[] = [
@@ -61,18 +90,15 @@
     	"providerName" => "S3Bubble AWS Media Streaming",
 	    "lastUpdated" => $datetime->format('c'),
 	    "language" => "en-US",
-	    /*"categories" => $cats, 
-	    "playlists" => [],*/
 	    "movies" => [],
-	    "series" => [],
-	    //"shortFormVideos" =>  [],
-	    //"tvSpecials" => []
+	    "series" => []
     ];
 
-	// Only run if user is logged in
     if ($loop->have_posts()):
+
         while ($loop->have_posts()) : $loop->the_post();
 
+        	// TOP LEVEL DATA:
         	$id               = get_the_ID();
         	$title            = substr( strip_tags(get_the_title()), 0, 200);
         	$shortDescription = wp_trim_words( strip_tags(get_the_content()), $num_words = 20, $more = '... ' );
@@ -80,13 +106,13 @@
         	$releaseDate      = get_the_time('c');
     	 	$thumbnail        = false;
 
-    	 	// Roku meta box data
+    	 	// ROKU META DATA:
     	 	$videoUrl      = get_post_meta( $post->ID, 's3bubble_roku_url_meta_box_text', true );
     	 	$videoQuality  = get_post_meta( $post->ID, 's3bubble_roku_quality_meta_box_text', true );
     	 	$VideoType     = get_post_meta( $post->ID, 's3bubble_roku_videotype_meta_box_text', true );
     	 	$videoDuration = get_post_meta( $post->ID, 's3bubble_roku_duration_meta_box_text', true );
 
-		    // Allow a extra image to be added
+    	 	// EXTRA THUMBNAILS:
             if (class_exists('MultiPostThumbnails')) {                              
                 
                 if (MultiPostThumbnails::has_post_thumbnail( get_post_type( get_the_ID() ), 'roku-thumbnail-image', get_the_ID())) { 
@@ -96,7 +122,7 @@
 
                 }                             
              
-            }; // end if MultiPostThumbnails 
+            }; 
 
         	$taxonomy_names = get_post_taxonomies( );
         	$categories = get_the_terms( $id, $taxonomy_names[1] );
@@ -111,31 +137,13 @@
 		    	}
 	    	}    	
 
-			// Check for series
+			// CHECK IF CUSTOM POST IS A SERIES:
 			$episodes = get_post_meta(get_the_ID(), 'repeatable_fields' , true);
 
 			if(!empty($episodes)){
 
-				// This is a series
-
-				// Order the list
-				$positions = array();
-				foreach ($episodes as $key => $row){
-				    $positions[$key] = $row['positions'];
-				}
-				array_multisort($positions, SORT_ASC, $episodes);
-
-				// Sort the seasons
-				$result = array();
-				foreach ($episodes as $v) {
-				    $seasons = $v['seasons'];
-				    if (!isset($result[$seasons])) $result[$seasons] = array();
-				    $v['link'] = get_permalink($postId);
-				    $result[$seasons][] = $v;
-				}
-
 				$seasonEpisodes = [];
-				foreach ($result as $key => $value) {
+				foreach (streamium_sort_episodes($episodes) as $key => $value) {
 
 		        	$episodeObject = [];
 		        	foreach ($value as $key2 => $value2) {
@@ -189,7 +197,7 @@
 				    "longDescription" => $longDescription
 				];
 
-				// Only return if the series has episodes with roku data generated
+				// ONLY RETURN IF IT HAS EPISODES:
 				if(count($episodeObject) > 0){
 					
 					$json['series'][] = $data;
@@ -231,7 +239,7 @@
 				    "longDescription" => $longDescription
 	        	];
 
-				// Only run if image is added
+				// ONLY RUN IF THE CORRECT IMAGE EXISTS:
 				if($thumbnail && $videoUrl && $videoQuality && $VideoType && $videoDuration){
 
 					$json['movies'][] = $data;
