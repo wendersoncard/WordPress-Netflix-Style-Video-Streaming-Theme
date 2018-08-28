@@ -28,11 +28,52 @@ class Streamium_Customize
             'colors'
         );
 
+        // API SECTION =>
+        $wp_customize->add_section(
+            'streamium_mrss_section', 
+            array(
+                'title'     => __('(Streamium) Mrss', 'streamium'),
+                'description' => 'Here you can set a global vpaid advertisement url. !Important this does not work with YouTube',
+                'priority'  => 1020
+            )
+        );
+
+        $wp_customize->add_setting(
+            'streamium_mrss_key'
+        );
+
+        $wp_customize->add_control(
+            new WP_Customize_Control(
+                $wp_customize, 
+                'streamium_mrss_key',
+                array(
+                    'label' => 'Restriction Key',
+                    'section' => 'streamium_mrss_section',
+                    'settings' => 'streamium_mrss_key'
+                )
+            )
+        );
+
+        $wp_customize->add_control( 
+            'streamium_generate_mrss_key', 
+            array(
+                'type' => 'button',
+                'settings' => array(),
+                'priority' => 10,
+                'section' => 'streamium_mrss_section',
+                'input_attrs' => array(
+                    'value' => __( 'Generate Key', 'streamium' ), 
+                    'class' => 'button button-primary',
+                ),
+            )   
+        );
+        // API SECTION <=
+
         // STREAMIUM STYLES SECTION: => 
         $wp_customize->add_section(
             'streamium_styles', 
             array(
-                'title'       => __('Streamium Styles', 'streamium'),
+                'title'       => __('(Streamium) Styles', 'streamium'),
                 'priority'    => 30,
                 'description' => 'Here you can set the Streamium styles',
             )
@@ -248,7 +289,6 @@ class Streamium_Customize
                 )
             )
         );
-
         // STREAMIUM STYLES SECTION: <= 
 
 
@@ -540,7 +580,7 @@ class Streamium_Customize
             $wp_customize->add_section(
                 'streamium_section_' . $type, 
                 array(
-                    'title'       => __($menu . ' Options', 'streamium'),
+                    'title'       => __('(Streamium) ' . $menu . ' Options', 'streamium'),
                     'description' => 'These options can be changed to create custom post types',
                     'priority'    => 1019
                 )
@@ -634,7 +674,7 @@ class Streamium_Customize
         $wp_customize->add_section(
             'streamium_payment_setups_section' , 
             array(
-                'title'     => __('Payment Setup Options', 'streamium'),
+                'title'     => __('(Streamium) Payment Setup Options', 'streamium'),
                 'description' => 'Here are some useful settings for different payment setups',
                 'priority'  => 1020
             )
@@ -665,7 +705,7 @@ class Streamium_Customize
         $wp_customize->add_section(
             'streamium_google_analytics_section' , 
             array(
-                'title'     => __('Google Analytics', 'streamium'),
+                'title'     => __('(Streamium) Google Analytics', 'streamium'),
                 'description' => 'Simply enter your Google Analytic Tracking Code below Example: ',
                 'priority'  => 1020
             )
@@ -692,7 +732,7 @@ class Streamium_Customize
         $wp_customize->add_section(
             'streamium_aws_media_uploader_section' , 
             array(
-                'title'     => __('AWS Media Uploader', 'streamium'),
+                'title'     => __('(Streamium) AWS Media Uploader', 'streamium'),
                 'description' => 'For infomation on how to setup the uploader with S3Bubble please watch this video<br><a href="https://www.youtube.com/watch?v=FUqN-b1MSrc" target="_blank">AWS direct uploader setup</a>.<p><br/></p>Example shortcode: <pre class="streamium-pre">[streamium_uploader folder="userid" bucket="Enter your bucket here" filetypes="mp4,m4v,mov" filesize="1gb"]</pre>',
                     'priority'  => 1020
             )
@@ -775,7 +815,7 @@ class Streamium_Customize
         $wp_customize->add_section(
             'streamium_aws_signed_cookies_section' , 
             array(
-                'title'     => __('AWS Signed Cookies', 'streamium'),
+                'title'     => __('(Streamium) AWS Signed Cookies', 'streamium'),
                 'description' => 'Secure your website with signed cookies',
                 'priority'  => 1020
             )
@@ -844,7 +884,7 @@ class Streamium_Customize
         $wp_customize->add_section(
             'streamium_advertisement_section', 
             array(
-                'title'     => __('Global Advertisement', 'streamium'),
+                'title'     => __('(Streamium) Vast/Vmap Ads', 'streamium'),
                 'description' => 'Here you can set a global vpaid advertisement url. !Important this does not work with YouTube',
                 'priority'  => 1020
             )
@@ -891,7 +931,7 @@ class Streamium_Customize
         $wp_customize->add_section(
             'streamium_social_section', 
             array(
-                'title'     => __('Social Cards', 'streamium'),
+                'title'     => __('(Streamium) Social Cards', 'streamium'),
                 'description' => 'Here you can enable twitter cards for all your videos including series you can validate Twitter using https://cards-dev.twitter.com/validator',
                 'priority'  => 1020
             )
