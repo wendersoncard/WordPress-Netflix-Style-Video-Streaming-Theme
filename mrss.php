@@ -1,4 +1,4 @@
-<?php
+<?php header('Content-Type: application/json');
 
 	/*
 	 Template Name: Mrss Template
@@ -198,6 +198,14 @@
 	
 			}else{
 
+				$captions = [
+					[
+						"url" => "https =>//example.org/cdn/subtitles/1509428502952/sub-fr.srt",
+  						"Language" => "fr",
+  						"captionType" => "CLOSED_CAPTION"
+					]
+				];
+
 				// Not a series
 				$data = [
 	        		"id" => (string) $id,
@@ -211,10 +219,9 @@
 							  "videoType"=> $VideoType
 							]
 					  	],
-					  	"trickPlayFiles" => [
-		
-					  	],
-					  	"duration" => (int)$videoDuration
+					  	"duration" => (int)$videoDuration,
+					  	"captions" => $captions,
+					  	"trickPlayFiles" => []
 					],
 				    "genres" => $genres, 
 				    "tags" => $cats, 
