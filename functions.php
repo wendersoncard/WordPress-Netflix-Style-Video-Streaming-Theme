@@ -181,6 +181,8 @@ if (!function_exists('streamium_enqueue_scripts')) {
                 'brand_control' => get_theme_mod( 'streamium_background_color', 'black' ),
                 'brand_icons' => get_theme_mod( 'streamium_carousel_heading_color', 'white' ),
                 'brand_social' => get_theme_mod( 'streamium_enable_video_social', false ),
+                'root' => esc_url_raw( rest_url() ),
+                'nonce' => wp_create_nonce( 'wp_rest' )
             )
         );
  

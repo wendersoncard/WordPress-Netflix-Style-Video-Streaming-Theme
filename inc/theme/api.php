@@ -237,6 +237,208 @@ function streamium_api_add_media_get_field( $object, $field_name, $request ) {
 
 }
 
+/**
+ * Update the Wordpress api url prefix
+ *
+ * @return null
+ * @author  @sameast
+ */
+function streamium_api_add_watched_init() {
+
+	$post_types = get_post_types( array( 'public' => true ), 'objects' );
+	foreach ( $post_types as $post_type ) {
+
+		$post_type_name     = $post_type->name;
+		$show_in_rest       = ( isset( $post_type->show_in_rest ) && $post_type->show_in_rest ) ? true : false;
+
+		// CHECK IF SHOW REST IS SET ON CREATION:
+		if ( $show_in_rest) {
+
+			if ( function_exists( 'register_rest_field' ) ) {
+				register_rest_field( $post_type_name,
+					'watched',
+					array(
+						'get_callback' => 'streamium_api_add_watched_get_field',
+						'schema'       => null,
+					)
+				);
+			} elseif ( function_exists( 'register_api_field' ) ) {
+				register_api_field( $post_type_name,
+					'watched',
+					array(
+						'get_callback' => 'streamium_api_add_watched_get_field',
+						'schema'       => null,
+					)
+				);
+			}
+		}
+	}
+}
+
+add_action( 'init', 'streamium_api_add_watched_init', 12 );
+
+
+/**
+ * Update the Wordpress api url prefix
+ *
+ * @return null
+ * @author  @sameast
+ */
+function streamium_api_add_watched_get_field( $object, $field_name, $request ) {
+
+	//error_log(json_encode(is_single()));
+
+	// PARAMS:
+	$postId = $object['id'];
+
+	// CHECKS:
+	if (empty($postId)) {
+		return null;
+	}
+
+	$progressBar = false;
+    if(get_theme_mod( 'streamium_enable_premium' )) {
+        $progressBar = (int)get_post_meta( get_the_ID(), 'user_' . get_current_user_id(), true );
+    }
+
+	return apply_filters( 'streamium_api_watched', $progressBar, $postId );
+
+}
+
+/**
+ * Update the Wordpress api url prefix
+ *
+ * @return null
+ * @author  @sameast
+ */
+function streamium_api_add_reviews_init() {
+
+	$post_types = get_post_types( array( 'public' => true ), 'objects' );
+	foreach ( $post_types as $post_type ) {
+
+		$post_type_name     = $post_type->name;
+		$show_in_rest       = ( isset( $post_type->show_in_rest ) && $post_type->show_in_rest ) ? true : false;
+
+		// CHECK IF SHOW REST IS SET ON CREATION:
+		if ( $show_in_rest) {
+
+			if ( function_exists( 'register_rest_field' ) ) {
+				register_rest_field( $post_type_name,
+					'reviews',
+					array(
+						'get_callback' => 'streamium_api_add_reviews_get_field',
+						'schema'       => null,
+					)
+				);
+			} elseif ( function_exists( 'register_api_field' ) ) {
+				register_api_field( $post_type_name,
+					'reviews',
+					array(
+						'get_callback' => 'streamium_api_add_reviews_get_field',
+						'schema'       => null,
+					)
+				);
+			}
+		}
+	}
+}
+
+add_action( 'init', 'streamium_api_add_reviews_init', 12 );
+
+
+/**
+ * Update the Wordpress api url prefix
+ *
+ * @return null
+ * @author  @sameast
+ */
+function streamium_api_add_reviews_get_field( $object, $field_name, $request ) {
+
+	//error_log(json_encode(is_single()));
+
+	// PARAMS:
+	$postId = $object['id'];
+
+	// CHECKS:
+	if (empty($postId)) {
+		return null;
+	}
+
+	$reviews = get_streamium_likes($postId);
+
+	return apply_filters( 'streamium_api_reviews', $reviews, $postId );
+
+}
+
+/**
+ * Update the Wordpress api url prefix
+ *
+ * @return null
+ * @author  @sameast
+ */
+function streamium_api_add_extra_meta_init() {
+
+	$post_types = get_post_types( array( 'public' => true ), 'objects' );
+	foreach ( $post_types as $post_type ) {
+
+		$post_type_name     = $post_type->name;
+		$show_in_rest       = ( isset( $post_type->show_in_rest ) && $post_type->show_in_rest ) ? true : false;
+
+		// CHECK IF SHOW REST IS SET ON CREATION:
+		if ( $show_in_rest) {
+
+			if ( function_exists( 'register_rest_field' ) ) {
+				register_rest_field( $post_type_name,
+					'extra_meta',
+					array(
+						'get_callback' => 'streamium_api_add_extra_meta_get_field',
+						'schema'       => null,
+					)
+				);
+			} elseif ( function_exists( 'register_api_field' ) ) {
+				register_api_field( $post_type_name,
+					'extra_meta',
+					array(
+						'get_callback' => 'streamium_api_add_extra_meta_get_field',
+						'schema'       => null,
+					)
+				);
+			}
+		}
+	}
+}
+
+add_action( 'init', 'streamium_api_add_extra_meta_init', 12 );
+
+
+/**
+ * Update the Wordpress api url prefix
+ *
+ * @return null
+ * @author  @sameast
+ */
+function streamium_api_add_extra_meta_get_field( $object, $field_name, $request ) {
+
+	//error_log(json_encode(is_single()));
+
+	// PARAMS:
+	$postId = $object['id'];
+
+	// CHECKS:
+	if (empty($postId)) {
+		return null;
+	}
+
+	$extraMeta = "";
+    $streamium_extra_meta = get_post_meta( $postId, 'streamium_extra_meta_meta_box_text', true );
+    if ( ! empty( $streamium_extra_meta ) ) {
+        $extraMeta = '<h5>' . $streamium_extra_meta . '</h5>';
+    }
+
+	return apply_filters( 'streamium_api_extra_meta', $extraMeta, $postId );
+
+}
+
 
 /**
  * Update the Wordpress api url prefix
@@ -258,7 +460,7 @@ function streamium_api_thumbnails_init() {
 
 			if ( function_exists( 'register_rest_field' ) ) {
 				register_rest_field( $post_type_name,
-					'thumbnails',
+					'images',
 					array(
 						'get_callback' => 'streamium_api_thumbnails_get_field',
 						'schema'       => null,
@@ -266,7 +468,7 @@ function streamium_api_thumbnails_init() {
 				);
 			} elseif ( function_exists( 'register_api_field' ) ) {
 				register_api_field( $post_type_name,
-					'thumbnails',
+					'images',
 					array(
 						'get_callback' => 'streamium_api_thumbnails_get_field',
 						'schema'       => null,
@@ -288,52 +490,100 @@ add_action( 'init', 'streamium_api_thumbnails_init', 12 );
  */
 function streamium_api_thumbnails_get_field( $object, $field_name, $request ) {
 
-	// Only proceed if the post has a featured image.
-	if ( ! empty( $object['featured_media'] ) ) {
-		$image_id = (int)$object['featured_media'];
-	} elseif ( ! empty( $object['featured_image'] ) ) {
-		// This was added for backwards compatibility with < WP REST API v2 Beta 11.
-		$image_id = (int)$object['featured_image'];
-	} else {
-		return null;
+	// PARAMS:
+	$postId = $object['id'];
+
+	// DEFAULTS:
+	$thumbnails = [
+		'tile' => [
+			'url' => 'https://via.placeholder.com/350x150'
+		],
+		'expanded' => [
+			'url' => 'https://via.placeholder.com/350x150'
+		],
+		'landscape' => [
+			'url' => 'https://via.placeholder.com/350x150'
+		],
+		'roku' => [
+			'url' => 'https://via.placeholder.com/350x150'
+		]
+	];
+
+	if (has_post_thumbnail( $postId ) ){
+		
+		$tile = get_the_post_thumbnail_url( $postId, 'streamium-video-tile' );
+		$thumbnails['tile'] = [
+			'url' => esc_url($tile)
+		];
+
+		$thumbnails['expanded'] = [
+			'url' => esc_url($tile)
+		];
+
 	}
 
-	$image = get_post( $image_id );
+	if (class_exists('MultiPostThumbnails')) {                              
+                    
+        if (MultiPostThumbnails::has_post_thumbnail(get_post_type( $postId ), 'tile-expanded-image')) { 
+            
+            $expanded = wp_get_attachment_image_url(
+				MultiPostThumbnails::get_post_thumbnail_id( 
+					get_post_type( 
+						$postId 
+					), 
+					'tile-expanded-image', 
+					$postId 
+				)
+				,'streamium-video-tile-expanded'
+			);
 
-	if ( ! $image ) {
-		return null;
-	}
+			$thumbnails['expanded'] = [
+				'url' => esc_url($expanded)
+			];
 
-	// BUILD:
-	$featured_image['id']            = $image_id;
-	$featured_image['alt_text']      = get_post_meta( $image_id, '_wp_attachment_image_alt', true );
-	$featured_image['caption']       = $image->post_excerpt;
-	$featured_image['description']   = $image->post_content;
-	$featured_image['media_type']    = wp_attachment_is_image( $image_id ) ? 'image' : 'file';
-	$featured_image['media_details'] = wp_get_attachment_metadata( $image_id );
-	$featured_image['post']          = ! empty( $image->post_parent ) ? (int) $image->post_parent : null;
-	$featured_image['source_url']    = wp_get_attachment_url( $image_id );
+        }
 
-	if ( empty( $featured_image['media_details'] ) ) {
-		$featured_image['media_details'] = new stdClass;
-	} elseif ( ! empty( $featured_image['media_details']['sizes'] ) ) {
-		$img_url_basename = wp_basename( $featured_image['source_url'] );
-		foreach ( $featured_image['media_details']['sizes'] as $size => &$size_data ) {
-			$image_src = wp_get_attachment_image_src( $image_id, $size );
-			if ( ! $image_src ) {
-				continue;
-			}
-			$size_data['source_url'] = $image_src[0];
-		}
-	} elseif ( is_string( $featured_image['media_details'] ) ) {
-		// This was added to work around conflicts with plugins that cause
-		// wp_get_attachment_metadata() to return a string.
-		$featured_image['media_details'] = new stdClass();
-		$featured_image['media_details']->sizes = new stdClass();
-	} else {
-		$featured_image['media_details']['sizes'] = new stdClass;
-	}
-	return apply_filters( 'streamium_api_thumbnails', $featured_image, $image_id );
+        if (MultiPostThumbnails::has_post_thumbnail(get_post_type( $postId ), 'large-landscape-image')) { 
+            
+            $landscape = wp_get_attachment_image_url(
+				MultiPostThumbnails::get_post_thumbnail_id( 
+					get_post_type( 
+						$postId 
+					), 
+					'large-landscape-image', 
+					$postId 
+				)
+				,'streamium-video-tile-large-expanded'
+			);
+
+			$thumbnails['landscape'] = [
+				'url' => esc_url($landscape)
+			];
+
+        }  
+
+        if (MultiPostThumbnails::has_post_thumbnail(get_post_type( $postId ), 'roku-thumbnail-image')) { 
+            
+            $roku = wp_get_attachment_image_url(
+				MultiPostThumbnails::get_post_thumbnail_id( 
+					get_post_type( 
+						$postId 
+					), 
+					'roku-thumbnail-image', 
+					$postId 
+				)
+				,'streamium-roku-thumbnail'
+			);
+
+			$thumbnails['roku'] = [
+				'url' => esc_url($roku)
+			];
+
+        }                        
+     
+    };
+
+	return apply_filters( 'streamium_api_thumbnails', $thumbnails, $postId );
 
 }
 
