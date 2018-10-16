@@ -33,7 +33,7 @@ class Streamium_Customize
             'streamium_mrss_section', 
             array(
                 'title'     => __('(Streamium) Mrss', 'streamium'),
-                'description' => 'Here you can set a global vpaid advertisement url. !Important this does not work with YouTube',
+                'description' => 'Here you can generate a key to secure your mrss feed for Roku.',
                 'priority'  => 1020
             )
         );

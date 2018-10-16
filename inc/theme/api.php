@@ -605,7 +605,7 @@ function mrss_generate_key() {
     }
 
     $new_key = substr($salt, 0, 40);
-
+    
 	echo json_encode(
     	array(
     		'status' => true,
