@@ -1154,9 +1154,18 @@ class Streamium_Customize
     public static function get_google_fonts()
     {
         // get google font styles from file
-        $font_file = TEMPLATEPATH . '/inc/data/google-fonts.txt';
-        $fonts = unserialize(@file_get_contents($font_file));
-        return $fonts;
+        $font_file = TEMPLATEPATH . '/inc/data/google-fonts.json';
+        $fonts = json_decode(@file_get_contents($font_file));
+        $choices = [];
+        if(!empty($fonts->items)){
+            foreach ($fonts->items as $key => $value) {
+                $choices[$value->family] = $value->family;    
+            }
+            return $choices;
+        }else{
+            return [];
+        }
+        
     }
 }
 
