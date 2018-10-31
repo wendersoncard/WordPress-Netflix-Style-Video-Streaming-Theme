@@ -341,11 +341,68 @@ function streamium_get_more_content() {
              
             }; // end if MultiPostThumbnails 
 
+            //  STARING::
+			$posttags = get_the_tags($postId);
+			$staring  = '';
+			if ($posttags) {
+				$staring = __( 'Cast', 'streamium' ) . ": ";
+				$numItems = count($posttags);
+				$i = 0;
+			  	foreach($posttags as $tag) {
+
+				  	$staring .= '<a href="' . esc_url(get_tag_link ($tag->term_id)) . '">' . ucwords($tag->name) . '</a>';
+				  	if(++$i !== $numItems) {
+			    		$staring .= ', ';
+			  		}
+
+			    }
+			    $staring = '<li class="synopis-meta-spacer">' . $staring . '</li>';
+			}
+
+			// GENRES::
+			$query      = get_post_taxonomies($postId);
+			$tax        = isset($query[1]) ? $query[1] : "";
+			$taxName    = get_theme_mod( 'streamium_section_input_taxonomy_' . $tax, $tax );
+			$categories = get_the_terms( $postId, $tax );
+			$genres     = '';
+			if ($categories) {
+
+				$genres = ucfirst($taxName) . ': ';
+				$numItems = count($categories);
+				$i = 0;
+			  	foreach($categories as $cat) {
+
+			  		$genres .= '<a href="' . esc_url( get_category_link( $cat->term_id ) ) . '">' . ucwords($cat->name) . '</a>';
+			  		if(++$i !== $numItems) {
+			    		$genres .= ', ';
+			  		}
+
+			  	}
+			  	$genres = '<li class="synopis-meta-spacer">' . $genres . '</li>';
+			}
+
+			// RELEASED::
+			$releaseDate = get_post_meta( $postId, 'streamium_release_date_meta_box_text', true );
+			$released = '';
+			if(!empty($releaseDate)){
+				$released = '<li class="synopis-meta-spacer">' . __( 'Released', 'streamium' ) . ': ' . $releaseDate . '</li>';
+			}	
+
+			// RATING::
+			$rating = '';
+			$streamium_ratings = get_post_meta( $postId, 'streamium_ratings_meta_box_text', true );
+			if ( ! empty( $streamium_ratings ) ) {
+				$rating = '<li class="synopis-meta-spacer">' . __( 'Rating', 'streamium' ) . ': ' . $streamium_ratings . '</a></li>';
+			}
+
+			// BIND EXTRA META::
+			$extra_meta = '<ul class="hidden-xs">' . $staring . $genres . $released . $rating . '</ul>';
+
 	    	echo json_encode(
 		    	array(
 		    		'error' => false,
 		    		'title' => $post_object->post_title,
-		    		'content' => $post_object->post_content,
+		    		'content' => $post_object->post_content . $extra_meta,
 		    		'bgimage' =>  isset($fullImage) ? $fullImage : "",
 		    		'href' => get_permalink($postId)
 		    	)

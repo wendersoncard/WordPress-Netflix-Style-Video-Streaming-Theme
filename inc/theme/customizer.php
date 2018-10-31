@@ -1163,7 +1163,7 @@ function streamium_customizer_valid_types($params){
 
             wp_send_json(array(
                 'status' => false,
-                'message' => 'Please check your settings you have given one of your post types the exact name as the taxonomy please change this otherwise your videos will not be displayed. Post Type:' . $type . ', Taxonomy:' . $tax,
+                'message' => '!Important please check your settings you have given one of your post types the exact name as the taxonomy please change this otherwise your videos will not be displayed. Post Type:' . $type . ', Taxonomy:' . $tax,
             ));
             break;
 

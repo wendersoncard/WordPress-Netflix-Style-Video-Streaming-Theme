@@ -62,16 +62,13 @@
 					<div class="content-overlay-grad"></div>
 					<div class="container-fluid rel">
 						<div class="row rel">
-							<div class="col-sm-5 col-xs-6 rel">
+							<div class="col-sm-4 col-xs-6 rel">
 								<div class="synopis-outer">
 									<div class="synopis-middle">
 										<div class="synopis-inner">
 											<h2><?php echo (isset($title) ? $title : __( 'No Title', 'streamium' )); ?></h2>
 											<div class="synopis content">
 												<?php echo $content; ?>
-												<ul class="hidden-xs">
-													<?php do_action('synopis_multi_meta'); ?>
-												</ul>
 											</div>
 											
 											<?php if(get_theme_mod( 'streamium_enable_premium' )) : ?>
@@ -85,7 +82,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-sm-7 col-xs-6 rel">
+							<div class="col-sm-8 col-xs-6 rel">
 								<a class="play-icon-wrap" href="<?php the_permalink(); ?>">
 									<div class="play-icon-wrap-rel">
 										<div class="play-icon-wrap-rel-ring"></div>
