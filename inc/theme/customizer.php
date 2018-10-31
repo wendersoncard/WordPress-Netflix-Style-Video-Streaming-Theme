@@ -542,36 +542,7 @@ class Streamium_Customize
         );
         // SITE IDENTITY SECTION: <= 
 
-        // CUSTOM POST TYPE SECTION =>
-        $postTypes = array(
-            array(
-                'tax' => 'movies',
-                'type' => 'movie',
-                'menu' => 'Movies'
-            ),
-            array(
-                'tax' => 'programs',
-                'type' => 'tv',
-                'menu' => 'TV Programs'
-            ),
-            array(
-                'tax' => 'sports',
-                'type' => 'sport',
-                'menu' => 'Sport'
-            ),
-            array(
-                'tax' => 'kids',
-                'type' => 'kid',
-                'menu' => 'Kids'
-            ),
-            array(
-                'tax' => 'streams',
-                'type' => 'stream',
-                'menu' => 'Streams'
-            )
-        );
-
-        foreach ($postTypes as $key => $value) :
+        foreach (streamium_global_post_types() as $key => $value) :
 
             $tax = $value['tax'];
             $type = $value['type'];
@@ -1181,31 +1152,29 @@ add_action('wp_head', array( 'Streamium_Customize' , 'header_output' ));
  * @return null
  * @author  @sameast
  */
-function streamium_customizer_save(){
+function streamium_customizer_valid_types($params){
 
-    $setType = get_theme_mod(
-        'streamium_main_post_type', 
-        'movie'
-    );
-    
-    switch ($setType) {
-        case 'movie':
-            set_theme_mod("streamium_main_tax", "movies");
-        break;
-        case 'tv':
-            set_theme_mod("streamium_main_tax", "programs");
-        break;
-        case 'sport':
-            set_theme_mod("streamium_main_tax", "sports");
-        break;
-        case 'kid':
-            set_theme_mod("streamium_main_tax", "kids");
-        break;
-        case 'stream':
-            set_theme_mod("streamium_main_tax", "streams");
-        break;
+    foreach (streamium_global_post_types() as $key => $value) {
+        
+        $type =  get_theme_mod('streamium_section_input_posttype_' . $value['type'], $value['type']);
+        $tax  =  get_theme_mod('streamium_section_input_taxonomy_' . $value['tax'], $value['tax']);   
+
+        if($type === $tax){
+
+            wp_send_json(array(
+                'status' => false,
+                'message' => 'Please check your settings you have given one of your post types the exact name as the taxonomy please change this otherwise your videos will not be displayed. Post Type:' . $type . ', Taxonomy:' . $tax,
+            ));
+            break;
+
+        }
+
     }
+
+    wp_send_json(array(
+        'status' => true
+    ));
     
 }
 
-add_action( 'customize_save_after', 'streamium_customizer_save' );
+add_action( 'wp_ajax_streamium_customizer_valid_types', 'streamium_customizer_valid_types' );

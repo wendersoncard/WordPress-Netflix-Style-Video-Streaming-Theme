@@ -29,15 +29,7 @@ function custom_api_post() {
     $setType = get_theme_mod('streamium_main_post_type', 'movie');
     $setTax = get_theme_mod('streamium_main_tax', 'movies');
 
-    $postTypes = array(
-        array('tax' => 'movies','type' => 'movie','menu' => 'Movies'),
-        array('tax' => 'programs','type' => 'tv','menu' => 'TV Programs'),
-        array('tax' => 'sports','type' => 'sport','menu' => 'Sport'),
-        array('tax' => 'kids','type' => 'kid','menu' => 'Kids'),
-        array('tax' => 'streams','type' => 'stream','menu' => 'Streams')
-    );
-
-    foreach ($postTypes as $key => $value) :
+    foreach (streamium_global_post_types() as $key => $value) :
 
         $dataPosts = [];
         $tax = $value['tax'];

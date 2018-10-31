@@ -345,7 +345,7 @@ function streamium_get_more_content() {
 		    	array(
 		    		'error' => false,
 		    		'title' => $post_object->post_title,
-		    		'content' => $post_object->post_content . do_action('synopis_multi_meta'),
+		    		'content' => $post_object->post_content,
 		    		'bgimage' =>  isset($fullImage) ? $fullImage : "",
 		    		'href' => get_permalink($postId)
 		    	)
@@ -383,19 +383,13 @@ function streamium_custom_post_types_general( $hook_suffix ){
         
         $screen = get_current_screen();
 
-        if( is_object( $screen ) && in_array($screen->post_type, array('movie', 'tv', 'sport', 'kid'))){
+        if( is_object( $screen ) && in_array($screen->post_type, streamium_global_meta())){
 
             // Register, enqueue scripts and styles here
             wp_enqueue_script( 'streamium-admin-custom-post-type-general', get_template_directory_uri() . '/production/js/custom.post.type.general.min.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-datepicker' ),'1.1', true );
 
         }
 
-        if( is_object( $screen ) && in_array($screen->post_type, array('stream'))){
-
-            // Register, enqueue scripts and styles here
-            wp_enqueue_script( 'streamium-admin-custom-post-type-stream', get_template_directory_uri() . '/production/js/custom.post.type.stream.min.js', array( 'jquery' ),'1.1', true );
-
-        }
     }
 }
 
@@ -424,7 +418,9 @@ function streamium_columns_main_slider_content($column_name, $post_ID) {
     if ($column_name == 'main_slider') {
 
         $main_slider = get_post_meta( $post_ID, 'streamium_slider_featured_checkbox_value', true );
-        echo '<span class="post-state s3bubble-brand-color">' . ucfirst($main_slider) . '</span>';
+        if(!empty($main_slider)){
+	        echo '<span class="post-state button-secondary">' . ucfirst($main_slider) . '</span>';
+	    }
 
     }
 
@@ -453,7 +449,7 @@ function streamium_columns_series_video_count_content($column_name, $post_ID) {
 
     	$series_video_count = get_post_meta($post_ID, 'repeatable_fields', true);
     	if(!empty($series_video_count)){
-    		echo '<span class="post-state s3bubble-brand-color">' . count($series_video_count) . '</span>';
+    		echo '<span class="post-state button-secondary">' . count($series_video_count) . '</span>';
     	}
 
     }

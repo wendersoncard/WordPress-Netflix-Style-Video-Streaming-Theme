@@ -219,13 +219,67 @@ if (!function_exists('streamium_enqueue_admin_scripts')) {
     add_action('admin_enqueue_scripts', 'streamium_enqueue_admin_scripts');
 }
 
-function show_template() {
-    if( is_super_admin() ){
-        global $template;
-        print_r($template);
-    } 
+
+/**
+ * Globally set the custom post types used for the theme allow users to extend this
+ *
+ * @return null
+ * @author  @sameast
+ */
+function streamium_global_post_types() {
+  
+    return array(
+        array(
+            'tax' => 'movies',
+            'type' => 'movie',
+            'menu' => 'Movies'
+        ),
+        array(
+            'tax' => 'programs',
+            'type' => 'tv',
+            'menu' => 'TV Programs'
+        ),
+        array(
+            'tax' => 'sports',
+            'type' => 'sport',
+            'menu' => 'Sport'
+        ),
+        array(
+            'tax' => 'kids',
+            'type' => 'kid',
+            'menu' => 'Kids'
+        ),
+        array(
+            'tax' => 'streams',
+            'type' => 'stream',
+            'menu' => 'Streams'
+        ),
+        array(
+            'tax' => 'extras1',
+            'type' => 'extra1',
+            'menu' => 'Extra1'
+        ),
+        array(
+            'tax' => 'extras2',
+            'type' => 'extra2',
+            'menu' => 'Extra2'
+        ),
+        array(
+            'tax' => 'extras3',
+            'type' => 'extra3',
+            'menu' => 'Extra3'
+        ),
+        array(
+            'tax' => 'extras4',
+            'type' => 'extra4',
+            'menu' => 'Extra4'
+        )
+    );
 }
-//add_action('wp_footer', 'show_template');
+
+function streamium_global_meta() {
+    return array('movie', 'tv','sport','kid','stream','extra1','extra2','extra3','extra4');
+}
 
 /*-----------------------------------------------------------------------------------*/
 /*  Include the Streamium Framework
