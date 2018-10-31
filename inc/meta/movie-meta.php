@@ -54,7 +54,7 @@ function synopis_meta_release( ) {
 add_action( 'synopis_meta', 'synopis_meta_release', 3, 0 );
 
 function synopis_multi_meta_starring( ) {
-   // do stuff here
+   	// do stuff here
 	$posttags = get_the_tags();
 	$staring = __( 'Cast', 'streamium' ) . ": ";
 	if ($posttags) {

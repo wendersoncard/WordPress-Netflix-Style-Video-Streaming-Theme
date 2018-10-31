@@ -345,7 +345,7 @@ function streamium_get_more_content() {
 		    	array(
 		    		'error' => false,
 		    		'title' => $post_object->post_title,
-		    		'content' => $post_object->post_content,
+		    		'content' => $post_object->post_content . do_action('synopis_multi_meta'),
 		    		'bgimage' =>  isset($fullImage) ? $fullImage : "",
 		    		'href' => get_permalink($postId)
 		    	)
