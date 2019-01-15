@@ -52,7 +52,7 @@ You can edit files in the dist folder please submit your pull requests
 
 All Changes can be reviewed on our releases page
 
-[Download](https://github.com/s3bubble/Streamium-Netflix-Theme/releases)
+[View Releases](https://github.com/s3bubble/Streamium-Netflix-Theme/releases)
 
 ## License
 
