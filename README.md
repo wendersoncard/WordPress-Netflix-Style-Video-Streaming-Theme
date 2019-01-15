@@ -18,10 +18,17 @@ S3Bubble is excited to introduce Streamium. This Theme is ideal for any budding 
 
 To run the developer environment
 
-Navgiate into the streamium theme folder and run.
+Navgiate into the streamium theme folder and run
 ```
 npm install
 ```
+
+After you node_modules folder has been created you can now run
+```
+grunt
+```
+
+You can edit files in the dist folder please submit your pull requests
 
 ## Change Log
 
