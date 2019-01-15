@@ -402,26 +402,6 @@ class Streamium_Customize
         );
 
         $wp_customize->add_setting(
-            'tutorial_btn', 
-            array(
-                'default' => false
-            )
-        );
-
-        $wp_customize->add_control(
-            new WP_Customize_Control(
-                $wp_customize,
-                'tutorial_btn',
-                array(
-                    'label'     => __('Remove Footer Notification', 'streamium'),
-                    'section'   => 'title_tagline',
-                    'settings'  => 'tutorial_btn',
-                    'type'      => 'checkbox',
-                )
-            )
-        );
-
-        $wp_customize->add_setting(
             'streamium_disable_login', 
             array(
                 'default'    => false

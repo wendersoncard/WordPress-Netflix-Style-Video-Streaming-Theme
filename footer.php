@@ -28,10 +28,9 @@
 			</div> <!-- streamium-review-panel-content -->
 		</div> <!-- streamium-review-panel-container -->
 	</div> <!-- streamium-review-panel -->
-	<?php if ( !get_theme_mod( 'tutorial_btn' ) ) : ?>
-		<div class="streamium-install-instructions"><h2><?php _e( 'Please follow this guide for help with installation', 'streamium' ); ?> <a href="https://s3bubble.com/wp_themes/streamium-netflix-style-wordpress-theme/" target="_blank"><?php _e( 'Video Series', 'streamium' ); ?></a></h2><p><?php _e( 'You can remove this alert in Appearance -> Customizer -> Streamium<', 'streamium' ); ?>/p></div>
-	<?php endif; ?>
+
 	<?php wp_footer(); ?>
+
 	<?php
 
 		// Get the tracking code if it exists
