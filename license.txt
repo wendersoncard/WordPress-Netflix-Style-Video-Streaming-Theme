@@ -1,4 +1,4 @@
-Streamium WordPress Theme, Copyright 2012 Samuel East
+Streamium WordPress Theme, Copyright 2019 S3Bubble
 Streamium is distributed under the terms of the GNU GPL
 
 This program is free software: you can redistribute it and/or modify
