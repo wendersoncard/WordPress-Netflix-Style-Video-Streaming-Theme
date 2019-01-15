@@ -614,7 +614,7 @@ class Streamium_Customize
                     $wp_customize,
                     'streamium_section_checkbox_enable_' . $tax,
                     array(
-                        'label'     => __('Enable ' . $menu . ' In Header Menu', 'streamium'),
+                        'label'     => __('Show ' . $menu . ' In Header Menu & Homepage', 'streamium'),
                         'section'   => 'streamium_section_' . $type,
                         'settings'  => 'streamium_section_checkbox_enable_' . $tax,
                         'type'      => 'checkbox',
@@ -1040,6 +1040,8 @@ class Streamium_Customize
                 font-family: '<?php echo $fontFamily; ?>', sans-serif !important;
               }
 
+            <?php self::generate_css('.home', 'background', 'streamium_background_color', '', ' !important'); ?>
+
            /* Theme colors */
            <?php self::generate_css('.carousels .tile_inner', 'border-color', 'streamium_background_color', '', ' !important'); ?>
            <?php self::generate_css('.video-header h3, .see-all, .slick-arrow, h4.series-watched-episode-title', 'color', 'streamium_carousel_heading_color', '', '  !important', true, '#f2f2f2'); ?>
@@ -1051,8 +1053,7 @@ class Streamium_Customize
            <?php self::generate_css('.woocommerce-page .cd-main-content a, .page .cd-main-content a, .bbpress .cd-main-content a, .brand-color', 'color', 'link_textcolor', '', '', true, '#dd3333');
            ?>
 
-           /* style buttons */
-           <?php self::generate_css('#place_order, .pagination a:hover, .pagination .current, .slick-dots li.slick-active button, .progress-bar, .button, .cd-overlay, .has-children > a:hover::before, .has-children > a:hover::after, .go-back a:hover::before, .go-back a:hover::after, #submit, #place_order, .checkout-button, .woocommerce-thankyou-order-received, .add_to_cart_button, .confirm, .streamium-btns, .streamium-extra-meta, .streamium-auth, .onsale', 'background-color', 'link_textcolor', '', ' !important', true, '#dd3333'); 
+           <?php self::generate_css('#place_order, .pagination a:hover, .pagination .current, .slick-dots li.slick-active button, .progress-bar, .button, .cd-overlay, .has-children > a:hover::before, .has-children > a:hover::after, .go-back a:hover::before, .go-back a:hover::after, #submit, #place_order, .checkout-button, .woocommerce-thankyou-order-received, .add_to_cart_button, .confirm, .streamium-btns, .streamium-extra-meta, .streamium-auth, .onsale, .full-hero .btn', 'background-color', 'link_textcolor', '', ' !important', true, '#dd3333'); 
            ?>
 
            <?php if ( get_theme_mod( 'streamium_disable_reviews' ) ) : echo '.synopis-premium-meta, .top-meta-reviews { display:none !important; }'; endif; // Disable reviews ?>

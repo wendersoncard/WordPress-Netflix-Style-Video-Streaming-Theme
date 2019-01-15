@@ -22,11 +22,11 @@
     position: absolute;
     top: 0;
     left: 0;
-    right: 0; 
-    bottom: 0;
+    right: 0;  
+    bottom: 0; 
 }
-
-.full-hero-inner {
+ 
+.full-hero-inner { 
     text-align: center;
     position: absolute;
     top: 50%;
@@ -39,7 +39,7 @@
     font-weight: 700;
     font-size: 80px;
     position: relative;
-    color: #fff;
+    color: #fff !important;
     margin-top: 0;
     margin-bottom: 0.5em;
 }
@@ -54,10 +54,10 @@
 
 .full-hero .btn {
     display: block;
-    width: auto;
+    width: auto; 
     color: white;
     text-decoration: none;
-    background-color: rgba(147, 112, 219, 0.8);
+    border: none;
 }
 
 .home-join-signin {

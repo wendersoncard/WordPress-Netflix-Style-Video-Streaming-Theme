@@ -1,12 +1,7 @@
 <?php 
-
-if ( !is_user_logged_in() ) {
-
-	wp_redirect( site_url( '/join' ) );
-  	exit;
-
-}
-
+/*
+Template Name: Frontpage Browse Template
+*/
 get_header(); ?>
 
 	<main class="cd-main-content">
@@ -20,5 +15,5 @@ get_header(); ?>
 		<div id="home-watched"></div>
 		
 	</main><!--/.main content-->
-
-<?php get_footer(); ?>
+	
+ <?php get_footer(); ?>

@@ -41,6 +41,7 @@ module.exports = function(grunt) {
                     'dist/css/tiles.css',
                     'dist/css/programs.css',
                     'dist/css/series.css',
+                    'dist/css/home-join.css',
                     'dist/css/modal.css',
                     'dist/css/reviews.css',
                     'dist/css/s2member.css',
