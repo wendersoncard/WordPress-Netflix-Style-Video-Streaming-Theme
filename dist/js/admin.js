@@ -9,7 +9,7 @@ jQuery(document).ready(function($) {
 
                 $.ajax({
                     type: 'POST',
-                    dataType: 'json',
+                    dataType: 'json', 
                     url: streamium_meta_object.ajax_url,
                     data: {
                         action: 'streamium_customizer_valid_types'
