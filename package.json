@@ -9,9 +9,6 @@
     "grunt-contrib-uglify": "^3.4.0",
     "grunt-contrib-watch": "^1.1.0"
   },
-  "dependencies": {
-    "video.js": "^7.0.0"
-  },
   "description": "Streamium",
   "main": "gruntfile.js",
   "scripts": {

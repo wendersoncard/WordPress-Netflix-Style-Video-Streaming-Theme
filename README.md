@@ -14,9 +14,14 @@ S3Bubble is excited to introduce Streamium. This Theme is ideal for any budding 
 
 [Full Video Overview Tutorial](https://s3bubble.com/wp_themes/streamium-netflix-style-wordpress-theme/)
 
-## Optimization & Setup
+## Developers Wanted
 
+To run the developer environment
 
+Navgiate into the streamium theme folder and run.
+```
+npm install
+```
 
 ## Change Log
 
