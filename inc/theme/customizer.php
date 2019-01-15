@@ -312,7 +312,11 @@ class Streamium_Customize
                     'tv' => __('TV Programs'),
                     'sport' => __('Sports'),
                     'kid' => __('Kids'),
-                    'stream' => __('Streams')
+                    'stream' => __('Streams'),
+                    'extra1' => __('Extra1'),
+                    'extra2' => __('Extra2'),
+                    'extra3' => __('Extra3'),
+                    'extra4' => __('Extra4')
                 ),
             )
         );
@@ -630,7 +634,7 @@ class Streamium_Customize
                     $wp_customize,
                     'streamium_section_checkbox_enable_' . $tax,
                     array(
-                        'label'     => __('Enable ' . $menu, 'streamium'),
+                        'label'     => __('Enable ' . $menu . ' In Header Menu', 'streamium'),
                         'section'   => 'streamium_section_' . $type,
                         'settings'  => 'streamium_section_checkbox_enable_' . $tax,
                         'type'      => 'checkbox',
