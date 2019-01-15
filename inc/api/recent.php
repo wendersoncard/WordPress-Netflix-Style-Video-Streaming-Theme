@@ -28,7 +28,7 @@ function recently_watched_api_post() {
 	// globally loop through post types.
 	$args = array(
         'posts_per_page' => (int)get_theme_mod('streamium_global_options_homepage_desktop'),
-        'post_type' => array('movie', 'tv','sport','kid','stream'),
+        'post_type' => streamium_global_meta(),
         'post_status' => 'publish',
         'meta_query' => array(
             array(

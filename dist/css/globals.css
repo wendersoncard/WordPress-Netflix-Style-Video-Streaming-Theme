@@ -1,0 +1,55 @@
+/*html, body {
+    height: 100%;
+}*/
+
+h1, h2, h3, h4, h5, h6 {
+    color: #fff;
+}
+
+.woocommerce-page, .page, .bbpress {  
+    background-color: #fff; 
+}
+ 
+.woocommerce-page h1, .woocommerce-page h2, .woocommerce-page h3, .woocommerce-page h4, .woocommerce-page h5, .woocommerce-page h6, .page h1, .page h2, .page h3, .page h4, .page h5, .page h6, .bbpress h1, .bbpress h2, .bbpress h3, .bbpress h4, .bbpress h5, .bbpress h6  {
+    color: #333;
+}
+
+*:focus {
+    outline:none !important
+}
+
+.streamium-slider .slick-arrow {
+    color: #ffffff;
+}
+
+.video-header-watched h3 {
+    color: #fff;
+}
+ 
+.streamium-reviews-btns {
+    color: #fff !important;
+}
+
+.add-new-menu {
+    display: block;
+    padding: .5rem 1rem;
+}
+
+.carousels-wrapper {
+    overflow: hidden;
+    min-height: 800px;
+}
+
+.carousels-blocks-wrapper{
+    min-height: 800px;
+} 
+
+/* THIS FIXES THE PADDING ISSUE WHEN FULLSCREEN */
+.video-js.vjs-s3bubble-fullscreen {
+    padding: 0!important;
+    margin: 0!important;
+}
+
+.spacer {
+    margin-top: 100px; 
+}

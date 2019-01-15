@@ -33,7 +33,7 @@
 	// globally loop through post types.
 	$args = array(
         'posts_per_page' => -1,
-        'post_type' => array('movie', 'tv','sport','kid','stream'),
+        'post_type' => streamium_global_meta(),
         'post_status' => 'publish'
     );
 

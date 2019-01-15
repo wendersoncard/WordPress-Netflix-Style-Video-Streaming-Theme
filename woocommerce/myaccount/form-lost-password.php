@@ -10,17 +10,15 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see     https://docs.woocommerce.com/document/template-structure/
- * @author  WooThemes
+ * @see https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce/Templates
- * @version 3.4.0
+ * @version 3.5.2
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+defined( 'ABSPATH' ) || exit;
 
-wc_print_notices(); ?>
+do_action( 'woocommerce_before_lost_password_form' );
+?>
 
 <div class="container">
 
@@ -36,7 +34,7 @@ wc_print_notices(); ?>
 
 				<p class="woocommerce-form-row woocommerce-form-row--first form-row form-row-first">
 					<label for="user_login"><?php esc_html_e( 'Username or email', 'woocommerce' ); ?></label>
-					<input class="woocommerce-Input woocommerce-Input--text input-text" type="text" name="user_login" id="user_login" />
+					<input class="woocommerce-Input woocommerce-Input--text input-text" type="text" name="user_login" id="user_login" autocomplete="username" />
 				</p>
 
 				<div class="clear"></div>
@@ -48,7 +46,7 @@ wc_print_notices(); ?>
 					<button type="submit" class="woocommerce-Button button" value="<?php esc_attr_e( 'Reset password', 'woocommerce' ); ?>"><?php esc_html_e( 'Reset password', 'woocommerce' ); ?></button>
 				</p>
 
-				<?php wp_nonce_field( 'lost_password' ); ?>
+				<?php wp_nonce_field( 'lost_password', 'woocommerce-lost-password-nonce' ); ?>
 
 			</form>
 
@@ -59,3 +57,5 @@ wc_print_notices(); ?>
 	</div><!--/.row-->
 
 </div><!--/.container-->
+<?php
+do_action( 'woocommerce_after_lost_password_form' );

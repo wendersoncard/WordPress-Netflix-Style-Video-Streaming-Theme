@@ -33,7 +33,7 @@ function search_api_post() {
         if($_REQUEST['search']['date'] === 'day'){
 
             $loop = new WP_Query(array(
-                'post_type' => array('movie', 'tv','sport','kid','stream'),
+                'post_type' => streamium_global_meta(),
                 'posts_per_page'   => -1,
                 'post_status' => 'publish',
                 'date_query' => array(
@@ -47,7 +47,7 @@ function search_api_post() {
         }else if($date === 'week'){
 
             $loop = new WP_Query(array(
-                'post_type' => array('movie', 'tv','sport','kid','stream'),
+                'post_type' => streamium_global_meta(),
                 'posts_per_page'   => -1,
                 'post_status' => 'publish',
                 'date_query' => array(
@@ -67,7 +67,7 @@ function search_api_post() {
                 $month = $date[1];
                 $day   = $date[2];
                 $loop = new WP_Query(array(
-                    'post_type' => array('movie', 'tv','sport','kid','stream'),
+                    'post_type' => streamium_global_meta(),
                     'posts_per_page'   => -1,
                     'post_status' => 'publish',
                     'date_query' => array(
@@ -83,7 +83,7 @@ function search_api_post() {
             }else{
 
                 $loop = new WP_Query(array(
-                    'post_type' => array('movie', 'tv','sport','kid','stream'),
+                    'post_type' => streamium_global_meta(),
                     'posts_per_page'   => -1,
                     'post_status' => 'publish',
                     'date_query' => array(
@@ -101,7 +101,7 @@ function search_api_post() {
 
         $s = sanitize_text_field($_REQUEST['search']['s']);
         $loop = new WP_Query(array(
-            'post_type' => array('movie', 'tv','sport','kid','stream'), 
+            'post_type' => streamium_global_meta(), 
             'posts_per_page'   => -1,
             'post_status' => 'publish',
             's' => $s

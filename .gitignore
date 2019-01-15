@@ -1,5 +1,3 @@
 node_modules/
-dist/
 package.json
-gruntfile.js
 npm-debug.log

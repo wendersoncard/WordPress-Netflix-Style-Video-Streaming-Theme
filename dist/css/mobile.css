@@ -1,0 +1,173 @@
+@media screen and (max-device-width: 700px) and (orientation: landscape){
+  /* some CSS here */ 
+  .container-fluid {
+    padding: 0 10px;
+  }
+  .synopis-inner h2 {
+    font-size: 3vw !important;
+  }
+  .synopis-inner div.content {
+    font-size: 2.5vw !important;
+  }
+  .streamium-review-panel-content {
+    font-size: 2.5vw !important;
+  }
+  .carousels .tile_play {
+      opacity: 1;
+      left: 50%;
+      top: 50%;
+      position: absolute;
+      margin-left: -4vw;
+      width: 8vw;
+      height: 8vw;
+      background-color: rgba(51,51,51,.8);
+      line-height: 8vw;
+      color: #fff;
+      cursor: pointer;
+      transition: all .2s ease-in-out;
+      font-size: 3vw;
+      display: block;
+      margin-top: -4vw;
+      z-index: 999;
+  }
+  .s3bubble-tile-border {
+    border: 1px solid #fff;
+  }
+  .static-row-first {
+    margin-top: 0px !important;
+  }
+  .static-row .tile_meta h4 {
+    font-size: 4vw !important;
+  }
+  .static-row .tile_meta p {
+      font-size: 3vw !important;
+  }
+  .main-spacer {
+    height: 80px;
+  }
+  .video-header h3 {
+      font-size: 3vw!important;
+  }
+  .video-header p {
+      font-size: 3vw;
+  }
+  .video-header .see-all {
+      font-size: 2vw !important;
+  }
+  .video-header-archive h3 {
+    font-size: 4vw !important;
+  }
+  .video-header-archive p {
+      font-size: 3vw;
+  }
+  .streamium-next, .streamium-prev {
+    display: none !important;
+  }
+  .cd-search form, .cd-search input {
+      font-size: 3vw;
+  }
+  #customer_login {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}
+
+@media screen and (max-device-width: 480px) and (orientation: portrait){
+  /* some CSS here */
+  .container-fluid {
+    padding: 0 10px;
+  }
+  .cd-logo {
+    margin-left: 10px;
+  } 
+  .synopis-inner h2 {
+    font-size: 4vw!important;
+    margin: 0;
+    padding: 0px 0 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 90%;
+  }
+  .synopis-inner div.content {
+    font-size: 3vw !important;
+    overflow-y: scroll; 
+    padding: 0;
+  }
+  .streamium-review-panel-content {
+    font-size: 3vw !important;
+  }
+  .content-overlay .play-icon-wrap-rel-ring {
+    border: .6vw solid #fff;
+  }
+  .s3bubble-details-full .play-icon-wrap-rel-ring {
+    border: .6vw solid #fff;
+  }
+  .streamium-slider .slick-arrow {
+    display: none !important;
+  }
+  .carousels .tile_meta h4 {
+    font-size: 3vw !important;
+  }
+  .carousels .tile_meta p {
+    font-size: 2vw !important;
+  }
+  .s3bubble-tile-border {
+    border: 1px solid #fff;
+  }
+  .static-row-first {
+    margin-top: 0px !important;
+  }
+  .static-row .tile_meta h4 {
+    font-size: 4vw !important;
+  }
+  .static-row .tile_meta p {
+      font-size: 3vw !important;
+  }
+  .main-spacer {
+    height: 80px;
+  }
+  .video-header h3 {
+      font-size: 4vw!important;
+  }
+  .video-header h3 i {
+    font-size: 2.6vw;
+  }
+  .video-header .see-all {
+      font-size: 3vw !important;
+  }
+  .video-header-archive h3 {
+    font-size: 4vw !important;
+  }
+  .video-header-archive p {
+      font-size: 3vw;
+  }
+  .streamium-next, .streamium-prev {
+    display: none !important;
+  }
+  .cd-search form, .cd-search input {
+      font-size: 5vw;
+  }
+  #customer_login {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  .programs .episodes a {
+    width: 100%;
+    padding-bottom: 56.25%;
+    position: relative;
+    background-color: #000;
+    background-repeat: no-repeat;
+    display: block;
+    margin-bottom: 10px;
+  }
+  h4.series-watched-episode-title {
+    font-size: 3vw;
+  }
+  .series-watched .tile_inner h4 {
+    font-size: 3vw;
+  }
+  .home .cd-main-header.fixed {
+    position: relative;
+  }
+}

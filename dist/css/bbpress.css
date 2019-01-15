@@ -1,0 +1,17 @@
+#bbpress-forums {
+    font-size: 14px;
+}
+
+#bbpress-forums ul.bbp-lead-topic, #bbpress-forums ul.bbp-topics, #bbpress-forums ul.bbp-forums, #bbpress-forums ul.bbp-replies, #bbpress-forums ul.bbp-search-results {
+	font-size: 14px;
+}
+
+div.bbp-breadcrumb, div.bbp-topic-tags {
+    font-size: 14px;
+}
+
+#bbpress-forums fieldset.bbp-form {
+    border: 1px solid #eee;
+    padding: 0px;
+    margin-bottom: 10px;
+}

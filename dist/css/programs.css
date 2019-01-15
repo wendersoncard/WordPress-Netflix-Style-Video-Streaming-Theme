@@ -1,0 +1,47 @@
+ .programs .episodes a {
+ 	cursor: pointer;
+    width: 160px;
+    height: 90px;
+    display: block;
+    float: left;
+    margin-right: 10px;
+    background-size: cover;
+    background-position: center;
+ }
+ .episodes a.selected {
+ 	border: 1px solid;
+ }
+
+ .programs-synopis {
+
+ }
+
+ .programs-synopis h2 {
+   line-height: 1;
+    font-weight: 700;
+    color: #fff;
+    font-size: 3vw;
+}
+
+.programs-synopis div.content {
+    color: #999;
+    line-height: 1.3;
+}
+
+/*.programs-synopis a {
+    color: #fff;
+}*/
+
+.programs-synopis ul {
+    padding: 0;
+    margin: 10px 0;
+    list-style-type: none;
+}
+
+.programs-synopis ul li {
+  color: #999;
+}
+
+.programs-synopis ul li a {
+    color: #fff;
+}

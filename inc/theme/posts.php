@@ -13,12 +13,11 @@ function streamium_single_video_scripts() {
 
     	global $post;
 
-    	$nonce = wp_create_nonce( 'single_nonce' );
-    	$s3videoid = get_post_meta( $post->ID, 's3bubble_video_code_meta_box_text', true );
-    	$youtube = false;
+    	$nonce       = wp_create_nonce( 'single_nonce' );
+    	$s3videoid   = get_post_meta( $post->ID, 's3bubble_video_code_meta_box_text', true );
+    	$youtube     = false;
     	$youtubeCode = get_post_meta( $post->ID, 's3bubble_video_youtube_code_meta_box_text', true );
-    	$stream = get_post_meta( $post->ID, 'streamium_live_stream_meta_box_text', true );
-    	$poster   = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-home-slider' ); 
+    	$poster      = wp_get_attachment_image_src( get_post_thumbnail_id(), 'streamium-home-slider' ); 
     	
     	if(is_user_logged_in()){
     		$userId = get_current_user_id();
@@ -88,7 +87,6 @@ function streamium_single_video_scripts() {
                 'para' => $excerpt,
                 'percentage' => $resume,
                 'codes' => $codes,
-                'stream' => $stream,
                 'youtube' => $youtube,
                 'vpaid' => $globalAdvertisements,
                 'poster' => esc_url($poster[0]),

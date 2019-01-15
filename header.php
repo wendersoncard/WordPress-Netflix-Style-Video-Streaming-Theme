@@ -41,7 +41,7 @@
 
 	<header class="cd-main-header fixed">
 
-		<?php if ( get_theme_mod( 'streamium_logo' ) ) : ?>
+		<?php if ( get_theme_mod( 'streamium_logo' ) && filter_var(get_theme_mod( 'streamium_logo' ), FILTER_VALIDATE_URL) ) : ?>
 
 		    <a class="cd-logo" href="<?php echo esc_url( home_url('/') ); ?>"><img src='<?php echo esc_url( get_theme_mod_ssl( 'streamium_logo' ) ); ?>' alt='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>'></a>
 
@@ -56,13 +56,7 @@
 
 				<?php 
 
-				$postTypes = array(
-					array('tax' => 'movies','type' => 'movie','menu' => 'Movies'),
-	                array('tax' => 'programs','type' => 'tv','menu' => 'TV Programs'),
-	                array('tax' => 'sports','type' => 'sport','menu' => 'Sport'),
-	                array('tax' => 'kids','type' => 'kid','menu' => 'Kids'),
-	                array('tax' => 'streams','type' => 'stream','menu' => 'Streams')
-	            );
+				$postTypes = streamium_global_post_types();
 
 				foreach ($postTypes as $key => $value) : ?> 
 					

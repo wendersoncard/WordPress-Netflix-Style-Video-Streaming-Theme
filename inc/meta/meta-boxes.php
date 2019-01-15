@@ -48,11 +48,7 @@ function streamium_meta_box_movie(){
     global $post;
     $values = get_post_custom( $post->ID );
     $text = isset( $values['s3bubble_video_code_meta_box_text'] ) ? $values['s3bubble_video_code_meta_box_text'][0] : '';
-    $service = isset( $values['s3bubble_video_youtube_code_meta_box_text'] ) ? $values['s3bubble_video_youtube_code_meta_box_text'][0] : '';
-
     wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
-
-    
 
     ?>
     <p class="streamium-meta-box-wrapper">
@@ -61,10 +57,6 @@ function streamium_meta_box_movie(){
             <option value="<?php echo $text; ?>"><?php echo (empty($text)) ? 'Select Main Video' : $text; ?></option>
             <option value="">Remove Current Video</option>
         </select>
-    </p>
-    <p class="streamium-meta-box-wrapper">
-        <label>Youtube/Vimeo/Dailymotion Direct Link</label>
-        <input type="text" name="s3bubble_video_youtube_code_meta_box_text" class="widefat" id="s3bubble_video_youtube_code_meta_box_text" value="<?php echo $service; ?>" placeholder="Enter service url" />
     </p>
 
     <?php    
@@ -147,7 +139,6 @@ function streamium_meta_box_trailer(){
     global $post;
     $values = get_post_custom( $post->ID );
     $text = isset( $values['streamium_video_trailer_meta_box_text'] ) ? $values['streamium_video_trailer_meta_box_text'][0] : '';
-    $service = isset( $values['s3bubble_video_trailer_youtube_code_meta_box_text'] ) ? $values['s3bubble_video_trailer_youtube_code_meta_box_text'][0] : '';
     $button = isset( $values['s3bubble_video_trailer_button_text_meta_box_text'] ) ? $values['s3bubble_video_trailer_button_text_meta_box_text'][0] : 'Watch Trailer';
 
     // We'll use this nonce field later on when saving.
@@ -160,11 +151,6 @@ function streamium_meta_box_trailer(){
                 <option value="<?php echo $text; ?>"><?php echo (empty($text)) ? 'Select Video Trailer' : $text; ?></option>
                 <option value="">Remove Current Video</option>
             </select>
-        </p>
-
-        <p class="streamium-meta-box-wrapper">
-            <label>Youtube/Vimeo/Dailymotion Direct Link</label>
-            <input type="text" name="s3bubble_video_trailer_youtube_code_meta_box_text" class="widefat" id="s3bubble_video_trailer_youtube_code_meta_box_text" value="<?php echo $service; ?>" placeholder="Enter service url" />
         </p>
 
         <p class="streamium-meta-box-wrapper">
@@ -298,10 +284,6 @@ function streamium_repeatable_meta_box_display() {
                     <select class="streamium-theme-episode-select chosen-select" tabindex="1" name="codes[]">
                         <option value="<?php echo $field['codes']; ?>">Select Video <?php echo $field['codes']; ?></option>
                     </select>
-                </p>
-                <p>
-                    <label>Alternative Service Url (This will overwrite the S3Bubble AWS video)</label>
-                    <input type="text" class="widefat" name="service[]" value="<?php if(isset($field['service']) && $field['service'] != '') echo esc_attr( $field['service'] ); ?>" placeholder="Enter a full vimeo or youtube url" />
                 </p>
                 <p>
                     <label>Video Title</label>
@@ -568,7 +550,6 @@ function streamium_post_meta_box_save( $post_id )
         $positions    = isset($_POST['positions']) ? $_POST['positions'] : "";
         $titles       = isset($_POST['titles']) ? $_POST['titles'] : "";
         $codes        = isset($_POST['codes']) ? $_POST['codes'] : "";
-        $service      = isset($_POST['service']) ? $_POST['service'] : "";
         $descriptions = isset($_POST['descriptions']) ? $_POST['descriptions'] : "";
         $roku_url     = isset($_POST['roku_url']) ? $_POST['roku_url'] : "";
         $roku_quality = isset($_POST['roku_quality']) ? $_POST['roku_quality'] : "";
@@ -585,7 +566,6 @@ function streamium_post_meta_box_save( $post_id )
             $new[$i]['positions'] = trim(stripslashes( strip_tags( $positions[$i] ) ));
             $new[$i]['titles'] = trim(stripslashes( strip_tags( $titles[$i] ) ));
             $new[$i]['codes'] = $codes[$i];
-            $new[$i]['service'] = $service[$i];
             $new[$i]['descriptions'] = trim(stripslashes( $descriptions[$i] ));
 
             // Roku data if present

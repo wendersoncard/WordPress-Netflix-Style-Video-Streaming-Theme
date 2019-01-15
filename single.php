@@ -19,13 +19,7 @@
 
 			}
 
-			if($type === "stream"){
-
-				get_template_part( 'templates/content', 'live' );
-			
-			}
-
-			if (in_array($type, array('movie', 'tv','sport','kid'))) {
+			if (in_array($type, streamium_global_meta())) {
 
 				get_template_part( 'templates/content', 'single' );
 

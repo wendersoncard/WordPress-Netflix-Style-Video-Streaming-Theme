@@ -1,0 +1,38 @@
+.footer {
+    background-color: #232323;
+    padding-top: 80px;
+    color: #999;
+    font-weight: 400;
+    font-size: 17px;
+}
+
+.footer-line {
+    border-color: #141414;
+}
+
+.footer-widget {
+    padding-bottom: 50px;
+}
+
+.footer-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 44px;
+    color: #fff;
+}
+
+.footer-widget ul li a {
+    text-transform: capitalize;
+    font-size: 16px;
+    color: #999;
+    display: block;
+}
+
+.tiny-footer {
+    font-size: 14px;
+    padding: 14px 0px;
+    background-color: transparent;
+    border-top: 1px solid #141414;
+    color: #999;
+    line-height: 1;
+}
