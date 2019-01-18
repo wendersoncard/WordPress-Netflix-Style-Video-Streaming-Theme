@@ -306,8 +306,6 @@ function streamium_get_more_content() {
 
 	// Get params
 	$postId = (int) $_REQUEST['postId'];
-
-	error_log(print_r($_REQUEST,true));
  
     if ( ! wp_verify_nonce( $_REQUEST['nonce'], 'extra_api_nonce' ) || ! isset( $_REQUEST['nonce'] ) ) {
        	

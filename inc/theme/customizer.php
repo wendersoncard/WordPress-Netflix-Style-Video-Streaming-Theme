@@ -293,7 +293,7 @@ class Streamium_Customize
 
 
         // SITE IDENTITY SECTION: => 
-        $wp_customize->add_setting(
+        /*$wp_customize->add_setting(
             'streamium_main_post_type', 
             array(
                 'default' => 'movie'
@@ -319,7 +319,7 @@ class Streamium_Customize
                     'extra4' => __('Extra4')
                 ),
             )
-        );
+        );*/
 
         $wp_customize->add_setting(
             'streamium_enable_splash_join_redirect', 

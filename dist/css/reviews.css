@@ -326,4 +326,55 @@
   margin: 2em 0;
   list-style: none;
   padding: 0;
+} 
+
+.streamium-rating {
+    overflow: hidden;
+    display: inline-block;
+    position: relative;
+    font-size:20px;
+    color: #FFCA00;
+}
+.streamium-rating-star {
+    padding: 0 5px;
+    margin: 0;
+    cursor: pointer;
+    display: block;
+    float: right;
+    font-size: 50px;
+}
+.streamium-rating-star:after {
+    position: relative;
+    font-family: FontAwesome;
+    content:'\f006';
+}
+
+.streamium-rating-star.checked ~ .streamium-rating-star:after,
+.streamium-rating-star.checked:after {
+    content:'\f005';
+}
+
+.streamium-rating:hover .streamium-rating-star:after {content:'\f006';}
+
+.streamium-rating-star:hover ~ .streamium-rating-star:after, 
+.streamium-rating-star:hover:after {
+    content:'\f005' !important;
+}
+
+.streamium-rating-star-static {
+    padding: 0 5px;
+    margin: 0;
+    cursor: pointer;
+    display: block;
+    float: left;
+    /*font-size: 50px;*/
+}
+.streamium-rating-star-static:after {
+    position: relative;
+    font-family: FontAwesome;
+    content:'\f006';
+}
+
+.streamium-rating-star-static.checked:after {
+    content:'\f005';
 }

@@ -6508,10 +6508,18 @@ jQuery(document).ready(function($) {
                 var html = '<ul class="media-list">';
                 $.each(response.data, function (i, item) {
 
-                    var avatar = item.avatar;
-                    var message = item.message;
-                    var date = item.time;
+                    var avatar   = item.avatar;
+                    var message  = item.message;
+                    var rating   = parseInt(item.rating);
+                    var date     = item.time;
                     var username = item.username;
+
+                    var ratingHtml = '<div class="streamium-rating">';
+                    for (var i = 1; i < 6; i++) {  
+                        ratingHtml += '<span class="streamium-rating-star-static ' + ((rating >= i) ? 'checked' : '') + '" data-value="' + i + '"></span>';
+                    }
+                    ratingHtml += '</div>';
+
                     html += '<li class="media">' + 
                         '<div class="media-left">' + 
                           '<a href="#">' + 
@@ -6519,7 +6527,7 @@ jQuery(document).ready(function($) {
                           '</a>' + 
                         '</div>' + 
                         '<div class="media-body">' + 
-                          '<h4 class="media-heading">' + username +'</h4><small class="media-time">' + date +'</small>' + 
+                          '<h4 class="media-heading">' + ratingHtml + ' ' + username +'</h4>' + 
                           '<p>' + message + '</p>' + 
                         '</div>' + 
                     '</li>';
@@ -6561,9 +6569,24 @@ jQuery(document).ready(function($) {
         var post_id = $(this).attr('data-id'),
             nonce = $(this).attr("data-nonce");
 
+            $(document).on('click', ".streamium-rating-star", function() {
+
+                $(this).parents('.streamium-rating').find('.streamium-rating-star').removeClass('checked');
+                $(this).addClass('checked');
+                var submitStars = $(this).attr('data-value');
+
+            });
+ 
             swal({
                 title: streamium_object.swal_glad_you_liked_it,
-                text: streamium_object.swal_tell_us_why,
+               html: true,
+               text: '<div class="streamium-rating">' +
+                    '<span class="streamium-rating-star" data-value="5"></span>' +
+                    '<span class="streamium-rating-star" data-value="4"></span>' +
+                    '<span class="streamium-rating-star" data-value="3"></span>' +
+                    '<span class="streamium-rating-star" data-value="2"></span>' +
+                    '<span class="streamium-rating-star" data-value="1"></span>' +
+                '</div>', 
                 type: "input",
                 showCancelButton: true, 
                 closeOnConfirm: false,
@@ -6573,10 +6596,12 @@ jQuery(document).ready(function($) {
                 inputPlaceholder: streamium_object.swal_write_something
             },
             function(inputValue) {
+
+                var rating = $('.streamium-rating').find(".checked").attr('data-value');
                 
                 if (inputValue === false) return false;
 
-                if (inputValue === "" || inputValue.length < 30) {
+                if (inputValue === "" || inputValue.length < 30 || rating === undefined) {
                     swal.showInputError(streamium_object.swal_enter_chars);
                     return false
                 }
@@ -6588,6 +6613,7 @@ jQuery(document).ready(function($) {
                     data: {
                         action: 'streamium_likes',
                         post_id: post_id,
+                        rating: rating,
                         message: inputValue,
                         nonce: nonce
                     },

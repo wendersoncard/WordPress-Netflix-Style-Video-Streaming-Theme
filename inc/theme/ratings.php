@@ -1,5 +1,24 @@
 <?php
 
+function streamium_comment_columns( $columns ){
+	
+	$columns['rating'] = __( 'Rating', 'streamium' );
+	return $columns;
+
+}
+add_filter( 'manage_edit-comments_columns', 'streamium_comment_columns' );
+
+function streamium_comment_column( $column, $comment_ID ){
+
+	if ( 'rating' == $column ) {
+		if ( $meta = get_comment_meta( $comment_ID, $column, true ) ) {
+			echo $meta;
+		}
+	}
+
+}
+add_filter( 'manage_comments_custom_column', 'streamium_comment_column', 10, 2 );
+
 /**
  * Streamium rating ajax
  *
@@ -10,9 +29,12 @@ function streamium_likes() {
 
 	global $wpdb;
 
+	//error_log(print_r($_REQUEST,true));
+
 	// PARAMS::
 	$userId   = get_current_user_id();
 	$postId   = $_REQUEST['post_id'];
+	$rating   = $_REQUEST['rating'];
 	$message  = $_REQUEST['message'];
  
     if ( ! wp_verify_nonce( $_REQUEST['nonce'], 'streamium_likes_nonce' ) || ! isset( $_REQUEST['nonce'] ) ) {
@@ -47,9 +69,12 @@ function streamium_likes() {
 		    'comment_approved' => 0
 		);
 
-		$comment = wp_insert_comment($data);
+		$comment_id = wp_insert_comment($data);
 
-		if($comment){
+		if($comment_id){
+
+			// ADD RATING::
+			add_comment_meta($comment_id, 'rating', $rating);
 
 			// GET COMMENTS::
             $comments_count = wp_count_comments($postId);
@@ -126,6 +151,7 @@ function streamium_get_reviews() {
 		    		'username' => $comment->comment_author,
 		    		'avatar' => get_avatar_url($comment->user_id, array( "size" => 64 ) ),
 		    		'post_id' => $comment->comment_post_ID,
+		    		'rating' => (int) get_comment_meta( $comment->comment_ID, 'rating', true ),
 		    		'message' => $comment->comment_content,
 		    		'time' => $comment->comment_date
 		    	));
@@ -172,10 +198,12 @@ function get_streamium_likes($post_id) {
 
 	// GET COMMENTS::
     $comments_count = wp_count_comments($post_id);
-    if((int) $comments_count->approved == 1){
-    	return $comments_count->approved . ' ' . __( 'Like', 'streamium' );
+    if($comments_count->approved == 0){
+    	return __( 'Rate', 'streamium' );
+    }else if($comments_count->approved == 1){
+    	return $comments_count->approved . ' ' . __( 'Rating', 'streamium' );
     }else{
-    	return $comments_count->approved . ' ' . __( 'Likes', 'streamium' );
+    	return $comments_count->approved . ' ' . __( 'Ratings', 'streamium' );
     }
     
 
