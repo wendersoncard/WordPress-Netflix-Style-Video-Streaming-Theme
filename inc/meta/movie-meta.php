@@ -53,6 +53,35 @@ function synopis_meta_release( ) {
 
 add_action( 'synopis_meta', 'synopis_meta_release', 3, 0 );
 
+function synopis_multi_meta_ratings( ) {
+
+   	// do stuff here
+	$comments = get_comments('post_id=' . get_the_ID() . '&status=approve');
+	if ($comments) {
+		
+		$totalComments = count($comments);
+		$tallyComments = 0;
+		foreach($comments as $comment) : 
+
+			$rating         = (int) get_comment_meta( $comment->comment_ID, 'rating', true );
+			$tallyComments  += $rating;
+
+		endforeach;
+
+		$ratingTotal = round($tallyComments/$totalComments);
+		$ratingHtml = '<div class="streamium-rating-static">';
+		for ($x = 1; $x < 6; $x++) {
+		    $ratingHtml .= '<span class="streamium-rating-star-static ' . (($ratingTotal >= $x) ? 'checked' : '') . '" data-value="' . $x . '"></span>';
+		} 
+		$ratingHtml .= '</div>';
+	    echo $ratingHtml;
+
+	}
+	
+}
+
+add_action( 'synopis_multi_meta', 'synopis_multi_meta_ratings', 1, 0 );
+
 function synopis_multi_meta_starring( ) {
    	// do stuff here
 	$posttags = get_the_tags();

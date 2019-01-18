@@ -146,21 +146,33 @@ function streamium_get_reviews() {
     	if($comments){
 
     		$buildGetReviews = [];
-    		foreach($comments as $comment) :
+
+    		error_log(count($comments));
+
+    		$totalComments = count($comments);
+    		$tallyComments = 0;
+    		foreach($comments as $comment) : 
+
+    			$rating         = (int) get_comment_meta( $comment->comment_ID, 'rating', true );
+    			$tallyComments  += $rating;
+
 				array_push($buildGetReviews, array(
 		    		'username' => $comment->comment_author,
-		    		'avatar' => get_avatar_url($comment->user_id, array( "size" => 64 ) ),
-		    		'post_id' => $comment->comment_post_ID,
-		    		'rating' => (int) get_comment_meta( $comment->comment_ID, 'rating', true ),
-		    		'message' => $comment->comment_content,
-		    		'time' => $comment->comment_date
+		    		'avatar'   => get_avatar_url($comment->user_id, array( "size" => 64 ) ),
+		    		'post_id'  => $comment->comment_post_ID,
+		    		'rating'   => $rating,
+		    		'message'  => $comment->comment_content,
+		    		'time'     => $comment->comment_date
 		    	));
 			endforeach;
+
+			error_log((($totalComments*5)/$tallyComments));
 
 			wp_send_json(array(
 	            'error' => false,
 	    		'title' => get_the_title($postId),
 	    		'data' => $buildGetReviews,
+	    		'totalRating' => (($totalComments*5)/$tallyComments),
 	    		'message' => __( 'Successfully added your rating', 'streamium' ) 
 	        ));
 

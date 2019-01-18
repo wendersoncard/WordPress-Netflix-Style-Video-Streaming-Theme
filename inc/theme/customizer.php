@@ -1029,7 +1029,7 @@ class Streamium_Customize
            <?php self::generate_css('.tile_inner', 'padding-bottom', 'streamium_poster_orientation', '', ' !important', true, '56.25%'); ?>
 
            /* style links */
-           <?php self::generate_css('.woocommerce-page .cd-main-content a, .page .cd-main-content a, .bbpress .cd-main-content a, .brand-color', 'color', 'link_textcolor', '', '', true, '#dd3333');
+           <?php self::generate_css('.woocommerce-page .cd-main-content a, .page .cd-main-content a, .bbpress .cd-main-content a, .brand-color, .streamium-rating, .streamium-rating-static', 'color', 'link_textcolor', '', '', true, '#dd3333');
            ?>
 
            <?php self::generate_css('#place_order, .pagination a:hover, .pagination .current, .slick-dots li.slick-active button, .progress-bar, .button, .cd-overlay, .has-children > a:hover::before, .has-children > a:hover::after, .go-back a:hover::before, .go-back a:hover::after, #submit, #place_order, .checkout-button, .woocommerce-thankyou-order-received, .add_to_cart_button, .confirm, .streamium-btns, .streamium-extra-meta, .streamium-auth, .onsale, .full-hero .btn', 'background-color', 'link_textcolor', '', ' !important', true, '#dd3333'); 

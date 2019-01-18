@@ -133,6 +133,29 @@ function streamium_get_dynamic_content() {
 
     		$like_text = '';
 	    	$buildMeta = '<ul>';
+
+	    	// do stuff here
+			$comments = get_comments('post_id=' . $postId . '&status=approve');
+			if ($comments) {
+				
+				$totalComments = count($comments);
+				$tallyComments = 0;
+				foreach($comments as $comment) : 
+
+					$rating         = (int) get_comment_meta( $comment->comment_ID, 'rating', true );
+					$tallyComments  += $rating;
+
+				endforeach;
+
+				$ratingTotal = round($tallyComments/$totalComments);
+				$ratingHtml = '<div class="streamium-rating-static">';
+				for ($x = 1; $x < 6; $x++) {
+				    $ratingHtml .= '<span class="streamium-rating-star-static ' . (($ratingTotal >= $x) ? 'checked' : '') . '" data-value="' . $x . '"></span>';
+				} 
+				$ratingHtml .= '</div>';
+			    $buildMeta  .= '<li class="synopis-meta-spacer">' . $ratingHtml . '</li>';
+
+			}
   
 			// Tags
 			$posttags = get_the_tags($postId);

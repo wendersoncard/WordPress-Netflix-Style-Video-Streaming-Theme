@@ -6514,7 +6514,7 @@ jQuery(document).ready(function($) {
                     var date     = item.time;
                     var username = item.username;
 
-                    var ratingHtml = '<div class="streamium-rating">';
+                    var ratingHtml = '<div class="streamium-rating-static">';
                     for (var i = 1; i < 6; i++) {  
                         ratingHtml += '<span class="streamium-rating-star-static ' + ((rating >= i) ? 'checked' : '') + '" data-value="' + i + '"></span>';
                     }

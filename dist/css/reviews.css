@@ -361,6 +361,14 @@
     content:'\f005' !important;
 }
 
+.streamium-rating-static {
+    overflow: hidden;
+    display: inline-block;
+    position: relative;
+    font-size:20px;
+    color: #FFCA00;
+}
+
 .streamium-rating-star-static {
     padding: 0 5px;
     margin: 0;
