@@ -10,10 +10,10 @@ function streamium_likes() {
 
 	global $wpdb;
 
-	// Get params
-	$userId = get_current_user_id();
-	$postId = $_REQUEST['post_id'];
-	$message = $_REQUEST['message'];
+	// PARAMS::
+	$userId   = get_current_user_id();
+	$postId   = $_REQUEST['post_id'];
+	$message  = $_REQUEST['message'];
  
     if ( ! wp_verify_nonce( $_REQUEST['nonce'], 'streamium_likes_nonce' ) || ! isset( $_REQUEST['nonce'] ) ) {
         exit( "No naughty business please" );
@@ -56,7 +56,7 @@ function streamium_likes() {
             
 			wp_send_json(array(
 	            'error' => false,
-		    	'likes' => $comments_count->approved,
+		    	'likes' => __( 'Thanks', 'streamium' ),
 		    	'message' => 'Successfully added your rating' 
 	        ));
 
@@ -94,7 +94,7 @@ function streamium_get_reviews() {
 
 	global $wpdb;
 
-	// Get params
+	// PARAMS::
 	$postId = $_REQUEST['post_id'];
  
     if ( ! wp_verify_nonce( $_REQUEST['nonce'], 'streamium_likes_nonce' ) || ! isset( $_REQUEST['nonce'] ) ) {
@@ -117,7 +117,7 @@ function streamium_get_reviews() {
 
     if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 
-    	$comments = get_comments('post_id=' . $postId);
+    	$comments = get_comments('post_id=' . $postId . '&status=approve');
     	if($comments){
 
     		$buildGetReviews = [];
@@ -172,6 +172,11 @@ function get_streamium_likes($post_id) {
 
 	// GET COMMENTS::
     $comments_count = wp_count_comments($post_id);
-    return $comments_count->approved;
+    if((int) $comments_count->approved == 1){
+    	return $comments_count->approved . ' ' . __( 'Like', 'streamium' );
+    }else{
+    	return $comments_count->approved . ' ' . __( 'Likes', 'streamium' );
+    }
+    
 
 }
