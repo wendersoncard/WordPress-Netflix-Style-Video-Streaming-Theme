@@ -322,6 +322,26 @@ class Streamium_Customize
         );
 
         $wp_customize->add_setting(
+            'streamium_enable_splash_join_redirect', 
+            array(
+                'default'    => false
+            )
+        );
+
+        $wp_customize->add_control(
+            new WP_Customize_Control(
+                $wp_customize,
+                'streamium_enable_splash_join_redirect',
+                array(
+                    'label'     => __('Enable Join Page Redirect', 'streamium'),
+                    'section'   => 'title_tagline',
+                    'settings'  => 'streamium_enable_splash_join_redirect',
+                    'type'      => 'checkbox',
+                )
+            )
+        );
+
+        $wp_customize->add_setting(
             'streamium_enable_loader', 
             array(
                 'default'    => false
@@ -1040,7 +1060,17 @@ class Streamium_Customize
                 font-family: '<?php echo $fontFamily; ?>', sans-serif !important;
               }
 
-            <?php self::generate_css('.home', 'background', 'streamium_background_color', '', ' !important'); ?>
+            <?php 
+
+                self::generate_css('.loader-mask', 'background-color', 'streamium_background_color', '', ' !important', true, '#141414'); 
+
+            ?>
+
+            <?php 
+
+                self::generate_css('.loader', 'border-top-color', 'link_textcolor', '', ' !important', true, '#dd3333'); 
+
+            ?>
 
            /* Theme colors */
            <?php self::generate_css('.carousels .tile_inner', 'border-color', 'streamium_background_color', '', ' !important'); ?>

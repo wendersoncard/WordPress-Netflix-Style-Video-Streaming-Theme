@@ -31,14 +31,6 @@
 </head> 
 <body <?php body_class(); ?>>
 
-	<?php 
-		if ( get_theme_mod( 'streamium_enable_loader' ) && is_home() ) : 
-	?>
-		<div class="streamium-loading">&#8230;</div>
-	<?php
-		endif; 
-	?>
-
 	<header class="cd-main-header fixed">
 
 		<?php if ( get_theme_mod( 'streamium_logo' ) && filter_var(get_theme_mod( 'streamium_logo' ), FILTER_VALIDATE_URL) ) : ?>

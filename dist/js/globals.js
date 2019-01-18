@@ -1204,9 +1204,11 @@ jQuery(document).ready(function($) {
 	                            height: setMargin + 'px'
 	                        }, 50, function() {
 	                            
-	                            // Init ui this must be done after the dom and elements are fully set
-	                            $('.streamium-loading').fadeOut();
 	                            $('.lazy').Lazy(streamium.lazy);
+
+	                            // Preloader
+				                $('.loader').fadeOut();
+				                $('.loader-mask').delay(250).fadeOut('slow');
 
 	                        });
 
