@@ -113,7 +113,7 @@ jQuery(document).ready(function($) {
                 
                 if (inputValue === false) return false;
 
-                if (inputValue === "" || inputValue.length < 100) {
+                if (inputValue === "" || inputValue.length < 30) {
                     swal.showInputError(streamium_object.swal_enter_chars);
                     return false
                 }
