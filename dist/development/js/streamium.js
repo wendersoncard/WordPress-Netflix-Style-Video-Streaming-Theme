@@ -1259,7 +1259,9 @@ jQuery(document).ready(function($) {
                 var setMargin = Math.round($('.tile').height() / 2);
                 $('.static-row').css('margin-top', setMargin + 'px');
                 $('.lazy').Lazy(streamium.lazy);
-                $('.streamium-loading').fadeOut();
+                // Preloader
+                $('.loader').fadeOut();
+                $('.loader-mask').delay(250).fadeOut('slow');
 
             });
 
@@ -1287,7 +1289,9 @@ jQuery(document).ready(function($) {
                     var setMargin = Math.round($('.tile').height() / 2);
                     $('.static-row').css('margin-top', setMargin + 'px');
                     $('.lazy').Lazy(streamium.lazy);
-                    $('.streamium-loading').fadeOut();
+                    // Preloader
+	                $('.loader').fadeOut();
+	                $('.loader-mask').delay(250).fadeOut('slow');
 
                 });
 
@@ -1319,7 +1323,9 @@ jQuery(document).ready(function($) {
                 var setMargin = Math.round($('.tile').height() / 2);
                 $('.static-row').css('margin-top', setMargin + 'px');
                 $('.lazy').Lazy(streamium.lazy);
-                $('.streamium-loading').fadeOut();
+                // Preloader
+                $('.loader').fadeOut();
+                $('.loader-mask').delay(250).fadeOut('slow');
 
             });
 
@@ -1352,7 +1358,9 @@ jQuery(document).ready(function($) {
                     var setMargin = Math.round($('.tile').height() / 2);
                     $('.static-row').css('margin-top', setMargin + 'px');
                     $('.lazy').Lazy(streamium.lazy);
-                    $('.streamium-loading').fadeOut();
+                    // Preloader
+	                $('.loader').fadeOut();
+	                $('.loader-mask').delay(250).fadeOut('slow');
 
                 });
 
@@ -1383,7 +1391,9 @@ jQuery(document).ready(function($) {
                 var setMargin = Math.round($('.tile').height() / 2);
                 $('.static-row').css('margin-top', setMargin + 'px');
                 $('.lazy').Lazy(streamium.lazy);
-                $('.streamium-loading').fadeOut();
+               	// Preloader
+                $('.loader').fadeOut();
+                $('.loader-mask').delay(250).fadeOut('slow');
 
             });
 
