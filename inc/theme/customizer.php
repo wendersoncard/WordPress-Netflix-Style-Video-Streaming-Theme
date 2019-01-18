@@ -402,26 +402,6 @@ class Streamium_Customize
         );
 
         $wp_customize->add_setting(
-            'streamium_enable_video_social', 
-            array(
-                'default'    => false
-            )
-        );
-
-        $wp_customize->add_control(
-            new WP_Customize_Control(
-                $wp_customize,
-                'streamium_enable_video_social',
-                array(
-                    'label'     => __('Enable Social Links On All Players', 'streamium'),
-                    'section'   => 'title_tagline',
-                    'settings'  => 'streamium_enable_video_social',
-                    'type'      => 'checkbox',
-                )
-            )
-        );
-
-        $wp_customize->add_setting(
             'streamium_disable_login', 
             array(
                 'default'    => false

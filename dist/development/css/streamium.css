@@ -8024,7 +8024,8 @@ h4.series-watched-episode-title {
     position: absolute;
     bottom: 2px;
     margin: 0;
-    font-size: 1.4vw;
+    font-size: 1.8vw;
+    font-weight: 700;
 }
 
 .series-watched .tile-series {
@@ -11252,7 +11253,7 @@ a, a:focus, a:hover {
     color: #fff;
     font-weight: 400;
     line-height: 1.35;
-    font-size: 1.4vw;
+    font-size: 1.2vw;
     display: block;
     text-align: right;
     line-height: normal;

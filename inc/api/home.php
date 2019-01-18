@@ -25,8 +25,8 @@ function home_api_post() {
     $ind = $_REQUEST['index'];
 
     // Get options
-    $setType = get_theme_mod('streamium_main_post_type', 'movie');
-    $setTax = get_theme_mod('streamium_main_tax', 'movies'); 
+    $setType = 'movie';
+    $setTax = 'movies'; 
 
 	// Get params
 	$userId = get_current_user_id();

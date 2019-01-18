@@ -762,7 +762,7 @@ function Streamium() {
                             }
                         }
 
-                        $("#home-watched").append('<section class="videos"><div class="container-fluid"><div class="row"><div class="col-sm-12"><div class="video-header"><h3>' + catParent + ' <i class="fa fa-chevron-right" aria-hidden="true"></i> ' + catName + '</h3><a class="see-all" href="' + link + '">' + (streamium_object.view_all) + ' ' + catName + '</a></div></div></div><div class="carousels" id="' + type + '">' + tile + '</div></div></section>' + this.expandedTemplate(type) + '<div class="container-spacer"></div>');
+                        $("#home-watched").append('<section class="videos"><div class="container-fluid"><div class="row"><div class="col-sm-12"><div class="video-header"><h3>' + catName + '</h3><a class="see-all" href="' + link + '">' + (streamium_object.view_all) + ' ' + catName + '</a></div></div></div><div class="carousels" id="' + type + '">' + tile + '</div></div></section>' + this.expandedTemplate(type) + '<div class="container-spacer"></div>');
 
                         var sliderCaro = $("#" + type);
                         sliderCaro.slick(this.slick);
@@ -6527,7 +6527,7 @@ jQuery(document).ready(function($) {
                           '</a>' + 
                         '</div>' + 
                         '<div class="media-body">' + 
-                          '<h4 class="media-heading">' + ratingHtml + ' ' + username +'</h4>' + 
+                          '<h4 class="media-heading">' + ratingHtml + '</h4>' + 
                           '<p>' + message + '</p>' + 
                         '</div>' + 
                     '</li>';
