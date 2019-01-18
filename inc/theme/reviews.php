@@ -35,7 +35,7 @@ function streamium_likes() {
 	$userId   = get_current_user_id();
 	$postId   = $_REQUEST['post_id'];
 	$rating   = $_REQUEST['rating'];
-	$message  = $_REQUEST['message'];
+	$message  = strip_tags($_REQUEST['message']);
  
     if ( ! wp_verify_nonce( $_REQUEST['nonce'], 'streamium_likes_nonce' ) || ! isset( $_REQUEST['nonce'] ) ) {
         exit( "No naughty business please" );
@@ -59,14 +59,14 @@ function streamium_likes() {
 
     	$time = current_time('mysql');
 		$data = array(
-		    'comment_post_ID' => $postId,
-		    'comment_author' => $currentUser->user_login,
+		    'comment_post_ID'      => $postId,
+		    'comment_author'       => $currentUser->user_login,
 		    'comment_author_email' => $currentUser->user_email,
-		    'comment_content' => $message,
-		    'comment_type' => get_post_type($postId),
-		    'user_id' => $userId,
-		    'comment_date' => $time,
-		    'comment_approved' => 0
+		    'comment_content'      => $message,
+		    'comment_type'         => get_post_type($postId),
+		    'user_id'              => $userId,
+		    'comment_date'         => $time,
+		    'comment_approved'     => 0
 		);
 
 		$comment_id = wp_insert_comment($data);
@@ -80,9 +80,9 @@ function streamium_likes() {
             $comments_count = wp_count_comments($postId);
             
 			wp_send_json(array(
-	            'error' => false,
-		    	'likes' => __( 'Thanks', 'streamium' ),
-		    	'message' => 'Successfully added your rating' 
+	            'error'   => false,
+		    	'likes'   => __( 'Thanks', 'streamium' ),
+		    	'message' => __( 'Your review is awaiting approval', 'streamium' ) 
 	        ));
 
 		}else{
@@ -169,11 +169,11 @@ function streamium_get_reviews() {
 			error_log((($totalComments*5)/$tallyComments));
 
 			wp_send_json(array(
-	            'error' => false,
-	    		'title' => get_the_title($postId),
-	    		'data' => $buildGetReviews,
+	            'error'       => false,
+	    		'title'       => get_the_title($postId),
+	    		'data'        => $buildGetReviews,
 	    		'totalRating' => (($totalComments*5)/$tallyComments),
-	    		'message' => __( 'Successfully added your rating', 'streamium' ) 
+	    		'message'     => __( 'Your reviews have been returned', 'streamium' ) 
 	        ));
 
     	}else{
@@ -211,11 +211,11 @@ function get_streamium_likes($post_id) {
 	// GET COMMENTS::
     $comments_count = wp_count_comments($post_id);
     if($comments_count->approved == 0){
-    	return __( 'Rate', 'streamium' );
+    	return __( 'Review', 'streamium' );
     }else if($comments_count->approved == 1){
-    	return $comments_count->approved . ' ' . __( 'Rating', 'streamium' );
+    	return $comments_count->approved . ' ' . __( 'Review', 'streamium' );
     }else{
-    	return $comments_count->approved . ' ' . __( 'Ratings', 'streamium' );
+    	return $comments_count->approved . ' ' . __( 'Reviews', 'streamium' );
     }
     
 

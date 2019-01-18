@@ -10,7 +10,7 @@ require_once($incdir .'meta/recently-watched.php');
 require_once($incdir .'meta/movie-meta.php');
 require_once($incdir .'theme/pagination.php');
 require_once($incdir .'theme/customizer.php');
-require_once($incdir .'theme/ratings.php');
+require_once($incdir .'theme/reviews.php');
 require_once($incdir .'theme/resume.php');
 require_once($incdir .'theme/posts.php');
 require_once($incdir .'theme/uploader.php');

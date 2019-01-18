@@ -41,7 +41,7 @@ Navgiate into the streamium theme folder and run
 npm install
 ```
 
-After you node_modules folder has been created you can now run
+After your node_modules folder has been created you can now run
 ```
 grunt
 ```

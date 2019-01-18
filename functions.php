@@ -173,7 +173,7 @@ if (!function_exists('streamium_enqueue_scripts')) {
                 'swal_ok' => __('Ok', 'streamium'),
                 'swal_cancel' => __('Cancel', 'streamium'),
                 'swal_ok_got_it' => __('Ok, got it!', 'streamium'),
-                'swal_glad_you_liked_it' => __('Rate', 'streamium'),
+                'swal_glad_you_liked_it' => __('Review', 'streamium'),
                 'swal_tell_us_why' => __('Please tell us why', 'streamium'),
                 'swal_write_something' => __('Please tell us why', 'streamium'),
                 'swal_enter_chars' => __('Please enter over 30 characters and select rating!', 'streamium'),
