@@ -86,9 +86,9 @@ function Streamium() {
 
             // Setup the class
             this.slick.slidesToShow = this.setCount;
-            this.slick.slidesToScroll = this.setCount;
-            this.slickSeries.slidesToShow = (this.setCount-1);
-            this.slickSeries.slidesToScroll = (this.setCount-1);
+            this.slick.slidesToScroll = this.setCount
+            this.slickSeries.slidesToShow = (this.setCount+1);
+            this.slickSeries.slidesToScroll = (this.setCount+1);
 
         },
         isOdd: function(num) {
