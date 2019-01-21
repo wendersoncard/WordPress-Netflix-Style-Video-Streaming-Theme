@@ -53,7 +53,7 @@ if ( ! function_exists ( 'streamium_check_webview' ) ) {
         }
 
     }
-    add_action( 'init', 'streamium_check_webview' );
+    //add_action( 'init', 'streamium_check_webview' );
 }
 
 /*
@@ -65,27 +65,38 @@ require_once get_template_directory() . '/inc/recommended-plugins/class-tgm-plug
 add_action( 'tgmpa_register', 'sb_register_required_plugins' );
 
 function sb_register_required_plugins() {
+    
     $plugins = array(
-      array(
-        'name'      => 'Easy Theme and Plugin Upgrades',
-        'slug'      => 'easy-theme-and-plugin-upgrades',
-        'required'  => false,
-      ),
-      array(
-        'name'      => 'WP Extended Search',
-        'slug'      => 'wp-extended-search',
-        'required'  => false,
-  	  ),
-      array(
-        'name'      => 'Post Types Order',
-        'slug'      => 'post-types-order',
-        'required'  => false,
-      ),
-      array(
-        'name'      => 'Force Regenerate Thumbnails',
-        'slug'      => 'force-regenerate-thumbnails',
-        'required'  => false,
-      )
+        array(
+            'name'      => 'Easy Theme and Plugin Upgrades',
+            'slug'      => 'easy-theme-and-plugin-upgrades',
+            'required'  => false,
+        ),
+        array(
+            'name'      => 'WP Extended Search',
+            'slug'      => 'wp-extended-search',
+            'required'  => false,
+  	    ),
+        array(
+            'name'      => 'Post Types Order',
+            'slug'      => 'post-types-order',
+            'required'  => false,
+        ),
+        array(
+            'name'      => 'Category Order and Taxonomy Terms Order',
+            'slug'      => 'taxonomy-terms-order',
+            'required'  => false,
+        ),
+        array(
+            'name'      => 'Force Regenerate Thumbnails',
+            'slug'      => 'force-regenerate-thumbnails',
+            'required'  => false,
+        ),
+        array(
+            'name'      => 'WooCommerce',
+            'slug'      => 'woocommerce',
+            'required'  => false,
+        )
     );
 
     $config = array(
@@ -101,6 +112,7 @@ function sb_register_required_plugins() {
     );
 
     tgmpa( $plugins, $config );
+
 }
 
 /**

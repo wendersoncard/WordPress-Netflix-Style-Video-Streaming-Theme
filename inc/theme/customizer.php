@@ -33,8 +33,9 @@ class Streamium_Customize
             'streamium_mrss_section', 
             array(
                 'title'     => __('Roku Direct Publisher Mrss Feed', 'streamium'),
-                'description' => 'Here you can generate a key to secure your mrss feed for Roku.',
-                'priority'  => 1020
+                //'description' => 'Here you can generate a key to secure your mrss feed for Roku.',
+                'description' => 'Here you can generate a key to secure your mrss feed for Roku Direct Publisher.<br/><strong><i>!Important Make sure you create a page and attach the template name (Roku Direct Publisher Mrss Template) your Roku feed url will then look like this</i></strong><pre class="streamium-pre">http://example.com/roku/?key=wck8owg044c8ogsssg8o4k4g4cgo8ggc0c40ssk0</pre>',
+                'priority'  => 1000
             )
         );
 

@@ -172,7 +172,7 @@
 						
 					else :  
 						
-						printf('<ul id="cd-primary-nav" class="cd-primary-nav is-fixed"><li><a href="#">%1$s</a></li></ul>', __( '!To display a menu here go to Apperance and menus create a menu and select (Display location Header Menu)', 'streamium' ));
+						printf('<ul id="cd-primary-nav" class="cd-primary-nav is-fixed"><li><a href="/wp-admin/nav-menus.php" target="_blank">%1$s</a></li></ul>', __( 'Add Menu (Location Header Menu)', 'streamium' ));
 
 					endif;
 

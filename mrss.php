@@ -1,18 +1,8 @@
 <?php 
 
 	/*
-	 	Template Name: Mrss Template
+	 	Template Name: Roku Direct Publisher Mrss Template
 	*/
-
-	// CHECK FOR PREMIUM:
-	if(!get_theme_mod(
-		'streamium_enable_premium' 
-	)){
-
-		echo 'Only avaiable with premium...';
-		die();
-
-	}
 
 	// CHECK FOR RESTRICTION:
 	if(

@@ -52,7 +52,6 @@ function streamium_meta_box_movie(){
 
     ?>
     <p class="streamium-meta-box-wrapper">
-        <label>AWS Video</label>
         <select class="streamium-theme-main-video-select-group chosen-select" tabindex="1" name="s3bubble_video_code_meta_box_text" id="s3bubble_video_code_meta_box_text">
             <option value="<?php echo $text; ?>"><?php echo (empty($text)) ? 'Select Main Video' : $text; ?></option>
             <option value="">Remove Current Video</option>
