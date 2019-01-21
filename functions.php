@@ -166,6 +166,7 @@ if (!function_exists('streamium_enqueue_scripts')) {
                 'tile_count' => s3bubble_tile_count(),
                 'read_more' => __('read more', 'streamium'),
                 'autoplay_slider' => get_theme_mod( 'streamium_autoplay_home_slider', false ),
+                'slider_header_size' => get_theme_mod( 'streamium_slider_header_size', 16 ),
                 'continue_watching' => __('Continue Watching', 'streamium'),
                 'view_all' => __('Browse', 'streamium'),
                 'swal_error' => __('Error', 'streamium'),

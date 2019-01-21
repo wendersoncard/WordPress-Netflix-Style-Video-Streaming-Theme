@@ -615,7 +615,6 @@ a, a:focus, a:hover {
     height: 40px;
     width: 100%;
     line-height: 40px;
-    position: fixed;
     bottom: 0;
     z-index: 999;
 }

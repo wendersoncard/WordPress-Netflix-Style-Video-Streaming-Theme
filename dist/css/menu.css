@@ -33,7 +33,7 @@ body.overflow-hidden {
 
 .home .cd-main-header {
   position: fixed;
-  background: linear-gradient(to top, rgba(255,0,0,0), rgb(150, 150, 150));
+  background: linear-gradient(to top,rgba(255,0,0,0),rgba(0, 0, 0, 0.3));
 }
 
 .cd-main-content {

@@ -156,6 +156,31 @@ class Streamium_Customize
         );
 
         $wp_customize->add_setting(
+            'streamium_slider_header_size', 
+            array(
+                'default'  => '16'
+            )
+        );
+
+        $wp_customize->add_control(
+            new WP_Customize_Control(
+                $wp_customize,
+                'streamium_slider_header_size',
+                array(
+                    'label'     => __('Header Slider Size', 'streamium'),
+                    'section'   => 'streamium_styles',
+                    'settings'  => 'streamium_slider_header_size',
+                    'type'      => 'select',
+                    'choices' => array(
+                        '16'  => '16/9',
+                        '21'  => '21/9',
+                        '23'  => '23/9'
+                    )
+                )
+            )
+        );
+
+        $wp_customize->add_setting(
             'streamium_google_font', 
             array(
                 'default'  => 'Roboto'

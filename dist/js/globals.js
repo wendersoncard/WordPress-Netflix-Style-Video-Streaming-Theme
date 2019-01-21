@@ -101,10 +101,8 @@ function Streamium() {
                 var scroll = $(window).scrollTop();
                 if (scroll >= 50) {
                     $('body').addClass('nav-is-fixed');
-                    //$('.cd-main-content').css('top','70px');
                 } else {
                     $('body').removeClass("nav-is-fixed");
-                    //$('.cd-main-content').css('top','0px');
                 }
 
             }
@@ -897,12 +895,15 @@ jQuery(document).ready(function($) {
     var growFactor = 2;
     var moveDistance = (tileWidth / 2);
     var currentCat;
-    var view_height = Math.round(($(window).innerWidth()/16*9));
 
+
+    // SETUP MAIN SLIDER HEIGHTS::
+    var sliderAspect = parseInt(streamium_object.slider_header_size);
+    var view_height = Math.round(($(window).innerWidth()/sliderAspect*9));
     $('.streamium-slider .slick-slide').height(view_height);
 
     function resizeVideoJS() {
-        view_height = Math.round(($(window).innerWidth()/16*9));
+        view_height = Math.round(($(window).innerWidth()/sliderAspect*9));
         $('.streamium-slider .slick-slide').height(view_height);
     }
 
@@ -1162,8 +1163,6 @@ jQuery(document).ready(function($) {
                         height: setMargin + 'px'
                     }, 50, function() {
                         
-                        // Init ui this must be done after the dom and elements are fully set
-                        $('.streamium-loading').fadeOut();
                         $('.lazy').Lazy(streamium.lazy);
 
                     });
@@ -1175,13 +1174,10 @@ jQuery(document).ready(function($) {
         });
 
         updateItems(function(response) {
-	 
-		    if (response.error) {
-		        console.log(response.messsage);
-		        return; 
-		    }
-		 
-		    // Success update ui
+
+	 		// Preloader
+            $('.loader').fadeOut();
+            $('.loader-mask').delay(250).fadeOut('slow');
 		 
 		});
 
@@ -1222,16 +1218,16 @@ jQuery(document).ready(function($) {
 	                            
 	                            $('.lazy').Lazy(streamium.lazy);
 
-	                            // Preloader
-				                $('.loader').fadeOut();
-				                $('.loader-mask').delay(250).fadeOut('slow');
-
 	                        });
 
 	                    });
 
 		                iter++;
 		                run();
+
+		        	}else{
+
+		        		callback(true);
 
 		        	}  
 
