@@ -134,7 +134,7 @@ function streamium_get_dynamic_content() {
     		$like_text = '';
 	    	$buildMeta = '<ul>';
 
-	    	// do stuff here
+	    	// REVIEWS::
 			$comments = get_comments('post_id=' . $postId . '&status=approve');
 			if ($comments) {
 				
@@ -213,16 +213,6 @@ function streamium_get_dynamic_content() {
 				$buildMeta .= '<li class="synopis-meta-spacer">' .  __( 'Released', 'streamium' ) . ': ' . $streamiumOverrideReleaseDate . '</li>';
 			}else{
 				$buildMeta .= '<li class="synopis-meta-spacer">' .  __( 'Released', 'streamium' ) . ': <a href="/?s=all&date=' . get_the_date('Y/m/d', $postId) . '">' . get_the_date('l, F j, Y', $postId) . '</a></li>';
-			}
-			
-			// Add ratings option in customizer
-			if(get_theme_mod( 'streamium_enable_ratings' )) {
-
-				$streamium_ratings = get_post_meta( $postId, 'streamium_ratings_meta_box_text', true );
-				if ( ! empty( $streamium_ratings ) ) {
-					$buildMeta .= '<li class="synopis-meta-spacer">' . __( 'Rating', 'streamium' ) . ': ' . $streamium_ratings . '</a></li>';
-				}
-
 			}
 
 			// Close the meta tag
