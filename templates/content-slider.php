@@ -69,6 +69,9 @@
 											<h2><?php echo (isset($title) ? $title : __( 'No Title', 'streamium' )); ?></h2>
 											<div class="synopis content">
 												<?php echo $content; ?>
+												<ul class="hidden-xs">
+													<?php do_action('synopis_multi_meta'); ?>
+												</ul>
 											</div>
 											
 											<div class="synopis-premium-meta streamium-reviews-content-btns hidden-xs">
@@ -90,9 +93,13 @@
 							        	</span>
 						        	</div>
 					        	</a>
-					        	<?php if ( ! empty( $streamiumVideoTrailer ) && get_theme_mod( 'streamium_enable_premium' ) ) : ?>
+					        	
+					        	<a class="streamium-unmute hidden-xs" href="#" data-pid="streamium-featured-background-<?php echo get_the_ID(); ?>"><i class="fa fa-volume-off" aria-hidden="true"></i></a>
+
+					        	<?php if ( !empty( $streamiumVideoTrailer ) ) : ?>
 						        	<a class="synopis-video-trailer synopis-video-trailer-content streamium-btns hidden-xs" href="#" data-code="<?php echo $streamiumVideoTrailer; ?>"><?php echo $streamiumVideoTrailerBtnText; ?></a>
 						        <?php endif; ?>
+						        
 							</div>
 						</div>
 					</div>

@@ -933,8 +933,24 @@ jQuery(document).ready(function($) {
         '.shiftRight { transform: translate3d(' + moveDistance + 'px, 0, 0);}' +
 
         '</style>');
-
+ 
     $('[data-toggle="tooltip"]').tooltip();
+
+   	// MUTE OR UNMMUTE MAIN VIDEO::
+    $(document).on('click', ".streamium-unmute", function() {
+
+    	var player = $(this).data('pid');
+    	var div = $('#' + player).find('div').attr("id");
+    	var video = videojs(div);
+    	if (video.muted()) {
+    		$(this).html('<i class="fa fa-volume-up" aria-hidden="true"></i>');
+		    video.muted(false);
+		}else{
+			$(this).html('<i class="fa fa-volume-off" aria-hidden="true"></i>');
+			video.muted(true);
+		}
+
+    });
 
     var clickClass = "home-arrow";
     if (streamium.isMobile.any()) {
@@ -6796,7 +6812,7 @@ jQuery(document).ready(function($) {
 	        if(video_post_object.vpaid){
 	        	options.vpaid = video_post_object.vpaid;
 	        }
- 
+	        
 			// Self hosted
 	    	s3bubble("s3bubble-" + video_post_object.post_id).video(options, function(player) {
 

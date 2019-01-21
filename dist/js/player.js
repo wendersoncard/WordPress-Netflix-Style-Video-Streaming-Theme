@@ -132,7 +132,7 @@ jQuery(document).ready(function($) {
 	        if(video_post_object.vpaid){
 	        	options.vpaid = video_post_object.vpaid;
 	        }
- 
+	        
 			// Self hosted
 	    	s3bubble("s3bubble-" + video_post_object.post_id).video(options, function(player) {
 

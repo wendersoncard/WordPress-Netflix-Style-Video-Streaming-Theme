@@ -11048,6 +11048,19 @@ a, a:focus, a:hover {
     overflow: hidden;
 }
 
+.streamium-unmute {
+    position: absolute;
+    right: 0;
+    top: 30px;
+    font-size: 30px;
+    background: rgba(0,0,0,.5);
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 5px;
+}
+
 .content-overlay-grad {
     background: -webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.4)),to(rgba(0,0,0,0)));
     background: -webkit-linear-gradient(left,rgba(0,0,0,.4) 0,rgba(0,0,0,0) 100%);
