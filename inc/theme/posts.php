@@ -69,30 +69,28 @@ function streamium_single_video_scripts() {
 
 		}
 
-		// Check if global adverts are setup
-		$globalAdvertisements = "";
-		if(get_theme_mod( 'streamium_advertisement_enabled' )){
-			$globalAdvertisements = get_theme_mod( 'streamium_advertisement_vpaid_url' );
+		$ajaxData = array( 
+            'post_id' => $post->ID,
+            'index' => $id,
+            'count' => $count,
+            'back' => $back,
+            'subTitle' => "You're watching",
+            'title' => $title,
+            'para' => $excerpt,
+            'percentage' => $resume,
+            'codes' => $codes,
+            'youtube' => $youtube,
+            'poster' => esc_url($poster[0]),
+            'nonce' => $nonce
+        );
+ 
+		// CHECK FOR VPAID::
+		if(get_theme_mod( 'streamium_advertisement_enabled', false )){
+			$ajaxData['vpaid'] = get_theme_mod( 'streamium_advertisement_vpaid_url' );
 		}
 
 		// Setup premium
-        wp_localize_script( 'streamium-production', 'video_post_object', 
-            array( 
-                'post_id' => $post->ID,
-                'index' => $id,
-                'count' => $count,
-                'back' => $back,
-                'subTitle' => "You're watching",
-                'title' => $title,
-                'para' => $excerpt,
-                'percentage' => $resume,
-                'codes' => $codes,
-                'youtube' => $youtube,
-                'vpaid' => $globalAdvertisements,
-                'poster' => esc_url($poster[0]),
-                'nonce' => $nonce
-            )
-        ); 
+        wp_localize_script('streamium-production', 'video_post_object', $ajaxData); 
 
     } 
 
@@ -156,23 +154,6 @@ function streamium_get_dynamic_content() {
 			    $buildMeta  .= '<li class="synopis-meta-spacer">' . $ratingHtml . '</li>';
 
 			}
-  
-			// Tags
-			$posttags = get_the_tags($postId);
-			$staring = __( 'Cast', 'streamium' )  . ': ';
-			if ($posttags) {
-				$numItems = count($posttags);
-				$i = 0;
-			  	foreach($posttags as $tag) {
-
-				  	$staring .= '<a href="' . esc_url(get_tag_link ($tag->term_id)) . '">' . ucwords($tag->name) . '</a>';
-				  	if(++$i !== $numItems) {
-			    		$staring .= ', ';
-			  		}
- 
-			    }
-			    $buildMeta .= '<li class="synopis-meta-spacer">' . $staring . '</li>';
-			}
 			
 			// Cats
 			$query = get_post_taxonomies( $postId );
@@ -215,22 +196,23 @@ function streamium_get_dynamic_content() {
 				$buildMeta .= '<li class="synopis-meta-spacer">' .  __( 'Released', 'streamium' ) . ': <a href="/?s=all&date=' . get_the_date('Y/m/d', $postId) . '">' . get_the_date('l, F j, Y', $postId) . '</a></li>';
 			}
 
+			// MOVIE RATING::
+			$rating  = get_post_meta($postId, 'streamium_ratings_meta_box_text', true);
+			if ($rating) {
+				$buildMeta .= '<li class="synopis-meta-spacer">' . __( 'Rating', 'streamium' ) . ': ' . $rating . '</li>';
+			}
+
 			// Close the meta tag
 			$buildMeta .= '</ul>';
             
-            // Only allow like/reviews for premium users
-			if ( get_theme_mod( 'streamium_enable_premium' ) ) {
+            // REVIEWS::
+	        $nonce = wp_create_nonce( 'streamium_likes_nonce' );
+	    	$link = admin_url('admin-ajax.php?action=streamium_likes&post_id='. $postId .'&nonce='.$nonce);
 
-				// Likes and reviews
-		        $nonce = wp_create_nonce( 'streamium_likes_nonce' );
-		    	$link = admin_url('admin-ajax.php?action=streamium_likes&post_id='. $postId .'&nonce='.$nonce);
-
-		        $like_text = '<div class="synopis-premium-meta hidden-xs">
-		        				<a id="like-count-' . $postId . '" class="streamium-review-like-btn streamium-btns streamium-reviews-btns" data-toggle="tooltip" title="' .  __( 'CLICK TO REVIEW!', 'streamium' ) . '" data-id="' . $postId . '" data-nonce="' . $nonce . '">' . get_streamium_likes($postId) . '</a>
-		        				<a class="streamium-list-reviews streamium-btns streamium-reviews-btns" data-id="' . $postId . '" data-nonce="' . $nonce . '">' .  __( 'Read reviews', 'streamium' ) . '</a>
-							</div>';
-
-		    }
+	        $like_text = '<div class="synopis-premium-meta streamium-reviews-content-btns hidden-xs">
+	        				<a id="like-count-' . $postId . '" class="streamium-review-like-btn streamium-btns streamium-reviews-btns" data-toggle="tooltip" title="' .  __( 'CLICK TO REVIEW!', 'streamium' ) . '" data-id="' . $postId . '" data-nonce="' . $nonce . '">' . get_streamium_likes($postId) . '</a>
+	        				<a class="streamium-list-reviews streamium-btns streamium-reviews-btns" data-id="' . $postId . '" data-nonce="' . $nonce . '">' .  __( 'Read reviews', 'streamium' ) . '</a>
+						</div>';
  
 	    	$streamiumVideoTrailer = get_post_meta( $postId, 'streamium_video_trailer_meta_box_text', true );
 

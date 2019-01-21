@@ -71,13 +71,12 @@
 											</ul>
 										</div>
 										
-										<?php if(get_theme_mod( 'streamium_enable_premium' )) : ?>
-											<div class="synopis-premium-meta hidden-xs">
-												<a id="like-count-<?php echo get_the_ID(); ?>" class="streamium-review-like-btn streamium-btns streamium-reviews-btns" data-toggle="tooltip" title="<?php _e( 'CLICK TO REVIEW!', 'streamium' ); ?>" data-id="<?php echo get_the_ID(); ?>" data-nonce="<?php echo $nonce; ?>">	<?php echo get_streamium_likes(get_the_ID()); ?>
-												</a>
-							                    <a class="streamium-list-reviews streamium-btns streamium-reviews-btns" data-id="<?php echo get_the_ID(); ?>" data-nonce="<?php echo $nonce; ?>"><?php _e( 'Read reviews', 'streamium' ); ?></a>
-											</div>
-										<?php endif; ?>
+										<div class="synopis-premium-meta streamium-reviews-content-btns hidden-xs">
+											<a id="like-count-<?php echo get_the_ID(); ?>" class="streamium-review-like-btn streamium-btns streamium-reviews-btns" data-toggle="tooltip" title="<?php _e( 'CLICK TO REVIEW!', 'streamium' ); ?>" data-id="<?php echo get_the_ID(); ?>" data-nonce="<?php echo $nonce; ?>">	<?php echo get_streamium_likes(get_the_ID()); ?>
+											</a>
+						                    <a class="streamium-list-reviews streamium-btns streamium-reviews-btns" data-id="<?php echo get_the_ID(); ?>" data-nonce="<?php echo $nonce; ?>"><?php _e( 'Read reviews', 'streamium' ); ?></a>
+										</div>
+
 									</div>
 								</div>
 							</div>

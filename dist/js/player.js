@@ -101,33 +101,48 @@ jQuery(document).ready(function($) {
 	        });
 
 		}else{  
+
+			//SETUP OPTIONS::
+			var options = {
+	            codes : video_post_object.codes,
+				startTime : video_post_object.percentage,
+				source : {
+					poster : video_post_object.poster,
+				},
+				options : {
+					fluid : true
+				},
+				meta : {
+					showSocial: video_post_object.brand_social,
+	                backButton: true,
+	                backButtonUrl: video_post_object.back,
+	                subTitle: video_post_object.subTitle,
+	                title: video_post_object.title,
+	                para: video_post_object.para
+	            },
+	            brand: {
+			 		controlbar: streamium_object.brand_control, // Controlbar background
+			 		icons: streamium_object.brand_icons, // Icon color
+			 		sliders: streamium_object.brand_sliders // Slider color
+			 	}
+	        };
+
+	        // CHECK FOR VPAID::
+	        if(video_post_object.vpaid){
+	        	options.vpaid = video_post_object.vpaid;
+	        }
  
 			// Self hosted
-	    	s3bubble("s3bubble-" + video_post_object.post_id).video({
-	            "codes" : video_post_object.codes,
-				"startTime" : video_post_object.percentage,
-				"source" : {
-					"poster" : video_post_object.poster,
-				},
-				"options" : {
-					"autoplay" : true,
-					"fluid" : true,
-					"vpaid" : video_post_object.vpaid
-				},
-				"meta" : {
-					"showSocial": video_post_object.brand_social,
-	                "backButton": true,
-	                "backButtonUrl": video_post_object.back,
-	                "subTitle": video_post_object.subTitle,
-	                "title": video_post_object.title,
-	                "para": video_post_object.para
-	            },
-	            "brand": {
-			 		"controlbar": streamium_object.brand_control, // Controlbar background
-			 		"icons": streamium_object.brand_icons, // Icon color
-			 		"sliders": streamium_object.brand_sliders // Slider color
-			 	}
-	        }, function(player) {
+	    	s3bubble("s3bubble-" + video_post_object.post_id).video(options, function(player) {
+
+	    		// AUTO PLAY EACH VIDEO::
+	        	player.on("loadedmetadata", function() {
+	        		if(video_post_object.vpaid){
+			        	// The browser prevented playback initiated without user interaction.
+			        }else{
+			        	player.play();
+			        }
+		        });
 
 	        	player.on("timeupdate", function() {
 

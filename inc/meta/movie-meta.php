@@ -20,7 +20,7 @@ function synopis_meta_starring( ) {
 	
 }
 
-add_action( 'synopis_meta', 'synopis_meta_starring', 1, 0 );
+//add_action( 'synopis_meta', 'synopis_meta_starring', 1, 0 );
 
 
 function synopis_meta_genre( ) {
@@ -82,29 +82,6 @@ function synopis_multi_meta_ratings( ) {
 
 add_action( 'synopis_multi_meta', 'synopis_multi_meta_ratings', 1, 0 );
 
-function synopis_multi_meta_starring( ) {
-   	// do stuff here
-	$posttags = get_the_tags();
-	$staring = __( 'Cast', 'streamium' ) . ": ";
-	if ($posttags) {
-		$numItems = count($posttags);
-		$i = 0;
-	  	foreach($posttags as $tag) {
-
-		  	$staring .= '<a href="' . esc_url(get_tag_link ($tag->term_id)) . '">' . ucwords($tag->name) . '</a>';
-		  	if(++$i !== $numItems) {
-	    		$staring .= ', ';
-	  		}
-
-	    }
-	    echo '<li class="synopis-meta-spacer">' . $staring . '</li>';
-	}
-	
-}
-
-add_action( 'synopis_multi_meta', 'synopis_multi_meta_starring', 1, 0 );
-
-
 function synopis_multi_meta_genre() {
 
 	$query = get_post_taxonomies( get_the_ID() );
@@ -149,6 +126,17 @@ function synopis_multi_meta_release(){
 }
 
 add_action( 'synopis_multi_meta', 'synopis_multi_meta_release', 3, 0 );
+
+function synopis_multi_meta_rating( ) {
+   
+	$rating  = get_post_meta(get_the_ID(), 'streamium_ratings_meta_box_text', true);
+	if ($rating) {
+	    echo '<li class="synopis-meta-spacer">' . __( 'Rating', 'streamium' ) . ': ' . $rating . '</li>';
+	}
+	
+}
+
+add_action( 'synopis_multi_meta', 'synopis_multi_meta_rating', 1, 0 );
 
 function synopis_video_progressbar(){
 

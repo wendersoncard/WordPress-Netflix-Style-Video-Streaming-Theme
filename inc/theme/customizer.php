@@ -974,7 +974,7 @@ class Streamium_Customize
 
                 if ( get_theme_mod( 'streamium_disable_reviews', false ) ) : 
 
-                    echo '.streamium-reviews, .streamium-reviews-static { display:none !important; }'; 
+                    echo '.streamium-reviews, .streamium-reviews-static, .streamium-reviews-content-btns { display:none !important; }'; 
 
                 endif; // Disable reviews 
 
