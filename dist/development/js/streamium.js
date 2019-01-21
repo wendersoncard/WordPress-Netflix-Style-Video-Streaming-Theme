@@ -6669,29 +6669,30 @@ jQuery(document).ready(function($) {
  
 	function setupStreamiumPlayer(){
 
+		// THIS IS DEPRICATIED AND SHOULD BE REMOVED::
 		if(video_post_object.youtube){
 
 			s3bubble("s3bubble-" + video_post_object.post_id).service({
-	            "codes" : video_post_object.codes,
-				"source" : {
-					"poster" : video_post_object.poster,
+	            codes : video_post_object.codes,
+				source : {
+					poster : video_post_object.poster,
 				},
-				"options" : {
-					"autoplay" : true, 
-					"fluid" : true
+				options : {
+					autoplay : true, 
+					fluid : true
 				},
-				"meta" : {
-					"showSocial": false,
-	                "backButton": true,
-	                "backButtonUrl": video_post_object.back,
-	                "subTitle": video_post_object.subTitle,
-	                "title": video_post_object.title,
-	                "para": video_post_object.para
+				meta : {
+					showSocial: false,
+	                backButton: true,
+	                backButtonUrl: video_post_object.back,
+	                subTitle: video_post_object.subTitle,
+	                title: video_post_object.title,
+	                para: video_post_object.para
 	            },
-	            "brand": {
-			 		"controlbar": streamium_object.brand_control, // Controlbar background
-			 		"icons": streamium_object.brand_icons, // Icon color
-			 		"sliders": streamium_object.brand_sliders // Slider color
+	            brand: {
+			 		controlbar: streamium_object.brand_control, // Controlbar background
+			 		icons: streamium_object.brand_icons, // Icon color
+			 		sliders: streamium_object.brand_sliders // Slider color
 			 	}
 	        }, function(player) {
 
@@ -6801,11 +6802,13 @@ jQuery(document).ready(function($) {
 
 	    		// AUTO PLAY EACH VIDEO::
 	        	player.on("loadedmetadata", function() {
-	        		if(video_post_object.vpaid){
+
+	        		if(this.s3s.options.vpaid){
 			        	// The browser prevented playback initiated without user interaction.
 			        }else{
 			        	player.play();
 			        }
+
 		        });
 
 	        	player.on("timeupdate", function() {
