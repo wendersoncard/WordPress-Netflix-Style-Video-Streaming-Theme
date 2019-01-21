@@ -163,7 +163,7 @@ a, a:focus, a:hover {
 .streamium-unmute {
     position: absolute;
     right: 0;
-    top: 30px;
+    top: 100px;
     font-size: 30px;
     background: rgba(0,0,0,.5);
     width: 50px;

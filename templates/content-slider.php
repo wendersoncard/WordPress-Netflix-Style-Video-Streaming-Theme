@@ -56,7 +56,7 @@
 
 			<div class="streamium-slider-div">
 				
-				<div id="streamium-featured-background-<?php echo get_the_ID(); ?>" class="s3bubble streamium-featured-background" data-setup='{"codes": "<?php echo $streamiumFeaturedVideo; ?>","source":{"poster":"https://s3.amazonaws.com/s3bubble-cdn/theme-images/streamium-video-blank.png"},"options":{"background":true,"muted":true,"loop":true,"autoplay":true,"controls":false,"vpaid":""},"meta":{"skipButtons":false,"showSocial":false,"backButton":false,"subTitle": "","title": "","para": ""}}'></div>
+				<div id="streamium-featured-background-<?php echo get_the_ID(); ?>" class="s3bubble streamium-featured-background" data-setup='{"codes": "<?php echo $streamiumFeaturedVideo; ?>","source":{"poster":"https://s3.amazonaws.com/s3bubble-cdn/theme-images/streamium-video-blank.png"},"captions":{"selected":"en"},"options":{"background":true,"muted":true,"loop":true,"autoplay":true,"controls":false,"vpaid":""},"meta":{"skipButtons":false,"showSocial":false,"backButton":false,"subTitle": "","title": "","para": ""}}'></div>
 
 				<article class="content-overlay">
 					<div class="content-overlay-grad"></div>
@@ -99,7 +99,7 @@
 					        	<?php if ( !empty( $streamiumVideoTrailer ) ) : ?>
 						        	<a class="synopis-video-trailer synopis-video-trailer-content streamium-btns hidden-xs" href="#" data-code="<?php echo $streamiumVideoTrailer; ?>"><?php echo $streamiumVideoTrailerBtnText; ?></a>
 						        <?php endif; ?>
-						        
+
 							</div>
 						</div>
 					</div>
@@ -115,7 +115,7 @@
 					<div class="content-overlay-grad"></div>
 					<div class="container-fluid rel">
 						<div class="row rel">
-							<div class="col-sm-5 col-xs-5 rel">
+							<div class="col-sm-4 col-xs-5 rel">
 								<div class="synopis-outer">
 									<div class="synopis-middle">
 										<div class="synopis-inner">
@@ -128,16 +128,16 @@
 											</div>
 											
 											<div class="synopis-premium-meta streamium-reviews-content-btns hidden-xs">
-												<a id="like-count-<?php echo get_the_ID(); ?>" class="streamium-review-like-btn streamium-btns streamium-reviews-btns" data-toggle="tooltip" title="<?php _e( 'CLICK TO REVIEW!', 'streamium' ); ?>" data-id="<?php echo get_the_ID(); ?>" data-nonce="<?php echo $nonce; ?>">	<?php echo get_streamium_likes(get_the_ID()); ?>
+												<a id="like-count-<?php echo get_the_ID(); ?>" class="streamium-review-like-btn streamium-reviews-btns" data-toggle="tooltip" title="<?php _e( 'CLICK TO REVIEW!', 'streamium' ); ?>" data-id="<?php echo get_the_ID(); ?>" data-nonce="<?php echo $nonce; ?>">	<?php echo get_streamium_likes(get_the_ID()); ?>
 												</a>
-							                    <a class="streamium-list-reviews streamium-btns streamium-reviews-btns" data-id="<?php echo get_the_ID(); ?>" data-nonce="<?php echo $nonce; ?>"><?php _e( 'Read reviews', 'streamium' ); ?></a>
+							                    <a class="streamium-list-reviews streamium-reviews-btns" data-id="<?php echo get_the_ID(); ?>" data-nonce="<?php echo $nonce; ?>"><?php _e( 'Read reviews', 'streamium' ); ?></a>
 											</div>
 
 										</div>
 									</div>
 								</div>
 							</div>
-							<div class="col-sm-7 col-xs-7 rel">
+							<div class="col-sm-8 col-xs-7 rel">
 								<a class="play-icon-wrap" href="<?php the_permalink(); ?>">
 									<div class="play-icon-wrap-rel">
 										<div class="play-icon-wrap-rel-ring"></div>

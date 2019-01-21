@@ -989,9 +989,6 @@ class Streamium_Customize
 
            <?php self::generate_css('.woocommerce-message, .woocommerce-info', 'border-top-color', 'link_textcolor', '', ' !important', true, '#dd3333');  ?>
 
-           .streamium-list-reviews { background: #000 !important;}
-           .streamium-list-reviews:hover { background: #fff !important; color: #000;}
-
         </style>
         <!--/Customizer CSS-->
         <?php

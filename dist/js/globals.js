@@ -101,10 +101,10 @@ function Streamium() {
                 var scroll = $(window).scrollTop();
                 if (scroll >= 50) {
                     $('body').addClass('nav-is-fixed');
-                    $('.cd-main-content').css('top','70px');
+                    //$('.cd-main-content').css('top','70px');
                 } else {
                     $('body').removeClass("nav-is-fixed");
-                    $('.cd-main-content').css('top','0px');
+                    //$('.cd-main-content').css('top','0px');
                 }
 
             }
@@ -897,12 +897,12 @@ jQuery(document).ready(function($) {
     var growFactor = 2;
     var moveDistance = (tileWidth / 2);
     var currentCat;
-    var view_height = Math.round(($(window).innerWidth() / 21 * 9));
+    var view_height = Math.round(($(window).innerWidth()/16*9));
 
     $('.streamium-slider .slick-slide').height(view_height);
 
     function resizeVideoJS() {
-        view_height = Math.round(($(window).innerWidth() / 21 * 9));
+        view_height = Math.round(($(window).innerWidth()/16*9));
         $('.streamium-slider .slick-slide').height(view_height);
     }
 
