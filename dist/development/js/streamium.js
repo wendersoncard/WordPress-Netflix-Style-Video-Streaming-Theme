@@ -1176,7 +1176,7 @@ jQuery(document).ready(function($) {
         updateItems(function(response) {
 
 	 		// Preloader
-            $('.loader').fadeOut();
+            $('.loader-wrap').fadeOut();
             $('.loader-mask').delay(250).fadeOut('slow');
 		 
 		});
@@ -1272,7 +1272,7 @@ jQuery(document).ready(function($) {
                 $('.static-row').css('margin-top', setMargin + 'px');
                 $('.lazy').Lazy(streamium.lazy);
                 // Preloader
-                $('.loader').fadeOut();
+                $('.loader-wrap').fadeOut();
                 $('.loader-mask').delay(250).fadeOut('slow');
 
             });
@@ -1302,7 +1302,7 @@ jQuery(document).ready(function($) {
                     $('.static-row').css('margin-top', setMargin + 'px');
                     $('.lazy').Lazy(streamium.lazy);
                     // Preloader
-	                $('.loader').fadeOut();
+	                $('.loader-wrap').fadeOut();
 	                $('.loader-mask').delay(250).fadeOut('slow');
 
                 });
@@ -1336,7 +1336,7 @@ jQuery(document).ready(function($) {
                 $('.static-row').css('margin-top', setMargin + 'px');
                 $('.lazy').Lazy(streamium.lazy);
                 // Preloader
-                $('.loader').fadeOut();
+                $('.loader-wrap').fadeOut();
                 $('.loader-mask').delay(250).fadeOut('slow');
 
             });
@@ -1371,7 +1371,7 @@ jQuery(document).ready(function($) {
                     $('.static-row').css('margin-top', setMargin + 'px');
                     $('.lazy').Lazy(streamium.lazy);
                     // Preloader
-	                $('.loader').fadeOut();
+	                $('.loader-wrap').fadeOut();
 	                $('.loader-mask').delay(250).fadeOut('slow');
 
                 });
@@ -1404,7 +1404,7 @@ jQuery(document).ready(function($) {
                 $('.static-row').css('margin-top', setMargin + 'px');
                 $('.lazy').Lazy(streamium.lazy);
                	// Preloader
-                $('.loader').fadeOut();
+                $('.loader-wrap').fadeOut();
                 $('.loader-mask').delay(250).fadeOut('slow');
 
             });

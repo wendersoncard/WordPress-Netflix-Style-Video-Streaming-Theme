@@ -15,16 +15,11 @@ if ( get_theme_mod( 'streamium_enable_splash_join_redirect', false )) {
 get_header(); ?>
 
 	<?php 
-		if ( get_theme_mod( 'streamium_enable_loader' )) : 
-	?>
-		<!-- Preloader -->
-	    <div class="loader-mask">
-	        <div class="loader">
-	            "Loading..."
-	        </div>
-	    </div>
-	<?php
-		endif; 
+		if ( get_theme_mod( 'streamium_enable_loader' )) {
+			
+			get_template_part('templates/content', 'loader');
+
+		} 
 	?>
 
 	<main class="cd-main-content">

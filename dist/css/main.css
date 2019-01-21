@@ -836,14 +836,24 @@ a, a:focus, a:hover {
     z-index: 99999;
 }
 
-.loader {
+.loader-wrap { 
     position: absolute;
     left: 50%;
     top: 50%;
     font-size: 5px;
-    width: 5em;
-    height: 5em;
-    margin: -25px 0 0 -25px;
+    width: 120px;
+    height: 120px;
+    margin: -60px 0 0 -60px;
+}
+
+.loader-wrap img { 
+    width: 100%;
+}
+
+.loader {
+    text-align: center;
+    margin: 25px auto;
+    font-size: 5px;
     text-indent: -9999em;
     border-top: 0.5em solid #3f48c4;
     border-right: 0.5em solid rgba(245, 245, 245, 0.5);
