@@ -69,9 +69,9 @@ function synopis_multi_meta_ratings( ) {
 		endforeach;
 
 		$ratingTotal = round($tallyComments/$totalComments);
-		$ratingHtml = '<div class="streamium-rating-static">';
+		$ratingHtml = '<div class="streamium-reviews-static">';
 		for ($x = 1; $x < 6; $x++) {
-		    $ratingHtml .= '<span class="streamium-rating-star-static ' . (($ratingTotal >= $x) ? 'checked' : '') . '" data-value="' . $x . '"></span>';
+		    $ratingHtml .= '<span class="streamium-reviews-star-static ' . (($ratingTotal >= $x) ? 'checked' : '') . '" data-value="' . $x . '"></span>';
 		} 
 		$ratingHtml .= '</div>';
 	    echo $ratingHtml;

@@ -1,5 +1,29 @@
 <?php
 
+/**
+ * Change the menu text
+ *
+ * @return bool
+ * @author  @sameast
+ */
+function streamium_comments_to_reviews( $translated_text, $untranslated_text, $domain )
+{       
+    if( FALSE !== stripos( $untranslated_text, 'comment' ) )
+    {
+            $translated_text = str_ireplace( 'Comment', 'Review', $untranslated_text ) ;
+    }
+    return $translated_text;
+}
+
+is_admin() && add_filter( 'gettext', 'streamium_comments_to_reviews', 99, 3 );
+
+
+/**
+ * Add new column to the table
+ *
+ * @return bool
+ * @author  @sameast
+ */
 function streamium_comment_columns( $columns ){
 	
 	$columns['rating'] = __( 'Rating', 'streamium' );
@@ -32,7 +56,7 @@ function streamium_likes() {
 	//error_log(print_r($_REQUEST,true));
 
 	// PARAMS::
-	$userId   = get_current_user_id();
+	$currentUser   = wp_get_current_user();
 	$postId   = $_REQUEST['post_id'];
 	$rating   = $_REQUEST['rating'];
 	$message  = strip_tags($_REQUEST['message']);
@@ -44,18 +68,28 @@ function streamium_likes() {
     // Check if user is logged in
     if ( !is_user_logged_in() ) {
 
-    	echo json_encode(
-	    	array(
-	    		'error' => true,
-	    		'message' => __( 'You must be logged in to like or dislike', 'streamium' ) 
-	    	)
-	    );
-
-	    die();
+    	wp_send_json(array(
+            'error' => true,
+	    	'message' => __( 'You must be logged in to like or dislike', 'streamium' ) 
+        ));
 
     }
 
     if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+
+    	$userComments = get_comments(array(
+            'user_id' => $currentUser->ID,
+            'post_id' => $postId
+    	));
+
+    	if($userComments) { 
+
+        	wp_send_json(array(
+	            'error' => true,
+		    	'message' => __( 'You have already left a review for this movie', 'streamium' ) 
+	        ));
+	        
+    	}
 
     	$time = current_time('mysql');
 		$data = array(
@@ -64,7 +98,7 @@ function streamium_likes() {
 		    'comment_author_email' => $currentUser->user_email,
 		    'comment_content'      => $message,
 		    'comment_type'         => get_post_type($postId),
-		    'user_id'              => $userId,
+		    'user_id'              => $currentUser->ID,
 		    'comment_date'         => $time,
 		    'comment_approved'     => 0
 		);

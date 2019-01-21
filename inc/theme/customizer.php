@@ -95,36 +95,6 @@ class Streamium_Customize
         );
 
         $wp_customize->add_setting(
-            'streamium_global_bg'
-        );
-        $wp_customize->add_control(
-            new WP_Customize_Image_Control(
-                $wp_customize, 
-                'streamium_global_bg', 
-                array(
-                    'label'    => __('Global Background', 'streamium'),
-                    'section'  => 'streamium_styles',
-                    'settings' => 'streamium_global_bg',
-                )
-            )
-        );
-
-        $wp_customize->add_setting(
-            'streamium_plans_bg'
-        );
-        $wp_customize->add_control(
-            new WP_Customize_Image_Control(
-                $wp_customize, 
-                'streamium_plans_bg', 
-                array(
-                    'label'    => __('Background', 'streamium'),
-                    'section'  => 'streamium_styles',
-                    'settings' => 'streamium_plans_bg',
-                )
-            )
-        );
-
-        $wp_customize->add_setting(
             'link_textcolor', 
             array(
                 'default'     => '#dd3333',
@@ -433,7 +403,7 @@ class Streamium_Customize
                 $wp_customize,
                 'streamium_disable_reviews',
                 array(
-                    'label'     => __('Disable Reviews/Likes', 'streamium'),
+                    'label'     => __('Disable Reviews', 'streamium'),
                     'section'   => 'title_tagline',
                     'settings'  => 'streamium_disable_reviews',
                     'type'      => 'checkbox',
@@ -473,22 +443,6 @@ class Streamium_Customize
                     'label' => 'Replace Powered By S3Bubble Text',
                     'section' => 'title_tagline',
                     'settings' => 'streamium_remove_powered_by_s3bubble',
-                )
-            )
-        );
-
-        $wp_customize->add_setting(
-            'streamium_genre_text'
-        );
-
-        $wp_customize->add_control(
-            new WP_Customize_Control(
-                $wp_customize, 
-                'streamium_genre_text',
-                array(
-                    'label' => 'Replace Genre Text',
-                    'section' => 'title_tagline',
-                    'settings' => 'streamium_genre_text',
                 )
             )
         );
@@ -1029,13 +983,21 @@ class Streamium_Customize
            <?php self::generate_css('.tile_inner', 'padding-bottom', 'streamium_poster_orientation', '', ' !important', true, '56.25%'); ?>
 
            /* style links */
-           <?php self::generate_css('.woocommerce-page .cd-main-content a, .page .cd-main-content a, .bbpress .cd-main-content a, .brand-color, .streamium-rating, .streamium-rating-static', 'color', 'link_textcolor', '', '', true, '#dd3333');
+           <?php self::generate_css('.woocommerce-page .cd-main-content a, .page .cd-main-content a, .bbpress .cd-main-content a, .brand-color, .streamium-reviews, .streamium-reviews-static', 'color', 'link_textcolor', '', '', true, '#dd3333');
            ?>
 
            <?php self::generate_css('#place_order, .pagination a:hover, .pagination .current, .slick-dots li.slick-active button, .progress-bar, .button, .cd-overlay, .has-children > a:hover::before, .has-children > a:hover::after, .go-back a:hover::before, .go-back a:hover::after, #submit, #place_order, .checkout-button, .woocommerce-thankyou-order-received, .add_to_cart_button, .confirm, .streamium-btns, .streamium-extra-meta, .streamium-auth, .onsale, .full-hero .btn', 'background-color', 'link_textcolor', '', ' !important', true, '#dd3333'); 
            ?>
 
-           <?php if ( get_theme_mod( 'streamium_disable_reviews' ) ) : echo '.synopis-premium-meta, .top-meta-reviews { display:none !important; }'; endif; // Disable reviews ?>
+            <?php 
+
+                if ( get_theme_mod( 'streamium_disable_reviews', false ) ) : 
+
+                    echo '.streamium-reviews, .streamium-reviews-static { display:none !important; }'; 
+
+                endif; // Disable reviews 
+
+            ?>
 
            <?php if (!wp_is_mobile()) :
               self::generate_css('.synopis-inner .content', 'font-size', 'streamium_synopsis_para', '', ' !important', true, '1.3vw'); 

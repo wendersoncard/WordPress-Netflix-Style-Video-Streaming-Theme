@@ -51,9 +51,9 @@ jQuery(document).ready(function($) {
                     var date     = item.time;
                     var username = item.username;
 
-                    var ratingHtml = '<div class="streamium-rating-static">';
+                    var ratingHtml = '<div class="streamium-reviews-static">';
                     for (var i = 1; i < 6; i++) {  
-                        ratingHtml += '<span class="streamium-rating-star-static ' + ((rating >= i) ? 'checked' : '') + '" data-value="' + i + '"></span>';
+                        ratingHtml += '<span class="streamium-reviews-star-static ' + ((rating >= i) ? 'checked' : '') + '" data-value="' + i + '"></span>';
                     }
                     ratingHtml += '</div>';
 
@@ -106,9 +106,9 @@ jQuery(document).ready(function($) {
         var post_id = $(this).attr('data-id'),
             nonce = $(this).attr("data-nonce");
 
-            $(document).on('click', ".streamium-rating-star", function() {
+            $(document).on('click', ".streamium-reviews-star", function() {
 
-                $(this).parents('.streamium-rating').find('.streamium-rating-star').removeClass('checked');
+                $(this).parents('.streamium-reviews').find('.streamium-reviews-star').removeClass('checked');
                 $(this).addClass('checked');
                 var submitStars = $(this).attr('data-value');
 
@@ -117,13 +117,13 @@ jQuery(document).ready(function($) {
             swal({
                 title: streamium_object.swal_glad_you_liked_it,
                html: true,
-               text: '<div class="streamium-rating">' +
-                    '<span class="streamium-rating-star" data-value="5"></span>' +
-                    '<span class="streamium-rating-star" data-value="4"></span>' +
-                    '<span class="streamium-rating-star" data-value="3"></span>' +
-                    '<span class="streamium-rating-star" data-value="2"></span>' +
-                    '<span class="streamium-rating-star" data-value="1"></span>' +
-                '</div>', 
+               text: '<div class="streamium-reviews">' +
+                    '<span class="streamium-reviews-star" data-value="5"></span>' +
+                    '<span class="streamium-reviews-star" data-value="4"></span>' +
+                    '<span class="streamium-reviews-star" data-value="3"></span>' +
+                    '<span class="streamium-reviews-star" data-value="2"></span>' +
+                    '<span class="streamium-reviews-star" data-value="1"></span>' +
+                '</div>',  
                 type: "input",
                 showCancelButton: true, 
                 closeOnConfirm: false,
@@ -134,7 +134,7 @@ jQuery(document).ready(function($) {
             },
             function(inputValue) {
 
-                var rating = $('.streamium-rating').find(".checked").attr('data-value');
+                var rating = $('.streamium-reviews').find(".checked").attr('data-value');
                 
                 if (inputValue === false) return false;
 

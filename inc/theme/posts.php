@@ -148,9 +148,9 @@ function streamium_get_dynamic_content() {
 				endforeach;
 
 				$ratingTotal = round($tallyComments/$totalComments);
-				$ratingHtml = '<div class="streamium-rating-static">';
+				$ratingHtml = '<div class="streamium-reviews-static">';
 				for ($x = 1; $x < 6; $x++) {
-				    $ratingHtml .= '<span class="streamium-rating-star-static ' . (($ratingTotal >= $x) ? 'checked' : '') . '" data-value="' . $x . '"></span>';
+				    $ratingHtml .= '<span class="streamium-reviews-star-static ' . (($ratingTotal >= $x) ? 'checked' : '') . '" data-value="' . $x . '"></span>';
 				} 
 				$ratingHtml .= '</div>';
 			    $buildMeta  .= '<li class="synopis-meta-spacer">' . $ratingHtml . '</li>';
@@ -236,7 +236,7 @@ function streamium_get_dynamic_content() {
 		    	$link = admin_url('admin-ajax.php?action=streamium_likes&post_id='. $postId .'&nonce='.$nonce);
 
 		        $like_text = '<div class="synopis-premium-meta hidden-xs">
-		        				<a id="like-count-' . $postId . '" class="streamium-review-like-btn streamium-btns streamium-reviews-btns" data-toggle="tooltip" title="' .  __( 'CLICK TO LIKE!', 'streamium' ) . '" data-id="' . $postId . '" data-nonce="' . $nonce . '">' . get_streamium_likes($postId) . '</a>
+		        				<a id="like-count-' . $postId . '" class="streamium-review-like-btn streamium-btns streamium-reviews-btns" data-toggle="tooltip" title="' .  __( 'CLICK TO REVIEW!', 'streamium' ) . '" data-id="' . $postId . '" data-nonce="' . $nonce . '">' . get_streamium_likes($postId) . '</a>
 		        				<a class="streamium-list-reviews streamium-btns streamium-reviews-btns" data-id="' . $postId . '" data-nonce="' . $nonce . '">' .  __( 'Read reviews', 'streamium' ) . '</a>
 							</div>';
 
