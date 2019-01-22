@@ -97,7 +97,7 @@
 					        	<a class="streamium-unmute hidden-xs" href="#" data-pid="streamium-featured-background-<?php echo get_the_ID(); ?>"><i class="fa fa-volume-off" aria-hidden="true"></i></a>
 
 					        	<?php if ( !empty( $streamiumVideoTrailer ) ) : ?>
-						        	<a class="synopis-video-trailer synopis-video-trailer-content hidden-xs" href="#" data-code="<?php echo $streamiumVideoTrailer; ?>"><?php echo $streamiumVideoTrailerBtnText; ?></a>
+						        	<a class="synopis-video-trailer synopis-video-trailer-content streamium-tile-btns hidden-xs" href="#" data-code="<?php echo $streamiumVideoTrailer; ?>"><?php echo $streamiumVideoTrailerBtnText; ?></a>
 						        <?php endif; ?>
 
 							</div>
