@@ -51,14 +51,14 @@ h4.series-watched-episode-title {
     text-align: center;
     vertical-align: middle;
     position: absolute;
-    margin-left: -2.5vw;
-    width: 5vw;
-    height: 5vw;
-    background-color: rgb(51,51,51);
-    line-height: 5vw;
+    margin-left: -2vw;
+    width: 4vw;
+    height: 4vw;
+    background-color: #333;
+    line-height: 4vw;
     color: #fff;
     cursor: pointer;
-    font-size: 2.5vw;
+    font-size: 2vw;
     display: block;
     margin-top: -3vw;
     z-index: 999;
@@ -92,7 +92,7 @@ h4.series-watched-episode-title {
 }
 
 .series-watched .tile_inner .play-icon-wrap-rel-play i.fa-play {
-    margin-left: 8px;
+    margin-left: 6px;
 }
 
 .series-watched .tile_inner h4 {
