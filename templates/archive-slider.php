@@ -79,6 +79,7 @@
 							</div>
 						</div>
 						<div class="col-sm-7 col-xs-7 rel">
+							
 							<a class="play-icon-wrap" href="<?php the_permalink(); ?>">
 								<div class="play-icon-wrap-rel">
 									<div class="play-icon-wrap-rel-ring"></div>
@@ -87,9 +88,11 @@
 						        	</span>
 					        	</div>
 				        	</a>
-				        	<?php if ( ! empty( $streamiumVideoTrailer ) && get_theme_mod( 'streamium_enable_premium' ) ) : ?>
-					        	<a class="synopis-video-trailer synopis-video-trailer-content hidden-xs" href="#" data-code="<?php echo $streamiumVideoTrailer; ?>"><?php echo $streamiumVideoTrailerBtnText; ?></a>
+				        	
+				        	<?php if ( !empty( $streamiumVideoTrailer ) ) : ?>
+					        	<a class="synopis-video-trailer synopis-video-trailer-content streamium-tile-btns hidden-xs" href="#" data-code="<?php echo $streamiumVideoTrailer; ?>"><?php echo $streamiumVideoTrailerBtnText; ?></a>
 					        <?php endif; ?>
+
 						</div>
 					</div>
 				</div>
