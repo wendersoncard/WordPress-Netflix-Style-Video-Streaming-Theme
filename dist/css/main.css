@@ -400,7 +400,7 @@ a, a:focus, a:hover {
     font-style: normal;
     font-weight: 900;
     line-height: normal;
-    margin: 0 0 .4em;
+    margin: 0;
 }
 
 .video-header h3 i {
@@ -417,7 +417,7 @@ a, a:focus, a:hover {
     text-align: right;
     line-height: normal;
     position: absolute;
-    bottom: 5px;
+    bottom: 0px;
     right: 0px;
 }
 
