@@ -226,13 +226,9 @@ jQuery( document ).ready(function( $ ) {
                 var ext = item.ext;
                 var type = item.type;
 
-                if(ext === "m3u8"){
-                    html += '<option id="' + code + '"  value="' + code + '">' + baseName(key) + ' ' + code + '</option>';  
-                }
-                if(ext === "mp4" || ext === "m4v" || ext === "mp3"){
-                    html += '<option id="' + code + '"  value="' + code + '">' + baseName(key) + ' ' + code + '</option>';  
-                }
-                
+                // RETURN ALL CODES::
+                html += '<option id="' + code + '"  value="' + code + '">' + baseName(key) + ' ' + code + '</option>'; 
+                 
             });
             html += '';
             $('.streamium-theme-main-video-select-group').append(html);
