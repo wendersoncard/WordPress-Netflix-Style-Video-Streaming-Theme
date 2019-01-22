@@ -143,25 +143,18 @@ function streamium_meta_box_trailer(){
     // We'll use this nonce field later on when saving.
     wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
     ?>
-    <?php if(get_theme_mod( 'streamium_enable_premium' )) : ?>
+    
+    <p class="streamium-meta-box-wrapper">
+        <select class="streamium-theme-video-trailer-select-group chosen-select" tabindex="1" name="streamium_video_trailer_meta_box_text" id="streamium_video_trailer_meta_box_text">
+            <option value="<?php echo $text; ?>"><?php echo (empty($text)) ? 'Select Video Trailer' : $text; ?></option>
+            <option value="">Remove Current Video</option>
+        </select>
+    </p>
 
-        <p class="streamium-meta-box-wrapper">
-            <select class="streamium-theme-video-trailer-select-group chosen-select" tabindex="1" name="streamium_video_trailer_meta_box_text" id="streamium_video_trailer_meta_box_text">
-                <option value="<?php echo $text; ?>"><?php echo (empty($text)) ? 'Select Video Trailer' : $text; ?></option>
-                <option value="">Remove Current Video</option>
-            </select>
-        </p>
-
-        <p class="streamium-meta-box-wrapper">
-            <label>Change Button Text</label>
-            <input type="text" name="s3bubble_video_trailer_button_text_meta_box_text" class="widefat" id="s3bubble_video_trailer_button_text_meta_box_text" value="<?php echo $button; ?>" placeholder="Enter button text" />
-        </p>
-
-    <?php else : ?>
-          
-            <div class='streamium-current-url-info'>This is only available with the Premium package. <a href="https://s3bubble.com/pricing/" target="_blank">Upgrade</a></div>
-          
-    <?php endif; ?>
+    <p class="streamium-meta-box-wrapper">
+        <label>Change Button Text</label>
+        <input type="text" name="s3bubble_video_trailer_button_text_meta_box_text" class="widefat" id="s3bubble_video_trailer_button_text_meta_box_text" value="<?php echo $button; ?>" placeholder="Enter button text" />
+    </p>
 
     <?php    
 
@@ -182,20 +175,13 @@ function streamium_meta_box_bgvideo(){
     wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
     ?>
     <p class="streamium-meta-box-wrapper">
-        <?php if(get_theme_mod( 'streamium_enable_premium' )) : ?>
+        
+        <select class="streamium-theme-featured-video-select-group chosen-select" tabindex="1" name="streamium_featured_video_meta_box_text" id="streamium_featured_video_meta_box_text">
+            <option value="<?php echo $text; ?>">Select Background Video</option>
+            <option value="">Remove Current Video</option>
+        </select>
 
-            <select class="streamium-theme-featured-video-select-group chosen-select" tabindex="1" name="streamium_featured_video_meta_box_text" id="streamium_featured_video_meta_box_text">
-                <option value="<?php echo $text; ?>">Select Background Video</option>
-                <option value="">Remove Current Video</option>
-            </select>
-
-            <?php echo !empty($text) ? "<div class='streamium-current-url'>Premium video code: " . $text . "</div>" : "<div class='streamium-current-url-info'>This will display a background video on the homepage slider.</div>"; ?>
-          
-        <?php else : ?>
-          
-          <div class='streamium-current-url-info'>This is only available with the Premium package. <a href="https://s3bubble.com/pricing/" target="_blank">Upgrade</a></div>
-          
-        <?php endif; ?>
+        <?php echo !empty($text) ? "" : "<div class='streamium-current-url-info'>This will display a background video on the homepage slider.</div>"; ?>
 
     </p>
 
