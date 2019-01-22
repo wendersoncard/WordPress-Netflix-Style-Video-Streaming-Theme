@@ -123,20 +123,23 @@ function streamium_user_content_uploader_email(){
     }
 
     $s3bubble_uploader_email = get_theme_mod( 'streamium_aws_media_uploader_notification_email' );
-    $s3bubble_subject = get_bloginfo() . ' ' . date('m/d/y H:i:s', time()) . ' new upload';
-    $bucket  = empty($_POST['bucket']) ? 'no bucket' : $_POST['bucket'];
-    $folder  = empty($_POST['folder']) ? 'no folder' : $_POST['folder'];
+    $s3bubble_subject        = 'New Upload ' . date('m/d/y H:i:s', time());
+    $bucket                  = empty($_POST['bucket']) ? 'no bucket' : $_POST['bucket'];
+    $folder                  = empty($_POST['folder']) ? 'no folder' : $_POST['folder'];
 
     // send attached mysql to user
+    $headers = array(
+    	'Content-Type: text/html; charset=UTF-8',
+	  	'From: Streamium Theme ' . "\r\n"
+	);
 	$headers = "From: support@s3bubble.com\r\n";
 	$headers .= "Reply-To: support@s3bubble.com\r\n";
 	wp_mail($s3bubble_uploader_email, $s3bubble_subject, 'S3Bubble new upload to bucket ' . $bucket . ' and folder ' . $folder, $headers);
-	echo json_encode(array(
-		'error' => false,
-		'message' => 'Notification email sent'
-	));
 
-	wp_die();	
+	wp_send_json(array(
+        'error' => false,
+    	'message' => __( 'Notification email sent', 'streamium' ) 
+    ));
 	
 }
 
