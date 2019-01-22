@@ -143,7 +143,7 @@ function streamium_meta_box_trailer(){
     // We'll use this nonce field later on when saving.
     wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
     ?>
-    
+
     <p class="streamium-meta-box-wrapper">
         <select class="streamium-theme-video-trailer-select-group chosen-select" tabindex="1" name="streamium_video_trailer_meta_box_text" id="streamium_video_trailer_meta_box_text">
             <option value="<?php echo $text; ?>"><?php echo (empty($text)) ? 'Select Video Trailer' : $text; ?></option>
@@ -177,11 +177,9 @@ function streamium_meta_box_bgvideo(){
     <p class="streamium-meta-box-wrapper">
         
         <select class="streamium-theme-featured-video-select-group chosen-select" tabindex="1" name="streamium_featured_video_meta_box_text" id="streamium_featured_video_meta_box_text">
-            <option value="<?php echo $text; ?>">Select Background Video</option>
+            <option value="<?php echo $text; ?>"><?php echo (empty($text)) ? 'Select Background Video' : $text; ?></option>
             <option value="">Remove Current Video</option>
         </select>
-
-        <?php echo !empty($text) ? "" : "<div class='streamium-current-url-info'>This will display a background video on the homepage slider.</div>"; ?>
 
     </p>
 
