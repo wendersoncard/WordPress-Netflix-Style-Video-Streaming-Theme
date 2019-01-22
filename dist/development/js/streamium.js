@@ -6986,6 +6986,13 @@ jQuery(document).ready(function($) {
 		            	$('#streamium-uploader span.streamium-uploader-label').html('Uploaded');
 					    $('.streamium-uploader-standby').html('Files successfully uploaded');
 
+					    console.log({
+			                    action: 'streamium_user_content_uploader_email',
+								bucket: streamium_uploader.bucket,
+								folder: streamium_uploader.folder,
+								security: streamium_uploader.nonce
+			                });
+					    
 					    $.ajax({
 			                url: streamium_object.ajax_url,
 			                type: 'post',
