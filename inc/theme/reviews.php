@@ -181,8 +181,6 @@ function streamium_get_reviews() {
 
     		$buildGetReviews = [];
 
-    		error_log(count($comments));
-
     		$totalComments = count($comments);
     		$tallyComments = 0;
     		foreach($comments as $comment) : 
@@ -199,8 +197,6 @@ function streamium_get_reviews() {
 		    		'time'     => $comment->comment_date
 		    	));
 			endforeach;
-
-			error_log((($totalComments*5)/$tallyComments));
 
 			wp_send_json(array(
 	            'error'       => false,

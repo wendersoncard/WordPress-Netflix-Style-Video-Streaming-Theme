@@ -332,24 +332,6 @@ function streamium_get_more_content() {
              
             }; // end if MultiPostThumbnails 
 
-            //  STARING::
-			$posttags = get_the_tags($postId);
-			$staring  = '';
-			if ($posttags) {
-				$staring = __( 'Cast', 'streamium' ) . ": ";
-				$numItems = count($posttags);
-				$i = 0;
-			  	foreach($posttags as $tag) {
-
-				  	$staring .= '<a href="' . esc_url(get_tag_link ($tag->term_id)) . '">' . ucwords($tag->name) . '</a>';
-				  	if(++$i !== $numItems) {
-			    		$staring .= ', ';
-			  		}
-
-			    }
-			    $staring = '<li class="synopis-meta-spacer">' . $staring . '</li>';
-			}
-
 			// GENRES::
 			$query      = get_post_taxonomies($postId);
 			$tax        = isset($query[1]) ? $query[1] : "";
@@ -387,7 +369,7 @@ function streamium_get_more_content() {
 			}
 
 			// BIND EXTRA META::
-			$extra_meta = '<ul class="hidden-xs">' . $staring . $genres . $released . $rating . '</ul>';
+			$extra_meta = '<ul class="hidden-xs">' . $genres . $released . $rating . '</ul>';
 
 	    	echo json_encode(
 		    	array(
