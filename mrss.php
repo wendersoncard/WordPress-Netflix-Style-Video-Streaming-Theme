@@ -108,7 +108,7 @@
                 if (MultiPostThumbnails::has_post_thumbnail( get_post_type( get_the_ID() ), 'roku-thumbnail-image', get_the_ID())) { 
 
                     $thumbnail_id = MultiPostThumbnails::get_post_thumbnail_id( get_post_type( get_the_ID() ), 'roku-thumbnail-image', get_the_ID() );  
-                    $thumbnail = wp_get_attachment_image_url( $thumbnail_id,'streamium-roku-thumbnail' ); 
+                    $thumbnail = wp_get_attachment_image_url( $thumbnail_id, 'streamium-roku-thumbnail' ); 
 
                 }                             
              
@@ -196,13 +196,14 @@
 	
 			}else{
 
-				$captions = [
+				$captions = [];
+				/*$captions = [
 					[
 						"url" => "https =>//example.org/cdn/subtitles/1509428502952/sub-fr.srt",
   						"Language" => "fr",
   						"captionType" => "CLOSED_CAPTION"
 					]
-				];
+				];*/
 
 				// Not a series
 				$data = [
