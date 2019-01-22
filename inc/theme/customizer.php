@@ -70,6 +70,69 @@ class Streamium_Customize
         );
         // API SECTION <=
 
+        // JOIN PAGE SECTION =>
+        $wp_customize->add_section(
+            'streamium_join_page_section', 
+            array(
+                'title'     => __('Join Page Options', 'streamium'),
+                'description' => 'Here you can set some options for the join page',
+                'priority'  => 1000
+            )
+        );
+
+        $wp_customize->add_setting(
+            'streamium_enable_splash_join_redirect', 
+            array(
+                'default'    => false
+            )
+        );
+
+        $wp_customize->add_control(
+            new WP_Customize_Control(
+                $wp_customize,
+                'streamium_enable_splash_join_redirect',
+                array(
+                    'label'     => __('Enable Join Page Redirect', 'streamium'),
+                    'section'   => 'streamium_join_page_section',
+                    'settings'  => 'streamium_enable_splash_join_redirect',
+                    'type'      => 'checkbox',
+                )
+            )
+        );
+
+        $wp_customize->add_setting(
+            'streamium_join_page_section_shop_url'
+        );
+
+        $wp_customize->add_control(
+            new WP_Customize_Control(
+                $wp_customize, 
+                'streamium_join_page_section_shop_url',
+                array(
+                    'label' => 'Plans Page Url',
+                    'section' => 'streamium_join_page_section',
+                    'settings' => 'streamium_join_page_section_shop_url'
+                )
+            )
+        );
+
+        $wp_customize->add_setting(
+            'streamium_join_page_section_profile_url'
+        );
+
+        $wp_customize->add_control(
+            new WP_Customize_Control(
+                $wp_customize, 
+                'streamium_join_page_section_profile_url',
+                array(
+                    'label' => 'Sign In Page Url',
+                    'section' => 'streamium_join_page_section',
+                    'settings' => 'streamium_join_page_section_profile_url'
+                )
+            )
+        );
+        // JOIN PAGE SECTION <=
+
         // STREAMIUM STYLES SECTION: => 
         $wp_customize->add_section(
             'streamium_styles', 
@@ -316,26 +379,6 @@ class Streamium_Customize
                 ),
             )
         );*/
-
-        $wp_customize->add_setting(
-            'streamium_enable_splash_join_redirect', 
-            array(
-                'default'    => false
-            )
-        );
-
-        $wp_customize->add_control(
-            new WP_Customize_Control(
-                $wp_customize,
-                'streamium_enable_splash_join_redirect',
-                array(
-                    'label'     => __('Enable Join Page Redirect', 'streamium'),
-                    'section'   => 'title_tagline',
-                    'settings'  => 'streamium_enable_splash_join_redirect',
-                    'type'      => 'checkbox',
-                )
-            )
-        );
 
         $wp_customize->add_setting(
             'streamium_enable_loader', 

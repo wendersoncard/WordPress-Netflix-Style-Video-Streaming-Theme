@@ -10,8 +10,18 @@
     while ( have_posts() ) : the_post();
 
 		$image       = wp_get_attachment_image_url( get_post_thumbnail_id(), 'content_tile_full_width_landscape' );
-		$shopPage    = get_permalink( woocommerce_get_page_id( 'shop' ) );
-		$accountPage = get_permalink( woocommerce_get_page_id( 'myaccount' ) );
+		if ( class_exists( 'WooCommerce' ) ) {
+
+			$shopPage    = get_permalink( woocommerce_get_page_id( 'shop' ) );
+			$accountPage = get_permalink( woocommerce_get_page_id( 'myaccount' ) );
+
+		}else{
+
+			$shopPage    = get_theme_mod( 'streamium_join_page_section_shop_url' );
+			$accountPage = get_theme_mod( 'streamium_join_page_section_profile_url' );
+
+		}
+		
 
 ?>
 	
