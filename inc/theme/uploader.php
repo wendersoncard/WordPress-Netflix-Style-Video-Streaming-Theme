@@ -122,6 +122,8 @@ function streamium_user_content_uploader_email(){
         exit( "No naughty business please" );
     }
 
+    global $phpmailer;
+
     $s3bubble_uploader_email = get_theme_mod( 'streamium_aws_media_uploader_notification_email' );
     $s3bubble_subject        = 'New Upload ' . date('m/d/y H:i:s', time());
     $bucket                  = empty($_POST['bucket']) ? 'no bucket' : $_POST['bucket'];
@@ -137,7 +139,8 @@ function streamium_user_content_uploader_email(){
 	wp_mail($s3bubble_uploader_email, $s3bubble_subject, 'S3Bubble new upload to bucket ' . $bucket . ' and folder ' . $folder, $headers);
 
 	wp_send_json(array(
-        'error' => false,
+        'error'   => false,
+        'to'      => $s3bubble_uploader_email,
     	'message' => __( 'Notification email sent', 'streamium' ) 
     ));
 	
