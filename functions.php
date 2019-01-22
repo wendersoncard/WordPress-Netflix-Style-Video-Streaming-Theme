@@ -16,7 +16,7 @@ add_filter('show_admin_bar', '__return_false');
  */
 if ( ! function_exists ( 's3bubble_cache_version' ) ) {
     function s3bubble_cache_version() {
-        return 24;
+        return 25;
     }
 }
 
@@ -135,12 +135,6 @@ if (!function_exists('streamium_enqueue_scripts')) {
         /* Register styles -----------------------------------------------------*/
         wp_enqueue_style('streamium-styles', get_stylesheet_uri());
         wp_enqueue_style('streamium-production', get_template_directory_uri() . '/production/css/streamium.min.css', array(), s3bubble_cache_version());
-        
-        // Remove custom payment overlay 
-        if(get_theme_mod( 'streamium_remove_payment_overlay', false )){
-            $custom_css = ".tile_payment_details{display: none !important;}";
-            wp_add_inline_style( 'streamium-styles', $custom_css );
-        }
 
         /* Register scripts -----------------------------------------------------*/
         wp_enqueue_script('plupload');
