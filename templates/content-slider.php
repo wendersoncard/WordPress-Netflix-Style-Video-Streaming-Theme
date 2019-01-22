@@ -40,9 +40,6 @@
 		        
 		        // Watch preview
 	            $streamiumVideoTrailer = get_post_meta( get_the_ID(), 'streamium_video_trailer_meta_box_text', true );
-	            if(get_post_meta( get_the_ID(), 's3bubble_video_trailer_youtube_code_meta_box_text', true )){
-	            	 $streamiumVideoTrailer = get_post_meta( get_the_ID(), 's3bubble_video_trailer_youtube_code_meta_box_text', true );
-	            }
 
 	            // Trailer button text
 	            $streamiumVideoTrailerBtnText = __( 'Watch Trailer', 'streamium' );
