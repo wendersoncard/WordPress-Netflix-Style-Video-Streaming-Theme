@@ -351,7 +351,7 @@ function Streamium() {
                                 '</span>' +
                             '</div>' +
                         '</a>' +
-                        '<a href="#" class="synopis-video-trailer streamium-btns hidden-xs">Watch Trailer</a>' +
+                        '<a href="#" class="synopis-video-trailer streamium-tile-btns hidden-xs">Watch Trailer</a>' +
                         '<a href="#" class="s3bubble-details-inner-close" data-cat="' + type + '"><i class="fa fa-times" aria-hidden="true"></i></a>' +
                         '</div>' +
                     '</div>' +

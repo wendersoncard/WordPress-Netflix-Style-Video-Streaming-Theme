@@ -213,8 +213,6 @@ function streamium_get_dynamic_content() {
 	        				<a id="like-count-' . $postId . '" class="streamium-review-like-btn streamium-tile-btns" data-toggle="tooltip" title="' .  __( 'CLICK TO REVIEW!', 'streamium' ) . '" data-id="' . $postId . '" data-nonce="' . $nonce . '">' . get_streamium_likes($postId) . '</a>
 	        				<a class="streamium-list-reviews streamium-tile-btns" data-id="' . $postId . '" data-nonce="' . $nonce . '">' .  __( 'Read reviews', 'streamium' ) . '</a>
 						</div>';
- 
-	    	$streamiumVideoTrailer = get_post_meta( $postId, 'streamium_video_trailer_meta_box_text', true );
 
 	    	$fullImage  = wp_get_attachment_image_url( get_post_thumbnail_id( $postId ), 'streamium-video-tile-large-expanded' );
 	    	// Allow a extra image to be added
@@ -234,10 +232,6 @@ function streamium_get_dynamic_content() {
 
             // Watch preview
             $streamiumVideoTrailer = get_post_meta( $postId, 'streamium_video_trailer_meta_box_text', true );
-            if(get_post_meta( $postId, 's3bubble_video_trailer_youtube_code_meta_box_text', true )){
-            	 $streamiumVideoTrailer = get_post_meta( $postId, 's3bubble_video_trailer_youtube_code_meta_box_text', true );
-            }
-
 
             // Trailer button text
             $streamiumVideoTrailerBtnText = __( 'Watch Trailer', 'streamium' );
