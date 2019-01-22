@@ -6526,7 +6526,7 @@ jQuery(document).ready(function($) {
                     var date     = item.time;
                     var username = item.username;
 
-                    var ratingHtml = '<div class="streamium-reviews-static">';
+                    var ratingHtml = '<div class="streamium-reviews-static pull-right">';
                     for (var i = 1; i < 6; i++) {  
                         ratingHtml += '<span class="streamium-reviews-star-static ' + ((rating >= i) ? 'checked' : '') + '" data-value="' + i + '"></span>';
                     }
@@ -6539,7 +6539,7 @@ jQuery(document).ready(function($) {
                           '</a>' + 
                         '</div>' + 
                         '<div class="media-body">' + 
-                          '<h4 class="media-heading">' + ratingHtml + '</h4>' + 
+                          '<h4 class="media-heading">' + username + ' ' + ratingHtml + '</h4>' + 
                           '<p>' + message + '</p>' + 
                         '</div>' + 
                     '</li>';
