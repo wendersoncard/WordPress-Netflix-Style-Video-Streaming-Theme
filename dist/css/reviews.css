@@ -1,25 +1,3 @@
-.streamium-reviews-btns {
-   background-color: rgba(51, 51, 51, 0.4);
-    padding: 10px 20px;
-    text-transform: uppercase;
-    display: inline-block;
-    font-size: 1vw;
-    margin-right: 8px;
-    font-weight: 700;
-    text-transform: uppercase;
-    vertical-align: middle;
-    white-space: nowrap;
-    border-radius: 5px;
-}
-
-.streamium-reviews-btns:hover,
-.streamium-reviews-btns:focus {
-  cursor: pointer;
-  text-decoration: none;
-  background-color: rgba(255, 255, 255, 0.4);
-  color: #fff;   
-}
-
 .streamium-review-panel {
     z-index: 999;
   position: fixed;

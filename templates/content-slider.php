@@ -75,9 +75,9 @@
 											</div>
 											
 											<div class="synopis-premium-meta streamium-reviews-content-btns hidden-xs">
-												<a id="like-count-<?php echo get_the_ID(); ?>" class="streamium-review-like-btn streamium-reviews-btns" data-toggle="tooltip" title="<?php _e( 'CLICK TO REVIEW!', 'streamium' ); ?>" data-id="<?php echo get_the_ID(); ?>" data-nonce="<?php echo $nonce; ?>">	<?php echo get_streamium_likes(get_the_ID()); ?>
+												<a id="like-count-<?php echo get_the_ID(); ?>" class="streamium-review-like-btn streamium-tile-btns" data-toggle="tooltip" title="<?php _e( 'CLICK TO REVIEW!', 'streamium' ); ?>" data-id="<?php echo get_the_ID(); ?>" data-nonce="<?php echo $nonce; ?>">	<?php echo get_streamium_likes(get_the_ID()); ?>
 												</a>
-							                    <a class="streamium-list-reviews streamium-reviews-btns" data-id="<?php echo get_the_ID(); ?>" data-nonce="<?php echo $nonce; ?>"><?php _e( 'Read reviews', 'streamium' ); ?></a>
+							                    <a class="streamium-list-reviews streamium-tile-btns" data-id="<?php echo get_the_ID(); ?>" data-nonce="<?php echo $nonce; ?>"><?php _e( 'Read reviews', 'streamium' ); ?></a>
 											</div>
 											
 										</div>
@@ -128,9 +128,9 @@
 											</div>
 											
 											<div class="synopis-premium-meta streamium-reviews-content-btns hidden-xs">
-												<a id="like-count-<?php echo get_the_ID(); ?>" class="streamium-review-like-btn streamium-reviews-btns" data-toggle="tooltip" title="<?php _e( 'CLICK TO REVIEW!', 'streamium' ); ?>" data-id="<?php echo get_the_ID(); ?>" data-nonce="<?php echo $nonce; ?>">	<?php echo get_streamium_likes(get_the_ID()); ?>
+												<a id="like-count-<?php echo get_the_ID(); ?>" class="streamium-review-like-btn streamium-tile-btns" data-toggle="tooltip" title="<?php _e( 'CLICK TO REVIEW!', 'streamium' ); ?>" data-id="<?php echo get_the_ID(); ?>" data-nonce="<?php echo $nonce; ?>">	<?php echo get_streamium_likes(get_the_ID()); ?>
 												</a>
-							                    <a class="streamium-list-reviews streamium-reviews-btns" data-id="<?php echo get_the_ID(); ?>" data-nonce="<?php echo $nonce; ?>"><?php _e( 'Read reviews', 'streamium' ); ?></a>
+							                    <a class="streamium-list-reviews streamium-tile-btns" data-id="<?php echo get_the_ID(); ?>" data-nonce="<?php echo $nonce; ?>"><?php _e( 'Read reviews', 'streamium' ); ?></a>
 											</div>
 
 										</div>
@@ -147,7 +147,7 @@
 						        	</div>
 					        	</a>
 					        	<?php if ( ! empty( $streamiumVideoTrailer ) && get_theme_mod( 'streamium_enable_premium' ) ) : ?>
-						        	<a class="synopis-video-trailer synopis-video-trailer-content hidden-xs" href="#" data-code="<?php echo $streamiumVideoTrailer; ?>"><?php echo $streamiumVideoTrailerBtnText; ?></a>
+						        	<a class="synopis-video-trailer synopis-video-trailer-content streamium-tile-btns hidden-xs" href="#" data-code="<?php echo $streamiumVideoTrailer; ?>"><?php echo $streamiumVideoTrailerBtnText; ?></a>
 						        <?php endif; ?>
 							</div>
 						</div>
