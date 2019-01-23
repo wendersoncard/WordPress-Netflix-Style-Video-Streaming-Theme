@@ -37,13 +37,14 @@ To install the theme via github navigate into your theme folder and run
 cd wp-content/themes/
 
 ```
+```
 git clone https://github.com/s3bubble/WordPress-Netflix-Style-Video-Streaming-Theme.git
 ```
 
 You can then simply run 
 ```
 git pull
-```
+``` 
 
 to update
 
