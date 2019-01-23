@@ -1145,8 +1145,13 @@ jQuery(document).ready(function($) {
         ).done(function( recent, custom ) {
 
             if(recent[0].error || custom[0].error){
+                
                 console.log('ERROR: ', recent[0].message + ',' + custom[0].message);
+                // Preloader
+            	$('.loader-wrap').fadeOut();
+            	$('.loader-mask').delay(250).fadeOut('slow');
                 return;
+
             }
 
             streamium.recentTemplate(recent[0], function() {
@@ -1260,8 +1265,13 @@ jQuery(document).ready(function($) {
         }, function(response) {
 
             if (response.error) {
+                
                 console.log("Error: ", response.message);
+                // Preloader
+            	$('.loader-wrap').fadeOut();
+            	$('.loader-mask').delay(250).fadeOut('slow');
                 return;
+
             }
 
             response.id = "tax-watched";
@@ -1291,8 +1301,13 @@ jQuery(document).ready(function($) {
             }, function(response) {
 
                 if (response.error) {
+                    
                     console.log("Error: ", response.message);
+                    // Preloader
+                	$('.loader-wrap').fadeOut();
+                	$('.loader-mask').delay(250).fadeOut('slow');
                     return;
+
                 }
                 response.id = "tax-watched";
                 streamium.staticTemplate(response, function() {
@@ -1323,9 +1338,14 @@ jQuery(document).ready(function($) {
         }, function(response) {
 
             if (response.error) {
+
                 console.log("Error: ", response.message);
+                // Preloader
+                $('.loader-wrap').fadeOut();
+                $('.loader-mask').delay(250).fadeOut('slow');
                 $("#search-watched").html('<div class="container-fluid"><div class="row"><div class="col-sm-12"><p>Error: ' + response.message + '...</p></div></div></div>');
                 return;
+
             }
 
             response.id = "search-watched";
@@ -1358,9 +1378,14 @@ jQuery(document).ready(function($) {
             }, function(response) {
 
                 if (response.error) {
+
                     console.log("Error: ", response.message);
+                    // Preloader
+	                $('.loader-wrap').fadeOut();
+	                $('.loader-mask').delay(250).fadeOut('slow');
                     $("#search-watched").html('<div class="container-fluid"><div class="row"><div class="col-sm-12"><p>Error: ' + response.message + '...</p></div></div></div>');
                     return;
+
                 }
 
                 response.id = "search-watched";
@@ -1370,6 +1395,7 @@ jQuery(document).ready(function($) {
                     var setMargin = Math.round($('.tile').height() / 2);
                     $('.static-row').css('margin-top', setMargin + 'px');
                     $('.lazy').Lazy(streamium.lazy);
+                    
                     // Preloader
 	                $('.loader-wrap').fadeOut();
 	                $('.loader-mask').delay(250).fadeOut('slow');
