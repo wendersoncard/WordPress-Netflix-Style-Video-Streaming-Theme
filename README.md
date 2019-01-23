@@ -30,7 +30,9 @@ S3bubble connects these three powerful tools together with a 'pay as you go' pri
 
 ## Installation & Setup
 
-New 2019 tutorial coming soon...
+New 2019 video tutorials
+[Watch the series](https://www.youtube.com/playlist?list=PLC2Z78VyD-JDHG_Ko8E7wjtSNQpPy1uAM)
+
 
 To install the theme via github navigate into your theme folder and run
 ```
