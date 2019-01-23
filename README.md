@@ -32,6 +32,21 @@ S3bubble connects these three powerful tools together with a 'pay as you go' pri
 
 New 2019 tutorial coming soon...
 
+To install the theme via github navigate into your theme folder and run
+```
+cd wp-content/themes/
+
+```
+git clone https://github.com/s3bubble/WordPress-Netflix-Style-Video-Streaming-Theme.git
+```
+
+You can then simply run 
+```
+git pull
+```
+
+to update
+
 ## Developers Wanted
 
 To run the developer environment
