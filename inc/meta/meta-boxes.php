@@ -197,17 +197,15 @@ function streamium_repeatable_meta_box_display() {
 
     global $post;
     $repeatable_fields = get_post_meta($post->ID, 'repeatable_fields', true);
-    wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
+    wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' ); 
 
-    if(get_theme_mod( 'streamium_enable_premium' )) :
+    ?>
     
-    ?> 
-    
-        <ul id="repeatable-fieldset-one" width="100%">
+    <ul id="repeatable-fieldset-one" width="100%">
     
     <?php
 
-        if ( $repeatable_fields ) :
+        if ( $repeatable_fields ) {
 
         foreach ( streamGroupSeasons($repeatable_fields,'seasons') as $seasons ) {
 
@@ -318,18 +316,21 @@ function streamium_repeatable_meta_box_display() {
 
             </div>
         </li>
-    <?php } } endif; ?>
+    <?php 
+        
+            } 
+        } 
+
+    }
+
+    ?>
     
     </ul> 
     <div class="streamium-repeater-footer">
         <a id="streamium-add-repeater-row" class="button add-program-row button-primary" href="#">Add Series Video</a>
     </div>
 
-    <?php else : ?>
-          
-        <div class='streamium-current-url-info'>This is only available with the Premium package. <a href="https://s3bubble.com/pricing/" target="_blank">Upgrade</a></div>
-          
-    <?php endif; 
+    <?php
 
 }
 
@@ -473,54 +474,36 @@ function streamium_post_meta_box_save( $post_id )
     }
 
     // Save the trailer or preview
-    if(get_theme_mod( 'streamium_enable_premium' )){ 
-    
-        if( isset( $_POST['streamium_video_trailer_meta_box_text'] ) ){
+    if( isset( $_POST['streamium_video_trailer_meta_box_text'] ) ){
 
-            update_post_meta( $post_id, 'streamium_video_trailer_meta_box_text', $_POST['streamium_video_trailer_meta_box_text'] );
+        update_post_meta( $post_id, 'streamium_video_trailer_meta_box_text', $_POST['streamium_video_trailer_meta_box_text'] );
 
-        }
+    }
 
-        if( isset( $_POST['s3bubble_video_trailer_youtube_code_meta_box_text'] ) ){
+    if( isset( $_POST['s3bubble_video_trailer_youtube_code_meta_box_text'] ) ){
 
-            update_post_meta( $post_id, 's3bubble_video_trailer_youtube_code_meta_box_text', $_POST['s3bubble_video_trailer_youtube_code_meta_box_text'] );
+        update_post_meta( $post_id, 's3bubble_video_trailer_youtube_code_meta_box_text', $_POST['s3bubble_video_trailer_youtube_code_meta_box_text'] );
 
-        }
+    }
 
-        if( isset( $_POST['s3bubble_video_trailer_button_text_meta_box_text'] ) ){
+    if( isset( $_POST['s3bubble_video_trailer_button_text_meta_box_text'] ) ){
 
-            update_post_meta( $post_id, 's3bubble_video_trailer_button_text_meta_box_text', $_POST['s3bubble_video_trailer_button_text_meta_box_text'] );
-
-        }
+        update_post_meta( $post_id, 's3bubble_video_trailer_button_text_meta_box_text', $_POST['s3bubble_video_trailer_button_text_meta_box_text'] );
 
     }    
 
     // Save the featured video
     if( isset( $_POST['streamium_featured_video_meta_box_text'] ) ){
 
-      if(get_theme_mod( 'streamium_enable_premium' )){ 
-        
-        update_post_meta( $post_id, 'streamium_featured_video_meta_box_text', $_POST['streamium_featured_video_meta_box_text'] );
+        update_post_meta( $post_id, 'streamium_featured_video_meta_box_text', $_POST['    streamium_featured_video_meta_box_text'] );
 
-      }else{
-        
-        update_post_meta( $post_id, 'streamium_featured_video_meta_box_text', $_POST['streamium_featured_video_meta_box_text'] );
-
-      }
     }
 
     // Save the featured video
     if( isset( $_POST['streamium_live_stream_meta_box_text'] ) ){
 
-      if(get_theme_mod( 'streamium_enable_premium' )){ 
-        
         update_post_meta( $post_id, 'streamium_live_stream_meta_box_text', $_POST['streamium_live_stream_meta_box_text'] );
-
-      }else{
         
-        update_post_meta( $post_id, 'streamium_live_stream_meta_box_text', $_POST['streamium_live_stream_meta_box_text'] );
-
-      }
     }
 
     // Get the old values

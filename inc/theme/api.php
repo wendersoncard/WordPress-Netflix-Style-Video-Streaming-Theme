@@ -297,9 +297,7 @@ function streamium_api_add_watched_get_field( $object, $field_name, $request ) {
 	}
 
 	$progressBar = false;
-    if(get_theme_mod( 'streamium_enable_premium' )) {
-        $progressBar = (int)get_post_meta( get_the_ID(), 'user_' . get_current_user_id(), true );
-    }
+    $progressBar = (int)get_post_meta( get_the_ID(), 'user_' . get_current_user_id(), true );
 
 	return apply_filters( 'streamium_api_watched', $progressBar, $postId );
 

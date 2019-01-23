@@ -49,7 +49,7 @@
 
 		?>
 
-		<?php if ( ! empty( $streamiumFeaturedVideo ) && (!wp_is_mobile()) && ($sliderPostCount < 1)  && get_theme_mod( 'streamium_enable_premium' ) ) : ?>
+		<?php if ( ! empty( $streamiumFeaturedVideo ) && (!wp_is_mobile()) && ($sliderPostCount < 1)) : ?>
 
 			<div class="streamium-slider-div">
 				
@@ -143,7 +143,7 @@
 							        	</span>
 						        	</div>
 					        	</a>
-					        	<?php if ( ! empty( $streamiumVideoTrailer ) && get_theme_mod( 'streamium_enable_premium' ) ) : ?>
+					        	<?php if ( ! empty( $streamiumVideoTrailer )) : ?>
 						        	<a class="synopis-video-trailer synopis-video-trailer-content streamium-tile-btns hidden-xs" href="#" data-code="<?php echo $streamiumVideoTrailer; ?>"><?php echo $streamiumVideoTrailerBtnText; ?></a>
 						        <?php endif; ?>
 							</div>

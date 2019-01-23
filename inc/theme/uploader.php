@@ -13,10 +13,6 @@ function streamium_user_content_uploader($atts){
 	$accessKeyId = get_theme_mod( 'streamium_aws_media_uploader_access_key' );
 	$secret	     = get_theme_mod( 'streamium_aws_media_uploader_secret_key' );
 	$loginOnly	 = get_theme_mod( 'streamium_aws_media_uploader_login' );
-    
-    if(!get_theme_mod( 'streamium_enable_premium' )) {
-    	return "<span style='color:black;'>ERROR: only available on the premium package please upgrade.</span>";
-    }
 
     if(empty($accessKeyId) || empty($secret)){
 		return "<span style='color:black;'>ERROR: Please add your keys within the Appearance -> Customizer menu.</span>";

@@ -134,77 +134,6 @@ function streamium_check_for_active_plugins() {
 }
 add_action( 'admin_init', 'streamium_check_for_active_plugins' );
 
-
-/*
-* Adds a notice to the admin to install demo data
-* @author sameast
-* @none
-*/
-function streamium_dummy_xml_admin_notice__error() {
-    $class = 'notice notice-info notice-demo-data is-dismissible';
-    $pluginUrl = admin_url( 'plugin-install.php?s=WooCommerce&tab=search&type=term' );
-    $message = __( 'Get setup quickly by installing our demo data', 'streamium' );
-
-    printf( '<div class="%1$s"><p>%2$s <a id="demo-data" href="%3$s">Install demo data</a></p></div>', esc_attr( $class ), esc_html( $message ), admin_url('themes.php?page=streamium_demo_installer'));
-}
-
-if(get_option('notice_demo_data') == 1) {
-  add_action( 'admin_notices', 'streamium_dummy_xml_admin_notice__error' );
-}
-
-/**
- * Adds a notice to the admin if premium is not enabled
- *
- * @return null
- * @author  @sameast
- */
-function premium_admin_notice__error() {
-
-	$class = 'notice notice-info notice-premium is-dismissible';
-	$message = __( 'Upgrade to Premium to unlock some great features. Ratings, Video Resume, Self hosted, Background Videos, Trailers and much more', 'streamium' );
-
-	printf( '<div class="%1$s"><p>%2$s<a href="%3$s">Upgrade Now!</a></p></div>', esc_attr( $class ), esc_html( $message ), esc_url( 'https://s3bubble.com/pricing' ) );
-}
-
-if(!get_theme_mod( 'streamium_enable_premium' ) && get_option('notice_premium') == 1) {
-	add_action( 'admin_notices', 'premium_admin_notice__error' );
-}
-
-/**
- * Dismiss premium notice with ajax
- *
- * @return null
- * @author  @sameast
- */
-if ( ! function_exists ( 'dismiss_premium_notice' ) ) {
-    function dismiss_premium_notice(){
-        update_option('notice_premium', 0);
-        echo json_encode(array('success' => true, 'message' => __('Notice dismissed', 'streamium' )));
-        die();
-    }
-    // Enable the user with no privileges to run dismiss_premium_notice() in AJAX
-    add_action('wp_ajax_ajaxnopremium', 'dismiss_premium_notice');
-    add_action('wp_ajax_nopriv_ajaxnopremium', 'dismiss_premium_notice');
-}
-
-/**
- * Dismiss demo data notice with ajax
- *
- * @return null
- * @author  @sameast
- */
-if ( ! function_exists ( 'dismiss_demo_data_notice' ) ) {
-    function dismiss_demo_data_notice()
-    {
-        update_option('notice_demo_data', 0);
-        echo json_encode(array('success' => true, 'message' => __('Notice dismissed','streamium')));
-        die();
-    }
-    // Enable the user with no privileges to run dismiss_demo_data_notice() in AJAX
-    add_action('wp_ajax_ajaxnodemo', 'dismiss_demo_data_notice');
-    add_action('wp_ajax_nopriv_ajaxnodemo', 'dismiss_demo_data_notice');
-}
-
 /**
  * Fix to flush urls
  *
@@ -217,58 +146,6 @@ if ( ! function_exists ( 'streamium_flush_rewrite_rules' ) ) {
     }
     add_action( 'admin_init', 'streamium_flush_rewrite_rules' );
 }
-
-/**
- * Check for connected website
- *
- * @return null
- * @author  @sameast
- */
-function streamium_connection_checks() {
-
- 	$nonce = $_REQUEST['connected_nonce'];
- 	$state = $_REQUEST['connected_state'];
-	if ( ! wp_verify_nonce( $nonce, 'streamium_connected_nonce' ) ) {
-
-	    die( 'Security check failed' . $nonce );
-
-	}
-
-    if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
-
-    	if($state === "false"){
-
-    		set_theme_mod( "streamium_enable_premium", true );
-    		echo json_encode(
-		    	array(
-		    		'error' => false,
-		    		'message' => 'Premium has been added'
-		    	)
-		    );
-
-    	}else{
-
-    		set_theme_mod( "streamium_enable_premium", false );
-    		echo json_encode(
-		    	array(
-		    		'error' => false,
-		    		'message' => 'Premium has been removed'
-		    	)
-		    );
-    	}
-
-        die();
-
-    }
-    else {
-
-        exit();
-
-    }
-
-}
-
-add_action( 'wp_ajax_streamium_connection_checks', 'streamium_connection_checks' );
 
 /**
  * Is mobile check for theme styling

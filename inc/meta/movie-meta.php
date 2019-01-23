@@ -140,7 +140,7 @@ add_action( 'synopis_multi_meta', 'synopis_multi_meta_rating', 1, 0 );
 
 function synopis_video_progressbar(){
 
-	if(is_user_logged_in() && get_theme_mod( 'streamium_enable_premium' )) {
+	if(is_user_logged_in()) {
 		$userId = get_current_user_id();
     	$percentageWatched = get_post_meta( get_the_ID(), 'user_' . $userId, true );
 		$episodes = get_post_meta(get_the_ID(), 'repeatable_fields' , true);

@@ -99,9 +99,7 @@ function recently_watched_api_post() {
                 }
 
                 $progressBar = false;
-                if(get_theme_mod( 'streamium_enable_premium' )) {
-                    $progressBar = get_post_meta( get_the_ID(), 'user_' . $userId, true );
-                }
+                $progressBar = get_post_meta( get_the_ID(), 'user_' . $userId, true );
 
                 if($progressBar < 95){
 

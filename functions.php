@@ -281,4 +281,3 @@ function streamium_global_meta() {
 /*-----------------------------------------------------------------------------------*/
 $tempdir = get_template_directory();
 require_once($tempdir .'/inc/init.php');
-include_once( 'inc/import/init.php' );

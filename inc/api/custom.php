@@ -103,9 +103,7 @@ function custom_api_post() {
                 }
 
                 $progressBar = false;
-                if(get_theme_mod( 'streamium_enable_premium' )) {
-                    $progressBar = get_post_meta( get_the_ID(), 'user_' . $userId, true );
-                }
+                $progressBar = get_post_meta( get_the_ID(), 'user_' . $userId, true );
 
                 $extraMeta = "";
                 $streamium_extra_meta = get_post_meta( get_the_ID(), 'streamium_extra_meta_meta_box_text', true );
