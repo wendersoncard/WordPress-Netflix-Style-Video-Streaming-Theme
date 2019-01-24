@@ -117,12 +117,11 @@ jQuery( document ).ready(function( $ ) {
         wp.media.editor.open();
         return false;
 
-    });
+    }); 
 
     $('#streamium-add-roku-data').live('click', function() {
 
         var pid = $(this).data('pid');
-        console.log('pid',pid);
         $.ajax({
             type: 'POST',
             dataType: 'json',
@@ -133,7 +132,6 @@ jQuery( document ).ready(function( $ ) {
             },
             success: function(data){
 
-                console.log(data);
                 if(data.status){
 
                     // GET THE ROKU DATA::
