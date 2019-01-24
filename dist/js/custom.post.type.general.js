@@ -121,31 +121,60 @@ jQuery( document ).ready(function( $ ) {
 
     $('#streamium-add-roku-data').live('click', function() {
 
-        var code = $(this).data('code');
-        $.post( streamium_meta_object.api + "/mrss/url", {
-            code: code
-        }, function(response) {
+        var pid = $(this).data('pid');
+        console.log('pid',pid);
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: streamium_meta_object.ajax_url,
+            data: {
+                action: 'streamium_get_roku_data_code',
+                postId: pid
+            },
+            success: function(data){
 
-            if(response.error){  
+                console.log(data);
+                if(data.status){
 
-                alert(response.message);
-                return;
-                
-            } 
+                    // GET THE ROKU DATA::
+                    $.post( streamium_meta_object.api + "/mrss/url", {
+                        code: data.code
+                    }, function(response) {
 
-            // Set the data
-            $('#s3bubble_roku_url_meta_box_text').val(response.source.url);
-            $('#s3bubble_roku_quality_meta_box_text').val(response.source.quality);
-            $('#s3bubble_roku_videotype_meta_box_text').val(response.source.videoType);
+                        if(response.error){  
 
-            // Tell the user about image needed and duration
-            alert("Data successfully generated. !Important you will need to manually enter the video duration and please make sure you have added a Roku thumbnail 16:9 at least 800x450 in the thumbnail section below.");
-            
+                            alert(response.message);
+                            return;
                             
-        },'json').fail(function(e){
+                        } 
 
-           alert('Unkown error please contact support!');
-        
+                        // Set the data
+                        $('#s3bubble_roku_url_meta_box_text').val(response.source.url);
+                        $('#s3bubble_roku_quality_meta_box_text').val(response.source.quality);
+                        $('#s3bubble_roku_videotype_meta_box_text').val(response.source.videoType);
+
+                        // Tell the user about image needed and duration
+                        alert("Data successfully generated. !Important you will need to manually enter the video duration and please make sure you have added a Roku thumbnail 16:9 at least 800x450 in the thumbnail section below.");
+                        
+                                        
+                    },'json').fail(function(e){
+
+                       alert('It looks like your are using a direct url please enter the Roku details manually!');
+                    
+                    });
+
+                }else{
+
+                    alert(data.message);
+
+                }
+                
+            },
+            error: function(err) {
+
+                alert('Please try and refresh the page!');
+            
+            }
         });
 
         return false;

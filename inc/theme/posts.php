@@ -479,3 +479,38 @@ function streamium_columns_series_video_count_content($column_name, $post_ID) {
     }
 
 }
+
+/**
+ * Ajax remove series from list 
+ *
+ * @return bool
+ * @author  @sameast
+ */
+function streamium_get_roku_data_code() {
+
+	global $wpdb;
+
+	// Get params
+	$postId = (int) $_REQUEST['postId'];
+
+	$code = get_post_meta($postId, 's3bubble_video_code_meta_box_text', true);
+	if($code){
+
+		wp_send_json(array(
+            'status'  => true,
+	    	'message' => __( 'Success', 'streamium' ),
+	    	'code'    => $code
+        ));
+
+	}else{
+
+		wp_send_json(array(
+            'status'  => false,
+	    	'message' => __( 'Failed to find the movie code please make sure you have set the main video code!', 'streamium' ),
+        ));
+
+	}
+
+}
+
+add_action( 'wp_ajax_streamium_get_roku_data_code', 'streamium_get_roku_data_code' );

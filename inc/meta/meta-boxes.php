@@ -113,7 +113,7 @@ function streamium_meta_box_roku(){
         <input type="text" name="s3bubble_roku_duration_meta_box_text" class="widefat" id="s3bubble_roku_duration_meta_box_text" value="<?php echo $duration; ?>" placeholder="Enter video duration" />
     </p>
     <p class="streamium-meta-box-wrapper">
-        <a id="streamium-add-roku-data" class="button button-primary button-large" href="#" data-code="<?php echo (empty($code)) ? '' : $code; ?>">Generate Roku Data</a>
+        <a id="streamium-add-roku-data" class="button button-primary button-large" href="#" data-pid="<?php echo $post->ID; ?>">Generate Roku Data</a>
     </p>
     <p class="streamium-meta-box-wrapper">
         Make sure you update your Roku feed here. 
