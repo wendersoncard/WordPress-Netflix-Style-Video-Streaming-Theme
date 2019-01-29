@@ -968,9 +968,9 @@ jQuery(document).ready(function($) {
     
         // Fadeout episodes
         $('.series-watched').fadeOut();
-        $('#' + cat + ' .tile-white-selected').hide();
-        $('#' + cat + ' .tile-white-selected span').show();
-        $('#' + cat + ' .tile-white-selected').removeClass('tile-white-is-selected');
+        $('.tile .tile-white-selected').hide();
+        $('.tile .tile-white-selected span').show();
+        $('.tile .tile-white-selected').removeClass('tile-white-is-selected');
 
         $(this).closest('.content').hide();
         $(this).closest('.tile_inner-home').trigger('mouseleave');
@@ -988,7 +988,7 @@ jQuery(document).ready(function($) {
             $('.tile-white-selected span').fadeOut();
         });
 
-        return false; 
+        return false;  
 
     });
 
@@ -1000,7 +1000,7 @@ jQuery(document).ready(function($) {
         var cat = $(this).data('cat');
 
         $(".series-watched").fadeOut();
-        $('#' + cat + ' .tile-white-selected').hide();
+        $('.tile .tile-white-selected').hide();
 
         div.animate({ 
             opacity: 0,
