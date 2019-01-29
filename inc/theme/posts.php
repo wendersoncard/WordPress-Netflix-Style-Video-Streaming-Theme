@@ -471,7 +471,7 @@ function streamium_columns_main_slider($columns) {
     $new = array();
   	foreach($columns as $key => $title) {
     	if ($key=='author') // Put the Thumbnail column before the Author column
-      	$new['main_slider'] = 'Main Slider';
+      	$new['main_slider'] = 'Slider';
     	$new[$key] = $title;
   	}
   	return $new;
@@ -501,7 +501,7 @@ function streamium_columns_series_video_count($columns) {
     $new = array();
   	foreach($columns as $key => $title) {
     	if ($key=='author') // Put the Thumbnail column before the Author column
-      	$new['series_video_count'] = 'Series Video Count';
+      	$new['series_video_count'] = 'Series';
     	$new[$key] = $title;
   	}
   	return $new;
