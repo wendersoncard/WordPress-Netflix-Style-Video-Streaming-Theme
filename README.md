@@ -20,6 +20,10 @@ S3bubble connects these three powerful tools together with a 'pay as you go' pri
 * Direct CDN, AWS, Vimeo or Youtube Support
 * Monetize with Woocommerce
 
+## Roku Direct Publisher
+
+Search for the Streamium Channel on Roku to see our example channel 
+
 ## Latest Release
 
 [Download](https://github.com/s3bubble/Streamium-Netflix-Theme/releases)
