@@ -63,11 +63,22 @@ function streamium_output_mrss_feed($admin_bar){
     }
     $admin_bar->add_menu( array(
         'id'    => 'mrss-feed',
-        'title' => '<span class="ab-icon dashicons dashicons-rss"></span> Roku Direct Publisher Feed',
-        'href'  => $url,
-        'meta'  => array(
-            'title' => __('Version'),            
-        ),
+        'title' => '<span class="ab-icon dashicons dashicons-rss"></span> ' . __( 'Roku Direct Publisher Feed', 'streamium' ),
+        'href'  => $url
+    ));
+
+    $admin_bar->add_menu( array(
+        'parent' => 'mrss-feed',
+        'id'     => 'mrss-feed-open',
+        'title' => __( 'Open Roku Mrss Feed', 'streamium' ),
+        'href'  => $url
+    ));
+
+    $admin_bar->add_menu( array(
+        'parent' => 'mrss-feed',
+        'id'     => 'mrss-feed-assets',
+        'title'  => __( 'Download Example Brand Assets', 'streamium' ),
+        'href'  => 'https://s3bubble-themes.s3.amazonaws.com/RokuAssets.zip',
     ));
 
 }
