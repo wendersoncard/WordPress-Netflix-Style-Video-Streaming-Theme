@@ -421,6 +421,47 @@ add_action( 'admin_enqueue_scripts', 'streamium_custom_post_types_general');
 
 
 // ONLY MOVIE CUSTOM TYPE POSTS
+add_filter('manage_posts_columns', 'streamium_columns_roku', 1);
+add_action('manage_posts_custom_column', 'streamium_columns_roku_content', 10, 2);
+ 
+// CREATE TWO FUNCTIONS TO HANDLE THE COLUMN
+function streamium_columns_roku($columns) { 
+    
+    $new = array();
+  	foreach($columns as $key => $title) {
+    	if ($key=='author') // Put the Thumbnail column before the Author column
+      	$new['roku'] = 'Roku';
+    	$new[$key] = $title;
+  	}
+  	return $new;
+  	
+}
+
+function streamium_columns_roku_content($column_name, $post_ID) {
+
+    if ($column_name == 'roku') {
+
+    	$thumbnail = false;
+        if (class_exists('MultiPostThumbnails')) {                              
+            if (MultiPostThumbnails::has_post_thumbnail( get_post_type( $post_ID ), 'roku-thumbnail-image', $post_ID)){
+            	$thumbnail = true;
+            }                             
+        }; 
+
+        $url       = get_post_meta( $post_ID, 's3bubble_roku_url_meta_box_text', true );
+        $quality   = get_post_meta( $post_ID, 's3bubble_roku_quality_meta_box_text', true );
+        $videotype = get_post_meta( $post_ID, 's3bubble_roku_videotype_meta_box_text', true );
+        $duration  = get_post_meta( $post_ID, 's3bubble_roku_duration_meta_box_text', true );
+        if($url && $quality && $videotype && $duration && $thumbnail){
+	        echo '<span class="post-state button-primary">Roku Data Set</span>';
+	    }
+
+    }
+
+}
+
+
+// ONLY MOVIE CUSTOM TYPE POSTS
 add_filter('manage_posts_columns', 'streamium_columns_main_slider', 1);
 add_action('manage_posts_custom_column', 'streamium_columns_main_slider_content', 10, 2);
  
@@ -443,7 +484,7 @@ function streamium_columns_main_slider_content($column_name, $post_ID) {
 
         $main_slider = get_post_meta( $post_ID, 'streamium_slider_featured_checkbox_value', true );
         if(!empty($main_slider)){
-	        echo '<span class="post-state button-secondary">' . ucfirst($main_slider) . '</span>';
+	        echo '<span class="post-state button-primary">' . ucfirst($main_slider) . '</span>';
 	    }
 
     }

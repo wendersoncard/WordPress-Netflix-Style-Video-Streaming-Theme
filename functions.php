@@ -9,6 +9,71 @@
 add_filter('show_admin_bar', '__return_false');
 
 /**
+ * Opens the MRSS ROKU Feed::
+ *
+ * @return null
+ * @author  @sameast
+ */
+function streamium_output_theme_version($admin_bar){
+
+    $streamium_theme = wp_get_theme();
+    $admin_bar->add_menu( array(
+        'id'    => 'theme-version',
+        'title' => '<span class="ab-icon dashicons dashicons-editor-code"></span> Version ' . $streamium_theme->get( 'Version' ),
+        'href'  => 'https://s3bubble.github.io/WordPress-Netflix-Style-Video-Streaming-Theme',
+        'meta'  => array(
+            'title' => __('Version'),            
+        ),
+    ));
+
+}
+add_action('admin_bar_menu', 'streamium_output_theme_version', 100);
+
+/**
+ * GETS TEMPLATE URL BY NAME::
+ *
+ * @return null
+ * @author  @sameast
+ */
+function streamium_get_template_url($template){
+
+    $url = null;
+    $pages = get_pages(array(
+        'meta_key' => '_wp_page_template',
+        'meta_value' => $template
+    ));
+    if(isset($pages[0])) {
+        $url = get_page_link($pages[0]->ID);
+    }
+    return $url;
+
+}
+
+/**
+ * Opens the MRSS ROKU Feed::
+ *
+ * @return null
+ * @author  @sameast
+ */
+function streamium_output_mrss_feed($admin_bar){
+
+    $url = streamium_get_template_url('mrss.php');
+    if(get_theme_mod('streamium_mrss_key', false)){
+        $url = $url . '?key=' . get_theme_mod('streamium_mrss_key');
+    }
+    $admin_bar->add_menu( array(
+        'id'    => 'mrss-feed',
+        'title' => '<span class="ab-icon dashicons dashicons-rss"></span> Roku Direct Publisher Feed',
+        'href'  => $url,
+        'meta'  => array(
+            'title' => __('Version'),            
+        ),
+    ));
+
+}
+add_action('admin_bar_menu', 'streamium_output_mrss_feed', 100);
+
+/**
  * Clears the cache
  *
  * @return null
