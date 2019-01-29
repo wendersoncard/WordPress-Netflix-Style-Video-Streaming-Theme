@@ -61,7 +61,7 @@
       font-size: 3vw;
   }
   .streamium-next, .streamium-prev {
-    display: none !important;
+    display: none !important; 
   }
   .cd-search form, .cd-search input {
       font-size: 3vw;
@@ -84,14 +84,9 @@
     font-size: 4vw!important;
     margin: 0;
     padding: 0px 0 5px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 90%;
   }
   .synopis-inner div.content {
     font-size: 3vw !important;
-    overflow-y: scroll; 
     padding: 0;
   }
   .streamium-review-panel-content {

@@ -6,10 +6,10 @@
 
 		$args = array(
 		    'posts_per_page' => (int)get_theme_mod( 'streamium_global_options_homepage_desktop' ),
-		    'post_type' => streamium_global_meta(), // $setType
-		    'post_status' => 'publish',
-		    'meta_key' => 'streamium_slider_featured_checkbox_value',
-			'meta_value' => 'yes'
+		    'post_type'      => $setType, //streamium_global_meta()
+		    'post_status'    => 'publish',
+		    'meta_key'       => 'streamium_slider_featured_checkbox_value',
+			'meta_value'     => 'yes'
 		);
 		 
 		$loop = new WP_Query( $args ); 
