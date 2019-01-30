@@ -7314,7 +7314,7 @@ body::after {
 }
 
 .carousels .slick-next:before {
-  font-family: FontAwesome;
+  font-family: FontAwesome; 
    content: "\f105";
    font-size: 44px;
 }
@@ -7328,7 +7328,7 @@ body::after {
    content: "\f104";
    font-size: 44px;
 }
-
+ 
 .streamium-slider .slick-slide {
     background-position: center;
     background-size: cover;
@@ -9920,8 +9920,6 @@ input {
     -webkit-transition: -webkit-transform 0.3s ease;
     -moz-transition: -moz-transform 0.3s ease;
     transition: transform 0.3s ease;
-    background-size: cover;
-    background-position: top;
 }
 
 .carousels .slick-slide:hover {
