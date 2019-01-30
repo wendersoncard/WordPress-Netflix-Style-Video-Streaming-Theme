@@ -12322,8 +12322,8 @@ body.overflow-hidden {
     padding: 0px;
     color: #2e3233;
     overflow: visible;
-    border-bottom: none;
-    font-size: 15px;
+    border-bottom: none; 
+    font-size: 14px;
     color: #fff;
     text-decoration: none;
     cursor: pointer;
