@@ -12312,7 +12312,7 @@ body.overflow-hidden {
     list-style: none;
     float: left;
     display: inline-block;
-    margin: 0 10px;
+    margin: 0 8px;
   } 
   .cd-primary-nav > li > a {
     position: relative;
@@ -12574,7 +12574,7 @@ body.overflow-hidden {
 
   .cd-primary-nav > .menu-item-has-children > a {
     /* main navigation arrows on larger devices */
-    padding-right: 30px !important;
+    padding-right: 25px !important;
   }
   .cd-primary-nav > .menu-item-has-children > a::before, .cd-primary-nav > .menu-item-has-children > a::after {
     width: 9px;
