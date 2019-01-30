@@ -4895,13 +4895,6 @@ jQuery(document).ready(function($){
 		}
 	});
 
-	$('body').on('click','.cd-overlay', function(){
-		closeNav();
-		toggleSearch('close')
-		$('.cd-overlay').remove();
-	});
-
-
 	//prevent default clicking on direct children of .cd-primary-nav 
 	$('.cd-primary-nav').children('.menu-item-has-children').children('a').on('click', function(event){
 		event.preventDefault();
