@@ -102,7 +102,8 @@
 				print('<guid isPermaLink="false">' . $link . '</guid>');
 
 				print('<media:category>All</media:category>');
-				$categories = get_the_terms($post->ID, 'movies');
+
+				$categories = get_the_terms($post->ID, get_theme_mod('streamium_section_input_taxonomy_movies', 'movies'));
 				if ( ! empty( $categories ) ) {
 					foreach( $categories as $category ) {
 						print('<media:category>' . $category->name . '</media:category>');
