@@ -5,7 +5,7 @@
 	*/
 	
 	$title = "S3Bubble AWS Media Streaming";
-	$link = "http://www.brightcove.com/";
+	$link = "https://s3bubble.com";
 	$description  = "S3Bubble AWS Media Streaming";
 	$lang = "en-us";
 	$copyright = "Copyright 2019 S3Bubble";

@@ -92,7 +92,7 @@ add_action('admin_bar_menu', 'streamium_output_mrss_feed', 100);
  */
 if ( ! function_exists ( 's3bubble_cache_version' ) ) {
     function s3bubble_cache_version() {
-        return 28;
+        return 29;
     }
 }
 
