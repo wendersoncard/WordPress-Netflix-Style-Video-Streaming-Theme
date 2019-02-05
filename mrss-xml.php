@@ -3,10 +3,12 @@
 	/*
 	 	Template Name: Mrss XML Template
 	*/
+
+	global $wp;
 	
-	$title = "S3Bubble AWS Media Streaming";
-	$link = "https://s3bubble.com";
-	$description  = "S3Bubble AWS Media Streaming";
+	$title = get_bloginfo('name');
+	$link = get_site_url();
+	$description  = get_bloginfo('description');
 	$lang = "en-us";
 	$copyright = "Copyright 2019 S3Bubble";
 	$builddate = date(DATE_RFC2822);
@@ -15,7 +17,7 @@
 
 	// Customize the code below to return the videos and fields for your feed;	
 	print('<?xml version="1.0" encoding="UTF-8"?>');
-	print('<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:bc="https://s3bubble.com" xmlns:dcterms="http://purl.org/dc/terms/">');
+	print('<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:atom="http://www.w3.org/2005/Atom">');
 	print('<channel>');
 	print('<title>'. $title . '</title>');
 	print('<link>'. $link . '</link>');
@@ -23,6 +25,19 @@
 	print('<language>'. $lang . '</language>');
 	print('<copyright>'. $copyright . '</copyright>');
 	print('<lastBuildDate>'. $builddate . '</lastBuildDate>');
+
+	print('<image>');	
+				
+		print('<link>'. $link . '</link>');
+		print('<title>'. $title . '</title>');
+		print('<url>'. $link . '</url>');
+		print('<description><![CDATA['. $description . ']]></description>');
+		print('<height>114</height>');
+		print('<width>114</width>');
+
+	print('</image>');
+
+	print('<atom:link href="' . home_url( $wp->request ) . '" rel="self" type="application/rss+xml"/>');
 
 	// globally loop through post types.
 	$args = array(
@@ -71,6 +86,10 @@
 				print('<title>');
 				print_r($title);
 				print('</title>');	
+
+				print('<pubDate>');
+				print_r(date(DATE_RFC2822,$releaseDate));
+				print('</pubDate>');
 					
 				print('<link>');
 				print_r($link);
@@ -79,39 +98,25 @@
 				print('<description>');
 				print_r($shortDescription);
 				print('</description>');
-				
-				print('<pubDate>');
-				print_r(date(DATE_RFC2822,$releaseDate));
-				print('</pubDate>');
+
+				print('<guid isPermaLink="false">' . $link . '</guid>');
+
+				print('<media:category>All</media:category>');
+				$categories = get_the_category();
+ 
+				if ( ! empty( $categories ) ) {
+					foreach( $categories as $category ) {
+						print('<media:category>' . $category->name . '</media:category>');
+					} 
+				}				
 			
-				print('<media:player>');
-				print_r('height="640"');
-				print_r(' width="360"');
-				print_r(' url="' . $videoUrl . '"');
-				print('</media:player>');
-				
-				print('<media:keywords>');
-				$keywords = "";
-				$my_tags = get_the_tags();
-				if ( $my_tags ) {
-				    foreach ( $my_tags as $tag ) {
-				        $keywords = $keywords . ($keywords == "" ? "" : ",") . $tag->name;
-				    }
-				}
-				print_r($keywords);
-				print('</media:keywords>');
-				
-				print('<media:thumbnail>');
-				print_r($thumbnail);
-				print('</media:thumbnail>');
-			
-				print('<bc:videoid>');
-				print_r($id);
-				print('</bc:videoid>');
-			
-				print('<bc:duration>');
-				print_r($videoDuration);
-				print('</bc:duration>');
+				print('<media:content url="' . $videoUrl . '" language="en-us" fileSize="37000000" duration="' . $videoDuration . '" medium="video" isDefault="true">');
+					print('<media:title type="plain">' . $category->name . '</media:title>');
+					print('<media:description type="html">' . $category->name . '</media:description>');
+					print('<media:thumbnail url="' . $thumbnail . '" />');
+					print('<media:credit role="author" scheme="urn:ebu">Amazon</media:credit>');
+					print('<media:copyright url="https://creativecommons.org/licenses/by/4.0/"/>');				
+				print('</media:content>');
 				
 			    print('</item>');
 
