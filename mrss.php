@@ -1,28 +1,24 @@
 <?php 
 
 	/*
-	 	Template Name: Mrss XML Template
+	 	Template Name: Roku Direct Publisher Mrss Template
 	*/
-	
-	$title = "S3Bubble AWS Media Streaming";
-	$link = "http://www.brightcove.com/";
-	$description  = "S3Bubble AWS Media Streaming";
-	$lang = "en-us";
-	$copyright = "Copyright 2019 S3Bubble";
-	$builddate = date(DATE_RFC2822);
-	
-	header('Content-Type: text/xml');
 
-	// Customize the code below to return the videos and fields for your feed;	
-	print('<?xml version="1.0" encoding="UTF-8"?>');
-	print('<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:bc="https://s3bubble.com" xmlns:dcterms="http://purl.org/dc/terms/">');
-	print('<channel>');
-	print('<title>'. $title . '</title>');
-	print('<link>'. $link . '</link>');
-	print('<description><![CDATA['. $description . ']]></description>');
-	print('<language>'. $lang . '</language>');
-	print('<copyright>'. $copyright . '</copyright>');
-	print('<lastBuildDate>'. $builddate . '</lastBuildDate>');
+	// CHECK FOR RESTRICTION:
+	if(
+		!empty(get_theme_mod('streamium_mrss_key'))
+	){
+
+		// CHECK:
+		$key = $_GET['key'];
+		if($key != get_theme_mod('streamium_mrss_key')){
+			
+			echo 'This url has restrictions enabled...';
+			die();
+
+		}
+
+	}
 
 	// globally loop through post types.
 	$args = array(
@@ -32,19 +28,79 @@
     );
 
     $loop = new WP_Query($args);
-	
-	if ($loop->have_posts()):
+
+    // Latest build update
+    $datetime = new DateTime();
+
+    $genresList = [
+    	"action",
+		"adventure",
+		"animals",
+		"animated",
+		"anime",
+		"children",
+		"comedy",
+		"crime",
+		"documentary",
+		"drama",
+		"educational",
+		"fantasy",
+		"faith",
+		"food",
+		"fashion",
+		"gaming",
+		"health",
+		"history",
+		"horror",
+		"miniseries",
+		"mystery",
+		"nature",
+		"news",
+		"reality",
+		"romance",
+		"science",
+		"science fiction",
+		"sitcom",
+		"special",
+		"sports",
+		"thriller",
+		"technology"
+	];
+
+	$cats = [];
+	foreach ($genresList as $key => $value) {
+		$cats[] = [
+			"name" => ucfirst($value),
+		    "query" => strtolower($value),
+		    "order" => "most_popular"
+		];
+	}
+
+    $json = [
+    	"providerName" => "S3Bubble AWS Media Streaming",
+	    "lastUpdated" => $datetime->format('c'),
+	    "language" => "en-US",
+	    "movies" => [],
+	    "series" => []
+    ];
+
+    if ($loop->have_posts()):
 
         while ($loop->have_posts()) : $loop->the_post();
 
         	// TOP LEVEL DATA:
         	$id               = get_the_ID();
         	$title            = substr( strip_tags(get_the_title()), 0, 200);
-        	$link             = get_the_permalink(get_the_ID());
         	$shortDescription = wp_trim_words( strip_tags(get_the_content()), $num_words = 20, $more = '... ' );
         	$longDescription  = strip_tags(get_the_content());
         	$releaseDate      = get_the_time('c');
     	 	$thumbnail        = false;
+
+    	 	// ROKU META DATA:
+    	 	$videoUrl      = get_post_meta( $post->ID, 's3bubble_roku_url_meta_box_text', true );
+    	 	$videoQuality  = get_post_meta( $post->ID, 's3bubble_roku_quality_meta_box_text', true );
+    	 	$VideoType     = get_post_meta( $post->ID, 's3bubble_roku_videotype_meta_box_text', true );
+    	 	$videoDuration = get_post_meta( $post->ID, 's3bubble_roku_duration_meta_box_text', true );
 
     	 	// EXTRA THUMBNAILS:
             if (class_exists('MultiPostThumbnails')) {                              
@@ -58,68 +114,130 @@
              
             }; 
 
-    	 	// ROKU META DATA:
-    	 	$videoUrl      = get_post_meta( $post->ID, 's3bubble_roku_url_meta_box_text', true );
-    	 	$videoQuality  = get_post_meta( $post->ID, 's3bubble_roku_quality_meta_box_text', true );
-    	 	$VideoType     = get_post_meta( $post->ID, 's3bubble_roku_videotype_meta_box_text', true );
-    	 	$videoDuration = get_post_meta( $post->ID, 's3bubble_roku_duration_meta_box_text', true );
+        	$taxonomy_names = get_post_taxonomies( );
+        	$categories = get_the_terms( $id, $taxonomy_names[1] );
+        	$genres = [];
+        	$cats = [];
+        	if ($categories) {
+	    		foreach ($categories as $key => $value) {
+	    			if (in_array(strtolower($value->name), $genresList)) {
+			    		$genres[] = strtolower($value->name);
+			    	}
+			    	$cats[] = strtolower($value->name);
+		    	}
+	    	}    	
 
-    	 	if($thumbnail && $videoUrl && $videoQuality && $VideoType && $videoDuration){
+			// CHECK IF CUSTOM POST IS A SERIES:
+			$episodes = get_post_meta(get_the_ID(), 'repeatable_fields' , true);
 
-			    print('<item>');	
-				
-				print('<title>');
-				print_r($title);
-				print('</title>');	
-					
-				print('<link>');
-				print_r($link);
-				print('</link>');
-			
-				print('<description>');
-				print_r($shortDescription);
-				print('</description>');
-				
-				print('<pubDate>');
-				print_r(date(DATE_RFC2822,$releaseDate));
-				print('</pubDate>');
-			
-				print('<media:player>');
-				print_r('height="640"');
-				print_r(' width="360"');
-				print_r(' url="' . $videoUrl . '"');
-				print('</media:player>');
-				
-				print('<media:keywords>');
-				$keywords = "";
-				$my_tags = get_the_tags();
-				if ( $my_tags ) {
-				    foreach ( $my_tags as $tag ) {
-				        $keywords = $keywords . ($keywords == "" ? "" : ",") . $tag->name;
-				    }
+			if(!empty($episodes)){
+
+				$seasonEpisodes = [];
+				foreach (streamium_sort_episodes($episodes) as $key => $value) {
+
+		        	$episodeObject = [];
+		        	foreach ($value as $key2 => $value2) {
+
+			        	$videoData2 = [
+						  	"dateAdded" => get_the_time('c'),
+						  	"videos" => [
+								[
+								  "url"=> $value2['roku_url'],
+								  "quality"=> $value2['roku_quality'],
+								  "videoType"=> $value2['roku_type']
+								]
+						  	],
+						  	"duration" => (int)$value2['roku_duration']
+						];
+
+			        	if($value2['thumbnails'] && $value2['roku_url'] && $value2['roku_quality'] && $value2['roku_type'] && $value2['roku_duration']){
+ 
+			        		$episodeObject[] = [
+							  	"id" => (string) $id . $value[0]['seasons'] . $value[0]['positions'] . $key2,
+							  	"title" => $value2['titles'],
+							  	"content" => $videoData2,
+							  	"thumbnail" => $value2['thumbnails'],
+							  	"episodeNumber" => (int) ($key2+1),
+							  	"releaseDate" => get_the_date('Y-m-d'),
+							  	"shortDescription" => $value2['descriptions'],
+							  	"longDescription" => $value2['descriptions']
+							];
+
+						}
+
+		        	}
+
+					$seasonEpisodes[] = array(
+						'seasonNumber' => (int) $key, 
+						'episodes' => $episodeObject, 
+						"thumbnail" => $thumbnail,
+					);
+
 				}
-				print_r($keywords);
-				print('</media:keywords>');
-				
-				print('<media:thumbnail>');
-				print_r($thumbnail);
-				print('</media:thumbnail>');
-			
-				print('<bc:videoid>');
-				print_r($id);
-				print('</bc:videoid>');
-			
-				print('<bc:duration>');
-				print_r($videoDuration);
-				print('</bc:duration>');
-				
-			    print('</item>');
+
+				$data = [
+				  	"id" => (string) $id,
+				  	"title" => $title,
+				  	"seasons" => $seasonEpisodes,
+				  	"genres" => $genres, 
+				    "tags" => $cats, 
+				  	"thumbnail" => $thumbnail,
+				  	"releaseDate" => get_the_date('Y-m-d'),
+				    "shortDescription" => $shortDescription,
+				    "longDescription" => $longDescription
+				];
+
+				// ONLY RETURN IF IT HAS EPISODES:
+				if(count($episodeObject) > 0){
+					
+					$json['series'][] = $data;
+
+				}
+	
+			}else{
+
+				$captions = [];
+				$getCaptions = get_post_meta( $post->ID, 's3bubble_roku_captions_meta_box_text', true );
+				if($getCaptions){
+					$captions = unserialize($getCaptions);
+				}
+
+				// Not a series
+				$data = [
+	        		"id" => (string) $id,
+				    "title" => $title,
+				    "content" => [
+					  	"dateAdded" => $releaseDate,
+					  	"videos" => [
+							[
+							  "url"=> $videoUrl,
+							  "quality"=> $videoQuality,
+							  "videoType"=> $VideoType
+							]
+					  	],
+					  	"duration" => (int)$videoDuration,
+					  	"captions" => $captions,
+					  	"trickPlayFiles" => []
+					],
+				    "genres" => $genres, 
+				    "tags" => $cats, 
+				    "thumbnail" => $thumbnail,
+				    "releaseDate" => $releaseDate,
+				    "shortDescription" => $shortDescription,
+				    "longDescription" => $longDescription
+	        	];
+
+				// ONLY RUN IF THE CORRECT IMAGE EXISTS:
+				if($thumbnail && $videoUrl && $videoQuality && $VideoType && $videoDuration){
+
+					$json['movies'][] = $data;
+
+				}
 
 			}
-		
-		endwhile;
+
+        endwhile;
     endif;
 	
-	print('</channel></rss>');
-	
-?>
+	header('Content-Type: application/json');
+	echo json_encode($json);
