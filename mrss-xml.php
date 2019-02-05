@@ -30,7 +30,7 @@
 				
 		print('<link>'. $link . '</link>');
 		print('<title>'. $title . '</title>');
-		print('<url>'. $link . '</url>');
+		print('<url>'. esc_url(get_theme_mod_ssl('streamium_logo')) . '</url>');
 		print('<description><![CDATA['. $description . ']]></description>');
 		print('<height>114</height>');
 		print('<width>114</width>');
