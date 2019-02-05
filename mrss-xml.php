@@ -106,6 +106,7 @@
 				$tax = get_post_taxonomies($post->ID);
 				$categories = get_the_terms($post->ID, get_theme_mod('streamium_section_input_taxonomy_' . $tax[1], $tax[1]));
 				if ( ! empty( $categories ) ) {
+					print_r($category);
 					foreach( $categories as $category ) {
 						print('<media:category>' . $category->name . '</media:category>');
 					} 
