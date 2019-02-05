@@ -57,28 +57,41 @@ function streamium_get_template_url($template){
  */
 function streamium_output_mrss_feed($admin_bar){
 
-    $url = streamium_get_template_url('mrss.php');
+    $rokuUrl = streamium_get_template_url('mrss.php');
     if(get_theme_mod('streamium_mrss_key', false)){
-        $url = $url . '?key=' . get_theme_mod('streamium_mrss_key');
+        $rokuUrl = $rokuUrl . '?key=' . get_theme_mod('streamium_mrss_key');
     }
+
+    $fireTvUrl = streamium_get_template_url('mrss-xml.php');
+
     $admin_bar->add_menu( array(
         'id'    => 'mrss-feed',
-        'title' => '<span class="ab-icon dashicons dashicons-rss"></span> ' . __( 'Roku Direct Publisher Feed', 'streamium' ),
-        'href'  => $url
+        'title' => '<span class="ab-icon dashicons dashicons-rss"></span> ' . __( 'Smart TV App Feeds', 'streamium' ),
+        'href'  => '#'
     ));
 
     $admin_bar->add_menu( array(
         'parent' => 'mrss-feed',
-        'id'     => 'mrss-feed-open',
-        'title' => __( 'Open Roku Mrss Feed', 'streamium' ),
-        'href'  => $url
+        'id'     => 'mrss-feed-roku',
+        'title'  => __( 'Open Roku Mrss Feed', 'streamium' ),
+        'href'   => $rokuUrl,
+        'meta'   => array('target' => '_blank')
+    ));
+
+    $admin_bar->add_menu( array(
+        'parent' => 'mrss-feed',
+        'id'     => 'mrss-feed-fire',
+        'title'  => __( 'Open Amazon FireTV Mrss Feed', 'streamium' ),
+        'href'   => $fireTvUrl,
+        'meta'   => array('target' => '_blank')
     ));
 
     $admin_bar->add_menu( array(
         'parent' => 'mrss-feed',
         'id'     => 'mrss-feed-assets',
         'title'  => __( 'Download Example Brand Assets', 'streamium' ),
-        'href'  => 'https://s3bubble-themes.s3.amazonaws.com/RokuAssets.zip',
+        'href'   => 'https://s3bubble-themes.s3.amazonaws.com/RokuAssets.zip',
+        'meta'   => array('target' => '_blank')
     ));
 
 }
