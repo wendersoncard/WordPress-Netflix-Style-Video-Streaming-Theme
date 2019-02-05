@@ -109,7 +109,7 @@
 					foreach( $categories as $category ) {
 						print('<media:category>' . $category->name . '</media:category>');
 					} 
-				}				
+				}				 
 			
 				print('<media:content url="' . $videoUrl . '" language="en-us" duration="' . $videoDuration . '.0" medium="video" isDefault="true">');
 					print('<media:title type="plain">' . $category->name . '</media:title>');
