@@ -112,8 +112,8 @@
 				}				 
 			
 				print('<media:content url="' . $videoUrl . '" language="en-us" duration="' . $videoDuration . '.0" medium="video" isDefault="true">');
-					print('<media:title type="plain">' . $category->name . '</media:title>');
-					print('<media:description type="html">' . $category->name . '</media:description>');
+					print('<media:title type="plain">' . $title . '</media:title>');
+					print('<media:description type="html">' . $shortDescription . '</media:description>');
 					print('<media:thumbnail url="' . $thumbnail . '" />');
 					print('<media:credit role="author" scheme="urn:ebu">Amazon</media:credit>');
 					print('<media:copyright url="https://creativecommons.org/licenses/by/4.0/"/>');				
