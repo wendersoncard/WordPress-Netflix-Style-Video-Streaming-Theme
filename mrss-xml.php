@@ -110,7 +110,7 @@
 					} 
 				}				
 			
-				print('<media:content url="' . $videoUrl . '" language="en-us" fileSize="37000000" duration="' . $videoDuration . '" medium="video" isDefault="true">');
+				print('<media:content url="' . $videoUrl . '" language="en-us" duration="' . $videoDuration . '" medium="video" isDefault="true">');
 					print('<media:title type="plain">' . $category->name . '</media:title>');
 					print('<media:description type="html">' . $category->name . '</media:description>');
 					print('<media:thumbnail url="' . $thumbnail . '" />');
