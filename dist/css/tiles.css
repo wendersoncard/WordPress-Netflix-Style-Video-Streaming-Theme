@@ -32,6 +32,18 @@
   width: 100%;
 }
 
+.streamium-slider .slick-slide {
+    margin: 0px;
+    padding: 0px;
+    -webkit-transition: -webkit-transform 0.3s ease;
+    -moz-transition: -moz-transform 0.3s ease;
+    transition: transform 0.3s ease;
+}
+
+.carousels .slick-list {
+    overflow: visible;
+}
+
 .static-row .col-xs-2, .static-row .col-xs-5ths, .static-row .col-xs-3, .static-row .col-xs-6 {
   padding-right: 2px;
   padding-left: 2px;
