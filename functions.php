@@ -57,7 +57,7 @@ function streamium_get_template_url($template){
  */
 function streamium_output_mrss_feed($admin_bar){
 
-    $url = streamium_get_template_url('mrss.php');
+    $url = streamium_get_template_url('roku.php');
     if(get_theme_mod('streamium_mrss_key', false)){
         $url = $url . '?key=' . get_theme_mod('streamium_mrss_key');
     }
