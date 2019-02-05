@@ -5,9 +5,9 @@ $incdir = get_template_directory() . '/inc/';
 
 // THEME:
 require_once($incdir .'theme/multi-post-thumbnails.php');
-require_once($incdir .'meta/meta-boxes.php');
-require_once($incdir .'meta/recently-watched.php');
-require_once($incdir .'meta/movie-meta.php');
+require_once($incdir .'theme/meta-boxes.php');
+require_once($incdir .'theme/recently-watched.php');
+require_once($incdir .'theme/movie-meta.php');
 require_once($incdir .'theme/pagination.php');
 require_once($incdir .'theme/customizer.php');
 require_once($incdir .'theme/reviews.php');
