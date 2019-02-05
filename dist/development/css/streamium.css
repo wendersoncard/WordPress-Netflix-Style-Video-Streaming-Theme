@@ -7475,11 +7475,12 @@ body::after {
   transform-origin: top left;
   position: absolute;
 } 
-
+ 
 .carousels .tile_inner {
-  box-sizing: border-box;
-  transition-duration: 0.1s; 
-  transition-delay: 0.1s;
+  box-sizing: border-box; 
+  transition-timing-function: ease-in;
+  transition-duration: 100ms;  
+  transition-delay: 20ms;
   transform-origin: center center; 
   width: 100%;
   padding-bottom: 56.25%; /* 16:9 56.25 9:16; 177.77 */ 
