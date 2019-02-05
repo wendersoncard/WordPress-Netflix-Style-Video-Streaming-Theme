@@ -103,9 +103,10 @@
 
 				print('<media:category>All</media:category>');
 
-				print_r(get_the_terms($post->ID));
+				$tax = get_post_taxonomies($post->ID);
+				//print_r(get_post_taxonomies($post->ID));
 
-				$categories = get_the_terms($post->ID, get_theme_mod('streamium_section_input_taxonomy_movies', 'movies'));
+				$categories = get_the_terms($post->ID, get_theme_mod('streamium_section_input_taxonomy_' . $tax[0], $tax[0]));
 				if ( ! empty( $categories ) ) {
 					foreach( $categories as $category ) {
 						print('<media:category>' . $category->name . '</media:category>');
