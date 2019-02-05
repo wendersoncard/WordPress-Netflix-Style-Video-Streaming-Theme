@@ -71,14 +71,15 @@ function streamium_meta_box_movie(){
  */
 function streamium_meta_box_roku(){
 
-    // $post is already set, and contains an object: the WordPress post
+    // POST::
     global $post;
-    $values = get_post_custom( $post->ID );
-    $code = isset( $values['s3bubble_video_code_meta_box_text'] ) ? $values['s3bubble_video_code_meta_box_text'][0] : '';
-    $url = isset( $values['s3bubble_roku_url_meta_box_text'] ) ? $values['s3bubble_roku_url_meta_box_text'][0] : '';
-    $quality = isset( $values['s3bubble_roku_quality_meta_box_text'] ) ? $values['s3bubble_roku_quality_meta_box_text'][0] : '';
-    $videoType = isset( $values['s3bubble_roku_videotype_meta_box_text'] ) ? $values['s3bubble_roku_videotype_meta_box_text'][0] : '';
-    $duration = isset( $values['s3bubble_roku_duration_meta_box_text'] ) ? $values['s3bubble_roku_duration_meta_box_text'][0] : '';
+
+    // PARAMS::
+    $url       = get_post_meta($post->ID,'s3bubble_roku_url_meta_box_text', true);
+    $quality   = get_post_meta($post->ID,'s3bubble_roku_quality_meta_box_text', true);
+    $videoType = get_post_meta($post->ID,'s3bubble_roku_videotype_meta_box_text', true);
+    $duration  = get_post_meta($post->ID,'s3bubble_roku_duration_meta_box_text', true);
+    $captions  = get_post_meta($post->ID,'s3bubble_roku_captions_meta_box_text', true);
 
     wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
 
@@ -113,14 +114,20 @@ function streamium_meta_box_roku(){
         <input type="text" name="s3bubble_roku_duration_meta_box_text" class="widefat" id="s3bubble_roku_duration_meta_box_text" value="<?php echo $duration; ?>" placeholder="Enter video duration" />
     </p>
     <p class="streamium-meta-box-wrapper">
+        <label>Video Captions</label>
+        <?php if(!empty($captions)){ ?>
+            <br>
+            <b><i>Video Caption have been found and added to your feed...</i></b>
+        <?php } ?>
+        <input type="hidden" name="s3bubble_roku_captions_meta_box_text" class="widefat" id="s3bubble_roku_captions_meta_box_text" value="<?php echo $captions; ?>" placeholder="Enter video captions" />
+    </p>
+    <p class="streamium-meta-box-wrapper">
         <a id="streamium-add-roku-data" class="button button-primary button-large" href="#" data-pid="<?php echo $post->ID; ?>">Generate Roku Data</a>
     </p>
     <p class="streamium-meta-box-wrapper">
         Make sure you update your Roku feed here. 
         <a href="https://developer.roku.com/en-gb/developer" target="_blank">https://developer.roku.com/en-gb/developer</a>
     </p>
-
-    
 
     <?php    
 
@@ -171,6 +178,7 @@ function streamium_meta_box_bgvideo(){
     global $post;
     $values = get_post_custom( $post->ID );
     $text = isset( $values['streamium_featured_video_meta_box_text'] ) ? $values['streamium_featured_video_meta_box_text'][0] : '';
+
     // We'll use this nonce field later on when saving.
     wp_nonce_field( 'streamium_meta_box_movie', 'streamium_meta_box_movie_nonce' );
     ?>
@@ -436,77 +444,89 @@ function streamium_meta_box_release_date() {
 function streamium_post_meta_box_save( $post_id )
 {
     // Bail if we're doing an auto save
-    if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+    if(defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE) return;
 
     // if our nonce isn't there, or we can't verify it, bail
-    if( !isset( $_POST['streamium_meta_box_movie_nonce'] ) || !wp_verify_nonce( $_POST['streamium_meta_box_movie_nonce'], 'streamium_meta_box_movie' ) ) return;
+    if( !isset( $_POST['streamium_meta_box_movie_nonce']) || !wp_verify_nonce( $_POST['streamium_meta_box_movie_nonce'], 'streamium_meta_box_movie')) return;
      
     // if our current user can't edit this post, bail
-    if ( ! current_user_can( 'edit_posts' ) ) return;
+    if(!current_user_can('edit_posts')) return;
      
-    // Make sure your data is set before trying to save it
-    if( isset( $_POST['s3bubble_video_code_meta_box_text'] ) ){
-
-      update_post_meta( $post_id, 's3bubble_video_code_meta_box_text', $_POST['s3bubble_video_code_meta_box_text'] );
-      
+    // MAIN VIDEO CODE::
+    if(!empty($_POST['s3bubble_video_code_meta_box_text'])){
+        update_post_meta($post_id, 's3bubble_video_code_meta_box_text', $_POST['s3bubble_video_code_meta_box_text']);
     }
 
-    // ROKU VIDEO DATA
-    if( isset( $_POST['s3bubble_roku_url_meta_box_text'] ) ){
-
-      update_post_meta( $post_id, 's3bubble_roku_url_meta_box_text', $_POST['s3bubble_roku_url_meta_box_text'] );
-      
-    }
-    if( isset( $_POST['s3bubble_roku_quality_meta_box_text'] ) ){
-
-      update_post_meta( $post_id, 's3bubble_roku_quality_meta_box_text', $_POST['s3bubble_roku_quality_meta_box_text'] );
-      
-    }
-    if( isset( $_POST['s3bubble_roku_videotype_meta_box_text'] ) ){
-
-      update_post_meta( $post_id, 's3bubble_roku_videotype_meta_box_text', $_POST['s3bubble_roku_videotype_meta_box_text'] );
-      
-    }
-    if( isset( $_POST['s3bubble_roku_duration_meta_box_text'] ) ){
-
-      update_post_meta( $post_id, 's3bubble_roku_duration_meta_box_text', $_POST['s3bubble_roku_duration_meta_box_text'] );
-      
+    // ROKU VIDEO DATA::
+    if(!empty($_POST['s3bubble_roku_url_meta_box_text'])){
+        update_post_meta($post_id, 's3bubble_roku_url_meta_box_text', $_POST['s3bubble_roku_url_meta_box_text']);
     }
 
-    // Save the trailer or preview
-    if( isset( $_POST['streamium_video_trailer_meta_box_text'] ) ){
-
-        update_post_meta( $post_id, 'streamium_video_trailer_meta_box_text', $_POST['streamium_video_trailer_meta_box_text'] );
-
+    if(!empty($_POST['s3bubble_roku_quality_meta_box_text'])){
+        update_post_meta($post_id, 's3bubble_roku_quality_meta_box_text', $_POST['s3bubble_roku_quality_meta_box_text']);
     }
 
-    if( isset( $_POST['s3bubble_video_trailer_youtube_code_meta_box_text'] ) ){
-
-        update_post_meta( $post_id, 's3bubble_video_trailer_youtube_code_meta_box_text', $_POST['s3bubble_video_trailer_youtube_code_meta_box_text'] );
-
+    if(!empty($_POST['s3bubble_roku_videotype_meta_box_text'])){
+        update_post_meta($post_id, 's3bubble_roku_videotype_meta_box_text', $_POST['s3bubble_roku_videotype_meta_box_text']);
     }
 
-    if( isset( $_POST['s3bubble_video_trailer_button_text_meta_box_text'] ) ){
+    if(!empty($_POST['s3bubble_roku_duration_meta_box_text'])){
+        update_post_meta($post_id, 's3bubble_roku_duration_meta_box_text', $_POST['s3bubble_roku_duration_meta_box_text']);
+    }
 
-        update_post_meta( $post_id, 's3bubble_video_trailer_button_text_meta_box_text', $_POST['s3bubble_video_trailer_button_text_meta_box_text'] );
+    if(!empty($_POST['s3bubble_roku_captions_meta_box_text'])){
+        update_post_meta($post_id, 's3bubble_roku_captions_meta_box_text', $_POST['s3bubble_roku_captions_meta_box_text']);
+    }
 
+    // TRAILER VIDEO CODE::
+    if(!empty($_POST['streamium_video_trailer_meta_box_text'])){
+        update_post_meta($post_id, 'streamium_video_trailer_meta_box_text', $_POST['streamium_video_trailer_meta_box_text']);
+    }
+
+    // TRAILER BUTTON TEXT::
+    if(!empty($_POST['s3bubble_video_trailer_button_text_meta_box_text'])){
+        update_post_meta($post_id, 's3bubble_video_trailer_button_text_meta_box_text', $_POST['s3bubble_video_trailer_button_text_meta_box_text']);
     }    
 
-    // Save the featured video
-    if( isset( $_POST['streamium_featured_video_meta_box_text'] ) ){
+    // FEATURE SLIDER VIDEO CODE::
+    if(!empty($_POST['streamium_featured_video_meta_box_text'])){
+        update_post_meta($post_id, 'streamium_featured_video_meta_box_text', $_POST['streamium_featured_video_meta_box_text']);
+    }
 
-        update_post_meta( $post_id, 'streamium_featured_video_meta_box_text', $_POST['    streamium_featured_video_meta_box_text'] );
+    // SHOW IN SLIDER CHECKBOX::
+    if(!empty($_POST['streamium_slider_featured_checkbox_value'])) {
+        update_post_meta($post_id, 'streamium_slider_featured_checkbox_value', 'yes');
+    }else{
+        update_post_meta($post_id, 'streamium_slider_featured_checkbox_value', '');
+    }
+
+    // EXTRA TILE META::
+    if(!empty($_POST['streamium_extra_meta_meta_box_text'])){
+        update_post_meta($post_id, 'streamium_extra_meta_meta_box_text', $_POST['streamium_extra_meta_meta_box_text']);
+    }
+
+    // VIDEO RATING::
+    if(!empty($_POST['streamium_ratings_meta_box_text'])){
+        update_post_meta($post_id, 'streamium_ratings_meta_box_text', $_POST['streamium_ratings_meta_box_text']);
+    }
+
+    // RELEASE DATE OVERRIDE
+    if(!empty($_POST['streamium_release_date_meta_box_text'])){
+        update_post_meta($post_id, 'streamium_release_date_meta_box_text', $_POST['streamium_release_date_meta_box_text']);
 
     }
 
-    // Save the featured video
-    if( isset( $_POST['streamium_live_stream_meta_box_text'] ) ){
-
-        update_post_meta( $post_id, 'streamium_live_stream_meta_box_text', $_POST['streamium_live_stream_meta_box_text'] );
-        
+    // DEPRICATED::
+    if(!empty($_POST['s3bubble_video_youtube_code_meta_box_text'])){
+        update_post_meta($post_id, 's3bubble_video_youtube_code_meta_box_text', $_POST['s3bubble_video_youtube_code_meta_box_text']);
     }
 
-    // Get the old values
+    // DEPRICATED::
+    if(!empty($_POST['s3bubble_video_trailer_youtube_code_meta_box_text'])){
+        update_post_meta($post_id, 's3bubble_video_trailer_youtube_code_meta_box_text', $_POST['s3bubble_video_trailer_youtube_code_meta_box_text']);
+    } 
+
+    // SEASONS AFND EPISODES::
     $old = get_post_meta($post_id, 'repeatable_fields', true);
     $new = array();
     if(isset($_POST['thumbnails']) && isset($_POST['seasons']) && isset($_POST['positions']) && isset($_POST['titles']) && isset($_POST['codes']) && isset($_POST['descriptions'])){
@@ -550,47 +570,7 @@ function streamium_post_meta_box_save( $post_id )
         
         }
 
-    }
-
-    // Save the checkbox
-    if( isset( $_POST[ 'streamium_slider_featured_checkbox_value' ] ) ) {
-
-        update_post_meta( $post_id, 'streamium_slider_featured_checkbox_value', 'yes' );
-    
-    } else {
-    
-        update_post_meta( $post_id, 'streamium_slider_featured_checkbox_value', '' );
-    
-    }
-
-    // Save extra meta
-    if( isset( $_POST['streamium_extra_meta_meta_box_text'] ) ){
-        
-        update_post_meta( $post_id, 'streamium_extra_meta_meta_box_text', $_POST['streamium_extra_meta_meta_box_text'] );
-
-    }
-
-    // Save video ratings
-    if( isset( $_POST['streamium_ratings_meta_box_text'] ) ){
-        
-        update_post_meta( $post_id, 'streamium_ratings_meta_box_text', $_POST['streamium_ratings_meta_box_text'] );
-
-    }
-
-    // Save release date meta
-    if( isset( $_POST['streamium_release_date_meta_box_text'] ) ){
-        
-        update_post_meta( $post_id, 'streamium_release_date_meta_box_text', $_POST['streamium_release_date_meta_box_text'] );
-
-    }
-
-    // Save youtube code
-    if( isset( $_POST['s3bubble_video_youtube_code_meta_box_text'] ) ){
-        
-        update_post_meta( $post_id, 's3bubble_video_youtube_code_meta_box_text', $_POST['s3bubble_video_youtube_code_meta_box_text'] );
-
-    }
-    
+    }    
 
 }
 

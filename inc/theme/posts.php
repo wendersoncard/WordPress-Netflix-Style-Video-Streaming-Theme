@@ -454,6 +454,8 @@ function streamium_columns_roku_content($column_name, $post_ID) {
         $duration  = get_post_meta( $post_ID, 's3bubble_roku_duration_meta_box_text', true );
         if($url && $quality && $videotype && $duration && $thumbnail){
 	        echo '<span class="post-state button-primary">Roku Data Set</span>';
+	    }else{
+	    	echo '<span class="post-state button-secondary">No Roku Data</span>';
 	    }
 
     }
@@ -485,6 +487,8 @@ function streamium_columns_main_slider_content($column_name, $post_ID) {
         $main_slider = get_post_meta( $post_ID, 'streamium_slider_featured_checkbox_value', true );
         if(!empty($main_slider)){
 	        echo '<span class="post-state button-primary">' . ucfirst($main_slider) . '</span>';
+	    }else{
+	    	echo '<span class="post-state button-secondary">No</span>';
 	    }
 
     }
@@ -501,7 +505,7 @@ function streamium_columns_series_video_count($columns) {
     $new = array();
   	foreach($columns as $key => $title) {
     	if ($key=='author') // Put the Thumbnail column before the Author column
-      	$new['series_video_count'] = 'Series';
+      	$new['series_video_count'] = 'Code/Series';
     	$new[$key] = $title;
   	}
   	return $new;
@@ -514,7 +518,12 @@ function streamium_columns_series_video_count_content($column_name, $post_ID) {
 
     	$series_video_count = get_post_meta($post_ID, 'repeatable_fields', true);
     	if(!empty($series_video_count)){
-    		echo '<span class="post-state button-secondary">' . count($series_video_count) . '</span>';
+    		echo '<span class="post-state button-primary">' . count($series_video_count) . '</span>';
+    	}
+
+    	$movie_video_code = get_post_meta($post_ID, 's3bubble_video_code_meta_box_text', true);
+    	if(!empty($movie_video_code)){
+    		echo '<a class="post-state button-primary" href="https://s3bubble.com/app/?us-east-1#/wpplayer/' . $movie_video_code . '" target="_blank">' . $movie_video_code . '</a>';
     	}
 
     }

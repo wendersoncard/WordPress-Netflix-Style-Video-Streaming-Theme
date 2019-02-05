@@ -1,6 +1,6 @@
 jQuery( document ).ready(function( $ ) {
 
-    // Release date overide
+    // Release date overide 
     $('.s3bubble-meta-datepicker').datepicker(); 
 
     $( '#streamium-add-repeater-row' ).live('click', function() {
@@ -121,7 +121,12 @@ jQuery( document ).ready(function( $ ) {
 
     $('#streamium-add-roku-data').live('click', function() {
 
-        var pid = $(this).data('pid');
+        var that = $(this);
+        var pid  = $(this).data('pid');
+
+        // LOADER::
+        that.text('Getting data please wait...');
+        
         $.ajax({
             type: 'POST',
             dataType: 'json',
@@ -139,6 +144,9 @@ jQuery( document ).ready(function( $ ) {
                         code: data.code
                     }, function(response) {
 
+                        // RESET LOADER::
+                        that.text('Generate Roku Data');
+
                         if(response.error){  
 
                             alert(response.message);
@@ -150,6 +158,7 @@ jQuery( document ).ready(function( $ ) {
                         $('#s3bubble_roku_url_meta_box_text').val(response.source.url);
                         $('#s3bubble_roku_quality_meta_box_text').val(response.source.quality);
                         $('#s3bubble_roku_videotype_meta_box_text').val(response.source.videoType);
+                        $('#s3bubble_roku_captions_meta_box_text').val(response.captions);
 
                         // Tell the user about image needed and duration
                         alert("Data successfully generated. !Important you will need to manually enter the video duration and please make sure you have added a Roku thumbnail 16:9 at least 800x450 in the thumbnail section below.");
@@ -232,29 +241,14 @@ jQuery( document ).ready(function( $ ) {
                 $(".streamium-theme-select-group").html("<div class='streamium-current-url-error'>" + response.message + "</div>");
                 return;
                 
-            } 
-
-            function baseName(str){
-
-               var base = str.replace(/\//gi, " ")
-               base = base.replace(/-/gi, " ");
-               base = base.toLowerCase();
-               return base;
-
             }
 
             var html = '';
             $.each(response.results, function (i, item) {
 
-                var code = item.code;
-                var bucket = item.bucket;
-                var key = item.key;
-                var title = item.title;
-                var ext = item.ext;
-                var type = item.type;
-
                 // RETURN ALL CODES::
-                html += '<option id="' + code + '"  value="' + code + '">' + baseName(key) + ' ' + code + '</option>'; 
+                var code   = item.code;
+                html += '<option id="' + code + '"  value="' + code + '">' + code + '</option>'; 
                  
             });
             html += '';

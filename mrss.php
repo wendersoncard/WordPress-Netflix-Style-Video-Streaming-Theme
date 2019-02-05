@@ -197,13 +197,10 @@
 			}else{
 
 				$captions = [];
-				/*$captions = [
-					[
-						"url" => "https =>//example.org/cdn/subtitles/1509428502952/sub-fr.srt",
-  						"Language" => "fr",
-  						"captionType" => "CLOSED_CAPTION"
-					]
-				];*/
+				$getCaptions = get_post_meta( $post->ID, 's3bubble_roku_captions_meta_box_text', true );
+				if($getCaptions){
+					$captions = unserialize($getCaptions);
+				}
 
 				// Not a series
 				$data = [
