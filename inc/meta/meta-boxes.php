@@ -117,7 +117,10 @@ function streamium_meta_box_roku(){
         <label>Video Captions</label>
         <?php if(!empty($captions)){ ?>
             <br>
-            <b><i>Video Caption have been found and added to your feed...</i></b>
+            <b><i>Video Captions have been found and added to your feed...</i></b>
+        <?php }else{ ?>
+            <br>
+            <b><i>No Video Captions have been found...</i></b>
         <?php } ?>
         <input type="hidden" name="s3bubble_roku_captions_meta_box_text" class="widefat" id="s3bubble_roku_captions_meta_box_text" value="<?php echo $captions; ?>" placeholder="Enter video captions" />
     </p>
