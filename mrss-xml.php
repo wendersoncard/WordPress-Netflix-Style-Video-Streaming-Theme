@@ -106,12 +106,12 @@
 				$tax = get_post_taxonomies($post->ID);
 				print_r($tax);
 
-				$categories = get_the_terms($post->ID, get_theme_mod('streamium_section_input_taxonomy_' . $tax[0], $tax[0]));
+				/*$categories = get_the_terms($post->ID, get_theme_mod('streamium_section_input_taxonomy_' . $tax[0], $tax[0]));
 				if ( ! empty( $categories ) ) {
 					foreach( $categories as $category ) {
 						print('<media:category>' . $category->name . '</media:category>');
 					} 
-				}				
+				}*/				
 			
 				print('<media:content url="' . $videoUrl . '" language="en-us" duration="' . $videoDuration . '.0" medium="video" isDefault="true">');
 					print('<media:title type="plain">' . $category->name . '</media:title>');
