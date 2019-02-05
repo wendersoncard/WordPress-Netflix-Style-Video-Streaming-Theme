@@ -28,6 +28,7 @@ module.exports = function(grunt) {
                     'dist/js/player.js',
                     'dist/js/uploader.js',
                     'dist/js/dropdown.js',
+                    'dist/js/jquery.menu-aim.js',
                     'dist/js/slick.js',
                     'dist/js/sweetalert.min.js',
                 ],

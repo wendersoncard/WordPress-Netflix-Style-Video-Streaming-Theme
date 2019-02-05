@@ -3,37 +3,17 @@
 	/*
 	 	Template Name: Mrss XML Template
 	*/
-
-	// Brightcove sample for MRSS feed
 	
-	// This is just a sample to get you started. You can customize further as your requirements
-	// grow.
-	// The following is a list of requirements and conditions in order for this podcast feed
-	// to function properly;
-	//    1) You must have a Pro or Enterprise level Video Cloud Account.
-	//    2) You will need to contact Brightcove Support to request an API READ Token with URL 
-	//       access, if you don't have one already.
-	
-	// Please customize the variables below:
-	
-	// This is the title of the podcast itself.	
-	$title = "Video Cloud Test Feed";
-	// This is your Media API READ token with URL Access. This allows you to access the media files and not just the metadata.
-	$token = "WDGO_XdKqXVJRVGtrNuGLxCYDNoR-SvA5yUqX2eE6KjgefOxRzQilw..";
-	// This is a link to where the MRSS feed can be found.
+	$title = "S3Bubble AWS Media Streaming";
 	$link = "http://www.brightcove.com/";
-	// This is a description of this iTunes Feed.
-	$description  = "Description of the Video Cloud Playlist Feed";
-	// This is the language you display for this podcast.
+	$description  = "S3Bubble AWS Media Streaming";
 	$lang = "en-us";
-	// This is the copyright information.
-	$copyright = "Copyright 2014 Brightcove Inc";
-	// This is the build date.
+	$copyright = "Copyright 2019 S3Bubble";
 	$builddate = date(DATE_RFC2822);
 	
 	// Customize the code below to return the videos and fields for your feed;	
 	print('<?xml version="1.0" encoding="UTF-8" standalone="yes"?>');
-	print('<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:bc="http://www.brightcove.tv/link" xmlns:dcterms="http://purl.org/dc/terms/">');
+	print('<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:bc="https://s3bubble.com" xmlns:dcterms="http://purl.org/dc/terms/">');
 	print('<channel>');
 	print('<title>'. $title . '</title>');
 	print('<link>'. $link . '</link>');
@@ -41,56 +21,97 @@
 	print('<language>'. $lang . '</language>');
 	print('<copyright>'. $copyright . '</copyright>');
 	print('<lastBuildDate>'. $builddate . '</lastBuildDate>');
+
+	// globally loop through post types.
+	$args = array(
+        'posts_per_page' => -1,
+        'post_type' => streamium_global_meta(),
+        'post_status' => 'publish'
+    );
+
+    $loop = new WP_Query($args);
 	
-	foreach($returndata->items as $items)
-	{
-	    print('<item>');	
-		
-		print('<title>');
-		print_r($items->{"name"});
-		print('</title>');	
+	if ($loop->have_posts()):
+
+        while ($loop->have_posts()) : $loop->the_post();
+
+        	// TOP LEVEL DATA:
+        	$id               = get_the_ID();
+        	$title            = substr( strip_tags(get_the_title()), 0, 200);
+        	$shortDescription = wp_trim_words( strip_tags(get_the_content()), $num_words = 20, $more = '... ' );
+        	$longDescription  = strip_tags(get_the_content());
+        	$releaseDate      = get_the_time('c');
+    	 	$thumbnail        = false;
+
+    	 	// EXTRA THUMBNAILS:
+            if (class_exists('MultiPostThumbnails')) {                              
+                
+                if (MultiPostThumbnails::has_post_thumbnail( get_post_type( get_the_ID() ), 'roku-thumbnail-image', get_the_ID())) { 
+
+                    $thumbnail_id = MultiPostThumbnails::get_post_thumbnail_id( get_post_type( get_the_ID() ), 'roku-thumbnail-image', get_the_ID() );  
+                    $thumbnail = wp_get_attachment_image_url( $thumbnail_id, 'streamium-roku-thumbnail' ); 
+
+                }                             
+             
+            }; 
+
+    	 	// ROKU META DATA:
+    	 	$videoUrl      = get_post_meta( $post->ID, 's3bubble_roku_url_meta_box_text', true );
+    	 	$videoQuality  = get_post_meta( $post->ID, 's3bubble_roku_quality_meta_box_text', true );
+    	 	$VideoType     = get_post_meta( $post->ID, 's3bubble_roku_videotype_meta_box_text', true );
+    	 	$videoDuration = get_post_meta( $post->ID, 's3bubble_roku_duration_meta_box_text', true );
+
+		    print('<item>');	
 			
-		print('<link>');
-		print_r($items->{"videoFullLength"}->{"url"});
-		print('</link>');
-	
-		print('<description>');
-		print_r($items->{"shortDescription"});
-		print('</description>');
+			print('<title>');
+			print_r($title);
+			print('</title>');	
+				
+			print('<link>');
+			print_r($videoUrl);
+			print('</link>');
 		
-		print('<pubDate>');
-		print_r(date(DATE_RFC2822,(($items->{"publishedDate"})/1000)));
-		print('</pubDate>');
-	
-		print('<media:player>');
-		print_r('height="' . $items->{"videoFullLength"}->{"frameHeight"} . '"');
-		print_r(' width="' . $items->{"videoFullLength"}->{"frameWidth"} . '"');
-		print_r(' url="' . $items->{"videoFullLength"}->{"url"} . '"');
-		print('</media:player>');
+			print('<description>');
+			print_r($shortDescription);
+			print('</description>');
+			
+			print('<pubDate>');
+			print_r(date(DATE_RFC2822,$releaseDate));
+			print('</pubDate>');
 		
-		print('<media:keywords>');
-		$keywords = "";
-		foreach($items->tags as $tags)
-		{
-			$keywords = $keywords . ($keywords == "" ? "" : ",") . $tags;
-		}
-		print_r($keywords);
-		print('</media:keywords>');
+			print('<media:player>');
+			print_r('height="640"');
+			print_r(' width="360"');
+			print_r(' url="' . $videoUrl . '"');
+			print('</media:player>');
+			
+			print('<media:keywords>');
+			$keywords = "";
+			$my_tags = get_the_tags();
+			if ( $my_tags ) {
+			    foreach ( $my_tags as $tag ) {
+			        $keywords = $keywords . ($keywords == "" ? "" : ",") . $tag->name;
+			    }
+			}
+			print_r($keywords);
+			print('</media:keywords>');
+			
+			print('<media:thumbnail>');
+			print_r($thumbnail);
+			print('</media:thumbnail>');
 		
-		print('<media:thumbnail>');
-		print_r($items->{"thumbnailURL"});
-		print('</media:thumbnail>');
-	
-		print('<bc:videoid>');
-		print_r($items->{"id"});
-		print('</bc:videoid>');
-	
-		print('<bc:duration>');
-		print_r($items->{"videoFullLength"}->{"videoDuration"});
-		print('</bc:duration>');
+			print('<bc:videoid>');
+			print_r($id);
+			print('</bc:videoid>');
 		
-	    print('</item>');
-	}
+			print('<bc:duration>');
+			print_r($videoDuration);
+			print('</bc:duration>');
+			
+		    print('</item>');
+		
+		endwhile;
+    endif;
 	
 	print('</channel></rss>');
 	
