@@ -8247,7 +8247,7 @@ h4.series-watched-episode-title {
   background-color: #03bb91;
   z-index: 999999
 }
-.modal-section p {
+.modal-section p { 
   margin: 2em 0;
   line-height: 1.6;
   color: #ffffff;
