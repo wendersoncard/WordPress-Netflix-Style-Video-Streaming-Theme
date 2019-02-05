@@ -102,15 +102,14 @@
 				print('<guid isPermaLink="false">' . $link . '</guid>');
 
 				print('<media:category>All</media:category>');
-				$categories = get_the_category();
- 
+				$categories = get_the_terms($post->ID, 'movies');
 				if ( ! empty( $categories ) ) {
 					foreach( $categories as $category ) {
 						print('<media:category>' . $category->name . '</media:category>');
 					} 
 				}				
 			
-				print('<media:content url="' . $videoUrl . '" language="en-us" duration="' . $videoDuration . '" medium="video" isDefault="true">');
+				print('<media:content url="' . $videoUrl . '" language="en-us" duration="' . $videoDuration . '.0" medium="video" isDefault="true">');
 					print('<media:title type="plain">' . $category->name . '</media:title>');
 					print('<media:description type="html">' . $category->name . '</media:description>');
 					print('<media:thumbnail url="' . $thumbnail . '" />');
