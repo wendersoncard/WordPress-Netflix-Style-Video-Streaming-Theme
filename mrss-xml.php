@@ -103,7 +103,7 @@
 
 				print('<media:category>All</media:category>');
 
-				print_r(wp_get_post_terms($post->ID));
+				print_r(get_the_terms($post->ID));
 
 				$categories = get_the_terms($post->ID, get_theme_mod('streamium_section_input_taxonomy_movies', 'movies'));
 				if ( ! empty( $categories ) ) {
