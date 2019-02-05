@@ -7283,9 +7283,6 @@ body::after {
 .streamium-slider .slick-slide {
     margin: 0px;
     padding: 0px;
-    -webkit-transition: -webkit-transform 0.3s ease;
-    -moz-transition: -moz-transform 0.3s ease;
-    transition: transform 0.3s ease;
 }
 
 .carousels .slick-list {
@@ -7477,11 +7474,11 @@ body::after {
   transform: scale(.5) translateZ(0px);
   transform-origin: top left;
   position: absolute;
-}
+} 
 
 .carousels .tile_inner {
   box-sizing: border-box;
-  transition: 200ms transform;
+  transition: all 0.2s ease-in-out;
   transform-origin: center center; 
   width: 100%;
   padding-bottom: 56.25%; /* 16:9 56.25 9:16; 177.77 */ 
@@ -9846,22 +9843,6 @@ input {
 }
 
 @charset 'UTF-8';
-/* Slider */
-.slick-loading .slick-list
-{
-    background: #fff url('./ajax-loader.gif') center center no-repeat;
-}
-
-/* Icons */
-@font-face
-{
-    font-family: 'slick';
-    font-weight: normal;
-    font-style: normal;
-
-    src: url('./fonts/slick.eot');
-    src: url('./fonts/slick.eot?#iefix') format('embedded-opentype'), url('./fonts/slick.woff') format('woff'), url('./fonts/slick.ttf') format('truetype'), url('./fonts/slick.svg#slick') format('svg');
-}
 /* Arrows */
 .slick-prev,
 .slick-next
@@ -9872,7 +9853,7 @@ input {
     position: absolute;
     top: 50%;
 
-    display: block;
+    display: block; 
 
     width: 20px;
     height: 20px;
