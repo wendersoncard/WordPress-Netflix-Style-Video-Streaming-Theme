@@ -28,6 +28,37 @@ class Streamium_Customize
             'colors'
         );
 
+        $proxy_url = admin_url( 'admin-ajax.php' ) . '?action=drm_protected_video_streaming_proxy_token';
+
+        // DRM SECTION =>
+        $wp_customize->add_section(
+            'streamium_drm_section', 
+            array(
+                'title'     => __('DRM Proxy Security', 'streamium'),
+                //'description' => 'Here you can generate a key to secure your mrss feed for Roku.',
+                'description' => 'You can secure your media with DRM proxy security.<br/><strong><i>!Important DRM will not work on Roku.</i></strong>',
+                'priority'  => 1000
+            )
+        );
+
+        $wp_customize->add_setting(
+            'streamium_drm_proxy_url'
+        );
+
+        $wp_customize->add_control( 'button_id', array(
+            'type' => 'text',
+            'label'    => __( 'DRM Proxy Url', 'streamium' ),
+            'description' => 'Copy and paste the url below into the MediaConvert proxy security section',
+            'section' => 'streamium_drm_section',
+            'settings' => array(),
+            'priority' => 10,
+            'section' => 'streamium_drm_section',
+            'input_attrs' => array(
+                'value' => $proxy_url
+            ),
+        ) );
+        // DRM SECTION <=
+
         // API SECTION =>
         $wp_customize->add_section(
             'streamium_mrss_section', 

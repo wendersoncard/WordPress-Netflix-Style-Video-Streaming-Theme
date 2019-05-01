@@ -564,3 +564,52 @@ function streamium_get_roku_data_code() {
 }
 
 add_action( 'wp_ajax_streamium_get_roku_data_code', 'streamium_get_roku_data_code' );
+
+/**
+ *  DRM Proxy
+ *
+ * @return bool
+ * @author  @sameast
+ */
+function drm_protected_video_streaming_proxy_token(){
+
+	if(isset($_COOKIE['Authorization'])){
+
+		$response = wp_remote_post( 'https://s3bubbleapi.com/proxy/token', array(
+		    'headers' => array(
+		        'Authorization' => $_COOKIE['Authorization'],
+		    )
+		));
+
+		if ( is_wp_error( $response ) ) {
+		    
+		    $error_message = $response->get_error_message();
+		    echo "Something went wrong: $error_message";
+
+		} else {
+		   	
+		   	if(isset($response['body'])){
+
+		   		echo $response['body'];
+
+		   	}else{
+
+		   		echo "Something went wrong no body:";
+
+		   	}
+
+		}
+
+	}
+
+	die(); // !IMPORTANT
+
+}
+
+/*
+ * Get the DRM token
+ * @author s3bubble
+ * @params none
+ */
+add_action('wp_ajax_drm_protected_video_streaming_proxy_token', 'drm_protected_video_streaming_proxy_token' ); 
+add_action('wp_ajax_nopriv_drm_protected_video_streaming_proxy_token', 'drm_protected_video_streaming_proxy_token' );
