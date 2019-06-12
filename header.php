@@ -13,6 +13,26 @@
 	<!-- Wordpress Scripts -->
 	<?php wp_head(); ?>
 
+	<?php
+
+		// CHECK FOR GOOGLE ADSENSE::
+		if(get_theme_mod( 'streamium_advertisement_google_adsense', false )){ ?>
+
+			<!-- GOOGE ADSENSE -->
+			<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<script>
+			     (adsbygoogle = window.adsbygoogle || []).push({
+			          google_ad_client: "<?php echo get_theme_mod( 'streamium_advertisement_google_adsense' ); ?>",
+			          enable_page_level_ads: true
+			     });
+			</script>
+
+	<?php
+
+		}
+
+	?>
+
 </head> 
 <body <?php body_class(); ?>>
 

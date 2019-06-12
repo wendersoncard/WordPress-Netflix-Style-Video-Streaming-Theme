@@ -842,8 +842,8 @@ class Streamium_Customize
         $wp_customize->add_section(
             'streamium_advertisement_section', 
             array(
-                'title'     => __('Advertising Vast/Vmap Ads', 'streamium'),
-                'description' => 'Here you can set a global vpaid advertisement url. !Important this does not work with YouTube',
+                'title'     => __('Advertising', 'streamium'),
+                'description' => 'Here you can set a global advertisements.',
                 'priority'  => 1020
             )
         );
@@ -857,7 +857,7 @@ class Streamium_Customize
                 $wp_customize, 
                 'streamium_advertisement_vpaid_url',
                 array(
-                    'label' => 'VPaid url',
+                    'label' => 'Vast Url',
                     'section' => 'streamium_advertisement_section',
                     'settings' => 'streamium_advertisement_vpaid_url'
                 )
@@ -880,6 +880,22 @@ class Streamium_Customize
                     'section'   => 'streamium_advertisement_section',
                     'settings'  => 'streamium_advertisement_enabled',
                     'type'      => 'checkbox',
+                )
+            )
+        );
+
+        $wp_customize->add_setting(
+            'streamium_advertisement_google_adsense'
+        );
+
+        $wp_customize->add_control(
+            new WP_Customize_Control(
+                $wp_customize, 
+                'streamium_advertisement_google_adsense',
+                array(
+                    'label' => 'Adsense Code (google_ad_client)',
+                    'section' => 'streamium_advertisement_section',
+                    'settings' => 'streamium_advertisement_google_adsense'
                 )
             )
         );
